@@ -1,0 +1,15 @@
+#summary Frequently Asked Questions.
+#labels Phase-Support
+
+= FAQ =
+
+* Q: What exactly is [http://www.candydoll.tv/ CandyDoll.TV]?<br>
+* A: It is a Japanese modelingsite, that features young female models of European heritage. In their own words:<br>
+  _ !CandyDoll.TV is the place where you can enjoy the beauty of little girls. We made collection of young and petite girls. You will definitely find these excellent photos worth to be called true masterpieces. _
+
+----
+
+* Q: Why is there no 'Remember me' option in the login form?<br>
+* A: Because the login uses PHP's Session and not Cookies.
+
+----
