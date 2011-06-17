@@ -1,0 +1,18 @@
+#summary Screenshots
+#labels Phase-Support,Phase-Design
+
+= Screenshots =
+
+So far, screenshots are taken with Chromium 11 on Ubuntu Natty. Feel free to submit your own.
+
+== Index page == 
+
+[http://fwiep.nl/download/6277492e-9bcb-4383-a702-e5db97cdb4cd.jpg http://fwiep.nl/download/6277492e-9bcb-4383-a702-e5db97cdb4cds.jpg]
+
+== Set overview == 
+
+[http://fwiep.nl/download/d181dc43-499f-4449-ae99-2c986eed4ce4.jpg http://fwiep.nl/download/d181dc43-499f-4449-ae99-2c986eed4ce4s.jpg]
+
+== Model form == 
+
+[http://fwiep.nl/download/bea8f598-230c-444c-9c84-b3fb16855673.jpg http://fwiep.nl/download/bea8f598-230c-444c-9c84-b3fb16855673s.jpg]
