@@ -1,0 +1,300 @@
+<?php
+
+class Model
+{
+ 	private $ID;
+	private $FirstName;
+	private $LastName;
+	private $BirthDate = -1;
+	private $SetCount = 0;
+	
+	/**
+	 * Returns a concatenation of the Model's firstname and the first character of the Model's lastname.
+	 * 
+	 * @return string
+	 */
+	public function GetShortName()
+	{
+		return sprintf('%1$s%2$s',
+			$this->getFirstName(),
+			substr($this->getLastName(), 0, 1));
+	}
+
+	/**
+	 * Returns a concatenation of the Model's first- and lastname.
+	 * 
+	 * @return string
+	 */
+	public function GetFullName()
+	{
+		return sprintf('%1$s%2$s',
+			$this->getFirstName(),
+			$this->getLastName() ? ' '.$this->getLastName() : null);
+	}
+	
+	
+	/**
+	 * Instantiates a new Model object.
+	 * 
+	 * @param int $ID
+	 * @param string $FirstName
+	 * @param string $LastName
+	 */
+	public function Model($ID = null, $FirstName = null, $LastName = null)
+	{
+		$this->ID = $ID;
+		$this->FirstName = $FirstName;
+		$this->LastName = $LastName;
+	}
+	
+	/**
+	 * Get the Model's ID.
+	 * 
+	 * @return int
+	 */
+	public function getID()
+	{ return $this->ID; }
+	
+	/**
+	 * @param int $ID
+	 */
+	public function setID($ID)
+	{ $this->ID = $ID; }
+	
+	/**
+	 * Gets the Model's firstname.
+	 * 
+	 * @return string 
+	 */
+	public function getFirstName()
+	{ return $this->FirstName; }
+	
+	/**
+	 * @param string $FirstName
+	 */
+	public function setFirstName($FirstName)
+	{ $this->FirstName = $FirstName; }
+	
+	/**
+	 * Gets the Model's lastname.
+	 * 
+	 * @return string 
+	 */
+	public function getLastName()
+	{ return $this->LastName; }
+	
+	/**
+	 * @param string $LastName
+	 */
+	public function setLastName($LastName)
+	{ $this->LastName = $LastName; }
+	
+	/**
+	 * Gets the Model's bithdate, represented as a UNIX timstamp.
+	 * 
+	 * @return int 
+	 */
+	public function getBirthDate()
+	{ return $this->BirthDate; }
+	
+	/**
+	 * @param int $BirthDate
+	 */
+	public function setBirthDate($BirthDate)
+	{ $this->BirthDate = $BirthDate; }
+	
+	/**
+	 * Gets the Model's set count, defaults to 0.
+	 * 
+	 * @return int 
+	 */
+	public function getSetCount()
+	{ return $this->SetCount; }
+	
+	/**
+	 * @param int $SetCount
+	 */
+	public function setSetCount($SetCount)
+	{ $this->SetCount = $SetCount;}
+	
+	/**
+	 * Returns a random image-filename of the current model.
+	 * @return string|NULL
+	 */
+	public function GetFileFromDisk($PortraitOnly = false, $LandscapeOnly = false)
+	{
+		$folderPath = sprintf('%1$s/%2$s', CANDYIMAGEPATH, $this->GetFullName()); 
+		if(!file_exists($folderPath)){ return null; } 
+		
+		$it = new RecursiveIteratorIterator(new RecursiveDirectoryIterator(
+			$folderPath,	
+		 	FileSystemIterator::SKIP_DOTS | FileSystemIterator::CURRENT_AS_FILEINFO));
+		 	
+		$files = array();
+		
+		/* @var $file SplFileInfo */
+		foreach($it as $file)
+		{
+			if($file->isFile())
+			{
+				if($PortraitOnly || $LandscapeOnly)
+				{
+					$info = getimagesize($it->getRealPath());
+					
+					if($PortraitOnly && $info[0] > $info[1]) { continue; }
+					if($LandscapeOnly && $info[0] < $info[1]) { continue; }
+				}
+				
+				$files[] = $it->getRealPath();
+			}
+		}
+		
+		if($files)
+		{ return $files[array_rand($files)];  }
+		else
+		{ return null; }
+	}
+
+	
+	/**
+	 * Gets an array of Models from the database, or NULL on failure. The array can be empty.
+	 * 
+	 * @param string $WhereClause
+	 * @param string $OrderClause
+	 * @param string $LimitClause
+	 * @return array(Model) | NULL
+	 */
+	public static function GetModels($WhereClause = 'mut_deleted = -1', $OrderClause = 'model_firstname ASC, model_lastname ASC', $LimitClause = null)
+	{
+		global $db;
+		
+		if($db->Select('vw_Model', '*', $WhereClause, $OrderClause, $LimitClause))
+		{
+			$OutArray = array();
+			if($db->getResult())
+			{
+				foreach($db->getResult() as $ModelItem)
+				{
+					$ModelObject = new Model();
+					
+					foreach($ModelItem as $ColumnKey => $ColumnValue)
+					{
+						switch($ColumnKey)
+						{
+							case 'model_id'			: $ModelObject->setID($ColumnValue);		break;
+							case 'model_firstname'	: $ModelObject->setFirstName($ColumnValue);	break;
+							case 'model_lastname'	: $ModelObject->setLastName($ColumnValue);	break;
+							case 'model_birthdate'	: $ModelObject->setBirthDate($ColumnValue);	break;
+							case 'model_setcount'	: $ModelObject->setSetCount($ColumnValue);	break;
+						}
+					}
+					
+					$OutArray[] = $ModelObject;
+				}
+			}
+			return $OutArray;
+		}
+		else
+		{ return null; }
+	}
+	
+	/**
+	 * Inserts the given model into the database.
+	 *
+	 * @param Model $Model
+	 * @param User $CurrentUser
+	 * @return bool
+	 */
+	public static function InsertModel($Model, $CurrentUser)
+	{
+	    global $db;
+	    
+	    return $db->Insert(
+		'Model',
+		array(
+		    mysql_real_escape_string($Model->getFirstName()),
+		    mysql_real_escape_string($Model->getLastName()),
+		    $Model->getBirthDate(),
+		    $CurrentUser->getID(),
+		    time()
+		),
+		'model_firstname, model_lastname, model_birthdate, mut_id, mut_date'
+	    );
+	}
+	
+	/**
+	 * Updates the databaserecord of supplied Model.
+	 * 
+	 * @param Model $Model
+	 * @param User $CurrentUser
+	 * @return bool
+	 */
+	public static function UpdateModel($Model, $CurrentUser)
+	{
+		global $db;
+		
+		return $db->Update(
+			'Model',
+			array(
+				'model_firstname' => mysql_real_escape_string($Model->getFirstName()),
+				'model_lastname' => mysql_real_escape_string($Model->getLastName()),
+				'model_birthdate' => $Model->getBirthDate(),
+				'mut_id' => $CurrentUser->getID(),
+				'mut_date' => time()
+			),
+			array('model_id', $Model->getID())
+		);
+	}
+	
+	
+	/**
+	 * Removes the specified Model from the database.
+	 * 
+	 * @param Model $Model
+	 * @param User $CurrentUser
+	 * @return bool
+	 */
+	public static function DeleteModel($Model, $CurrentUser)
+	{
+		global $db;
+		
+		return $db->Update(
+			'Model',
+			array(
+				'mut_id' => $CurrentUser->getID(),
+				'mut_deleted' => time()
+			),
+			array('model_id', $Model->getID())
+		);
+	}
+
+	/**
+	 * Filters an array of Models, and returns only those who match the specified criteria.
+	 * @param array(Model) $ModelArray
+	 * @param int $ModelID
+	 * @param string $FirstName
+	 * @param string $LastName
+	 * @return array(Model)
+	 */
+	public static function FilterModels($ModelArray, $ModelID = null, $FirstName = null, $LastName = null)
+	{
+		$OutArray = array();
+		
+		/* @var $Model Model */
+		foreach($ModelArray as $Model)
+		{
+			if(
+				(is_null($ModelID) || $Model->getID() == $ModelID)		&&
+				(is_null($FirstName) || $Model->getFirstName() == $FirstName)	&&
+				(is_null($LastName) || $Model->getLastName() == $LastName)
+			){
+				$OutArray[] = $Model;
+			}
+		}
+		return $OutArray;
+	}
+	
+
+}
+
+?>

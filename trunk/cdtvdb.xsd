@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+<xs:element name="Models" type="ModelsType">
+	<xs:unique name="uniqueModelName"> 
+		<xs:selector xpath="./Model"/> 
+		<xs:field xpath="@firstname"/>
+		<xs:field xpath="@lastname"/> 
+	</xs:unique>
+</xs:element>
+
+<!-- ============================================= -->
+
+<xs:simpleType name="Name">
+	<xs:restriction base="xs:string">
+		<xs:minLength value="1"/>
+	</xs:restriction>
+</xs:simpleType>
+
+<xs:simpleType name="EmptyName">
+	<xs:union memberTypes="Empty Name"  />
+</xs:simpleType>
+
+<xs:simpleType name="EmptyDate">
+	<xs:union memberTypes="Empty xs:date"  />
+</xs:simpleType>
+
+<xs:simpleType name="Empty">
+	<xs:restriction base="xs:string">
+		<xs:enumeration value=""/>
+	</xs:restriction>
+</xs:simpleType>
+
+<xs:simpleType name="DigitName">
+	<xs:restriction base="xs:string">
+		<xs:pattern value="[0-9]{2}"/>
+	</xs:restriction>
+</xs:simpleType>
+
+<xs:complexType name="SetType">
+	<xs:attribute name="name" type="DigitName" use="required" />
+	<xs:attribute name="date_pic" type="EmptyDate" use="optional"/>
+	<xs:attribute name="date_vid" type="EmptyDate" use="optional"/>					
+</xs:complexType>
+
+<xs:complexType name="SetsType">
+	<xs:sequence>
+		<xs:element name="Set" minOccurs="1" maxOccurs="unbounded" type="SetType" />
+	</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="ModelType">
+	<xs:sequence>
+		<xs:element name="Sets" minOccurs="0" maxOccurs="1" type="SetsType">
+			<xs:unique name="uniqueSetName">
+				<xs:selector xpath="./Set"/>
+				<xs:field xpath="@name"/>
+			</xs:unique>
+		</xs:element>
+	</xs:sequence>
+
+	<xs:attribute name="firstname" type="Name" use="required"/>
+	<xs:attribute name="lastname" type="EmptyName" use="optional"/>
+	<xs:attribute name="birthdate" type="EmptyDate" use="optional"/>	
+</xs:complexType>
+
+<xs:complexType name="ModelsType">
+	<xs:sequence>
+		<xs:element name="Model" minOccurs="0" maxOccurs="unbounded" type="ModelType" />
+	</xs:sequence>
+</xs:complexType>
+   
+</xs:schema>
