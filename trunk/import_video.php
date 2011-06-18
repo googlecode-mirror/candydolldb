@@ -87,8 +87,6 @@ for($i = 0; $i < count($Models); $i++)
 					
 					if(strlen($setname) == 2)
 					{ $Set->setPrefix('set_'); }
-					
-					$Set->setDate($FileInfo->getCTime());
 
 					Set::InsertSet($Set, $CurrentUser);
 					$setid = $db->GetLatestID();
@@ -113,7 +111,7 @@ for($i = 0; $i < count($Models); $i++)
 			$VideoInDB->setFileExtension(trim(VIDEO_EXTENSION, '.'));
 			$VideoInDB->setFileSize($FileInfo->getSize());
 			$VideoInDB->setFileCheckSum(md5_file($FileInfo->getRealPath()));
-			$VideoInDB->setDateTaken($FileInfo->getCTime());
+			$VideoInDB->setDateTaken($Set->getDateVid());
 			
 			if(!$VideoInDB->getID())
 			{ Video::InsertVideo($VideoInDB, $CurrentUser); }
@@ -123,9 +121,6 @@ for($i = 0; $i < count($Models); $i++)
 	}
 }
 
-if(array_key_exists('HTTP_REFERER', $_SERVER) && $_SERVER['HTTP_REFERER'])
-{ header('location:'.$_SERVER['HTTP_REFERER']); }
-else 
-{ header('location:index.php'); }
+HTMLstuff::RefererRedirect();
 
 ?>

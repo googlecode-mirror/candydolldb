@@ -130,7 +130,7 @@ for($i = 0; $i < count($Models); $i++)
 					$ImageInDB->setFileCheckSum(md5_file($FileInfo->getRealPath()));
 					$ImageInDB->setImageWidth($info[0]);
 					$ImageInDB->setImageHeight($info[1]);
-					$ImageInDB->setDateTaken($FileInfo->getCTime());
+					$ImageInDB->setDateTaken($Set->getDatePic());
 					
 					if(!$ImageInDB->getID())
 					{ Image::InsertImage($ImageInDB, $CurrentUser); }
@@ -142,9 +142,6 @@ for($i = 0; $i < count($Models); $i++)
 	}
 }
 
-if(array_key_exists('HTTP_REFERER', $_SERVER) && $_SERVER['HTTP_REFERER'])
-{ header('location:'.$_SERVER['HTTP_REFERER']); }
-else 
-{ header('location:index.php'); }
+HTMLstuff::RefererRedirect();
 
 ?>
