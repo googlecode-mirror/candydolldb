@@ -74,7 +74,7 @@ echo HTMLstuff::HtmlHeader($Model->GetShortName().' - Sets', $CurrentUser);
 
 <h2><?php echo sprintf('<a href="index.php">Home</a> - <a href="model_view.php?model_id=%1$d">%2$s</a> - Sets',
 	$ModelID,
-	htmlentities($Model->GetShortName())
+	htmlentities($Model->GetShortName(true))
 ); ?></h2>
 
 <table border="0" cellpadding="4" cellspacing="0">

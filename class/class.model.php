@@ -13,11 +13,12 @@ class Model
 	 * 
 	 * @return string
 	 */
-	public function GetShortName()
+	public function GetShortName($WithSpace = false)
 	{
-		return sprintf('%1$s%2$s',
+		return sprintf('%1$s%3$s%2$s',
 			$this->getFirstName(),
-			substr($this->getLastName(), 0, 1));
+			substr($this->getLastName(), 0, 1),
+			$WithSpace ? ' ' : null);
 	}
 
 	/**

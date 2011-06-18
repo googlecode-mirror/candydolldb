@@ -62,7 +62,7 @@
 	</xs:sequence>
 
 	<xs:attribute name="firstname" type="Name" use="required"/>
-	<xs:attribute name="lastname" type="EmptyName" use="optional"/>
+	<xs:attribute name="lastname" type="EmptyName" use="required"/>
 	<xs:attribute name="birthdate" type="EmptyDate" use="optional"/>	
 </xs:complexType>
 
