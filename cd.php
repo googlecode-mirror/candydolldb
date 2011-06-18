@@ -2,14 +2,25 @@
 
 error_reporting(E_ALL);
 
-if(file_exists('config.php'))
-{ require_once('config.php'); }
+if($argv && $argc > 0)
+{
+	// On the commandline, include using absolute path
+	if(file_exists(sprintf('%1$s/config.php', dirname($_SERVER['PHP_SELF']))))
+	{ require_once(sprintf('%1$s/config.php', dirname($_SERVER['PHP_SELF']))); }
+}
+else
+{
+	// During a HTTP-request, include using relative path
+	if(file_exists('config.php'))
+	{ require_once('config.php'); }
+}
 
 if(!defined('DBHOSTNAME') || strlen(DBHOSTNAME) == 0 ||
    !defined('DBUSERNAME') || strlen(DBUSERNAME) == 0 ||
    !defined('DBPASSWORD') || strlen(DBPASSWORD) == 0)
 {
 	header('location:setup.php');
+	exit(128);
 }
 
 define('GENDER_UNKNOWN', 0);
