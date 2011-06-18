@@ -1186,7 +1186,7 @@
 		</Sets>
 	</Model>
 	
-	<Model firstname="VIP">
+	<Model firstname="VIP" lastname="">
 		<Sets>
 			<Set extended_name="SP Alice" name="01" date_pic="2008-02-01" date_vid="2008-02-01" />
 			<Set extended_name="SP Alice" name="02" date_pic="2008-03-14" date_vid="2008-03-14" />
@@ -1203,8 +1203,41 @@
 			<Set extended_name="SP Sailor" name="02" date_pic="2008-12-19" date_vid="" />
 		</Sets>
 	</Model>
+	
+	<Model firstname="Promotions" lastname="">
+		<Sets>
+			<Set name="01" />
+			<Set name="02" />
+			<Set name="03" />
+			<Set name="04" />
+			<Set name="05" />
+			<Set name="06" />
+			<Set name="07" />
+			<Set name="08" />
+			<Set name="09" />
+			<Set name="10" />
+			<Set name="11" />
+			<Set name="12" />
+			<Set name="13" />
+			<Set name="14" />
+			<Set name="15" />
+			<Set name="16" />
+			<Set name="17" />
+			<Set name="18" />
+			<Set name="19" />
+			<Set name="20" />
+			<Set name="21" />
+			<Set name="22" />
+			<Set name="23" />
+			<Set name="24" />
+			<Set name="25" />
+			<Set name="26" />
+			<Set name="27" />
+			<Set name="28" />
+		</Sets>
+	</Model>
 
-	<Model firstname="Interviews">
+	<Model firstname="Interviews" lastname="">
 		<Sets>
 			<Set extended_name="AlinaG" name="01" date_vid="2008-04-18" />
 			<Set extended_name="AnnaT" name="01" date_vid="2008-04-25" />

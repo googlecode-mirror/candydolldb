@@ -45,10 +45,45 @@ if($XmlFromFile)
 			/* @var $Set2Process Set */
 			$Set2Process = $SetInDb ? $SetInDb : new Set();
 			$Set2Process->setModel($Model2Process);
-			$Set2Process->setName((string)$Set->attributes()->name);
-			$Set2Process->setPrefix('set_');
-			$Set2Process->setContainsWhat(SET_CONTENT_IMAGE | SET_CONTENT_VIDEO);
-
+			
+			if($Set2Process->getModel()->getFirstName() == 'VIP')
+			{
+				$Set2Process->setPrefix('SP_');
+				
+				$Set2Process->setName(
+					sprintf('%1$s%2$s',
+						preg_replace('/^SP /i', '', (string)$Set->attributes()->extended_name),
+						(string)$Set->attributes()->name
+					)
+				);
+				$Set2Process->setContainsWhat(SET_CONTENT_IMAGE | SET_CONTENT_VIDEO);
+			}
+			else if($Set2Process->getModel()->getFirstName() == 'Interviews')
+			{
+				$Set2Process->setPrefix('Int_');
+				
+				$Set2Process->setName(
+					sprintf('%1$s%2$s',
+						(string)$Set->attributes()->extended_name,
+						(string)$Set->attributes()->name
+					)
+				);
+				$Set2Process->setContainsWhat(SET_CONTENT_VIDEO);
+			}
+			else if($Set2Process->getModel()->getFirstName() == 'Promotions')
+			{
+				$Set2Process->setPrefix('Promotion');
+				$Set2Process->setName((string)$Set->attributes()->name);
+				$Set2Process->setContainsWhat(SET_CONTENT_VIDEO);
+			}
+			
+			else
+			{
+				$Set2Process->setPrefix('set_');
+				$Set2Process->setName((string)$Set->attributes()->name);
+				$Set2Process->setContainsWhat(SET_CONTENT_IMAGE | SET_CONTENT_VIDEO);
+			}
+			
 			$datePic = strtotime((string)$Set->attributes()->date_pic);
 			if($datePic !== false) { $Set2Process->setDatePic($datePic); }
 			else { $Set2Process->setDatePic(-1); }
@@ -56,6 +91,7 @@ if($XmlFromFile)
 			$dateVid = strtotime((string)$Set->attributes()->date_vid);
 			if($dateVid !== false) { $Set2Process->setDateVid($dateVid); }
 			else { $Set2Process->setDateVid(-1); }
+			
 
 			if($Set2Process->getID())
 			{
@@ -68,5 +104,7 @@ if($XmlFromFile)
 		}
 	}
 }
+
+HTMLstuff::RefererRedirect();
 
 ?>
