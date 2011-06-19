@@ -1,5 +1,5 @@
 #summary Screenshots
-#labels Phase-Support,Phase-Design
+#labels Phase-Support,Phase-Design,Featured
 
 = Screenshots =
 
