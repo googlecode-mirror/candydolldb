@@ -39,9 +39,9 @@
 
 <xs:complexType name="SetType">
 	<xs:attribute name="name" type="DigitName" use="required" />
-	<xs:attribute name="date_pic" type="EmptyDate" use="optional"/>
-	<xs:attribute name="date_vid" type="EmptyDate" use="optional"/>
-	<xs:attribute name="extended_name" type="Name" use="optional"/>					
+	<xs:attribute name="date_pic" type="EmptyDate" use="optional" default=""/>
+	<xs:attribute name="date_vid" type="EmptyDate" use="optional" default=""/>
+	<xs:attribute name="extended_name" type="EmptyName" use="optional" default=""/>					
 </xs:complexType>
 
 <xs:complexType name="SetsType">
@@ -62,8 +62,8 @@
 	</xs:sequence>
 
 	<xs:attribute name="firstname" type="Name" use="required"/>
-	<xs:attribute name="lastname" type="EmptyName" use="required"/>
-	<xs:attribute name="birthdate" type="EmptyDate" use="optional"/>	
+	<xs:attribute name="lastname" type="EmptyName" use="optional" default=""/>
+	<xs:attribute name="birthdate" type="EmptyDate" use="optional" default=""/>	
 </xs:complexType>
 
 <xs:complexType name="ModelsType">
