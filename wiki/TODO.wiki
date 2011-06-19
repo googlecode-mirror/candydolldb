@@ -19,4 +19,6 @@
 
   * More complete list of the models's lastnames and birthdates<br>(currently 46/82 have a known birthdate and 32/82 a known lastname)
 
+  * More complete list of the set-releasedates<br>(currently 589/916 have a known releasedate for pictures or video)
+
   * Automatic import of updates<br>(for example a scheduled wget-request of the updatepage, then parsing the response)
