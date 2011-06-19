@@ -108,7 +108,7 @@ echo HTMLstuff::Button(sprintf('set_view.php?model_id=%1$d', $ModelID), 'New set
 
 echo HTMLstuff::Button(sprintf('import_image.php?model_id=%1$d', $ModelID), 'Import all images');
 
-echo HTMLstuff::Button(sprintf('import_video.php?model_id=%1$d', $ModelID), 'Import videos');
+echo HTMLstuff::Button(sprintf('import_video.php?model_id=%1$d', $ModelID), 'Import all videos');
 
 echo HTMLstuff::Button('index.php');
 

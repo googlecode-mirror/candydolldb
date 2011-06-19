@@ -45,10 +45,14 @@ if($SetID){
 	$Models = array($Set->getModel());
 }
 
+
 /* @var $Model Model */
 for($i = 0; $i < count($Models); $i++)
 {
 	$Model = $Models[$i];
+	
+	/*if(in_array($Model->getFirstName(), array('Interviews', 'Promotions', 'VIP')))
+	{ continue; }*/
 	
 	$VideoFolder = sprintf('%1$s/%2$s',
 		CANDYVIDEOPATH,
@@ -57,6 +61,7 @@ for($i = 0; $i < count($Models); $i++)
 	
 	if(!file_exists($VideoFolder)) { continue; }
 	
+
 	/* @var $FileInfo SplFileInfo */
 	foreach(new DirectoryIterator($VideoFolder) as $FileInfo)
 	{
@@ -66,13 +71,7 @@ for($i = 0; $i < count($Models); $i++)
 			$setnamematch = preg_match('/(\d\d)'.VIDEO_EXTENSION.'$/i', $name, $matches);
 			$setname = $matches && $matches > 0 ? $matches[1] : null;
 			
-			if($SetID && $Set)
-			{
-				if($Set->getName() != $setname)
-				{ continue; }
-			}
-
-			if($setname)
+			if($Set->getName() == $setname)
 			{
 				$Set = Set::FilterSets($Sets, $Model->getID());
 				$Set = Set::FilterSets($Set, null, null, $setname);
@@ -80,20 +79,22 @@ for($i = 0; $i < count($Models); $i++)
 				if($Set)
 				{ $Set = $Set[0]; }
 				else
-				{
-					$Set = new Set(null, $setname);
-					$Set->setModel($Model);
-					$Set->setContainsWhat(SET_CONTENT_IMAGE | SET_CONTENT_VIDEO);
-					
-					if(strlen($setname) == 2)
-					{ $Set->setPrefix('set_'); }
-
-					Set::InsertSet($Set, $CurrentUser);
-					$setid = $db->GetLatestID();
-					if(	$setid) { $Set->setID($setid); }
-				}
+				{ continue; }
 			}
-						
+			else if($FileInfo->getBasename(VIDEO_EXTENSION) == ($Set->getPrefix() . $Set->getName()))
+			{
+				$Set = Set::FilterSets($Sets, $Model->getID());
+				$Set = Set::FilterSets($Set, null, null, substr($FileInfo->getBasename(VIDEO_EXTENSION), 3));
+
+				if($Set)
+				{ $Set = $Set[0]; }
+				else
+				{ continue; }
+			}
+			else
+			{ continue; }
+
+			
 			/* @var $VideoInDB Video */
 			$VideosInDB = Video::FilterVideos($Videos, $ModelID, $Set->getID());
 		
