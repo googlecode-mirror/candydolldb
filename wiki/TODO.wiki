@@ -9,6 +9,8 @@
 
 == Could Use ==
 
+  * More secure accountmanagement<br>(currently using 1 round of SHA1-hashing with 40 characters salting)
+
   * 'remember-me' option when logging in<br>(currently not implemented because of the use of SESSION[])
 
   * More robust filename-handling<br>(no hardcoded prefixes during import)
