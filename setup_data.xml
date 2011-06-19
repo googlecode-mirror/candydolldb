@@ -1188,6 +1188,7 @@
 	
 	<Model firstname="VIP">
 		<Sets>
+			<Set extended_name="SP 4Dress" name="01" date_pic="" date_vid="" />
 			<Set extended_name="SP Alice" name="01" date_pic="2008-02-01" date_vid="2008-02-01" />
 			<Set extended_name="SP Alice" name="02" date_pic="" date_vid="2008-03-14" />
 			<Set extended_name="SP AliceO" name="02" date_pic="2008-03-14" date_vid="" />
@@ -1203,6 +1204,7 @@
 			<Set extended_name="SP MoonS" name="03" date_pic="" date_vid="2008-12-19" />
 			<Set extended_name="SP Sailor" name="01" date_pic="2008-03-07" date_vid="2008-03-07" />
 			<Set extended_name="SP Sailor" name="02" date_pic="2008-12-19" date_vid="" />
+			<Set extended_name="SP Twister" name="01" date_pic="" date_vid="" />
 		</Sets>
 	</Model>
 	
