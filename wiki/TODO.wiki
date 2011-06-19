@@ -13,7 +13,7 @@
 
   * 'remember-me' option when logging in<br>(currently not implemented because of the use of SESSION[])
 
-  * More robust filename-handling<br>(no hardcoded prefixes during import)
+  * More flexible and robust filename-handling<br>(no hardcoded prefixes during import)
 
 == Would Be Nice ==
 
