@@ -51,9 +51,6 @@ for($i = 0; $i < count($Models); $i++)
 {
 	$Model = $Models[$i];
 	
-	/*if(in_array($Model->getFirstName(), array('Interviews', 'Promotions', 'VIP')))
-	{ continue; }*/
-	
 	$VideoFolder = sprintf('%1$s/%2$s',
 		CANDYVIDEOPATH,
 		$Model->GetFullName()
@@ -61,7 +58,7 @@ for($i = 0; $i < count($Models); $i++)
 	
 	if(!file_exists($VideoFolder)) { continue; }
 	
-
+	
 	/* @var $FileInfo SplFileInfo */
 	foreach(new DirectoryIterator($VideoFolder) as $FileInfo)
 	{
@@ -69,29 +66,20 @@ for($i = 0; $i < count($Models); $i++)
 		{
 			$name = $FileInfo->getFilename();
 			$setnamematch = preg_match('/(\d\d)'.VIDEO_EXTENSION.'$/i', $name, $matches);
-			$setname = $matches && $matches > 0 ? $matches[1] : null;
+			$setname = $matches && $matches > 1 ? $matches[1] : null;
 			
-			if($Set->getName() == $setname)
-			{
-				$Set = Set::FilterSets($Sets, $Model->getID());
-				$Set = Set::FilterSets($Set, null, null, $setname);
-				
-				if($Set)
-				{ $Set = $Set[0]; }
-				else
-				{ continue; }
-			}
-			else if($FileInfo->getBasename(VIDEO_EXTENSION) == ($Set->getPrefix() . $Set->getName()))
-			{
-				$Set = Set::FilterSets($Sets, $Model->getID());
-				$Set = Set::FilterSets($Set, null, null, substr($FileInfo->getBasename(VIDEO_EXTENSION), 3));
-
-				if($Set)
-				{ $Set = $Set[0]; }
-				else
-				{ continue; }
-			}
+			$Set = Set::FilterSets($Sets, $Model->getID());
+			$SetFiltered = Set::FilterSets($Set, null, null, substr($FileInfo->getBasename(VIDEO_EXTENSION), 3)); 
+			
+			if(!$SetFiltered)
+			{ $SetFiltered = Set::FilterSets($Set, null, null, $setname); }
+			
+			if($SetFiltered)
+			{ $Set = $SetFiltered[0]; }
 			else
+			{ continue; }
+			
+			if(strlen($Set->getName()) == 2 && $Set->getName() != $setname)
 			{ continue; }
 
 			
