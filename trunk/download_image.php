@@ -38,7 +38,10 @@ if($ModelID)
 		if($RandomPic)
 		{
 			Image::OutputImage(
-				$Model->GetFileFromDisk($PortraitOnly, $LandscapeOnly)
+				$Model->GetFileFromDisk($PortraitOnly, $LandscapeOnly),
+				800,
+				600,
+				false
 			);
 		}
 		
@@ -79,6 +82,10 @@ else if($VideoID)
 		if(file_exists($filename))
 		{
 			Image::OutputImage($filename, 800, 600);
+		}
+		else
+		{
+			Image::OutputImage();
 		}
 	}
 	else

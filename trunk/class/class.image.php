@@ -303,7 +303,7 @@ class Image
 	 * @param int $width
 	 * @param int $height
 	 */
-	public static function OutputImage($filename = 'images/missing.jpg', $width = 800, $height = 600)
+	public static function OutputImage($filename = 'images/missing.jpg', $width = 800, $height = 600, $cachable = true)
 	{
 		$filename = $filename ? $filename : 'images/missing.jpg';
 	
@@ -321,12 +321,26 @@ class Image
 		
 		imagecopyresampled($DestinationImage, $SourceImage, 0, 0, 0, 0, $NewWidth, $NewHeight, $info[0], $info[1]);
 		
-		imagedestroy($SourceImage);		
+		imagedestroy($SourceImage);
+		
+		if($cachable)
+		{
+			header("Cache-Control: public");
+			header("Expires: Tue, 19 Jan 2038 03:14:07 GMT");
+		}
+		else
+		{
+			header("Cache-Control: no-cache, must-revalidate");
+			header("Expires: Thu, 15 Sep 1983 08:43:00 GMT");
+		}
+		
 		header('Content-Type: image/jpeg');
+		
 		@ob_clean();
 		flush();
 		imagejpeg($DestinationImage, null);
 		imagedestroy($DestinationImage);
+		
 		exit;
 	}
 }
