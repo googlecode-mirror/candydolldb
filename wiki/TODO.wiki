@@ -1,0 +1,17 @@
+#summary Possible roadmap for further development.
+
+= Roadmap =
+
+== Must Have ==
+
+  * More feedback :-)
+
+== Could Use ==
+
+  * 'remember-me' option when logging in<br>(currently not implemented because of the use of SESSION[])
+
+  * More robust filename-handling<br>(no hardcoded prefixes during import)
+
+== Would Be Nice ==
+
+  * Automatic import of updates<br>(for example a scheduled wget-request of the updatepage, then parsing the response)
