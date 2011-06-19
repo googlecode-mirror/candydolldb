@@ -69,10 +69,10 @@ if($Models)
         	"<td>%4\$s</td>".
         	"<td class=\"Center\">%7\$s</td>".
 			"<td%9\$s>%8\$s</td>".
-			"<td class=\"Center\"><a href=\"import_image.php?model_id=%1\$d\"><img src=\"images/button_upload.png\" width=\"16\" height=\"16\" alt=\"Import model's sets and images\" title=\"Import model's sets and images\" /></a></td>".
-			"<td class=\"Center\"><a href=\"import_video.php?model_id=%1\$d\"><img src=\"images/button_upload.png\" width=\"16\" height=\"16\" alt=\"Import model's sets and videos\" title=\"Import model's sets and videos\" /></a></td>".
+			"<td class=\"Center\"><a href=\"import_image.php?model_id=%1\$d\"><img src=\"images/button_upload.png\" width=\"16\" height=\"16\" alt=\"Import model's images\" title=\"Import model's images\" /></a></td>".
+			"<td class=\"Center\"><a href=\"import_video.php?model_id=%1\$d\"><img src=\"images/button_upload.png\" width=\"16\" height=\"16\" alt=\"Import model's videos\" title=\"Import model's videos\" /></a></td>".
 			"<td class=\"Center\"><a href=\"download_zip.php?model_id=%1\$d\"><img src=\"images/button_download.png\" width=\"16\" height=\"16\" alt=\"Download model's images\" title=\"Download model's images\" /></a></td>".
-			"<td class=\"Center\"><a href=\"download_image.php?model_id=%1\$d&amp;random_pic=true\" rel=\"lightbox-gal\" title=\"%6\$s\"><img src=\"images/button_view.png\" width=\"16\" height=\"16\" alt=\"%6\$s\" /></a></td>".
+			"<td class=\"Center\"><a href=\"download_image.php?model_id=%1\$d&amp;random_pic=true\" rel=\"lightbox-gal\" title=\"Random image of %6\$s\"><img src=\"images/button_view.png\" width=\"16\" height=\"16\" alt=\"Random image of %6\$s\" /></a></td>".
 			"<td class=\"Center\"><a href=\"download_image.php?model_id=%1\$d\" rel=\"lightbox-index\" title=\"Index of %6\$s\"><img src=\"images/button_view.png\" width=\"16\" height=\"16\" alt=\"Index of %6\$s\" /></a></td>".
 			"<td class=\"Center\"><a href=\"model_view.php?model_id=%1\$d&amp;cmd=%12\$s\" title=\"Delete model\"><img src=\"images/button_delete.png\" width=\"16\" height=\"16\" alt=\"Delete\" /></a></td>".
         "</tr>",

@@ -41,6 +41,7 @@ if($Videos)
 	    	"<td class=\"Center\">%6\$s</td>".
         	"<td>%7\$s</td>".
 			"<td>%8\$s</td>".
+			"<td class=\"Center\"><a href=\"download_vid.php?video_id=%1\$d\"><img src=\"images/button_download.png\" width=\"16\" height=\"16\" alt=\"Download video\" title=\"Download video\" /></a></td>".
 			"<td class=\"Center\"><a href=\"download_image.php?video_id=%1\$d\" rel=\"lightbox-thumb\" title=\"Thumbnails of %4\$s\"><img src=\"images/button_view.png\" width=\"16\" height=\"16\" alt=\"Thumbnails of %4\$s\" /></a></td>".
 			"<td class=\"Center\"><a href=\"video_view.php?model_id=%3\$d&amp;set_id=%2\$d&amp;video_id=%1\$d&amp;cmd=%9\$s\" title=\"Delete video\"><img src=\"images/button_delete.png\" width=\"16\" height=\"16\" alt=\"Delete\" /></a></td>".
         "</tr>",
@@ -92,15 +93,16 @@ echo HTMLstuff::HtmlHeader(sprintf('%1$s - Set %2$s - Videos', $Model->GetShortN
 			<th style="width: 140px;">Date</th>
 			<th style="width: 22px;">&nbsp;</th>
 			<th style="width: 22px;">&nbsp;</th>
+			<th style="width: 22px;">&nbsp;</th>
 		</tr>
 	</thead>
 	<tfoot>
 		<tr>
-			<th colspan="7">Total Video count: <?php printf('%1$d', $VideoCount); ?></th>
+			<th colspan="8">Total Video count: <?php printf('%1$d', $VideoCount); ?></th>
 		</tr>
 	</tfoot>
 	<tbody>
-	<?php echo $VideoRows ? $VideoRows : '<tr class="Row1"><td colspan="7">&nbsp;</td></tr>'; ?>
+	<?php echo $VideoRows ? $VideoRows : '<tr class="Row1"><td colspan="8">&nbsp;</td></tr>'; ?>
 	</tbody>
 </table>
 
