@@ -1186,10 +1186,12 @@
 		</Sets>
 	</Model>
 	
-	<Model firstname="VIP" lastname="">
+	<Model firstname="VIP">
 		<Sets>
 			<Set extended_name="SP Alice" name="01" date_pic="2008-02-01" date_vid="2008-02-01" />
-			<Set extended_name="SP Alice" name="02" date_pic="2008-03-14" date_vid="2008-03-14" />
+			<Set extended_name="SP Alice" name="02" date_pic="" date_vid="2008-03-14" />
+			<Set extended_name="SP AliceO" name="02" date_pic="2008-03-14" date_vid="" />
+			<Set extended_name="SP AliceV" name="02" date_pic="2008-03-14" date_vid="" />
 			<Set extended_name="SP Ballet" name="01" date_pic="2008-04-25" date_vid="2008-04-25" />
 			<Set extended_name="SP Bloomers" name="01" date_pic="2008-02-15" date_vid="2008-02-15" />
 			<Set extended_name="SP Catsute" name="01" date_pic="2008-02-22" date_vid="2008-02-22" />
@@ -1197,14 +1199,14 @@
 			<Set extended_name="SP Lolita" name="01" date_pic="2008-12-19" date_vid="" />
 			<Set extended_name="SP Moon" name="01" date_pic="2008-05-02" date_vid="2008-05-02" />
 			<Set extended_name="SP Moon" name="02" date_pic="2008-05-09" date_vid="2008-05-09" />
-			<Set extended_name="SP Moon (Y)" name="03" date_pic="" date_vid="2008-12-19" />
-			<Set extended_name="SP Moon (S)" name="03" date_pic="" date_vid="2008-12-19" />
+			<Set extended_name="SP MoonY" name="03" date_pic="" date_vid="2008-12-19" />
+			<Set extended_name="SP MoonS" name="03" date_pic="" date_vid="2008-12-19" />
 			<Set extended_name="SP Sailor" name="01" date_pic="2008-03-07" date_vid="2008-03-07" />
 			<Set extended_name="SP Sailor" name="02" date_pic="2008-12-19" date_vid="" />
 		</Sets>
 	</Model>
 	
-	<Model firstname="Promotions" lastname="">
+	<Model firstname="Promotions">
 		<Sets>
 			<Set name="01" />
 			<Set name="02" />
@@ -1237,7 +1239,7 @@
 		</Sets>
 	</Model>
 
-	<Model firstname="Interviews" lastname="">
+	<Model firstname="Interviews">
 		<Sets>
 			<Set extended_name="AlinaG" name="01" date_vid="2008-04-18" />
 			<Set extended_name="AnnaT" name="01" date_vid="2008-04-25" />
