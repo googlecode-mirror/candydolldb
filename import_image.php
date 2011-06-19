@@ -66,7 +66,7 @@ for($i = 0; $i < count($Models); $i++)
 			$ImageSetFolder = $folder->getRealPath();
 			
 			$name = $folder->getFilename();
-			$setnamematch = preg_match('/([^_]*\d\d[a-z]?)$/i', $name, $matches);
+			$setnamematch = preg_match('/([^_]*\d\d)$/i', $name, $matches);
 			$setname = $matches && $matches > 0 ? $matches[1] : null;
 			
 			if($SetID && $Set)
@@ -83,20 +83,7 @@ for($i = 0; $i < count($Models); $i++)
 				if($Set)
 				{ $Set = $Set[0]; }
 				else
-				{
-					$Set = new Set(null, $setname);
-					$Set->setModel($Model);
-					$Set->setContainsWhat(SET_CONTENT_IMAGE | SET_CONTENT_VIDEO);
-					
-					if(strlen($setname) == 2)
-					{ $Set->setPrefix('set_'); }
-					else
-					{ $Set->setPrefix('SP_'); }
-
-					Set::InsertSet($Set, $CurrentUser);
-					$setid = $db->GetLatestID();
-					if(	$setid) { $Set->setID($setid); }
-				}
+				{ continue; }
 			}
 						
 			/* @var $FileInfo SplFileInfo */

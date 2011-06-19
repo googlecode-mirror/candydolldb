@@ -60,7 +60,7 @@ if($XmlFromFile)
 			}
 			else if($Set2Process->getModel()->getFirstName() == 'Interviews')
 			{
-				$Set2Process->setPrefix('Int_');
+				$Set2Process->setPrefix('In_');
 				
 				$Set2Process->setName(
 					sprintf('%1$s%2$s',
