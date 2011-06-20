@@ -2,9 +2,13 @@
 
 == Setup ==
 
-To setup the application, first check if the configuration-file (`config.php`) already exists. If it does, remove it. All subsequent page-requests will be redirected to `setup.php`.
+To setup the application, first check if the configuration-file (`config.php`) already exists. If it does, remove it.<br>All subsequent page-requests will be redirected to `setup.php`.
 
-Enter all the required data, e.g. datbase connection data, user account data, SMTP connection data. If all goes well, you should be prompted to log in.
+Enter all the required data, e.g. datbase connection data, user account data, SMTP connection data.<br>If all goes well, you should then be prompted to log in.
+
+Meanwhile, the file `config.php` has been written to your installation directory.<br>It contains all the settings you provided, and a few more.
+
+Among those are the e-mailtemplate to use when a user forgot her/his password and the user-id of the first user to be setup; this will be used for commandline-authentication (see section [WikiSyntax#Batch-imports Batch-imports]).
 
 == Batch-imports ==
 
