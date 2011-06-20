@@ -11,7 +11,7 @@ To setup the application, proceed as follows:
 
 Meanwhile, the file `config.php` has been written to your installation directory.<br>It contains all the settings you provided, and a few more.
 
-Among those are the e-mailtemplate to use when a user forgot her/his password and the user-id of the first user to be setup; this will be used for commandline-authentication (see section [WikiSyntax#Batch-imports Batch-imports]).
+Among those are the e-mailtemplate to use when a user forgot her/his password and the user-id of the first user to be setup; this will be used for commandline-authentication (see section [#Batch-imports Batch-imports]).
 
 Once you are logged in, you can start importing models and sets:
 
@@ -19,7 +19,7 @@ Once you are logged in, you can start importing models and sets:
   # Click the 'Process XML-data' button on the main page (`index.php`).<br>This can take a while.
   # Now you can import images and videos into their corresponding sets.<br>You can either
     * do it manually (great fun, if you've got some time to kill), or
-    * do it automatically (see section [WikiSyntax#Batch-imports Batch-imports]).
+    * do it automatically (see section [#Batch-imports Batch-imports]).
 
 == Batch-imports ==
 
