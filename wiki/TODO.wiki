@@ -5,7 +5,13 @@
 
 == Must Have ==
 
-  * More feedback :-)
+  * Lots of feedback :-)
+
+  * A downloadable public release. To do that we need:
+    * a comprehensible README
+    * ...
+    * ...
+    * ...
 
 == Could Use ==
 
