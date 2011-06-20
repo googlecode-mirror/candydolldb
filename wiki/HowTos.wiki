@@ -1,3 +1,6 @@
+#summary Guides for using the application.
+#labels Phase-Support,Featured
+
 = !HowTo's =
 
 == Setup ==
