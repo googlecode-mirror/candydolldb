@@ -2,19 +2,30 @@
 
 == Setup ==
 
-To setup the application, first check if the configuration-file (`config.php`) already exists. If it does, remove it.<br>All subsequent page-requests will be redirected to `setup.php`.
+To setup the application, proceed as follows:
 
-Enter all the required data, e.g. datbase connection data, user account data, SMTP connection data.<br>If all goes well, you should then be prompted to log in.
+  # Download a public release of CandyDollDB, or check out a the most current release in SubVersion.
+  # Place the application in a directory accessable through a webserver (e.g. `/var/www/cdtvdb/`).
+  # Check if the configuration-file (`config.php`) already exists. If it does, remove it.<br>All subsequent page-requests will be redirected to `setup.php`.
+  # Enter all the required data, e.g. datbase connection data, user account data, SMTP connection data.<br>If all goes well, you should then be prompted to log in.
 
 Meanwhile, the file `config.php` has been written to your installation directory.<br>It contains all the settings you provided, and a few more.
 
 Among those are the e-mailtemplate to use when a user forgot her/his password and the user-id of the first user to be setup; this will be used for commandline-authentication (see section [WikiSyntax#Batch-imports Batch-imports]).
 
+Once you are logged in, you can start importing models and sets:
+
+  # Make sure you use the most up-to-date XML-file with all model- and setdata.<br>The XML-file can be downloaded from the Downloads-page.
+  # Click the 'Process XML-data' button on the main page (`index.php`).<br>This can take a while.
+  # Now you can import images and videos into their corresponding sets.<br>You can either
+    * do it manually (great fun, if you've got some time to kill), or
+    * do it automatically (see section [WikiSyntax#Batch-imports Batch-imports]).
+
 == Batch-imports ==
 
-Because of the long duration of an all-sets-all-models-import, it is best to do this on the commandline of your server. In the next examples, the application is located in /var/www/cdtvdb/ on a GNU/Linux system with PHP5.
+Because of the long duration of an all-images-all-videos-import, it is best to do this on the commandline of your server. There, no HTTP-time-out exists. In the next examples, the application is located in /var/www/cdtvdb/ on a GNU/Linux system with PHP5.
 
-Open a shell and enter the following command to import all images:
+Open a terminal and enter the following command to import all images:
 
 {{{
 $ php5 -f /var/www/cdtvdb/import_image.php
