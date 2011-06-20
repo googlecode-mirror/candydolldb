@@ -1,0 +1,23 @@
+= !HowTo's =
+
+== Setup ==
+
+To setup the application, first check if the configuration-file (`config.php`) already exists. If it does, remove it. All subsequent page-requests will be redirected to `setup.php`.
+
+Enter all the required data, e.g. datbase connection data, user account data, SMTP connection data. If all goes well, you should be prompted to log in.
+
+== Batch-imports ==
+
+Because of the long duration of an all-sets-all-models-import, it is best to do this on the commandline of your server. In the next examples, the application is located in /var/www/cdtvdb/ on a GNU/Linux system with PHP5.
+
+Open a shell and enter the following command to import all images:
+
+{{{
+$ php5 -f /var/www/cdtvdb/import_image.php
+}}}
+
+For importing videos, use the following:
+
+{{{
+$ php5 -f /var/www/cdtvdb/import_video.php
+}}}
