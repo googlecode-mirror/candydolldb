@@ -18,7 +18,7 @@ Among those are the e-mailtemplate to use when a user forgot her/his password an
 
 Once you are logged in, you can start importing models and sets:
 
-  # Make sure you use the most up-to-date XML-file with all model- and setdata.<br>The XML-file can be downloaded from the Downloads-page.
+  # Make sure you use the most up-to-date XML-file with all model- and setdata.<br>The XML-file can be downloaded from the [http://code.google.com/p/candydolldb/downloads/list Downloads]-page.
   # Click the 'Process XML-data' button on the main page (`index.php`).<br>This can take a while.
   # Now you can import images and videos into their corresponding sets.<br>You can either
     * do it manually (great fun, if you've got some time to kill), or
