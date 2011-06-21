@@ -9,13 +9,13 @@
 
   * A downloadable public release. To do that we need:
     * a comprehensible README
-    * ...
+    * a clue about what format(s) to use (zip, tar.gz, 7z)
     * ...
     * ...
 
 == Could Use ==
 
-  * Users on non-Linux platforms, for inter-platsform testing of filehandling.
+  * Users on non-Linux platforms, for inter-platform testing of filehandling, imports and downloads.
 
   * More secure accountmanagement<br>(currently using 1 round of SHA1-hashing with 40 characters salting)
 
