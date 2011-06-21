@@ -1,7 +1,7 @@
-#summary Possible roadmap for further development.
+#summary Roadmap for further development.
 #labels Featured
 
-= Roadmap =
+= TODO =
 
 == Must Have ==
 
