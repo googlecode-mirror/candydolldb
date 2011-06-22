@@ -155,7 +155,13 @@ class Utils
 	 */
 	public static function HashString($PlainTextString, $Salt)
 	{
-		return sha1($PlainTextString.$Salt);
+		$OutHash = $PlainTextString;
+		for ($i = 0; $i < 20000; $i++)
+		{
+			if($i % 2 == 0) { $OutHash = hash('sha512', $OutHash.$Salt, false); }
+			else {            $OutHash = hash('sha512', $Salt.$OutHash, false); }
+		}
+		return $OutHash;
 	}
 }
 
