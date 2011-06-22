@@ -17,7 +17,7 @@ class HTMLstuff
 		<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\" />
 		<meta name=\"language\" content=\"en-US\" />
 		
-		<link rel=\"stylesheet\" type=\"text/css\" href=\"style.css\" title=\"Candy Doll DB\" />
+		<link rel=\"stylesheet\" type=\"text/css\" href=\"style.css\" title=\"CandyDoll DB\" />
 		<link rel=\"shortcut icon\" href=\"favicon.ico\" />
 		<link rel=\"icon\" href=\"favicon.ico\" />
 		
@@ -31,7 +31,7 @@ class HTMLstuff
 		<div id=\"Container\">
 		<div id=\"Header\"%3\$s>
 
-		<h1>Candy Doll DB%1\$s</h1>
+		<h1>CandyDoll DB%1\$s</h1>
 		<p>by <a href=\"http://www.fwiep.nl/\" rel=\"external\" title=\"FWieP\">FWieP</a></p>
 		%4\$s
 		<div class=\"AbsolutePoint\">

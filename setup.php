@@ -176,8 +176,8 @@ DROP TABLE IF EXISTS `User`;
 CREATE TABLE IF NOT EXISTS `User` (
   `user_id` bigint(20) NOT NULL AUTO_INCREMENT,
   `user_username` varchar(50) NOT NULL,
-  `user_password` varchar(40) NOT NULL,
-  `user_salt` varchar(40) NOT NULL,
+  `user_password` varchar(128) NOT NULL,
+  `user_salt` varchar(20) NOT NULL,
   `user_firstname` varchar(50) NOT NULL,
   `user_insertion` varchar(20) DEFAULT NULL,
   `user_lastname` varchar(100) NOT NULL,
@@ -446,7 +446,7 @@ if(array_key_exists('hidAction', $_POST) && isset($_POST['hidAction']) && $_POST
 		{
 			if(ExecuteQueries($CreateDBSQL) !== false)
 			{
-				$UserSalt = Utils::GenerateGarbage(40);
+				$UserSalt = Utils::GenerateGarbage(20);
 				
 				@mysql_select_db('cdtvdb');
 				if(@mysql_query(sprintf(
@@ -533,7 +533,7 @@ else
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /> 
 <meta name="language" content="en-US" /> 
 
-<link rel="stylesheet" type="text/css" href="style.css" title="Candy Doll DB" /> 
+<link rel="stylesheet" type="text/css" href="style.css" title="CandyDoll DB" /> 
 <link rel="shortcut icon" href="favicon.ico" /> 
 <link rel="icon" href="favicon.ico" /> 
 		
@@ -547,7 +547,7 @@ else
 <div id="Container"> 
 <div id="Header"> 
  
-<h1>Candy Doll DB :: Setup</h1> 
+<h1>CandyDoll DB :: Setup</h1> 
 <p>by <a href="http://www.fwiep.nl/" rel="external" title="FWieP">FWieP</a></p> 
 	
 </div> 
@@ -557,7 +557,7 @@ else
 <form action="<?php echo $_SERVER['REQUEST_URI'];?>" method="post"> 
 <fieldset>
  
-<legend>Set up your CandyDoll-DB:</legend> 
+<legend>Set up your CandyDoll DB:</legend> 
 <input type="hidden" id="hidAction" name="hidAction" value="SetupCDDB" />
 
 <h2>Database</h2>

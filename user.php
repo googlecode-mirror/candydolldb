@@ -70,5 +70,6 @@ echo HTMLstuff::HtmlHeader('Users', $CurrentUser);
 
 <?php
 echo HTMLstuff::Button(sprintf('user_view.php'), 'New user');
+echo HTMLstuff::Button();
 echo HTMLstuff::HtmlFooter();
 ?>
