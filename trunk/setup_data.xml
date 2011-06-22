@@ -28,7 +28,7 @@
 			<Set name="17" date_pic="" date_vid="2011-05-20" /> 
 		</Sets> 
 	</Model> 
-	<Model firstname="Alina" lastname="Gladiy" birthdate=""> 
+	<Model firstname="Alina" lastname="Gladiy" birthdate="1996-10-07"> 
 		<Sets> 
 			<Set name="01" date_pic="2008-01-25" date_vid="2008-01-25" /> 
 			<Set name="02" date_pic="2008-02-01" date_vid="2008-02-01" /> 
@@ -140,7 +140,7 @@
 			<Set name="19" date_pic="" date_vid="2011-06-03" /> 
 		</Sets> 
 	</Model> 
-	<Model firstname="Anna" lastname="Thebryk" birthdate=""> 
+	<Model firstname="Anna" lastname="Thebryk" birthdate="1995-09-11"> 
 		<Sets> 
 			<Set name="01" date_pic="2008-01-25" date_vid="2008-01-25" /> 
 			<Set name="02" date_pic="2008-03-07" date_vid="2008-03-07" /> 
@@ -338,7 +338,7 @@
 			<Set name="14" date_pic="" date_vid="" /> 
 		</Sets> 
 	</Model> 
-	<Model firstname="Iryna" lastname="Mihalina" birthdate=""> 
+	<Model firstname="Iryna" lastname="Mihalina" birthdate="1997-02-03"> 
 		<Sets> 
 			<Set name="01" date_pic="2008-01-25" date_vid="2008-01-25" /> 
 			<Set name="02" date_pic="2008-05-16" date_vid="2008-05-16" /> 
@@ -1238,6 +1238,7 @@
 			<Set name="26" />
 			<Set name="27" />
 			<Set name="28" />
+			<Set name="29" />
 		</Sets>
 	</Model>
 
