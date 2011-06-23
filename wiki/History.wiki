@@ -1,1 +1,11 @@
-#summary How CandyDollDB came to be.
+#summary How this application came to be.
+
+= History =
+
+Once upon a time, there was a programmer. He regularly thought up projects in PHP and MySQL which would force him to familiarize himself with all the ins and outs he thought existed. Boy, was he in for a surprise... At work, he programmed in C# (.NET framework), strictly [http://en.wikipedia.org/wiki/Object-oriented_programming Object Oriented] - could this be done in PHP, also?
+
+After about two weeks of thinking it over, he needed a subject on which to base his new project. After searching the internet for an existing application, and finding none, he decided [http://code.google.com/p/candydolldb/ CandyDollDB] had to be built. The goal to achieve would be to comfortably manage a vast collection of images and videos through a web-interface.
+
+Of course, collecting the actual content is as much fun as programming the interface: Browsing usenet, forums end the official [http://www.candydoll.tv/ CandyDoll]-site for that latest (or lost) bit of info about models, sets, collections and more...
+
+Then finally, one sunny sunday morning, the programmer thought of Google Code, and decided he would start a project for his application. This taught him a great deal aout making your work interesting to the public,
