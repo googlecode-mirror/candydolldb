@@ -2,7 +2,7 @@
 
 = History =
 
-Once upon a time, there was a programmer. He regularly thought up projects in PHP and MySQL which would force him to familiarize himself with all the ins and outs he thought existed. Boy, was he in for a surprise... At work, he programmed in C# (.NET framework), strictly [http://en.wikipedia.org/wiki/Object-oriented_programming Object Oriented] - could this be done in PHP, also?
+Once upon a time, there was a programmer. He regularly thought up projects in PHP and MySQL which would force him to familiarize himself with all the ins and outs he thought existed. Boy, was he in for a surprise... At work, he programmed in C# (.NET framework), strictly [http://en.wikipedia.org/wiki/Object-oriented_programming Object Oriented] - could this be done in PHP, too?
 
 After about two weeks of thinking it over, he needed a subject on which to base his new project. After searching the internet for an existing application, and finding none, he decided [http://code.google.com/p/candydolldb/ CandyDollDB] had to be built. The preset goal would be to comfortably manage that vast collection of CandyDoll images and videos through a web-interface.
 
