@@ -13,7 +13,8 @@ Then finally, one sunny sunday morning, the programmer thought of Google Code. H
 I hope, the answer to that last question is YES. The fact that you are reading this page right now is proof of just that. :-)
 
 Please enjoy CandyDollDB and your CandyDoll-collection, see you soon.
-
-
-FWieP
-main developer CandyDollDB
+<br>
+<br>
+<br>
+_*FWieP*_
+<br>_main developer CandyDollDB_
