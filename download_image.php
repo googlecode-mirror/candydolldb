@@ -5,6 +5,7 @@ $CurrentUser = Authentication::Authenticate();
 
 $ImageID = null;
 $VideoID = null;
+$SetID = null;
 $ModelID = null;
 $RandomPic = false;
 
@@ -14,6 +15,9 @@ if(array_key_exists('image_id', $_GET) && isset($_GET['image_id']) && is_numeric
 
 if(array_key_exists('video_id', $_GET) && isset($_GET['video_id']) && is_numeric($_GET['video_id']))
 { $VideoID = (int)$_GET['video_id']; }
+
+if(array_key_exists('set_id', $_GET) && isset($_GET['set_id']) && is_numeric($_GET['set_id']))
+{ $SetID = (int)$_GET['set_id']; }
 
 if(array_key_exists('model_id', $_GET) && isset($_GET['model_id']) && is_numeric($_GET['model_id']))
 { $ModelID = (int)$_GET['model_id']; }
@@ -63,6 +67,25 @@ if($ModelID)
 	else
 	{
 		Image::OutputImage();
+	}
+}
+else if($SetID)
+{
+	$Set = Set::GetSets(sprintf('set_id = %1$d AND mut_deleted = -1', $SetID));
+	if($Set)
+	{
+		$Set = $Set[0];
+
+		Image::OutputImage(
+			$Set->getModel()->GetFileFromDisk(
+				$PortraitOnly,
+				$LandscapeOnly,
+				sprintf('%1$s%2$s', $Set->getPrefix(), $Set->getName())
+			),
+			800,
+			600,
+			false
+		);
 	}
 }
 else if($VideoID)
