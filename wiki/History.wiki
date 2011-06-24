@@ -4,7 +4,7 @@
 
 Once upon a time, in a land perhaps closer than you think, there was a programmer. He regularly thought up projects in PHP and MySQL which would force him to familiarize himself with all the ins and outs he thought existed. Boy, was he in for a surprise... At work, he programmed in C# (.NET framework), strictly [http://en.wikipedia.org/wiki/Object-oriented_programming Object Oriented] - could this be done in PHP, too?
 
-After about two weeks of thinking it over, he needed a subject on which to base his new project. After searching the internet for an existing application, and finding none, he decided [http://code.google.com/p/candydolldb/ CandyDollDB] had to be built. The preset goal would be to comfortably manage that vast collection of !CandyDoll images and videos through a web-interface.
+After about two weeks of thinking it over, he needed a subject around which to build his new project. !CandyDoll sprang to mind. After searching the internet for an existing application, and finding none, he decided [http://code.google.com/p/candydolldb/ CandyDollDB] had to be built. The preset goal would be to comfortably manage that vast collection of !CandyDoll images and videos through a web-interface.
 
 Then finally, one sunny sunday morning, the programmer thought of Google Code. He decided he would start a project for his application. This was (and is) a completely new learning-curve. How does one write comprehensible documentation? How does one anticipate the users' needs and wants? Are there actually any people out there who would benefit from this application?
 
