@@ -122,9 +122,9 @@ class Model
 	 * Returns a random image-filename of the current model.
 	 * @return string|NULL
 	 */
-	public function GetFileFromDisk($PortraitOnly = false, $LandscapeOnly = false)
+	public function GetFileFromDisk($PortraitOnly = false, $LandscapeOnly = false, $FullSetName = null)
 	{
-		$folderPath = sprintf('%1$s/%2$s', CANDYIMAGEPATH, $this->GetFullName()); 
+		$folderPath = sprintf('%1$s/%2$s%3$s', CANDYIMAGEPATH, $this->GetFullName(), ($FullSetName ? '/'.$FullSetName : null)); 
 		if(!file_exists($folderPath)){ return null; } 
 		
 		$it = new RecursiveIteratorIterator(new RecursiveDirectoryIterator(

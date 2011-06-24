@@ -81,9 +81,14 @@ if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'SetView')
 	}
 }
 
+if($SetID)
+{ $ImageTag = sprintf('<img src="download_image.php?set_id=%1$d&amp;portrait_only=true" width="400" height="600" alt="%2$s" title="%2$s" />', $SetID, htmlentities($Model->GetFullName())); }
+
 echo HTMLstuff::HtmlHeader($Model->GetShortName(), $CurrentUser);
 
 ?>
+
+<div class="PhotoContainer"><?php echo $ImageTag; ?></div>
 
 <h2><?php echo sprintf('<a href="index.php">Home</a> - <a href="model_view.php?model_id=%1$d">%2$s</a> - <a href="set.php?model_id=%1$d">Sets</a> - %3$s',
 	$ModelID,
