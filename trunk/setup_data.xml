@@ -1,1194 +1,1192 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Models xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="cdtvdb.xsd" xmlns="">
-	<Model firstname="Adriana" lastname="E" birthdate=""> 
-		<Sets> 
-			<Set name="01" date_pic="2011-04-29" date_vid="" /> 
-			<Set name="02" date_pic="2011-05-13" date_vid="" /> 
+	<Model firstname="Adriana" lastname="E" birthdate="">
+		<Sets>
+			<Set name="01" date_pic="2011-04-29" date_vid="" />
+			<Set name="02" date_pic="2011-05-13" date_vid="" />
 			<Set name="03" date_pic="2011-05-20" date_vid="" />
-		</Sets> 
+		</Sets>
 	</Model>
-	<Model firstname="Alice" lastname="L" birthdate=""> 
-		<Sets> 
-			<Set name="01" date_pic="" date_vid="" /> 
-			<Set name="02" date_pic="" date_vid="" /> 
-			<Set name="03" date_pic="" date_vid="" /> 
-			<Set name="04" date_pic="" date_vid="" /> 
-			<Set name="05" date_pic="" date_vid="" /> 
-			<Set name="06" date_pic="2010-06-25" date_vid="2010-06-25" /> 
-			<Set name="07" date_pic="2010-07-23" date_vid="2010-07-23" /> 
-			<Set name="08" date_pic="2010-08-06" date_vid="2010-08-06" /> 
-			<Set name="09" date_pic="2010-08-20" date_vid="2010-08-20" /> 
-			<Set name="10" date_pic="2010-10-01" date_vid="2010-10-01" /> 
-			<Set name="11" date_pic="2010-10-15" date_vid="2010-10-15" /> 
-			<Set name="12" date_pic="2010-11-19" date_vid="2010-11-19" /> 
-			<Set name="13" date_pic="2010-12-31" date_vid="2010-12-31" /> 
-			<Set name="14" date_pic="" date_vid="2011-03-11" /> 
-			<Set name="15" date_pic="" date_vid="2011-04-01" /> 
-			<Set name="16" date_pic="" date_vid="2011-04-15" /> 
-			<Set name="17" date_pic="" date_vid="2011-05-20" /> 
-		</Sets> 
-	</Model> 
-	<Model firstname="Alina" lastname="Gladiy" birthdate="1996-10-07"> 
-		<Sets> 
-			<Set name="01" date_pic="2008-01-25" date_vid="2008-01-25" /> 
-			<Set name="02" date_pic="2008-02-01" date_vid="2008-02-01" /> 
-			<Set name="03" date_pic="2008-02-29" date_vid="2008-02-29" /> 
-			<Set name="04" date_pic="2008-04-11" date_vid="2008-04-11" /> 
-			<Set name="05" date_pic="2008-05-02" date_vid="2008-05-02" /> 
-			<Set name="06" date_pic="2008-05-16" date_vid="2008-05-16" /> 
-			<Set name="07" date_pic="2008-05-30" date_vid="2008-05-30" /> 
-			<Set name="08" date_pic="2008-06-06" date_vid="2008-06-06" /> 
-			<Set name="09" date_pic="2008-08-08" date_vid="2008-08-08" /> 
-			<Set name="10" date_pic="2008-09-12" date_vid="2008-09-12" /> 
-		</Sets> 
-	</Model> 
-	<Model firstname="Alisa" lastname="A" birthdate=""> 
-		<Sets> 
-			<Set name="01" date_pic="" date_vid="2011-02-18" /> 
-			<Set name="02" date_pic="" date_vid="2011-02-25" /> 
-			<Set name="03" date_pic="" date_vid="2011-05-13" /> 
-			<Set name="04" date_pic="" date_vid="2011-05-27" /> 
-		</Sets> 
-	</Model> 
-	<Model firstname="Alyona" lastname="Gromova" birthdate="1996-03-19"> 
-		<Sets> 
-			<Set name="01" date_pic="2008-08-08" date_vid="2008-08-08" /> 
-			<Set name="02" date_pic="2008-11-07" date_vid="2008-11-07" /> 
-			<Set name="03" date_pic="2008-11-14" date_vid="2008-11-14" /> 
-			<Set name="04" date_pic="2008-12-26" date_vid="2008-12-26" /> 
-			<Set name="05" date_pic="2009-01-09" date_vid="2009-01-09" /> 
-		</Sets> 
-	</Model> 
-	<Model firstname="Alyona" lastname="Rudenko" birthdate="1995-05-03"> 
-		<Sets> 
-			<Set name="01" date_pic="2008-08-15" date_vid="2008-08-15" /> 
-			<Set name="02" date_pic="2008-08-22" date_vid="2008-08-22" /> 
-			<Set name="03" date_pic="2008-09-05" date_vid="2008-09-05" /> 
-			<Set name="04" date_pic="2008-10-10" date_vid="2008-10-10" /> 
-			<Set name="05" date_pic="2008-10-17" date_vid="2008-10-17" /> 
-			<Set name="06" date_pic="2008-10-31" date_vid="2008-10-31" /> 
-			<Set name="07" date_pic="2008-12-05" date_vid="2008-12-05" /> 
-			<Set name="08" date_pic="2008-12-12" date_vid="2008-12-12" /> 
-			<Set name="09" date_pic="2009-01-16" date_vid="2009-01-16" /> 
-			<Set name="10" date_pic="2009-02-13" date_vid="2009-02-13" /> 
-			<Set name="11" date_pic="2009-03-13" date_vid="2009-03-13" /> 
-			<Set name="12" date_pic="2009-04-03" date_vid="2009-04-03" /> 
-			<Set name="13" date_pic="" date_vid="" /> 
-			<Set name="14" date_pic="" date_vid="" /> 
-			<Set name="15" date_pic="2010-07-16" date_vid="2010-07-16" /> 
-			<Set name="16" date_pic="2010-08-06" date_vid="2010-08-06" /> 
-			<Set name="17" date_pic="2010-10-22" date_vid="2010-10-22" /> 
-			<Set name="18" date_pic="2010-11-26" date_vid="2010-11-26" /> 
-		</Sets> 
-	</Model> 
-	<Model firstname="Anastasia" lastname="Kocyuruba" birthdate="1995-08-24"> 
-		<Sets> 
-			<Set name="01" date_pic="2008-11-14" date_vid="2008-11-14" /> 
-			<Set name="02" date_pic="2008-11-28" date_vid="2008-11-28" /> 
-			<Set name="03" date_pic="2008-12-19" date_vid="2008-12-19" /> 
-			<Set name="04" date_pic="2009-01-16" date_vid="2009-01-16" /> 
-			<Set name="05" date_pic="2009-01-23" date_vid="2009-01-23" /> 
-		</Sets> 
-	</Model> 
-	<Model firstname="Anastasia" lastname="Spasuk" birthdate="1997-01-28"> 
-		<Sets> 
-			<Set name="01" date_pic="2008-01-25" date_vid="2008-01-25" /> 
-			<Set name="02" date_pic="2008-04-04" date_vid="2008-04-04" /> 
-			<Set name="03" date_pic="2008-04-18" date_vid="2008-04-18" /> 
-			<Set name="04" date_pic="2008-06-06" date_vid="2008-06-06" /> 
-			<Set name="05" date_pic="2008-06-27" date_vid="2008-06-27" /> 
-			<Set name="06" date_pic="2008-07-18" date_vid="2008-07-18" /> 
-			<Set name="07" date_pic="2008-08-22" date_vid="2008-08-22" /> 
-			<Set name="08" date_pic="2008-09-26" date_vid="2008-09-26" /> 
-			<Set name="09" date_pic="2009-01-30" date_vid="2009-01-30" /> 
-		</Sets> 
-	</Model> 
-	<Model firstname="Anita" lastname="D" birthdate="1996-03-17"> 
-		<Sets> 
-			<Set name="01" date_pic="2009-03-06" date_vid="2009-03-06" /> 
-			<Set name="02" date_pic="2009-03-27" date_vid="2009-03-27" /> 
-			<Set name="03" date_pic="2009-04-10" date_vid="2009-04-10" /> 
-			<Set name="04" date_pic="" date_vid="" /> 
-			<Set name="05" date_pic="" date_vid="" /> 
-			<Set name="06" date_pic="" date_vid="" /> 
-			<Set name="07" date_pic="" date_vid="" /> 
-			<Set name="08" date_pic="" date_vid="" /> 
-			<Set name="09" date_pic="" date_vid="" /> 
-			<Set name="10" date_pic="" date_vid="" /> 
-		</Sets> 
-	</Model> 
-	<Model firstname="Anjelika" lastname="L" birthdate="1996-11-20"> 
-		<Sets> 
-			<Set name="01" date_pic="2009-02-06" date_vid="2009-02-06" /> 
-			<Set name="02" date_pic="2009-02-13" date_vid="2009-02-13" /> 
-			<Set name="03" date_pic="2009-03-27" date_vid="2009-03-27" /> 
-			<Set name="04" date_pic="" date_vid="" /> 
-			<Set name="05" date_pic="" date_vid="" /> 
-			<Set name="06" date_pic="" date_vid="" /> 
-			<Set name="07" date_pic="" date_vid="" /> 
-			<Set name="08" date_pic="" date_vid="" /> 
-			<Set name="09" date_pic="" date_vid="" /> 
-			<Set name="10" date_pic="" date_vid="" /> 
-			<Set name="11" date_pic="" date_vid="" /> 
-			<Set name="12" date_pic="" date_vid="" /> 
-			<Set name="13" date_pic="" date_vid="" /> 
-			<Set name="14" date_pic="" date_vid="" /> 
-			<Set name="15" date_pic="" date_vid="" /> 
-			<Set name="16" date_pic="2011-04-29" date_vid="2011-01-28" /> 
-			<Set name="17" date_pic="2011-05-06" date_vid="2011-03-11" /> 
-			<Set name="18" date_pic="" date_vid="2011-04-15" /> 
-			<Set name="19" date_pic="" date_vid="2011-06-03" /> 
-		</Sets> 
-	</Model> 
-	<Model firstname="Anna" lastname="Thebryk" birthdate="1995-09-11"> 
-		<Sets> 
-			<Set name="01" date_pic="2008-01-25" date_vid="2008-01-25" /> 
-			<Set name="02" date_pic="2008-03-07" date_vid="2008-03-07" /> 
-			<Set name="03" date_pic="2008-04-18" date_vid="2008-04-18" /> 
-			<Set name="04" date_pic="2008-05-02" date_vid="2008-05-02" /> 
-			<Set name="05" date_pic="2008-05-23" date_vid="2008-05-23" /> 
-			<Set name="06" date_pic="2008-05-30" date_vid="2008-05-30" /> 
-			<Set name="07" date_pic="2008-06-20" date_vid="2008-06-20" /> 
-			<Set name="08" date_pic="2008-07-18" date_vid="2008-07-18" /> 
-			<Set name="09" date_pic="2008-08-08" date_vid="2008-08-08" /> 
-			<Set name="10" date_pic="2008-08-29" date_vid="2008-08-29" /> 
-			<Set name="11" date_pic="2008-10-03" date_vid="2008-10-03" /> 
-		</Sets> 
-	</Model> 
-	<Model firstname="Anna" lastname="Zalevska" birthdate="1995-11-03"> 
-		<Sets> 
-			<Set name="01" date_pic="2008-01-25" date_vid="2008-01-25" /> 
-			<Set name="02" date_pic="2008-03-28" date_vid="2008-03-28" /> 
-			<Set name="03" date_pic="2008-05-09" date_vid="2008-05-09" /> 
-			<Set name="04" date_pic="2008-06-13" date_vid="2008-06-13" /> 
-			<Set name="05" date_pic="2009-01-30" date_vid="2009-01-30" /> 
-		</Sets> 
-	</Model> 
-	<Model firstname="Ashley" lastname="S" birthdate=""> 
-		<Sets> 
-			<Set name="01" date_pic="2010-06-18" date_vid="2010-06-18" /> 
-			<Set name="02" date_pic="2010-08-13" date_vid="2010-08-13" /> 
-			<Set name="03" date_pic="2010-10-08" date_vid="2010-10-08" /> 
-			<Set name="04" date_pic="2010-11-19" date_vid="2010-11-19" /> 
-			<Set name="05" date_pic="2011-04-08" date_vid="" /> 
-			<Set name="06" date_pic="2011-04-22" date_vid="" /> 
-			<Set name="07" date_pic="2011-05-06" date_vid="" /> 
-		</Sets> 
-	</Model> 
-	<Model firstname="Biyanka" lastname="S" birthdate="1997-07-05"> 
-		<Sets> 
-			<Set name="01" date_pic="2009-02-06" date_vid="2009-02-06" /> 
-			<Set name="02" date_pic="2009-02-20" date_vid="2009-02-20" /> 
-			<Set name="03" date_pic="2009-03-27" date_vid="2009-03-27" /> 
-			<Set name="04" date_pic="" date_vid="" /> 
-			<Set name="05" date_pic="" date_vid="" /> 
-			<Set name="06" date_pic="" date_vid="" /> 
-			<Set name="07" date_pic="" date_vid="" /> 
-			<Set name="08" date_pic="" date_vid="" /> 
-			<Set name="09" date_pic="" date_vid="" /> 
-			<Set name="10" date_pic="" date_vid="" /> 
-		</Sets> 
-	</Model> 
-	<Model firstname="Chris" lastname="G" birthdate=""> 
-		<Sets> 
-			<Set name="01" date_pic="2010-07-02" date_vid="2010-07-02" /> 
-			<Set name="02" date_pic="2010-07-09" date_vid="2010-07-09" /> 
-			<Set name="03" date_pic="2010-08-20" date_vid="2010-08-20" /> 
-			<Set name="04" date_pic="2010-10-01" date_vid="2010-10-01" /> 
-			<Set name="05" date_pic="2010-11-26" date_vid="2010-11-26" /> 
-		</Sets> 
-	</Model> 
-	<Model firstname="Diana" lastname="M" birthdate=""> 
-		<Sets> 
-			<Set name="01" date_pic="2010-07-30" date_vid="2010-07-30" /> 
-			<Set name="02" date_pic="2010-09-17" date_vid="2010-09-17" /> 
-			<Set name="03" date_pic="2010-10-08" date_vid="2010-10-08" /> 
-			<Set name="04" date_pic="2010-12-31" date_vid="2010-12-31" /> 
-			<Set name="05" date_pic="2011-01-14" date_vid="2011-03-18" /> 
-			<Set name="06" date_pic="2011-02-04" date_vid="2011-03-25" /> 
-			<Set name="07" date_pic="" date_vid="2011-04-22" /> 
-			<Set name="08" date_pic="" date_vid="2011-05-13" /> 
-		</Sets> 
-	</Model> 
-	<Model firstname="Dina" lastname="Y" birthdate="1996-12-12"> 
-		<Sets> 
-			<Set name="01" date_pic="" date_vid="" /> 
-			<Set name="02" date_pic="" date_vid="" /> 
-			<Set name="03" date_pic="" date_vid="" /> 
-			<Set name="04" date_pic="" date_vid="" /> 
-			<Set name="05" date_pic="" date_vid="" /> 
-		</Sets> 
-	</Model> 
-	<Model firstname="Elena" lastname="V" birthdate="1997-12-28"> 
-		<Sets> 
-			<Set name="01" date_pic="" date_vid="" /> 
-			<Set name="02" date_pic="" date_vid="" /> 
-			<Set name="03" date_pic="" date_vid="" /> 
-			<Set name="04" date_pic="" date_vid="" /> 
-			<Set name="05" date_pic="" date_vid="" /> 
-		</Sets> 
-	</Model> 
-	<Model firstname="Elisa" lastname="M" birthdate="1995-08-27"> 
-		<Sets> 
-			<Set name="01" date_pic="2009-03-13" date_vid="2009-03-13" /> 
-			<Set name="02" date_pic="2009-03-20" date_vid="2009-03-20" /> 
-			<Set name="03" date_pic="2009-04-10" date_vid="2009-04-10" /> 
-			<Set name="04" date_pic="" date_vid="" /> 
-			<Set name="05" date_pic="" date_vid="" /> 
-			<Set name="06" date_pic="" date_vid="" /> 
-			<Set name="07" date_pic="" date_vid="" /> 
-			<Set name="08" date_pic="" date_vid="" /> 
-			<Set name="09" date_pic="" date_vid="" /> 
-			<Set name="10" date_pic="" date_vid="" /> 
-			<Set name="11" date_pic="2010-07-09" date_vid="2010-07-09" /> 
-			<Set name="12" date_pic="2010-09-03" date_vid="2010-09-03" /> 
-			<Set name="13" date_pic="2010-10-15" date_vid="2010-10-15" /> 
-			<Set name="14" date_pic="2010-11-12" date_vid="2010-11-12" /> 
-			<Set name="15" date_pic="2011-01-14" date_vid="2011-05-20" /> 
-			<Set name="16" date_pic="2011-04-15" date_vid="" /> 
-			<Set name="17" date_pic="2011-04-22" date_vid="" /> 
-		</Sets> 
-	</Model> 
-	<Model firstname="Elizabeta" lastname="S" birthdate="1996-01-26"> 
-		<Sets> 
-			<Set name="01" date_pic="2009-02-27" date_vid="2009-02-27" /> 
-			<Set name="02" date_pic="2009-03-06" date_vid="2009-03-06" /> 
-			<Set name="03" date_pic="2009-03-20" date_vid="2009-03-20" /> 
-			<Set name="04" date_pic="" date_vid="" /> 
-			<Set name="05" date_pic="" date_vid="" /> 
-			<Set name="06" date_pic="" date_vid="" /> 
-			<Set name="07" date_pic="" date_vid="" /> 
-			<Set name="08" date_pic="" date_vid="" /> 
-			<Set name="09" date_pic="" date_vid="" /> 
-			<Set name="10" date_pic="" date_vid="" /> 
-			<Set name="11" date_pic="" date_vid="" /> 
-			<Set name="12" date_pic="" date_vid="" /> 
-			<Set name="13" date_pic="" date_vid="" /> 
-			<Set name="14" date_pic="" date_vid="" /> 
-			<Set name="15" date_pic="" date_vid="" /> 
-		</Sets> 
-	</Model> 
-	<Model firstname="Emma" lastname="M" birthdate=""> 
-		<Sets> 
-			<Set name="01" date_pic="2010-06-11" date_vid="2010-06-11" /> 
-			<Set name="02" date_pic="2010-08-27" date_vid="2010-08-27" /> 
-			<Set name="03" date_pic="2010-09-24" date_vid="2010-09-24" /> 
-			<Set name="04" date_pic="2010-11-12" date_vid="2010-11-12" /> 
-		</Sets> 
-	</Model> 
-	<Model firstname="Erica" lastname="R" birthdate=""> 
-		<Sets> 
-			<Set name="01" date_pic="2011-01-21" date_vid="2011-02-11" /> 
-			<Set name="02" date_pic="2011-02-25" date_vid="2011-03-04" /> 
-			<Set name="03" date_pic="2011-03-18" date_vid="2011-04-01" /> 
-			<Set name="04" date_pic="2011-03-25" date_vid="2011-06-03" /> 
-			<Set name="05" date_pic="2011-04-01" date_vid="" /> 
-			<Set name="06" date_pic="2011-04-08" date_vid="" />
-			<Set name="07" date_pic="2011-06-03" date_vid="" />
-			<Set name="08" date_pic="2011-06-17" date_vid="" /> 
-		</Sets> 
-	</Model> 
-	<Model firstname="Eva" lastname="G" birthdate=""> 
-		<Sets> 
-			<Set name="01" date_pic="" date_vid="" /> 
-			<Set name="02" date_pic="" date_vid="" /> 
-			<Set name="03" date_pic="" date_vid="" /> 
-			<Set name="04" date_pic="" date_vid="" /> 
-			<Set name="05" date_pic="" date_vid="" /> 
-		</Sets> 
-	</Model> 
-	<Model firstname="Inna" lastname="Lyublinskaya" birthdate="1997-01-06"> 
-		<Sets> 
-			<Set name="01" date_pic="2008-08-08" date_vid="2008-08-08" /> 
-			<Set name="02" date_pic="2008-08-29" date_vid="2008-08-29" /> 
-			<Set name="03" date_pic="2008-09-26" date_vid="2008-09-26" /> 
-			<Set name="04" date_pic="2008-10-03" date_vid="2008-10-03" /> 
-			<Set name="05" date_pic="2008-10-10" date_vid="2008-10-10" /> 
-			<Set name="06" date_pic="2008-10-31" date_vid="2008-10-31" /> 
-			<Set name="07" date_pic="2008-11-14" date_vid="2008-11-14" /> 
-			<Set name="08" date_pic="2008-11-21" date_vid="2008-11-21" /> 
-			<Set name="09" date_pic="2008-12-26" date_vid="2008-12-26" /> 
-			<Set name="10" date_pic="2009-01-09" date_vid="2009-01-09" /> 
-		</Sets> 
-	</Model> 
-	<Model firstname="Ira" lastname="Kosterova" birthdate="1996-08-12"> 
-		<Sets> 
-			<Set name="01" date_pic="2008-11-07" date_vid="2008-11-07" /> 
-			<Set name="02" date_pic="2008-11-21" date_vid="2008-11-21" /> 
-			<Set name="03" date_pic="2008-11-28" date_vid="2008-11-28" /> 
-			<Set name="04" date_pic="2009-01-02" date_vid="2009-01-02" /> 
-			<Set name="05" date_pic="2009-01-09" date_vid="2009-01-09" /> 
-		</Sets> 
-	</Model> 
-	<Model firstname="Irina" lastname="Belous" birthdate="1996-11-15"> 
-		<Sets> 
-			<Set name="01" date_pic="2008-08-15" date_vid="2008-08-15" /> 
-			<Set name="02" date_pic="2008-08-22" date_vid="2008-08-22" /> 
-			<Set name="03" date_pic="2008-09-12" date_vid="2008-09-12" /> 
-			<Set name="04" date_pic="2008-10-03" date_vid="2008-10-03" /> 
-			<Set name="05" date_pic="2008-10-24" date_vid="2008-10-24" /> 
-			<Set name="06" date_pic="2008-10-31" date_vid="2008-10-31" /> 
-			<Set name="07" date_pic="2008-11-28" date_vid="2008-11-28" /> 
-			<Set name="08" date_pic="2008-12-12" date_vid="2008-12-12" /> 
-			<Set name="09" date_pic="2009-01-09" date_vid="2009-01-09" /> 
-			<Set name="10" date_pic="2009-02-13" date_vid="2009-02-13" /> 
-			<Set name="11" date_pic="2009-03-13" date_vid="2009-03-13" /> 
-			<Set name="12" date_pic="" date_vid="" /> 
-			<Set name="13" date_pic="" date_vid="" /> 
-			<Set name="14" date_pic="" date_vid="" /> 
-		</Sets> 
-	</Model> 
-	<Model firstname="Iryna" lastname="Mihalina" birthdate="1997-02-03"> 
-		<Sets> 
-			<Set name="01" date_pic="2008-01-25" date_vid="2008-01-25" /> 
-			<Set name="02" date_pic="2008-05-16" date_vid="2008-05-16" /> 
-			<Set name="03" date_pic="2008-06-27" date_vid="2008-06-27" /> 
-			<Set name="04" date_pic="2008-07-11" date_vid="2008-07-11" /> 
-			<Set name="05" date_pic="2008-07-25" date_vid="2008-07-25" /> 
-			<Set name="06" date_pic="2008-09-05" date_vid="2008-09-05" /> 
-		</Sets> 
-	</Model> 
-	<Model firstname="Jasmin" lastname="P" birthdate="1996-07-05"> 
-		<Sets> 
-			<Set name="01" date_pic="" date_vid="" /> 
-			<Set name="02" date_pic="" date_vid="" /> 
-			<Set name="03" date_pic="" date_vid="" /> 
-			<Set name="04" date_pic="" date_vid="" /> 
-			<Set name="05" date_pic="" date_vid="" /> 
-			<Set name="06" date_pic="2011-01-28" date_vid="" /> 
-		</Sets> 
-	</Model> 
-	<Model firstname="Juliya" lastname="Rasskazova" birthdate="1996-03-06"> 
-		<Sets> 
-			<Set name="01" date_pic="2008-08-01" date_vid="2008-08-01" /> 
-			<Set name="02" date_pic="2008-08-29" date_vid="2008-08-29" /> 
-			<Set name="03" date_pic="2008-09-26" date_vid="2008-09-26" /> 
-			<Set name="04" date_pic="2008-10-17" date_vid="2008-10-17" /> 
-			<Set name="05" date_pic="2008-11-21" date_vid="2008-11-21" /> 
-			<Set name="06" date_pic="2008-11-28" date_vid="2008-11-28" /> 
-			<Set name="07" date_pic="2008-12-12" date_vid="2008-12-12" /> 
-			<Set name="08" date_pic="2008-12-19" date_vid="2008-12-19" /> 
-			<Set name="09" date_pic="2009-01-02" date_vid="2009-01-02" /> 
-			<Set name="10" date_pic="" date_vid="" /> 
-			<Set name="11" date_pic="" date_vid="" /> 
-			<Set name="12" date_pic="" date_vid="" /> 
-			<Set name="13" date_pic="" date_vid="" /> 
-			<Set name="14" date_pic="" date_vid="" /> 
-		</Sets> 
-	</Model> 
-	<Model firstname="Kateryna" lastname="Voitsykhovska" birthdate=""> 
-		<Sets> 
-			<Set name="01" date_pic="2008-01-25" date_vid="2008-01-25" /> 
-			<Set name="02" date_pic="2008-02-08" date_vid="2008-02-08" /> 
-			<Set name="03" date_pic="2008-03-14" date_vid="2008-03-14" /> 
-			<Set name="04" date_pic="2008-03-28" date_vid="2008-03-28" /> 
-			<Set name="05" date_pic="2008-05-30" date_vid="2008-05-30" /> 
-			<Set name="06" date_pic="2008-06-13" date_vid="2008-06-13" /> 
-			<Set name="07" date_pic="2008-07-11" date_vid="2008-07-11" /> 
-			<Set name="08" date_pic="2008-08-15" date_vid="2008-08-15" /> 
-		</Sets> 
+	<Model firstname="Alice" lastname="L" birthdate="">
+		<Sets>
+			<Set name="01" date_pic="" date_vid="" />
+			<Set name="02" date_pic="" date_vid="" />
+			<Set name="03" date_pic="" date_vid="" />
+			<Set name="04" date_pic="" date_vid="" />
+			<Set name="05" date_pic="" date_vid="" />
+			<Set name="06" date_pic="2010-06-25" date_vid="2010-06-25" />
+			<Set name="07" date_pic="2010-07-23" date_vid="2010-07-23" />
+			<Set name="08" date_pic="2010-08-06" date_vid="2010-08-06" />
+			<Set name="09" date_pic="2010-08-20" date_vid="2010-08-20" />
+			<Set name="10" date_pic="2010-10-01" date_vid="2010-10-01" />
+			<Set name="11" date_pic="2010-10-15" date_vid="2010-10-15" />
+			<Set name="12" date_pic="2010-11-19" date_vid="2010-11-19" />
+			<Set name="13" date_pic="2010-12-31" date_vid="2010-12-31" />
+			<Set name="14" date_pic="" date_vid="2011-03-11" />
+			<Set name="15" date_pic="" date_vid="2011-04-01" />
+			<Set name="16" date_pic="" date_vid="2011-04-15" />
+			<Set name="17" date_pic="" date_vid="2011-05-20" />
+		</Sets>
 	</Model>
-	<Model firstname="Klara" lastname="H" birthdate=""> 
-		<Sets> 
-			<Set name="01" date_pic="" date_vid="2011-03-18" /> 
-			<Set name="02" date_pic="" date_vid="2011-03-25" /> 
-		</Sets> 
-	</Model>  
-	<Model firstname="Larisa" lastname="Havriluyk" birthdate="1993-11-06"> 
-		<Sets> 
-			<Set name="01" date_pic="2008-01-25" date_vid="2008-01-25" /> 
-			<Set name="02" date_pic="2008-02-22" date_vid="2008-02-22" /> 
-			<Set name="03" date_pic="2008-04-04" date_vid="2008-04-04" /> 
-			<Set name="04" date_pic="2008-07-04" date_vid="2008-07-04" /> 
-			<Set name="05" date_pic="2008-10-03" date_vid="2008-10-03" /> 
-			<Set name="06" date_pic="2008-12-19" date_vid="2008-12-19" /> 
-			<Set name="07" date_pic="2009-01-23" date_vid="2009-01-23" /> 
-		</Sets> 
-	</Model> 
-	<Model firstname="Laura" lastname="B" birthdate="2000-06-13"> 
-		<Sets> 
-			<Set name="01" date_pic="" date_vid="" /> 
-			<Set name="02" date_pic="" date_vid="" /> 
-			<Set name="03" date_pic="" date_vid="" /> 
-			<Set name="04" date_pic="" date_vid="" /> 
-			<Set name="05" date_pic="" date_vid="" /> 
-			<Set name="06" date_pic="" date_vid="" /> 
-			<Set name="07" date_pic="" date_vid="" /> 
-			<Set name="08" date_pic="" date_vid="" /> 
-			<Set name="09" date_pic="" date_vid="" /> 
-			<Set name="10" date_pic="" date_vid="" /> 
-			<Set name="11" date_pic="" date_vid="" /> 
-			<Set name="12" date_pic="" date_vid="" /> 
-			<Set name="13" date_pic="" date_vid="" /> 
-			<Set name="14" date_pic="" date_vid="" /> 
-			<Set name="15" date_pic="2010-06-04" date_vid="2010-06-04" /> 
-			<Set name="16" date_pic="2010-07-16" date_vid="2010-07-16" /> 
-			<Set name="17" date_pic="2010-07-30" date_vid="2010-07-30" /> 
-			<Set name="18" date_pic="2010-09-10" date_vid="2010-09-10" /> 
-			<Set name="19" date_pic="2010-09-17" date_vid="2010-09-17" /> 
-			<Set name="20" date_pic="2010-10-22" date_vid="2010-10-22" /> 
-			<Set name="21" date_pic="2010-11-05" date_vid="2010-11-05" /> 
-			<Set name="22" date_pic="2010-12-17" date_vid="2010-12-17" /> 
-			<Set name="23" date_pic="2010-12-24" date_vid="2010-12-24" /> 
-			<Set name="24" date_pic="2011-01-07" date_vid="2011-01-07" /> 
-			<Set name="25" date_pic="2011-01-28" date_vid="2011-01-14" /> 
-			<Set name="26" date_pic="2011-02-11" date_vid="2011-01-21" /> 
-			<Set name="27" date_pic="2011-02-18" date_vid="2011-04-08" /> 
-			<Set name="28" date_pic="2011-02-25" date_vid="2011-04-29" /> 
-			<Set name="29" date_pic="2011-03-11" date_vid="2011-05-06" /> 
-			<Set name="30" date_pic="2011-03-18" date_vid="2011-05-13" />
-			<Set name="31" date_pic="" date_vid="2011-06-17" /> 
-		</Sets> 
-	</Model> 
-	<Model firstname="Lera" lastname="Cicima" birthdate="1995-01-25"> 
-		<Sets> 
-			<Set name="01" date_pic="2008-08-15" date_vid="2008-08-15" /> 
-			<Set name="02" date_pic="2008-09-19" date_vid="2008-09-19" /> 
-			<Set name="03" date_pic="2008-10-17" date_vid="2008-10-17" /> 
-			<Set name="04" date_pic="2008-11-07" date_vid="2008-11-07" /> 
-			<Set name="05" date_pic="2009-01-23" date_vid="2009-01-23" /> 
-		</Sets> 
-	</Model> 
-	<Model firstname="Lidiya" lastname="A" birthdate=""> 
-		<Sets> 
-			<Set name="01" date_pic="2011-04-01" date_vid="2011-01-28" /> 
-			<Set name="02" date_pic="2011-04-15" date_vid="2011-03-11" /> 
-			<Set name="03" date_pic="2011-05-13" date_vid="2011-03-18" /> 
-			<Set name="04" date_pic="2011-05-20" date_vid="2011-06-10" /> 
-			<Set name="05" date_pic="2011-05-27" date_vid="" /> 
-			<Set name="06" date_pic="2011-06-03" date_vid="" />
-			<Set name="07" date_pic="2011-06-10" date_vid="" /> 
-		</Sets> 
-	</Model> 
-	<Model firstname="Liliya" lastname="Y" birthdate="1997-10-05"> 
-		<Sets> 
-			<Set name="01" date_pic="" date_vid="" /> 
-			<Set name="02" date_pic="" date_vid="" /> 
-			<Set name="03" date_pic="" date_vid="" /> 
-			<Set name="04" date_pic="" date_vid="" /> 
-			<Set name="05" date_pic="" date_vid="" /> 
-			<Set name="06" date_pic="" date_vid="" /> 
-			<Set name="07" date_pic="" date_vid="" /> 
-			<Set name="08" date_pic="" date_vid="" /> 
-			<Set name="09" date_pic="" date_vid="" /> 
-			<Set name="10" date_pic="" date_vid="" /> 
-			<Set name="11" date_pic="" date_vid="" /> 
-			<Set name="12" date_pic="" date_vid="" /> 
-			<Set name="13" date_pic="" date_vid="" /> 
-			<Set name="14" date_pic="" date_vid="" /> 
-			<Set name="15" date_pic="" date_vid="" /> 
-			<Set name="16" date_pic="2010-06-18" date_vid="2010-06-18" /> 
-			<Set name="17" date_pic="2010-06-25" date_vid="2010-06-25" /> 
-			<Set name="18" date_pic="2010-09-10" date_vid="2010-09-10" /> 
-			<Set name="19" date_pic="2010-09-17" date_vid="2010-09-17" /> 
-			<Set name="20" date_pic="2010-09-24" date_vid="2010-09-24" /> 
-			<Set name="21" date_pic="2010-10-29" date_vid="2010-10-29" /> 
-			<Set name="22" date_pic="2010-12-17" date_vid="2010-12-17" /> 
-			<Set name="23" date_pic="2010-12-24" date_vid="2010-12-24" /> 
-			<Set name="24" date_pic="2011-01-07" date_vid="2011-01-07" /> 
-			<Set name="25" date_pic="2011-01-28" date_vid="2011-01-14" /> 
-			<Set name="26" date_pic="2011-02-11" date_vid="2011-02-04" /> 
-			<Set name="27" date_pic="2011-02-18" date_vid="2011-02-18" /> 
-			<Set name="28" date_pic="2011-03-04" date_vid="2011-03-04" /> 
-			<Set name="29" date_pic="2011-03-11" date_vid="2011-03-25" /> 
-			<Set name="30" date_pic="2011-03-18" date_vid="2011-05-27" /> 
-			<Set name="31" date_pic="2011-04-08" date_vid="2011-06-03" /> 
-			<Set name="32" date_pic="2011-04-22" date_vid="" /> 
-			<Set name="33" date_pic="2011-06-24" date_vid="" />
-		</Sets> 
-	</Model> 
-	<Model firstname="Lina" lastname="I" birthdate=""> 
-		<Sets> 
-			<Set name="01" date_pic="2010-06-11" date_vid="2010-06-11" /> 
-			<Set name="02" date_pic="2010-07-09" date_vid="2010-07-09" /> 
-			<Set name="03" date_pic="2010-07-23" date_vid="2010-07-23" /> 
-			<Set name="04" date_pic="2010-08-20" date_vid="2010-08-20" /> 
-			<Set name="05" date_pic="2010-09-10" date_vid="2010-09-10" /> 
-			<Set name="06" date_pic="2010-09-17" date_vid="2010-09-17" /> 
-			<Set name="07" date_pic="2010-10-01" date_vid="2010-10-01" /> 
-			<Set name="08" date_pic="2010-11-05" date_vid="2010-11-05" /> 
-			<Set name="09" date_pic="2010-11-12" date_vid="2010-11-12" /> 
-			<Set name="10" date_pic="2010-12-03" date_vid="2010-12-03" /> 
-			<Set name="11" date_pic="2010-12-10" date_vid="2010-12-10" /> 
-			<Set name="12" date_pic="2010-12-31" date_vid="2010-12-31" /> 
-			<Set name="13" date_pic="2011-06-03" date_vid="2011-02-11" /> 
-			<Set name="14" date_pic="2011-06-10" date_vid="2011-03-18" /> 
-			<Set name="15" date_pic="" date_vid="2011-05-06" /> 
-			<Set name="16" date_pic="" date_vid="2011-05-27" /> 
-			<Set name="17" date_pic="" date_vid="2011-06-03" /> 
-		</Sets> 
-	</Model> 
-	<Model firstname="Margarita" lastname="D" birthdate="1997-08-18"> 
-		<Sets> 
-			<Set name="01" date_pic="2009-02-06" date_vid="2009-02-06" /> 
-			<Set name="02" date_pic="2009-02-20" date_vid="2009-02-20" /> 
-			<Set name="03" date_pic="2009-03-20" date_vid="2009-03-20" /> 
-			<Set name="04" date_pic="2009-04-10" date_vid="2009-04-10" /> 
-			<Set name="05" date_pic="" date_vid="" /> 
-			<Set name="06" date_pic="" date_vid="" /> 
-			<Set name="07" date_pic="" date_vid="" /> 
-			<Set name="08" date_pic="" date_vid="" /> 
-			<Set name="09" date_pic="" date_vid="" /> 
-			<Set name="10" date_pic="" date_vid="" /> 
-		</Sets> 
-	</Model> 
-	<Model firstname="Marie" lastname="A" birthdate=""> 
-		<Sets> 
-			<Set name="01" date_pic="2010-06-11" date_vid="2010-06-11" /> 
-			<Set name="02" date_pic="2010-08-13" date_vid="2010-08-13" /> 
-			<Set name="03" date_pic="2010-10-01" date_vid="2010-10-01" /> 
-			<Set name="04" date_pic="2010-12-31" date_vid="2010-12-31" /> 
-		</Sets> 
-	</Model> 
-	<Model firstname="Mariya" lastname="D" birthdate=""> 
-		<Sets> 
-			<Set name="01" date_pic="" date_vid="2011-02-11" /> 
-			<Set name="02" date_pic="" date_vid="2011-02-25" /> 
-			<Set name="03" date_pic="" date_vid="2011-04-29" />
-			<Set name="04" date_pic="" date_vid="2011-06-17" /> 
-		</Sets> 
+	<Model firstname="Alina" lastname="Gladiy" birthdate="1996-10-07">
+		<Sets>
+			<Set name="01" date_pic="2008-01-25" date_vid="2008-01-25" />
+			<Set name="02" date_pic="2008-02-01" date_vid="2008-02-01" />
+			<Set name="03" date_pic="2008-02-29" date_vid="2008-02-29" />
+			<Set name="04" date_pic="2008-04-11" date_vid="2008-04-11" />
+			<Set name="05" date_pic="2008-05-02" date_vid="2008-05-02" />
+			<Set name="06" date_pic="2008-05-16" date_vid="2008-05-16" />
+			<Set name="07" date_pic="2008-05-30" date_vid="2008-05-30" />
+			<Set name="08" date_pic="2008-06-06" date_vid="2008-06-06" />
+			<Set name="09" date_pic="2008-08-08" date_vid="2008-08-08" />
+			<Set name="10" date_pic="2008-09-12" date_vid="2008-09-12" />
+		</Sets>
 	</Model>
-	<Model firstname="Masha" lastname="M" birthdate=""> 
-		<Sets> 
-			<Set name="01" date_pic="2011-06-03" date_vid="" />
-			<Set name="02" date_pic="2011-06-17" date_vid="" /> 
-		</Sets> 
-	</Model> 
-	<Model firstname="Masha" lastname="Pruticova" birthdate="1999-07-09"> 
-		<Sets> 
-			<Set name="01" date_pic="2008-08-22" date_vid="2008-08-22" /> 
-			<Set name="02" date_pic="2008-09-05" date_vid="2008-09-05" /> 
-			<Set name="03" date_pic="2008-09-12" date_vid="2008-09-12" /> 
-			<Set name="04" date_pic="2008-10-10" date_vid="2008-10-10" /> 
-			<Set name="05" date_pic="2009-01-16" date_vid="2009-01-16" /> 
-		</Sets> 
-	</Model> 
-	<Model firstname="Masha" lastname="Shevkunova" birthdate="1996-01-30"> 
-		<Sets> 
-			<Set name="01" date_pic="2008-08-01" date_vid="2008-08-01" /> 
-			<Set name="02" date_pic="2008-08-29" date_vid="2008-08-29" /> 
-			<Set name="03" date_pic="2008-09-19" date_vid="2008-09-19" /> 
-			<Set name="04" date_pic="2008-10-03" date_vid="2008-10-03" /> 
-			<Set name="05" date_pic="2008-10-17" date_vid="2008-10-17" /> 
-			<Set name="06" date_pic="2008-10-24" date_vid="2008-10-24" /> 
-			<Set name="07" date_pic="2008-10-31" date_vid="2008-10-31" /> 
-			<Set name="08" date_pic="2008-11-07" date_vid="2008-11-07" /> 
-			<Set name="09" date_pic="2008-12-12" date_vid="2008-12-12" /> 
-			<Set name="10" date_pic="2009-01-02" date_vid="2009-01-02" /> 
-			<Set name="11" date_pic="2009-02-06" date_vid="2009-02-06" /> 
-			<Set name="12" date_pic="2009-03-06" date_vid="2009-03-06" /> 
-			<Set name="13" date_pic="2009-03-27" date_vid="2009-03-27" /> 
-			<Set name="14" date_pic="" date_vid="" /> 
-			<Set name="15" date_pic="" date_vid="" /> 
-		</Sets> 
-	</Model> 
-	<Model firstname="Maya" lastname="L" birthdate="1997-10-29"> 
-		<Sets> 
-			<Set name="01" date_pic="" date_vid="" /> 
-			<Set name="02" date_pic="" date_vid="" /> 
-			<Set name="03" date_pic="" date_vid="" /> 
-			<Set name="04" date_pic="" date_vid="" /> 
-			<Set name="05" date_pic="" date_vid="" /> 
-			<Set name="06" date_pic="" date_vid="" /> 
-			<Set name="07" date_pic="" date_vid="" /> 
-			<Set name="08" date_pic="" date_vid="" /> 
-			<Set name="09" date_pic="" date_vid="" /> 
-			<Set name="10" date_pic="" date_vid="" /> 
-			<Set name="11" date_pic="" date_vid="" /> 
-			<Set name="12" date_pic="" date_vid="" /> 
-			<Set name="13" date_pic="" date_vid="" /> 
-			<Set name="14" date_pic="" date_vid="" /> 
-			<Set name="15" date_pic="" date_vid="" /> 
-			<Set name="16" date_pic="" date_vid="" /> 
-			<Set name="17" date_pic="" date_vid="" /> 
-			<Set name="18" date_pic="2010-06-04" date_vid="2010-06-04" /> 
-			<Set name="19" date_pic="2010-07-02" date_vid="2010-07-02" /> 
-			<Set name="20" date_pic="2010-07-30" date_vid="2010-07-30" /> 
-			<Set name="21" date_pic="2010-08-27" date_vid="2010-08-27" /> 
-			<Set name="22" date_pic="2010-09-24" date_vid="2010-09-24" /> 
-			<Set name="23" date_pic="2010-11-19" date_vid="2010-11-19" /> 
-			<Set name="24" date_pic="2010-11-26" date_vid="2010-11-26" /> 
-			<Set name="25" date_pic="2010-12-10" date_vid="2010-12-10" /> 
-			<Set name="26" date_pic="2010-12-17" date_vid="2010-12-17" /> 
-			<Set name="27" date_pic="2011-01-07" date_vid="2011-01-07" /> 
-			<Set name="28" date_pic="2011-01-14" date_vid="2011-02-04" /> 
-			<Set name="29" date_pic="2011-01-21" date_vid="2011-02-11" /> 
-			<Set name="30" date_pic="2011-06-17" date_vid="2011-02-18" /> 
-			<Set name="31" date_pic="2011-06-24" date_vid="2011-03-04" /> 
-			<Set name="32" date_pic="" date_vid="2011-03-11" /> 
-			<Set name="33" date_pic="" date_vid="2011-04-22" /> 
-			<Set name="34" date_pic="" date_vid="2011-05-06" />
-			<Set name="35" date_pic="" date_vid="2011-06-10" /> 
-		</Sets> 
-	</Model> 
-	<Model firstname="Mila" lastname="V" birthdate="1997-11-04"> 
-		<Sets> 
-			<Set name="01" date_pic="2009-03-20" date_vid="2009-03-20" /> 
-			<Set name="02" date_pic="" date_vid="" /> 
-			<Set name="03" date_pic="" date_vid="" /> 
-			<Set name="04" date_pic="" date_vid="" /> 
-			<Set name="05" date_pic="" date_vid="" /> 
-		</Sets> 
-	</Model> 
-	<Model firstname="Milena" lastname="S" birthdate="1995-06-19"> 
-		<Sets> 
-			<Set name="01" date_pic="" date_vid="" /> 
-			<Set name="02" date_pic="" date_vid="" /> 
-			<Set name="03" date_pic="" date_vid="" /> 
-			<Set name="04" date_pic="" date_vid="" /> 
-			<Set name="05" date_pic="" date_vid="" /> 
-		</Sets> 
-	</Model> 
-	<Model firstname="Monika" lastname="D" birthdate="1996-09-07"> 
-		<Sets> 
-			<Set name="01" date_pic="2009-02-13" date_vid="2009-02-13" /> 
-			<Set name="02" date_pic="2009-02-27" date_vid="2009-02-27" /> 
-			<Set name="03" date_pic="2009-03-13" date_vid="2009-03-13" /> 
-			<Set name="04" date_pic="2009-04-03" date_vid="2009-04-03" /> 
-			<Set name="05" date_pic="" date_vid="" /> 
-			<Set name="06" date_pic="" date_vid="" /> 
-			<Set name="07" date_pic="" date_vid="" /> 
-			<Set name="08" date_pic="" date_vid="" /> 
-			<Set name="09" date_pic="" date_vid="" /> 
-		</Sets> 
-	</Model> 
-	<Model firstname="Nadya" lastname="Stupak" birthdate="1996-04-15"> 
-		<Sets> 
-			<Set name="01" date_pic="2008-11-21" date_vid="2008-11-21" /> 
-			<Set name="02" date_pic="2008-12-05" date_vid="2008-12-05" /> 
-			<Set name="03" date_pic="2008-12-26" date_vid="2008-12-26" /> 
-			<Set name="04" date_pic="2009-01-02" date_vid="2009-01-02" /> 
-			<Set name="05" date_pic="2009-01-23" date_vid="2009-01-23" /> 
-		</Sets> 
-	</Model> 
-	<Model firstname="Nastia" lastname="Kravehenko" birthdate="1997-05-20"> 
-		<Sets> 
-			<Set name="01" date_pic="2008-11-14" date_vid="2008-11-14" /> 
-			<Set name="02" date_pic="2008-12-05" date_vid="2008-12-05" /> 
-			<Set name="03" date_pic="2008-12-26" date_vid="2008-12-26" /> 
-			<Set name="04" date_pic="2009-01-02" date_vid="2009-01-02" /> 
-			<Set name="05" date_pic="2009-01-16" date_vid="2009-01-16" /> 
-		</Sets> 
-	</Model> 
-	<Model firstname="Natasha" lastname="C" birthdate="1995-04-04"> 
-		<Sets> 
-			<Set name="01" date_pic="" date_vid="" /> 
-			<Set name="02" date_pic="" date_vid="" /> 
-			<Set name="03" date_pic="" date_vid="" /> 
-			<Set name="04" date_pic="" date_vid="" /> 
-			<Set name="05" date_pic="" date_vid="" /> 
-			<Set name="06" date_pic="" date_vid="" /> 
-			<Set name="07" date_pic="" date_vid="" /> 
-			<Set name="08" date_pic="" date_vid="" /> 
-			<Set name="09" date_pic="" date_vid="" /> 
-			<Set name="10" date_pic="" date_vid="" /> 
-			<Set name="11" date_pic="" date_vid="" /> 
-			<Set name="12" date_pic="" date_vid="" /> 
-			<Set name="13" date_pic="" date_vid="" /> 
-			<Set name="14" date_pic="2010-07-02" date_vid="2010-07-02" /> 
-			<Set name="15" date_pic="2010-08-20" date_vid="2010-08-20" /> 
-			<Set name="16" date_pic="2010-10-29" date_vid="2010-10-29" /> 
-			<Set name="17" date_pic="2010-12-03" date_vid="2010-12-03" /> 
-			<Set name="18" date_pic="2011-01-21" date_vid="2011-01-14" /> 
-			<Set name="19" date_pic="2011-02-04" date_vid="" /> 
-			<Set name="20" date_pic="2011-02-11" date_vid="" /> 
-			<Set name="21" date_pic="2011-03-04" date_vid="" /> 
-			<Set name="22" date_pic="2011-03-11" date_vid="" /> 
-		</Sets> 
-	</Model> 
-	<Model firstname="Nina" lastname="T" birthdate="1997-08-05"> 
-		<Sets> 
-			<Set name="01" date_pic="2009-02-27" date_vid="2009-02-27" /> 
-			<Set name="02" date_pic="2009-03-13" date_vid="2009-03-13" /> 
-			<Set name="03" date_pic="2009-03-20" date_vid="2009-03-20" /> 
-			<Set name="04" date_pic="" date_vid="" /> 
-			<Set name="05" date_pic="" date_vid="" /> 
-		</Sets> 
-	</Model> 
-	<Model firstname="Oksana" lastname="" birthdate="1995-12-04"> 
-		<Sets> 
-			<Set name="01" date_pic="2008-01-25" date_vid="2008-01-25" /> 
-			<Set name="02" date_pic="2008-02-29" date_vid="2008-02-29" /> 
-			<Set name="03" date_pic="2008-03-07" date_vid="2008-03-07" /> 
-		</Sets> 
-	</Model> 
-	<Model firstname="Oksana" lastname="Cherkasskaya" birthdate="1997-08-09"> 
-		<Sets> 
-			<Set name="01" date_pic="2008-11-07" date_vid="2008-11-07" /> 
-			<Set name="02" date_pic="2008-11-28" date_vid="2008-11-28" /> 
-			<Set name="03" date_pic="2008-12-05" date_vid="2008-12-05" /> 
-			<Set name="04" date_pic="2009-01-09" date_vid="2009-01-09" /> 
-			<Set name="05" date_pic="2009-01-23" date_vid="2009-01-23" /> 
-		</Sets> 
-	</Model> 
-	<Model firstname="Olesya" lastname="Z" birthdate=""> 
-		<Sets> 
-			<Set name="01" date_pic="2011-04-08" date_vid="" /> 
-			<Set name="02" date_pic="2011-04-15" date_vid="" /> 
-		</Sets> 
-	</Model> 
-	<Model firstname="Olga" lastname="Serbalyuk" birthdate="1994-11-22"> 
-		<Sets> 
-			<Set name="01" date_pic="2008-01-25" date_vid="2008-01-25" /> 
-			<Set name="02" date_pic="2008-02-15" date_vid="2008-02-15" /> 
-			<Set name="03" date_pic="2008-04-11" date_vid="2008-04-11" /> 
-			<Set name="04" date_pic="2008-05-23" date_vid="2008-05-23" /> 
-			<Set name="05" date_pic="2009-01-30" date_vid="2009-01-30" /> 
-		</Sets> 
-	</Model> 
-	<Model firstname="Olha" lastname="Dyka" birthdate=""> 
-		<Sets> 
-			<Set name="01" date_pic="2008-01-25" date_vid="2008-01-25" /> 
-			<Set name="02" date_pic="2008-04-04" date_vid="2008-04-04" /> 
-			<Set name="03" date_pic="" date_vid="" /> 
-			<Set name="04" date_pic="2008-05-23" date_vid="2008-05-23" /> 
-			<Set name="05" date_pic="2008-06-27" date_vid="2008-06-27" /> 
-		</Sets> 
-	</Model> 
-	<Model firstname="Olya" lastname="Yaroshenko" birthdate="1996-08-31"> 
-		<Sets> 
-			<Set name="01" date_pic="2008-08-01" date_vid="2008-08-01" /> 
-			<Set name="02" date_pic="2008-09-05" date_vid="2008-09-05" /> 
-			<Set name="03" date_pic="2008-09-26" date_vid="2008-09-26" /> 
-			<Set name="04" date_pic="2008-10-10" date_vid="2008-10-10" /> 
-			<Set name="05" date_pic="2008-10-17" date_vid="2008-10-17" /> 
-			<Set name="06" date_pic="2008-10-24" date_vid="2008-10-24" /> 
-			<Set name="07" date_pic="2008-10-31" date_vid="2008-10-31" /> 
-			<Set name="08" date_pic="2008-11-14" date_vid="2008-11-14" /> 
-			<Set name="09" date_pic="2008-12-05" date_vid="2008-12-05" /> 
-			<Set name="10" date_pic="2008-12-26" date_vid="2008-12-26" /> 
-			<Set name="11" date_pic="2009-02-13" date_vid="2009-02-13" /> 
-			<Set name="12" date_pic="2009-04-03" date_vid="2009-04-03" /> 
-			<Set name="13" date_pic="" date_vid="" /> 
-			<Set name="14" date_pic="" date_vid="" /> 
-			<Set name="15" date_pic="" date_vid="" /> 
-		</Sets> 
-	</Model> 
-	<Model firstname="Piona" lastname="P" birthdate="1995-04-30"> 
-		<Sets> 
-			<Set name="01" date_pic="2009-02-20" date_vid="2009-02-20" /> 
-			<Set name="02" date_pic="2009-02-27" date_vid="2009-02-27" /> 
-			<Set name="03" date_pic="2009-03-06" date_vid="2009-03-06" /> 
-			<Set name="04" date_pic="2009-04-03" date_vid="2009-04-03" /> 
-			<Set name="05" date_pic="" date_vid="" /> 
-			<Set name="06" date_pic="" date_vid="" /> 
-			<Set name="07" date_pic="" date_vid="" /> 
-			<Set name="08" date_pic="" date_vid="" /> 
-			<Set name="09" date_pic="" date_vid="" /> 
-			<Set name="10" date_pic="" date_vid="" /> 
-			<Set name="11" date_pic="" date_vid="" /> 
-			<Set name="12" date_pic="" date_vid="" /> 
-			<Set name="13" date_pic="" date_vid="" /> 
-			<Set name="14" date_pic="" date_vid="" /> 
-			<Set name="15" date_pic="" date_vid="" /> 
-			<Set name="16" date_pic="" date_vid="" /> 
-			<Set name="17" date_pic="" date_vid="" /> 
-			<Set name="18" date_pic="" date_vid="" /> 
-			<Set name="19" date_pic="" date_vid="" /> 
-			<Set name="20" date_pic="2010-06-04" date_vid="2010-06-04" /> 
-		</Sets> 
-	</Model> 
-
-	<Model firstname="Rita" lastname="K" birthdate="1997-07-30"> 
-		<Sets> 
-			<Set name="01" date_pic="2009-02-20" date_vid="2009-02-20" /> 
-			<Set name="02" date_pic="2009-02-27" date_vid="2009-02-27" /> 
-			<Set name="03" date_pic="" date_vid="" /> 
-			<Set name="04" date_pic="" date_vid="" /> 
-			<Set name="05" date_pic="" date_vid="" /> 
-			<Set name="06" date_pic="" date_vid="" /> 
-			<Set name="07" date_pic="" date_vid="" /> 
-			<Set name="08" date_pic="" date_vid="" /> 
-			<Set name="09" date_pic="" date_vid="" /> 
-			<Set name="10" date_pic="" date_vid="" /> 
-		</Sets> 
-	</Model> 
-	<Model firstname="Sanya" lastname="V" birthdate=""> 
-		<Sets> 
-			<Set name="01" date_pic="2010-06-25" date_vid="2010-06-25" /> 
-			<Set name="02" date_pic="2010-07-23" date_vid="2010-07-23" /> 
-			<Set name="03" date_pic="2010-08-13" date_vid="2010-08-13" /> 
-			<Set name="04" date_pic="2010-09-03" date_vid="2010-09-03" /> 
-			<Set name="05" date_pic="2010-10-08" date_vid="2010-10-08" /> 
-			<Set name="06" date_pic="2010-10-22" date_vid="2010-10-22" /> 
-			<Set name="07" date_pic="2010-12-10" date_vid="2010-12-10" /> 
-			<Set name="08" date_pic="2010-12-17" date_vid="2010-12-17" /> 
-			<Set name="09" date_pic="2011-01-21" date_vid="2011-01-28" /> 
-			<Set name="10" date_pic="2011-03-04" date_vid="2011-04-01" /> 
-			<Set name="11" date_pic="2011-03-18" date_vid="2011-04-08" /> 
-			<Set name="12" date_pic="2011-04-29" date_vid="2011-04-15" /> 
-			<Set name="13" date_pic="2011-05-06" date_vid="2011-05-13" /> 
-			<Set name="14" date_pic="2011-05-20" date_vid="2011-06-24" /> 
-			<Set name="15" date_pic="2011-05-27" date_vid="" /> 
-		</Sets> 
-	</Model> 
-	<Model firstname="Sarah" lastname="K" birthdate=""> 
-		<Sets> 
-			<Set name="01" date_pic="2010-06-18" date_vid="2010-06-18" /> 
-			<Set name="02" date_pic="2010-08-06" date_vid="2010-08-06" /> 
-			<Set name="03" date_pic="2010-11-05" date_vid="2010-11-05" /> 
-			<Set name="04" date_pic="2010-12-24" date_vid="2010-12-24" /> 
-			<Set name="05" date_pic="2011-02-04" date_vid="" /> 
-		</Sets> 
-	</Model> 
-	<Model firstname="Sasha" lastname="Dynovska" birthdate="1995-10-30"> 
-		<Sets> 
-			<Set name="01" date_pic="2008-01-25" date_vid="2008-01-25" /> 
-			<Set name="02" date_pic="2008-02-01" date_vid="2008-02-01" /> 
-			<Set name="03" date_pic="2008-02-08" date_vid="2008-02-08" /> 
-			<Set name="04" date_pic="2008-03-21" date_vid="2008-03-21" /> 
-			<Set name="05" date_pic="2008-03-28" date_vid="2008-03-28" /> 
-			<Set name="06" date_pic="2008-04-11" date_vid="2008-04-11" /> 
-			<Set name="07" date_pic="2008-05-02" date_vid="2008-05-02" /> 
-			<Set name="08" date_pic="2008-05-16" date_vid="2008-05-16" /> 
-			<Set name="09" date_pic="2008-05-23" date_vid="2008-05-23" /> 
-			<Set name="10" date_pic="2008-06-13" date_vid="2008-06-13" /> 
-			<Set name="11" date_pic="2008-06-27" date_vid="2008-06-27" /> 
-			<Set name="12" date_pic="2008-07-11" date_vid="2008-07-11" /> 
-			<Set name="13" date_pic="2008-08-15" date_vid="2008-08-15" /> 
-			<Set name="14" date_pic="2008-09-12" date_vid="2008-09-12" /> 
-		</Sets> 
-	</Model> 
-	<Model firstname="Sasha" lastname="Lipman" birthdate="1996-02-10"> 
-		<Sets> 
-			<Set name="01" date_pic="2008-01-25" date_vid="2008-01-25" /> 
-			<Set name="02" date_pic="2008-02-01" date_vid="2008-02-01" /> 
-			<Set name="03" date_pic="2008-02-15" date_vid="2008-02-15" /> 
-			<Set name="04" date_pic="2008-02-29" date_vid="2008-02-29" /> 
-			<Set name="05" date_pic="2008-05-09" date_vid="2008-05-09" /> 
-			<Set name="06" date_pic="2008-06-06" date_vid="2008-06-06" /> 
-			<Set name="07" date_pic="2008-07-18" date_vid="2008-07-18" /> 
-			<Set name="08" date_pic="2008-08-08" date_vid="2008-08-08" /> 
-			<Set name="09" date_pic="2008-09-26" date_vid="2008-09-26" /> 
-			<Set name="10" date_pic="2009-01-30" date_vid="2009-01-30" /> 
-		</Sets> 
-	</Model> 
-	<Model firstname="Sharlotta" lastname="S" birthdate="1998-08-14"> 
-		<Sets> 
-			<Set name="01" date_pic="" date_vid="" /> 
-			<Set name="02" date_pic="" date_vid="" /> 
-			<Set name="03" date_pic="" date_vid="" /> 
-			<Set name="04" date_pic="" date_vid="" /> 
-			<Set name="05" date_pic="" date_vid="" /> 
-			<Set name="06" date_pic="" date_vid="" /> 
-			<Set name="07" date_pic="" date_vid="" /> 
-			<Set name="08" date_pic="" date_vid="" /> 
-			<Set name="09" date_pic="" date_vid="" /> 
-			<Set name="10" date_pic="" date_vid="" /> 
-			<Set name="11" date_pic="" date_vid="" /> 
-			<Set name="12" date_pic="" date_vid="" /> 
-			<Set name="13" date_pic="" date_vid="" /> 
-			<Set name="14" date_pic="" date_vid="" /> 
-			<Set name="15" date_pic="" date_vid="" /> 
-			<Set name="16" date_pic="" date_vid="" /> 
-			<Set name="17" date_pic="" date_vid="" /> 
-			<Set name="18" date_pic="" date_vid="" /> 
-			<Set name="19" date_pic="" date_vid="" /> 
-			<Set name="20" date_pic="" date_vid="" /> 
-			<Set name="21" date_pic="" date_vid="" /> 
-			<Set name="22" date_pic="" date_vid="" /> 
-			<Set name="23" date_pic="" date_vid="" /> 
-			<Set name="24" date_pic="" date_vid="" /> 
-			<Set name="25" date_pic="2010-06-04" date_vid="2010-06-04" /> 
-			<Set name="26" date_pic="2010-07-16" date_vid="2010-07-16" /> 
-			<Set name="27" date_pic="2010-08-27" date_vid="2010-08-27" /> 
-			<Set name="28" date_pic="2010-10-15" date_vid="2010-10-15" /> 
-			<Set name="29" date_pic="2010-12-03" date_vid="2010-12-03" /> 
-		</Sets> 
-	</Model> 
-	<Model firstname="Silviya" lastname="R" birthdate="1995-07-03"> 
-		<Sets> 
-			<Set name="01" date_pic="" date_vid="" /> 
-			<Set name="02" date_pic="" date_vid="" /> 
-			<Set name="03" date_pic="" date_vid="" /> 
-			<Set name="04" date_pic="" date_vid="" /> 
-			<Set name="05" date_pic="" date_vid="" /> 
-		</Sets> 
-	</Model> 
-	<Model firstname="Sofiya" lastname="V" birthdate="1999-03-24"> 
-		<Sets> 
-			<Set name="01" date_pic="" date_vid="" /> 
-			<Set name="02" date_pic="" date_vid="" /> 
-			<Set name="03" date_pic="" date_vid="" /> 
-			<Set name="04" date_pic="" date_vid="" /> 
-			<Set name="05" date_pic="" date_vid="" /> 
-			<Set name="06" date_pic="" date_vid="" /> 
-			<Set name="07" date_pic="" date_vid="" /> 
-			<Set name="08" date_pic="" date_vid="" /> 
-			<Set name="09" date_pic="" date_vid="" /> 
-			<Set name="10" date_pic="" date_vid="" /> 
-			<Set name="11" date_pic="2011-04-15" date_vid="2011-02-04" /> 
-			<Set name="12" date_pic="2011-04-22" date_vid="2011-03-25" /> 
-			<Set name="13" date_pic="2011-04-29" date_vid="2011-06-10" /> 
-			<Set name="14" date_pic="2011-05-06" date_vid="2011-06-17" /> 
-			<Set name="15" date_pic="2011-05-13" date_vid="2011-06-24" /> 
-			<Set name="16" date_pic="2011-05-27" date_vid="" /> 
-		</Sets> 
-	</Model> 
-	<Model firstname="Sonya" lastname="M" birthdate="1997-05-03"> 
-		<Sets> 
-			<Set name="01" date_pic="2009-03-27" date_vid="2009-03-27" /> 
-			<Set name="02" date_pic="2009-04-03" date_vid="2009-04-03" /> 
-			<Set name="03" date_pic="" date_vid="" /> 
-			<Set name="04" date_pic="" date_vid="" /> 
-			<Set name="05" date_pic="" date_vid="" /> 
-			<Set name="06" date_pic="" date_vid="" /> 
-			<Set name="07" date_pic="" date_vid="" /> 
-			<Set name="08" date_pic="" date_vid="" /> 
-			<Set name="09" date_pic="" date_vid="" /> 
-			<Set name="10" date_pic="" date_vid="" /> 
-			<Set name="11" date_pic="" date_vid="" /> 
-			<Set name="12" date_pic="" date_vid="" /> 
-			<Set name="13" date_pic="" date_vid="" /> 
-			<Set name="14" date_pic="" date_vid="" /> 
-			<Set name="15" date_pic="" date_vid="" /> 
-			<Set name="16" date_pic="" date_vid="" /> 
-			<Set name="17" date_pic="" date_vid="" /> 
-			<Set name="18" date_pic="" date_vid="" /> 
-			<Set name="19" date_pic="" date_vid="" /> 
-			<Set name="20" date_pic="" date_vid="" /> 
-			<Set name="21" date_pic="2010-06-25" date_vid="2010-06-25" /> 
-			<Set name="22" date_pic="2010-07-02" date_vid="2010-07-02" /> 
-			<Set name="23" date_pic="2010-09-03" date_vid="2010-09-03" /> 
-			<Set name="24" date_pic="2010-09-10" date_vid="2010-09-10" /> 
-			<Set name="25" date_pic="2010-09-24" date_vid="2010-09-24" /> 
-			<Set name="26" date_pic="2010-10-29" date_vid="2010-10-29" /> 
-		</Sets> 
-	</Model> 
-	<Model firstname="Svetlana" lastname="Tanska" birthdate="1993-07-06"> 
-		<Sets> 
-			<Set name="01" date_pic="2008-01-25" date_vid="2008-01-25" /> 
-			<Set name="02" date_pic="2008-02-01" date_vid="2008-02-01" /> 
-			<Set name="03" date_pic="2008-02-08" date_vid="2008-02-08" /> 
-			<Set name="04" date_pic="2008-02-22" date_vid="2008-02-22" /> 
-			<Set name="05" date_pic="2008-03-21" date_vid="2008-03-21" /> 
-			<Set name="06" date_pic="" date_vid="" /> 
-			<Set name="07" date_pic="2008-06-20" date_vid="2008-06-20" /> 
-			<Set name="08" date_pic="2008-07-25" date_vid="2008-07-25" /> 
-			<Set name="09" date_pic="2009-01-30" date_vid="2009-01-30" /> 
-		</Sets> 
-	</Model> 
-	<Model firstname="Syuzanna" lastname="R" birthdate="1995-07-03"> 
-		<Sets> 
-			<Set name="01" date_pic="" date_vid="" /> 
-			<Set name="02" date_pic="" date_vid="" /> 
-			<Set name="03" date_pic="" date_vid="" /> 
-			<Set name="04" date_pic="" date_vid="" /> 
-			<Set name="05" date_pic="" date_vid="" /> 
-		</Sets> 
-	</Model> 
-	<Model firstname="Tatyana" lastname="Z" birthdate=""> 
-		<Sets> 
-			<Set name="01" date_pic="2011-03-25" date_vid="" /> 
-			<Set name="02" date_pic="2011-04-01" date_vid="" /> 
-		</Sets> 
-	</Model> 
-	<Model firstname="Ulyana" lastname="A" birthdate="1993-05-23"> 
-		<Sets> 
-			<Set name="01" date_pic="2008-01-25" date_vid="2008-01-25" /> 
-			<Set name="02" date_pic="2008-03-14" date_vid="2008-03-14" /> 
-			<Set name="03" date_pic="2008-03-21" date_vid="2008-03-21" /> 
-		</Sets> 
-	</Model> 
-	<Model firstname="Ulyana" lastname="Marunyak" birthdate=""> 
-		<Sets> 
-			<Set name="01" date_pic="2008-01-25" date_vid="2008-01-25" /> 
-			<Set name="02" date_pic="2008-02-08" date_vid="2008-02-08" /> 
-			<Set name="03" date_pic="2008-02-22" date_vid="2008-02-22" /> 
-			<Set name="04" date_pic="2008-04-04" date_vid="2008-04-04" /> 
-			<Set name="05" date_pic="2008-04-18" date_vid="2008-04-18" /> 
-			<Set name="06" date_pic="2008-05-09" date_vid="2008-05-09" /> 
-			<Set name="07" date_pic="2008-06-13" date_vid="2008-06-13" /> 
-			<Set name="08" date_pic="2008-07-04" date_vid="2008-07-04" /> 
-			<Set name="09" date_pic="2008-08-29" date_vid="2008-08-29" /> 
-			<Set name="10" date_pic="2008-09-19" date_vid="2008-09-19" /> 
-		</Sets> 
-	</Model> 
-	<Model firstname="Valensiya" lastname="S" birthdate=""> 
-		<Sets> 
-			<Set name="01" date_pic="" date_vid="" /> 
-			<Set name="02" date_pic="" date_vid="" /> 
-			<Set name="03" date_pic="" date_vid="" /> 
-			<Set name="04" date_pic="" date_vid="" /> 
-			<Set name="05" date_pic="2010-06-11" date_vid="2010-06-11" /> 
-			<Set name="06" date_pic="2010-06-18" date_vid="2010-06-18" /> 
-			<Set name="07" date_pic="2010-07-09" date_vid="2010-07-09" /> 
-			<Set name="08" date_pic="2010-07-16" date_vid="2010-07-16" /> 
-			<Set name="09" date_pic="2010-07-23" date_vid="2010-07-23" /> 
-			<Set name="10" date_pic="2010-07-30" date_vid="2010-07-30" /> 
-			<Set name="11" date_pic="2010-08-06" date_vid="2010-08-06" /> 
-			<Set name="12" date_pic="2010-08-13" date_vid="2010-08-13" /> 
-			<Set name="13" date_pic="2010-08-27" date_vid="2010-08-27" /> 
-			<Set name="14" date_pic="2010-09-03" date_vid="2010-09-03" /> 
-			<Set name="15" date_pic="2010-10-08" date_vid="2010-10-08" /> 
-			<Set name="16" date_pic="2010-10-15" date_vid="2010-10-15" /> 
-			<Set name="17" date_pic="2010-10-22" date_vid="2010-10-22" /> 
-			<Set name="18" date_pic="2010-10-29" date_vid="2010-10-29" /> 
-			<Set name="19" date_pic="2010-11-05" date_vid="2010-11-05" /> 
-			<Set name="20" date_pic="2010-11-12" date_vid="2010-11-12" /> 
-			<Set name="21" date_pic="2010-11-19" date_vid="2010-11-19" /> 
-			<Set name="22" date_pic="2010-11-26" date_vid="2010-11-26" /> 
-			<Set name="23" date_pic="2010-12-03" date_vid="2010-12-03" /> 
-			<Set name="24" date_pic="2010-12-10" date_vid="2010-12-10" /> 
-			<Set name="25" date_pic="2010-12-24" date_vid="2010-12-24" /> 
-			<Set name="26" date_pic="2011-01-07" date_vid="2011-01-07" /> 
-			<Set name="27" date_pic="2011-01-28" date_vid="2011-01-14" /> 
-			<Set name="28" date_pic="2011-02-04" date_vid="2011-01-21" /> 
-			<Set name="29" date_pic="2011-02-11" date_vid="2011-02-18" /> 
-			<Set name="30" date_pic="2011-02-18" date_vid="2011-02-25" /> 
-			<Set name="31" date_pic="2011-02-25" date_vid="2011-04-01" /> 
-			<Set name="32" date_pic="2011-03-04" date_vid="2011-04-08" /> 
-			<Set name="33" date_pic="2011-03-11" date_vid="2011-04-15" /> 
-			<Set name="34" date_pic="2011-03-25" date_vid="2011-04-22" /> 
-			<Set name="35" date_pic="2011-05-27" date_vid="2011-04-29" /> 
-			<Set name="36" date_pic="2011-06-10" date_vid="2011-05-06" /> 
-			<Set name="37" date_pic="" date_vid="2011-05-20" /> 
-			<Set name="38" date_pic="" date_vid="2011-06-24" />
-		</Sets> 
-	</Model> 
-	<Model firstname="Valeriya" lastname="Levytska" birthdate="1996-05-02"> 
-		<Sets> 
-			<Set name="01" date_pic="2008-01-25" date_vid="2008-01-25" /> 
-			<Set name="02" date_pic="2008-02-08" date_vid="2008-02-08" /> 
-			<Set name="03" date_pic="2008-03-14" date_vid="2008-03-14" /> 
-			<Set name="04" date_pic="2008-04-18" date_vid="2008-04-18" /> 
-			<Set name="05" date_pic="2008-05-09" date_vid="2008-05-09" /> 
-			<Set name="06" date_pic="2008-05-30" date_vid="2008-05-30" /> 
-			<Set name="07" date_pic="2008-06-20" date_vid="2008-06-20" /> 
-			<Set name="08" date_pic="2008-07-04" date_vid="2008-07-04" /> 
-			<Set name="09" date_pic="2008-07-18" date_vid="2008-07-18" /> 
-			<Set name="10" date_pic="2008-08-01" date_vid="2008-08-01" /> 
-			<Set name="11" date_pic="2008-08-15" date_vid="2008-08-15" /> 
-			<Set name="12" date_pic="2009-01-30" date_vid="2009-01-30" /> 
-		</Sets> 
-	</Model> 
-	<Model firstname="Victoria" lastname="Dytko" birthdate=""> 
-		<Sets> 
-			<Set name="01" date_pic="2008-01-25" date_vid="2008-01-25" /> 
-			<Set name="02" date_pic="2008-02-15" date_vid="2008-02-15" /> 
-			<Set name="03" date_pic="2008-03-21" date_vid="2008-03-21" /> 
-			<Set name="04" date_pic="2008-04-11" date_vid="2008-04-11" /> 
-			<Set name="05" date_pic="2008-07-11" date_vid="2008-07-11" /> 
-			<Set name="06" date_pic="2008-08-01" date_vid="2008-08-01" /> 
-			<Set name="07" date_pic="2008-10-24" date_vid="2008-10-24" /> 
-		</Sets> 
-	</Model> 
-	<Model firstname="Victoria" lastname="S" birthdate=""> 
-		<Sets> 
-			<Set name="01" date_pic="2008-01-25" date_vid="2008-01-25" /> 
-			<Set name="02" date_pic="2008-02-29" date_vid="2008-02-29" /> 
-		</Sets> 
-	</Model> 
-	<Model firstname="Vika" lastname="Zadorozhnyaya" birthdate="1997-04-24"> 
-		<Sets> 
-			<Set name="01" date_pic="2008-08-22" date_vid="2008-08-22" /> 
-			<Set name="02" date_pic="2008-09-12" date_vid="2008-09-12" /> 
-			<Set name="03" date_pic="2008-09-19" date_vid="2008-09-19" /> 
-			<Set name="04" date_pic="2008-10-10" date_vid="2008-10-10" /> 
-			<Set name="05" date_pic="2008-10-24" date_vid="2008-10-24" /> 
-			<Set name="06" date_pic="2008-11-21" date_vid="2008-11-21" /> 
-			<Set name="07" date_pic="2008-12-12" date_vid="2008-12-12" /> 
-			<Set name="08" date_pic="2008-12-19" date_vid="2008-12-19" /> 
-			<Set name="09" date_pic="2008-12-26" date_vid="2008-12-26" /> 
-			<Set name="10" date_pic="2009-01-16" date_vid="2009-01-16" /> 
-			<Set name="11" date_pic="2009-02-06" date_vid="2009-02-06" /> 
-			<Set name="12" date_pic="2009-02-20" date_vid="2009-02-20" /> 
-			<Set name="13" date_pic="2009-03-06" date_vid="2009-03-06" /> 
-			<Set name="14" date_pic="2009-04-10" date_vid="2009-04-10" /> 
-			<Set name="15" date_pic="" date_vid="" /> 
-			<Set name="16" date_pic="" date_vid="" /> 
-			<Set name="17" date_pic="" date_vid="" /> 
-			<Set name="18" date_pic="" date_vid="" /> 
-			<Set name="19" date_pic="" date_vid="" /> 
-			<Set name="20" date_pic="" date_vid="" /> 
-			<Set name="21" date_pic="" date_vid="" /> 
-			<Set name="22" date_pic="" date_vid="" /> 
-			<Set name="23" date_pic="" date_vid="" /> 
-			<Set name="24" date_pic="" date_vid="" /> 
-			<Set name="25" date_pic="" date_vid="" /> 
-			<Set name="26" date_pic="" date_vid="" /> 
-			<Set name="27" date_pic="" date_vid="" /> 
-			<Set name="28" date_pic="" date_vid="" /> 
-			<Set name="29" date_pic="" date_vid="" /> 
-			<Set name="30" date_pic="" date_vid="" /> 
-			<Set name="31" date_pic="2011-06-24" date_vid="2011-01-21" /> 
-			<Set name="32" date_pic="" date_vid="2011-02-25" /> 
-			<Set name="33" date_pic="" date_vid="2011-05-20" />
-			<Set name="34" date_pic="" date_vid="2011-06-24" /> 
-		</Sets> 
-	</Model> 
-	<Model firstname="Violeta" lastname="K" birthdate="1996-08-27"> 
-		<Sets> 
-			<Set name="01" date_pic="2009-04-10" date_vid="2009-04-10" /> 
-			<Set name="02" date_pic="" date_vid="" /> 
-			<Set name="03" date_pic="" date_vid="" /> 
-			<Set name="04" date_pic="" date_vid="" /> 
-			<Set name="05" date_pic="" date_vid="" /> 
-			<Set name="06" date_pic="" date_vid="" /> 
-			<Set name="07" date_pic="" date_vid="" /> 
-			<Set name="08" date_pic="" date_vid="" /> 
-			<Set name="09" date_pic="" date_vid="" /> 
-			<Set name="10" date_pic="" date_vid="" /> 
-			<Set name="11" date_pic="" date_vid="" /> 
-			<Set name="12" date_pic="" date_vid="" /> 
-			<Set name="13" date_pic="" date_vid="" /> 
-			<Set name="14" date_pic="" date_vid="" /> 
-			<Set name="15" date_pic="" date_vid="" /> 
-			<Set name="16" date_pic="" date_vid="" /> 
-			<Set name="17" date_pic="" date_vid="" /> 
-			<Set name="18" date_pic="" date_vid="" /> 
-			<Set name="19" date_pic="" date_vid="" /> 
-			<Set name="20" date_pic="" date_vid="" /> 
-		</Sets> 
-	</Model> 
-	<Model firstname="Yuliya" lastname="K" birthdate=""> 
-		<Sets> 
-			<Set name="01" date_pic="2011-01-14" date_vid="2011-01-21" />
-			<Set name="02" date_pic="2011-02-18" date_vid="2011-01-28" /> 
-			<Set name="03" date_pic="2011-02-25" date_vid="2011-02-04" /> 
-			<Set name="04" date_pic="2011-03-25" date_vid="2011-03-04" /> 
-			<Set name="05" date_pic="2011-04-01" date_vid="2011-04-08" /> 
-			<Set name="06" date_pic="2011-05-13" date_vid="2011-04-22" /> 
-			<Set name="07" date_pic="2011-05-20" date_vid="2011-04-29" /> 
-			<Set name="08" date_pic="2011-06-10" date_vid="2011-05-27" />
-			<Set name="09" date_pic="2011-06-17" date_vid="2011-06-10" />
-			<Set name="10" date_pic="2011-06-24" date_vid="2011-06-17" /> 
-		</Sets> 
-	</Model> 
-	<Model firstname="Yuliya" lastname="Semenishyna" birthdate="1997-11-21"> 
-		<Sets> 
-			<Set name="01" date_pic="2008-01-25" date_vid="2008-01-25" /> 
-			<Set name="02" date_pic="2008-02-01" date_vid="2008-02-01" /> 
-			<Set name="03" date_pic="2008-03-07" date_vid="2008-03-07" /> 
-			<Set name="04" date_pic="2008-03-28" date_vid="2008-03-28" /> 
-			<Set name="05" date_pic="2008-04-25" date_vid="2008-04-25" /> 
-			<Set name="06" date_pic="2008-05-16" date_vid="2008-05-16" /> 
-			<Set name="07" date_pic="2008-06-06" date_vid="2008-06-06" /> 
-			<Set name="08" date_pic="2008-07-04" date_vid="2008-07-04" /> 
-			<Set name="09" date_pic="2008-07-25" date_vid="2008-07-25" /> 
-			<Set name="10" date_pic="2008-09-05" date_vid="2008-09-05" /> 
-			<Set name="11" date_pic="2008-09-19" date_vid="2008-09-19" /> 
-		</Sets> 
-	</Model> 
-	<Model firstname="Yuliya" lastname="Zabihalyuk" birthdate=""> 
-		<Sets> 
-			<Set name="01" date_pic="2008-01-25" date_vid="2008-01-25" /> 
-			<Set name="02" date_pic="2008-05-02" date_vid="2008-05-02" /> 
-			<Set name="03" date_pic="2008-06-20" date_vid="2008-06-20" /> 
-			<Set name="04" date_pic="2008-07-25" date_vid="2008-07-25" /> 
-			<Set name="05" date_pic="2008-08-08" date_vid="2008-08-08" /> 
-		</Sets> 
-	</Model> 
-	<Model firstname="Zina" lastname="B" birthdate="1996-01-24"> 
-		<Sets> 
-			<Set name="01" date_pic="" date_vid="" /> 
-			<Set name="02" date_pic="" date_vid="" /> 
-			<Set name="03" date_pic="" date_vid="" /> 
-			<Set name="04" date_pic="" date_vid="" /> 
+	<Model firstname="Alisa" lastname="A" birthdate="">
+		<Sets>
+			<Set name="01" date_pic="" date_vid="2011-02-18" />
+			<Set name="02" date_pic="" date_vid="2011-02-25" />
+			<Set name="03" date_pic="" date_vid="2011-05-13" />
+			<Set name="04" date_pic="" date_vid="2011-05-27" />
+		</Sets>
+	</Model>
+	<Model firstname="Alyona" lastname="Gromova" birthdate="1996-03-19">
+		<Sets>
+			<Set name="01" date_pic="2008-08-08" date_vid="2008-08-08" />
+			<Set name="02" date_pic="2008-11-07" date_vid="2008-11-07" />
+			<Set name="03" date_pic="2008-11-14" date_vid="2008-11-14" />
+			<Set name="04" date_pic="2008-12-26" date_vid="2008-12-26" />
+			<Set name="05" date_pic="2009-01-09" date_vid="2009-01-09" />
+		</Sets>
+	</Model>
+	<Model firstname="Alyona" lastname="Rudenko" birthdate="1995-05-03">
+		<Sets>
+			<Set name="01" date_pic="2008-08-15" date_vid="2008-08-15" />
+			<Set name="02" date_pic="2008-08-22" date_vid="2008-08-22" />
+			<Set name="03" date_pic="2008-09-05" date_vid="2008-09-05" />
+			<Set name="04" date_pic="2008-10-10" date_vid="2008-10-10" />
+			<Set name="05" date_pic="2008-10-17" date_vid="2008-10-17" />
+			<Set name="06" date_pic="2008-10-31" date_vid="2008-10-31" />
+			<Set name="07" date_pic="2008-12-05" date_vid="2008-12-05" />
+			<Set name="08" date_pic="2008-12-12" date_vid="2008-12-12" />
+			<Set name="09" date_pic="2009-01-16" date_vid="2009-01-16" />
+			<Set name="10" date_pic="2009-02-13" date_vid="2009-02-13" />
+			<Set name="11" date_pic="2009-03-13" date_vid="2009-03-13" />
+			<Set name="12" date_pic="2009-04-03" date_vid="2009-04-03" />
+			<Set name="13" date_pic="" date_vid="" />
+			<Set name="14" date_pic="" date_vid="" />
+			<Set name="15" date_pic="2010-07-16" date_vid="2010-07-16" />
+			<Set name="16" date_pic="2010-08-06" date_vid="2010-08-06" />
+			<Set name="17" date_pic="2010-10-22" date_vid="2010-10-22" />
+			<Set name="18" date_pic="2010-11-26" date_vid="2010-11-26" />
+		</Sets>
+	</Model>
+	<Model firstname="Anastasia" lastname="Kocyuruba" birthdate="1995-08-24">
+		<Sets>
+			<Set name="01" date_pic="2008-11-14" date_vid="2008-11-14" />
+			<Set name="02" date_pic="2008-11-28" date_vid="2008-11-28" />
+			<Set name="03" date_pic="2008-12-19" date_vid="2008-12-19" />
+			<Set name="04" date_pic="2009-01-16" date_vid="2009-01-16" />
+			<Set name="05" date_pic="2009-01-23" date_vid="2009-01-23" />
+		</Sets>
+	</Model>
+	<Model firstname="Anastasia" lastname="Spasuk" birthdate="1997-01-28">
+		<Sets>
+			<Set name="01" date_pic="2008-01-25" date_vid="2008-01-25" />
+			<Set name="02" date_pic="2008-04-04" date_vid="2008-04-04" />
+			<Set name="03" date_pic="2008-04-18" date_vid="2008-04-18" />
+			<Set name="04" date_pic="2008-06-06" date_vid="2008-06-06" />
+			<Set name="05" date_pic="2008-06-27" date_vid="2008-06-27" />
+			<Set name="06" date_pic="2008-07-18" date_vid="2008-07-18" />
+			<Set name="07" date_pic="2008-08-22" date_vid="2008-08-22" />
+			<Set name="08" date_pic="2008-09-26" date_vid="2008-09-26" />
+			<Set name="09" date_pic="2009-01-30" date_vid="2009-01-30" />
+		</Sets>
+	</Model>
+	<Model firstname="Anita" lastname="D" birthdate="1996-03-17">
+		<Sets>
+			<Set name="01" date_pic="2009-03-06" date_vid="2009-03-06" />
+			<Set name="02" date_pic="2009-03-27" date_vid="2009-03-27" />
+			<Set name="03" date_pic="2009-04-10" date_vid="2009-04-10" />
+			<Set name="04" date_pic="" date_vid="" />
+			<Set name="05" date_pic="" date_vid="" />
+			<Set name="06" date_pic="" date_vid="" />
+			<Set name="07" date_pic="" date_vid="" />
+			<Set name="08" date_pic="" date_vid="" />
+			<Set name="09" date_pic="" date_vid="" />
+			<Set name="10" date_pic="" date_vid="" />
+		</Sets>
+	</Model>
+	<Model firstname="Anjelika" lastname="L" birthdate="1996-11-20">
+		<Sets>
+			<Set name="01" date_pic="2009-02-06" date_vid="2009-02-06" />
+			<Set name="02" date_pic="2009-02-13" date_vid="2009-02-13" />
+			<Set name="03" date_pic="2009-03-27" date_vid="2009-03-27" />
+			<Set name="04" date_pic="" date_vid="" />
+			<Set name="05" date_pic="" date_vid="" />
+			<Set name="06" date_pic="" date_vid="" />
+			<Set name="07" date_pic="" date_vid="" />
+			<Set name="08" date_pic="" date_vid="" />
+			<Set name="09" date_pic="" date_vid="" />
+			<Set name="10" date_pic="" date_vid="" />
+			<Set name="11" date_pic="" date_vid="" />
+			<Set name="12" date_pic="" date_vid="" />
+			<Set name="13" date_pic="" date_vid="" />
+			<Set name="14" date_pic="" date_vid="" />
+			<Set name="15" date_pic="" date_vid="" />
+			<Set name="16" date_pic="2011-04-29" date_vid="2011-01-28" />
+			<Set name="17" date_pic="2011-05-06" date_vid="2011-03-11" />
+			<Set name="18" date_pic="" date_vid="2011-04-15" />
+			<Set name="19" date_pic="" date_vid="2011-06-03" />
+		</Sets>
+	</Model>
+	<Model firstname="Anna" lastname="Thebryk" birthdate="1995-09-11">
+		<Sets>
+			<Set name="01" date_pic="2008-01-25" date_vid="2008-01-25" />
+			<Set name="02" date_pic="2008-03-07" date_vid="2008-03-07" />
+			<Set name="03" date_pic="2008-04-18" date_vid="2008-04-18" />
+			<Set name="04" date_pic="2008-05-02" date_vid="2008-05-02" />
+			<Set name="05" date_pic="2008-05-23" date_vid="2008-05-23" />
+			<Set name="06" date_pic="2008-05-30" date_vid="2008-05-30" />
+			<Set name="07" date_pic="2008-06-20" date_vid="2008-06-20" />
+			<Set name="08" date_pic="2008-07-18" date_vid="2008-07-18" />
+			<Set name="09" date_pic="2008-08-08" date_vid="2008-08-08" />
+			<Set name="10" date_pic="2008-08-29" date_vid="2008-08-29" />
+			<Set name="11" date_pic="2008-10-03" date_vid="2008-10-03" />
+		</Sets>
+	</Model>
+	<Model firstname="Anna" lastname="Zalevska" birthdate="1995-11-03">
+		<Sets>
+			<Set name="01" date_pic="2008-01-25" date_vid="2008-01-25" />
+			<Set name="02" date_pic="2008-03-28" date_vid="2008-03-28" />
+			<Set name="03" date_pic="2008-05-09" date_vid="2008-05-09" />
+			<Set name="04" date_pic="2008-06-13" date_vid="2008-06-13" />
+			<Set name="05" date_pic="2009-01-30" date_vid="2009-01-30" />
+		</Sets>
+	</Model>
+	<Model firstname="Ashley" lastname="S" birthdate="">
+		<Sets>
+			<Set name="01" date_pic="2010-06-18" date_vid="2010-06-18" />
+			<Set name="02" date_pic="2010-08-13" date_vid="2010-08-13" />
+			<Set name="03" date_pic="2010-10-08" date_vid="2010-10-08" />
+			<Set name="04" date_pic="2010-11-19" date_vid="2010-11-19" />
+			<Set name="05" date_pic="2011-04-08" date_vid="" />
+			<Set name="06" date_pic="2011-04-22" date_vid="" />
+			<Set name="07" date_pic="2011-05-06" date_vid="" />
+		</Sets>
+	</Model>
+	<Model firstname="Biyanka" lastname="S" birthdate="1997-07-05">
+		<Sets>
+			<Set name="01" date_pic="2009-02-06" date_vid="2009-02-06" />
+			<Set name="02" date_pic="2009-02-20" date_vid="2009-02-20" />
+			<Set name="03" date_pic="2009-03-27" date_vid="2009-03-27" />
+			<Set name="04" date_pic="" date_vid="" />
+			<Set name="05" date_pic="" date_vid="" />
+			<Set name="06" date_pic="" date_vid="" />
+			<Set name="07" date_pic="" date_vid="" />
+			<Set name="08" date_pic="" date_vid="" />
+			<Set name="09" date_pic="" date_vid="" />
+			<Set name="10" date_pic="" date_vid="" />
+		</Sets>
+	</Model>
+	<Model firstname="Chris" lastname="G" birthdate="">
+		<Sets>
+			<Set name="01" date_pic="2010-07-02" date_vid="2010-07-02" />
+			<Set name="02" date_pic="2010-07-09" date_vid="2010-07-09" />
+			<Set name="03" date_pic="2010-08-20" date_vid="2010-08-20" />
+			<Set name="04" date_pic="2010-10-01" date_vid="2010-10-01" />
+			<Set name="05" date_pic="2010-11-26" date_vid="2010-11-26" />
+		</Sets>
+	</Model>
+	<Model firstname="Diana" lastname="M" birthdate="">
+		<Sets>
+			<Set name="01" date_pic="2010-07-30" date_vid="2010-07-30" />
+			<Set name="02" date_pic="2010-09-17" date_vid="2010-09-17" />
+			<Set name="03" date_pic="2010-10-08" date_vid="2010-10-08" />
+			<Set name="04" date_pic="2010-12-31" date_vid="2010-12-31" />
+			<Set name="05" date_pic="2011-01-14" date_vid="2011-03-18" />
+			<Set name="06" date_pic="2011-02-04" date_vid="2011-03-25" />
+			<Set name="07" date_pic="" date_vid="2011-04-22" />
+			<Set name="08" date_pic="" date_vid="2011-05-13" />
+		</Sets>
+	</Model>
+	<Model firstname="Dina" lastname="Y" birthdate="1996-12-12">
+		<Sets>
+			<Set name="01" date_pic="" date_vid="" />
+			<Set name="02" date_pic="" date_vid="" />
+			<Set name="03" date_pic="" date_vid="" />
+			<Set name="04" date_pic="" date_vid="" />
 			<Set name="05" date_pic="" date_vid="" />
 		</Sets>
 	</Model>
-	
+	<Model firstname="Elena" lastname="V" birthdate="1997-12-28">
+		<Sets>
+			<Set name="01" date_pic="" date_vid="" />
+			<Set name="02" date_pic="" date_vid="" />
+			<Set name="03" date_pic="" date_vid="" />
+			<Set name="04" date_pic="" date_vid="" />
+			<Set name="05" date_pic="" date_vid="" />
+		</Sets>
+	</Model>
+	<Model firstname="Elisa" lastname="M" birthdate="1995-08-27">
+		<Sets>
+			<Set name="01" date_pic="2009-03-13" date_vid="2009-03-13" />
+			<Set name="02" date_pic="2009-03-20" date_vid="2009-03-20" />
+			<Set name="03" date_pic="2009-04-10" date_vid="2009-04-10" />
+			<Set name="04" date_pic="" date_vid="" />
+			<Set name="05" date_pic="" date_vid="" />
+			<Set name="06" date_pic="" date_vid="" />
+			<Set name="07" date_pic="" date_vid="" />
+			<Set name="08" date_pic="" date_vid="" />
+			<Set name="09" date_pic="" date_vid="" />
+			<Set name="10" date_pic="" date_vid="" />
+			<Set name="11" date_pic="2010-07-09" date_vid="2010-07-09" />
+			<Set name="12" date_pic="2010-09-03" date_vid="2010-09-03" />
+			<Set name="13" date_pic="2010-10-15" date_vid="2010-10-15" />
+			<Set name="14" date_pic="2010-11-12" date_vid="2010-11-12" />
+			<Set name="15" date_pic="2011-01-14" date_vid="2011-05-20" />
+			<Set name="16" date_pic="2011-04-15" date_vid="" />
+			<Set name="17" date_pic="2011-04-22" date_vid="" />
+		</Sets>
+	</Model>
+	<Model firstname="Elizabeta" lastname="S" birthdate="1996-01-26">
+		<Sets>
+			<Set name="01" date_pic="2009-02-27" date_vid="2009-02-27" />
+			<Set name="02" date_pic="2009-03-06" date_vid="2009-03-06" />
+			<Set name="03" date_pic="2009-03-20" date_vid="2009-03-20" />
+			<Set name="04" date_pic="" date_vid="" />
+			<Set name="05" date_pic="" date_vid="" />
+			<Set name="06" date_pic="" date_vid="" />
+			<Set name="07" date_pic="" date_vid="" />
+			<Set name="08" date_pic="" date_vid="" />
+			<Set name="09" date_pic="" date_vid="" />
+			<Set name="10" date_pic="" date_vid="" />
+			<Set name="11" date_pic="" date_vid="" />
+			<Set name="12" date_pic="" date_vid="" />
+			<Set name="13" date_pic="" date_vid="" />
+			<Set name="14" date_pic="" date_vid="" />
+			<Set name="15" date_pic="" date_vid="" />
+		</Sets>
+	</Model>
+	<Model firstname="Emma" lastname="M" birthdate="">
+		<Sets>
+			<Set name="01" date_pic="2010-06-11" date_vid="2010-06-11" />
+			<Set name="02" date_pic="2010-08-27" date_vid="2010-08-27" />
+			<Set name="03" date_pic="2010-09-24" date_vid="2010-09-24" />
+			<Set name="04" date_pic="2010-11-12" date_vid="2010-11-12" />
+		</Sets>
+	</Model>
+	<Model firstname="Erica" lastname="R" birthdate="">
+		<Sets>
+			<Set name="01" date_pic="2011-01-21" date_vid="2011-02-11" />
+			<Set name="02" date_pic="2011-02-25" date_vid="2011-03-04" />
+			<Set name="03" date_pic="2011-03-18" date_vid="2011-04-01" />
+			<Set name="04" date_pic="2011-03-25" date_vid="2011-06-03" />
+			<Set name="05" date_pic="2011-04-01" date_vid="" />
+			<Set name="06" date_pic="2011-04-08" date_vid="" />
+			<Set name="07" date_pic="2011-06-03" date_vid="" />
+			<Set name="08" date_pic="2011-06-17" date_vid="" />
+		</Sets>
+	</Model>
+	<Model firstname="Eva" lastname="G" birthdate="">
+		<Sets>
+			<Set name="01" date_pic="" date_vid="" />
+			<Set name="02" date_pic="" date_vid="" />
+			<Set name="03" date_pic="" date_vid="" />
+			<Set name="04" date_pic="" date_vid="" />
+			<Set name="05" date_pic="" date_vid="" />
+		</Sets>
+	</Model>
+	<Model firstname="Inna" lastname="Lyublinskaya" birthdate="1997-01-06">
+		<Sets>
+			<Set name="01" date_pic="2008-08-08" date_vid="2008-08-08" />
+			<Set name="02" date_pic="2008-08-29" date_vid="2008-08-29" />
+			<Set name="03" date_pic="2008-09-26" date_vid="2008-09-26" />
+			<Set name="04" date_pic="2008-10-03" date_vid="2008-10-03" />
+			<Set name="05" date_pic="2008-10-10" date_vid="2008-10-10" />
+			<Set name="06" date_pic="2008-10-31" date_vid="2008-10-31" />
+			<Set name="07" date_pic="2008-11-14" date_vid="2008-11-14" />
+			<Set name="08" date_pic="2008-11-21" date_vid="2008-11-21" />
+			<Set name="09" date_pic="2008-12-26" date_vid="2008-12-26" />
+			<Set name="10" date_pic="2009-01-09" date_vid="2009-01-09" />
+		</Sets>
+	</Model>
+	<Model firstname="Ira" lastname="Kosterova" birthdate="1996-08-12">
+		<Sets>
+			<Set name="01" date_pic="2008-11-07" date_vid="2008-11-07" />
+			<Set name="02" date_pic="2008-11-21" date_vid="2008-11-21" />
+			<Set name="03" date_pic="2008-11-28" date_vid="2008-11-28" />
+			<Set name="04" date_pic="2009-01-02" date_vid="2009-01-02" />
+			<Set name="05" date_pic="2009-01-09" date_vid="2009-01-09" />
+		</Sets>
+	</Model>
+	<Model firstname="Irina" lastname="Belous" birthdate="1996-11-15">
+		<Sets>
+			<Set name="01" date_pic="2008-08-15" date_vid="2008-08-15" />
+			<Set name="02" date_pic="2008-08-22" date_vid="2008-08-22" />
+			<Set name="03" date_pic="2008-09-12" date_vid="2008-09-12" />
+			<Set name="04" date_pic="2008-10-03" date_vid="2008-10-03" />
+			<Set name="05" date_pic="2008-10-24" date_vid="2008-10-24" />
+			<Set name="06" date_pic="2008-10-31" date_vid="2008-10-31" />
+			<Set name="07" date_pic="2008-11-28" date_vid="2008-11-28" />
+			<Set name="08" date_pic="2008-12-12" date_vid="2008-12-12" />
+			<Set name="09" date_pic="2009-01-09" date_vid="2009-01-09" />
+			<Set name="10" date_pic="2009-02-13" date_vid="2009-02-13" />
+			<Set name="11" date_pic="2009-03-13" date_vid="2009-03-13" />
+			<Set name="12" date_pic="" date_vid="" />
+			<Set name="13" date_pic="" date_vid="" />
+			<Set name="14" date_pic="" date_vid="" />
+		</Sets>
+	</Model>
+	<Model firstname="Iryna" lastname="Mihalina" birthdate="1997-02-03">
+		<Sets>
+			<Set name="01" date_pic="2008-01-25" date_vid="2008-01-25" />
+			<Set name="02" date_pic="2008-05-16" date_vid="2008-05-16" />
+			<Set name="03" date_pic="2008-06-27" date_vid="2008-06-27" />
+			<Set name="04" date_pic="2008-07-11" date_vid="2008-07-11" />
+			<Set name="05" date_pic="2008-07-25" date_vid="2008-07-25" />
+			<Set name="06" date_pic="2008-09-05" date_vid="2008-09-05" />
+		</Sets>
+	</Model>
+	<Model firstname="Jasmin" lastname="P" birthdate="1996-07-05">
+		<Sets>
+			<Set name="01" date_pic="" date_vid="" />
+			<Set name="02" date_pic="" date_vid="" />
+			<Set name="03" date_pic="" date_vid="" />
+			<Set name="04" date_pic="" date_vid="" />
+			<Set name="05" date_pic="" date_vid="" />
+			<Set name="06" date_pic="2011-01-28" date_vid="" />
+		</Sets>
+	</Model>
+	<Model firstname="Juliya" lastname="Rasskazova" birthdate="1996-03-06">
+		<Sets>
+			<Set name="01" date_pic="2008-08-01" date_vid="2008-08-01" />
+			<Set name="02" date_pic="2008-08-29" date_vid="2008-08-29" />
+			<Set name="03" date_pic="2008-09-26" date_vid="2008-09-26" />
+			<Set name="04" date_pic="2008-10-17" date_vid="2008-10-17" />
+			<Set name="05" date_pic="2008-11-21" date_vid="2008-11-21" />
+			<Set name="06" date_pic="2008-11-28" date_vid="2008-11-28" />
+			<Set name="07" date_pic="2008-12-12" date_vid="2008-12-12" />
+			<Set name="08" date_pic="2008-12-19" date_vid="2008-12-19" />
+			<Set name="09" date_pic="2009-01-02" date_vid="2009-01-02" />
+			<Set name="10" date_pic="" date_vid="" />
+			<Set name="11" date_pic="" date_vid="" />
+			<Set name="12" date_pic="" date_vid="" />
+			<Set name="13" date_pic="" date_vid="" />
+			<Set name="14" date_pic="" date_vid="" />
+		</Sets>
+	</Model>
+	<Model firstname="Kateryna" lastname="Voitsykhovska" birthdate="">
+		<Sets>
+			<Set name="01" date_pic="2008-01-25" date_vid="2008-01-25" />
+			<Set name="02" date_pic="2008-02-08" date_vid="2008-02-08" />
+			<Set name="03" date_pic="2008-03-14" date_vid="2008-03-14" />
+			<Set name="04" date_pic="2008-03-28" date_vid="2008-03-28" />
+			<Set name="05" date_pic="2008-05-30" date_vid="2008-05-30" />
+			<Set name="06" date_pic="2008-06-13" date_vid="2008-06-13" />
+			<Set name="07" date_pic="2008-07-11" date_vid="2008-07-11" />
+			<Set name="08" date_pic="2008-08-15" date_vid="2008-08-15" />
+		</Sets>
+	</Model>
+	<Model firstname="Klara" lastname="H" birthdate="">
+		<Sets>
+			<Set name="01" date_pic="" date_vid="2011-03-18" />
+			<Set name="02" date_pic="" date_vid="2011-03-25" />
+		</Sets>
+	</Model>
+	<Model firstname="Larisa" lastname="Havriluyk" birthdate="1993-11-06">
+		<Sets>
+			<Set name="01" date_pic="2008-01-25" date_vid="2008-01-25" />
+			<Set name="02" date_pic="2008-02-22" date_vid="2008-02-22" />
+			<Set name="03" date_pic="2008-04-04" date_vid="2008-04-04" />
+			<Set name="04" date_pic="2008-07-04" date_vid="2008-07-04" />
+			<Set name="05" date_pic="2008-10-03" date_vid="2008-10-03" />
+			<Set name="06" date_pic="2008-12-19" date_vid="2008-12-19" />
+			<Set name="07" date_pic="2009-01-23" date_vid="2009-01-23" />
+		</Sets>
+	</Model>
+	<Model firstname="Laura" lastname="B" birthdate="2000-06-13">
+		<Sets>
+			<Set name="01" date_pic="" date_vid="" />
+			<Set name="02" date_pic="" date_vid="" />
+			<Set name="03" date_pic="" date_vid="" />
+			<Set name="04" date_pic="" date_vid="" />
+			<Set name="05" date_pic="" date_vid="" />
+			<Set name="06" date_pic="" date_vid="" />
+			<Set name="07" date_pic="" date_vid="" />
+			<Set name="08" date_pic="" date_vid="" />
+			<Set name="09" date_pic="" date_vid="" />
+			<Set name="10" date_pic="" date_vid="" />
+			<Set name="11" date_pic="" date_vid="" />
+			<Set name="12" date_pic="" date_vid="" />
+			<Set name="13" date_pic="" date_vid="" />
+			<Set name="14" date_pic="" date_vid="" />
+			<Set name="15" date_pic="2010-06-04" date_vid="2010-06-04" />
+			<Set name="16" date_pic="2010-07-16" date_vid="2010-07-16" />
+			<Set name="17" date_pic="2010-07-30" date_vid="2010-07-30" />
+			<Set name="18" date_pic="2010-09-10" date_vid="2010-09-10" />
+			<Set name="19" date_pic="2010-09-17" date_vid="2010-09-17" />
+			<Set name="20" date_pic="2010-10-22" date_vid="2010-10-22" />
+			<Set name="21" date_pic="2010-11-05" date_vid="2010-11-05" />
+			<Set name="22" date_pic="2010-12-17" date_vid="2010-12-17" />
+			<Set name="23" date_pic="2010-12-24" date_vid="2010-12-24" />
+			<Set name="24" date_pic="2011-01-07" date_vid="2011-01-07" />
+			<Set name="25" date_pic="2011-01-28" date_vid="2011-01-14" />
+			<Set name="26" date_pic="2011-02-11" date_vid="2011-01-21" />
+			<Set name="27" date_pic="2011-02-18" date_vid="2011-04-08" />
+			<Set name="28" date_pic="2011-02-25" date_vid="2011-04-29" />
+			<Set name="29" date_pic="2011-03-11" date_vid="2011-05-06" />
+			<Set name="30" date_pic="2011-03-18" date_vid="2011-05-13" />
+			<Set name="31" date_pic="" date_vid="2011-06-17" />
+		</Sets>
+	</Model>
+	<Model firstname="Lera" lastname="Cicima" birthdate="1995-01-25">
+		<Sets>
+			<Set name="01" date_pic="2008-08-15" date_vid="2008-08-15" />
+			<Set name="02" date_pic="2008-09-19" date_vid="2008-09-19" />
+			<Set name="03" date_pic="2008-10-17" date_vid="2008-10-17" />
+			<Set name="04" date_pic="2008-11-07" date_vid="2008-11-07" />
+			<Set name="05" date_pic="2009-01-23" date_vid="2009-01-23" />
+		</Sets>
+	</Model>
+	<Model firstname="Lidiya" lastname="A" birthdate="">
+		<Sets>
+			<Set name="01" date_pic="2011-04-01" date_vid="2011-01-28" />
+			<Set name="02" date_pic="2011-04-15" date_vid="2011-03-11" />
+			<Set name="03" date_pic="2011-05-13" date_vid="2011-03-18" />
+			<Set name="04" date_pic="2011-05-20" date_vid="2011-06-10" />
+			<Set name="05" date_pic="2011-05-27" date_vid="" />
+			<Set name="06" date_pic="2011-06-03" date_vid="" />
+			<Set name="07" date_pic="2011-06-10" date_vid="" />
+		</Sets>
+	</Model>
+	<Model firstname="Liliya" lastname="Y" birthdate="1997-10-05">
+		<Sets>
+			<Set name="01" date_pic="" date_vid="" />
+			<Set name="02" date_pic="" date_vid="" />
+			<Set name="03" date_pic="" date_vid="" />
+			<Set name="04" date_pic="" date_vid="" />
+			<Set name="05" date_pic="" date_vid="" />
+			<Set name="06" date_pic="" date_vid="" />
+			<Set name="07" date_pic="" date_vid="" />
+			<Set name="08" date_pic="" date_vid="" />
+			<Set name="09" date_pic="" date_vid="" />
+			<Set name="10" date_pic="" date_vid="" />
+			<Set name="11" date_pic="" date_vid="" />
+			<Set name="12" date_pic="" date_vid="" />
+			<Set name="13" date_pic="" date_vid="" />
+			<Set name="14" date_pic="" date_vid="" />
+			<Set name="15" date_pic="" date_vid="" />
+			<Set name="16" date_pic="2010-06-18" date_vid="2010-06-18" />
+			<Set name="17" date_pic="2010-06-25" date_vid="2010-06-25" />
+			<Set name="18" date_pic="2010-09-10" date_vid="2010-09-10" />
+			<Set name="19" date_pic="2010-09-17" date_vid="2010-09-17" />
+			<Set name="20" date_pic="2010-09-24" date_vid="2010-09-24" />
+			<Set name="21" date_pic="2010-10-29" date_vid="2010-10-29" />
+			<Set name="22" date_pic="2010-12-17" date_vid="2010-12-17" />
+			<Set name="23" date_pic="2010-12-24" date_vid="2010-12-24" />
+			<Set name="24" date_pic="2011-01-07" date_vid="2011-01-07" />
+			<Set name="25" date_pic="2011-01-28" date_vid="2011-01-14" />
+			<Set name="26" date_pic="2011-02-11" date_vid="2011-02-04" />
+			<Set name="27" date_pic="2011-02-18" date_vid="2011-02-18" />
+			<Set name="28" date_pic="2011-03-04" date_vid="2011-03-04" />
+			<Set name="29" date_pic="2011-03-11" date_vid="2011-03-25" />
+			<Set name="30" date_pic="2011-03-18" date_vid="2011-05-27" />
+			<Set name="31" date_pic="2011-04-08" date_vid="2011-06-03" />
+			<Set name="32" date_pic="2011-04-22" date_vid="" />
+			<Set name="33" date_pic="2011-06-24" date_vid="" />
+		</Sets>
+	</Model>
+	<Model firstname="Lina" lastname="I" birthdate="">
+		<Sets>
+			<Set name="01" date_pic="2010-06-11" date_vid="2010-06-11" />
+			<Set name="02" date_pic="2010-07-09" date_vid="2010-07-09" />
+			<Set name="03" date_pic="2010-07-23" date_vid="2010-07-23" />
+			<Set name="04" date_pic="2010-08-20" date_vid="2010-08-20" />
+			<Set name="05" date_pic="2010-09-10" date_vid="2010-09-10" />
+			<Set name="06" date_pic="2010-09-17" date_vid="2010-09-17" />
+			<Set name="07" date_pic="2010-10-01" date_vid="2010-10-01" />
+			<Set name="08" date_pic="2010-11-05" date_vid="2010-11-05" />
+			<Set name="09" date_pic="2010-11-12" date_vid="2010-11-12" />
+			<Set name="10" date_pic="2010-12-03" date_vid="2010-12-03" />
+			<Set name="11" date_pic="2010-12-10" date_vid="2010-12-10" />
+			<Set name="12" date_pic="2010-12-31" date_vid="2010-12-31" />
+			<Set name="13" date_pic="2011-06-03" date_vid="2011-02-11" />
+			<Set name="14" date_pic="2011-06-10" date_vid="2011-03-18" />
+			<Set name="15" date_pic="" date_vid="2011-05-06" />
+			<Set name="16" date_pic="" date_vid="2011-05-27" />
+			<Set name="17" date_pic="" date_vid="2011-06-03" />
+		</Sets>
+	</Model>
+	<Model firstname="Margarita" lastname="D" birthdate="1997-08-18">
+		<Sets>
+			<Set name="01" date_pic="2009-02-06" date_vid="2009-02-06" />
+			<Set name="02" date_pic="2009-02-20" date_vid="2009-02-20" />
+			<Set name="03" date_pic="2009-03-20" date_vid="2009-03-20" />
+			<Set name="04" date_pic="2009-04-10" date_vid="2009-04-10" />
+			<Set name="05" date_pic="" date_vid="" />
+			<Set name="06" date_pic="" date_vid="" />
+			<Set name="07" date_pic="" date_vid="" />
+			<Set name="08" date_pic="" date_vid="" />
+			<Set name="09" date_pic="" date_vid="" />
+			<Set name="10" date_pic="" date_vid="" />
+		</Sets>
+	</Model>
+	<Model firstname="Marie" lastname="A" birthdate="">
+		<Sets>
+			<Set name="01" date_pic="2010-06-11" date_vid="2010-06-11" />
+			<Set name="02" date_pic="2010-08-13" date_vid="2010-08-13" />
+			<Set name="03" date_pic="2010-10-01" date_vid="2010-10-01" />
+			<Set name="04" date_pic="2010-12-31" date_vid="2010-12-31" />
+		</Sets>
+	</Model>
+	<Model firstname="Mariya" lastname="D" birthdate="">
+		<Sets>
+			<Set name="01" date_pic="" date_vid="2011-02-11" />
+			<Set name="02" date_pic="" date_vid="2011-02-25" />
+			<Set name="03" date_pic="" date_vid="2011-04-29" />
+			<Set name="04" date_pic="" date_vid="2011-06-17" />
+		</Sets>
+	</Model>
+	<Model firstname="Masha" lastname="M" birthdate="">
+		<Sets>
+			<Set name="01" date_pic="2011-06-03" date_vid="" />
+			<Set name="02" date_pic="2011-06-17" date_vid="" />
+		</Sets>
+	</Model>
+	<Model firstname="Masha" lastname="Pruticova" birthdate="1999-07-09">
+		<Sets>
+			<Set name="01" date_pic="2008-08-22" date_vid="2008-08-22" />
+			<Set name="02" date_pic="2008-09-05" date_vid="2008-09-05" />
+			<Set name="03" date_pic="2008-09-12" date_vid="2008-09-12" />
+			<Set name="04" date_pic="2008-10-10" date_vid="2008-10-10" />
+			<Set name="05" date_pic="2009-01-16" date_vid="2009-01-16" />
+		</Sets>
+	</Model>
+	<Model firstname="Masha" lastname="Shevkunova" birthdate="1996-01-30">
+		<Sets>
+			<Set name="01" date_pic="2008-08-01" date_vid="2008-08-01" />
+			<Set name="02" date_pic="2008-08-29" date_vid="2008-08-29" />
+			<Set name="03" date_pic="2008-09-19" date_vid="2008-09-19" />
+			<Set name="04" date_pic="2008-10-03" date_vid="2008-10-03" />
+			<Set name="05" date_pic="2008-10-17" date_vid="2008-10-17" />
+			<Set name="06" date_pic="2008-10-24" date_vid="2008-10-24" />
+			<Set name="07" date_pic="2008-10-31" date_vid="2008-10-31" />
+			<Set name="08" date_pic="2008-11-07" date_vid="2008-11-07" />
+			<Set name="09" date_pic="2008-12-12" date_vid="2008-12-12" />
+			<Set name="10" date_pic="2009-01-02" date_vid="2009-01-02" />
+			<Set name="11" date_pic="2009-02-06" date_vid="2009-02-06" />
+			<Set name="12" date_pic="2009-03-06" date_vid="2009-03-06" />
+			<Set name="13" date_pic="2009-03-27" date_vid="2009-03-27" />
+			<Set name="14" date_pic="" date_vid="" />
+			<Set name="15" date_pic="" date_vid="" />
+		</Sets>
+	</Model>
+	<Model firstname="Maya" lastname="L" birthdate="1997-10-29">
+		<Sets>
+			<Set name="01" date_pic="" date_vid="" />
+			<Set name="02" date_pic="" date_vid="" />
+			<Set name="03" date_pic="" date_vid="" />
+			<Set name="04" date_pic="" date_vid="" />
+			<Set name="05" date_pic="" date_vid="" />
+			<Set name="06" date_pic="" date_vid="" />
+			<Set name="07" date_pic="" date_vid="" />
+			<Set name="08" date_pic="" date_vid="" />
+			<Set name="09" date_pic="" date_vid="" />
+			<Set name="10" date_pic="" date_vid="" />
+			<Set name="11" date_pic="" date_vid="" />
+			<Set name="12" date_pic="" date_vid="" />
+			<Set name="13" date_pic="" date_vid="" />
+			<Set name="14" date_pic="" date_vid="" />
+			<Set name="15" date_pic="" date_vid="" />
+			<Set name="16" date_pic="" date_vid="" />
+			<Set name="17" date_pic="" date_vid="" />
+			<Set name="18" date_pic="2010-06-04" date_vid="2010-06-04" />
+			<Set name="19" date_pic="2010-07-02" date_vid="2010-07-02" />
+			<Set name="20" date_pic="2010-07-30" date_vid="2010-07-30" />
+			<Set name="21" date_pic="2010-08-27" date_vid="2010-08-27" />
+			<Set name="22" date_pic="2010-09-24" date_vid="2010-09-24" />
+			<Set name="23" date_pic="2010-11-19" date_vid="2010-11-19" />
+			<Set name="24" date_pic="2010-11-26" date_vid="2010-11-26" />
+			<Set name="25" date_pic="2010-12-10" date_vid="2010-12-10" />
+			<Set name="26" date_pic="2010-12-17" date_vid="2010-12-17" />
+			<Set name="27" date_pic="2011-01-07" date_vid="2011-01-07" />
+			<Set name="28" date_pic="2011-01-14" date_vid="2011-02-04" />
+			<Set name="29" date_pic="2011-01-21" date_vid="2011-02-11" />
+			<Set name="30" date_pic="2011-06-17" date_vid="2011-02-18" />
+			<Set name="31" date_pic="2011-06-24" date_vid="2011-03-04" />
+			<Set name="32" date_pic="" date_vid="2011-03-11" />
+			<Set name="33" date_pic="" date_vid="2011-04-22" />
+			<Set name="34" date_pic="" date_vid="2011-05-06" />
+			<Set name="35" date_pic="" date_vid="2011-06-10" />
+		</Sets>
+	</Model>
+	<Model firstname="Mila" lastname="V" birthdate="1997-11-04">
+		<Sets>
+			<Set name="01" date_pic="2009-03-20" date_vid="2009-03-20" />
+			<Set name="02" date_pic="" date_vid="" />
+			<Set name="03" date_pic="" date_vid="" />
+			<Set name="04" date_pic="" date_vid="" />
+			<Set name="05" date_pic="" date_vid="" />
+		</Sets>
+	</Model>
+	<Model firstname="Milena" lastname="S" birthdate="1995-06-19">
+		<Sets>
+			<Set name="01" date_pic="" date_vid="" />
+			<Set name="02" date_pic="" date_vid="" />
+			<Set name="03" date_pic="" date_vid="" />
+			<Set name="04" date_pic="" date_vid="" />
+			<Set name="05" date_pic="" date_vid="" />
+		</Sets>
+	</Model>
+	<Model firstname="Monika" lastname="D" birthdate="1996-09-07">
+		<Sets>
+			<Set name="01" date_pic="2009-02-13" date_vid="2009-02-13" />
+			<Set name="02" date_pic="2009-02-27" date_vid="2009-02-27" />
+			<Set name="03" date_pic="2009-03-13" date_vid="2009-03-13" />
+			<Set name="04" date_pic="2009-04-03" date_vid="2009-04-03" />
+			<Set name="05" date_pic="" date_vid="" />
+			<Set name="06" date_pic="" date_vid="" />
+			<Set name="07" date_pic="" date_vid="" />
+			<Set name="08" date_pic="" date_vid="" />
+			<Set name="09" date_pic="" date_vid="" />
+		</Sets>
+	</Model>
+	<Model firstname="Nadya" lastname="Stupak" birthdate="1996-04-15">
+		<Sets>
+			<Set name="01" date_pic="2008-11-21" date_vid="2008-11-21" />
+			<Set name="02" date_pic="2008-12-05" date_vid="2008-12-05" />
+			<Set name="03" date_pic="2008-12-26" date_vid="2008-12-26" />
+			<Set name="04" date_pic="2009-01-02" date_vid="2009-01-02" />
+			<Set name="05" date_pic="2009-01-23" date_vid="2009-01-23" />
+		</Sets>
+	</Model>
+	<Model firstname="Nastia" lastname="Kravehenko" birthdate="1997-05-20">
+		<Sets>
+			<Set name="01" date_pic="2008-11-14" date_vid="2008-11-14" />
+			<Set name="02" date_pic="2008-12-05" date_vid="2008-12-05" />
+			<Set name="03" date_pic="2008-12-26" date_vid="2008-12-26" />
+			<Set name="04" date_pic="2009-01-02" date_vid="2009-01-02" />
+			<Set name="05" date_pic="2009-01-16" date_vid="2009-01-16" />
+		</Sets>
+	</Model>
+	<Model firstname="Natasha" lastname="C" birthdate="1995-04-04">
+		<Sets>
+			<Set name="01" date_pic="" date_vid="" />
+			<Set name="02" date_pic="" date_vid="" />
+			<Set name="03" date_pic="" date_vid="" />
+			<Set name="04" date_pic="" date_vid="" />
+			<Set name="05" date_pic="" date_vid="" />
+			<Set name="06" date_pic="" date_vid="" />
+			<Set name="07" date_pic="" date_vid="" />
+			<Set name="08" date_pic="" date_vid="" />
+			<Set name="09" date_pic="" date_vid="" />
+			<Set name="10" date_pic="" date_vid="" />
+			<Set name="11" date_pic="" date_vid="" />
+			<Set name="12" date_pic="" date_vid="" />
+			<Set name="13" date_pic="" date_vid="" />
+			<Set name="14" date_pic="2010-07-02" date_vid="2010-07-02" />
+			<Set name="15" date_pic="2010-08-20" date_vid="2010-08-20" />
+			<Set name="16" date_pic="2010-10-29" date_vid="2010-10-29" />
+			<Set name="17" date_pic="2010-12-03" date_vid="2010-12-03" />
+			<Set name="18" date_pic="2011-01-21" date_vid="2011-01-14" />
+			<Set name="19" date_pic="2011-02-04" date_vid="" />
+			<Set name="20" date_pic="2011-02-11" date_vid="" />
+			<Set name="21" date_pic="2011-03-04" date_vid="" />
+			<Set name="22" date_pic="2011-03-11" date_vid="" />
+		</Sets>
+	</Model>
+	<Model firstname="Nina" lastname="T" birthdate="1997-08-05">
+		<Sets>
+			<Set name="01" date_pic="2009-02-27" date_vid="2009-02-27" />
+			<Set name="02" date_pic="2009-03-13" date_vid="2009-03-13" />
+			<Set name="03" date_pic="2009-03-20" date_vid="2009-03-20" />
+			<Set name="04" date_pic="" date_vid="" />
+			<Set name="05" date_pic="" date_vid="" />
+		</Sets>
+	</Model>
+	<Model firstname="Oksana" lastname="" birthdate="1995-12-04">
+		<Sets>
+			<Set name="01" date_pic="2008-01-25" date_vid="2008-01-25" />
+			<Set name="02" date_pic="2008-02-29" date_vid="2008-02-29" />
+			<Set name="03" date_pic="2008-03-07" date_vid="2008-03-07" />
+		</Sets>
+	</Model>
+	<Model firstname="Oksana" lastname="Cherkasskaya" birthdate="1997-08-09">
+		<Sets>
+			<Set name="01" date_pic="2008-11-07" date_vid="2008-11-07" />
+			<Set name="02" date_pic="2008-11-28" date_vid="2008-11-28" />
+			<Set name="03" date_pic="2008-12-05" date_vid="2008-12-05" />
+			<Set name="04" date_pic="2009-01-09" date_vid="2009-01-09" />
+			<Set name="05" date_pic="2009-01-23" date_vid="2009-01-23" />
+		</Sets>
+	</Model>
+	<Model firstname="Olesya" lastname="Z" birthdate="">
+		<Sets>
+			<Set name="01" date_pic="2011-04-08" date_vid="" />
+			<Set name="02" date_pic="2011-04-15" date_vid="" />
+		</Sets>
+	</Model>
+	<Model firstname="Olga" lastname="Serbalyuk" birthdate="1994-11-22">
+		<Sets>
+			<Set name="01" date_pic="2008-01-25" date_vid="2008-01-25" />
+			<Set name="02" date_pic="2008-02-15" date_vid="2008-02-15" />
+			<Set name="03" date_pic="2008-04-11" date_vid="2008-04-11" />
+			<Set name="04" date_pic="2008-05-23" date_vid="2008-05-23" />
+			<Set name="05" date_pic="2009-01-30" date_vid="2009-01-30" />
+		</Sets>
+	</Model>
+	<Model firstname="Olha" lastname="Dyka" birthdate="">
+		<Sets>
+			<Set name="01" date_pic="2008-01-25" date_vid="2008-01-25" />
+			<Set name="02" date_pic="2008-04-04" date_vid="2008-04-04" />
+			<Set name="03" date_pic="" date_vid="" />
+			<Set name="04" date_pic="2008-05-23" date_vid="2008-05-23" />
+			<Set name="05" date_pic="2008-06-27" date_vid="2008-06-27" />
+		</Sets>
+	</Model>
+	<Model firstname="Olya" lastname="Yaroshenko" birthdate="1996-08-31">
+		<Sets>
+			<Set name="01" date_pic="2008-08-01" date_vid="2008-08-01" />
+			<Set name="02" date_pic="2008-09-05" date_vid="2008-09-05" />
+			<Set name="03" date_pic="2008-09-26" date_vid="2008-09-26" />
+			<Set name="04" date_pic="2008-10-10" date_vid="2008-10-10" />
+			<Set name="05" date_pic="2008-10-17" date_vid="2008-10-17" />
+			<Set name="06" date_pic="2008-10-24" date_vid="2008-10-24" />
+			<Set name="07" date_pic="2008-10-31" date_vid="2008-10-31" />
+			<Set name="08" date_pic="2008-11-14" date_vid="2008-11-14" />
+			<Set name="09" date_pic="2008-12-05" date_vid="2008-12-05" />
+			<Set name="10" date_pic="2008-12-26" date_vid="2008-12-26" />
+			<Set name="11" date_pic="2009-02-13" date_vid="2009-02-13" />
+			<Set name="12" date_pic="2009-04-03" date_vid="2009-04-03" />
+			<Set name="13" date_pic="" date_vid="" />
+			<Set name="14" date_pic="" date_vid="" />
+			<Set name="15" date_pic="" date_vid="" />
+		</Sets>
+	</Model>
+	<Model firstname="Piona" lastname="P" birthdate="1995-04-30">
+		<Sets>
+			<Set name="01" date_pic="2009-02-20" date_vid="2009-02-20" />
+			<Set name="02" date_pic="2009-02-27" date_vid="2009-02-27" />
+			<Set name="03" date_pic="2009-03-06" date_vid="2009-03-06" />
+			<Set name="04" date_pic="2009-04-03" date_vid="2009-04-03" />
+			<Set name="05" date_pic="" date_vid="" />
+			<Set name="06" date_pic="" date_vid="" />
+			<Set name="07" date_pic="" date_vid="" />
+			<Set name="08" date_pic="" date_vid="" />
+			<Set name="09" date_pic="" date_vid="" />
+			<Set name="10" date_pic="" date_vid="" />
+			<Set name="11" date_pic="" date_vid="" />
+			<Set name="12" date_pic="" date_vid="" />
+			<Set name="13" date_pic="" date_vid="" />
+			<Set name="14" date_pic="" date_vid="" />
+			<Set name="15" date_pic="" date_vid="" />
+			<Set name="16" date_pic="" date_vid="" />
+			<Set name="17" date_pic="" date_vid="" />
+			<Set name="18" date_pic="" date_vid="" />
+			<Set name="19" date_pic="" date_vid="" />
+			<Set name="20" date_pic="2010-06-04" date_vid="2010-06-04" />
+		</Sets>
+	</Model>
+	<Model firstname="Rita" lastname="K" birthdate="1997-07-30">
+		<Sets>
+			<Set name="01" date_pic="2009-02-20" date_vid="2009-02-20" />
+			<Set name="02" date_pic="2009-02-27" date_vid="2009-02-27" />
+			<Set name="03" date_pic="" date_vid="" />
+			<Set name="04" date_pic="" date_vid="" />
+			<Set name="05" date_pic="" date_vid="" />
+			<Set name="06" date_pic="" date_vid="" />
+			<Set name="07" date_pic="" date_vid="" />
+			<Set name="08" date_pic="" date_vid="" />
+			<Set name="09" date_pic="" date_vid="" />
+			<Set name="10" date_pic="" date_vid="" />
+		</Sets>
+	</Model>
+	<Model firstname="Sanya" lastname="V" birthdate="">
+		<Sets>
+			<Set name="01" date_pic="2010-06-25" date_vid="2010-06-25" />
+			<Set name="02" date_pic="2010-07-23" date_vid="2010-07-23" />
+			<Set name="03" date_pic="2010-08-13" date_vid="2010-08-13" />
+			<Set name="04" date_pic="2010-09-03" date_vid="2010-09-03" />
+			<Set name="05" date_pic="2010-10-08" date_vid="2010-10-08" />
+			<Set name="06" date_pic="2010-10-22" date_vid="2010-10-22" />
+			<Set name="07" date_pic="2010-12-10" date_vid="2010-12-10" />
+			<Set name="08" date_pic="2010-12-17" date_vid="2010-12-17" />
+			<Set name="09" date_pic="2011-01-21" date_vid="2011-01-28" />
+			<Set name="10" date_pic="2011-03-04" date_vid="2011-04-01" />
+			<Set name="11" date_pic="2011-03-18" date_vid="2011-04-08" />
+			<Set name="12" date_pic="2011-04-29" date_vid="2011-04-15" />
+			<Set name="13" date_pic="2011-05-06" date_vid="2011-05-13" />
+			<Set name="14" date_pic="2011-05-20" date_vid="2011-06-24" />
+			<Set name="15" date_pic="2011-05-27" date_vid="" />
+		</Sets>
+	</Model>
+	<Model firstname="Sarah" lastname="K" birthdate="">
+		<Sets>
+			<Set name="01" date_pic="2010-06-18" date_vid="2010-06-18" />
+			<Set name="02" date_pic="2010-08-06" date_vid="2010-08-06" />
+			<Set name="03" date_pic="2010-11-05" date_vid="2010-11-05" />
+			<Set name="04" date_pic="2010-12-24" date_vid="2010-12-24" />
+			<Set name="05" date_pic="2011-02-04" date_vid="" />
+		</Sets>
+	</Model>
+	<Model firstname="Sasha" lastname="Dynovska" birthdate="1995-10-30">
+		<Sets>
+			<Set name="01" date_pic="2008-01-25" date_vid="2008-01-25" />
+			<Set name="02" date_pic="2008-02-01" date_vid="2008-02-01" />
+			<Set name="03" date_pic="2008-02-08" date_vid="2008-02-08" />
+			<Set name="04" date_pic="2008-03-21" date_vid="2008-03-21" />
+			<Set name="05" date_pic="2008-03-28" date_vid="2008-03-28" />
+			<Set name="06" date_pic="2008-04-11" date_vid="2008-04-11" />
+			<Set name="07" date_pic="2008-05-02" date_vid="2008-05-02" />
+			<Set name="08" date_pic="2008-05-16" date_vid="2008-05-16" />
+			<Set name="09" date_pic="2008-05-23" date_vid="2008-05-23" />
+			<Set name="10" date_pic="2008-06-13" date_vid="2008-06-13" />
+			<Set name="11" date_pic="2008-06-27" date_vid="2008-06-27" />
+			<Set name="12" date_pic="2008-07-11" date_vid="2008-07-11" />
+			<Set name="13" date_pic="2008-08-15" date_vid="2008-08-15" />
+			<Set name="14" date_pic="2008-09-12" date_vid="2008-09-12" />
+		</Sets>
+	</Model>
+	<Model firstname="Sasha" lastname="Lipman" birthdate="1996-02-10">
+		<Sets>
+			<Set name="01" date_pic="2008-01-25" date_vid="2008-01-25" />
+			<Set name="02" date_pic="2008-02-01" date_vid="2008-02-01" />
+			<Set name="03" date_pic="2008-02-15" date_vid="2008-02-15" />
+			<Set name="04" date_pic="2008-02-29" date_vid="2008-02-29" />
+			<Set name="05" date_pic="2008-05-09" date_vid="2008-05-09" />
+			<Set name="06" date_pic="2008-06-06" date_vid="2008-06-06" />
+			<Set name="07" date_pic="2008-07-18" date_vid="2008-07-18" />
+			<Set name="08" date_pic="2008-08-08" date_vid="2008-08-08" />
+			<Set name="09" date_pic="2008-09-26" date_vid="2008-09-26" />
+			<Set name="10" date_pic="2009-01-30" date_vid="2009-01-30" />
+		</Sets>
+	</Model>
+	<Model firstname="Sharlotta" lastname="S" birthdate="1998-08-14">
+		<Sets>
+			<Set name="01" date_pic="" date_vid="" />
+			<Set name="02" date_pic="" date_vid="" />
+			<Set name="03" date_pic="" date_vid="" />
+			<Set name="04" date_pic="" date_vid="" />
+			<Set name="05" date_pic="" date_vid="" />
+			<Set name="06" date_pic="" date_vid="" />
+			<Set name="07" date_pic="" date_vid="" />
+			<Set name="08" date_pic="" date_vid="" />
+			<Set name="09" date_pic="" date_vid="" />
+			<Set name="10" date_pic="" date_vid="" />
+			<Set name="11" date_pic="" date_vid="" />
+			<Set name="12" date_pic="" date_vid="" />
+			<Set name="13" date_pic="" date_vid="" />
+			<Set name="14" date_pic="" date_vid="" />
+			<Set name="15" date_pic="" date_vid="" />
+			<Set name="16" date_pic="" date_vid="" />
+			<Set name="17" date_pic="" date_vid="" />
+			<Set name="18" date_pic="" date_vid="" />
+			<Set name="19" date_pic="" date_vid="" />
+			<Set name="20" date_pic="" date_vid="" />
+			<Set name="21" date_pic="" date_vid="" />
+			<Set name="22" date_pic="" date_vid="" />
+			<Set name="23" date_pic="" date_vid="" />
+			<Set name="24" date_pic="" date_vid="" />
+			<Set name="25" date_pic="2010-06-04" date_vid="2010-06-04" />
+			<Set name="26" date_pic="2010-07-16" date_vid="2010-07-16" />
+			<Set name="27" date_pic="2010-08-27" date_vid="2010-08-27" />
+			<Set name="28" date_pic="2010-10-15" date_vid="2010-10-15" />
+			<Set name="29" date_pic="2010-12-03" date_vid="2010-12-03" />
+		</Sets>
+	</Model>
+	<Model firstname="Silviya" lastname="R" birthdate="1995-07-03">
+		<Sets>
+			<Set name="01" date_pic="" date_vid="" />
+			<Set name="02" date_pic="" date_vid="" />
+			<Set name="03" date_pic="" date_vid="" />
+			<Set name="04" date_pic="" date_vid="" />
+			<Set name="05" date_pic="" date_vid="" />
+		</Sets>
+	</Model>
+	<Model firstname="Sofiya" lastname="V" birthdate="1999-03-24">
+		<Sets>
+			<Set name="01" date_pic="" date_vid="" />
+			<Set name="02" date_pic="" date_vid="" />
+			<Set name="03" date_pic="" date_vid="" />
+			<Set name="04" date_pic="" date_vid="" />
+			<Set name="05" date_pic="" date_vid="" />
+			<Set name="06" date_pic="" date_vid="" />
+			<Set name="07" date_pic="" date_vid="" />
+			<Set name="08" date_pic="" date_vid="" />
+			<Set name="09" date_pic="" date_vid="" />
+			<Set name="10" date_pic="" date_vid="" />
+			<Set name="11" date_pic="2011-04-15" date_vid="2011-02-04" />
+			<Set name="12" date_pic="2011-04-22" date_vid="2011-03-25" />
+			<Set name="13" date_pic="2011-04-29" date_vid="2011-06-10" />
+			<Set name="14" date_pic="2011-05-06" date_vid="2011-06-17" />
+			<Set name="15" date_pic="2011-05-13" date_vid="2011-06-24" />
+			<Set name="16" date_pic="2011-05-27" date_vid="" />
+		</Sets>
+	</Model>
+	<Model firstname="Sonya" lastname="M" birthdate="1997-05-03">
+		<Sets>
+			<Set name="01" date_pic="2009-03-27" date_vid="2009-03-27" />
+			<Set name="02" date_pic="2009-04-03" date_vid="2009-04-03" />
+			<Set name="03" date_pic="" date_vid="" />
+			<Set name="04" date_pic="" date_vid="" />
+			<Set name="05" date_pic="" date_vid="" />
+			<Set name="06" date_pic="" date_vid="" />
+			<Set name="07" date_pic="" date_vid="" />
+			<Set name="08" date_pic="" date_vid="" />
+			<Set name="09" date_pic="" date_vid="" />
+			<Set name="10" date_pic="" date_vid="" />
+			<Set name="11" date_pic="" date_vid="" />
+			<Set name="12" date_pic="" date_vid="" />
+			<Set name="13" date_pic="" date_vid="" />
+			<Set name="14" date_pic="" date_vid="" />
+			<Set name="15" date_pic="" date_vid="" />
+			<Set name="16" date_pic="" date_vid="" />
+			<Set name="17" date_pic="" date_vid="" />
+			<Set name="18" date_pic="" date_vid="" />
+			<Set name="19" date_pic="" date_vid="" />
+			<Set name="20" date_pic="" date_vid="" />
+			<Set name="21" date_pic="2010-06-25" date_vid="2010-06-25" />
+			<Set name="22" date_pic="2010-07-02" date_vid="2010-07-02" />
+			<Set name="23" date_pic="2010-09-03" date_vid="2010-09-03" />
+			<Set name="24" date_pic="2010-09-10" date_vid="2010-09-10" />
+			<Set name="25" date_pic="2010-09-24" date_vid="2010-09-24" />
+			<Set name="26" date_pic="2010-10-29" date_vid="2010-10-29" />
+		</Sets>
+	</Model>
+	<Model firstname="Svetlana" lastname="Tanska" birthdate="1993-07-06">
+		<Sets>
+			<Set name="01" date_pic="2008-01-25" date_vid="2008-01-25" />
+			<Set name="02" date_pic="2008-02-01" date_vid="2008-02-01" />
+			<Set name="03" date_pic="2008-02-08" date_vid="2008-02-08" />
+			<Set name="04" date_pic="2008-02-22" date_vid="2008-02-22" />
+			<Set name="05" date_pic="2008-03-21" date_vid="2008-03-21" />
+			<Set name="06" date_pic="" date_vid="" />
+			<Set name="07" date_pic="2008-06-20" date_vid="2008-06-20" />
+			<Set name="08" date_pic="2008-07-25" date_vid="2008-07-25" />
+			<Set name="09" date_pic="2009-01-30" date_vid="2009-01-30" />
+		</Sets>
+	</Model>
+	<Model firstname="Syuzanna" lastname="R" birthdate="1995-07-03">
+		<Sets>
+			<Set name="01" date_pic="" date_vid="" />
+			<Set name="02" date_pic="" date_vid="" />
+			<Set name="03" date_pic="" date_vid="" />
+			<Set name="04" date_pic="" date_vid="" />
+			<Set name="05" date_pic="" date_vid="" />
+		</Sets>
+	</Model>
+	<Model firstname="Tatyana" lastname="Z" birthdate="">
+		<Sets>
+			<Set name="01" date_pic="2011-03-25" date_vid="" />
+			<Set name="02" date_pic="2011-04-01" date_vid="" />
+		</Sets>
+	</Model>
+	<Model firstname="Ulyana" lastname="A" birthdate="1993-05-23">
+		<Sets>
+			<Set name="01" date_pic="2008-01-25" date_vid="2008-01-25" />
+			<Set name="02" date_pic="2008-03-14" date_vid="2008-03-14" />
+			<Set name="03" date_pic="2008-03-21" date_vid="2008-03-21" />
+		</Sets>
+	</Model>
+	<Model firstname="Ulyana" lastname="Marunyak" birthdate="">
+		<Sets>
+			<Set name="01" date_pic="2008-01-25" date_vid="2008-01-25" />
+			<Set name="02" date_pic="2008-02-08" date_vid="2008-02-08" />
+			<Set name="03" date_pic="2008-02-22" date_vid="2008-02-22" />
+			<Set name="04" date_pic="2008-04-04" date_vid="2008-04-04" />
+			<Set name="05" date_pic="2008-04-18" date_vid="2008-04-18" />
+			<Set name="06" date_pic="2008-05-09" date_vid="2008-05-09" />
+			<Set name="07" date_pic="2008-06-13" date_vid="2008-06-13" />
+			<Set name="08" date_pic="2008-07-04" date_vid="2008-07-04" />
+			<Set name="09" date_pic="2008-08-29" date_vid="2008-08-29" />
+			<Set name="10" date_pic="2008-09-19" date_vid="2008-09-19" />
+		</Sets>
+	</Model>
+	<Model firstname="Valensiya" lastname="S" birthdate="">
+		<Sets>
+			<Set name="01" date_pic="" date_vid="" />
+			<Set name="02" date_pic="" date_vid="" />
+			<Set name="03" date_pic="" date_vid="" />
+			<Set name="04" date_pic="" date_vid="" />
+			<Set name="05" date_pic="2010-06-11" date_vid="2010-06-11" />
+			<Set name="06" date_pic="2010-06-18" date_vid="2010-06-18" />
+			<Set name="07" date_pic="2010-07-09" date_vid="2010-07-09" />
+			<Set name="08" date_pic="2010-07-16" date_vid="2010-07-16" />
+			<Set name="09" date_pic="2010-07-23" date_vid="2010-07-23" />
+			<Set name="10" date_pic="2010-07-30" date_vid="2010-07-30" />
+			<Set name="11" date_pic="2010-08-06" date_vid="2010-08-06" />
+			<Set name="12" date_pic="2010-08-13" date_vid="2010-08-13" />
+			<Set name="13" date_pic="2010-08-27" date_vid="2010-08-27" />
+			<Set name="14" date_pic="2010-09-03" date_vid="2010-09-03" />
+			<Set name="15" date_pic="2010-10-08" date_vid="2010-10-08" />
+			<Set name="16" date_pic="2010-10-15" date_vid="2010-10-15" />
+			<Set name="17" date_pic="2010-10-22" date_vid="2010-10-22" />
+			<Set name="18" date_pic="2010-10-29" date_vid="2010-10-29" />
+			<Set name="19" date_pic="2010-11-05" date_vid="2010-11-05" />
+			<Set name="20" date_pic="2010-11-12" date_vid="2010-11-12" />
+			<Set name="21" date_pic="2010-11-19" date_vid="2010-11-19" />
+			<Set name="22" date_pic="2010-11-26" date_vid="2010-11-26" />
+			<Set name="23" date_pic="2010-12-03" date_vid="2010-12-03" />
+			<Set name="24" date_pic="2010-12-10" date_vid="2010-12-10" />
+			<Set name="25" date_pic="2010-12-24" date_vid="2010-12-24" />
+			<Set name="26" date_pic="2011-01-07" date_vid="2011-01-07" />
+			<Set name="27" date_pic="2011-01-28" date_vid="2011-01-14" />
+			<Set name="28" date_pic="2011-02-04" date_vid="2011-01-21" />
+			<Set name="29" date_pic="2011-02-11" date_vid="2011-02-18" />
+			<Set name="30" date_pic="2011-02-18" date_vid="2011-02-25" />
+			<Set name="31" date_pic="2011-02-25" date_vid="2011-04-01" />
+			<Set name="32" date_pic="2011-03-04" date_vid="2011-04-08" />
+			<Set name="33" date_pic="2011-03-11" date_vid="2011-04-15" />
+			<Set name="34" date_pic="2011-03-25" date_vid="2011-04-22" />
+			<Set name="35" date_pic="2011-05-27" date_vid="2011-04-29" />
+			<Set name="36" date_pic="2011-06-10" date_vid="2011-05-06" />
+			<Set name="37" date_pic="" date_vid="2011-05-20" />
+			<Set name="38" date_pic="" date_vid="2011-06-24" />
+		</Sets>
+	</Model>
+	<Model firstname="Valeriya" lastname="Levytska" birthdate="1996-05-02">
+		<Sets>
+			<Set name="01" date_pic="2008-01-25" date_vid="2008-01-25" />
+			<Set name="02" date_pic="2008-02-08" date_vid="2008-02-08" />
+			<Set name="03" date_pic="2008-03-14" date_vid="2008-03-14" />
+			<Set name="04" date_pic="2008-04-18" date_vid="2008-04-18" />
+			<Set name="05" date_pic="2008-05-09" date_vid="2008-05-09" />
+			<Set name="06" date_pic="2008-05-30" date_vid="2008-05-30" />
+			<Set name="07" date_pic="2008-06-20" date_vid="2008-06-20" />
+			<Set name="08" date_pic="2008-07-04" date_vid="2008-07-04" />
+			<Set name="09" date_pic="2008-07-18" date_vid="2008-07-18" />
+			<Set name="10" date_pic="2008-08-01" date_vid="2008-08-01" />
+			<Set name="11" date_pic="2008-08-15" date_vid="2008-08-15" />
+			<Set name="12" date_pic="2009-01-30" date_vid="2009-01-30" />
+		</Sets>
+	</Model>
+	<Model firstname="Victoria" lastname="Dytko" birthdate="">
+		<Sets>
+			<Set name="01" date_pic="2008-01-25" date_vid="2008-01-25" />
+			<Set name="02" date_pic="2008-02-15" date_vid="2008-02-15" />
+			<Set name="03" date_pic="2008-03-21" date_vid="2008-03-21" />
+			<Set name="04" date_pic="2008-04-11" date_vid="2008-04-11" />
+			<Set name="05" date_pic="2008-07-11" date_vid="2008-07-11" />
+			<Set name="06" date_pic="2008-08-01" date_vid="2008-08-01" />
+			<Set name="07" date_pic="2008-10-24" date_vid="2008-10-24" />
+		</Sets>
+	</Model>
+	<Model firstname="Victoria" lastname="S" birthdate="">
+		<Sets>
+			<Set name="01" date_pic="2008-01-25" date_vid="2008-01-25" />
+			<Set name="02" date_pic="2008-02-29" date_vid="2008-02-29" />
+		</Sets>
+	</Model>
+	<Model firstname="Vika" lastname="Zadorozhnyaya" birthdate="1997-04-24">
+		<Sets>
+			<Set name="01" date_pic="2008-08-22" date_vid="2008-08-22" />
+			<Set name="02" date_pic="2008-09-12" date_vid="2008-09-12" />
+			<Set name="03" date_pic="2008-09-19" date_vid="2008-09-19" />
+			<Set name="04" date_pic="2008-10-10" date_vid="2008-10-10" />
+			<Set name="05" date_pic="2008-10-24" date_vid="2008-10-24" />
+			<Set name="06" date_pic="2008-11-21" date_vid="2008-11-21" />
+			<Set name="07" date_pic="2008-12-12" date_vid="2008-12-12" />
+			<Set name="08" date_pic="2008-12-19" date_vid="2008-12-19" />
+			<Set name="09" date_pic="2008-12-26" date_vid="2008-12-26" />
+			<Set name="10" date_pic="2009-01-16" date_vid="2009-01-16" />
+			<Set name="11" date_pic="2009-02-06" date_vid="2009-02-06" />
+			<Set name="12" date_pic="2009-02-20" date_vid="2009-02-20" />
+			<Set name="13" date_pic="2009-03-06" date_vid="2009-03-06" />
+			<Set name="14" date_pic="2009-04-10" date_vid="2009-04-10" />
+			<Set name="15" date_pic="" date_vid="" />
+			<Set name="16" date_pic="" date_vid="" />
+			<Set name="17" date_pic="" date_vid="" />
+			<Set name="18" date_pic="" date_vid="" />
+			<Set name="19" date_pic="" date_vid="" />
+			<Set name="20" date_pic="" date_vid="" />
+			<Set name="21" date_pic="" date_vid="" />
+			<Set name="22" date_pic="" date_vid="" />
+			<Set name="23" date_pic="" date_vid="" />
+			<Set name="24" date_pic="" date_vid="" />
+			<Set name="25" date_pic="" date_vid="" />
+			<Set name="26" date_pic="" date_vid="" />
+			<Set name="27" date_pic="" date_vid="" />
+			<Set name="28" date_pic="" date_vid="" />
+			<Set name="29" date_pic="" date_vid="" />
+			<Set name="30" date_pic="" date_vid="" />
+			<Set name="31" date_pic="2011-06-24" date_vid="2011-01-21" />
+			<Set name="32" date_pic="" date_vid="2011-02-25" />
+			<Set name="33" date_pic="" date_vid="2011-05-20" />
+			<Set name="34" date_pic="" date_vid="2011-06-24" />
+		</Sets>
+	</Model>
+	<Model firstname="Violeta" lastname="K" birthdate="1996-08-27">
+		<Sets>
+			<Set name="01" date_pic="2009-04-10" date_vid="2009-04-10" />
+			<Set name="02" date_pic="" date_vid="" />
+			<Set name="03" date_pic="" date_vid="" />
+			<Set name="04" date_pic="" date_vid="" />
+			<Set name="05" date_pic="" date_vid="" />
+			<Set name="06" date_pic="" date_vid="" />
+			<Set name="07" date_pic="" date_vid="" />
+			<Set name="08" date_pic="" date_vid="" />
+			<Set name="09" date_pic="" date_vid="" />
+			<Set name="10" date_pic="" date_vid="" />
+			<Set name="11" date_pic="" date_vid="" />
+			<Set name="12" date_pic="" date_vid="" />
+			<Set name="13" date_pic="" date_vid="" />
+			<Set name="14" date_pic="" date_vid="" />
+			<Set name="15" date_pic="" date_vid="" />
+			<Set name="16" date_pic="" date_vid="" />
+			<Set name="17" date_pic="" date_vid="" />
+			<Set name="18" date_pic="" date_vid="" />
+			<Set name="19" date_pic="" date_vid="" />
+			<Set name="20" date_pic="" date_vid="" />
+		</Sets>
+	</Model>
+	<Model firstname="Yuliya" lastname="K" birthdate="">
+		<Sets>
+			<Set name="01" date_pic="2011-01-14" date_vid="2011-01-21" />
+			<Set name="02" date_pic="2011-02-18" date_vid="2011-01-28" />
+			<Set name="03" date_pic="2011-02-25" date_vid="2011-02-04" />
+			<Set name="04" date_pic="2011-03-25" date_vid="2011-03-04" />
+			<Set name="05" date_pic="2011-04-01" date_vid="2011-04-08" />
+			<Set name="06" date_pic="2011-05-13" date_vid="2011-04-22" />
+			<Set name="07" date_pic="2011-05-20" date_vid="2011-04-29" />
+			<Set name="08" date_pic="2011-06-10" date_vid="2011-05-27" />
+			<Set name="09" date_pic="2011-06-17" date_vid="2011-06-10" />
+			<Set name="10" date_pic="2011-06-24" date_vid="2011-06-17" />
+		</Sets>
+	</Model>
+	<Model firstname="Yuliya" lastname="Semenishyna" birthdate="1997-11-21">
+		<Sets>
+			<Set name="01" date_pic="2008-01-25" date_vid="2008-01-25" />
+			<Set name="02" date_pic="2008-02-01" date_vid="2008-02-01" />
+			<Set name="03" date_pic="2008-03-07" date_vid="2008-03-07" />
+			<Set name="04" date_pic="2008-03-28" date_vid="2008-03-28" />
+			<Set name="05" date_pic="2008-04-25" date_vid="2008-04-25" />
+			<Set name="06" date_pic="2008-05-16" date_vid="2008-05-16" />
+			<Set name="07" date_pic="2008-06-06" date_vid="2008-06-06" />
+			<Set name="08" date_pic="2008-07-04" date_vid="2008-07-04" />
+			<Set name="09" date_pic="2008-07-25" date_vid="2008-07-25" />
+			<Set name="10" date_pic="2008-09-05" date_vid="2008-09-05" />
+			<Set name="11" date_pic="2008-09-19" date_vid="2008-09-19" />
+		</Sets>
+	</Model>
+	<Model firstname="Yuliya" lastname="Zabihalyuk" birthdate="">
+		<Sets>
+			<Set name="01" date_pic="2008-01-25" date_vid="2008-01-25" />
+			<Set name="02" date_pic="2008-05-02" date_vid="2008-05-02" />
+			<Set name="03" date_pic="2008-06-20" date_vid="2008-06-20" />
+			<Set name="04" date_pic="2008-07-25" date_vid="2008-07-25" />
+			<Set name="05" date_pic="2008-08-08" date_vid="2008-08-08" />
+		</Sets>
+	</Model>
+	<Model firstname="Zina" lastname="B" birthdate="1996-01-24">
+		<Sets>
+			<Set name="01" date_pic="" date_vid="" />
+			<Set name="02" date_pic="" date_vid="" />
+			<Set name="03" date_pic="" date_vid="" />
+			<Set name="04" date_pic="" date_vid="" />
+			<Set name="05" date_pic="" date_vid="" />
+		</Sets>
+	</Model>
 	<Model firstname="VIP">
 		<Sets>
 			<Set extended_name="SP 4Dress" name="01" date_pic="" date_vid="" />
@@ -1210,7 +1208,6 @@
 			<Set extended_name="SP Twister" name="01" date_pic="" date_vid="" />
 		</Sets>
 	</Model>
-	
 	<Model firstname="Promotions">
 		<Sets>
 			<Set name="01" />
@@ -1242,9 +1239,9 @@
 			<Set name="27" />
 			<Set name="28" />
 			<Set name="29" />
+			<Set name="30" />
 		</Sets>
 	</Model>
-
 	<Model firstname="Interviews">
 		<Sets>
 			<Set extended_name="AlinaG" name="01" date_vid="2008-04-18" />
@@ -1264,5 +1261,4 @@
 			<Set extended_name="YuliyaZ" name="01" date_vid="2008-08-22" />
 		</Sets>
 	</Model>
-	
 </Models>
