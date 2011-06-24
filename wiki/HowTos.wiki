@@ -3,6 +3,8 @@
 
 = !HowTo's =
 
+<wiki:toc max_depth="2" />
+
 == Setup ==
 
 To setup the application, proceed as follows:
