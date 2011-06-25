@@ -39,7 +39,13 @@ if($XmlFromFile)
 		
 		foreach($Model->Sets->Set as $Set)
 		{
-			$SetInDb = Set::FilterSets($SetsInDb, $Model2Process->getID(), null, (string)$Set->attributes()->name);
+			$SetInDb = Set::FilterSets(
+				$SetsInDb,
+				$Model2Process->getID(),
+				null,
+				preg_replace('/^SP /i', '', (string)$Set->attributes()->extended_name . (string)$Set->attributes()->name)
+			);
+			
 			if($SetInDb){ $SetInDb = $SetInDb[0]; }
 
 			/* @var $Set2Process Set */
