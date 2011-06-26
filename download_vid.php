@@ -33,9 +33,10 @@ if($VideoID)
 		$Set = $Video->getSet();
 		$Model = $Set->getModel();
 		
-		$filename = sprintf('%1$s/%2$s/%3$s.%4$s',
+		$filename = sprintf('%1$s/%2$s/%3$s%4$s.%5$s',
 			CANDYVIDEOPATH,
 			$Model->GetFullName(),
+			$Set->getPrefix(),
 			$Video->getFileName(),
 			$Video->getFileExtension()
 		);
@@ -44,7 +45,7 @@ if($VideoID)
 		{
 			header('Content-Description: File Transfer');
 			header('Content-Type: application/octet-stream');
-			header(sprintf('Content-Disposition: attachment; filename=%1$s.%2$s', $Video->getFileName(), $Video->getFileExtension()));
+			header(sprintf('Content-Disposition: attachment; filename=%1$s%2$s.%3$s', $Set->getPrefix(), $Video->getFileName(), $Video->getFileExtension()));
 			header('Content-Transfer-Encoding: binary');
 			header('Expires: 0');
 			header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
@@ -55,6 +56,10 @@ if($VideoID)
 			readfile($filename);
 			exit;
 		}
+	}
+	else
+	{
+		HTMLstuff::RefererRedirect();
 	}
 }
 else if($SetID)
@@ -68,18 +73,12 @@ else if($SetID)
 	}
 	else
 	{
-		if(array_key_exists('HTTP_REFERER', $_SERVER))
-		{ header('location:'.$_SERVER['HTTP_REFERER']); }
-		else
-		{ header('location:index.php'); }
+		HTMLstuff::RefererRedirect();
 	}
 }
 else
 {
-	if(array_key_exists('HTTP_REFERER', $_SERVER))
-	{ header('location:'.$_SERVER['HTTP_REFERER']); }
-	else
-	{ header('location:index.php'); }
+	HTMLstuff::RefererRedirect();
 }
 
 ?>

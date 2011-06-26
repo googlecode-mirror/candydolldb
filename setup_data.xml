@@ -1189,76 +1189,76 @@
 	</Model>
 	<Model firstname="VIP">
 		<Sets>
-			<Set extended_name="SP 4Dress" name="01" date_pic="" date_vid="" />
-			<Set extended_name="SP Alice" name="01" date_pic="2008-02-01" date_vid="2008-02-01" />
-			<Set extended_name="SP Alice" name="02" date_pic="" date_vid="2008-03-14" />
-			<Set extended_name="SP AliceO" name="02" date_pic="2008-03-14" date_vid="" />
-			<Set extended_name="SP AliceV" name="02" date_pic="2008-03-14" date_vid="" />
-			<Set extended_name="SP Ballet" name="01" date_pic="2008-04-25" date_vid="2008-04-25" />
-			<Set extended_name="SP Bloomers" name="01" date_pic="2008-02-15" date_vid="2008-02-15" />
-			<Set extended_name="SP Catsute" name="01" date_pic="2008-02-22" date_vid="2008-02-22" />
-			<Set extended_name="SP Housemaid" name="01" date_pic="2008-02-08" date_vid="2008-02-08" />
-			<Set extended_name="SP Lolita" name="01" date_pic="2008-12-19" date_vid="" />
-			<Set extended_name="SP Moon" name="01" date_pic="2008-05-02" date_vid="2008-05-02" />
-			<Set extended_name="SP Moon" name="02" date_pic="2008-05-09" date_vid="2008-05-09" />
-			<Set extended_name="SP MoonY" name="03" date_pic="" date_vid="2008-12-19" />
-			<Set extended_name="SP MoonS" name="03" date_pic="" date_vid="2008-12-19" />
-			<Set extended_name="SP Sailor" name="01" date_pic="2008-03-07" date_vid="2008-03-07" />
-			<Set extended_name="SP Sailor" name="02" date_pic="2008-12-19" date_vid="" />
-			<Set extended_name="SP Twister" name="01" date_pic="" date_vid="" />
+			<Set name="SP_4Dress01" date_pic="" date_vid="" />
+			<Set name="SP_Alice01" date_pic="2008-02-01" date_vid="2008-02-01" />
+			<Set name="SP_Alice02" date_pic="" date_vid="2008-03-14" />
+			<Set name="SP_AliceO02" date_pic="2008-03-14" date_vid="" />
+			<Set name="SP_AliceV02" date_pic="2008-03-14" date_vid="" />
+			<Set name="SP_Ballet01" date_pic="2008-04-25" date_vid="2008-04-25" />
+			<Set name="SP_Bloomers01" date_pic="2008-02-15" date_vid="2008-02-15" />
+			<Set name="SP_Catsute01" date_pic="2008-02-22" date_vid="2008-02-22" />
+			<Set name="SP_Housemaid01" date_pic="2008-02-08" date_vid="2008-02-08" />
+			<Set name="SP_Lolita01" date_pic="2008-12-19" date_vid="" />
+			<Set name="SP_Moon01" date_pic="2008-05-02" date_vid="2008-05-02" />
+			<Set name="SP_Moon02" date_pic="2008-05-09" date_vid="2008-05-09" />
+			<Set name="SP_MoonY03" date_pic="" date_vid="2008-12-19" />
+			<Set name="SP_MoonS03" date_pic="" date_vid="2008-12-19" />
+			<Set name="SP_Sailor01" date_pic="2008-03-07" date_vid="2008-03-07" />
+			<Set name="SP_Sailor02" date_pic="2008-12-19" date_vid="" />
+			<Set name="SP_Twister01" date_pic="" date_vid="" />
 		</Sets>
 	</Model>
 	<Model firstname="Promotions">
 		<Sets>
-			<Set name="01" />
-			<Set name="02" />
-			<Set name="03" />
-			<Set name="04" />
-			<Set name="05" />
-			<Set name="06" />
-			<Set name="07" />
-			<Set name="08" />
-			<Set name="09" />
-			<Set name="10" />
-			<Set name="11" />
-			<Set name="12" />
-			<Set name="13" />
-			<Set name="14" />
-			<Set name="15" />
-			<Set name="16" />
-			<Set name="17" />
-			<Set name="18" />
-			<Set name="19" />
-			<Set name="20" />
-			<Set name="21" />
-			<Set name="22" />
-			<Set name="23" />
-			<Set name="24" />
-			<Set name="25" />
-			<Set name="26" />
-			<Set name="27" />
-			<Set name="28" />
-			<Set name="29" />
-			<Set name="30" />
+			<Set name="Promotion01" />
+			<Set name="Promotion02" />
+			<Set name="Promotion03" />
+			<Set name="Promotion04" />
+			<Set name="Promotion05" />
+			<Set name="Promotion06" />
+			<Set name="Promotion07" />
+			<Set name="Promotion08" />
+			<Set name="Promotion09" />
+			<Set name="Promotion10" />
+			<Set name="Promotion11" />
+			<Set name="Promotion12" />
+			<Set name="Promotion13" />
+			<Set name="Promotion14" />
+			<Set name="Promotion15" />
+			<Set name="Promotion16" />
+			<Set name="Promotion17" />
+			<Set name="Promotion18" />
+			<Set name="Promotion19" />
+			<Set name="Promotion20" />
+			<Set name="Promotion21" />
+			<Set name="Promotion22" />
+			<Set name="Promotion23" />
+			<Set name="Promotion24" />
+			<Set name="Promotion25" />
+			<Set name="Promotion26" />
+			<Set name="Promotion27" />
+			<Set name="Promotion28" />
+			<Set name="Promotion29" />
+			<Set name="Promotion30" />
 		</Sets>
 	</Model>
 	<Model firstname="Interviews">
 		<Sets>
-			<Set extended_name="AlinaG" name="01" date_vid="2008-04-18" />
-			<Set extended_name="AnnaT" name="01" date_vid="2008-04-25" />
-			<Set extended_name="IrynaM" name="01" date_vid="2008-07-04" />
-			<Set extended_name="KaterynaV" name="01" date_vid="2008-05-16" />
-			<Set extended_name="LarisaH" name="01" date_vid="2008-05-23" />
-			<Set extended_name="OlgaS" name="01" date_vid="2008-05-30" />
-			<Set extended_name="OlhaD" name="01" date_vid="2008-06-06" />
-			<Set extended_name="SashaD" name="01" date_vid="2008-07-25" />
-			<Set extended_name="SashaL" name="01" date_vid="2008-06-20" />
-			<Set extended_name="SvetlanaT" name="01" date_vid="2008-06-13" />
-			<Set extended_name="UlyanaM" name="01" date_vid="2008-06-27" />
-			<Set extended_name="ValeriyaL" name="01" date_vid="2008-07-11" />
-			<Set extended_name="VictoriaD" name="01" date_vid="2008-07-18" />
-			<Set extended_name="YuliyaS" name="01" date_vid="2008-08-01" />
-			<Set extended_name="YuliyaZ" name="01" date_vid="2008-08-22" />
+			<Set name="AlinaG01" date_vid="2008-04-18" />
+			<Set name="AnnaT01" date_vid="2008-04-25" />
+			<Set name="IrynaM01" date_vid="2008-07-04" />
+			<Set name="KaterynaV01" date_vid="2008-05-16" />
+			<Set name="LarisaH01" date_vid="2008-05-23" />
+			<Set name="OlgaS01" date_vid="2008-05-30" />
+			<Set name="OlhaD01" date_vid="2008-06-06" />
+			<Set name="SashaD01" date_vid="2008-07-25" />
+			<Set name="SashaL01" date_vid="2008-06-20" />
+			<Set name="SvetlanaT01" date_vid="2008-06-13" />
+			<Set name="UlyanaM01" date_vid="2008-06-27" />
+			<Set name="ValeriyaL01" date_vid="2008-07-11" />
+			<Set name="VictoriaD01" date_vid="2008-07-18" />
+			<Set name="YuliyaS01" date_vid="2008-08-01" />
+			<Set name="YuliyaZ01" date_vid="2008-08-22" />
 		</Sets>
 	</Model>
 </Models>
