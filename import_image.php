@@ -4,7 +4,6 @@ include('cd.php');
 ini_set('max_execution_time', '3600');
 $CurrentUser = Authentication::Authenticate();
 
-$OutputSql = array_key_exists('output', $_GET) && isset($_GET['output']) && is_numeric($_GET['output']) && (int)$_GET['output'] === 1;
 
 $ModelID = null;
 $SetID = null;
@@ -58,72 +57,58 @@ for($i = 0; $i < count($Models); $i++)
 	
 	if(!file_exists($ImageFolder)) { continue; }
 	
-	/* @var $folder SplFileInfo */
-	foreach(new DirectoryIterator($ImageFolder) as $folder)
+	$it = new RecursiveIteratorIterator(new RecursiveDirectoryIterator(
+			$ImageFolder,	
+		 	FileSystemIterator::SKIP_DOTS | FileSystemIterator::CURRENT_AS_FILEINFO));
+	
+	/* @var $file SplFileInfo */
+	foreach($it as $file)
 	{
-		if($folder->isDir() && $folder->isReadable() && !$folder->isDot())
+		if($file->isFile() && $file->isReadable())
 		{
-			$ImageSetFolder = $folder->getRealPath();
+			$imagenamematch = preg_match('/(?P<Prefix>[A-Z]+[_ -])?(?P<ModelName>[A-Z]+)(?P<SetNumber>\d\d)_(?P<Number>[0-9]{3})\.(?P<Extension>[^.]+)$/i', $file->getFilename(), $matches);
 			
-			$name = $folder->getFilename();
-			$setnamematch = preg_match('/([^_]*\d\d)$/i', $name, $matches);
-			$setname = $matches && $matches > 0 ? $matches[1] : null;
-			
-			if($SetID && $Set)
+			if($imagenamematch)
 			{
-				if($Set->getName() != $setname)
-				{ continue; }
-			}
+				$Set = Set::FilterSets($Sets, $Model->getID(), null, ($matches['ModelName'].$matches['SetNumber']), $matches['Prefix']);
 
-			if($setname)
-			{
-				$Set = Set::FilterSets($Sets, $Model->getID());
-				$Set = Set::FilterSets($Set, null, null, $setname);
-				
 				if($Set)
 				{ $Set = $Set[0]; }
 				else
 				{ continue; }
-			}
-						
-			/* @var $FileInfo SplFileInfo */
-			foreach(new DirectoryIterator($ImageSetFolder) as $FileInfo)
-			{
-				if($FileInfo->isFile() && $FileInfo->isReadable())
+
+				/* @var $ImageInDB Image */
+				$ImagesInDB = Image::FilterImages(
+					$Images,
+					$ModelID,
+					$Set->getID(),
+					sprintf('%1$s%2$s%3$s_%4$s', $matches['Prefix'], $matches['ModelName'], $matches['SetNumber'], $matches['Number'])
+				);
+
+				if($ImagesInDB)
 				{
-					/* @var $ImageInDB Image */
-					$info = getimagesize($FileInfo->getRealPath());
-				
-					$ImagesInDB = Image::FilterImages(
-						$Images,
-						$ModelID,
-						$Set->getID(),
-						str_ireplace(IMAGE_EXTENSION, '', $FileInfo->getFilename())
-					);
-				
-					if($ImagesInDB)
-					{
-						$ImageInDB = $ImagesInDB[0];
-					}
-					else
-					{
-						$ImageInDB = new Image();
-						$ImageInDB->setSet($Set);
-					}
-					
-					$ImageInDB->setFileName($FileInfo->getBasename(IMAGE_EXTENSION));
-					$ImageInDB->setFileExtension(trim(IMAGE_EXTENSION, '.'));
-					$ImageInDB->setFileSize($FileInfo->getSize());
-					$ImageInDB->setFileCheckSum(md5_file($FileInfo->getRealPath()));
-					$ImageInDB->setImageWidth($info[0]);
-					$ImageInDB->setImageHeight($info[1]);
-					$ImageInDB->setDateTaken($Set->getDatePic());
-					
-					if(!$ImageInDB->getID())
-					{ Image::InsertImage($ImageInDB, $CurrentUser); }
-					else
-					{ Image::UpdateImage($ImageInDB, $CurrentUser); }
+					$ImageInDB = $ImagesInDB[0];
 				}
+				else
+				{
+					$ImageInDB = new Image();
+					$ImageInDB->setSet($Set);
+				}
+				
+				$info = getimagesize($file->getRealPath());
+
+				$ImageInDB->setFileName(sprintf('%1$s%2$s%3$s_%4$s', $matches['Prefix'], $matches['ModelName'], $matches['SetNumber'], $matches['Number']));
+				$ImageInDB->setFileExtension($matches['Extension']);
+				$ImageInDB->setFileSize($file->getSize());
+				$ImageInDB->setFileCheckSum(md5_file($file->getRealPath()));
+				$ImageInDB->setImageWidth($info[0]);
+				$ImageInDB->setImageHeight($info[1]);
+				$ImageInDB->setDateTaken($Set->getDatePic());
+					
+				if(!$ImageInDB->getID())
+				{ Image::InsertImage($ImageInDB, $CurrentUser); }
+				else
+				{ Image::UpdateImage($ImageInDB, $CurrentUser); }
 			}
 		}
 	}

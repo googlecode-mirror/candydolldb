@@ -33,19 +33,18 @@ if($VideoID)
 		$Set = $Video->getSet();
 		$Model = $Set->getModel();
 		
-		$filename = sprintf('%1$s/%2$s/%3$s%4$s.%5$s',
+		$filename = sprintf('%1$s/%2$s/%3$s.%4$s',
 			CANDYVIDEOPATH,
 			$Model->GetFullName(),
-			$Set->getPrefix(),
 			$Video->getFileName(),
 			$Video->getFileExtension()
-		);
+		);	
 
 		if(file_exists($filename))
 		{
 			header('Content-Description: File Transfer');
 			header('Content-Type: application/octet-stream');
-			header(sprintf('Content-Disposition: attachment; filename=%1$s%2$s.%3$s', $Set->getPrefix(), $Video->getFileName(), $Video->getFileExtension()));
+			header(sprintf('Content-Disposition: attachment; filename=%1$s', basename($filename)));
 			header('Content-Transfer-Encoding: binary');
 			header('Expires: 0');
 			header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
@@ -55,6 +54,10 @@ if($VideoID)
 			flush();
 			readfile($filename);
 			exit;
+		}
+		else
+		{
+			HTMLstuff::RefererRedirect();
 		}
 	}
 	else

@@ -32,8 +32,6 @@ define('SET_CONTENT_IMAGE', 1);
 define('SET_CONTENT_VIDEO', 2);
 
 define('COMMAND_DELETE', 'del');
-define('IMAGE_EXTENSION', '.jpg');
-//define('VIDEO_EXTENSION', '.wmv');
 
 define('LOGIN_ERR_PASSWORDSNOTIDENTICAL', 33362);
 define('LOGIN_ERR_RESETCODENOTFOUND', 33363);
@@ -41,16 +39,6 @@ define('LOGIN_ERR_USERNAMENOTFOUND', 33364);
 define('LOGIN_ERR_PASSWORDINCORRECT', 33365);
 define('SQL_ERR_NOSUCHTABLE', 33366);
 define('SYNTAX_ERR_EMAILADDRESS', 33367);
-
-define('RIGHT_LOGIN',			1);
-define('RIGHT_DOWNLOAD_ZIP', 	2);
-define('RIGHT_DOWNLOAD_VID',	4);
-define('RIGHT_IMPORT_ZIP',		8);
-define('RIGHT_IMPORT_VID',		16);
-define('RIGHT_MANAGE_MODEL', 	32);
-define('RIGHT_MANAGE_SET',   	64);
-define('RIGHT_MANAGE_IMAGE', 	128);
-define('RIGHT_MANAGE_VIDEO', 	256);
 
 include('class/class.global.php');
 include('class/class.error.php');
