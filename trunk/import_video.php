@@ -88,7 +88,7 @@ for($i = 0; $i < count($Models); $i++)
 					$VideoInDB->setSet($Set);
 				}
 					
-				$VideoInDB->setFileName($matches['Name'].$matches['Number']);
+				$VideoInDB->setFileName($matches['Prefix'].$matches['Name'].$matches['Number']);
 				$VideoInDB->setFileExtension($matches['Extension']);
 				$VideoInDB->setFileSize($FileInfo->getSize());
 				$VideoInDB->setFileCheckSum(md5_file($FileInfo->getRealPath()));
