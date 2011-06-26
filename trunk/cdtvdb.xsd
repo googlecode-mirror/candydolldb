@@ -33,7 +33,7 @@
 
 <xs:simpleType name="DigitName">
 	<xs:restriction base="xs:string">
-		<xs:pattern value="0[1-9]|[1-9][0-9]"/>
+		<xs:pattern value="([a-zA-Z0-9_])*(0[1-9]|[1-9][0-9])"/>
 	</xs:restriction>
 </xs:simpleType>
 
@@ -41,7 +41,7 @@
 	<xs:attribute name="name" type="DigitName" use="required" />
 	<xs:attribute name="date_pic" type="EmptyDate" use="optional" default=""/>
 	<xs:attribute name="date_vid" type="EmptyDate" use="optional" default=""/>
-	<xs:attribute name="extended_name" type="EmptyName" use="optional" default=""/>					
+				
 </xs:complexType>
 
 <xs:complexType name="SetsType">
@@ -56,7 +56,6 @@
 			<xs:unique name="uniqueSetName">
 				<xs:selector xpath="./Set"/>
 				<xs:field xpath="@name"/>
-				<xs:field xpath="@extended_name"/>
 			</xs:unique>
 		</xs:element>
 	</xs:sequence>

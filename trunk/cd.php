@@ -33,7 +33,7 @@ define('SET_CONTENT_VIDEO', 2);
 
 define('COMMAND_DELETE', 'del');
 define('IMAGE_EXTENSION', '.jpg');
-define('VIDEO_EXTENSION', '.wmv');
+//define('VIDEO_EXTENSION', '.wmv');
 
 define('LOGIN_ERR_PASSWORDSNOTIDENTICAL', 33362);
 define('LOGIN_ERR_RESETCODENOTFOUND', 33363);

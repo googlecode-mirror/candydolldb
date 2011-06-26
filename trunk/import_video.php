@@ -32,7 +32,7 @@ $Sets = Set::GetSets(
 );
 
 $Videos = Video::GetVideos(
-	sprintf(
+sprintf(
 		'model_id = IFNULL(%1$s, model_id) AND set_id = IFNULL(%2$s, set_id) AND mut_deleted = -1',
 		$ModelID ? (string)$ModelID : 'NULL',
 		$SetID ? (string)$SetID : 'NULL'
@@ -50,62 +50,55 @@ if($SetID){
 for($i = 0; $i < count($Models); $i++)
 {
 	$Model = $Models[$i];
-	
+
 	$VideoFolder = sprintf('%1$s/%2$s',
 		CANDYVIDEOPATH,
 		$Model->GetFullName()
 	);
-	
+
 	if(!file_exists($VideoFolder)) { continue; }
-	
-	
+
+
 	/* @var $FileInfo SplFileInfo */
 	foreach(new DirectoryIterator($VideoFolder) as $FileInfo)
 	{
 		if($FileInfo->isFile() && $FileInfo->isReadable())
 		{
-			$name = $FileInfo->getFilename();
-			$setnamematch = preg_match('/(\d\d)'.VIDEO_EXTENSION.'$/i', $name, $matches);
-			$setname = $matches && $matches > 1 ? $matches[1] : null;
+			$setnamematch = preg_match('/(?P<Prefix>[A-Z]+[_ -])?(?P<Name>[A-Z0-9]+)(?P<Number>\d\d)\.(?P<Extension>[^.]+)$/i', $FileInfo->getFilename(), $matches);
 			
-			$Set = Set::FilterSets($Sets, $Model->getID());
-			$SetFiltered = Set::FilterSets($Set, null, null, substr($FileInfo->getBasename(VIDEO_EXTENSION), 3)); 
-			
-			if(!$SetFiltered)
-			{ $SetFiltered = Set::FilterSets($Set, null, null, $setname); }
-			
-			if($SetFiltered)
-			{ $Set = $SetFiltered[0]; }
-			else
-			{ continue; }
-			
-			if(strlen($Set->getName()) == 2 && $Set->getName() != $setname)
-			{ continue; }
+			if($matches)
+			{
+				$Set = Set::FilterSets($Sets, $Model->getID(), null, ($matches['Name'].$matches['Number']), $matches['Prefix']);
 
+				if(!$Set)
+				{ continue; }
+				else
+				{ $Set = $Set[0]; }
 			
-			/* @var $VideoInDB Video */
-			$VideosInDB = Video::FilterVideos($Videos, $ModelID, $Set->getID());
-		
-			if($VideosInDB)
-			{
-				$VideoInDB = $VideosInDB[0];
+				/* @var $VideoInDB Video */
+				$VideosInDB = Video::FilterVideos($Videos, $ModelID, $Set->getID());
+
+				if($VideosInDB)
+				{
+					$VideoInDB = $VideosInDB[0];
+				}
+				else
+				{
+					$VideoInDB = new Video();
+					$VideoInDB->setSet($Set);
+				}
+					
+				$VideoInDB->setFileName($matches['Name'].$matches['Number']);
+				$VideoInDB->setFileExtension($matches['Extension']);
+				$VideoInDB->setFileSize($FileInfo->getSize());
+				$VideoInDB->setFileCheckSum(md5_file($FileInfo->getRealPath()));
+				$VideoInDB->setDateTaken($Set->getDateVid());
+					
+				if(!$VideoInDB->getID())
+				{ Video::InsertVideo($VideoInDB, $CurrentUser); }
+				else
+				{ Video::UpdateVideo($VideoInDB, $CurrentUser); }
 			}
-			else
-			{
-				$VideoInDB = new Video();
-				$VideoInDB->setSet($Set);
-			}
-			
-			$VideoInDB->setFileName($FileInfo->getBasename(VIDEO_EXTENSION));
-			$VideoInDB->setFileExtension(trim(VIDEO_EXTENSION, '.'));
-			$VideoInDB->setFileSize($FileInfo->getSize());
-			$VideoInDB->setFileCheckSum(md5_file($FileInfo->getRealPath()));
-			$VideoInDB->setDateTaken($Set->getDateVid());
-			
-			if(!$VideoInDB->getID())
-			{ Video::InsertVideo($VideoInDB, $CurrentUser); }
-			else
-			{ Video::UpdateVideo($VideoInDB, $CurrentUser); }
 		}
 	}
 }

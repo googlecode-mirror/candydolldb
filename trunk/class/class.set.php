@@ -293,19 +293,26 @@ class Set
 	 * @param int $ModelID
 	 * @param int $SetID
 	 * @param string $Name
+	 * @param string $Prefix
 	 * @return array(Set)
 	 */
-	public static function FilterSets($SetArray, $ModelID = null, $SetID = null, $Name = null)
+	public static function FilterSets($SetArray, $ModelID = null, $SetID = null, $Name = null, $Prefix = null)
 	{
 		$OutArray = array();
-		
+
 		/* @var $Set Set */
 		foreach($SetArray as $Set)
 		{
 			if(
-				(is_null($ModelID) || $Set->getModel()->getID() == $ModelID)	&&
-				(is_null($SetID) || $Set->getID() == $SetID)			 		&&
-				(is_null($Name) || $Set->getName() == $Name)
+				(is_null($ModelID) || $Set->getModel()->getID() == $ModelID)				&&
+				(is_null($SetID) || $Set->getID() == $SetID)						 		&&
+				(is_null($Prefix) || strlen($Prefix) == 0 || $Set->getPrefix() == $Prefix)  &&
+				(
+					is_null($Name) ||
+					strlen($Name) == 0 ||
+					$Set->getName() == $Name ||
+					sprintf('%1$s%2$s', $Set->getModel()->GetShortName(), $Set->getName()) == $Name
+				)
 			){
 				$OutArray[] = $Set;
 			}

@@ -43,7 +43,7 @@ if($XmlFromFile)
 				$SetsInDb,
 				$Model2Process->getID(),
 				null,
-				preg_replace('/^SP /i', '', (string)$Set->attributes()->extended_name . (string)$Set->attributes()->name)
+				preg_replace('/^SP_/i', '', (string)$Set->attributes()->name)
 			);
 			
 			if($SetInDb){ $SetInDb = $SetInDb[0]; }
@@ -55,34 +55,21 @@ if($XmlFromFile)
 			if($Set2Process->getModel()->getFirstName() == 'VIP')
 			{
 				$Set2Process->setPrefix('SP_');
-				
-				$Set2Process->setName(
-					sprintf('%1$s%2$s',
-						preg_replace('/^SP /i', '', (string)$Set->attributes()->extended_name),
-						(string)$Set->attributes()->name
-					)
-				);
+				$Set2Process->setName(preg_replace('/^SP_/i', '', (string)$Set->attributes()->name));
 				$Set2Process->setContainsWhat(SET_CONTENT_IMAGE | SET_CONTENT_VIDEO);
 			}
 			else if($Set2Process->getModel()->getFirstName() == 'Interviews')
 			{
 				$Set2Process->setPrefix('In_');
-				
-				$Set2Process->setName(
-					sprintf('%1$s%2$s',
-						(string)$Set->attributes()->extended_name,
-						(string)$Set->attributes()->name
-					)
-				);
+				$Set2Process->setName((string)$Set->attributes()->name);
 				$Set2Process->setContainsWhat(SET_CONTENT_VIDEO);
 			}
 			else if($Set2Process->getModel()->getFirstName() == 'Promotions')
 			{
-				$Set2Process->setPrefix('Promotion');
+				$Set2Process->setPrefix(null);
 				$Set2Process->setName((string)$Set->attributes()->name);
 				$Set2Process->setContainsWhat(SET_CONTENT_VIDEO);
 			}
-			
 			else
 			{
 				$Set2Process->setPrefix('set_');
