@@ -79,7 +79,7 @@ for($i = 0; $i < count($Models); $i++)
 		
 		if($file->isFile() && $file->isReadable())
 		{
-			$imagenamematch = preg_match('/(?P<Prefix>[A-Z]+[_ -])?(?P<ModelName>[A-Z]+)(?P<SetNumber>\d\d)_(?P<Number>[0-9]{3})\.(?P<Extension>[^.]+)$/i', $file->getFilename(), $matches);
+			$imagenamematch = preg_match('/(?P<Prefix>[A-Z]+[_ -])?(?P<ModelName>[A-Z0-9]+)(?P<SetNumber>\d\d)_(?P<Number>[0-9]{3})\.(?P<Extension>[^.]+)$/i', $file->getFilename(), $matches);
 			
 			if($imagenamematch)
 			{
