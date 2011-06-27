@@ -49,7 +49,7 @@ if($SetID && $Sets){
 for($i = 0; $i < count($Models); $i++)
 {
 	$Model = $Models[$i];
-	
+
 	$ImageFolder = sprintf('%1$s/%2$s',
 		CANDYIMAGEPATH,
 		$Model->GetFullName()
@@ -57,13 +57,26 @@ for($i = 0; $i < count($Models); $i++)
 	
 	if(!file_exists($ImageFolder)) { continue; }
 	
+	/* @var $it RecursiveIteratorIterator */
 	$it = new RecursiveIteratorIterator(new RecursiveDirectoryIterator(
 			$ImageFolder,	
 		 	FileSystemIterator::SKIP_DOTS | FileSystemIterator::CURRENT_AS_FILEINFO));
 	
-	/* @var $file SplFileInfo */
+
+	$itArray = array();
 	foreach($it as $file)
+	{ $itArray[] = $file; }
+	
+	if($argv && $argc > 0)
+	{ $bi = new BusyIndicator(count($itArray), 0, sprintf('%1$2d/%2$2d %3$s', ($i + 1), count($Models), $Model->GetShortName())); }
+
+		 	
+	/* @var $file SplFileInfo */
+	foreach($itArray as $file)
 	{
+		if($argv && $argc > 0)
+		{ $bi->Next(); }
+		
 		if($file->isFile() && $file->isReadable())
 		{
 			$imagenamematch = preg_match('/(?P<Prefix>[A-Z]+[_ -])?(?P<ModelName>[A-Z]+)(?P<SetNumber>\d\d)_(?P<Number>[0-9]{3})\.(?P<Extension>[^.]+)$/i', $file->getFilename(), $matches);
