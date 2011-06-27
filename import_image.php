@@ -127,6 +127,7 @@ for($i = 0; $i < count($Models); $i++)
 	}
 }
 
-HTMLstuff::RefererRedirect();
+if(!$argv || !$argc)
+{ HTMLstuff::RefererRedirect(); }
 
 ?>
