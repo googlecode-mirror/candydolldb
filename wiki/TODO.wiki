@@ -25,7 +25,7 @@
 
   * More flexible and robust filename-handling<br>(no hardcoded prefixes during import)
 
-  * Multi-threadesness. Currently only one concurrent user is allowed for imports.
+  * Multi-threadedness. Currently only one concurrent user is allowed for imports.
 
 == Would Be Nice ==
 
