@@ -25,7 +25,11 @@
 
   * More flexible and robust filename-handling<br>(no hardcoded prefixes during import)
 
+  * Multi-threadesness. Currently only one concurrent user is allowed for imports.
+
 == Would Be Nice ==
+
+  * Overlay with loading-animation during lengthy imports (for example using AJAX)
 
   * More complete list of the models's lastnames and birthdates<br>(currently 46/82 have a known birthdate and 32/82 a known lastname)
 
