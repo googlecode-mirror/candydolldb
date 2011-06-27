@@ -4,7 +4,6 @@ include('cd.php');
 ini_set('max_execution_time', '3600');
 $CurrentUser = Authentication::Authenticate();
 
-$OutputSql = array_key_exists('output', $_GET) && isset($_GET['output']) && is_numeric($_GET['output']) && (int)$_GET['output'] === 1;
 
 $ModelID = null;
 $SetID = null;
@@ -32,7 +31,7 @@ $Sets = Set::GetSets(
 );
 
 $Videos = Video::GetVideos(
-sprintf(
+	sprintf(
 		'model_id = IFNULL(%1$s, model_id) AND set_id = IFNULL(%2$s, set_id) AND mut_deleted = -1',
 		$ModelID ? (string)$ModelID : 'NULL',
 		$SetID ? (string)$SetID : 'NULL'
@@ -57,11 +56,26 @@ for($i = 0; $i < count($Models); $i++)
 	);
 
 	if(!file_exists($VideoFolder)) { continue; }
+	
+	/* @var $it RecursiveIteratorIterator */
+	$it = new RecursiveIteratorIterator(new RecursiveDirectoryIterator(
+			$VideoFolder,	
+		 	FileSystemIterator::SKIP_DOTS | FileSystemIterator::CURRENT_AS_FILEINFO));
+
+	$itArray = array();
+	foreach($it as $file)
+	{ $itArray[] = $file; }
+	
+	if($argv && $argc > 0)
+	{ $bi = new BusyIndicator(count($itArray), 0, sprintf('%1$2d/%2$2d %3$s', ($i + 1), count($Models), $Model->GetShortName())); }
 
 
 	/* @var $FileInfo SplFileInfo */
-	foreach(new DirectoryIterator($VideoFolder) as $FileInfo)
+	foreach($itArray as $FileInfo)
 	{
+		if($argv && $argc > 0)
+		{ $bi->Next(); }
+		
 		if($FileInfo->isFile() && $FileInfo->isReadable())
 		{
 			$setnamematch = preg_match('/(?P<Prefix>[A-Z]+[_ -])?(?P<Name>[A-Z0-9]+)(?P<Number>\d\d)\.(?P<Extension>[^.]+)$/i', $FileInfo->getFilename(), $matches);

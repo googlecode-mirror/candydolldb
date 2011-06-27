@@ -60,6 +60,80 @@ class Authentication
 	}
 }
 
+class BusyIndicator
+{
+	private static $chars = '-\|/';
+	private $stringPrefix;
+	private $currentCharIndex;
+	private $maxValue;
+	private $currentValue;
+
+	/**
+	 * Creates a new busy-indicator from the supplied arguments.
+	 * @param int $maxValue
+	 * @param int $startValue
+	 * @param string $prefix
+	 */
+	public function BusyIndicator($maxValue = 100, $startValue = 0, $prefix = '')
+	{
+		$this->currentCharIndex = 0;
+		$this->maxValue = $maxValue;
+		$this->currentValue = $startValue;
+		$this->stringPrefix = $prefix;
+	}
+	
+	/**
+	 * Calculates the current value of the busy-indicator.
+	 * @return float
+	 */
+	private function CalcValue()
+	{
+		return (
+			($this->currentValue ? $this->currentValue : 0) / 
+			($this->maxValue ? $this->maxValue : 100) 
+		);
+	}
+	
+	/**
+	 * Prints a number of BACKSPACE-characters equal in length to the input string.
+	 * @param string $inString
+	 */
+	private static function SweepItClean($inString)
+	{
+		for($i = 0; $i < strlen($inString); $i++)
+		{ printf("\x08"); }
+	}
+	
+	/**
+	 * Advances the busy-indicator by the given amount and draws all output to screen.
+	 * @param int $step
+	 */
+	public function Next($step = 1)
+	{
+		$toWrite = sprintf('%1$s %2$s %3$6.2f%%',
+			$this->stringPrefix,
+			substr(BusyIndicator::$chars, $this->currentCharIndex, 1),
+			$this->CalcValue() * 100
+		);
+		
+		echo $toWrite;
+		echo BusyIndicator::SweepItClean($toWrite);
+
+		$this->currentCharIndex++;
+		
+		if($this->currentCharIndex > strlen(BusyIndicator::$chars) - 1)
+		{ $this->currentCharIndex = 0; }
+		
+		$this->currentValue = $this->currentValue + $step;
+		
+		if($this->currentValue >= $this->maxValue)
+		{
+			$toWrite = sprintf("%1\$s Finished.\n", $this->stringPrefix);
+			echo $toWrite;
+		}
+	}
+}
+
 class Utils
 {
 	/**
