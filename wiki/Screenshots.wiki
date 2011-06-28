@@ -3,6 +3,8 @@
 
 = Screenshots =
 
+<wiki:toc max_depth="2" />
+
 So far, screenshots are taken with Chromium 11 on Ubuntu Natty. Feel free to submit your own.
 
 == Index page == 
