@@ -16,3 +16,7 @@ So far, screenshots are taken with Chromium 11 on Ubuntu Natty. Feel free to sub
 == Model form == 
 
 [http://fwiep.nl/download/bea8f598-230c-444c-9c84-b3fb16855673.jpg http://fwiep.nl/download/bea8f598-230c-444c-9c84-b3fb16855673s.jpg]
+
+== Batch video-import == 
+
+[http://fwiep.nl/download/2f09e963-5cb7-49b4-aa14-65975a969a5e.jpg http://fwiep.nl/download/2f09e963-5cb7-49b4-aa14-65975a969a5es.jpg]
