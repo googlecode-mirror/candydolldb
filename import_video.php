@@ -78,7 +78,7 @@ for($i = 0; $i < count($Models); $i++)
 		
 		if($FileInfo->isFile() && $FileInfo->isReadable())
 		{
-			$setnamematch = preg_match('/(?P<Prefix>[A-Z]+[_ -])?(?P<Name>[A-Z0-9]+)(?P<Number>\d\d)\.(?P<Extension>[^.]+)$/i', $FileInfo->getFilename(), $matches);
+			$setnamematch = preg_match('/(?P<Prefix>[A-Z]+[_ -])?(?P<Name>[A-Z0-9]+)(?P<Number>\d\d)(?P<Suffix>[a-z])?\.(?P<Extension>[^.]+)$/i', $FileInfo->getFilename(), $matches);
 			
 			if($matches)
 			{
@@ -102,7 +102,7 @@ for($i = 0; $i < count($Models); $i++)
 					$VideoInDB->setSet($Set);
 				}
 					
-				$VideoInDB->setFileName($matches['Prefix'].$matches['Name'].$matches['Number']);
+				$VideoInDB->setFileName($matches['Prefix'].$matches['Name'].$matches['Number'].$matches['Suffix']);
 				$VideoInDB->setFileExtension($matches['Extension']);
 				$VideoInDB->setFileSize($FileInfo->getSize());
 				$VideoInDB->setFileCheckSum(md5_file($FileInfo->getRealPath()));
