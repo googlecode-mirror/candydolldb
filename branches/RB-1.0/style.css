@@ -1,0 +1,297 @@
+/* CandyDoll backgrounds:		#771012 and  #691012 */
+/* CandyDoll alt-backgrounds:	#aeac8e and  #a9a27c */
+/* Icons from http://openiconlibrary.sourceforge.net/ */
+
+body{
+	background-image: url("images/background.png");
+	color: #eddddd;
+	font-family: Helvetica, Arial, Tahoma, sans-serif;
+	font-size: 10pt;
+	margin: 0;
+	padding: 0;
+}
+a{
+	color: #eddddd;
+	text-decoration: none;
+}
+a:focus, a:hover{
+	text-decoration: underline;
+}
+a img{
+	border-width: 0;
+}
+fieldset{
+	border-width: 0;
+}
+legend{
+	display: none;
+}
+
+div#ErrorContainer{
+	background-color: #000000;
+	display: none;
+	height: 100%;
+	left: 0;
+	position: absolute;
+	top: 0;
+	width: 100%;
+	z-index: 2;
+}
+
+div#Container{
+	margin: 0 auto;
+	width: 900px;
+}
+
+div#Header{
+	background-image: url("images/logo.png");
+	background-position: 180px 0;
+	background-repeat: no-repeat;
+	height: 120px;
+	margin: 20px auto 30px auto;
+}
+
+div#Header h1{
+	display: none;
+}
+div#Header p{
+	padding-top: 100px;
+	text-align: center;
+}
+div.LoginStats{
+	background-image: url('images/button_off.png');
+	background-repeat: no-repeat;
+	font-size: 7pt;
+	height: 33px;
+	left: 670px;
+	line-height: 11px;
+	margin: 0 0 10px 0;
+	padding: 6px 12px 6px 12px;
+	position: absolute;
+	text-align: center;
+	top: -100px;
+	width: 138px;
+}
+
+div#Content{
+}
+div#Content table{
+	border: solid 1px #c4bb94;
+	margin: 0 0 20px 0;
+	width: 100%;
+}
+div#Content table th,
+div#Content table td{
+	border: solid 1px #a39c7f;
+}
+div#Content table thead, div#Content table tfoot{
+	background-color: #232323;
+}
+div#Content table tr.Row1{
+	background-color: #373737;
+}
+div#Content table tr.Row2{
+	background-color: #3f3f3f;
+}
+div#Content table em{
+	color: #cc0000;
+	font-weight: bold;
+}
+form .FormRow{
+	height: 30px;
+	line-height: 30px;
+}
+form label{
+	clear: left;
+	float: left;
+	width: 150px;
+}
+form label em{
+	color: #cc0000;
+	font-weight: bold;
+}
+form label.Radio{
+	clear: none;
+	float: none;
+	width: 50px;
+}
+form input[type=text],
+form input[type=password]{
+	width: 250px;
+}
+form.FilterForm{
+	float: right;
+	width: 440px;
+}
+form.FilterForm label{
+	float: none;
+	height: 30px;
+	line-height: 30px;
+	width: auto;
+}
+form.FilterForm input[type=text]{
+	height: 16px;
+	line-height: 16px;
+	margin-left: 10px;
+	width: 150px;
+}
+form.FilterForm input[type=submit]{
+	line-height: 16px;
+}
+
+.AbsolutePoint{
+	position: absolute;
+}
+.PhotoContainer{
+	float: right;
+	width: 400px;
+}
+.CenterForm{
+	margin: 0 auto;
+	width: 430px;
+}
+.CenterForm p{
+	text-align: center;
+}
+
+.Lefty{
+	text-align: left;
+}
+.Righty{
+	text-align: right;
+}
+.Center{
+	text-align: center;
+}
+
+.Separator{
+	height: 20px;
+	line-height: 20px;
+}
+
+a.Button{
+	background-image: url('images/button_off.png');
+	display: block;
+	float: left;
+	font-weight: bold;
+	height: 45px;
+	line-height: 45px;
+	margin: 0 20px 20px 0;
+	text-align: center;
+	width: 162px;
+}
+a.Button:focus, a.Button:hover{
+	background-image: url('images/button_on.png');
+	text-decoration: none;
+}
+
+/* Errorlist */
+div.ErrorList{
+	background-color: #7b000e;
+	background-image: url('images/error_gradient.png');
+	background-position: top left;
+	background-repeat: repeat-x;
+	border: solid 4px #8f2323;
+	cursor: pointer;
+	display: none;
+	font-size: 12pt;
+	margin: 0 100px;
+	padding: 20px;
+	position: absolute;
+	top: 150px;
+	width: 520px;
+	z-index: 3;
+}
+div.ErrorList ul{
+	background-image: url('images/error.png');
+	background-repeat: no-repeat;
+	list-style-type: none;
+	margin: 0;
+	min-height: 120px;
+	padding: 0 0 0 130px;
+}
+div.ErrorList ul li{
+}
+
+/* SLIMBOX */
+#lbOverlay {
+	background-color: #000;
+	cursor: pointer;
+	height: 100%;
+	left: 0;
+	position: fixed;
+	top: 0;
+	width: 100%;
+	z-index: 9999;
+}
+
+#lbCenter, #lbBottomContainer {
+	background-color: #ffffcc;
+	overflow: hidden;
+	position: absolute;
+	z-index: 9999;
+}
+
+.lbLoading {
+	background: #ffffcc url('images/loading.gif') no-repeat center;
+}
+
+#lbImage {
+	background-repeat: no-repeat;
+	border: 10px solid #ffffcc;
+	left: 0;
+	position: absolute;
+	top: 0;
+}
+
+#lbPrevLink, #lbNextLink {
+	display: block;
+	outline: none;
+	position: absolute;
+	top: 0;
+	width: 50%;
+}
+
+#lbPrevLink {
+	left: 0;
+}
+
+#lbPrevLink:hover {
+	background: transparent url('images/lb_prev.png') no-repeat 0 15%;
+}
+
+#lbNextLink {
+	right: 0;
+}
+
+#lbNextLink:hover {
+	background: transparent url('images/lb_next.png') no-repeat 100% 15%;
+}
+
+#lbBottom {
+	border: 10px solid #ffffcc;
+	border-top-style: none;
+	color: #666;
+	font-family: Verdana, Arial, Geneva, Helvetica, sans-serif;
+	font-size: 10px;
+	line-height: 1.4em;
+	text-align: left;
+}
+
+#lbCloseLink {
+	background: transparent url('images/lb_close.png') no-repeat center;
+	display: block;
+	float: right;
+	height: 22px;
+	margin: 5px 0;
+	outline: none;
+	width: 22px;
+}
+
+#lbCaption, #lbNumber {
+	margin-right: 71px;
+}
+
+#lbCaption {
+	font-weight: bold;
+}
