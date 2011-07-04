@@ -9,12 +9,6 @@
 
   * Lots of feedback :-)
 
-  * A downloadable public release. To do that we need:
-    * a comprehensible README
-    * a clue about what format(s) to use (zip, tar.gz, 7z)
-    * ...
-    * ...
-
 == Could Use ==
 
   * Usage-reports on non-Linux platforms, for inter-platform testing of filehandling, imports and downloads.
