@@ -1,4 +1,19 @@
 <?php
+/*	This file is part of CandyDollDB.
+
+    CandyDollDB is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    CandyDollDB is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with CandyDollDB.  If not, see <http://www.gnu.org/licenses/>.
+*/
 
 class HTMLstuff
 {
@@ -17,13 +32,13 @@ class HTMLstuff
 		<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\" />
 		<meta name=\"language\" content=\"en-US\" />
 		
-		<link rel=\"stylesheet\" type=\"text/css\" href=\"style.css\" title=\"CandyDoll DB\" />
+		<link rel=\"stylesheet\" type=\"text/css\" href=\"style.css\" title=\"CandyDoll DB v1.0\" />
 		<link rel=\"shortcut icon\" href=\"favicon.ico\" />
 		<link rel=\"icon\" href=\"favicon.ico\" />
 		
 		<script type=\"text/javascript\" src=\"http://code.jquery.com/jquery.min.js\"></script>
 		<script type=\"text/javascript\" src=\"js/fwiep.js\"></script>
-		<title>CandyDoll DB%1\$s</title>
+		<title>CandyDoll DB v1.0%1\$s</title>
 		</head>
 
 		<body>
@@ -31,7 +46,7 @@ class HTMLstuff
 		<div id=\"Container\">
 		<div id=\"Header\"%3\$s>
 
-		<h1>CandyDoll DB%1\$s</h1>
+		<h1>CandyDoll DB v1.0%1\$s</h1>
 		<p>by <a href=\"http://www.fwiep.nl/\" rel=\"external\" title=\"FWieP\">FWieP</a></p>
 		%4\$s
 		<div class=\"AbsolutePoint\">
