@@ -88,6 +88,42 @@ class HTMLstuff
 			$ButtonText ? htmlentities($ButtonText) : 'Home' 
 		);
 	}
+	/**
+	 * Generates a JavaScript-snippet which shows a nice loading animation while an image loads.
+	 * @param string $url
+	 * @param int $width
+	 * @param int $height
+	 * @param string $title
+	 * @param string $alt
+	 * @return string
+	 */
+	public static function ImageLoading($url, $width = 400, $height = 600, $title = '', $alt = '')
+	{
+		$template = <<<HfuheuhUHfuh3e83uhfuhdfu3
+		<script type="text/javascript">
+		//<![CDATA[
+		
+			$(document).ready(function(){
+				var img = new Image();
+				$(img).load(function(){
+					$(this).hide();
+					$('.Loading').removeClass('Loading').append(this);
+					$(this).fadeIn();
+				}).attr({
+					width : %2\$d,
+					height : %3\$d,
+					title : '%4\$s',
+					alt : '%5\$s',
+					src : '%1\$s'
+				});
+			});
+		           
+		//]]>
+		</script>
+HfuheuhUHfuh3e83uhfuhdfu3;
+
+		return sprintf($template, $url, $width, $height, $title, $alt);
+	}
 	
 	public static function DisabledStr($InBool)
 	{

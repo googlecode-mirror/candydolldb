@@ -27,6 +27,12 @@ legend{
 	display: none;
 }
 
+.Loading{
+	background-image: url('images/loading.gif');
+	background-position: center center; 
+	background-repeat: no-repeat;
+}
+
 div#ErrorContainer{
 	background-color: #000000;
 	display: none;
@@ -144,6 +150,7 @@ form.FilterForm input[type=submit]{
 }
 .PhotoContainer{
 	float: right;
+	height: 600px;
 	width: 400px;
 }
 .CenterForm{
