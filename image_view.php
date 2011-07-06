@@ -90,14 +90,22 @@ if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'ImageView')
 	}
 }
 
-if($ImageID)
-{ $ImageTag = sprintf('<img src="download_image.php?image_id=%1$d&amp;portrait_only=true" width="400" height="600" alt="%2$s" title="%2$s" />', $ImageID, htmlentities($Model->GetFullName())); }
-
 echo HTMLstuff::HtmlHeader($Model->GetShortName().' - Set '.$Set->getName().' - Image', $CurrentUser);
 
-?>
+if($ImageID)
+{
+	echo HTMLstuff::ImageLoading(
+		sprintf('download_image.php?image_id=%1$d&random_pic=true&portrait_only=true', $ImageID),
+		400,
+		600,
+		htmlentities($Model->GetFullName()),
+		htmlentities($Model->GetFullName())
+	);
+	
+	echo '<div class="PhotoContainer Loading"></div>';
+}
 
-<div class="PhotoContainer"><?php echo $ImageTag; ?></div>
+?>
 
 <h2><?php echo sprintf(
 	'<a href="index.php">Home</a> - <a href="model_view.php?model_id=%1$d">%4$s</a> - <a href="set.php?model_id=%1$d">Sets</a> -  <a href="set_view.php?model_id=%1$d&amp;set_id=%2$d">Set %5$s</a> - <a href="image.php?model_id=%1$d&amp;set_id=%2$d">Images</a> - %6$s',
