@@ -4,15 +4,32 @@ include('cd.php');
 ini_set('max_execution_time', '3600');
 $CurrentUser = Authentication::Authenticate();
 
+if($argv && $argc > 0)
+{
+	// On the commandline, use absolute path
+	if(file_exists(sprintf('%1$s/setup_data.xml', dirname($_SERVER['PHP_SELF']))))
+	{ $XmlFromFile = new SimpleXMLElement(file_get_contents(sprintf('%1$s/setup_data.xml', dirname($_SERVER['PHP_SELF'])))); }
+}
+else
+{
+	// During a HTTP-request, use relative path
+	if(file_exists('setup_data.xml'))
+	{ $XmlFromFile = new SimpleXMLElement(file_get_contents('setup_data.xml')); }
+}
 
-$XmlFromFile = new SimpleXMLElement(file_get_contents('setup_data.xml'));
 if($XmlFromFile)
 {
 	$ModelsInDb = Model::GetModels();
 	$SetsInDb = Set::GetSets();
+	
+	if($argv && $argc > 0)
+	{ $bi = new BusyIndicator(count($XmlFromFile->Model), 0); }
 
 	foreach ($XmlFromFile->Model as $Model)
 	{
+		if($argv && $argc > 0)
+		{ $bi->Next(); }
+		
 		$ModelInDb = Model::FilterModels($ModelsInDb, null, $Model['firstname'], $Model['lastname']);
 		if($ModelInDb){ $ModelInDb = $ModelInDb[0]; }
 
@@ -98,6 +115,7 @@ if($XmlFromFile)
 	}
 }
 
-HTMLstuff::RefererRedirect();
+if(!$argv || !$argc)
+{ HTMLstuff::RefererRedirect(); }
 
 ?>
