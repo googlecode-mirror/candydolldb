@@ -2,6 +2,7 @@
 
 include('cd.php');
 $UserName = null;
+$EmailAddress = null;
 $Hash = null;
 $HashError = false;
 $MailSent = null;
@@ -10,9 +11,11 @@ $MailSent = null;
 if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] && $_POST['hidAction'] == 'PasswordPassword')
 {
 	$UserName = $_POST['txtUserName'];
+	$EmailAddress = $_POST['txtEmailAddress'];
 
-	$WhereClause = sprintf("user_username = '%1\$s' AND mut_deleted = -1",
-		mysql_real_escape_string($UserName)
+	$WhereClause = sprintf("user_username = '%1\$s' AND user_email = '%2\$s' AND mut_deleted = -1",
+		mysql_real_escape_string($UserName),
+		mysql_real_escape_string($EmailAddress)
 	);
 
 	$Users = User::GetUsers($WhereClause);
@@ -48,7 +51,7 @@ if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] && $_POST['hidAc
 		Error::AddError($LoginError);
 	}
 }
-else if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] && $_POST['hidAction'] == 'PasswordReset' && array_key_exists('Hash', $_GET) && preg_match('/^[0-9a-f]{40}$/i', $_GET['Hash']))
+else if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] && $_POST['hidAction'] == 'PasswordReset' && array_key_exists('Hash', $_GET) && preg_match('/^[0-9a-f]{128}$/i', $_GET['Hash']))
 {
 	$Hash = $_GET['Hash'];
 
@@ -76,10 +79,20 @@ else if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] && $_POST['
 		}
 		else
 		{
-			$LoginError = new LoginError();
-			$LoginError->setErrorNumber(LOGIN_ERR_PASSWORDSNOTIDENTICAL);
-			$LoginError->setErrorMessage(LoginError::TranslateLoginError(LOGIN_ERR_PASSWORDSNOTIDENTICAL));
-			Error::AddError($LoginError);
+			if(!$_POST['txtNewPassword'] && !$_POST['txtRepeatPassword'])
+			{
+				$LoginError = new LoginError();
+				$LoginError->setErrorNumber(REQUIRED_FIELD_MISSING);
+				$LoginError->setErrorMessage(Error::TranslateError(REQUIRED_FIELD_MISSING));
+				Error::AddError($LoginError);
+			}
+			else
+			{
+				$LoginError = new LoginError();
+				$LoginError->setErrorNumber(LOGIN_ERR_PASSWORDSNOTIDENTICAL);
+				$LoginError->setErrorMessage(LoginError::TranslateLoginError(LOGIN_ERR_PASSWORDSNOTIDENTICAL));
+				Error::AddError($LoginError);
+			}
 		}
 	}
 	else
@@ -87,7 +100,7 @@ else if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] && $_POST['
 		header('location:login.php');
 	}
 }
-else if (!array_key_exists('hidAction', $_POST) && array_key_exists('Hash', $_GET) && preg_match('/^[0-9a-f]{40}$/i', $_GET['Hash']))
+else if (!array_key_exists('hidAction', $_POST) && array_key_exists('Hash', $_GET) && preg_match('/^[0-9a-f]{128}$/i', $_GET['Hash']))
 {
 	$Hash = $_GET['Hash'];
 
@@ -121,11 +134,16 @@ echo HTMLstuff::HtmlHeader('Reset your password'); ?>
 <?php if(!$Hash && is_null($MailSent)) { ?>
 <input type="hidden" id="hidAction" name="hidAction" value="PasswordPassword" />
 
-<p>Please provide the username of the account for which you would like to reset the password. A hyperlink will then be sent to the account's email address which will enable you to reset the password.</p>
+<p>Please provide the username and e-mailaddress of the account for which you would like to reset the password. A hyperlink will then be sent which will enable you to reset the password.</p>
 
 <div class="FormRow">
 <label for="txtUserName">Username: <em>*</em></label>
 <input type="text" id="txtUserName" name="txtUserName" maxlength="50" value="<?php echo $UserName; ?>" />
+</div>
+
+<div class="FormRow">
+<label for="txtEmailAddress">E-mailaddress: <em>*</em></label>
+<input type="text" id="txtEmailAddress" name="txtEmailAddress" maxlength="254" value="<?php echo $EmailAddress; ?>" />
 </div>
 
 <div class="FormRow">

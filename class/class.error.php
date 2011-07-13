@@ -84,6 +84,25 @@ class Error
 		else
 		{ return null; }
 	}
+	
+	/**
+	 * Translates the numeric generic error into a human readable string
+	 * @param int $InError
+	 * @return string
+	 */
+	public static function TranslateError($InError)
+	{
+		$OutMessage = null;
+		
+		switch($InError)
+		{
+			case REQUIRED_FIELD_MISSING:
+				$OutMessage = 'Not all required data was entered.'; break;
+			default:
+				$OutMessage = 'Unknown error'; break;
+		}
+		return $OutMessage;
+	}
 }
 
 class LoginError extends Error
@@ -107,7 +126,7 @@ class LoginError extends Error
 			case LOGIN_ERR_RESETCODENOTFOUND:
 				$OutMessage = 'The hypelink you have used is not or no longer valid'; break;
 			case LOGIN_ERR_USERNAMENOTFOUND:
-				$OutMessage = 'The specified username was not found'; break;
+				$OutMessage = 'The specified combination of username and e-mailaddress was not found'; break;
 			case LOGIN_ERR_PASSWORDINCORRECT:
 				$OutMessage = 'The specified password is not correct'; break;
 			default:
