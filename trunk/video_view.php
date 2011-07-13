@@ -138,6 +138,8 @@ echo HTMLstuff::HtmlHeader($Model->GetShortName().' - Set '.$Set->getName().' - 
 
 <div class="Separator"></div>
 
+<?php echo $VideoID ? HTMLstuff::Button(sprintf('download_image.php?video_id=%1$d', $VideoID), 'Thumbnails', 'rel="lightbox"') : ''; ?>
+
 <?php echo HTMLstuff::Button('index.php', 'Home'); ?>
 
 </fieldset>

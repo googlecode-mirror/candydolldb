@@ -78,14 +78,16 @@ class HTMLstuff
 	 * Generate a hyperlink pointing to the given URL, or index.php.  
 	 * @param string $URL
 	 * @param string $ButtonText
+	 * @param string $CustomAttributes
 	 * @return string
 	 */
-	public static function Button($URL = null, $ButtonText = null)
+	public static function Button($URL = null, $ButtonText = null, $CustomAttributes = null)
 	{
 		return sprintf(
-			"<a href=\"%1\$s\" class=\"Button\">%2\$s</a>",
+			"<a href=\"%1\$s\" class=\"Button\"%3\$s>%2\$s</a>",
 		 	$URL ? $URL : (array_key_exists('HTTP_REFERER', $_SERVER) ? $_SERVER['HTTP_REFERER'] : 'index.php'),
-			$ButtonText ? htmlentities($ButtonText) : 'Home' 
+			$ButtonText ? htmlentities($ButtonText) : 'Home',
+			$CustomAttributes ? $CustomAttributes : null 
 		);
 	}
 	/**
