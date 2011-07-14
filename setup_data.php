@@ -94,11 +94,15 @@ if($XmlFromFile)
 				$Set2Process->setContainsWhat(SET_CONTENT_IMAGE | SET_CONTENT_VIDEO);
 			}
 			
-			$datePic = strtotime((string)$Set->attributes()->date_pic);
+			preg_match_all('/[0-9]{4}-[01][0-9]-[0123][0-9]/ix', (string)$Set->attributes()->date_pic, $datesPic);
+			
+			$datePic = strtotime($datesPic[0][0]);
 			if($datePic !== false) { $Set2Process->setDatePic($datePic); }
 			else { $Set2Process->setDatePic(-1); }
 			
-			$dateVid = strtotime((string)$Set->attributes()->date_vid);
+			preg_match_all('/[0-9]{4}-[01][0-9]-[0123][0-9]/ix', (string)$Set->attributes()->date_vid, $datesVid);
+			
+			$dateVid = strtotime($datesVid[0][0]);
 			if($dateVid !== false) { $Set2Process->setDateVid($dateVid); }
 			else { $Set2Process->setDateVid(-1); }
 			
