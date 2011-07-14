@@ -17,12 +17,20 @@
 	</xs:restriction>
 </xs:simpleType>
 
+<xs:simpleType name="MultiDate">
+	<xs:list itemType="xs:date" />
+</xs:simpleType>
+
 <xs:simpleType name="EmptyName">
 	<xs:union memberTypes="Empty Name"  />
 </xs:simpleType>
 
 <xs:simpleType name="EmptyDate">
 	<xs:union memberTypes="Empty xs:date"  />
+</xs:simpleType>
+
+<xs:simpleType name="EmptyMultiDate">
+	<xs:union memberTypes="Empty MultiDate"  />
 </xs:simpleType>
 
 <xs:simpleType name="Empty">
@@ -39,8 +47,8 @@
 
 <xs:complexType name="SetType">
 	<xs:attribute name="name" type="DigitName" use="required" />
-	<xs:attribute name="date_pic" type="EmptyDate" use="optional" default=""/>
-	<xs:attribute name="date_vid" type="EmptyDate" use="optional" default=""/>
+	<xs:attribute name="date_pic" type="EmptyMultiDate" use="optional" default=""/>
+	<xs:attribute name="date_vid" type="EmptyMultiDate" use="optional" default=""/>
 				
 </xs:complexType>
 
