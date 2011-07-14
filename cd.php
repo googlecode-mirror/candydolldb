@@ -56,6 +56,7 @@ $db->Connect();
 $db->setDatabaseName('cdtvdb');
 
 include('class/class.user.php');
+include('class/class.date.php');
 include('class/class.image.php');
 include('class/class.model.php');
 include('class/class.set.php');
