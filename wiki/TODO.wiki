@@ -9,6 +9,8 @@
 
   * Lots of feedback :-)
 
+  * Thorough support for multiple (image- or video-)dates in Sets.
+
 == Could Use ==
 
   * Usage-reports on non-Linux platforms, for inter-platform testing of filehandling, imports and downloads.
