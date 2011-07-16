@@ -16,6 +16,8 @@ $VideoCount = 0;
 
 $WhereClause = sprintf('model_id = %1$d AND mut_deleted = -1', $ModelID);
 $Sets = Set::GetSets($WhereClause);
+$Dates = Date::GetDates($WhereClause);
+
 
 if($Sets)
 {
@@ -28,6 +30,10 @@ if($Sets)
 		$ImageCount += $Set->getAmountPicsInDB();
 		$VideoCount += $Set->getAmountVidsInDB();
 
+		$DatesThisSet = Date::FilterDates($Dates, $ModelID, $Set->getID());
+		$DatesImage = Date::FilterDates($DatesThisSet, null, null, DATE_KIND_IMAGE);
+		$DatesVideo = Date::FilterDates($DatesThisSet, null, null, DATE_KIND_VIDEO);
+		
 		$SetRows .= sprintf(
 		"\n<tr class=\"Row%15\$d\">".
         	"<td><a href=\"set_view.php?model_id=%13\$d&amp;set_id=%1\$d\">%9\$s</a></td>".
@@ -45,7 +51,7 @@ if($Sets)
 		$Set->getID(),
 		$Set->getAmountPicsInDB(),
 		$Set->getAmountVidsInDB(),
-		$Set->getDatePic() > 0 ? date('j F Y', $Set->getDatePic()) : '&nbsp;',
+	 	Date::FormatDates($DatesImage, 'j F Y'),
 		$Set->getSetIsDirtyPic() ? '<em> !</em>' : null,
 		$Set->getSetIsDirtyPic() ? ' title="Incomplete or empty set"' : null,
 		$Set->getSetIsDirtyVid() ? '<em> !</em>' : null,
@@ -57,7 +63,7 @@ if($Sets)
 		$Model->getID(),
 		COMMAND_DELETE,
 		$SetCount % 2 == 0 ? 2 : 1,
-		$Set->getDateVid() > 0 ? date('j F Y', $Set->getDateVid()) : '&nbsp;'
+		Date::FormatDates($DatesVideo, 'j F Y')
 		);
 	}
 }
@@ -80,10 +86,10 @@ echo HTMLstuff::HtmlHeader($Model->GetShortName().' - Sets', $CurrentUser);
 <table border="0" cellpadding="4" cellspacing="0">
 	<thead>
 		<tr>
-			<th style="width: 120px;">Prefix</th>
+			<th style="width: 80px;">Prefix</th>
 			<th>Name</th>
-			<th style="width: 140px;">Date (pics)</th>
-			<th style="width: 140px;">Date (vids)</th>
+			<th style="width: 160px;">Date (pics)</th>
+			<th style="width: 160px;">Date (vids)</th>
 			<th style="width: 80px;"># Img DB</th>
 			<th style="width: 22px;">&nbsp;</th>
 			<th style="width: 22px;">&nbsp;</th>

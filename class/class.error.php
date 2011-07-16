@@ -126,6 +126,8 @@ class LoginError extends Error
 			case LOGIN_ERR_RESETCODENOTFOUND:
 				$OutMessage = 'The hypelink you have used is not or no longer valid'; break;
 			case LOGIN_ERR_USERNAMENOTFOUND:
+				$OutMessage = 'The specified username was not found'; break;
+			case LOGIN_ERR_USERNAMEANDMAILADDRESNOTFOUND:
 				$OutMessage = 'The specified combination of username and e-mailaddress was not found'; break;
 			case LOGIN_ERR_PASSWORDINCORRECT:
 				$OutMessage = 'The specified password is not correct'; break;

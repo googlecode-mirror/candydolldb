@@ -41,8 +41,7 @@ if($Images)
 	    	"<td class=\"Center\">%6\$s</td>".
 			"<td class=\"Center\">%9\$d</td>".
 			"<td class=\"Center\">%10\$d</td>".
-        	"<td>%7\$s...</td>".
-			"<td>%8\$s</td>".
+        	"<td>%7\$s</td>".
 			"<td class=\"Center\"><a href=\"download_zip.php?image_id=%1\$d\"><img src=\"images/button_download.png\" width=\"16\" height=\"16\" alt=\"Download image\" title=\"Download image\" /></a></td>".
 			"<td class=\"Center\"><a href=\"download_image.php?image_id=%1\$d\" title=\"%4\$s\" rel=\"lightbox-gal\"><img src=\"images/button_view.png\" width=\"16\" height=\"16\" alt=\"View image\" title=\"View image\" /></a></td>".
 			"<td class=\"Center\"><a href=\"image_view.php?model_id=%3\$d&amp;set_id=%2\$d&amp;image_id=%1\$d&amp;cmd=%11\$s\" title=\"Delete image\"><img src=\"images/button_delete.png\" width=\"16\" height=\"16\" alt=\"Delete\" /></a></td>".
@@ -53,8 +52,8 @@ if($Images)
 		htmlentities($Image->getFileName()),
 		htmlentities($Image->getFileExtension()),
 		Utils::ReadableFilesize($Image->getFileSize()),
-		htmlentities(substr($Image->getFileCheckSum(), 0, 16)),
-		$Image->getDateTaken() > 0 ? date('j F Y', $Image->getDateTaken()) : '&nbsp;',
+		htmlentities($Image->getFileCheckSum()),
+		null,
 		$Image->getImageWidth(),
 		$Image->getImageHeight(),
 		COMMAND_DELETE,
@@ -96,7 +95,6 @@ echo HTMLstuff::HtmlHeader(sprintf('%1$s - Set %2$s - Images', $Model->GetShortN
 			<th style="width: 65px;">Width</th>
 			<th style="width: 65px;">Height</th>
 			<th style="width: 160px;">Checksum</th>
-			<th style="width: 140px;">Date</th>
 			<th style="width: 22px;">&nbsp;</th>
 			<th style="width: 22px;">&nbsp;</th>
 			<th style="width: 22px;">&nbsp;</th>
@@ -104,11 +102,11 @@ echo HTMLstuff::HtmlHeader(sprintf('%1$s - Set %2$s - Images', $Model->GetShortN
 	</thead>
 	<tfoot>
 		<tr>
-			<th colspan="10">Total image count: <?php printf('%1$d', $ImageCount); ?></th>
+			<th colspan="9">Total image count: <?php printf('%1$d', $ImageCount); ?></th>
 		</tr>
 	</tfoot>
 	<tbody>
-	<?php echo $ImageRows ? $ImageRows : '<tr class="Row1"><td colspan="10">&nbsp;</td></tr>'; ?>
+	<?php echo $ImageRows ? $ImageRows : '<tr class="Row1"><td colspan="9">&nbsp;</td></tr>'; ?>
 	</tbody>
 </table>
 

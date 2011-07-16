@@ -56,7 +56,7 @@ class Date
 	/**
 	 * @param int $TimeStamp
 	 */
-	public function setTimeStamp($FileName)
+	public function setTimeStamp($TimeStamp)
 	{ $this->TimeStamp = $TimeStamp; }
 	
 	/**
@@ -116,7 +116,7 @@ class Date
 					$SetObject->setModel($ModelObject);
 					$DateObject->setSet($SetObject);
 					
-					$OutArray[] = $SetObject;
+					$OutArray[] = $DateObject;
 				}
 			}
 			return $OutArray;
@@ -220,6 +220,55 @@ class Date
 			}
 		}
 		return $OutArray;
+	}
+	
+	/**
+	 * Parses an array of strings into an array of Date objects.
+	 * @param array(string) $InArray
+	 * @param int $DateKind
+	 * @param Set $Set
+	 * @return array(Date)
+	 */
+	public static function ParseDates($InArray, $DateKind = DATE_KIND_UNKNOWN, $Set = null)
+	{
+		$OutArray = array();
+		if(is_array($InArray) && count($InArray) > 0 && is_array($InArray[0]))
+		{
+			for ($i = 0; $i < count($InArray[0]); $i++)
+			{
+				$timestamp = strtotime($InArray[0][$i]);
+				if($timestamp !== false)
+				{
+					/* @var $Date Date */
+					$Date = new Date();
+					
+					$Date->setSet($Set);
+					$Date->setDateKind($DateKind);
+					$Date->setTimeStamp($timestamp);
+					
+					$OutArray[] = $Date;
+				}
+			} 
+		}
+		return $OutArray;	
+	}
+	
+	/**
+	 * Formats the given Dates into a comma separated string 
+	 * @param array(Date) $InArray
+	 * @param string $DateFormat
+	 * @return string
+	 */
+	public static function FormatDates($InArray, $DateFormat)
+	{
+		$OutString = null;
+		if(is_array($InArray) && count($InArray) > 0)
+		{
+			/* @var $Date Date */
+			foreach ($InArray as $Date)
+			{ $OutString .= date($DateFormat, $Date->getTimeStamp()).', '; }
+		}
+		return trim($OutString, ', ');
 	}
 }
 

@@ -6,8 +6,8 @@ class Set
 	private $Model;
 	private $Prefix;
 	private $Name;
-	private $DatePic = -1;
-	private $DateVid = -1;
+	private $DatesPic = array();
+	private $DatesVid = array();
 	private $ContainsWhat = SET_CONTENT_NONE;
 	private $AmountPicsInDB = 0;
 	private $AmountVidsInDB = 0;
@@ -71,28 +71,50 @@ class Set
 	{ $this->Prefix = $Prefix; }
 	
 	/**
-	 * @return int 
+	 * @return array(Date)
+	 */
+	public function getDatesPic()
+	{
+		return $this->DatesPic;
+	}
+	
+	/**
+	 * @return Date
 	 */
 	public function getDatePic()
-	{ return $this->DatePic; }
-	
+	{
+		return $this->DatesPic ? $this->DatesPic[0]->getTimeStamp() : -1;
+	}
+
 	/**
-	 * @param int $DatePic
+	 * @param array(Date) $DatesPic
 	 */
-	public function setDatePic($DatePic)
-	{ $this->DatePic = $DatePic; }
+	public function setDatesPic($DatesPic)
+	{
+		$this->DatesPic = $DatesPic;
+	}
 	
 	/**
-	 * @return int 
+	 * @return array(Date)
+	 */
+	public function getDatesVid()
+	{
+		return $this->DatesVid;
+	}
+	
+	/**
+	 * @return Date
 	 */
 	public function getDateVid()
-	{ return $this->DateVid; }
+	{ return $this->DatesVid ? $this->DatesVid[0]->getTimeStamp() : -1; }
 	
 	/**
-	 * @param int $DateVid
+	 * @param array(Date) $DatesVid
 	 */
-	public function setDateVid($DateVid)
-	{ $this->DateVid = $DateVid; }
+	public function setDatesVid($DatesVid)
+	{
+		$this->DatesVid = $DatesVid;
+	}
 	
 	/**
 	 * @return int
@@ -179,6 +201,10 @@ class Set
 			{
 				foreach($db->getResult() as $SetItem)
 				{
+					/*
+					 * @var Set $SetObject
+					 * @var Model $ModelObject 
+					 */
 					$SetObject = new Set();
 					$ModelObject = new Model();
 					
@@ -189,8 +215,6 @@ class Set
 							case 'set_id'				: $SetObject->setID($ColumnValue);				break;
 							case 'set_prefix'			: $SetObject->setPrefix($ColumnValue);			break;
 							case 'set_name'				: $SetObject->setName($ColumnValue);			break;
-							case 'set_date_pic'			: $SetObject->setDatePic($ColumnValue);			break;
-							case 'set_date_vid'			: $SetObject->setDateVid($ColumnValue);			break;
 							case 'set_containswhat'		: $SetObject->setContainsWhat($ColumnValue);	break;
 							case 'set_amount_pics_in_db': $SetObject->setAmountPicsInDB($ColumnValue);	break;
 							case 'set_amount_vids_in_db': $SetObject->setAmountVidsInDB($ColumnValue);	break;
@@ -227,12 +251,10 @@ class Set
 				$Set->getModel()->getID(),
 				mysql_real_escape_string($Set->getPrefix()),
 				mysql_real_escape_string($Set->getName()),
-				$Set->getDatePic(),
-				$Set->getDateVid(),
 				$Set->getContainsWhat(),
 				$CurrentUser->getID(),
 				time()),
-			'model_id, set_prefix, set_name, set_date_pic, set_date_vid, set_containswhat, mut_id, mut_date'
+			'model_id, set_prefix, set_name, set_containswhat, mut_id, mut_date'
 		);
 	}
 	
@@ -253,8 +275,6 @@ class Set
 				'model_id' => $Set->getModel()->getID(),
 				'set_prefix' => mysql_real_escape_string($Set->getPrefix()),
 				'set_name' => mysql_real_escape_string($Set->getName()),
-				'set_date_pic' => $Set->getDatePic(),
-				'set_date_vid' => $Set->getDateVid(),
 				'set_containswhat' => $Set->getContainsWhat(),
 				'mut_id' => $CurrentUser->getID(),
 				'mut_date' => time()

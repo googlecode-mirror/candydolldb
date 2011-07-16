@@ -10,7 +10,6 @@ class Image
 	private $FileCheckSum;
 	private $ImageWidth = 0;
 	private $ImageHeight = 0;
-	private $DateTaken = -1;
 	
 	/**
 	 * @param int $ID
@@ -109,18 +108,6 @@ class Image
 	{ $this->ImageHeight = $ImageHeight; }
 	
 	/**
-	 * @return int
-	 */
-	public function getDateTaken()
-	{ return $this->DateTaken; }
-	
-	/**
-	 * @param int $DateTaken
-	 */
-	public function setDateTaken($DateTaken)
-	{ $this->DateTaken = $DateTaken; }
-	
-	/**
 	 * @return string
 	 */
 	public function getFileCheckSum()
@@ -166,7 +153,6 @@ class Image
 							case 'image_filechecksum'	: $ImageObject->setFileCheckSum($ColumnValue); 	break;
 							case 'image_width'			: $ImageObject->setImageWidth($ColumnValue); 	break;
 							case 'image_height'			: $ImageObject->setImageHeight($ColumnValue); 	break;
-							case 'image_datetaken'		: $ImageObject->setDateTaken($ColumnValue);		break;
 							
 							case 'set_id'			: $SetObject->setID($ColumnValue);				break;
 							case 'set_prefix'		: $SetObject->setPrefix($ColumnValue);			break;
@@ -213,11 +199,10 @@ class Image
 		    mysql_real_escape_string($Image->getFileCheckSum()),
 		    $Image->getImageWidth(),
 		    $Image->getImageHeight(),
-		    $Image->getDateTaken(),
 		    $CurrentUser->getID(),
 		    time()
 		),
-		'set_id, image_filename, image_fileextension, image_filesize, image_filechecksum, image_width, image_height, image_datetaken, mut_id, mut_date'
+		'set_id, image_filename, image_fileextension, image_filesize, image_filechecksum, image_width, image_height, mut_id, mut_date'
 	    );
 	}
 	
@@ -242,7 +227,6 @@ class Image
 				'image_filechecksum' => $Image->getFileCheckSum(),
 				'image_width' => $Image->getImageWidth(),
 				'image_height' => $Image->getImageHeight(),
-				'image_datetaken' => $Image->getDateTaken(),
 				'mut_id' => $CurrentUser->getID(),
 				'mut_date' => time()
 			),

@@ -48,15 +48,15 @@ if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'SetView')
 	$Set->setPrefix($_POST['txtPrefix']);
 	$Set->setName($_POST['txtName']);
 
-	if($_POST['txtDatePic'] && $_POST['txtDatePic'] != 'YYYY-MM-DD' && strtotime($_POST['txtDatePic']) !== false)
-	{ $Set->setDatePic(strtotime($_POST['txtDatePic'])); }
-	else
-	{ $Set->setDatePic(-1); }
+	//if($_POST['txtDatePic'] && $_POST['txtDatePic'] != 'YYYY-MM-DD' && strtotime($_POST['txtDatePic']) !== false)
+	//{ $Set->setDatePic(strtotime($_POST['txtDatePic'])); }
+	//else
+	//{ $Set->setDatePic(-1); }
 	
-	if($_POST['txtDateVid'] && $_POST['txtDateVid'] != 'YYYY-MM-DD' && strtotime($_POST['txtDateVid']) !== false)
-	{ $Set->setDateVid(strtotime($_POST['txtDateVid'])); }
-	else
-	{ $Set->setDateVid(-1); }
+	//if($_POST['txtDateVid'] && $_POST['txtDateVid'] != 'YYYY-MM-DD' && strtotime($_POST['txtDateVid']) !== false)
+	//{ $Set->setDateVid(strtotime($_POST['txtDateVid'])); }
+	//else
+	//{ $Set->setDateVid(-1); }
 	
 	if($_POST['radContains'])
 	{ $Set->setContainsWhat(intval($_POST['radContains'])); }
@@ -130,6 +130,7 @@ if($SetID)
 <label for="radBoth" class="Radio">Both</label>
 </div>
 
+<?php /* ?>
 <div class="FormRow">
 <label for="txtDatePic">Date (pics):</label>
 <input type="text" id="txtDatePic" name="txtDatePic" class="DatePicker" maxlength="10" value="<?php echo $Set->getDatePic() > 0 ? date('Y-m-d', $Set->getDatePic()) : null; ?>"<?php echo HTMLstuff::DisabledStr($DeleteSet); ?> />
@@ -139,6 +140,8 @@ if($SetID)
 <label for="txtDateVid">Date (vids):</label>
 <input type="text" id="txtDateVid" name="txtDateVid" class="DatePicker" maxlength="10" value="<?php echo $Set->getDateVid() > 0 ? date('Y-m-d', $Set->getDateVid()) : null; ?>"<?php echo HTMLstuff::DisabledStr($DeleteSet); ?> />
 </div>
+
+<?php */ ?>
 
 <div class="FormRow">
 <label>&nbsp;</label>

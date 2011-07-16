@@ -21,6 +21,7 @@ if($XmlFromFile)
 {
 	$ModelsInDb = Model::GetModels();
 	$SetsInDb = Set::GetSets();
+	$DatesInDb = Date::GetDates();
 	
 	if($argv && $argc > 0)
 	{ $bi = new BusyIndicator(count($XmlFromFile->Model), 0); }
@@ -53,7 +54,6 @@ if($XmlFromFile)
 			if($modelid) { $Model2Process->setID($modelid); }
 		}
 
-		
 		foreach($Model->Sets->Set as $Set)
 		{
 			$SetInDb = Set::FilterSets(
@@ -94,19 +94,6 @@ if($XmlFromFile)
 				$Set2Process->setContainsWhat(SET_CONTENT_IMAGE | SET_CONTENT_VIDEO);
 			}
 			
-			preg_match_all('/[0-9]{4}-[01][0-9]-[0123][0-9]/ix', (string)$Set->attributes()->date_pic, $datesPic);
-			
-			$datePic = strtotime($datesPic[0][0]);
-			if($datePic !== false) { $Set2Process->setDatePic($datePic); }
-			else { $Set2Process->setDatePic(-1); }
-			
-			preg_match_all('/[0-9]{4}-[01][0-9]-[0123][0-9]/ix', (string)$Set->attributes()->date_vid, $datesVid);
-			
-			$dateVid = strtotime($datesVid[0][0]);
-			if($dateVid !== false) { $Set2Process->setDateVid($dateVid); }
-			else { $Set2Process->setDateVid(-1); }
-			
-
 			if($Set2Process->getID())
 			{
 				Set::UpdateSet($Set2Process, $CurrentUser);
@@ -114,6 +101,55 @@ if($XmlFromFile)
 			else
 			{
 				Set::InsertSet($Set2Process, $CurrentUser);
+				$setid = $db->GetLatestID();
+				if($setid) { $Set2Process->setID($setid); }
+			}
+			
+			$datesPic = array();
+			$datesVid = array();
+			
+			preg_match_all('/[0-9]{4}-[01][0-9]-[0123][0-9]/ix', (string)$Set->attributes()->date_pic, $datesPic);
+			$Set2Process->setDatesPic(
+				Date::ParseDates($datesPic, DATE_KIND_IMAGE, $Set2Process)
+			);
+
+			preg_match_all('/[0-9]{4}-[01][0-9]-[0123][0-9]/ix', (string)$Set->attributes()->date_vid, $datesVid);
+			$Set2Process->setDatesVid(
+				Date::ParseDates($datesVid, DATE_KIND_VIDEO, $Set2Process)
+			);
+			
+			/* @var $Date Date */
+			/* @var $dateInDb Date */
+			foreach ($Set2Process->getDatesPic() as $Date)
+			{
+				$dateInDb = Date::FilterDates($DatesInDb, $Set2Process->getModel()->getID(), $Set2Process->getID(), DATE_KIND_IMAGE, $Date->getTimeStamp());
+				
+				if($dateInDb)
+				{
+					$dateInDb = $dateInDb[0];
+					$Date->setID($dateInDb->getID());
+				}
+				
+				if($Date->getID())
+				{ Date::UpdateDate($Date, $CurrentUser); }
+				else
+				{ Date::InsertDate($Date, $CurrentUser); }
+			}
+			
+			foreach ($Set2Process->getDatesVid() as $Date)
+			{
+				$dateInDb = Date::FilterDates($DatesInDb, $Set2Process->getModel()->getID(), $Set2Process->getID(), DATE_KIND_VIDEO, $Date->getTimeStamp());
+				
+				if($dateInDb)
+				{
+					$dateInDb = $dateInDb[0];
+					$Date->setID($dateInDb->getID());
+				}
+				
+				if($Date->getID())
+				{ Date::UpdateDate($Date, $CurrentUser); }
+				else
+				{ Date::InsertDate($Date, $CurrentUser); }
 			}
 		}
 	}

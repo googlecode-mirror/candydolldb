@@ -64,11 +64,6 @@ if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'ImageView')
 	
 	if($Image->getImageWidth() == 0) { $Image->setImageHeight(0); }
 	if($Image->getImageHeight() == 0) { $Image->setImageWidth(0); }
-
-	if($_POST['txtDate'] && $_POST['txtDate'] != 'YYYY-MM-DD' && strtotime($_POST['txtDate']) !== false)
-	{ $Image->setDateTaken(strtotime($_POST['txtDate'])); }
-	else
-	{ $Image->setDateTaken(-1); }
 	
 	if($Image->getID())
 	{
@@ -152,11 +147,6 @@ if($ImageID)
 <div class="FormRow">
 <label for="txtImageHeight">Height (pixels):</label>
 <input type="text" id="txtImageHeight" name="txtImageHeight" maxlength="10" value="<?php echo $Image->getImageHeight(); ?>"<?php echo HTMLstuff::DisabledStr($DeleteImage); ?> />
-</div>
-	
-<div class="FormRow">
-<label for="txtDate">Date:</label>
-<input type="text" id="txtDate" name="txtDate" class="DatePicker" maxlength="10" value="<?php echo $Image->getDateTaken() > 0 ? date('Y-m-d', $Image->getDateTaken()) : null; ?>"<?php echo HTMLstuff::DisabledStr($DeleteImage); ?> />
 </div>
 
 <div class="FormRow"><label>&nbsp;</label>

@@ -31,9 +31,14 @@ define('SET_CONTENT_NONE',  0);
 define('SET_CONTENT_IMAGE', 1);
 define('SET_CONTENT_VIDEO', 2);
 
+define('DATE_KIND_UNKNOWN',  0);
+define('DATE_KIND_IMAGE', 1);
+define('DATE_KIND_VIDEO', 2);
+
 define('COMMAND_DELETE', 'del');
 
 define('LOGIN_ERR_PASSWORDSNOTIDENTICAL', 33362);
+define('LOGIN_ERR_USERNAMEANDMAILADDRESNOTFOUND', 33369);
 define('LOGIN_ERR_RESETCODENOTFOUND', 33363);
 define('LOGIN_ERR_USERNAMENOTFOUND', 33364);
 define('LOGIN_ERR_PASSWORDINCORRECT', 33365);
@@ -53,7 +58,7 @@ if(!array_key_exists('Errors', $_SESSION))
 
 $db = new DB(DBHOSTNAME, DBUSERNAME, DBPASSWORD);
 $db->Connect();
-$db->setDatabaseName('cdtvdb');
+$db->setDatabaseName('candydolldb');
 
 include('class/class.user.php');
 include('class/class.date.php');

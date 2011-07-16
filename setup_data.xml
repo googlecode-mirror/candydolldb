@@ -748,7 +748,7 @@
 		<Sets>
 			<Set name="01" date_pic="2008-01-25" date_vid="2008-01-25" />
 			<Set name="02" date_pic="2008-04-04" date_vid="2008-04-04" />
-			<Set name="03" date_pic="" date_vid="" />
+			<Set name="03" date_pic="2008-04-25" date_vid="2008-04-25" />
 			<Set name="04" date_pic="2008-05-23" date_vid="2008-05-23" />
 			<Set name="05" date_pic="2008-06-27" date_vid="2008-06-27" />
 		</Sets>
