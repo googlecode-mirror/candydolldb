@@ -60,11 +60,6 @@ if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'VideoView')
 	$Video->setFileExtension($_POST['txtFileExtension']);
 	$Video->setFileSize(intval($_POST['txtFilesize']));
 	$Video->setFileCheckSum($_POST['txtFileChecksum']);
-
-	if($_POST['txtDate'] && $_POST['txtDate'] != 'YYYY-MM-DD' && strtotime($_POST['txtDate']) !== false)
-	{ $Video->setDateTaken(strtotime($_POST['txtDate'])); }
-	else
-	{ $Video->setDateTaken(-1); }
 	
 	if($Video->getID())
 	{
@@ -124,11 +119,6 @@ echo HTMLstuff::HtmlHeader($Model->GetShortName().' - Set '.$Set->getName().' - 
 <div class="FormRow">
 <label for="txtFileChecksum">Checksum: <em>*</em></label>
 <input type="text" id="txtFileChecksum" name="txtFileChecksum" maxlength="32" value="<?php echo $Video->getFileCheckSum();?>"<?php echo HTMLstuff::DisabledStr($DeleteVideo); ?> />
-</div>
-	
-<div class="FormRow">
-<label for="txtDate">Date:</label>
-<input type="text" id="txtDate" name="txtDate" class="DatePicker" maxlength="10" value="<?php echo $Video->getDateTaken() > 0 ? date('Y-m-d', $Video->getDateTaken()) : null; ?>"<?php echo HTMLstuff::DisabledStr($DeleteVideo); ?> />
 </div>
 
 <div class="FormRow"><label>&nbsp;</label>

@@ -8,7 +8,6 @@ class Video
 	private $FileExtension;
 	private $FileSize;
 	private $FileCheckSum;
-	private $DateTaken;
 	
 	/**
 	 * @param int $ID
@@ -83,18 +82,6 @@ class Video
 	{ $this->FileSize = $FileSize; }
 	
 	/**
-	 * @return int
-	 */
-	public function getDateTaken()
-	{ return $this->DateTaken; }
-	
-	/**
-	 * @param int $DateTaken
-	 */
-	public function setDateTaken($DateTaken)
-	{ $this->DateTaken = $DateTaken; }
-	
-	/**
 	 * @return string
 	 */	
 	public function getFileCheckSum()
@@ -137,13 +124,10 @@ class Video
 							case 'video_fileextension'	: $VideoObject->setFileExtension($ColumnValue); break;
 							case 'video_filesize'		: $VideoObject->setFileSize($ColumnValue); 		break;
 							case 'video_filechecksum'	: $VideoObject->setFileCheckSum($ColumnValue); 	break;
-							case 'video_datetaken'		: $VideoObject->setDateTaken($ColumnValue);		break;
 							
 							case 'set_id'			: $SetObject->setID($ColumnValue);				break;
 							case 'set_prefix'		: $SetObject->setPrefix($ColumnValue);			break;
 							case 'set_name'			: $SetObject->setName($ColumnValue);			break;
-							case 'set_date_pic'		: $SetObject->setDatePic($ColumnValue);			break;
-							case 'set_date_vid'		: $SetObject->setDateVid($ColumnValue);			break;
 							case 'set_containswhat'	: $SetObject->setContainsWhat($ColumnValue);	break;
 							
 							case 'model_id'			: $ModelObject->setID($ColumnValue);			break;
@@ -183,11 +167,10 @@ class Video
 		    mysql_real_escape_string($Video->getFileExtension()),
 		    $Video->getFileSize(),
 		    mysql_real_escape_string($Video->getFileCheckSum()),
-		    $Video->getDateTaken(),
 		    $CurrentUser->getID(),
 		    time()
 		),
-		'set_id, video_filename, video_fileextension, video_filesize, video_filechecksum, video_datetaken, mut_id, mut_date'
+		'set_id, video_filename, video_fileextension, video_filesize, video_filechecksum, mut_id, mut_date'
 	    );
 	}
 	
@@ -210,7 +193,6 @@ class Video
 				'video_fileextension' => mysql_real_escape_string($Video->getFileExtension()),
 				'video_filesize' => $Video->getFileSize(),
 				'video_filechecksum' => $Video->getFileCheckSum(),
-				'video_datetaken' => $Video->getDateTaken(),
 				'mut_id' => $CurrentUser->getID(),
 				'mut_date' => time()
 			),

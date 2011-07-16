@@ -46,8 +46,8 @@ if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] && $_POST['hidAc
 	else
 	{
 		$LoginError = new LoginError();
-		$LoginError->setErrorNumber(LOGIN_ERR_USERNAMENOTFOUND);
-		$LoginError->setErrorMessage(LoginError::TranslateLoginError(LOGIN_ERR_USERNAMENOTFOUND));
+		$LoginError->setErrorNumber(LOGIN_ERR_USERNAMEANDMAILADDRESNOTFOUND);
+		$LoginError->setErrorMessage(LoginError::TranslateLoginError(LOGIN_ERR_USERNAMEANDMAILADDRESNOTFOUND));
 		Error::AddError($LoginError);
 	}
 }

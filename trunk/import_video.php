@@ -106,7 +106,6 @@ for($i = 0; $i < count($Models); $i++)
 				$VideoInDB->setFileExtension($matches['Extension']);
 				$VideoInDB->setFileSize($FileInfo->getSize());
 				$VideoInDB->setFileCheckSum(md5_file($FileInfo->getRealPath()));
-				$VideoInDB->setDateTaken($Set->getDateVid());
 					
 				if(!$VideoInDB->getID())
 				{ Video::InsertVideo($VideoInDB, $CurrentUser); }
