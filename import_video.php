@@ -90,7 +90,7 @@ for($i = 0; $i < count($Models); $i++)
 				{ $Set = $Set[0]; }
 			
 				/* @var $VideoInDB Video */
-				$VideosInDB = Video::FilterVideos($Videos, $ModelID, $Set->getID());
+				$VideosInDB = Video::FilterVideos($Videos, $ModelID, $Set->getID(), $matches['Name'].$matches['Number'].$matches['Suffix']);
 
 				if($VideosInDB)
 				{

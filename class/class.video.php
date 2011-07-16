@@ -245,9 +245,10 @@ class Video
 	 * @param array $VideoArray
 	 * @param int $ModelID
 	 * @param int $SetID
+	 * @param string $Filename
 	 * @return array(Video)
 	 */
-	public static function FilterVideos($VideoArray, $ModelID = null, $SetID = null)
+	public static function FilterVideos($VideoArray, $ModelID = null, $SetID = null, $Filename = null)
 	{
 		$OutArray = array();
 			
@@ -256,20 +257,20 @@ class Video
 		{
 			if($ModelID && $SetID)
 			{
-				if($Video->getSet()->getModel()->getID() == $ModelID && $Video->getSet()->getID() == $SetID)
+				if($Video->getSet()->getModel()->getID() == $ModelID && $Video->getSet()->getID() == $SetID && (is_null($Filename) || $Video->getFileName() == $Filename))
 				{ $OutArray[] = $Video; }
 			}
 			else if($ModelID)
 			{
-				if($Video->getSet()->getModel()->getID() == $ModelID)
+				if($Video->getSet()->getModel()->getID() == $ModelID && (is_null($Filename) || $Video->getFileName() == $Filename))
 				{ $OutArray[] = $Video; }
 			}
-			else if($SetID)
+			else if($SetID && (is_null($Filename) || $Video->getFileName() == $Filename))
 			{
 				if($Video->getSet()->getID() == $SetID)
 				{ $OutArray[] = $Video; }
 			}
-			else 
+			else if(is_null($Filename) || $Video->getFileName() == $Filename)
 			{ $OutArray[] = $Video; }
 		}
 		return $OutArray;
