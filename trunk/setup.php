@@ -99,6 +99,7 @@ CREATE TABLE IF NOT EXISTS `Date` (
   `mut_date` bigint(20) NOT NULL DEFAULT '-1',
   `mut_deleted` bigint(20) NOT NULL DEFAULT '-1',
   PRIMARY KEY (`date_id`),
+  UNIQUE KEY `UNIQ_DATE` (`mut_deleted`,`set_id`,`date_kind`,`date_timestamp`)
   KEY `set_id` (`set_id`),
   KEY `mut_id` (`mut_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;

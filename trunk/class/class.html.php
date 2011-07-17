@@ -127,6 +127,79 @@ HfuheuhUHfuh3e83uhfuhdfu3;
 		return sprintf($template, $url, $width, $height, $title, $alt);
 	}
 	
+	/**
+	 * Returns a HTML-snippet providing a HTML textinput for the given DateKind.
+	 * @param string $UniqueId
+	 * @param string $Value
+	 * @param int $DateKind
+	 * @param bool $Disabled 
+	 * @return string
+	 */
+	public static function DateFormField($UniqueId, $Value = null, $DateKind = DATE_KIND_UNKNOWN, $Disabled = false)
+	{
+		$template = <<<GYtguefggefegfgefgegfgfuguf
+		<div class="FormRow">
+		<label for="txtDate%2\$s%3\$d">Date%1\$s:</label>
+		<input type="text" id="txtDate%2\$s%3\$d" name="txtDate%2\$s%3\$d" class="DatePicker" maxlength="10" value="%4\$s"%5\$s />
+		%6\$s
+		</div>
+		
+GYtguefggefegfgefgegfgfuguf;
+
+		return sprintf($template,
+			$DateKind == DATE_KIND_IMAGE ? ' (images)' : ($DateKind == DATE_KIND_VIDEO ? ' (videos)' : ''),
+			$DateKind == DATE_KIND_IMAGE ? 'Pic' : ($DateKind == DATE_KIND_VIDEO ? 'Vid' : ''),
+			$UniqueId,
+			$Value,
+			HTMLstuff::DisabledStr($Disabled),
+			($UniqueId ? sprintf("<a href=\"date_delete.php?date_id=%1\$d\" onclick=\"if(!confirm('Are you sure you wish to delete this date?')){return false;}\"><img src=\"images/button_delete.png\" title=\"Delete date\" alt=\"Delete date\"/></a>", $UniqueId ) : null)
+			
+		);
+	}
+	
+	/**
+	 * Filters the InArray for HTML textinputs and returns corresponding Dates
+	 * @param array $InArray
+	 * @param Set $Set
+	 * @param int $DateKind
+	 * @return array(Date)
+	 */
+	public static function DatesFromPOST($InArray, $Set, $DateKind = DATE_KIND_UNKNOWN)
+	{
+		$OutArray = array();
+		if(is_array($InArray))
+		{
+			foreach ($InArray as $k => $v)
+			{
+				preg_match('/^txtDate(?P<Kind>Pic|Vid)(?P<ID>\d+)$/i', $k, $matches);
+				if($matches)
+				{
+					if(($matches['Kind'] == 'Pic' && $DateKind != DATE_KIND_IMAGE)
+					|| ($matches['Kind'] == 'Vid' && $DateKind != DATE_KIND_VIDEO))
+					{ continue; }
+					
+					/* @var $Date Date */
+					$Date = new Date();
+					
+					if($matches['ID'] != 0)
+					{ $Date->setID(intval($matches['ID'])); }
+					
+					$Date->setSet($Set);
+					$Date->setDateKind($DateKind);
+
+					if(!$v || $v == 'YYYY-MM-DD')
+					{ $Date->setTimeStamp(-1); }
+					
+					if(($timestamp = strtotime($v)) !== false)
+					{ $Date->setTimeStamp($timestamp); }
+					
+					$OutArray[] = $Date;
+				}
+			}
+		}
+		return $OutArray;
+	}
+	
 	public static function DisabledStr($InBool)
 	{
 		return $InBool ? ' disabled="disabled"' : '';

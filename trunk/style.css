@@ -107,6 +107,10 @@ form .FormRow{
 	height: 30px;
 	line-height: 30px;
 }
+form .FormRow a{
+}
+form .FormRow a img{
+}
 form label{
 	clear: left;
 	float: left;
