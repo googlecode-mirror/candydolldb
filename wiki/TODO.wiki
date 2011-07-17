@@ -9,7 +9,7 @@
 
   * Lots of feedback :-)
 
-  * Thorough support for multiple (image- or video-)dates in Sets.
+  * ~~Support for multiple (image- or video-)dates in Sets.~~
 
 == Could Use ==
 
