@@ -112,8 +112,6 @@ if($ImageID)
 	htmlentities($Image->getFileName())
 ); ?></h2>
 
-
-
 <form action="<?php echo htmlentities($_SERVER['REQUEST_URI']);?>" method="post">
 <fieldset><legend>Please fill in these fields:</legend>
 
@@ -156,7 +154,9 @@ if($ImageID)
 
 <div class="Separator"></div>
 
-<?php echo HTMLstuff::Button('index.php'); ?></fieldset>
+<?php echo HTMLstuff::Button('index.php'); ?>
+
+</fieldset>
 </form>
 
 <?php

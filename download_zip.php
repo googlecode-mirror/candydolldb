@@ -168,10 +168,7 @@ if(file_exists($tmpFile))
 }
 else
 {
-	if(array_key_exists('HTTP_REFERER', $_SERVER))
-	{ header('location:'.$_SERVER['HTTP_REFERER']); }
-	else
-	{ header('location:index.php'); }
+	HTMLstuff::RefererRedirect();
 }
 
 ?>
