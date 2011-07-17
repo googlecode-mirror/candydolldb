@@ -26,7 +26,7 @@ if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] && $_POST['hidAc
 			$User->setLastLogin(time());
 			
 			// By resetting the user's Salt and Password-hash upon login,
-			// existing reset-URLs (see password.php) become invalid.
+			// existing reset-URLs and concurrent loginsessions become invalid.
 			$User->setSalt(Utils::GenerateGarbage(20));
 			$User->setPassword(Utils::HashString($Password, $User->getSalt()));
 			
@@ -94,7 +94,7 @@ $(document).ready(function(){$('#SiteInfo').hide();});
 <p>In their own words:</p>
 
 <cite>
-<a href="http://www.candydoll.tv/" rel="external">CandyDoll</a> is the place where you can enjoy the beauty of little girls. We made collections of young and petite girls. You will definitely find these excellent photos worth to be called true masterpieces.
+<a href="http://www.candydoll.tv/" rel="external">CandyDoll</a> is the place where you can enjoy the beauty of little girls. We made collection of young and petite girls. You will definitely find these excellent photos worth to be called true masterpieces.
 </cite>
 
 <p>Enjoy!</p>

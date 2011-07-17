@@ -154,5 +154,4 @@ else
 	HTMLstuff::RefererRedirect();
 }
 
-
 ?>
