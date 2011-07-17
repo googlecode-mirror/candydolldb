@@ -21,7 +21,7 @@ So far, screenshots are taken with Chromium 12 and Firefox 5 on Ubuntu Natty. Fe
 
 == Model form == 
 
-[http://fwiep.nl/download/bea8f598-230c-444c-9c84-b3fb16855673.jpg http://fwiep.nl/download/bea8f598-230c-444c-9c84-b3fb16855673s.jpg]
+[http://fwiep.nl/download/f1ede4e8-8ca5-4c82-b737-9ca04109032b.jpg http://fwiep.nl/download/f1ede4e8-8ca5-4c82-b737-9ca04109032bs.jpg]
 
 == Batch video-import == 
 
