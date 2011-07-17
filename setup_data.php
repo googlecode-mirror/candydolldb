@@ -4,6 +4,38 @@ include('cd.php');
 ini_set('max_execution_time', '3600');
 $CurrentUser = Authentication::Authenticate();
 
+/**
+ * Parses an array of strings into an array of Date objects.
+ * @param array(string) $InArray
+ * @param int $DateKind
+ * @param Set $Set
+ * @return array(Date)
+ */
+function ParseDates($InArray, $DateKind = DATE_KIND_UNKNOWN, $Set = null)
+{
+	$OutArray = array();
+	if(is_array($InArray) && count($InArray) > 0)
+	{
+		for ($i = 0; $i < count($InArray); $i++)
+		{
+			$timestamp = strtotime($InArray[$i]);
+			if($timestamp !== false)
+			{
+				/* @var $Date Date */
+				$Date = new Date();
+				
+				$Date->setSet($Set);
+				$Date->setDateKind($DateKind);
+				$Date->setTimeStamp($timestamp);
+				
+				$OutArray[] = $Date;
+			}
+		} 
+	}
+	return $OutArray;	
+}
+
+
 if($argv && $argc > 0)
 {
 	// On the commandline, use absolute path
@@ -110,19 +142,19 @@ if($XmlFromFile)
 			
 			preg_match_all('/[0-9]{4}-[01][0-9]-[0123][0-9]/ix', (string)$Set->attributes()->date_pic, $datesPic);
 			$Set2Process->setDatesPic(
-				Date::ParseDates($datesPic, DATE_KIND_IMAGE, $Set2Process)
+				ParseDates($datesPic[0], DATE_KIND_IMAGE, $Set2Process)
 			);
 
 			preg_match_all('/[0-9]{4}-[01][0-9]-[0123][0-9]/ix', (string)$Set->attributes()->date_vid, $datesVid);
 			$Set2Process->setDatesVid(
-				Date::ParseDates($datesVid, DATE_KIND_VIDEO, $Set2Process)
+				ParseDates($datesVid[0], DATE_KIND_VIDEO, $Set2Process)
 			);
 			
 			/* @var $Date Date */
 			/* @var $dateInDb Date */
 			foreach ($Set2Process->getDatesPic() as $Date)
 			{
-				$dateInDb = Date::FilterDates($DatesInDb, $Set2Process->getModel()->getID(), $Set2Process->getID(), DATE_KIND_IMAGE, $Date->getTimeStamp());
+				$dateInDb = Date::FilterDates($DatesInDb, null, $Set2Process->getModel()->getID(), $Set2Process->getID(), DATE_KIND_IMAGE, $Date->getTimeStamp());
 				
 				if($dateInDb)
 				{
@@ -138,7 +170,7 @@ if($XmlFromFile)
 			
 			foreach ($Set2Process->getDatesVid() as $Date)
 			{
-				$dateInDb = Date::FilterDates($DatesInDb, $Set2Process->getModel()->getID(), $Set2Process->getID(), DATE_KIND_VIDEO, $Date->getTimeStamp());
+				$dateInDb = Date::FilterDates($DatesInDb, null, $Set2Process->getModel()->getID(), $Set2Process->getID(), DATE_KIND_VIDEO, $Date->getTimeStamp());
 				
 				if($dateInDb)
 				{

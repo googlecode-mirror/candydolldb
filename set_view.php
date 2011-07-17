@@ -14,8 +14,10 @@ if(array_key_exists('set_id', $_GET) && $_GET['set_id'] && is_numeric($_GET['set
 	$SetID = null;
 }
 
+$NoErrorDuringPostback = true;
 $DeleteSet = (array_key_exists('cmd', $_GET) && $_GET['cmd'] && ($_GET['cmd'] == COMMAND_DELETE));
 $ReturnURL = sprintf('set.php?model_id=%1$d', $ModelID);
+$DatesThisSet = array();
 
 /* @var $Set Set */
 /* @var $Model Model */
@@ -30,6 +32,9 @@ if($SetID != null)
 	{ header('location:index.php'); }
 	
 	$Model = $Set->getModel();
+	$DatesThisSet = Date::GetDates(
+		sprintf('set_id = %1$d AND mut_deleted = -1', $Set->getID())
+	);
 }
 else
 {
@@ -42,22 +47,14 @@ else
 	$Set->setModel($Model);
 }
 
+$DatesThisSet[] = new Date(null, $Set);
+
 
 if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'SetView')
 {
 	$Set->setPrefix($_POST['txtPrefix']);
 	$Set->setName($_POST['txtName']);
 
-	//if($_POST['txtDatePic'] && $_POST['txtDatePic'] != 'YYYY-MM-DD' && strtotime($_POST['txtDatePic']) !== false)
-	//{ $Set->setDatePic(strtotime($_POST['txtDatePic'])); }
-	//else
-	//{ $Set->setDatePic(-1); }
-	
-	//if($_POST['txtDateVid'] && $_POST['txtDateVid'] != 'YYYY-MM-DD' && strtotime($_POST['txtDateVid']) !== false)
-	//{ $Set->setDateVid(strtotime($_POST['txtDateVid'])); }
-	//else
-	//{ $Set->setDateVid(-1); }
-	
 	if($_POST['radContains'])
 	{ $Set->setContainsWhat(intval($_POST['radContains'])); }
 
@@ -70,15 +67,60 @@ if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'SetView')
 		}
 		else
 		{
-			if(Set::UpdateSet($Set, $CurrentUser))
-			{ header('location:'.$ReturnURL); }
+			$NoErrorDuringPostback = Set::UpdateSet($Set, $CurrentUser);
 		}
 	}
 	else
 	{
-		if(Set::InsertSet($Set, $CurrentUser))
-		{ header('location:'.$ReturnURL); }
+		if(($NoErrorDuringPostback = Set::InsertSet($Set, $CurrentUser)))
+		{
+			$setid = $db->GetLatestID();
+			if($setid) { $Set->setID($setid); }
+		}
 	}
+	
+	$Set->setDatesPic(
+		HTMLstuff::DatesFromPOST($_POST, $Set, DATE_KIND_IMAGE)
+	);
+	
+	$Set->setDatesVid(
+		HTMLstuff::DatesFromPOST($_POST, $Set, DATE_KIND_VIDEO)
+	);
+	
+	/* @var $Date Date */
+	/* @var $dateInDb Date */
+	foreach ($Set->getDatesPic() as $Date)
+	{
+		if($Date->getID())
+		{
+			if($Date->getTimeStamp() == -1)
+			{ Date::DeleteDate($Date, $CurrentUser); }
+			else
+			{ Date::UpdateDate($Date, $CurrentUser); }
+		}
+		else if($Date->getTimeStamp() > 0)
+		{
+			Date::InsertDate($Date, $CurrentUser);
+		}
+	}
+	
+	foreach ($Set->getDatesVid() as $Date)
+	{
+		if($Date->getID())
+		{
+			if($Date->getTimeStamp() == -1)
+			{ Date::DeleteDate($Date, $CurrentUser); }
+			else
+			{ Date::UpdateDate($Date, $CurrentUser); }
+		}
+		else if($Date->getTimeStamp() > 0)
+		{
+			Date::InsertDate($Date, $CurrentUser);
+		}
+	}
+
+	if($NoErrorDuringPostback)
+	{ header('location:'.$ReturnURL); }
 }
 
 echo HTMLstuff::HtmlHeader($Model->GetShortName(), $CurrentUser);
@@ -130,18 +172,35 @@ if($SetID)
 <label for="radBoth" class="Radio">Both</label>
 </div>
 
-<?php /* ?>
-<div class="FormRow">
-<label for="txtDatePic">Date (pics):</label>
-<input type="text" id="txtDatePic" name="txtDatePic" class="DatePicker" maxlength="10" value="<?php echo $Set->getDatePic() > 0 ? date('Y-m-d', $Set->getDatePic()) : null; ?>"<?php echo HTMLstuff::DisabledStr($DeleteSet); ?> />
-</div>
+<?php
 
-<div class="FormRow">
-<label for="txtDateVid">Date (vids):</label>
-<input type="text" id="txtDateVid" name="txtDateVid" class="DatePicker" maxlength="10" value="<?php echo $Set->getDateVid() > 0 ? date('Y-m-d', $Set->getDateVid()) : null; ?>"<?php echo HTMLstuff::DisabledStr($DeleteSet); ?> />
-</div>
+/* @var $Date Date */
+foreach ($DatesThisSet as $Date)
+{
+	if($Date->getDateKind() == DATE_KIND_IMAGE || $Date->getDateKind() == DATE_KIND_UNKNOWN)
+	{
+		echo HTMLstuff::DateFormField(
+			$Date->getID(),
+			Date::FormatDates(array($Date), 'Y-m-d'),
+			DATE_KIND_IMAGE,
+			$DeleteSet
+		);
+	}
+}
 
-<?php */ ?>
+foreach ($DatesThisSet as $Date)
+{
+	if($Date->getDateKind() == DATE_KIND_VIDEO || $Date->getDateKind() == DATE_KIND_UNKNOWN)
+	{
+		echo HTMLstuff::DateFormField(
+			$Date->getID(),
+			Date::FormatDates(array($Date), 'Y-m-d'),
+			DATE_KIND_VIDEO,
+			$DeleteSet
+		);
+	}
+}
+?>
 
 <div class="FormRow">
 <label>&nbsp;</label>

@@ -321,8 +321,7 @@ class DB
 				{ $Update .= ','; }
 			}
 			$Update .= ' WHERE '.$NewWhere;
-	
-//			die($Update);
+
 			$query = @mysql_query($Update);
 
 			if($query)

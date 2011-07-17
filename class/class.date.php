@@ -4,7 +4,7 @@ class Date
 {
 	private $ID;
 	private $Set;
-	private $DateKind = 0;
+	private $DateKind = DATE_KIND_UNKNOWN;
 	private $TimeStamp = -1;
 	
 	
@@ -15,7 +15,7 @@ class Date
 	 * @param int $TimeStamp
 	 
 	 */
-	public function Date($ID = null, $Set = null, $DateKind = null, $TimeStamp = null)
+	public function Date($ID = null, $Set = null, $DateKind = DATE_KIND_UNKNOWN, $TimeStamp = -1)
 	{
 		$this->ID = $ID;
 		$this->Set = $Set;
@@ -195,15 +195,16 @@ class Date
 	}
 	
 	/**
-	 * Filters an array of Dates and returns those that match the given ModelID and SetID.
+	 * Filters an array of Dates and returns those that match the given properties.
 	 * @param array $DateArray
+	 * @param int $DateID
 	 * @param int $ModelID
 	 * @param int $SetID
 	 * @param int $Kind
 	 * @param int $TimeStamp
 	 * @return array(Date)
 	 */
-	public static function FilterDates($DateArray, $ModelID = null, $SetID = null, $Kind = null, $TimeStamp = null)
+	public static function FilterDates($DateArray, $DateID = null, $ModelID = null, $SetID = null, $Kind = null, $TimeStamp = null)
 	{
 		$OutArray = array();
 			
@@ -211,6 +212,7 @@ class Date
 		foreach($DateArray as $Date)
 		{
 			if(
+				(is_null($DateID) || $Date->getID() == $DateID)							&&
 				(is_null($ModelID) || $Date->getSet()->getModel()->getID() == $ModelID)	&&
 				(is_null($SetID) || $Date->getSet()->getID() == $SetID)					&&
 				(is_null($Kind) || $Date->getDateKind() == $Kind)						&&
@@ -220,37 +222,6 @@ class Date
 			}
 		}
 		return $OutArray;
-	}
-	
-	/**
-	 * Parses an array of strings into an array of Date objects.
-	 * @param array(string) $InArray
-	 * @param int $DateKind
-	 * @param Set $Set
-	 * @return array(Date)
-	 */
-	public static function ParseDates($InArray, $DateKind = DATE_KIND_UNKNOWN, $Set = null)
-	{
-		$OutArray = array();
-		if(is_array($InArray) && count($InArray) > 0 && is_array($InArray[0]))
-		{
-			for ($i = 0; $i < count($InArray[0]); $i++)
-			{
-				$timestamp = strtotime($InArray[0][$i]);
-				if($timestamp !== false)
-				{
-					/* @var $Date Date */
-					$Date = new Date();
-					
-					$Date->setSet($Set);
-					$Date->setDateKind($DateKind);
-					$Date->setTimeStamp($timestamp);
-					
-					$OutArray[] = $Date;
-				}
-			} 
-		}
-		return $OutArray;	
 	}
 	
 	/**
@@ -266,7 +237,10 @@ class Date
 		{
 			/* @var $Date Date */
 			foreach ($InArray as $Date)
-			{ $OutString .= date($DateFormat, $Date->getTimeStamp()).', '; }
+			{
+				if($Date->getTimeStamp() > 0)
+				{ $OutString .= date($DateFormat, $Date->getTimeStamp()).', '; }
+			}
 		}
 		return trim($OutString, ', ');
 	}

@@ -30,9 +30,9 @@ if($Sets)
 		$ImageCount += $Set->getAmountPicsInDB();
 		$VideoCount += $Set->getAmountVidsInDB();
 
-		$DatesThisSet = Date::FilterDates($Dates, $ModelID, $Set->getID());
-		$DatesImage = Date::FilterDates($DatesThisSet, null, null, DATE_KIND_IMAGE);
-		$DatesVideo = Date::FilterDates($DatesThisSet, null, null, DATE_KIND_VIDEO);
+		$DatesThisSet = Date::FilterDates($Dates, null, $ModelID, $Set->getID());
+		$DatesImage = Date::FilterDates($DatesThisSet, null, null, null, DATE_KIND_IMAGE);
+		$DatesVideo = Date::FilterDates($DatesThisSet, null, null, null, DATE_KIND_VIDEO);
 		
 		$SetRows .= sprintf(
 		"\n<tr class=\"Row%15\$d\">".
