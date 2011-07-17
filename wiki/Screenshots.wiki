@@ -5,7 +5,7 @@
 
 <wiki:toc max_depth="2" />
 
-So far, screenshots are taken with Chromium 11 on Ubuntu Natty. Feel free to submit your own.
+So far, screenshots are taken with Chromium 12 and Firefox 5 on Ubuntu Natty. Feel free to submit your own.
 
 == Index page == 
 
@@ -14,6 +14,10 @@ So far, screenshots are taken with Chromium 11 on Ubuntu Natty. Feel free to sub
 == Set overview == 
 
 [http://fwiep.nl/download/d181dc43-499f-4449-ae99-2c986eed4ce4.jpg http://fwiep.nl/download/d181dc43-499f-4449-ae99-2c986eed4ce4s.jpg]
+
+== Set details == 
+
+[http://fwiep.nl/download/fbe045bd-ae4b-4160-9df0-cd2e37f401b4.jpg http://fwiep.nl/download/fbe045bd-ae4b-4160-9df0-cd2e37f401b4s.jpg]
 
 == Model form == 
 
