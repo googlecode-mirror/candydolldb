@@ -33,7 +33,7 @@ class Authentication
 		}
 		else
 		{
-			/* Authenticate on the commandline as FWieP */
+			/* Authenticate on the commandline as Default User */
 			global $argv, $argc;
 			if($argv && $argc > 0)
 			{
