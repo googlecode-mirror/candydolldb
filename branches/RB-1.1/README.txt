@@ -41,14 +41,14 @@ instructions. NOTE: Any previous CandyDollDB-database will be dropped.
 HISTORY:
 --------
 2011-07-18 1.1	Added support for multiple image- or videodates;
-				Added extra verification during password-resets;
-				Fixed a password-reset bug;
-				Added some eyecandy during image-loads;
-				Added a progressindicator to commandline imports;
-				Added a few LightBoxes where appropriate;
-				Database renamed, setupscript rewritten;
-				Updated list of release-dates (as of 2011-07-15);
-				Lots of code clean-up and minor cosmetic surgery; 
+		Added extra verification during password-resets;
+		Fixed a password-reset bug;
+		Added some eyecandy during image-loads;
+		Added a progressindicator to commandline imports;
+		Added a few LightBoxes where appropriate;
+		Database renamed, setupscript rewritten;
+		Updated list of release-dates (as of 2011-07-15);
+		Lots of code clean-up and minor cosmetic surgery; 
 
 2011-07-04 1.0	First public release.
 
