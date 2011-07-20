@@ -2,7 +2,7 @@
 
 error_reporting(E_ALL);
 
-if($argv && $argc > 0)
+if(isset($argv) && $argc > 0)
 {
 	// On the commandline, include using absolute path
 	if(file_exists(sprintf('%1$s/config.php', dirname($_SERVER['PHP_SELF']))))

@@ -172,7 +172,7 @@ GYtguefggefegfgefgegfgfuguf;
 			foreach ($InArray as $k => $v)
 			{
 				preg_match('/^txtDate(?P<Kind>Pic|Vid)(?P<ID>\d+)$/i', $k, $matches);
-				if($matches)
+				if(isset($matches))
 				{
 					if(($matches['Kind'] == 'Pic' && $DateKind != DATE_KIND_IMAGE)
 					|| ($matches['Kind'] == 'Vid' && $DateKind != DATE_KIND_VIDEO))

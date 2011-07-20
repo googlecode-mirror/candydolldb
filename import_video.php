@@ -66,21 +66,21 @@ for($i = 0; $i < count($Models); $i++)
 	foreach($it as $file)
 	{ $itArray[] = $file; }
 	
-	if($argv && $argc > 0)
+	if(isset($argv) && $argc > 0)
 	{ $bi = new BusyIndicator(count($itArray), 0, sprintf('%1$2d/%2$2d %3$s', ($i + 1), count($Models), $Model->GetShortName())); }
 
 
 	/* @var $FileInfo SplFileInfo */
 	foreach($itArray as $FileInfo)
 	{
-		if($argv && $argc > 0)
+		if(isset($argv) && $argc > 0)
 		{ $bi->Next(); }
 		
 		if($FileInfo->isFile() && $FileInfo->isReadable())
 		{
 			$setnamematch = preg_match('/(?P<Prefix>[A-Z]+[_ -])?(?P<Name>[A-Z0-9]+)(?P<Number>\d\d)(?P<Suffix>[a-z])?\.(?P<Extension>[^.]+)$/i', $FileInfo->getFilename(), $matches);
 			
-			if($matches)
+			if(isset($matches))
 			{
 				$Set = Set::FilterSets($Sets, $Model->getID(), null, ($matches['Name'].$matches['Number']), $matches['Prefix']);
 
@@ -116,7 +116,7 @@ for($i = 0; $i < count($Models); $i++)
 	}
 }
 
-if(!$argv || !$argc)
+if(!isset($argv) || !$argc)
 { HTMLstuff::RefererRedirect(); }
 
 ?>
