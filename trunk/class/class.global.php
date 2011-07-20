@@ -35,7 +35,7 @@ class Authentication
 		{
 			/* Authenticate on the commandline as Default User */
 			global $argv, $argc;
-			if($argv && $argc > 0)
+			if(isset($argv) && $argc > 0)
 			{
 				foreach($argv as $arg)
 				{
