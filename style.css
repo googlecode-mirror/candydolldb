@@ -129,6 +129,10 @@ form input[type=text],
 form input[type=password]{
 	width: 250px;
 }
+form input[type=text].Small,
+form input[type=password].Small{
+	width: 120px;
+}
 form.FilterForm{
 	float: right;
 	width: 440px;

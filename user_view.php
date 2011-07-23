@@ -146,6 +146,8 @@ echo HTMLstuff::HtmlHeader($User->GetFullName(), $CurrentUser);
 <div class="FormRow">
 <label for="txtPassword">Password:<?php echo $UserID ? '' : ' <em>*</em>'; ?></label>
 <input type="password" id="txtPassword" name="txtPassword" maxlength="100" value=""<?php echo HTMLstuff::DisabledStr($DeleteUser); ?> />
+<input type="button" id="btnGenerate" name="btnGenerate" value="Generate"<?php echo HTMLstuff::DisabledStr($DeleteUser); ?> onclick="$.get('ajax_genpass.php', function(data){$('#txtGenerated').val(data);$('#txtPassword').val(data);$('#txtRepeatPassword').val(data);});" />
+<input type="text" id="txtGenerated" name="txtGenerated" class="Small" readonly="readonly" maxlength="10" value=""<?php echo HTMLstuff::DisabledStr($DeleteUser); ?> />
 </div>
 
 <div class="FormRow">

@@ -52,10 +52,14 @@ class Authentication
 					return $User;
 				} 
 				else
-				{ return null; }
+				{
+					return null;
+				}
 			}
 			else
-			{ header('location:login.php'); }
+			{
+				header('location:login.php');
+			}
 		}
 	}
 }
