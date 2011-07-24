@@ -1171,7 +1171,7 @@
 			<Set name="11" date_pic="2011-07-01" date_vid="2011-07-15" />
 		</Sets>
 	</Model>
-	<Model firstname="Yuliya" lastname="Semenishyna" birthdate="1997-11-21">
+	<Model firstname="Yulia" lastname="Semenishyna" birthdate="1997-11-21">
 		<Sets>
 			<Set name="01" date_pic="2008-01-25" date_vid="2008-01-25" />
 			<Set name="02" date_pic="2008-02-01" date_vid="2008-02-01" />
