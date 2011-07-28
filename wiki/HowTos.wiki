@@ -46,3 +46,13 @@ $ php5 -f /var/www/cdtvdb/import_video.php
 
   # Make sure you use the most up-to-date XML-file with all model- and setdata. The XML-file can be downloaded from the [http://code.google.com/p/candydolldb/downloads/list Downloads]-page and must be renamed to `setup_data.xml`. It contains the most complete list of models, their first- and lastnames, birthdates, sets and all releasedates.
   # Click the 'Process XML-data' button on the main page (`index.php`).<br>This can take a while.
+
+== Validate a CandydollDB XML-file ==
+
+To validate an XML-file for use in CandydollDB, one can use for example the `xmllint` utility on GNU/Linux.
+
+{{{
+$ xmllint --schema /path/to/candydolldb-schema.xsd --noout /path/to/xml-file.xml
+}}}
+
+This will either report success or failure.
