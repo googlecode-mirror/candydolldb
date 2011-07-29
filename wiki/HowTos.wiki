@@ -49,10 +49,10 @@ $ php5 -f /var/www/cdtvdb/import_video.php
 
 == Validate a CandydollDB XML-file ==
 
-To validate an XML-file for use in CandydollDB, one can use for example the `xmllint` utility on GNU/Linux.
+To validate an XML-file for use in CandydollDB, one can use for example the [http://xmlsoft.org/ xmllint] utility on GNU/Linux.
 
 {{{
-$ xmllint --schema /path/to/candydolldb-schema.xsd --noout /path/to/xml-file.xml
+$ xmllint --noout --schema /path/to/candydolldb-schema.xsd /path/to/xml-file.xml
 }}}
 
 This will either report success or failure.
