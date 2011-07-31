@@ -1320,6 +1320,7 @@
 			<Set name="Promotion28" />
 			<Set name="Promotion29" />
 			<Set name="Promotion30" />
+			<Set name="Promotion31" />
 		</Sets>
 	</Model>
 	<Model firstname="Interviews">
