@@ -26,3 +26,7 @@ So far, screenshots are taken with Chromium 12 and Firefox 5 on Ubuntu Natty. Fe
 == Batch video-import == 
 
 [http://fwiep.nl/download/2f09e963-5cb7-49b4-aa14-65975a969a5e.jpg http://fwiep.nl/download/2f09e963-5cb7-49b4-aa14-65975a969a5es.jpg]
+
+== Alternate style == 
+
+[http://fwiep.nl/download/17abeb5b-fce5-4605-9c78-21eb989cddd0.jpg http://fwiep.nl/download/17abeb5b-fce5-4605-9c78-21eb989cddd0s.jpg]
