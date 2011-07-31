@@ -80,7 +80,7 @@ for($i = 0; $i < count($Models); $i++)
 		{
 			$setnamematch = preg_match('/(?P<Prefix>[A-Z]+[_ -])?(?P<Name>[A-Z0-9]+)(?P<Number>\d\d)(?P<Suffix>[a-z])?\.(?P<Extension>[^.]+)$/i', $FileInfo->getFilename(), $matches);
 			
-			if(isset($matches))
+			if(isset($matches) && count($matches) > 0)
 			{
 				$Set = Set::FilterSets($Sets, $Model->getID(), null, ($matches['Name'].$matches['Number']), $matches['Prefix']);
 
@@ -101,7 +101,7 @@ for($i = 0; $i < count($Models); $i++)
 					$VideoInDB = new Video();
 					$VideoInDB->setSet($Set);
 				}
-					
+				
 				$VideoInDB->setFileName($matches['Prefix'].$matches['Name'].$matches['Number'].$matches['Suffix']);
 				$VideoInDB->setFileExtension($matches['Extension']);
 				$VideoInDB->setFileSize($FileInfo->getSize());
