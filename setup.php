@@ -316,23 +316,34 @@ FjbMNnvUJheiwewUJfheJheuehFJDUHdywgwwgHGfgywug;
 $ConfigTemplate = <<<FjbMNnvUJheiwewUJfheJheuehFJDUHdywgwwgHGfgywug
 <?php
 
-define('CANDYIMAGEPATH', 		'%1\$s');
-define('CANDYVIDEOPATH', 		'%2\$s');
-define('CANDYINDEXPATH', 		'%3\$s');
-define('CANDYVIDEOTHUMBPATH', 	'%4\$s');
+define('CANDYIMAGEPATH', 			'%1\$s');
+define('CANDYVIDEOPATH', 			'%2\$s');
+define('CANDYINDEXPATH', 			'%3\$s');
+define('CANDYVIDEOTHUMBPATH', 		'%4\$s');
 
-define('DBHOSTNAME',			'%5\$s');
-define('DBUSERNAME',			'%6\$s');
-define('DBPASSWORD',			'%7\$s');
-define('CMDLINE_USERID',		%17\$d);
+define('DBHOSTNAME',				'%5\$s');
+define('DBUSERNAME',				'%6\$s');
+define('DBPASSWORD',				'%7\$s');
+define('CMDLINE_USERID',			%17\$d);
 
-define('SMTP_FROM_ADDRESS', 	'%8\$s');
-define('SMTP_FROM_NAME', 		'%9\$s');
-define('SMTP_HOST',		 		'%10\$s');
-define('SMTP_USERNAME', 		'%11\$s');
-define('SMTP_PASSWORD', 		'%12\$s');
-define('SMTP_PORT', 			%13\$d);
-define('SMTP_AUTH', 			%14\$s);
+define('SMTP_FROM_ADDRESS', 		'%8\$s');
+define('SMTP_FROM_NAME', 			'%9\$s');
+define('SMTP_HOST',		 			'%10\$s');
+define('SMTP_USERNAME', 			'%11\$s');
+define('SMTP_PASSWORD', 			'%12\$s');
+define('SMTP_PORT', 				%13\$d);
+define('SMTP_AUTH', 				%14\$s);
+
+define('ALTERNATE_STYLE',			false);
+define('ALTERNATE_STYLE_OVERRIDE', "<style type=\"text/css\">
+		body{
+			background-image: url('images/background_alt.png');
+		}
+		label, h2, h2 a{
+			color: #2d3d3d;
+		}
+	</style>
+");
 
 \$MailTemplateResetPassword = "Dear %%1\\\$s,\\n".
 	"\\n".
