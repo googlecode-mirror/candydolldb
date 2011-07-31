@@ -179,12 +179,15 @@ foreach ($DatesThisSet as $Date)
 {
 	if($Date->getDateKind() == DATE_KIND_IMAGE || $Date->getDateKind() == DATE_KIND_UNKNOWN)
 	{
-		echo HTMLstuff::DateFormField(
-			$Date->getID(),
-			Date::FormatDates(array($Date), 'Y-m-d'),
-			DATE_KIND_IMAGE,
-			$DeleteSet
-		);
+		if(!$DeleteSet || $Date->getTimeStamp() > 0)
+		{
+			echo HTMLstuff::DateFormField(
+				$Date->getID(),
+				Date::FormatDates(array($Date), 'Y-m-d'),
+				DATE_KIND_IMAGE,
+				$DeleteSet
+			);
+		}
 	}
 }
 
@@ -192,12 +195,15 @@ foreach ($DatesThisSet as $Date)
 {
 	if($Date->getDateKind() == DATE_KIND_VIDEO || $Date->getDateKind() == DATE_KIND_UNKNOWN)
 	{
-		echo HTMLstuff::DateFormField(
-			$Date->getID(),
-			Date::FormatDates(array($Date), 'Y-m-d'),
-			DATE_KIND_VIDEO,
-			$DeleteSet
-		);
+		if(!$DeleteSet || $Date->getTimeStamp() > 0)
+		{
+			echo HTMLstuff::DateFormField(
+				$Date->getID(),
+				Date::FormatDates(array($Date), 'Y-m-d'),
+				DATE_KIND_VIDEO,
+				$DeleteSet
+			);
+		}
 	}
 }
 ?>
