@@ -23,6 +23,7 @@ class HTMLstuff
 		
 		<script type=\"text/javascript\" src=\"http://code.jquery.com/jquery.min.js\"></script>
 		<script type=\"text/javascript\" src=\"js/fwiep.js\"></script>
+		%5\$s
 		<title>CandyDoll DB%1\$s</title>
 		</head>
 
@@ -55,7 +56,9 @@ class HTMLstuff
 		
 		$CurrentUser == null ? ' style="background-position:230px 0;"' : null,
 		
-		Error::GenerateErrorList()
+		Error::GenerateErrorList(),
+
+		(ALTERNATE_STYLE === true) ? ALTERNATE_STYLE_OVERRIDE : null
 		);
 	}
 	
@@ -152,7 +155,7 @@ GYtguefggefegfgefgegfgfuguf;
 			$UniqueId,
 			$Value,
 			HTMLstuff::DisabledStr($Disabled),
-			($UniqueId ? sprintf("<a href=\"date_delete.php?date_id=%1\$d\" onclick=\"if(!confirm('Are you sure you wish to delete this date?')){return false;}\"><img src=\"images/button_delete.png\" title=\"Delete date\" alt=\"Delete date\"/></a>", $UniqueId ) : null)
+			($UniqueId && !$Disabled ? sprintf("<a href=\"date_delete.php?date_id=%1\$d\" onclick=\"if(!confirm('Are you sure you wish to delete this date?')){return false;}\"><img src=\"images/button_delete.png\" title=\"Delete date\" alt=\"Delete date\"/></a>", $UniqueId ) : null)
 			
 		);
 	}
