@@ -55,6 +55,6 @@ $(document).ready(function(){
 		}
 	});
 	
-	$('input[type^=text]:first').select();
+	$('input[type^=text]:first').focus();
 
 });
