@@ -230,7 +230,7 @@ class Date
 	 * @param string $DateFormat
 	 * @return string
 	 */
-	public static function FormatDates($InArray, $DateFormat)
+	public static function FormatDates($InArray, $DateFormat, $PrefixType = false)
 	{
 		$OutString = null;
 		if(is_array($InArray) && count($InArray) > 0)
@@ -239,7 +239,10 @@ class Date
 			foreach ($InArray as $Date)
 			{
 				if($Date->getTimeStamp() > 0)
-				{ $OutString .= date($DateFormat, $Date->getTimeStamp()).', '; }
+				{
+					$OutString .= $PrefixType ? ($Date->getDateKind() == DATE_KIND_VIDEO ? 'V-' : 'P-') : null; 
+					$OutString .= date($DateFormat, $Date->getTimeStamp()).', ';
+				}
 			}
 		}
 		return trim($OutString, ', ');
