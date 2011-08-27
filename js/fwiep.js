@@ -54,7 +54,4 @@ $(document).ready(function(){
 			$(this).val('YYYY-MM-DD');
 		}
 	});
-	
-	$('input[type^=text]:first').focus();
-
 });

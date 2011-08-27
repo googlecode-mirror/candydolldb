@@ -83,7 +83,10 @@ echo HTMLstuff::HtmlHeader('Login'); ?>
 
 <script type="text/javascript">
 //<![CDATA[
-$(document).ready(function(){$('#SiteInfo').hide();});
+$(document).ready(function(){
+	$('#SiteInfo').hide();
+	$('input[type^=text]:first').focus();
+});
 //]]>
 </script>
 
