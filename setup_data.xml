@@ -42,6 +42,7 @@
 			<Set name="10" date_pic="2008-09-12" date_vid="2008-09-12" />
 		</Sets>
 	</Model>
+	<Model firstname="Alina" lastname="N" />
 	<Model firstname="Alisa" lastname="A" birthdate="">
 		<Sets>
 			<Set name="01" date_pic="" date_vid="2011-02-18" />
@@ -511,7 +512,7 @@
 			<Set name="35" date_pic="2011-07-15" date_vid="2011-08-05" />
 			<Set name="36" date_pic="2011-07-22" date_vid="2011-08-12" />
 			<Set name="37" date_pic="2011-07-29" date_vid="2011-08-26" />
-			<Set name="38" date_pic="2011-08-05" date_vid="" />
+			<Set name="38" date_pic="2011-08-05" date_vid="2011-09-02" />
 			<Set name="39" date_pic="2011-08-19" date_vid="" />
 		</Sets>
 	</Model>
@@ -580,6 +581,7 @@
 			<Set name="03" date_pic="2008-09-12" date_vid="2008-09-12" />
 			<Set name="04" date_pic="2008-10-10" date_vid="2008-10-10" />
 			<Set name="05" date_pic="2009-01-16" date_vid="2009-01-16" />
+			<Set name="06" date_pic="2011-09-02" date_vid="" />
 		</Sets>
 	</Model>
 	<Model firstname="Masha" lastname="Shevkunova" birthdate="1996-01-30">
@@ -745,7 +747,7 @@
 			<Set name="01" date_pic="2011-04-08" date_vid="2011-07-08" />
 			<Set name="02" date_pic="2011-04-15" date_vid="2011-07-29" />
 			<Set name="03" date_pic="2011-07-01" date_vid="2011-08-19" />
-			<Set name="04" date_pic="2011-07-15" date_vid="" />
+			<Set name="04" date_pic="2011-07-15" date_vid="2011-09-02" />
 			<Set name="05" date_pic="2011-08-19" date_vid="" />
 			<Set name="06" date_pic="2011-08-26" date_vid="" />
 		</Sets>
@@ -843,7 +845,7 @@
 			<Set name="14" date_pic="2011-05-20" date_vid="2011-06-24" />
 			<Set name="15" date_pic="2011-05-27" date_vid="2011-07-22" />
 			<Set name="16" date_pic="2011-07-01" date_vid="2011-08-26" />
-			<Set name="17" date_pic="2011-07-08" date_vid="" />
+			<Set name="17" date_pic="2011-07-08" date_vid="2011-09-02" />
 			<Set name="18" date_pic="2011-07-29" date_vid="" />
 			<Set name="19" date_pic="2011-08-19" date_vid="" />
 		</Sets>
@@ -981,6 +983,7 @@
 			<Set name="24" date_pic="2010-09-10" date_vid="2010-09-10" />
 			<Set name="25" date_pic="2010-09-24" date_vid="2010-09-24" />
 			<Set name="26" date_pic="2010-10-29" date_vid="2010-10-29" />
+			<Set name="27" date_pic="" date_vid="2011-09-02" />
 		</Sets>
 	</Model>
 	<Model firstname="Svetlana" lastname="Tanska" birthdate="1993-07-06">
@@ -1009,6 +1012,7 @@
 		<Sets>
 			<Set name="01" date_pic="2011-03-25" date_vid="" />
 			<Set name="02" date_pic="2011-04-01" date_vid="" />
+			<Set name="03" date_pic="2011-09-02" date_vid="" />
 		</Sets>
 	</Model>
 	<Model firstname="Ulyana" lastname="A" birthdate="1993-05-23">
@@ -1072,7 +1076,7 @@
 			<Set name="36" date_pic="2011-06-10" date_vid="2011-05-06" />
 			<Set name="37" date_pic="2011-08-05" date_vid="2011-05-20" />
 			<Set name="38" date_pic="2011-08-26" date_vid="2011-06-24" />
-			<Set name="39" date_pic="" date_vid="2011-07-15" />
+			<Set name="39" date_pic="2011-09-02" date_vid="2011-07-15" />
 			<Set name="40" date_pic="" date_vid="2011-08-12" />
 		</Sets>
 	</Model>
@@ -1150,7 +1154,7 @@
 			<Set name="32" date_pic="2011-07-01" date_vid="2011-02-25" />
 			<Set name="33" date_pic="2011-07-15" date_vid="2011-05-20" />
 			<Set name="34" date_pic="2011-08-12" date_vid="2011-06-24" />
-			<Set name="35" date_pic="" date_vid="2011-07-08" />
+			<Set name="35" date_pic="2011-09-02" date_vid="2011-07-08" />
 			<Set name="36" date_pic="" date_vid="2011-07-22" />
 			<Set name="37" date_pic="" date_vid="2011-07-29" />
 			<Set name="38" date_pic="" date_vid="2011-08-05" />
@@ -1296,8 +1300,8 @@
 			<Set name="44" date_pic="2011-08-12" date_vid="2011-04-15" /> 
 			<Set name="45" date_pic="2011-08-19" date_vid="2011-04-22" /> 
 			<Set name="46" date_pic="2011-08-26" date_vid="2011-04-29" /> 
-			<Set name="47" date_pic="" date_vid="2011-05-06" /> 
-			<Set name="48" date_pic="" date_vid="2011-05-13" /> 
+			<Set name="47" date_pic="2011-09-02" date_vid="2011-05-06" /> 
+			<Set name="48" date_pic="2011-09-02" date_vid="2011-05-13" /> 
 			<Set name="49" date_pic="" date_vid="2011-05-27" /> 
 			<Set name="50" date_pic="" date_vid="2011-06-03" /> 
 			<Set name="51" date_pic="" date_vid="2011-06-10" /> 
