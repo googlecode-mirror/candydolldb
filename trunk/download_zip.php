@@ -20,6 +20,7 @@ if(array_key_exists('image_id', $_GET) && isset($_GET['image_id']) && is_numeric
 
 
 $tmpFile = sprintf('/tmp/%1$s.zip', Utils::GUID());
+$finalFile = 'CandyDollDB.zip';
 $zip = new ZipArchive();
 
 if(file_exists($tmpFile))
@@ -35,7 +36,7 @@ else
 if($resource === true)
 {
 	ini_set('max_execution_time', '300');
-	$zip->setArchiveComment('Downloaded from CandyDoll DB');
+	$zip->setArchiveComment('Downloaded from CandyDoll DB'."\nhttps://code.google.com/p/candydolldb/");
 
 	if($ImageID)
 	{
@@ -65,6 +66,8 @@ if($resource === true)
 						$Image->getFileExtension()
 					)
 				);
+				
+				$finalFile =  $Image->getFileName().'.zip';
 			}
 		}
 	}
@@ -102,7 +105,14 @@ if($resource === true)
 						$Image->getFileExtension()
 					)
 				);
+				
+				
 			}
+
+			$finalFile = sprintf('%1$s%2$s.zip',
+				$Model->GetShortName(),
+				$Set->getName()
+			);
 		}
 	}
 	else if($ModelID)
@@ -144,6 +154,7 @@ if($resource === true)
 					);
 				}
 			}
+			$finalFile = sprintf('%1$s.zip', $Model->GetFullName());
 		}
 	}
 
@@ -154,7 +165,7 @@ if(file_exists($tmpFile))
 {
 	header('Content-Description: File Transfer');
 	header('Content-Type: application/octet-stream');
-	header('Content-Disposition: attachment; filename=CandyDollDB.zip');
+	header('Content-Disposition: attachment; filename='.$finalFile);
 	header('Content-Transfer-Encoding: binary');
 	header('Expires: 0');
 	header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
