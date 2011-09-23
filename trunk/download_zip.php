@@ -47,20 +47,11 @@ if($resource === true)
 			$Image = $Image[0];
 			$Set = $Image->getSet();
 			$Model = $Set->getModel();
-			
-			$filename = sprintf('%1$s/%2$s/%3$s%4$s/%5$s.%6$s',
-				CANDYIMAGEPATH,
-				$Model->GetFullName(),
-				$Set->getPrefix(),
-				$Set->getName(),
-				$Image->getFileName(),
-				$Image->getFileExtension()
-			);
 
-			if(file_exists($filename))
+			if(file_exists($Image->getFilenameOnDisk()))
 			{
 				$zip->addFile(
-					$filename,
+					$Image->getFilenameOnDisk(),
 					sprintf('%1$s.%2$s',
 						$Image->getFileName(),
 						$Image->getFileExtension()
@@ -84,19 +75,11 @@ if($resource === true)
 				
 			foreach($Images as $Image)
 			{
-				$filename = sprintf('%1$s/%2$s/%3$s%4$s/%5$s.%6$s',
-					CANDYIMAGEPATH,
-					$Model->GetFullName(),
-					$Set->getPrefix(),
-					$Set->getName(),
-					$Image->getFileName(),
-					$Image->getFileExtension()
-				);
-
-				if(!file_exists($filename)) { continue; }
+				if(!file_exists($Image->getFilenameOnDisk()))
+				{ continue; }
 
 				$zip->addFile(
-					$filename,
+					$Image->getFilenameOnDisk(),
 					sprintf('%1$s/%2$s%3$s/%4$s.%5$s',
 						$Model->GetFullName(),
 						$Set->getPrefix(),
@@ -131,19 +114,11 @@ if($resource === true)
 				
 				foreach(Image::FilterImages($Images, null, $Set->getID()) as $Image)
 				{
-					$filename = sprintf('%1$s/%2$s/%3$s%4$s/%5$s.%6$s',
-						CANDYIMAGEPATH,
-						$Model->GetFullName(),
-						$Set->getPrefix(),
-						$Set->getName(),
-						$Image->getFileName(),
-						$Image->getFileExtension()
-					);
-
-					if(!file_exists($filename)) { continue; }
+					if(!file_exists($Image->getFilenameOnDisk()))
+					{ continue; }
 
 					$zip->addFile(
-						$filename,
+						$Image->getFilenameOnDisk(),
 						sprintf('%1$s/%2$s%3$s/%4$s.%5$s',
 							$Model->GetFullName(),
 							$Set->getPrefix(),

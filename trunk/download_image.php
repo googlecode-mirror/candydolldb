@@ -125,19 +125,10 @@ else if($ImageID)
 		$Image = $Image[0];
 		$Set = $Image->getSet();
 		$Model = $Set->getModel();
-		
-		$filename = sprintf('%1$s/%2$s/%3$s%4$s/%5$s.%6$s',
-			CANDYIMAGEPATH,
-			$Model->GetFullName(),
-			$Set->getPrefix(),
-			$Set->getName(),
-			$Image->getFileName(),
-			$Image->getFileExtension()
-		);
 
-		if(file_exists($filename))
+		if(file_exists($Image->getFilenameOnDisk()))
 		{
-			Image::OutputImage($filename, 800, 600);
+			Image::OutputImage($Image->getFilenameOnDisk(), 800, 600);
 		}
 		else
 		{
