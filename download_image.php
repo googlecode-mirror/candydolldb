@@ -49,20 +49,7 @@ if($ModelID)
 			);
 		}
 		
-		$filename = sprintf('%1$s/%2$s/%3$s.jpg',
-			CANDYIMAGEPATH,
-			CANDYINDEXPATH,
-			$Model->GetShortName()
-		);
-		
-		if(file_exists($filename))
-		{
-			Image::OutputImage($filename, 1024, 768);
-		}
-		else
-		{
-			Image::OutputImage();
-		}
+		header('location:download_index.php?model_id='.$ModelID.'&width=400&height=600');
 	}
 	else
 	{

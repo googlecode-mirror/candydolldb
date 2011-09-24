@@ -38,7 +38,6 @@ $UserEmail = null;
 
 $CandyImagePath = null;
 $CandyVideoPath = null;
-$CandyIndexPath = null;
 $CandyVideoThumbPath = null;
 
 $SmtpFromAddress = null;
@@ -318,7 +317,6 @@ $ConfigTemplate = <<<FjbMNnvUJheiwewUJfheJheuehFJDUHdywgwwgHGfgywug
 
 define('CANDYIMAGEPATH', 			'%1\$s');
 define('CANDYVIDEOPATH', 			'%2\$s');
-define('CANDYINDEXPATH', 			'%3\$s');
 define('CANDYVIDEOTHUMBPATH', 		'%4\$s');
 
 define('DBHOSTNAME',				'%5\$s');
@@ -375,7 +373,6 @@ if(array_key_exists('hidAction', $_POST) && isset($_POST['hidAction']) && $_POST
 	
 	$CandyImagePath 	= isset($_POST['txtCandyImagePath']) && strlen($_POST['txtCandyImagePath']) > 0 ? (string)$_POST['txtCandyImagePath'] : null;
 	$CandyVideoPath 	= isset($_POST['txtCandyVideoPath']) && strlen($_POST['txtCandyVideoPath']) > 0 ? (string)$_POST['txtCandyVideoPath'] : null;
-	$CandyIndexPath 	= isset($_POST['txtCandyIndexPath']) && strlen($_POST['txtCandyIndexPath']) > 0 ? (string)$_POST['txtCandyIndexPath'] : null;
 	$CandyVideoThumbPath = isset($_POST['txtCandyVideoThumbPath']) && strlen($_POST['txtCandyVideoThumbPath']) > 0 ? (string)$_POST['txtCandyVideoThumbPath'] : null;
 	
 	$SmtpFromAddress = isset($_POST['txtSmtpFromAddress']) && strlen($_POST['txtSmtpFromAddress']) > 0 ? (string)$_POST['txtSmtpFromAddress'] : null;
@@ -411,7 +408,7 @@ if(array_key_exists('hidAction', $_POST) && isset($_POST['hidAction']) && $_POST
 					$NewConfig = sprintf($ConfigTemplate,
 						$CandyImagePath,
 						$CandyVideoPath,
-						$CandyIndexPath,
+						null,
 						$CandyVideoThumbPath,
 						$DBHostName,
 						$DBUserName,
@@ -460,7 +457,6 @@ else
 	
 	$CandyImagePath = '/var/candydoll_pics';
 	$CandyVideoPath = '/var/candydoll_vids';
-	$CandyIndexPath = 'indexes';
 	$CandyVideoThumbPath = 'thumbnails';
 
 	$SmtpFromAddress = 'your@email';
@@ -560,11 +556,6 @@ else
 <div class="FormRow">
 <label for="txtCandyVideoPath">Video-path:</label>
 <input type="text" id="txtCandyVideoPath" name="txtCandyVideoPath" maxlength="255" value="<?php echo $CandyVideoPath;?>" />
-</div>
-
-<div class="FormRow">
-<label for="txtCandyIndexPath">Index-subpath:</label>
-<input type="text" id="txtCandyIndexPath" name="txtCandyIndexPath" maxlength="255" value="<?php echo $CandyIndexPath;?>" />
 </div>
 
 <div class="FormRow">
