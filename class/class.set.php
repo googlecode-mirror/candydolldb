@@ -339,6 +339,59 @@ class Set
 		}
 		return $OutArray;
 	}
+	
+	/**
+	 * Return a concatenated, condensed string of all the array's values,
+	 * For example '1,2,3,4,6,7,8,10,13' becomes '1-8, 10, 13'.
+	 * @param array(Set) $inArray
+	 */
+	public static function RangeString($inArray)
+	{	
+		if(!is_array($inArray) || count($inArray) == 0){
+			return null;
+		}
+	
+		$s = count($inArray) == 1 ? 'Set ' : 'Sets '; 
+		
+		for ($i = 0; $i < count($inArray); $i++)
+		{	
+			/* @var $previousSet Set */
+			/* @var $currentSet Set */
+			/* @var $nextSet Set */
+			$previousSet = $i == 0 ? null : $inArray[$i -1];
+			$currenSet = $inArray[$i];
+			$nextSet = $i == count($inArray)-1 ? null : $inArray[$i +1];
+			
+			
+			if($previousSet == null){
+				$s .= (int)$currenSet->getName();	
+			}
+	
+			else if(
+				(int)$currenSet->getName() == ((int)$previousSet->getName()) + 1
+				&&
+				$nextSet != null
+				&&
+				(int)$currenSet->getName() == ((int)$nextSet->getName()) - 1)
+				{
+					continue;
+			}
+			
+			else if(
+				(int)$previousSet->getName() == ((int)$currenSet->getName()) -1)
+				{
+					$s .= '-'.((int)$currenSet->getName());
+			}
+			
+			else if(
+				(int)$previousSet->getName() != ((int)$currenSet->getName()) -1)
+				{
+					$s .= ', '.((int)$currenSet->getName());
+			}
+		}
+		
+		return $s;
+	}
 }
 
 ?>
