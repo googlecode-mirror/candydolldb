@@ -38,7 +38,7 @@ $Images = Image::GetImages(sprintf('model_id = %1$d AND mut_deleted = -1', $Mode
 $Sets = Set::GetSets(sprintf('model_id = %1$d AND mut_deleted = -1', $ModelID));
 
 
-if($Sets && !in_array($Sets[0]->getModel()->getFullName(), array('VIP', 'Ṕromotions', 'Interviews')))
+if($Sets && !in_array($Sets[0]->getModel()->getFullName(), array('VIP', 'Promotions', 'Interviews')))
 {
 	ini_set('max_execution_time', '300');
 	$indexImage = imagecreatefrompng('images/index_background.png');
