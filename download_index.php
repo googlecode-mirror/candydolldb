@@ -70,12 +70,15 @@ class ThumbnailSettings
 }
 
 
-$indexImage = imagecreatefrompng('images/index_background.png');
-$candyColor = imagecolorallocate($indexImage, 255, 246, 195);
-$font = 'images/FreeSerifBoldItalic.ttf';
-$fontSizeTitle = 76;
-$fontSizeSubTitle = 30;
+$indexImage = null;
+$finalWidth = null;
+$finalHeight = null;
 
+if(array_key_exists('width', $_GET) && isset($_GET['width']) && is_numeric($_GET['width']))
+{ $finalWidth = (int)$_GET['width']; }
+
+if(array_key_exists('height', $_GET) && isset($_GET['height']) && is_numeric($_GET['height']))
+{ $finalHeight = (int)$_GET['height']; }
 
 $ModelID = null;
 
@@ -86,9 +89,15 @@ $Images = Image::GetImages(sprintf('model_id = %1$d AND mut_deleted = -1', $Mode
 $Sets = Set::GetSets(sprintf('model_id = %1$d AND mut_deleted = -1', $ModelID));
 
 
-if($Sets)
+if($Sets && !in_array($Sets[0]->getModel()->getFullName(), array('VIP', 'Ṕromotions', 'Interviews')))
 {
 	ini_set('max_execution_time', '300');
+	$indexImage = imagecreatefrompng('images/index_background.png');
+	$candyColor = imagecolorallocate($indexImage, 255, 246, 195);
+	$font = 'images/FreeSerifBoldItalic.ttf';
+	$fontSizeTitle = 76;
+	$fontSizeSubTitle = 30;
+	
 	$pics = array();
 	
 	$textTitle = $Sets[0]->getModel()->getFullName();
@@ -519,9 +528,33 @@ if($Sets)
 		}
 	}
 	
-	header('Content-Type: image/png');
-	imagepng($indexImage);
-	imagedestroy($indexImage);
+	if(!is_null($finalWidth) && !is_null($finalHeight))
+	{
+		$oldIndexImage = $indexImage;
+		$indexImage = imagecreatetruecolor($finalWidth, $finalHeight);
+
+		imagecopyresampled(
+			$indexImage,
+			$oldIndexImage,
+			0,
+			0,
+			0,
+			0,
+			$finalWidth,
+			$finalHeight,
+			1200,
+			1800
+		);
+		
+		imagedestroy($oldIndexImage);
+	}
 }
+
+if(is_null($indexImage))
+{ $indexImage = imagecreatefromjpeg('images/missing.jpg'); }
+
+header('Content-Type: image/png');
+imagepng($indexImage);
+imagedestroy($indexImage);
 
 ?>
