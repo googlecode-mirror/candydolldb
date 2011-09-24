@@ -85,6 +85,9 @@ if($XmlFromFile)
 			$modelid = $db->GetLatestID();
 			if($modelid) { $Model2Process->setID($modelid); }
 		}
+		
+		if(!$Model->Sets)
+		{ continue; }
 
 		foreach($Model->Sets->Set as $Set)
 		{
