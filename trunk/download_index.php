@@ -22,12 +22,15 @@ $indexImage = null;
 $finalWidth = null;
 $finalHeight = null;
 $cacheFilename = null;
+$useCache = true;
 
 if(array_key_exists('width', $_GET) && isset($_GET['width']) && is_numeric($_GET['width']))
 { $finalWidth = (int)$_GET['width']; }
 
 if(array_key_exists('height', $_GET) && isset($_GET['height']) && is_numeric($_GET['height']))
 { $finalHeight = (int)$_GET['height']; }
+
+$useCache = !array_key_exists('use_cache', $_GET) || !isset($_GET['use_cache']) || $_GET['use_cache'] == 'true';
 
 $ModelID = null;
 
@@ -92,7 +95,7 @@ if($Sets && !in_array($Sets[0]->getModel()->getFullName(), array('VIP', 'Promoti
 	$md5OfIndex = md5(serialize($pics));
 	$cacheFilename = sprintf('cache/%1$s.jpg', $md5OfIndex); 
 	
-	if(file_exists($cacheFilename))
+	if($useCache && file_exists($cacheFilename))
 	{
 		$indexImage = imagecreatefromjpeg($cacheFilename);
 	}
