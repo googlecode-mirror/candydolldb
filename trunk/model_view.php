@@ -107,7 +107,7 @@ if($ModelID)
 
 <?php echo $ModelID ? HTMLstuff::Button(sprintf('set.php?model_id=%1$d', $ModelID), 'Sets') : ''; ?>
 
-<?php echo $ModelID ? HTMLstuff::Button(sprintf('download_image.php?model_id=%1$d', $ModelID), 'Thumbnails', 'rel="lightbox"') : ''; ?>
+<?php echo $ModelID ? HTMLstuff::Button(sprintf('download_index.php?model_id=%1$d&amp;width=500&amp;height=750', $ModelID), 'Thumbnails', 'rel="lightbox"') : ''; ?>
 
 <?php echo HTMLstuff::Button('index.php'); ?>
 
