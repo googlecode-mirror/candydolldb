@@ -30,3 +30,7 @@ So far, screenshots are taken with Chromium 12 and Firefox 5 on Ubuntu Natty. Fe
 == Alternate style == 
 
 [http://fwiep.nl/download/17abeb5b-fce5-4605-9c78-21eb989cddd0.jpg http://fwiep.nl/download/17abeb5b-fce5-4605-9c78-21eb989cddd0s.jpg]
+
+== Automatic index generator == 
+
+[http://fwiep.nl/download/1f962fc0-419f-43a7-b0b4-3732c4f9580a.jpg http://fwiep.nl/download/1f962fc0-419f-43a7-b0b4-3732c4f9580as.jpg]
