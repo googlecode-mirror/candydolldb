@@ -44,7 +44,7 @@ HISTORY:
 		Added a caching mechanism for this generator;
 		Added lots of new models and release-dates;
 		Added convenient filenames for zip-exports;
-		Added dates and -seach capability on dirty sets;
+		Added dates and -search capability on dirty sets;
 		Added an alternate style (i.e. optional override);
 		Added a password generator;
 		Minor bugfix in importscript;
