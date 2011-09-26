@@ -519,7 +519,7 @@ if(is_null($indexImage))
 if(!is_null($cacheFilename) && !file_exists($cacheFilename))
 { imagejpeg($indexImage, $cacheFilename, 90); }
 
-header('Content-Type: image/jpg');
+header('Content-Type: image/jpeg');
 imagejpeg($indexImage);
 imagedestroy($indexImage);
 
