@@ -23,6 +23,7 @@ $finalWidth = null;
 $finalHeight = null;
 $cacheFilename = null;
 $useCache = true;
+$pathPrefix = (isset($argv) && $argc > 0) ? dirname($_SERVER['PHP_SELF']).'/' : '';  
 
 if(array_key_exists('width', $_GET) && isset($_GET['width']) && is_numeric($_GET['width']))
 { $finalWidth = (int)$_GET['width']; }
@@ -44,9 +45,9 @@ $Sets = Set::GetSets(sprintf('model_id = %1$d AND mut_deleted = -1', $ModelID));
 if($Sets && !in_array($Sets[0]->getModel()->getFullName(), array('VIP', 'Promotions', 'Interviews')))
 {
 	ini_set('max_execution_time', '300');
-	$indexImage = imagecreatefrompng('images/index_background.png');
+	$indexImage = imagecreatefrompng($pathPrefix.'images/index_background.png'); 
 	$candyColor = imagecolorallocate($indexImage, 255, 246, 195);
-	$font = 'images/FreeSerifBoldItalic.ttf';
+	$font = $pathPrefix.'images/FreeSerifBoldItalic.ttf';
 	$fontSizeTitle = 76;
 	$fontSizeSubTitle = 30;
 	
@@ -93,7 +94,7 @@ if($Sets && !in_array($Sets[0]->getModel()->getFullName(), array('VIP', 'Promoti
 	
 	
 	$md5OfIndex = md5(serialize($pics));
-	$cacheFilename = sprintf('cache/%1$s.jpg', $md5OfIndex); 
+	$cacheFilename = sprintf($pathPrefix.'cache/%1$s.jpg', $md5OfIndex); 
 	
 	if($useCache && file_exists($cacheFilename))
 	{
@@ -451,7 +452,7 @@ if($Sets && !in_array($Sets[0]->getModel()->getFullName(), array('VIP', 'Promoti
 					if($Image->getID())
 					{ $srcImage = imagecreatefromjpeg($Image->getFilenameOnDisk() ); }
 					else
-					{ $srcImage = imagecreatefromjpeg('images/missing.jpg'); }
+					{ $srcImage = imagecreatefromjpeg($pathPrefix.'images/missing.jpg'); }
 					
 					if($srcImage)
 					{
@@ -513,7 +514,7 @@ if($Sets && !in_array($Sets[0]->getModel()->getFullName(), array('VIP', 'Promoti
 }
 
 if(is_null($indexImage))
-{ $indexImage = imagecreatefromjpeg('images/missing.jpg'); }
+{ $indexImage = imagecreatefromjpeg($pathPrefix.'images/missing.jpg'); }
 
 if(!is_null($cacheFilename) && !file_exists($cacheFilename))
 { imagejpeg($indexImage, $cacheFilename, 90); }
