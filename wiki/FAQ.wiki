@@ -15,4 +15,4 @@
 ----
 
 * Q: What exectly are the 'Index'- and 'Thumbnail'-settings during the application's setup?<br>
-* A: Both are images containing thumbnails of either all a model's sets or a set's movie. They are regularly posted on [http://binsearch.info/index.php?q=CD+IDX&m=&max=250&adv_g=alt.binaries.pictures.sierra&adv_age=999&adv_sort=date&minsize=&maxsize=&font=&postdate= Usenet], most notably by [http://binsearch.info/?server=2&max=250&g=alt.binaries.pictures.sierra&a=Horac+%3CSTarring%40nothing.com%3E Horac].
+* A: Both are images containing thumbnails of either all a model's sets or a set's movie. They are regularly posted on [http://binsearch.info/index.php?q=CD+IDX&m=&max=250&adv_g=alt.binaries.pictures.sierra&adv_age=999&adv_sort=date&minsize=&maxsize=&font=&postdate= Usenet], most notably by [http://binsearch.info/?server=2&max=250&g=alt.binaries.pictures.sierra&a=Horac+%3CSTarring%40nothing.com%3E Horac]. Since v1.3 of CandyDollDB, the indexes are being automatically generated. Hence this setting has been removed.
