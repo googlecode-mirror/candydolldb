@@ -202,7 +202,7 @@
 	<Model firstname="Darya" lastname="V" birthdate="">
 		<Sets>
 			<Set name="01" date_pic="2011-09-09" date_vid="2011-09-16" />
-			<Set name="02" date_pic="" date_vid="2011-10-14" />
+			<Set name="02" date_pic="2011-10-21" date_vid="2011-10-14" />
 		</Sets>
 	</Model>
 	<Model firstname="Diana" lastname="M" birthdate="">
@@ -218,6 +218,7 @@
 			<Set name="09" date_pic="" date_vid="2011-07-15" />
 			<Set name="10" date_pic="" date_vid="2011-08-05" />
 			<Set name="11" date_pic="" date_vid="2011-08-26" />
+			<Set name="12" date_pic="" date_vid="2011-10-21" />
 		</Sets>
 	</Model>
 	<Model firstname="Dina" lastname="Y" birthdate="1996-12-12">
@@ -283,7 +284,7 @@
 	<Model firstname="Emiliya" lastname="V" birthdate="">
 		<Sets>
 			<Set name="01" date_pic="2011-10-14" date_vid="2011-09-09" />
-			<Set name="02" date_pic="" date_vid="2011-09-30" />
+			<Set name="02" date_pic="2011-10-21" date_vid="2011-09-30" />
 		</Sets>
 	</Model>
 	<Model firstname="Emma" lastname="M" birthdate="">
@@ -879,7 +880,7 @@
 			<Set name="03" date_pic="2010-11-05" date_vid="2010-11-05" />
 			<Set name="04" date_pic="2010-12-24" date_vid="2010-12-24" />
 			<Set name="05" date_pic="2011-02-04" date_vid="2011-09-09" />
-			<Set name="06" date_pic="" date_vid="2011-09-23" />
+			<Set name="06" date_pic="2011-10-21" date_vid="2011-09-23" />
 		</Sets>
 	</Model>
 	<Model firstname="Sasha" lastname="Dynovska" birthdate="1995-10-30">
@@ -1010,6 +1011,7 @@
 			<Set name="25" date_pic="2010-09-24" date_vid="2010-09-24" />
 			<Set name="26" date_pic="2010-10-29" date_vid="2010-10-29" />
 			<Set name="27" date_pic="2011-10-14" date_vid="2011-09-02" />
+			<Set name="28" date_pic="" date_vid="2011-10-21" />
 		</Sets>
 	</Model>
 	<Model firstname="Svetlana" lastname="Tanska" birthdate="1993-07-06">
@@ -1037,7 +1039,7 @@
 	<Model firstname="Tatyana" lastname="Z" birthdate="">
 		<Sets>
 			<Set name="01" date_pic="2011-03-25" date_vid="2011-10-14" />
-			<Set name="02" date_pic="2011-04-01" date_vid="" />
+			<Set name="02" date_pic="2011-04-01" date_vid="2011-10-21" />
 			<Set name="03" date_pic="2011-09-02" date_vid="" />
 			<Set name="04" date_pic="2011-09-23" date_vid="" />
 		</Sets>
@@ -1186,7 +1188,7 @@
 			<Set name="34" date_pic="2011-08-12" date_vid="2011-06-24" />
 			<Set name="35" date_pic="2011-09-02" date_vid="2011-07-08" />
 			<Set name="36" date_pic="2011-09-23" date_vid="2011-07-22" />
-			<Set name="37" date_pic="" date_vid="2011-07-29" />
+			<Set name="37" date_pic="2011-10-21" date_vid="2011-07-29" />
 			<Set name="38" date_pic="" date_vid="2011-08-05" />
 			<Set name="39" date_pic="" date_vid="2011-09-09" />
 			<Set name="40" date_pic="" date_vid="2011-09-16" />
@@ -1261,7 +1263,7 @@
 	</Model>
 	<Model firstname="Ziliya" lastname="K" birthdate="">
 		<Sets>
-			<Set name="01" date_pic="2011-09-23" date_vid="" />
+			<Set name="01" date_pic="2011-09-23" date_vid="2011-10-21" />
 			<Set name="02" date_pic="2011-10-07" date_vid="" />
 		</Sets>
 	</Model>
@@ -1348,7 +1350,7 @@
 			<Set name="52" date_pic="2011-09-30" date_vid="2011-06-17" />
 			<Set name="53" date_pic="2011-10-07" date_vid="2011-06-24" />
 			<Set name="54" date_pic="2011-10-14" date_vid="2011-07-01" />
-			<Set name="55" date_pic="" date_vid="2011-07-08" />
+			<Set name="55" date_pic="2011-10-21" date_vid="2011-07-08" />
 			<Set name="56" date_pic="" date_vid="2011-07-15" />
 			<Set name="57" date_pic="" date_vid="2011-07-22" />
 			<Set name="58" date_pic="" date_vid="2011-07-29" />
@@ -1362,6 +1364,7 @@
 			<Set name="66" date_pic="" date_vid="2011-09-30" />
 			<Set name="67" date_pic="" date_vid="2011-10-07" />
 			<Set name="68" date_pic="" date_vid="2011-10-14" />
+			<Set name="69" date_pic="" date_vid="2011-10-21" />
 		</Sets>
 	</Model>
 	<Model firstname="Promotions">
