@@ -11,6 +11,8 @@
 
 == Could Use ==
 
+  * HTML5-interface instead of XHTML 1.0 Strict.
+
   * Usage-reports on non-Linux platforms, for inter-platform testing of filehandling, imports and downloads.
 
   * ~~Functionality to generate thumbnail-indexes of a model's sets, or even complete sets.~~
