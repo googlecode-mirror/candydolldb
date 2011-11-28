@@ -184,6 +184,10 @@ form.FilterForm input[type=submit]{
 	line-height: 20px;
 }
 
+.Clear{
+	clear: both;
+}
+
 a.Button{
 	background-image: url('images/button_off.png');
 	display: block;
@@ -191,7 +195,7 @@ a.Button{
 	font-weight: bold;
 	height: 45px;
 	line-height: 45px;
-	margin: 0 20px 20px 0;
+	margin: 0 18px 20px 0;
 	text-align: center;
 	width: 162px;
 }
