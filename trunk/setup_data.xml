@@ -472,6 +472,7 @@
 			<Set name="35" date_pic="" date_vid="2011-11-18" />
 		</Sets>
 	</Model>
+	<Model firstname="Lena" lastname="" />
 	<Model firstname="Lera" lastname="Cicima" birthdate="1995-01-25">
 		<Sets>
 			<Set name="01" date_pic="2008-08-15" date_vid="2008-08-15" />
