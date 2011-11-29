@@ -166,6 +166,24 @@ class Utils
 	}
 	
 	/**
+	 * Returns an array of integers, safe to be processed in, for example, an SQL-in-query
+	 * @param array $inArray
+	 * @return array
+	 */
+	public static function SafeInts($inArray)
+	{
+		$outArray = array();
+	
+		if(is_array($inArray)){
+			foreach ($inArray as $value) {
+				$outArray[] = intval($value);
+			}
+		}
+	
+		return array_unique($outArray);
+	}
+	
+	/**
 	 * Validates the given string to be a valid emailaddress.
 	 * @param string $InAddress
 	 * @return boolean

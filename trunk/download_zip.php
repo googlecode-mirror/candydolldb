@@ -20,7 +20,7 @@ if(array_key_exists('image_id', $_GET) && isset($_GET['image_id']) && is_numeric
 { $ImageID = (int)$_GET['image_id']; }
 
 if(array_key_exists('image_ids', $_GET) && isset($_GET['image_ids']))
-{ $ImageIDs = explode(',', $_GET['image_ids']); }
+{ $ImageIDs = Utils::SafeInts(explode(',', $_GET['image_ids'])); }
 
 
 $tmpFile = sprintf('%1$s/%2$s.zip', sys_get_temp_dir(), Utils::GUID());
@@ -138,7 +138,24 @@ if($resource === true)
 	}
 	else if($ImageIDs)
 	{
+		$Images = Image::GetImages(sprintf('mut_deleted = -1 AND image_id IN ( %1$s )', join(',', $ImageIDs)));
 		
+		foreach($Images as $Image)
+		{
+			if(!file_exists($Image->getFilenameOnDisk()))
+			{ continue; }
+		
+			$zip->addFile(
+				$Image->getFilenameOnDisk(),
+				sprintf('%1$s/%2$s%3$s/%4$s.%5$s',
+					$Image->getSet()->getModel()->GetFullName(),
+					$Image->getSet()->getPrefix(),
+					$Image->getSet()->getName(),
+					$Image->getFileName(),
+					$Image->getFileExtension()
+				)
+			);
+		}
 	}
 
 	$zip->close();

@@ -8,27 +8,16 @@ $ModelsOptions = null;
 $SetsOptions = null;
 $ImagesOptions = null;
 
+$ButtonText = 'Next';
 $Models = Model::GetModels();
 
-
-function SafeInts($inArray){
-	$outArray = array();
-	
-	if(is_array($inArray)){
-		foreach ($inArray as $value) {
-			$outArray[] = intval($value);
-		}
-	}
-	
-	return array_unique($outArray);
-}
 
 if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'DownloadMulti')
 {
 	$ModelsOptions = null;
 	$SetsOptions = null;
 	
-	$SelectedModelIDs = array_key_exists('selModels', $_POST) ? SafeInts($_POST['selModels']) : array();
+	$SelectedModelIDs = array_key_exists('selModels', $_POST) ? Utils::SafeInts($_POST['selModels']) : array();
 
 	/* @var $Model Model */
 	foreach ($Models as $Model)
@@ -43,7 +32,7 @@ if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'DownloadMult
 	if($SelectedModelIDs)
 	{
 		$Sets = Set::GetSets(sprintf('mut_deleted = -1 AND model_id IN ( %1$s )', join(',', $SelectedModelIDs)));
-		$SelectedSetIDs = array_key_exists('selSets', $_POST) ? SafeInts($_POST['selSets']) : array();
+		$SelectedSetIDs = array_key_exists('selSets', $_POST) ? Utils::SafeInts($_POST['selSets']) : array();
 		
 		/* @var $Set Set */
 		foreach ($Sets as $Set)
@@ -60,7 +49,8 @@ if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'DownloadMult
 		if($SelectedSetIDs)
 		{
 			$Images = Image::GetImages(sprintf('mut_deleted = -1 AND set_id IN ( %1$s )', join(',', $SelectedSetIDs)));
-			$SelectedImageIDs = array_key_exists('selImages', $_POST) ? SafeInts($_POST['selImages']) : array();
+			$SelectedImageIDs = array_key_exists('selImages', $_POST) ? Utils::SafeInts($_POST['selImages']) : array();
+			$ButtonText = 'Download';
 
 			/* @var $Image Image */
 			foreach ($Images as $Image)
@@ -77,6 +67,11 @@ if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'DownloadMult
 					htmlentities($Image->getFileExtension()),
 					in_array($Image->getID(), $SelectedImageIDs) ? ' selected="selected"' : null
 				);
+			}
+			
+			if($SelectedImageIDs)
+			{
+				header('location:download_zip.php?image_ids=' . join(',', $SelectedImageIDs));
 			}
 		}
 	}
@@ -97,13 +92,7 @@ echo HTMLstuff::HtmlHeader('Download');
 
 <script type="text/javascript">
 //<![CDATA[
-	
-	$(document).ready(function(){
-		$('#selModels, #selSets').change(function(){
-			$('input[type="submit"]').click();
-		});
-	});
-           
+     
 //]]>
 </script>
 
@@ -129,10 +118,19 @@ echo HTMLstuff::HtmlHeader('Download');
 </select>
 
 <div class="Clear"></div>
-<div class="Separator"></div>
+
+
+<ol>
+<li>Select one or more models, click Next.</li>
+<li>Then, select one or more of these models' sets, click Next.</li>
+<li>Select one or more images of the selected sets, click Download.</li>
+</ol>
+
+
 
 <div class="FormRow">
-<input type="submit" class="FormButton" value="Download" />
+<input type="submit" class="FormButton" value="<?php echo $ButtonText; ?>" />
+<input type="button" class="FormButton" value="Reset" onclick="window.location='download_multi.php';" />
 <input type="button" class="FormButton" value="Cancel" onclick="window.location='index.php';" />
 </div>
 
