@@ -8,6 +8,7 @@ $ModelID = null;
 $SetID = null;
 $ImageID = null;
 $ImageIDs = array();
+$UseSubfolders = false;
 
 
 if(array_key_exists('model_id', $_GET) && isset($_GET['model_id']) && is_numeric($_GET['model_id']))
@@ -21,6 +22,9 @@ if(array_key_exists('image_id', $_GET) && isset($_GET['image_id']) && is_numeric
 
 if(array_key_exists('image_ids', $_GET) && isset($_GET['image_ids']))
 { $ImageIDs = Utils::SafeInts(explode(',', $_GET['image_ids'])); }
+
+if(array_key_exists('usesub', $_GET) && isset($_GET['usesub']) && $_GET['usesub'] == '1')
+{ $UseSubfolders = true; }
 
 
 $tmpFile = sprintf('%1$s/%2$s.zip', sys_get_temp_dir(), Utils::GUID());
@@ -147,7 +151,8 @@ if($resource === true)
 		
 			$zip->addFile(
 				$Image->getFilenameOnDisk(),
-				sprintf('%1$s/%2$s%3$s/%4$s.%5$s',
+				sprintf(
+					$UseSubfolders ? '%1$s/%2$s%3$s/%4$s.%5$s' : '%4$s.%5$s',
 					$Image->getSet()->getModel()->GetFullName(),
 					$Image->getSet()->getPrefix(),
 					$Image->getSet()->getName(),
