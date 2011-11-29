@@ -10,7 +10,7 @@ $ImagesOptions = null;
 
 $ButtonText = 'Next';
 $Models = Model::GetModels();
-
+$UseSubfoldersInDownload = array_key_exists('chkSubfolders', $_POST) && isset($_POST['chkSubfolders']);
 
 if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'DownloadMulti')
 {
@@ -50,6 +50,7 @@ if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'DownloadMult
 		{
 			$Images = Image::GetImages(sprintf('mut_deleted = -1 AND set_id IN ( %1$s )', join(',', $SelectedSetIDs)));
 			$SelectedImageIDs = array_key_exists('selImages', $_POST) ? Utils::SafeInts($_POST['selImages']) : array();
+			 
 			$ButtonText = 'Download';
 
 			/* @var $Image Image */
@@ -71,7 +72,12 @@ if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'DownloadMult
 			
 			if($SelectedImageIDs)
 			{
-				header('location:download_zip.php?image_ids=' . join(',', $SelectedImageIDs));
+				header(
+					sprintf('location:download_zip.php?image_ids=%1$s&usesub=%2$s',
+						join(',', $SelectedImageIDs),
+						$UseSubfoldersInDownload
+					)
+				);
 			}
 		}
 	}
@@ -90,12 +96,6 @@ else
 echo HTMLstuff::HtmlHeader('Download');
 ?>
 
-<script type="text/javascript">
-//<![CDATA[
-     
-//]]>
-</script>
-
 <h2><?php echo sprintf(
 	'<a href="index.php">Home</a> - Download'
 ); ?></h2>
@@ -105,20 +105,19 @@ echo HTMLstuff::HtmlHeader('Download');
 
 <input type="hidden" id="hidAction" name="hidAction" value="DownloadMulti" />
 
-<select id="selModels" name="selModels[]" multiple="multiple" style="width:200px;height:500px;float:left;">
+<select id="selModels" name="selModels[]" multiple="multiple" style="width:200px;height:400px;float:left;">
 <?php echo $ModelsOptions; ?>
 </select>
 
-<select id="selSets" name="selSets[]" multiple="multiple" style="width:250px;height:500px;float:left;margin-left:20px;">
+<select id="selSets" name="selSets[]" multiple="multiple" style="width:250px;height:400px;float:left;margin-left:20px;">
 <?php echo ($SetsOptions ? $SetsOptions : '<option value=""></option>'); ?>
 </select>
 
-<select id="selImages" name="selImages[]" multiple="multiple" style="width:350px;height:500px;float:left;margin-left:20px;">
+<select id="selImages" name="selImages[]" multiple="multiple" style="width:350px;height:400px;float:left;margin-left:20px;">
 <?php echo ($ImagesOptions ? $ImagesOptions : '<option value=""></option>'); ?>
 </select>
 
 <div class="Clear"></div>
-
 
 <ol>
 <li>Select one or more models, click Next.</li>
@@ -127,6 +126,12 @@ echo HTMLstuff::HtmlHeader('Download');
 </ol>
 
 
+
+<div class="FormRow">
+<label style="width:auto;" for="chkSubfolders">Use subfolders in download</label>&nbsp;<input type="checkbox" id="chkSubfolders" name="chkSubfolders"<?php echo HTMLstuff::CheckedStr($UseSubfoldersInDownload); ?> />
+</div>
+
+<div class="Clear Separator"></div>
 
 <div class="FormRow">
 <input type="submit" class="FormButton" value="<?php echo $ButtonText; ?>" />
