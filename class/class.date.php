@@ -228,6 +228,7 @@ class Date
 	 * Formats the given Dates into a comma separated string 
 	 * @param array(Date) $InArray
 	 * @param string $DateFormat
+	 * @param bool $PrefixType
 	 * @return string
 	 */
 	public static function FormatDates($InArray, $DateFormat, $PrefixType = false)
@@ -241,7 +242,7 @@ class Date
 				if($Date->getTimeStamp() > 0)
 				{
 					$OutString .= $PrefixType ? ($Date->getDateKind() == DATE_KIND_VIDEO ? 'V-' : 'P-') : null; 
-					$OutString .= date($DateFormat, $Date->getTimeStamp()).', ';
+					$OutString .= date($DateFormat, $Date->getTimeStamp()).' ';
 				}
 			}
 		}

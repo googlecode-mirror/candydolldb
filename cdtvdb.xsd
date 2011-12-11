@@ -45,11 +45,77 @@
 	</xs:restriction>
 </xs:simpleType>
 
+<xs:simpleType name="EmptyHex32">
+	<xs:union memberTypes="Empty Hex32"  />
+</xs:simpleType>
+
+<xs:simpleType name="Hex32">
+	<xs:restriction base="xs:string">
+		<xs:pattern value="([a-zA-Z0-9]){32}" />
+	</xs:restriction>
+</xs:simpleType>
+
+<xs:simpleType name="ExtensionsImage">
+	<xs:restriction base="xs:string">
+		<xs:enumeration value="jpg"/>
+	</xs:restriction>
+</xs:simpleType>
+
+<xs:simpleType name="ExtensionsVideo">
+	<xs:restriction base="xs:string">
+		<xs:enumeration value="wmv"/>
+		<xs:enumeration value="mp4"/>
+	</xs:restriction>
+</xs:simpleType>
+
+<xs:complexType name="ImageType">
+	<xs:attribute name="name" type="Name" use="required" />
+	<xs:attribute name="extension" type="ExtensionsImage" use="required" />
+	<xs:attribute name="filesize" type="xs:nonNegativeInteger" use="required" />
+	<xs:attribute name="checksum" type="EmptyHex32" use="required" />
+	<xs:attribute name="width" type="xs:nonNegativeInteger" use="required" />
+	<xs:attribute name="height" type="xs:nonNegativeInteger" use="required" />
+</xs:complexType>
+
+<xs:complexType name="ImagesType">
+	<xs:sequence>
+		<xs:element name="Image" minOccurs="1" maxOccurs="unbounded" type="ImageType" />
+	</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="VideoType">
+	<xs:attribute name="name" type="Name" use="required" />
+	<xs:attribute name="extension" type="ExtensionsVideo" use="required" />
+	<xs:attribute name="filesize" type="xs:nonNegativeInteger" use="required" />
+	<xs:attribute name="checksum" type="EmptyHex32" use="required" />
+</xs:complexType>
+
+<xs:complexType name="VideosType">
+	<xs:sequence>
+		<xs:element name="Video" minOccurs="1" maxOccurs="unbounded" type="VideoType" />
+	</xs:sequence>
+</xs:complexType>
+
 <xs:complexType name="SetType">
+	
+	<xs:all>
+		<xs:element name="Images" minOccurs="0" maxOccurs="1" type="ImagesType">
+			<xs:unique name="uniqueImageName">
+				<xs:selector xpath="./Image"/>
+				<xs:field xpath="@name"/>
+			</xs:unique>
+		</xs:element>
+		<xs:element name="Videos" minOccurs="0" maxOccurs="1" type="VideosType">
+			<xs:unique name="uniqueVideoName">
+				<xs:selector xpath="./Video"/>
+				<xs:field xpath="@name"/>
+			</xs:unique>
+		</xs:element>
+	</xs:all>
+
 	<xs:attribute name="name" type="DigitName" use="required" />
 	<xs:attribute name="date_pic" type="EmptyMultiDate" use="optional" default=""/>
 	<xs:attribute name="date_vid" type="EmptyMultiDate" use="optional" default=""/>
-				
 </xs:complexType>
 
 <xs:complexType name="SetsType">
