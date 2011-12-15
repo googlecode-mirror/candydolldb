@@ -46,8 +46,8 @@ foreach ($Models as $Model)
 			
 			$xmlw->startElement('Set');
 				$xmlw->writeAttribute('name', $Set->getName());
-				$xmlw->writeAttribute('date_pic', Date::FormatDates($PicDatesThisSet, 'Y-m-d'));
-				$xmlw->writeAttribute('date_vid', Date::FormatDates($VidDatesThisSet, 'Y-m-d'));
+				$xmlw->writeAttribute('date_pic', Date::FormatDates($PicDatesThisSet, 'Y-m-d', false, ' '));
+				$xmlw->writeAttribute('date_vid', Date::FormatDates($VidDatesThisSet, 'Y-m-d', false, ' '));
 			$xmlw->endElement();
 		}
 		$xmlw->endElement();

@@ -231,7 +231,7 @@ class Date
 	 * @param bool $PrefixType
 	 * @return string
 	 */
-	public static function FormatDates($InArray, $DateFormat, $PrefixType = false)
+	public static function FormatDates($InArray, $DateFormat, $PrefixType = false, $Glue = ', ')
 	{
 		$OutString = null;
 		if(is_array($InArray) && count($InArray) > 0)
@@ -242,7 +242,7 @@ class Date
 				if($Date->getTimeStamp() > 0)
 				{
 					$OutString .= $PrefixType ? ($Date->getDateKind() == DATE_KIND_VIDEO ? 'V-' : 'P-') : null; 
-					$OutString .= date($DateFormat, $Date->getTimeStamp()).' ';
+					$OutString .= date($DateFormat, $Date->getTimeStamp()).$Glue;
 				}
 			}
 		}
