@@ -11,6 +11,8 @@
 
 == Could Use ==
 
+  * Thumbnail-images with data alongside, instead of no-image tablerows.
+
   * HTML5-interface instead of XHTML 1.0 Strict.
 
   * Usage-reports on non-Linux platforms, for inter-platform testing of filehandling, imports and downloads.
