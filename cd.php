@@ -17,7 +17,7 @@ else
 
 if(!defined('DBHOSTNAME') || strlen(DBHOSTNAME) == 0 ||
    !defined('DBUSERNAME') || strlen(DBUSERNAME) == 0 ||
-   !defined('DBPASSWORD') || strlen(DBPASSWORD) == 0)
+   !defined('DBPASSWORD'))
 {
 	header('location:setup.php');
 	exit(128);
