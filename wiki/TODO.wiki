@@ -17,8 +17,6 @@
 
   * Usage-reports on non-Linux platforms, for inter-platform testing of filehandling, imports and downloads.
 
-  * ~~Functionality to generate thumbnail-indexes of a model's sets, or even complete sets.~~
-
   * 'remember-me' option when logging in<br>(currently not implemented because of the use of SESSION[])
 
   * More flexible and robust filename-handling<br>(no hardcoded prefixes during import)
