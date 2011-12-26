@@ -11,8 +11,6 @@ $ModelID = (int)$_GET['model_id'];
 $Model = null;
 $SetRows = '';
 $SetCount = 0;
-$ImageCount = 0;
-$VideoCount = 0;
 
 $WhereClause = sprintf('model_id = %1$d AND mut_deleted = -1', $ModelID);
 $Sets = Set::GetSets($WhereClause);
@@ -27,43 +25,72 @@ if($Sets)
 		$SetCount++;
 		if(!$Model) { $Model = $Set->getModel(); }
 
-		$ImageCount += $Set->getAmountPicsInDB();
-		$VideoCount += $Set->getAmountVidsInDB();
-
 		$DatesThisSet = Date::FilterDates($Dates, null, $ModelID, $Set->getID());
-		$DatesImage = Date::FilterDates($DatesThisSet, null, null, null, DATE_KIND_IMAGE);
-		$DatesVideo = Date::FilterDates($DatesThisSet, null, null, null, DATE_KIND_VIDEO);
+	
+		$DatesOutput = '';
+		if($DatesThisSet)
+		{
+			$DatesOutput = '<ul>';
+			
+			/* @var $date Date */
+			foreach ($DatesThisSet as $date) {
+				$DatesOutput .= sprintf(
+					"<li>%1\$s (%2\$s)</li>",
+					date('j F Y', $date->getTimeStamp()),
+					($date->getDateKind() == DATE_KIND_VIDEO ? 'V' : ($date->getDateKind() == DATE_KIND_IMAGE ? 'P' : '?'))
+				);
+			}
+
+			$DatesOutput .= '</ul>';
+		}
 		
 		$SetRows .= sprintf(
-		"\n<tr class=\"Row%15\$d\">".
-        	"<td><a href=\"set_view.php?model_id=%13\$d&amp;set_id=%1\$d\">%9\$s</a></td>".
-	    	"<td><a href=\"set_view.php?model_id=%13\$d&amp;set_id=%1\$d\">%10\$s</a></td>".
-        	"<td><a href=\"set_view.php?model_id=%13\$d&amp;set_id=%1\$d\">%4\$s</a></td>".
-			"<td><a href=\"set_view.php?model_id=%13\$d&amp;set_id=%1\$d\">%16\$s</a></td>".
-			"<td class=\"Center\"%6\$s><a href=\"image.php?model_id=%13\$d&amp;set_id=%1\$d\">%2\$d%5\$s</a></td>".
-			"<td class=\"Center\"><a href=\"import_image.php?set_id=%1\$d\"><img src=\"images/button_upload.png\" width=\"16\" height=\"16\" alt=\"Import set's images\" title=\"Import set's images\" /></a></td>".
-			"<td class=\"Center\"><a href=\"download_zip.php?set_id=%1\$d\"><img src=\"images/button_download.png\" width=\"16\" height=\"16\" alt=\"Download set's images\" title=\"Download set's images\" /></a></td>".
-			"<td class=\"Center\"%8\$s><a href=\"video.php?model_id=%13\$d&amp;set_id=%1\$d\">%3\$d%7\$s</a></td>".
-			"<td class=\"Center\"><a href=\"import_video.php?set_id=%1\$d\"><img src=\"images/button_upload.png\" width=\"16\" height=\"16\" alt=\"Import set's videos\" title=\"Import set's videos\" /></a></td>".
-			"<td class=\"Center\"><a href=\"download_vid.php?set_id=%1\$d\"><img src=\"images/button_download.png\" width=\"16\" height=\"16\" alt=\"Download set's video\" title=\"Download set's video\" /></a></td>".
-			"<td class=\"Center\"><a href=\"set_view.php?model_id=%13\$d&amp;set_id=%1\$d&amp;cmd=%14\$s\" title=\"Delete set\"><img src=\"images/button_delete.png\" width=\"16\" height=\"16\" alt=\"Delete\" /></a></td>".
-        "</tr>",
-		$Set->getID(),
-		$Set->getAmountPicsInDB(),
-		$Set->getAmountVidsInDB(),
-	 	Date::FormatDates($DatesImage, 'j F Y'),
-		$Set->getSetIsDirtyPic() ? '<em> !</em>' : null,
-		$Set->getSetIsDirtyPic() ? ' title="Incomplete or empty set"' : null,
-		$Set->getSetIsDirtyVid() ? '<em> !</em>' : null,
-		$Set->getSetIsDirtyVid() ? ' title="Incomplete or empty set"' : null,
-		htmlentities($Set->getPrefix()),
-		htmlentities($Set->getName()),
-		htmlentities($Model->GetFullName()),
-		htmlentities($Model->GetShortName()),
-		$Model->getID(),
-		COMMAND_DELETE,
-		$SetCount % 2 == 0 ? 2 : 1,
-		Date::FormatDates($DatesVideo, 'j F Y')
+			"<div class=\"ThumbGalItem\">
+			<h3 class=\"Hidden\">%1\$s set %2\$s</h3>
+			
+			<div class=\"ThumbImageWrapper\">
+			<a href=\"image.php?model_id=%8\$d&amp;set_id=%6\$d\">
+			<img src=\"images/background_alt.png\" width=\"225\" height=\"150\" alt=\"%1\$s set %2\$s\" title=\"%1\$s set %2\$s\" />
+			</a>
+			</div>
+			
+			<div class=\"ThumbDataWrapper\">
+			<ul>
+			<li>Prefix: %3\$s</li>
+			<li>Name: %2\$s</li>
+			<li>Dates %9\$s</li>
+			<li%11\$s>Images: %4\$d</li>
+			<li%12\$s>Videos: %5\$d</li>
+			</ul>
+			</div>
+			
+			<div class=\"ThumbButtonWrapper\">
+			<a href=\"set_view.php?model_id=%8\$d&amp;set_id=%6\$d\"><img src=\"images/button_edit.png\" width=\"16\" height=\"16\" title=\"Edit set\" alt=\"Edit set\"/></a>
+			<a href=\"set_view.php?model_id=%8\$d&amp;set_id=%6\$d&amp;cmd=%7\$s\"><img src=\"images/button_delete.png\" width=\"16\" height=\"16\" title=\"Delete set\" alt=\"Delete set\"/></a>
+			<a href=\"import_image.php?set_id=%6\$d\"><img src=\"images/button_upload.png\" width=\"16\" height=\"16\" title=\"Import images\" alt=\"Import images\"/></a>
+			<a href=\"import_video.php?set_id=%6\$d\"><img src=\"images/button_upload.png\" width=\"16\" height=\"16\" title=\"Import videos\" alt=\"Import videos\"/></a>
+			<a href=\"download_zip.php?set_id=%6\$d\"><img src=\"images/button_download.png\" width=\"16\" height=\"16\" title=\"Download images\" alt=\"Download images\"/></a>
+			<a href=\"download_vid.php?set_id=%6\$d\"><img src=\"images/button_download.png\" width=\"16\" height=\"16\" title=\"Download videos\"alt=\"Download videos\"/></a>
+			<a href=\"image.php?model_id=%8\$d&amp;set_id=%6\$d\"><img src=\"images/button_view.png\" width=\"16\" height=\"16\" title=\"View images\"alt=\"View images\"/></a>
+			<a href=\"video.php?model_id=%8\$d&amp;set_id=%6\$d\"><img src=\"images/button_view.png\" width=\"16\" height=\"16\" title=\"View videos\"alt=\"View videos\"/></a>
+			</div>
+			
+			</div>
+			
+			%10\$s",
+			
+			htmlentities($Model->GetFullName()),
+			htmlentities($Set->getName()),
+			htmlentities($Set->getPrefix()),
+			$Set->getAmountPicsInDB(),
+			$Set->getAmountVidsInDB(),
+			$Set->getID(),
+			COMMAND_DELETE,
+			$Model->getID(),
+			$DatesOutput,
+			($SetCount % 3 == 0 ? "<div class=\"Clear\"></div>" : null),
+			($Set->getSetIsDirtyPic() ? " class=\"Dirty\"" : null),
+			($Set->getSetIsDirtyVid() ? " class=\"Dirty\"" : null)
 		);
 	}
 }
@@ -83,33 +110,10 @@ echo HTMLstuff::HtmlHeader($Model->GetShortName().' - Sets', $CurrentUser);
 	htmlentities($Model->GetShortName(true))
 ); ?></h2>
 
-<table border="0" cellpadding="4" cellspacing="0">
-	<thead>
-		<tr>
-			<th style="width: 80px;">Prefix</th>
-			<th>Name</th>
-			<th style="width: 160px;">Date (pics)</th>
-			<th style="width: 160px;">Date (vids)</th>
-			<th style="width: 80px;"># Img DB</th>
-			<th style="width: 22px;">&nbsp;</th>
-			<th style="width: 22px;">&nbsp;</th>
-			<th style="width: 80px;"># Vid DB</th>
-			<th style="width: 22px;">&nbsp;</th>
-			<th style="width: 22px;">&nbsp;</th>
-			<th style="width: 22px;">&nbsp;</th>
-		</tr>
-	</thead>
-	<tfoot>
-		<tr>
-			<th colspan="11">Total set count: <?php printf("%1\$d (%2\$d images, %3\$d videos)", $SetCount, $ImageCount, $VideoCount); ?></th>
-		</tr>
-	</tfoot>
-	<tbody>
-	<?php echo $SetRows ? $SetRows : '<tr class="Row1"><td colspan="11">&nbsp;</td></tr>'; ?>
-	</tbody>
-</table>
-
 <?php
+
+echo $SetRows . "<div class=\"Clear\"></div>";
+
 echo HTMLstuff::Button(sprintf('set_view.php?model_id=%1$d', $ModelID), 'New set');
 
 echo HTMLstuff::Button(sprintf('import_image.php?model_id=%1$d', $ModelID), 'Import all images');

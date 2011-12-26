@@ -82,7 +82,7 @@ echo HTMLstuff::HtmlHeader(sprintf('%1$s - Set %2$s - Images', $Model->GetShortN
 	'<a href="index.php">Home</a> - <a href="model_view.php?model_id=%1$d">%3$s</a> - <a href="set.php?model_id=%1$d">Sets</a> - <a href="set_view.php?model_id=%1$d&amp;set_id=%2$d">Set %4$s</a> - Images',
 	$ModelID,
 	$SetID,
-	htmlentities($Model->GetShortName()),
+	htmlentities($Model->GetShortName(true)),
 	htmlentities($Set->getName())
 ); ?></h2>
 
