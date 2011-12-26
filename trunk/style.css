@@ -27,6 +27,10 @@ legend{
 	display: none;
 }
 
+.Hidden{
+	display: none;
+}
+
 .Loading{
 	background-image: url('images/loading.gif');
 	background-position: center center; 
@@ -230,6 +234,42 @@ div.ErrorList ul{
 	padding: 0 0 0 130px;
 }
 div.ErrorList ul li{
+}
+
+
+/* Set-Thumbnails */
+.ThumbGalItem{
+	background-color: #333;
+	float: left;
+	margin: 0 10px 10px 0; 
+	padding: 5px;
+	width: 275px;
+}
+.ThumbImageWrapper{
+	margin: 0 auto;
+	width: 225px;
+}
+.ThumbDataWrapper{
+	float:left;
+	width:200px;
+}
+.ThumbDataWrapper ul{
+ 	list-style-type:none;
+}
+.ThumbDataWrapper ul li.Dirty{
+	color: red;
+	font-weight: bolder;
+}
+.ThumbDataWrapper ul ul{
+ 	padding-left: 20px;
+}
+.ThumbButtonWrapper{
+	float:left;
+	padding-top: 20px;
+	width:50px;
+}
+.ThumbButtonWrapper a img{
+	margin: 0 5px 10px 0;
 }
 
 /* SLIMBOX */
