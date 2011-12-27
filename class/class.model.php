@@ -125,14 +125,14 @@ class Model
 	public function GetFileFromDisk($PortraitOnly = false, $LandscapeOnly = false, $FullSetName = null)
 	{
 		$folderPath = sprintf('%1$s/%2$s%3$s', CANDYIMAGEPATH, $this->GetFullName(), ($FullSetName ? '/'.$FullSetName : null)); 
-		if(!file_exists($folderPath)){ return null; } 
-		
+		if(!file_exists($folderPath)){ return null; }
+
 		$it = new RecursiveIteratorIterator(new RecursiveDirectoryIterator(
 			$folderPath,	
 		 	FileSystemIterator::SKIP_DOTS | FileSystemIterator::CURRENT_AS_FILEINFO));
 		 	
 		$files = array();
-		
+	
 		/* @var $file SplFileInfo */
 		foreach($it as $file)
 		{
@@ -147,6 +147,21 @@ class Model
 				}
 				
 				$files[] = $it->getRealPath();
+			}
+		}
+		
+		/* Work-around for adding at least one image if
+		 * there were none with the specified aspect ratio.
+		 * It's not pretty, but it works. For now... */
+		if(!$files && $it)
+		{
+			foreach($it as $file)
+			{
+				if($file->isFile())
+				{
+					$files[] = $it->getRealPath();
+					break;
+				}
 			}
 		}
 		
