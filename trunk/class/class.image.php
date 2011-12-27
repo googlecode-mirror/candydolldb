@@ -303,7 +303,7 @@ class Image
 	 * @param int $width
 	 * @param int $height
 	 */
-	public static function OutputImage($filename = 'images/missing.jpg', $width = 800, $height = 600, $cachable = true)
+	public static function OutputImage($filename = 'images/missing.jpg', $width = 800, $height = 600, $cachable = true, $cacheFilenameToBe = null)
 	{
 		$filename = $filename ? $filename : 'images/missing.jpg';
 	
@@ -322,6 +322,9 @@ class Image
 		imagecopyresampled($DestinationImage, $SourceImage, 0, 0, 0, 0, $NewWidth, $NewHeight, $info[0], $info[1]);
 		
 		imagedestroy($SourceImage);
+		
+		if($cacheFilenameToBe)
+		{ imagejpeg($DestinationImage, $cacheFilenameToBe); }
 		
 		if($cachable)
 		{

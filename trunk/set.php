@@ -50,7 +50,7 @@ if($Sets)
 			
 			<div class=\"ThumbImageWrapper\">
 			<a href=\"image.php?model_id=%8\$d&amp;set_id=%6\$d\">
-			<img src=\"images/background_alt.png\" width=\"225\" height=\"150\" alt=\"%1\$s set %2\$s\" title=\"%1\$s set %2\$s\" />
+			<img src=\"download_image.php?set_id=%6\$d&amp;landscape_only=true&amp;width=225&amp;height=150\" width=\"225\" height=\"150\" alt=\"%1\$s set %2\$s\" title=\"%1\$s set %2\$s\" />
 			</a>
 			</div>
 			

@@ -35,6 +35,13 @@ define('DATE_KIND_UNKNOWN',  0);
 define('DATE_KIND_IMAGE', 1);
 define('DATE_KIND_VIDEO', 2);
 
+define('CACHEIMAGE_KIND_UNKNOWN', 0);
+define('CACHEIMAGE_KIND_IMAGE', 1);
+define('CACHEIMAGE_KIND_VIDEO', 2);
+define('CACHEIMAGE_KIND_SET',	4);
+define('CACHEIMAGE_KIND_INDEX', 8);
+define('CACHEIMAGE_KIND_MODEL', 16);
+
 define('COMMAND_DELETE', 'del');
 
 define('LOGIN_ERR_PASSWORDSNOTIDENTICAL', 33362);
@@ -63,6 +70,7 @@ $db->setDatabaseName('candydolldb');
 include('class/class.user.php');
 include('class/class.date.php');
 include('class/class.image.php');
+include('class/class.cacheimage.php');
 include('class/class.model.php');
 include('class/class.set.php');
 include('class/class.video.php');
