@@ -90,7 +90,7 @@ echo HTMLstuff::HtmlHeader($Model->GetShortName().' - Set '.$Set->getName().' - 
 if($ImageID)
 {
 	echo HTMLstuff::ImageLoading(
-		sprintf('download_image.php?image_id=%1$d&random_pic=true&portrait_only=true', $ImageID),
+		sprintf('download_image.php?image_id=%1$d&width=400&height=600&portrait_only=true', $ImageID),
 		400,
 		600,
 		htmlentities($Model->GetFullName()),
