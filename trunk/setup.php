@@ -197,6 +197,24 @@ CREATE TABLE IF NOT EXISTS `Video` (
   KEY `mut_id` (`mut_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
+DROP TABLE IF EXISTS `CacheImage`;
+CREATE TABLE IF NOT EXISTS `CacheImage` (
+  `cache_id` varchar(36) NOT NULL,
+  `model_id` bigint(20) DEFAULT NULL,
+  `index_id` bigint(20) DEFAULT NULL,
+  `set_id` bigint(20) DEFAULT NULL,
+  `image_id` bigint(20) DEFAULT NULL,
+  `video_id` bigint(20) DEFAULT NULL,
+  `cache_imagewidth` int(11) NOT NULL DEFAULT '0',
+  `cache_imageheight` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`cache_id`),
+  KEY `model_id` (`model_id`),
+  KEY `index_id` (`index_id`),
+  KEY `set_id` (`set_id`),
+  KEY `image_id` (`image_id`),
+  KEY `video_id` (`video_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 DROP VIEW IF EXISTS `vw_Date`;
 CREATE TABLE IF NOT EXISTS `vw_Date` (
 `date_id` bigint(20)
@@ -305,6 +323,13 @@ ALTER TABLE `Set`
 ALTER TABLE `Video`
   ADD CONSTRAINT `Video_ibfk_1` FOREIGN KEY (`set_id`) REFERENCES `Set` (`set_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `Video_ibfk_2` FOREIGN KEY (`mut_id`) REFERENCES `User` (`user_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  
+ALTER TABLE `CacheImage`
+  ADD CONSTRAINT `CacheImage_ibfk_1` FOREIGN KEY (`model_id`) REFERENCES `Model` (`model_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `CacheImage_ibfk_2` FOREIGN KEY (`index_id`) REFERENCES `Model` (`model_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `CacheImage_ibfk_3` FOREIGN KEY (`set_id`)   REFERENCES `Set`   (`set_id`)   ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `CacheImage_ibfk_4` FOREIGN KEY (`image_id`) REFERENCES `Image` (`image_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `CacheImage_ibfk_5` FOREIGN KEY (`video_id`) REFERENCES `Video` (`video_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 COMMIT;
 
