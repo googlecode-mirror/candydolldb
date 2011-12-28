@@ -48,6 +48,7 @@ if($ModelIndexID)
 {
 	//$WhereClause = sprintf('index_id = %1$d', $ModelIndexID);
 	//$CacheImage = CacheImage::GetCacheImages($WhereClause, null, null);
+	//header('location:download_index.php?model_id='.$ModelID.'&width=400&height=600');
 	
 }
 else if($ModelID)
@@ -96,8 +97,6 @@ else if($ModelID)
 				true,
 				$CacheImage->getFilenameOnDisk()
 			);
-			
-			//header('location:download_index.php?model_id='.$ModelID.'&width=400&height=600');
 		}
 		else
 		{
@@ -156,54 +155,126 @@ else if($SetID)
 }
 else if($VideoID)
 {
-	$Video = Video::GetVideos(sprintf('video_id = %1$d AND mut_deleted = -1', $VideoID));
+	$CacheImage = CacheImage::GetCacheImages(
+		sprintf('video_id = %1$d AND cache_imagewidth = %2$d AND cache_imageheight = %3$d',
+			$VideoID,
+			$Width,
+			$Height
+		)
+	);
 	
-	if($Video)
+	if($CacheImage)
 	{
-		$Video = $Video[0];
-		
-		$filename = sprintf('%1$s/%2$s/%3$s.jpg',
-			CANDYIMAGEPATH,
-			CANDYVIDEOTHUMBPATH,
-			$Video->getFileName()
+		$CacheImage = $CacheImage[0];
+		Image::OutputImage(
+			$CacheImage->getFilenameOnDisk(),
+			$CacheImage->getImageWidth(),
+			$CacheImage->getImageHeight(),
+			true
 		);
+	}
+	else
+	{
+		$Video = Video::GetVideos(sprintf('video_id = %1$d AND mut_deleted = -1', $VideoID));
 		
-		if(file_exists($filename))
+		if($Video)
 		{
-			Image::OutputImage($filename, 800, 600);
+			$Video = $Video[0];
+			
+			$filename = sprintf('%1$s/%2$s/%3$s.jpg',
+				CANDYIMAGEPATH,
+				CANDYVIDEOTHUMBPATH,
+				$Video->getFileName()
+			);
+			
+			if(file_exists($filename))
+			{
+				$CacheImage = new CacheImage();
+					
+				$CacheImage->setVideoID($VideoID);
+				$CacheImage->setKind(CACHEIMAGE_KIND_VIDEO);
+				$CacheImage->setImageWidth($Width);
+				$CacheImage->setImageHeight($Height);
+					
+				CacheImage::InsertCacheImage($CacheImage, $CurrentUser);
+				
+				Image::OutputImage(
+					$filename,
+					800,
+					600,
+					true,
+					$CacheImage->getFilenameOnDisk()
+				);
+			}
+			else
+			{
+				Image::OutputImage();
+			}
 		}
 		else
 		{
 			Image::OutputImage();
 		}
-	}
-	else
-	{
-		Image::OutputImage();
 	}
 }
 else if($ImageID)
 {                                                                                            
-	$Image = Image::GetImages(sprintf('image_id = %1$d AND mut_deleted = -1', $ImageID));
-        
-	if($Image)
+	$CacheImage = CacheImage::GetCacheImages(
+		sprintf('image_id = %1$d AND cache_imagewidth = %2$d AND cache_imageheight = %3$d',
+			$ImageID,
+			$Width,
+			$Height
+		)
+	);
+	
+	if($CacheImage)
 	{
-		$Image = $Image[0];
-		$Set = $Image->getSet();
-		$Model = $Set->getModel();
-
-		if(file_exists($Image->getFilenameOnDisk()))
+		$CacheImage = $CacheImage[0];
+		Image::OutputImage(
+			$CacheImage->getFilenameOnDisk(),
+			$CacheImage->getImageWidth(),
+			$CacheImage->getImageHeight(),
+			true
+		);
+	}
+	else
+	{
+		$Image = Image::GetImages(sprintf('image_id = %1$d AND mut_deleted = -1', $ImageID));
+	        
+		if($Image)
 		{
-			Image::OutputImage($Image->getFilenameOnDisk(), 800, 600);
+			$Image = $Image[0];
+			$Set = $Image->getSet();
+			$Model = $Set->getModel();
+	
+			if(file_exists($Image->getFilenameOnDisk()))
+			{
+				$CacheImage = new CacheImage();
+					
+				$CacheImage->setImageID($ImageID);
+				$CacheImage->setKind(CACHEIMAGE_KIND_IMAGE);
+				$CacheImage->setImageWidth($Width);
+				$CacheImage->setImageHeight($Height);
+					
+				CacheImage::InsertCacheImage($CacheImage, $CurrentUser);
+				
+				Image::OutputImage(
+					$Image->getFilenameOnDisk(),
+					800,
+					600,
+					true,
+					$CacheImage->getFilenameOnDisk()
+				);
+			}
+			else
+			{
+				Image::OutputImage();
+			}
 		}
 		else
 		{
 			Image::OutputImage();
 		}
-	}
-	else
-	{
-		Image::OutputImage();
 	}
 }
 else

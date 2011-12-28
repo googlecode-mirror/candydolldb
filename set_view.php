@@ -128,7 +128,7 @@ echo HTMLstuff::HtmlHeader($Model->GetShortName(), $CurrentUser);
 if($SetID)
 {
 	echo HTMLstuff::ImageLoading(
-		sprintf('download_image.php?set_id=%1$d&random_pic=true&portrait_only=true', $SetID),
+		sprintf('download_image.php?set_id=%1$d&width=400&height=600&portrait_only=true', $SetID),
 		400,
 		600,
 		htmlentities($Model->GetFullName()),
