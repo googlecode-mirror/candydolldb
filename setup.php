@@ -85,7 +85,7 @@ START TRANSACTION;
 
 DROP DATABASE IF EXISTS `cdtvdb`;
 DROP DATABASE IF EXISTS `candydolldb`;
-CREATE DATABASE `candydolldb` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+CREATE DATABASE `candydolldb` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 USE `candydolldb`;
 
 DROP TABLE IF EXISTS `Date`;
@@ -101,7 +101,7 @@ CREATE TABLE IF NOT EXISTS `Date` (
   UNIQUE KEY `UNIQ_DATE` (`mut_deleted`,`set_id`,`date_kind`,`date_timestamp`),
   KEY `set_id` (`set_id`),
   KEY `mut_id` (`mut_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 DROP TABLE IF EXISTS `Image`;
 CREATE TABLE IF NOT EXISTS `Image` (
@@ -121,7 +121,7 @@ CREATE TABLE IF NOT EXISTS `Image` (
   KEY `set_id` (`set_id`),
   KEY `mut_deleted` (`mut_deleted`),
   KEY `mut_id` (`mut_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 DROP TABLE IF EXISTS `Model`;
 CREATE TABLE IF NOT EXISTS `Model` (
@@ -136,7 +136,7 @@ CREATE TABLE IF NOT EXISTS `Model` (
   UNIQUE KEY `UNIQ_MODEL` (`mut_deleted`,`model_firstname`,`model_lastname`),
   KEY `mut_deleted` (`mut_deleted`),
   KEY `mut_id` (`mut_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 DROP TABLE IF EXISTS `Set`;
 CREATE TABLE IF NOT EXISTS `Set` (
@@ -153,7 +153,7 @@ CREATE TABLE IF NOT EXISTS `Set` (
   KEY `model_id` (`model_id`),
   KEY `mut_deleted` (`mut_deleted`),
   KEY `mut_id` (`mut_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 DROP TABLE IF EXISTS `User`;
 CREATE TABLE IF NOT EXISTS `User` (
@@ -177,7 +177,7 @@ CREATE TABLE IF NOT EXISTS `User` (
   PRIMARY KEY (`user_id`),
   UNIQUE KEY `UNIQ_USER` (`mut_deleted`,`user_username`),
   KEY `mut_id` (`mut_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 DROP TABLE IF EXISTS `Video`;
 CREATE TABLE IF NOT EXISTS `Video` (
@@ -195,7 +195,7 @@ CREATE TABLE IF NOT EXISTS `Video` (
   KEY `set_id` (`set_id`),
   KEY `mut_deleted` (`mut_deleted`),
   KEY `mut_id` (`mut_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 DROP TABLE IF EXISTS `CacheImage`;
 CREATE TABLE IF NOT EXISTS `CacheImage` (
@@ -431,10 +431,10 @@ if(array_key_exists('hidAction', $_POST) && isset($_POST['hidAction']) && $_POST
 					$NewUserID = intval($NewUserID['LastID']);
 					
 					$NewConfig = sprintf($ConfigTemplate,
-						$CandyImagePath,
-						$CandyVideoPath,
+						str_ireplace('\\', '\\\\', $CandyImagePath),
+						str_ireplace('\\', '\\\\', $CandyVideoPath),
 						null,
-						$CandyVideoThumbPath,
+						str_ireplace('\\', '\\\\', $CandyVideoThumbPath),
 						$DBHostName,
 						$DBUserName,
 						$DBPassword,
