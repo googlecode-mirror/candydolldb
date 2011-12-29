@@ -46,10 +46,33 @@ $LandscapeOnly = array_key_exists('landscape_only', $_GET) && isset($_GET['lands
 
 if($ModelIndexID)
 {
-	//$WhereClause = sprintf('index_id = %1$d', $ModelIndexID);
-	//$CacheImage = CacheImage::GetCacheImages($WhereClause, null, null);
-	//header('location:download_index.php?model_id='.$ModelID.'&width=400&height=600');
+	$CacheImage = CacheImage::GetCacheImages(
+		sprintf('index_id = %1$d AND cache_imagewidth = %2$d AND cache_imageheight = %3$d',
+			$ModelIndexID,
+			$Width,
+			$Height
+		)
+	);
 	
+	if($CacheImage)
+	{
+		$CacheImage = $CacheImage[0];
+		Image::OutputImage(
+			$CacheImage->getFilenameOnDisk(),
+			$CacheImage->getImageWidth(),
+			$CacheImage->getImageHeight(),
+			true
+		);
+	}
+	else
+	{
+		header(sprintf(
+			'location:download_index.php?model_id=%1$d&width=%2$d&height=%3$d',
+			$ModelIndexID,
+			$Width,
+			$Height
+		));
+	}
 }
 else if($ModelID)
 {
