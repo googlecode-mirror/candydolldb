@@ -21,7 +21,7 @@ class HTMLstuff
 		<link rel=\"shortcut icon\" href=\"favicon.ico\" />
 		<link rel=\"icon\" href=\"favicon.ico\" />
 		
-		<script type=\"text/javascript\" src=\"http://code.jquery.com/jquery.min.js\"></script>
+		<script type=\"text/javascript\" src=\"%6\$s://code.jquery.com/jquery.min.js\"></script>
 		<script type=\"text/javascript\" src=\"js/fwiep.js\"></script>
 		%5\$s
 		<title>CandyDoll DB%1\$s</title>
@@ -58,7 +58,10 @@ class HTMLstuff
 		
 		Error::GenerateErrorList(),
 
-		(ALTERNATE_STYLE === true) ? ALTERNATE_STYLE_OVERRIDE : null
+		(ALTERNATE_STYLE === true) ? ALTERNATE_STYLE_OVERRIDE : null,
+		
+		(isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off' ? 'https' : 'http') 
+		
 		);
 	}
 	
