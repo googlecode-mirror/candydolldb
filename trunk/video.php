@@ -3,14 +3,18 @@
 include('cd.php');
 $CurrentUser = Authentication::Authenticate();
 
-if(!array_key_exists('model_id', $_GET) || !$_GET['model_id'] || !is_numeric($_GET['model_id'])){
+if(!array_key_exists('model_id', $_GET) || !$_GET['model_id'] || !is_numeric($_GET['model_id']))
+{
 	header('location:index.php');
+	exit;
 }
 
 $ModelID = (int)$_GET['model_id'];
 
-if(!array_key_exists('set_id', $_GET) || !$_GET['set_id'] || !is_numeric($_GET['set_id'])){
+if(!array_key_exists('set_id', $_GET) || !$_GET['set_id'] || !is_numeric($_GET['set_id']))
+{
 	header('location:set.php?model_id'.$ModelID);
+	exit;
 }
 
 $SetID = (int)$_GET['set_id'];
@@ -67,7 +71,10 @@ if(!$Set)
 		$Model = $Set->getModel();
 	}
 	else
-	{ header('location:index.php'); }
+	{
+		header('location:index.php');
+		exit;
+	}
 }
 
 echo HTMLstuff::HtmlHeader(sprintf('%1$s - Set %2$s - Videos', $Model->GetShortName(), $Set->getName()), $CurrentUser);

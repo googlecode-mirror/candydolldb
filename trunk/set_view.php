@@ -3,8 +3,10 @@
 include('cd.php');
 $CurrentUser = Authentication::Authenticate();
 
-if(!array_key_exists('model_id', $_GET) || !$_GET['model_id'] || !is_numeric($_GET['model_id'])){
+if(!array_key_exists('model_id', $_GET) || !$_GET['model_id'] || !is_numeric($_GET['model_id']))
+{
 	header('location:index.php');
+	exit;
 }
 $ModelID = (int)$_GET['model_id'];
 
@@ -29,7 +31,10 @@ if($SetID != null)
 	if($Sets)
 	{ $Set = $Sets[0]; }
 	else
-	{ header('location:index.php'); }
+	{
+		header('location:index.php');
+		exit;
+	}
 	
 	$Model = $Set->getModel();
 	$DatesThisSet = Date::GetDates(
@@ -42,7 +47,11 @@ else
 	$Model = Model::GetModels(sprintf('model_id = %1$d AND mut_deleted = -1', $ModelID));
 	
 	if($Model) { $Model = $Model[0]; }
-	else { header('location:index.php'); }
+	else
+	{
+		header('location:index.php');
+		exit;
+	}
 	
 	$Set->setModel($Model);
 }
@@ -63,7 +72,10 @@ if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'SetView')
 		if($DeleteSet)
 		{
 			if(Set::DeleteSet($Set, $CurrentUser))
-			{ header('location:'.$ReturnURL); }
+			{
+				header('location:'.$ReturnURL);
+				exit;
+			}
 		}
 		else
 		{
@@ -120,7 +132,10 @@ if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'SetView')
 	}
 
 	if($NoErrorDuringPostback)
-	{ header('location:'.$ReturnURL); }
+	{
+		header('location:'.$ReturnURL);
+		exit;
+	}
 }
 
 echo HTMLstuff::HtmlHeader($Model->GetShortName(), $CurrentUser);

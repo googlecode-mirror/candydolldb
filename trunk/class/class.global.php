@@ -29,7 +29,10 @@ class Authentication
 				return $User;
 			}
 			else
-			{ header('location:login.php'); }
+			{
+				header('location:login.php');
+				exit;
+			}
 		}
 		else
 		{
@@ -59,6 +62,7 @@ class Authentication
 			else
 			{
 				header('location:login.php');
+				exit;
 			}
 		}
 	}

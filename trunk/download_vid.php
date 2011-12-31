@@ -73,6 +73,7 @@ else if($SetID)
 		$MainVideo = $Videos[0];
 		$ReturnURL = sprintf('%1$s?video_id=%2$d', basename($_SERVER['PHP_SELF']), $MainVideo->getID()); 
 		header('location:'.$ReturnURL);
+		exit;
 	}
 	else
 	{
