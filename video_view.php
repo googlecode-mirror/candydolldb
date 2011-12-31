@@ -3,13 +3,17 @@
 include('cd.php');
 $CurrentUser = Authentication::Authenticate();
 
-if(!array_key_exists('model_id', $_GET) || !$_GET['model_id'] || !is_numeric($_GET['model_id'])){
+if(!array_key_exists('model_id', $_GET) || !$_GET['model_id'] || !is_numeric($_GET['model_id']))
+{
 	header('location:index.php');
+	exit;
 }
 $ModelID = (int)$_GET['model_id'];
 
-if(!array_key_exists('set_id', $_GET) || !$_GET['set_id'] || !is_numeric($_GET['set_id'])){
+if(!array_key_exists('set_id', $_GET) || !$_GET['set_id'] || !is_numeric($_GET['set_id']))
+{
 	header('location:set.php?model_id='.$ModelID);
+	exit;
 }
 $SetID = (int)$_GET['set_id'];
 
@@ -33,7 +37,10 @@ if($VideoID != null)
 	if($Videos)
 	{ $Video = $Videos[0]; }
 	else
-	{ header('location:set.php?model_id='.$ModelID); }
+	{
+		header('location:set.php?model_id='.$ModelID);
+		exit;
+	}
 
 	$Set = $Video->getSet();
 	$Model = $Set->getModel();
@@ -50,7 +57,10 @@ else
 		$Video->setSet($Set);
 	}
 	else
-	{ header('location:index.php'); }
+	{
+		header('location:index.php');
+		exit;
+	}
 }
 
 
@@ -66,18 +76,27 @@ if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'VideoView')
 		if($DeleteVideo)
 		{
 			if(Video::DeleteVideo($Video, $CurrentUser))
-			{ header('location:'.$ReturnURL); }
+			{
+				header('location:'.$ReturnURL);
+				exit;
+			}
 		}
 		else
 		{
 			if(Video::UpdateVideo($Video, $CurrentUser))
-			{ header('location:'.$ReturnURL); }
+			{
+				header('location:'.$ReturnURL);
+				exit;
+			}
 		}
 	}
 	else
 	{
 		if(Video::InsertVideo($Video, $CurrentUser))
-		{ header('location:'.$ReturnURL); }
+		{
+			header('location:'.$ReturnURL);
+			exit;
+		}
 	}
 }
 

@@ -41,18 +41,27 @@ if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'ModelView')
 		if($DeleteModel)
 		{
 		    if(Model::DeleteModel($Model, $CurrentUser))
-		    { header('location:index.php'); }
+		    {
+		    	header('location:index.php');
+		    	exit;
+		    }
 		}
 		else
 		{
 		    if(Model::UpdateModel($Model, $CurrentUser))
-		    { header('location:index.php'); }
+		    {
+		    	header('location:index.php');
+		    	exit;
+		    }
 		}
 	}
 	else
 	{
 		if(Model::InsertModel($Model, $CurrentUser))
-		{ header('location:index.php'); }
+		{
+			header('location:index.php');
+			exit;
+		}
 	}
 }
 

@@ -3,8 +3,10 @@
 include('cd.php');
 $CurrentUser = Authentication::Authenticate();
 
-if(!array_key_exists('model_id', $_GET) || !$_GET['model_id'] || !is_numeric($_GET['model_id'])){
+if(!array_key_exists('model_id', $_GET) || !$_GET['model_id'] || !is_numeric($_GET['model_id']))
+{
 	header('location:index.php');
+	exit;
 }
 
 $ModelID = (int)$_GET['model_id'];

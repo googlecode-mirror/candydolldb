@@ -216,9 +216,15 @@ GYtguefggefegfgefgegfgfuguf;
 	public static function RefererRedirect($RedirURL = 'index.php')
 	{
 		if(array_key_exists('HTTP_REFERER', $_SERVER))
-		{ header('location:'.$_SERVER['HTTP_REFERER']); }
+		{
+			header('location:'.$_SERVER['HTTP_REFERER']);
+			exit;
+		}
 		else
-		{ header('location:'.$RedirURL); }	
+		{
+			header('location:'.$RedirURL);
+			exit;
+		}	
 	}
 }
 

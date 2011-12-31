@@ -23,7 +23,10 @@ if($UserID)
 	if($Users)
 	{ $User = $Users[0]; }
 	else
-	{ header('location:index.php'); }
+	{
+		header('location:index.php');
+		exit;
+	}
 	
 	$_SESSION['UserSalt'] = $User->getSalt();
 }
@@ -88,7 +91,10 @@ if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'UserView')
 				if($DeleteUser)
 				{
 				    if(User::DeleteUser($User, $CurrentUser))
-				    { header('location:user.php'); }
+				    {
+				    	header('location:user.php');
+				    	exit;
+				    }
 				}
 				else
 				{
@@ -97,13 +103,17 @@ if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'UserView')
 				    	if($User->getID() == $CurrentUser->getID())
 				    	{ $_SESSION['CurrentUser'] = serialize($User); }
 				    	header('location:user.php');
+				    	exit;
 				    }
 				}
 			}
 			else
 			{
 				if(User::InsertUser($User, $CurrentUser))
-				{ header('location:user.php'); }
+				{
+					header('location:user.php');
+					exit;
+				}
 			}
 		}
 		else
@@ -196,7 +206,8 @@ echo HTMLstuff::HtmlHeader($User->GetFullName(), $CurrentUser);
 
 <div class="Separator"></div>
 
-<?php echo HTMLstuff::Button('index.php'); ?></fieldset>
+<?php echo HTMLstuff::Button('index.php'); ?>
+</fieldset>
 </form>
 
 <?php

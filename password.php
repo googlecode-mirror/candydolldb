@@ -76,6 +76,7 @@ else if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] && $_POST['
 				
 			$_SESSION['CurrentUser'] = serialize($User);
 			header('location:index.php');
+			exit;
 		}
 		else
 		{
@@ -98,6 +99,7 @@ else if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] && $_POST['
 	else
 	{
 		header('location:login.php');
+		exit;
 	}
 }
 else if (!array_key_exists('hidAction', $_POST) && array_key_exists('Hash', $_GET) && preg_match('/^[0-9a-f]{128}$/i', $_GET['Hash']))

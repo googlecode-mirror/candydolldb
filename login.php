@@ -34,6 +34,7 @@ if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] && $_POST['hidAc
 			
 			$_SESSION['CurrentUser'] = serialize($User);
 			header('location:index.php');
+			exit;
 		}
 		else
 		{
