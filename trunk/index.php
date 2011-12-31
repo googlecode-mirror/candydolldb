@@ -72,7 +72,6 @@ if($Models)
 			"<td class=\"Center\"><a href=\"import_image.php?model_id=%1\$d\"><img src=\"images/button_upload.png\" width=\"16\" height=\"16\" alt=\"Import model's images\" title=\"Import model's images\" /></a></td>".
 			"<td class=\"Center\"><a href=\"import_video.php?model_id=%1\$d\"><img src=\"images/button_upload.png\" width=\"16\" height=\"16\" alt=\"Import model's videos\" title=\"Import model's videos\" /></a></td>".
 			"<td class=\"Center\"><a href=\"download_zip.php?model_id=%1\$d\"><img src=\"images/button_download.png\" width=\"16\" height=\"16\" alt=\"Download model's images\" title=\"Download model's images\" /></a></td>".
-			"<td class=\"Center\"><a href=\"download_image.php?model_id=%1\$d&amp;width=800&amp;height=600\" rel=\"lightbox-gal\" title=\"Random image of %6\$s\"><img src=\"images/button_view.png\" width=\"16\" height=\"16\" alt=\"Random image of %6\$s\" /></a></td>".
 			"<td class=\"Center\"><a href=\"download_image.php?index_id=%1\$d&amp;width=500&amp;height=750\" rel=\"lightbox-index\" title=\"Index of %6\$s\"><img src=\"images/button_view.png\" width=\"16\" height=\"16\" alt=\"Index of %6\$s\" /></a></td>".
 			"<td class=\"Center\"><a href=\"model_view.php?model_id=%1\$d&amp;cmd=%12\$s\" title=\"Delete model\"><img src=\"images/button_delete.png\" width=\"16\" height=\"16\" alt=\"Delete\" /></a></td>".
         "</tr>",
@@ -134,16 +133,15 @@ echo HTMLstuff::HtmlHeader('Home', $CurrentUser);
 			<th style="width: 22px;">&nbsp;</th>
 			<th style="width: 22px;">&nbsp;</th>
 			<th style="width: 22px;">&nbsp;</th>
-			<th style="width: 22px;">&nbsp;</th>
 		</tr>
 	</thead>
 	<tfoot>
 		<tr>
-			<th colspan="12">Total model count: <?php echo sprintf("%1\$d (%2\$d sets)", $ModelCount, $SetCount); ?></th>
+			<th colspan="11">Total model count: <?php echo sprintf("%1\$d (%2\$d sets)", $ModelCount, $SetCount); ?></th>
 		</tr>
 	</tfoot>
 	<tbody>
-	<?php echo $ModelRows ? $ModelRows : '<tr class="Row1"><td colspan="12">&nbsp;</td></tr>'; ?>
+	<?php echo $ModelRows ? $ModelRows : '<tr class="Row1"><td colspan="11">&nbsp;</td></tr>'; ?>
 	</tbody>
 </table>
 
