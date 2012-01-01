@@ -15,7 +15,6 @@ class DB
 
 	/**
 	 * Instantiates a MySQL databaseconnection.
-	 * 
 	 * @param string $DBHost, the host to connect to
 	 * @param string $DBUsername, the username to use
 	 * @param string $DBPassword, the password to use
@@ -30,7 +29,6 @@ class DB
 
 	/**
 	 * Connects to the database.
-	 * 
 	 * @return bool
 	 */
 	public function Connect()
@@ -55,7 +53,6 @@ class DB
 
 	/**
 	 * Disconnects from the current database, if any.
-	 * 
 	 * @return bool, TRUE on success, FALSE on failure
 	 */
 	public function Disconnect()
@@ -76,7 +73,6 @@ class DB
 
 	/**
 	 * Checks whether a given table exists in the current database.
-	 * 
 	 * @return bool, TRUE on success, FALSE on failure
 	 */
 	private function TableExists($Table)
@@ -91,7 +87,7 @@ class DB
 
 	/**
 	 * Returns the latest identity, or FALSE on failure
-	 * @return int|boolean
+	 * @return int|bool
 	 */
 	public function GetLatestID()
 	{
@@ -365,6 +361,7 @@ class DB
 
 	/**
 	 * @param string $DatabaseName
+	 * @return bool
 	 */
 	public function setDatabaseName($DatabaseName)
 	{
