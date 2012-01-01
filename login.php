@@ -3,12 +3,14 @@
 include('cd.php');
 $UserName = null;
 $Password = null;
+$ReturnURL = null;
 
 
 if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] && $_POST['hidAction'] == 'LoginLogin')
 {
 	$UserName = $_POST['txtUserName'];
 	$Password = $_POST['txtPassword'];
+	$ReturnURL = $_GET['url'];
 	
 	$WhereClause = sprintf("user_username = '%1\$s' AND mut_deleted = -1",
 		mysql_real_escape_string($UserName)
@@ -33,7 +35,12 @@ if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] && $_POST['hidAc
 			User::UpdateUser($User, $User);
 			
 			$_SESSION['CurrentUser'] = serialize($User);
-			header('location:index.php');
+			
+			if(isset($ReturnURL))
+			{ header('location:'.urldecode($ReturnURL)); }
+			else
+			{ header('location:index.php'); }
+			
 			exit;
 		}
 		else
