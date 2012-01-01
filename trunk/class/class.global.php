@@ -30,13 +30,12 @@ class Authentication
 			}
 			else
 			{
-				header('location:login.php');
+				header('location:login.php#1');
 				exit;
 			}
 		}
 		else
 		{
-			/* Authenticate on the commandline as Default User */
 			global $argv, $argc;
 			if(isset($argv) && $argc > 0)
 			{
@@ -47,7 +46,8 @@ class Authentication
 					{ $_GET[$kv[0]] = $kv[1]; }
 					unset($kv); 
 				}
-				
+
+				/* Authenticate on the commandline as Default User */
 				$Users = User::GetUsers(sprintf('user_id = %1$d', CMDLINE_USERID));	
 				if($Users)
 				{
@@ -61,7 +61,8 @@ class Authentication
 			}
 			else
 			{
-				header('location:login.php');
+				/* If not on the commandline, the Session expired */
+				header('location:login.php?url='.urlencode($_SERVER['REQUEST_URI']));
 				exit;
 			}
 		}
