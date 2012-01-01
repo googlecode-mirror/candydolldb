@@ -8,10 +8,12 @@ $VideoID = null;
 $SetID = null;
 $ModelIndexID = null;
 $ModelID = null;
-$RandomPic = false;
 $CacheImage = null;
 $Width = null;
 $Height = null;
+$PortraitOnly = false;
+$LandscapeOnly = false;
+
 
 if(array_key_exists('image_id', $_GET) && isset($_GET['image_id']) && is_numeric($_GET['image_id']))
 { $ImageID = (int)$_GET['image_id']; }
@@ -34,9 +36,9 @@ if(array_key_exists('width', $_GET) && isset($_GET['width']) && is_numeric($_GET
 if(array_key_exists('height', $_GET) && isset($_GET['height']) && is_numeric($_GET['height']))
 { $Height = abs((int)$_GET['height']); }
 
-$RandomPic = $ModelID && array_key_exists('random_pic', $_GET) && isset($_GET['random_pic']) && $_GET['random_pic'] == 'true';
 $PortraitOnly = array_key_exists('portrait_only', $_GET) && isset($_GET['portrait_only']) && $_GET['portrait_only'] == 'true';
 $LandscapeOnly = array_key_exists('landscape_only', $_GET) && isset($_GET['landscape_only']) && $_GET['landscape_only'] == 'true';
+
 
 /* @var $CacheImage CacheImage */
 /* @var $Video Video */
@@ -101,24 +103,29 @@ else if($ModelID)
 		{
 			$Model = $Model[0];
 			
-			$CacheImage = new CacheImage();
-				
-			$CacheImage->setModelID($ModelID);
-			$CacheImage->setKind(CACHEIMAGE_KIND_MODEL);
-			$CacheImage->setImageWidth($Width);
-			$CacheImage->setImageHeight($Height);
-				
-			CacheImage::InsertCacheImage($CacheImage, $CurrentUser);
-				
+			$imagefileondisk = $Model->GetFileFromDisk(
+				$PortraitOnly,
+				$LandscapeOnly
+			);
+			
+			if($imagefileondisk)
+			{
+				$CacheImage = new CacheImage();
+					
+				$CacheImage->setModelID($ModelID);
+				$CacheImage->setKind(CACHEIMAGE_KIND_MODEL);
+				$CacheImage->setImageWidth($Width);
+				$CacheImage->setImageHeight($Height);
+					
+				CacheImage::InsertCacheImage($CacheImage, $CurrentUser);
+			}
+			
 			Image::OutputImage(
-				$Model->GetFileFromDisk(
-					$PortraitOnly,
-					$LandscapeOnly
-				),
+				$imagefileondisk,			
 				$Width,
 				$Height,
 				true,
-				$CacheImage->getFilenameOnDisk()
+				($imagefileondisk ? $CacheImage->getFilenameOnDisk() : null)
 			);
 		}
 		else
@@ -153,25 +160,30 @@ else if($SetID)
 		{
 			$Set = $Set[0];
 			
-			$CacheImage = new CacheImage();
-			
-			$CacheImage->setSetID($SetID);
-			$CacheImage->setKind(CACHEIMAGE_KIND_SET);
-			$CacheImage->setImageWidth($Width);
-			$CacheImage->setImageHeight($Height);
-			
-			CacheImage::InsertCacheImage($CacheImage, $CurrentUser);
-	
+			$imagefileondisk = 	$Set->getModel()->GetFileFromDisk(
+				$PortraitOnly,
+				$LandscapeOnly,
+				sprintf('%1$s%2$s', $Set->getPrefix(), $Set->getName())
+			);
+
+			if($imagefileondisk)
+			{
+				$CacheImage = new CacheImage();
+				
+				$CacheImage->setSetID($SetID);
+				$CacheImage->setKind(CACHEIMAGE_KIND_SET);
+				$CacheImage->setImageWidth($Width);
+				$CacheImage->setImageHeight($Height);
+				
+				CacheImage::InsertCacheImage($CacheImage, $CurrentUser);
+			}
+
 			Image::OutputImage(
-				$Set->getModel()->GetFileFromDisk(
-					$PortraitOnly,
-					$LandscapeOnly,
-					sprintf('%1$s%2$s', $Set->getPrefix(), $Set->getName())
-				),
+				$imagefileondisk,
 				$Width,
 				$Height,
 				true,
-				$CacheImage->getFilenameOnDisk()
+				($imagefileondisk ? $CacheImage->getFilenameOnDisk() : null)
 			);
 		}
 	}
