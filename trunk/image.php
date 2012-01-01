@@ -47,7 +47,7 @@ if($Images)
 			"<td class=\"Center\">%10\$d</td>".
         	"<td>%7\$s</td>".
 			"<td class=\"Center\"><a href=\"download_zip.php?image_id=%1\$d\"><img src=\"images/button_download.png\" width=\"16\" height=\"16\" alt=\"Download image\" title=\"Download image\" /></a></td>".
-			"<td class=\"Center\"><a href=\"download_image.php?image_id=%1\$d&amp;width=800&amp;height=600\" title=\"%4\$s\" rel=\"lightbox-gal\"><img src=\"images/button_view.png\" width=\"16\" height=\"16\" alt=\"View image\" title=\"View image\" /></a></td>".
+			"<td class=\"Center\"><a href=\"download_image.php?image_id=%1\$d&amp;width=%13\$d&amp;height=%14\$d\" title=\"%4\$s\" rel=\"lightbox-gal\"><img src=\"images/button_view.png\" width=\"16\" height=\"16\" alt=\"View image\" title=\"View image\" /></a></td>".
 			"<td class=\"Center\"><a href=\"image_view.php?model_id=%3\$d&amp;set_id=%2\$d&amp;image_id=%1\$d&amp;cmd=%11\$s\" title=\"Delete image\"><img src=\"images/button_delete.png\" width=\"16\" height=\"16\" alt=\"Delete\" /></a></td>".
         "</tr>",
 		$Image->getID(),
@@ -61,7 +61,9 @@ if($Images)
 		$Image->getImageWidth(),
 		$Image->getImageHeight(),
 		COMMAND_DELETE,
-		$ImageCount % 2 == 0 ? 2 : 1
+		$ImageCount % 2 == 0 ? 2 : 1,
+		$Image->getImageWidthToppedOff(800, 600),
+		$Image->getImageHeightToppedOff(800, 600)
 		);
 	}
 }

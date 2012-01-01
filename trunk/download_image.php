@@ -283,8 +283,8 @@ else if($ImageID)
 				
 				Image::OutputImage(
 					$Image->getFilenameOnDisk(),
-					800,
-					600,
+					$Width,
+					$Height,
 					true,
 					$CacheImage->getFilenameOnDisk()
 				);

@@ -118,7 +118,7 @@ class Image
 	 */
 	public function setFileCheckSum($FileCheckSum)
 	{ $this->FileCheckSum = $FileCheckSum; }
-	
+
 	
 	/**
 	 * @return string
@@ -133,6 +133,60 @@ class Image
 			$this->getFileName(),
 			$this->getFileExtension()
 		);
+	}
+	
+	/**
+	 * Calculates a resize factor for aspect-ratio scaling
+	 * @param int $width
+	 * @param int $height
+	 * @return float
+	 */
+	private function CalculateResizeFactor($width, $height)
+	{
+		$FactorX = $this->getImageWidth() / $width;
+		$FactorY = $this->getImageHeight() / $height;
+		$FactorToUse = $FactorX >= $FactorY ? $FactorX : $FactorY;
+		return $FactorToUse;
+	}
+	
+	/**
+	 * Calculates this Image's height, when scaled to fit the supplied dimensions
+	 * @param int $width
+	 * @param int $height
+	 * @return int
+	 */
+	public function getImageHeightToppedOff($width, $height)
+	{
+		if($this->getImageHeight() > $height)
+		{
+			$FactorToUse = $this->CalculateResizeFactor($width, $height);
+			$NewHeight = (int)($this->getImageHeight() / $FactorToUse);
+			return $NewHeight;
+		}
+		else
+		{
+			return $this->getImageHeight();
+		}
+	}
+	
+	/**
+	* Calculates this Image's width, when scaled to fit the supplied dimensions
+	* @param int $width
+	* @param int $height
+	* @return int
+	*/
+	public function getImageWidthToppedOff($width, $height)
+	{
+		if($this->getImageWidth() > $width)
+		{
+			$FactorToUse = $this->CalculateResizeFactor($width, $height);
+			$NewWidth = (int)($this->getImageWidth() / $FactorToUse);
+			return $NewWidth;
+		}
+		else
+		{
+			return $this->getImageWidth();
+		}
 	}
 	
 	
@@ -346,6 +400,8 @@ class Image
 		
 		exit;
 	}
+	
+	
 }
 
 ?>
