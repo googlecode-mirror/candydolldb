@@ -9,9 +9,11 @@
 
   * Lots of feedback :-)
 
-== Could Use ==
+  * UI for managing all cached images
 
-  * Thumbnail-images with data alongside, instead of no-image tablerows.
+  * A new, more spiffy lay-out and design. Any suggestions?
+
+== Could Use ==
 
   * HTML5-interface instead of XHTML 1.0 Strict.
 
