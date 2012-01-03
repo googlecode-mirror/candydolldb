@@ -487,7 +487,7 @@ else
 	}
 	else
 	{
-		$CandyImagePath = 'C:\\Path\To\\candydoll_pics';
+		$CandyImagePath = 'C:\\Path\\To\\candydoll_pics';
 		$CandyVideoPath = 'C:\\Path\\To\\candydoll_vids';
 	}
 
@@ -597,7 +597,7 @@ else
 <input type="text" id="txtCandyVideoThumbPath" name="txtCandyVideoThumbPath" maxlength="255" value="<?php echo $CandyVideoThumbPath;?>" />
 </div>
 
-<h2>Mailserver (SMTP)</h2>
+<h2>Mailserver (SMTP, optional)</h2>
 
 <div class="FormRow">
 <label for="txtSmtpFromAddress">Sender-address: <em>*</em></label>
