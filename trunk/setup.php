@@ -479,9 +479,18 @@ else
 	$UserFirstName = 'Firstname';
 	$UserLastName = 'Lastname';
 	$UserEmail = 'Email-address';
-	
-	$CandyImagePath = '/var/candydoll_pics';
-	$CandyVideoPath = '/var/candydoll_vids';
+
+	if(stripos(php_uname('s'), 'WIN') === false)
+	{
+		$CandyImagePath = '/path/to/candydoll_pics';
+		$CandyVideoPath = '/path/to/candydoll_vids';
+	}
+	else
+	{
+		$CandyImagePath = 'C:\\Path\To\\candydoll_pics';
+		$CandyVideoPath = 'C:\\Path\\To\\candydoll_vids';
+	}
+
 	$CandyVideoThumbPath = 'thumbnails';
 
 	$SmtpFromAddress = 'your@email';
