@@ -143,6 +143,7 @@ echo HTMLstuff::HtmlHeader($Model->GetShortName().' - Set '.$Set->getName().' - 
 <div class="FormRow"><label>&nbsp;</label>
 <input type="submit" class="FormButton" value="<?php echo $DeleteVideo ? 'Delete' : 'Save'; ?>" />
 <input type="button" class="FormButton" value="Cancel" onclick="window.location='<?php echo htmlentities($ReturnURL); ?>';" />
+<input type="button" class="FormButton" value="Clear cacheimage" onclick="window.location='cacheimage_delete.php?video_id=<?php echo $VideoID ?>';" />
 </div>
 
 <div class="Separator"></div>

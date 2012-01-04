@@ -112,6 +112,12 @@ if($ModelID)
 <input type="button" class="FormButton" value="Cancel" onclick="window.location='index.php';" />
 </div>
 
+<div class="FormRow">
+<label>&nbsp;</label>
+<input type="button" class="FormButton" value="Clear cacheimage" onclick="window.location='cacheimage_delete.php?model_id=<?php echo $ModelID ?>';" />
+<input type="button" class="FormButton" value="Clear thumbnailscache" onclick="window.location='cacheimage_delete.php?index_id=<?php echo $ModelID ?>';" />
+</div>
+
 <div class="Separator"></div>
 
 <?php echo $ModelID ? HTMLstuff::Button(sprintf('set.php?model_id=%1$d', $ModelID), 'Sets') : ''; ?>

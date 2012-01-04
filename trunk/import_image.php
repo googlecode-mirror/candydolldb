@@ -7,6 +7,8 @@ $CurrentUser = Authentication::Authenticate();
 
 $ModelID = null;
 $SetID = null;
+$CacheImages = array();
+$CacheImage = null;
 
 
 if(array_key_exists('model_id', $_GET) && isset($_GET['model_id']) && is_numeric($_GET['model_id']))
@@ -38,6 +40,8 @@ $Images = Image::GetImages(
 	)
 );
 
+$CacheImages = CacheImage::GetCacheImages();
+
 
 if($SetID && $Sets){
 	$Set = $Sets[0];
@@ -49,6 +53,16 @@ if($SetID && $Sets){
 for($i = 0; $i < count($Models); $i++)
 {
 	$Model = $Models[$i];
+	
+	$CacheImage = CacheImage::FilterCacheImages($CacheImages, null, $Model->getID());
+	if(count($CacheImage) > 0){
+		CacheImage::DeleteImage($CacheImage[0], $CurrentUser);
+	}
+	
+	$CacheImage = CacheImage::FilterCacheImages($CacheImages, null, null, $Model->getID());
+	if(count($CacheImage) > 0){
+		CacheImage::DeleteImage($CacheImage[0], $CurrentUser);
+	}
 
 	$ImageFolder = sprintf('%1$s/%2$s',
 		CANDYIMAGEPATH,
@@ -89,6 +103,11 @@ for($i = 0; $i < count($Models); $i++)
 				{ $Set = $Set[0]; }
 				else
 				{ continue; }
+				
+				$CacheImage = CacheImage::FilterCacheImages($CacheImages, null, null, null, $Set->getID());
+				if(count($CacheImage) > 0){
+					CacheImage::DeleteImage($CacheImage[0], $CurrentUser);
+				}
 
 				/* @var $ImageInDB Image */
 				$ImagesInDB = Image::FilterImages(
@@ -101,6 +120,11 @@ for($i = 0; $i < count($Models); $i++)
 				if($ImagesInDB)
 				{
 					$ImageInDB = $ImagesInDB[0];
+					
+					$CacheImage = CacheImage::FilterCacheImages($CacheImages, null, null, null, null, $ImageInDB->getID());
+					if(count($CacheImage) > 0){
+						CacheImage::DeleteImage($CacheImage[0], $CurrentUser);
+					}
 				}
 				else
 				{

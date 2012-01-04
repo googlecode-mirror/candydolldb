@@ -23,8 +23,7 @@ class Image
 		$this->FileExtension = $FileExtension;
 	}
 	
-	/**
-	 * @return int
+	/**	 * @return int
 	 */
 	public function getID()
 	{ return $this->ID; }
