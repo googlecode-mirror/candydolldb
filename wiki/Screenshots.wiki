@@ -5,7 +5,7 @@
 
 <wiki:toc max_depth="2" />
 
-So far, screenshots are taken with Chromium 12 and Firefox 5 on Ubuntu Natty. Feel free to submit your own.
+So far, screenshots are taken with Chromium 15 and Firefox 8 on Ubuntu Oneiric. Feel free to submit your own.
 
 == Index page == 
 
