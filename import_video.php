@@ -38,6 +38,8 @@ $Videos = Video::GetVideos(
 	)
 );
 
+$CacheImages = CacheImage::GetCacheImages();
+
 
 if($SetID){
 	$Set = $Sets[0];
@@ -95,6 +97,11 @@ for($i = 0; $i < count($Models); $i++)
 				if($VideosInDB)
 				{
 					$VideoInDB = $VideosInDB[0];
+					
+					$CacheImage = CacheImage::FilterCacheImages($CacheImages, null, null, null, null, null, $VideoInDB->getID());
+					if(count($CacheImage) > 0){
+						CacheImage::DeleteImage($CacheImage[0], $CurrentUser);
+					}
 				}
 				else
 				{

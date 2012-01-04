@@ -233,12 +233,33 @@ class CacheImage
 		return $db->Delete(
 			'CacheImage',
 			sprintf(
-				"cache_id = '%1$s'",
+				"cache_id = '%1\$s'",
 				mysql_escape_string(
 					$CacheImage->getID()
 				)
 			)
 		);
+	}
+	
+	public static function FilterCacheImages($CacheImageArray, $CacheImageKind = null, $ModelID = null, $ModelIndexID = null, $SetID = null, $ImageID = null, $VideoID = null)
+	{
+		$OutArray = array();
+			
+		/* @var $CacheImage CacheImage */
+		foreach($CacheImageArray as $CacheImage)
+		{
+			if(
+				(is_null($CacheImageKind) || $CacheImage->getKind() == $CacheImageKind)		&&
+				(is_null($ModelID) || $CacheImage->getModelID() == $ModelID)				&&
+				(is_null($ModelIndexID) || $CacheImage->getModelIndexID() == $ModelIndexID)	&&
+				(is_null($SetID) || $CacheImage->getSetID() == $SetID)						&&
+				(is_null($ImageID) || $CacheImage->getImageID() == $ImageID)				&&
+				(is_null($VideoID) || $CacheImage->getVideoID() == $VideoID)
+			){
+				$OutArray[] = $CacheImage;
+			}
+		}
+		return $OutArray;
 	}
 }
 
