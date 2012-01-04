@@ -28,8 +28,8 @@ Computer running
 
 
 
-INSTALLATION:
--------------
+FRESH INSTALLATION:
+-------------------
  * Extract the downloaded archive into a directory which is accessible 
 through your web server.
  * Make sure the user running the web server has read-write access to 
@@ -37,7 +37,17 @@ the CandyDollDB root- and cache directories.
  * Make sure the user running the web server has read-access to your 
 CandyDoll-collection.
  * Using your browser, navigate to setup.php and follow the on screen 
-instructions. NOTE: Any previous CandyDollDB-database will be dropped.
+instructions.
+ * NOTE: Any previous CandyDollDB-database will be dropped.
+
+
+
+UPDATE INSTALLATION FROM v1.3:
+------------------------------
+ * Extract the downloaded archive into the directory in which you
+ installed CandyDollDB, overwriting all files in the process.
+ * In your browser, navigate to setup_v13-v14.php and click 'yes'.
+ * NOTE: The CacheImage table will be dropped before being recreated.
 
 
 
