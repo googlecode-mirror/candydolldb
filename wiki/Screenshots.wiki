@@ -17,7 +17,7 @@ So far, screenshots are taken with Chromium 12 and Firefox 5 on Ubuntu Natty. Fe
 
 == Set overview == 
 
-[http://fwiep.nl/download/d181dc43-499f-4449-ae99-2c986eed4ce4.jpg http://fwiep.nl/download/d181dc43-499f-4449-ae99-2c986eed4ce4s.jpg]
+[http://fwiep.nl/download/cada6bd7-08b2-41b4-82c3-8449d1136291.jpg http://fwiep.nl/download/cada6bd7-08b2-41b4-82c3-8449d1136291s.jpg]
 
 == Model form == 
 
