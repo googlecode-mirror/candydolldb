@@ -27,7 +27,7 @@
 
   * Overlay with loading-animation during lengthy imports (for example using AJAX)
 
-  * More complete list of the models's lastnames and birthdates<br>(currently 55/87 have a known birthdate and 32/87 a known lastname)
+  * More complete list of the models's lastnames and birthdates<br>(currently 79/93 have a known birthdate and 32/93 a known lastname)
 
   * More complete list of the set-releasedates<br>(currently 714/1046 have a known releasedate for pictures or video)
 
