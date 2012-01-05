@@ -29,6 +29,6 @@
 
   * More complete list of the models's lastnames and birthdates<br>(currently 79/93 have a known birthdate and 32/93 a known lastname)
 
-  * More complete list of the set-releasedates<br>(currently only SvetlanaT06 is missing its image- and video-releasedates)
+  * More complete list of the set-releasedates<br>(currently only <pre>SvetlanaT06</pre> is missing its image- and video-releasedates)
 
   * Automatic import of updates<br>(for example a scheduled wget-request of the updatepage, then parsing the response)
