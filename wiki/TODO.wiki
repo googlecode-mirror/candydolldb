@@ -9,8 +9,6 @@
 
   * Lots of feedback :-)
 
-  * UI for managing all cached images
-
   * A new, more spiffy lay-out and design. Any suggestions?
 
 == Could Use ==
