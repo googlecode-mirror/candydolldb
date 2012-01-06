@@ -11,7 +11,7 @@
 
 * Q: What is the expected direcory-structure for CandyDollDB?<br>
 * A: The full path of an image in CandyDollDB contains a few components: 
-<pre>  {CANDYIMAGEPATH}\{FullModelName}\{SetPrefix}{SetName}\{ImageFilename}.{ImageExtension}</pre> (Windows) or (GNU/Linux)<pre>  CANDYIMAGEPATH}/{FullModelName}/{SetPrefix}{SetName}/{ImageFilename}.{ImageExtension}</pre>
+<pre>  {CANDYIMAGEPATH}\{FullModelName}\{SetPrefix}{SetName}\{ImageFilename}.{ImageExtension}</pre> (Windows) or (GNU/Linux)<pre>  {CANDYIMAGEPATH}/{FullModelName}/{SetPrefix}{SetName}/{ImageFilename}.{ImageExtension}</pre>
 An example path could be
 <pre>
 D:\CandyDoll\Alyona Gromova\set_01\AyonaG01_001.jpg</pre> on Windows or 
