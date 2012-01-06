@@ -14,9 +14,9 @@
 <pre>  {CANDYIMAGEPATH}\{FullModelName}\{SetPrefix}{SetName}\{ImageFilename}.{ImageExtension}</pre> (Windows) or (GNU/Linux)<pre>  {CANDYIMAGEPATH}/{FullModelName}/{SetPrefix}{SetName}/{ImageFilename}.{ImageExtension}</pre>
 An example path could be
 <pre>
-D:\CandyDoll\Alyona Gromova\set_01\AyonaG01_001.jpg</pre> on Windows or 
+D:\CandyDoll\Alyona Gromova\set_01\AlyonaG01_001.jpg</pre> on Windows or 
 <pre>
-/var/candydoll/Alyona Gromova/set_01/AyonaG01_001.jpg</pre> on GNU/Linux.
+/var/candydoll/Alyona Gromova/set_01/AlyonaG01_001.jpg</pre> on GNU/Linux.
 
 ----
 
