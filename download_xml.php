@@ -7,8 +7,10 @@ $CurrentUser = Authentication::Authenticate();
 $Models = Model::GetModels();
 $Sets = Set::GetSets();
 $Dates = Date::GetDates();
-//$Images = Image::GetImages();
-//$Videos = Video::GetVideos();
+
+/* Unfortunately, this is a huge performance killer... */
+$Images = array(); // Image::GetImages();
+$Videos = array(); // Video::GetVideos();
 
 
 $xmlw = new XMLWriter();
@@ -48,6 +50,44 @@ foreach ($Models as $Model)
 				$xmlw->writeAttribute('name', $Set->getName());
 				$xmlw->writeAttribute('date_pic', Date::FormatDates($PicDatesThisSet, 'Y-m-d', false, ' '));
 				$xmlw->writeAttribute('date_vid', Date::FormatDates($VidDatesThisSet, 'Y-m-d', false, ' '));
+			
+			$ImagesThisSet = Image::FilterImages($Images, $Model->getID(), $Set->getID());
+			if($ImagesThisSet)
+			{
+				$xmlw->startElement('Images');
+				
+				/* @var $Image Image */
+				foreach($ImagesThisSet as $Image)
+				{
+					$xmlw->startElement('Image');
+						$xmlw->writeAttribute('name', $Image->getFileName());
+						$xmlw->writeAttribute('extension', $Image->getFileExtension());
+						$xmlw->writeAttribute('filesize', $Image->getFileSize());
+						$xmlw->writeAttribute('height', $Image->getImageHeight());
+						$xmlw->writeAttribute('width', $Image->getImageWidth());
+						$xmlw->writeAttribute('checksum', $Image->getFileCheckSum());
+					$xmlw->endElement();
+				}
+				$xmlw->endElement();
+			}
+			
+			$VideosThisSet = Video::FilterVideos($Videos, $Model->getID(), $Set->getID());
+			if($VideosThisSet)
+			{
+				$xmlw->startElement('Videos');
+				
+				/* @var $Video Video */
+				foreach($VideosThisSet as $Video)
+				{
+					$xmlw->startElement('Video');
+						$xmlw->writeAttribute('name', $Video->getFileName());
+						$xmlw->writeAttribute('extension', $Video->getFileExtension());
+						$xmlw->writeAttribute('filesize', $Video->getFileSize());
+						$xmlw->writeAttribute('checksum', $Video->getFileCheckSum());
+					$xmlw->endElement();
+				}
+				$xmlw->endElement();
+			}
 			$xmlw->endElement();
 		}
 		$xmlw->endElement();

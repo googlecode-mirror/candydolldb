@@ -225,10 +225,11 @@ class Date
 	}
 	
 	/**
-	 * Formats the given Dates into a comma separated string 
+	 * Formats the given Dates into one string 
 	 * @param array(Date) $InArray
 	 * @param string $DateFormat
 	 * @param bool $PrefixType
+	 * @param string $Glue
 	 * @return string
 	 */
 	public static function FormatDates($InArray, $DateFormat, $PrefixType = false, $Glue = ', ')
