@@ -241,7 +241,7 @@ class CacheImage
 		);
 	}
 	
-	public static function FilterCacheImages($CacheImageArray, $CacheImageKind = null, $ModelID = null, $ModelIndexID = null, $SetID = null, $ImageID = null, $VideoID = null)
+	public static function FilterCacheImages($CacheImageArray, $CacheImageKind = null, $ModelID = null, $ModelIndexID = null, $SetID = null, $ImageID = null, $VideoID = null, $CacheImageID = null)
 	{
 		$OutArray = array();
 			
@@ -254,7 +254,8 @@ class CacheImage
 				(is_null($ModelIndexID) || $CacheImage->getModelIndexID() == $ModelIndexID)	&&
 				(is_null($SetID) || $CacheImage->getSetID() == $SetID)						&&
 				(is_null($ImageID) || $CacheImage->getImageID() == $ImageID)				&&
-				(is_null($VideoID) || $CacheImage->getVideoID() == $VideoID)
+				(is_null($VideoID) || $CacheImage->getVideoID() == $VideoID)				&&
+				(is_null($CacheImageID) || strcasecmp($CacheImage->getID(), $CacheImageID) == 0)
 			){
 				$OutArray[] = $CacheImage;
 			}
