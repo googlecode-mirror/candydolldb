@@ -110,11 +110,12 @@ if($ModelID)
 <label>&nbsp;</label>
 <input type="submit" class="FormButton" value="<?php echo $DeleteModel ? 'Delete' : 'Save'; ?>" />
 <input type="button" class="FormButton" value="Cancel" onclick="window.location='index.php';" />
+<input type="button" class="FormButton" value="Clear cacheimage" onclick="window.location='cacheimage_delete.php?model_id=<?php echo $ModelID ?>';" />
 </div>
 
 <div class="FormRow">
 <label>&nbsp;</label>
-<input type="button" class="FormButton" value="Clear cacheimage" onclick="window.location='cacheimage_delete.php?model_id=<?php echo $ModelID ?>';" />
+<input type="button" class="FormButton" value="Clean cachefolder" onclick="window.location='cacheimage_nuke.php';" />
 <input type="button" class="FormButton" value="Clear thumbnailscache" onclick="window.location='cacheimage_delete.php?index_id=<?php echo $ModelID ?>';" />
 </div>
 
