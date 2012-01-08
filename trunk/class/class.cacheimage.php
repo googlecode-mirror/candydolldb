@@ -130,6 +130,7 @@ class CacheImage
 	 */
 	public function getFilenameOnDisk()
 	{
+		global $argv, $argc;
 		$pathPrefix = (isset($argv) && $argc > 0) ? dirname($_SERVER['PHP_SELF']).'/' : '';
 		return sprintf($pathPrefix.'cache/%1$s.jpg', $this->getID());
 	}
