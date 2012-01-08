@@ -188,6 +188,9 @@ if($XmlFromFile)
 			}
 		}
 	}
+	
+	if(isset($argv) && $argc > 0)
+	{ $bi->Finish(); }
 }
 
 if(!isset($argv) || !$argc)
