@@ -119,28 +119,29 @@ class BusyIndicator
 	 */
 	public function Next($step = 1)
 	{
-		if($this->currentValue + $step >= $this->maxValue)
-		{
-			$toWrite = sprintf("%1\$s Finished.\n", $this->stringPrefix);
-			echo $toWrite;
-		}
-		else
-		{
-			$toWrite = sprintf('%1$s %2$s %3$6.2f%%',
-				$this->stringPrefix,
-				substr(BusyIndicator::$chars, $this->currentCharIndex, 1),
-				$this->CalcValue() * 100
-			);
+		$toWrite = sprintf('%1$s %2$s %3$6.2f%%',
+			$this->stringPrefix,
+			substr(BusyIndicator::$chars, $this->currentCharIndex, 1),
+			$this->CalcValue() * 100
+		);
 
-			echo $toWrite;
-			echo BusyIndicator::SweepItClean($toWrite);
-
-			$this->currentValue = $this->currentValue + $step;
-			$this->currentCharIndex++;
-
-			if($this->currentCharIndex > strlen(BusyIndicator::$chars) - 1)
-			{ $this->currentCharIndex = 0; }
-		}
+		echo $toWrite;
+		echo BusyIndicator::SweepItClean($toWrite);
+		
+		$this->currentCharIndex++;
+		
+		if($this->currentCharIndex > strlen(BusyIndicator::$chars) - 1)
+		{ $this->currentCharIndex = 0; }
+	
+		$this->currentValue = $this->currentValue + $step;
+	}
+	
+	/**
+	 * Draws the word 'Finished' and a trailing newline to the commandline.
+	 */
+	public function Finish()
+	{
+		printf("%1\$s Finished.\n", $this->stringPrefix);
 	}
 }
 
