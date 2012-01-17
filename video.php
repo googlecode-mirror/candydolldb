@@ -89,6 +89,8 @@ echo HTMLstuff::HtmlHeader(sprintf('%1$s - Set %2$s - Videos', $Model->GetShortN
 	htmlentities($Set->getName())
 ); ?></h2>
 
+<div class="Separator"></div>
+
 <table border="0" cellpadding="4" cellspacing="0">
 	<thead>
 		<tr>

@@ -28,6 +28,10 @@ legend{
 	display: none;
 }
 
+h2{
+	margin-top: 0;
+}
+
 .AbsolutePoint{
 	position: absolute;
 }
@@ -49,9 +53,8 @@ div#ErrorContainer{
 	position: absolute;
 	top: 0;
 	width: 100%;
-	z-index: 2;
+	z-index: 3;
 }
-
 
 table{
 	width: 100%;
@@ -126,7 +129,7 @@ ul#TopNavigation li a + ul:hover{
 
 div#Content{
 	line-height: 15pt;
-	padding: 0 20px 0 15px;
+	padding: 20px 15px 30px 15px;
 }
 
 div#Content table{
@@ -273,15 +276,15 @@ div.ErrorList{
 	background-position: top left;
 	background-repeat: repeat-x;
 	border: solid 4px #8f2323;
+	color: #dedede;
 	cursor: pointer;
 	display: none;
 	font-size: 12pt;
-	margin: 0 100px;
 	padding: 20px;
 	position: absolute;
 	top: 150px;
 	width: 520px;
-	z-index: 3;
+	z-index: 4;
 }
 div.ErrorList ul{
 	background-image: url('images/error.png');
