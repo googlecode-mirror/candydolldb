@@ -64,7 +64,7 @@ if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'SetView')
 	$Set->setPrefix($_POST['txtPrefix']);
 	$Set->setName($_POST['txtName']);
 
-	if($_POST['radContains'])
+	if(array_key_exists('radContains', $_POST) && $_POST['radContains'])
 	{ $Set->setContainsWhat(intval($_POST['radContains'])); }
 
 	if($Set->getID())

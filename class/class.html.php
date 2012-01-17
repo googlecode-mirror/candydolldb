@@ -21,16 +21,16 @@ class HTMLstuff
 		<link rel=\"shortcut icon\" href=\"favicon.ico\" />
 		<link rel=\"icon\" href=\"favicon.ico\" />
 		
-		<script type=\"text/javascript\" src=\"%3\$s://code.jquery.com/jquery.min.js\"></script>
+		<script type=\"text/javascript\" src=\"%4\$s://code.jquery.com/jquery.min.js\"></script>
 		<script type=\"text/javascript\" src=\"js/fwiep.js\"></script>
 
-		<title>CandyDoll DB%1\$s</title>
+		<title>CandyDoll DB v%1\$s%2\$s</title>
 		</head>
 
 		<body>
 		
-		<h1 class=\"Hidden\">CandyDollDB%1\$s</h1>
-		%2\$s
+		<h1 class=\"Hidden\">CandyDollDB v%1\$s%2\$s</h1>
+		%3\$s
 		
 		<div id=\"Wrapper\">
 		<div id=\"Header\">
@@ -38,6 +38,7 @@ class HTMLstuff
 		
 		<div id=\"Content\">",
 
+			CANDYDOLLDB_VERSION,
 			$Title ? ' :: '.htmlentities($Title) : null,
 			Error::GenerateErrorList(),
 			(isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off' ? 'https' : 'http') 
@@ -84,7 +85,7 @@ class HTMLstuff
 			%1\$s
 			
 			<div class=\"cddbstuff\">
-			CandyDollDB v1.5<br />by <a href=\"http://www.fwiep.nl/\" rel=\"external\">FWieP</a>
+			CandyDollDB v%2\$s<br />by <a href=\"http://www.fwiep.nl/\" rel=\"external\">FWieP</a>
 			</div>
 			
 			</div>
@@ -100,8 +101,9 @@ class HTMLstuff
 			htmlentities($CurrentUser->getUserName()),
 			$CurrentUser->getPreLastLogin() > 0 ? date('j F Y', $CurrentUser->getPreLastLogin()) : 'never',
 			$CurrentUser->getID()
-		) : '&nbsp;'
+		) : '&nbsp;',
 		
+		CANDYDOLLDB_VERSION
 		);
 	}
 	
@@ -202,8 +204,8 @@ GYtguefggefegfgefgegfgfuguf;
 		{
 			foreach ($InArray as $k => $v)
 			{
-				preg_match('/^txtDate(?P<Kind>Pic|Vid)(?P<ID>\d+)$/i', $k, $matches);
-				if(isset($matches))
+				$pm = preg_match('/^txtDate(?P<Kind>Pic|Vid)(?P<ID>\d+)$/i', $k, $matches);
+				if($pm > 0 && isset($matches))
 				{
 					if(($matches['Kind'] == 'Pic' && $DateKind != DATE_KIND_IMAGE)
 					|| ($matches['Kind'] == 'Vid' && $DateKind != DATE_KIND_VIDEO))
