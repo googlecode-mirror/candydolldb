@@ -112,6 +112,8 @@ echo HTMLstuff::HtmlHeader($Model->GetShortName().' - Sets', $CurrentUser);
 	htmlentities($Model->GetShortName(true))
 ); ?></h2>
 
+<div class="Separator"></div>
+
 <?php
 
 echo $SetRows . "<div class=\"Clear\"></div>";
@@ -125,4 +127,5 @@ echo HTMLstuff::Button(sprintf('import_video.php?model_id=%1$d', $ModelID), 'Imp
 echo HTMLstuff::Button('index.php');
 
 echo HTMLstuff::HtmlFooter($CurrentUser);
+
 ?>
