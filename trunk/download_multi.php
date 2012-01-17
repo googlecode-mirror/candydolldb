@@ -78,6 +78,7 @@ if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'DownloadMult
 						$UseSubfoldersInDownload
 					)
 				);
+				exit;
 			}
 		}
 	}
@@ -93,7 +94,7 @@ else
 	}
 }
 
-echo HTMLstuff::HtmlHeader('Download');
+echo HTMLstuff::HtmlHeader('Download', $CurrentUser);
 ?>
 
 <h2><?php echo sprintf(
@@ -139,16 +140,10 @@ echo HTMLstuff::HtmlHeader('Download');
 <input type="button" class="FormButton" value="Cancel" onclick="window.location='index.php';" />
 </div>
 
-<div class="Separator"></div>
-
 </fieldset>
 </form>
 
-<div class="Clear"></div>
-
 <?php
-
-echo HTMLstuff::Button('index.php');
 
 echo HTMLstuff::HtmlFooter($CurrentUser);
 
