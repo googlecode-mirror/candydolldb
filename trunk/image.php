@@ -128,5 +128,5 @@ echo HTMLstuff::Button(sprintf('set.php?model_id=%1$d', $ModelID), 'Sets');
 
 echo HTMLstuff::Button('index.php');
 
-echo HTMLstuff::HtmlFooter();
+echo HTMLstuff::HtmlFooter($CurrentUser);
 ?>

@@ -124,5 +124,5 @@ echo HTMLstuff::Button(sprintf('import_video.php?model_id=%1$d', $ModelID), 'Imp
 
 echo HTMLstuff::Button('index.php');
 
-echo HTMLstuff::HtmlFooter();
+echo HTMLstuff::HtmlFooter($CurrentUser);
 ?>

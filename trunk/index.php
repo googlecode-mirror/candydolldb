@@ -147,11 +147,6 @@ echo HTMLstuff::HtmlHeader('Home', $CurrentUser);
 
 <?php
 
-echo HTMLstuff::Button(sprintf('model_view.php'), 'New model');
-echo HTMLstuff::Button(sprintf('set_dirty.php'), 'Dirty sets');
-echo HTMLstuff::Button(sprintf('download_multi.php'), 'Multi-download');
-echo HTMLstuff::Button(sprintf('user.php'), 'Users');
-echo HTMLstuff::Button(sprintf('setup_data.php'), 'Process data (XML)');
+echo HTMLstuff::HtmlFooter($CurrentUser);
 
-echo HTMLstuff::HtmlFooter();
 ?>

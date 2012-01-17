@@ -249,5 +249,5 @@ foreach ($DatesThisSet as $Date)
 </form>
 
 <?php
-echo HTMLstuff::HtmlFooter();
+echo HTMLstuff::HtmlFooter($CurrentUser);
 ?>

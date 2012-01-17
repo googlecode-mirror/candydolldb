@@ -14,6 +14,12 @@ if (!/android|iphone|ipod|series60|symbian|windows ce|blackberry/i.test(navigato
 	});
 }
 
+function ResizeContent(){
+	$('#Content').css('min-height',
+		($(window).height() - (125 + 100) ) + 'px'
+	);
+}
+
 function CloseOverlay(){
 	$('.ErrorList').fadeOut(300);
 	$('#ErrorContainer').fadeOut(300);
@@ -21,8 +27,10 @@ function CloseOverlay(){
 	return true;
 }
 
-$(document).ready(function(){
+$(function(){
 
+	ResizeContent();
+	
 	$('#ErrorContainer').fadeTo(400, 0.65).click(CloseOverlay).each(function(){
 		if($(this).is(':visible')){
 			$(document).bind('keydown', function(e){
@@ -54,4 +62,8 @@ $(document).ready(function(){
 			$(this).val('YYYY-MM-DD');
 		}
 	});
+});
+
+$(window).resize(function(){
+	ResizeContent();
 });
