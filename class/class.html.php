@@ -10,7 +10,7 @@ class HTMLstuff
 	 */
 	public static function HtmlHeader($Title = null, $CurrentUser = null)
 	{
-		return sprintf("<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\">
+		$Output = sprintf("<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\">
 		<html xmlns=\"http://www.w3.org/1999/xhtml\">
 
 		<head>
@@ -36,32 +36,36 @@ class HTMLstuff
 		<div id=\"Header\">
 		</div>
 		
-		<div id=\"Content\">
-		
-		<ul id=\"TopNavigation\">
-		<li><a href=\"index.php\">Home</a></li>
-		<li><a href=\"#\">Features</a>
-		
-			<ul>
-			<li><a href=\"setup_data.php\">Process XML</a></li>
-			<li><a href=\"model_view.php\">New model</a></li>
-			<li><a href=\"set_dirty.php\">Dirty sets</a></li>
-			<li><a href=\"download_multi.php\">Multi-download</a></li>
-			</ul>
-		
-		</li>
-		<li><a href=\"user.php\">Users</a></li>
-		<li><a href=\"#\">Admin-panel</a></li>
-		<li><a href=\"logout.php\">Logout</a></li>
-		</ul>",
-		
-		$Title ? ' :: '.htmlentities($Title) : null,
+		<div id=\"Content\">",
 
-		Error::GenerateErrorList(),
-		
-		(isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off' ? 'https' : 'http') 
-		
+			$Title ? ' :: '.htmlentities($Title) : null,
+			Error::GenerateErrorList(),
+			(isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off' ? 'https' : 'http') 
 		);
+
+
+		if($CurrentUser != null) {
+		
+			$Output .= sprintf("
+			<ul id=\"TopNavigation\">
+			<li><a href=\"index.php\">Home</a></li>
+			<li><a href=\"#\">Features</a>
+		
+				<ul>
+				<li><a href=\"setup_data.php\">Process XML</a></li>
+				<li><a href=\"model_view.php\">New model</a></li>
+				<li><a href=\"set_dirty.php\">Dirty sets</a></li>
+				<li><a href=\"download_multi.php\">Multi-download</a></li>
+				</ul>
+		
+			</li>
+			<li><a href=\"user.php\">Users</a></li>
+			<li><a href=\"#\">Admin-panel</a></li>
+			<li><a href=\"logout.php\">Logout</a></li>
+			</ul>");
+		}
+
+		return $Output;
 	}
 	
 	/**
@@ -76,10 +80,8 @@ class HTMLstuff
 			<div id=\"Footer\">
 			<hr class=\"Hidden\" />
 			<div class=\"AbsolutePoint\">
-			
-			<div class=\"userstats\">
+
 			%1\$s
-			</div>
 			
 			<div class=\"cddbstuff\">
 			CandyDollDB v1.5<br />by <a href=\"http://www.fwiep.nl/\" rel=\"external\">FWieP</a>
@@ -93,8 +95,8 @@ class HTMLstuff
 			</body>
 			</html>",
 		
-		$CurrentUser != null ? sprintf("
-			Logged in as <a href=\"user_view.php?user_id=%3\$d\"><strong>%1\$s</strong></a>.<br />Last login: %2\$s",
+		$CurrentUser != null ? sprintf("<div class=\"userstats\">
+			Logged in as <a href=\"user_view.php?user_id=%3\$d\"><strong>%1\$s</strong></a>.<br />Last login: %2\$s</div>",
 			htmlentities($CurrentUser->getUserName()),
 			$CurrentUser->getPreLastLogin() > 0 ? date('j F Y', $CurrentUser->getPreLastLogin()) : 'never',
 			$CurrentUser->getID()

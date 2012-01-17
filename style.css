@@ -159,10 +159,10 @@ div.cddbstuff a{
 }
 
 div.cddbstuff{
-	left: 658px;
+	left: 834px;
 }
 div.userstats{
-	left: 834px;
+	left: 658px;
 }
 
 form .FormRow{
@@ -196,7 +196,9 @@ form input[type=password].Small{
 	width: 120px;
 }
 form.FilterForm{
+	background-color: #dedede;
 	float: right;
+	margin-right: 20px;
 	width: 440px;
 }
 form.FilterForm label{
