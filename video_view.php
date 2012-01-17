@@ -156,5 +156,5 @@ echo HTMLstuff::HtmlHeader($Model->GetShortName().' - Set '.$Set->getName().' - 
 </form>
 
 <?php
-echo HTMLstuff::HtmlFooter();
+echo HTMLstuff::HtmlFooter($CurrentUser);
 ?>

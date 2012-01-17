@@ -4,18 +4,19 @@
 
 body{
 	background-image: url("images/background.png");
-	color: #eddddd;
+	color: #333;
 	font-family: Helvetica, Arial, Tahoma, sans-serif;
 	font-size: 10pt;
 	margin: 0;
 	padding: 0;
 }
+
 a{
-	color: #eddddd;
+	color: #333;
 	text-decoration: none;
 }
 a:focus, a:hover{
-	text-decoration: underline;
+	color: #933;
 }
 a img{
 	border-width: 0;
@@ -27,6 +28,9 @@ legend{
 	display: none;
 }
 
+.AbsolutePoint{
+	position: absolute;
+}
 .Hidden{
 	display: none;
 }
@@ -48,65 +52,119 @@ div#ErrorContainer{
 	z-index: 2;
 }
 
-div#Container{
+
+table{
+	width: 100%;
+}
+table thead tr{
+	background-color: #dedede;
+}
+table thead th{
+	text-align: left;
+}
+table tr.Row1{
+	background-color: #efefef;
+}
+table tr.Row2{
+	background-color: #dedede;
+}
+
+table td em{
+	color: #e22;
+	font-weight: bold;
+}
+
+div#Wrapper{
+	background-image: url('images/background_container.png');
 	margin: 0 auto;
-	width: 900px;
+	min-height: 200px;
+	width: 1014px;
 }
-
 div#Header{
-	background-image: url("images/logo.png");
-	background-position: 180px 0;
+	background-image: url('images/background_header.jpg');
+	background-position: 5px 0;
 	background-repeat: no-repeat;
-	height: 120px;
-	margin: 20px auto 30px auto;
+	height: 125px;
 }
-
-div#Header h1{
-	display: none;
+ul#TopNavigation,
+ul#TopNavigation ul
+{
+	background-color: #aeac8e;
+	float: right;
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
 }
-div#Header p{
-	padding-top: 100px;
+ul#TopNavigation li{
+	float: left;
 	text-align: center;
 }
-div.LoginStats{
-	background-image: url('images/button_off.png');
-	background-repeat: no-repeat;
-	font-size: 7pt;
-	height: 33px;
-	left: 670px;
-	line-height: 11px;
-	margin: 0 0 10px 0;
-	padding: 6px 12px 6px 12px;
+ul#TopNavigation li a{
+	background-image: url('images/background_menuitem.png');
+	display: block;
+	height: 25px;
+	line-height: 25px;
+	padding: 0 10px;]
+}
+ul#TopNavigation li a:focus,
+ul#TopNavigation li a:hover{
+	color: #c00;
+}
+ul#TopNavigation ul{
 	position: absolute;
-	text-align: center;
-	top: -100px;
-	width: 138px;
+	display: none;
+	z-index: 3;
+}
+ul#TopNavigation ul li{
+	float: none;
+}
+ul#TopNavigation li a:focus + ul,
+ul#TopNavigation li a:hover + ul,
+ul#TopNavigation li a + ul:hover{
+	display: block;
 }
 
 div#Content{
+	line-height: 15pt;
+	padding: 0 20px 0 15px;
 }
+
 div#Content table{
-	border: solid 1px #c4bb94;
-	margin: 0 0 20px 0;
 	width: 100%;
 }
-div#Content table th,
-div#Content table td{
-	border: solid 1px #a39c7f;
+
+div#Footer{
+	background-image: url('images/background_footer.jpg');
+	background-position: 5px 0;
+	background-repeat: no-repeat;
+	clear: both;
+	height: 100px;
 }
-div#Content table thead, div#Content table tfoot{
-	background-color: #232323;
+
+div.userstats,
+div.cddbstuff{
+	background-image: url('images/button_off.png');
+	color: #eddddd;
+	font-size: x-small;
+	height: 37px; /* +padding-top */
+	padding-top: 8px;
+	position: absolute;
+	text-align: center;
+	top: 30px;
+	width: 162px;
 }
-div#Content table tr.Row1{
-	background-color: #373737;
+div.userstats a,
+div.cddbstuff a{
+	color: #eddddd;
 }
-div#Content table tr.Row2{
-	background-color: #3f3f3f;
+
+div.cddbstuff{
+	left: 658px;
 }
-div#Content table em{
-	color: #cc0000;
-	font-weight: bold;
+div.userstats{
+	left: 834px;
 }
+
 form .FormRow{
 	height: 30px;
 	line-height: 30px;
@@ -157,12 +215,11 @@ form.FilterForm input[type=submit]{
 	line-height: 16px;
 }
 
-.AbsolutePoint{
-	position: absolute;
-}
 .PhotoContainer{
+	clear: right;
 	float: right;
 	height: 600px;
+	margin: 10px 0 0 0;
 	width: 400px;
 }
 .CenterForm{
@@ -182,18 +239,17 @@ form.FilterForm input[type=submit]{
 .Center{
 	text-align: center;
 }
-
 .Separator{
 	height: 20px;
 	line-height: 20px;
 }
-
 .Clear{
 	clear: both;
 }
 
 a.Button{
 	background-image: url('images/button_off.png');
+	color: #aeac8e;
 	display: block;
 	float: left;
 	font-weight: bold;
@@ -240,9 +296,10 @@ div.ErrorList ul li{
 /* Set-Thumbnails */
 .ThumbGalItem{
 	background-image: url('images/background_setitem.png');
+	color: #dedede;
 	float: left;
-	margin: 0 10px 10px 0; 
-	padding: 5px;
+	margin: 0 20px 20px 20px; 
+	padding: 15px 5px 5px 5px;
 	width: 275px;
 }
 .ThumbImageWrapper{

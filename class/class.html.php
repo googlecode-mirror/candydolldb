@@ -21,44 +21,43 @@ class HTMLstuff
 		<link rel=\"shortcut icon\" href=\"favicon.ico\" />
 		<link rel=\"icon\" href=\"favicon.ico\" />
 		
-		<script type=\"text/javascript\" src=\"%6\$s://code.jquery.com/jquery.min.js\"></script>
+		<script type=\"text/javascript\" src=\"%3\$s://code.jquery.com/jquery.min.js\"></script>
 		<script type=\"text/javascript\" src=\"js/fwiep.js\"></script>
-		%5\$s
+
 		<title>CandyDoll DB%1\$s</title>
 		</head>
 
 		<body>
-
-		<div id=\"Container\">
-		<div id=\"Header\"%3\$s>
-
-		<h1>CandyDoll DB%1\$s</h1>
-		<p>by <a href=\"http://www.fwiep.nl/\" rel=\"external\" title=\"FWieP\">FWieP</a></p>
-		%4\$s
-		<div class=\"AbsolutePoint\">
+		
+		<h1 class=\"Hidden\">CandyDollDB%1\$s</h1>
 		%2\$s
+		
+		<div id=\"Wrapper\">
+		<div id=\"Header\">
 		</div>
 		
-		</div>
-
-		<div id=\"Content\">",
+		<div id=\"Content\">
+		
+		<ul id=\"TopNavigation\">
+		<li><a href=\"index.php\">Home</a></li>
+		<li><a href=\"#\">Features</a>
+		
+			<ul>
+			<li><a href=\"setup_data.php\">Process XML</a></li>
+			<li><a href=\"model_view.php\">New model</a></li>
+			<li><a href=\"set_dirty.php\">Dirty sets</a></li>
+			<li><a href=\"download_multi.php\">Multi-download</a></li>
+			</ul>
+		
+		</li>
+		<li><a href=\"user.php\">Users</a></li>
+		<li><a href=\"#\">Admin-panel</a></li>
+		<li><a href=\"logout.php\">Logout</a></li>
+		</ul>",
 		
 		$Title ? ' :: '.htmlentities($Title) : null,
-		
-		$CurrentUser != null ? sprintf(
-			"<div class=\"LoginStats\">
-			Logged in as <a href=\"user_view.php?user_id=%3\$d\"><strong>%1\$s</strong></a>.<br />Last login: %2\$s &gt;&zwnj;<a href=\"logout.php\"><strong>Log&nbsp;out</strong></a>&zwnj;&lt;
-			</div>",
-			htmlentities($CurrentUser->getUserName()),
-			$CurrentUser->getPreLastLogin() > 0 ? date('j F Y @ G:i', $CurrentUser->getPreLastLogin()) : 'never',
-			$CurrentUser->getID()
-		) : null,
-		
-		$CurrentUser == null ? ' style="background-position:230px 0;"' : null,
-		
-		Error::GenerateErrorList(),
 
-		(ALTERNATE_STYLE === true) ? ALTERNATE_STYLE_OVERRIDE : null,
+		Error::GenerateErrorList(),
 		
 		(isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off' ? 'https' : 'http') 
 		
@@ -69,15 +68,39 @@ class HTMLstuff
 	 * Generate a HTML footer, corresponding to this class' HTML-header function.
 	 * @return string
 	 */
-	public static function HtmlFooter()
+	public static function HtmlFooter($CurrentUser = null)
 	{
 		return sprintf("
-		</div>
-
-		</div>
-
-		</body>
-		</html>");
+			</div>
+			
+			<div id=\"Footer\">
+			<hr class=\"Hidden\" />
+			<div class=\"AbsolutePoint\">
+			
+			<div class=\"userstats\">
+			%1\$s
+			</div>
+			
+			<div class=\"cddbstuff\">
+			CandyDollDB v1.5<br />by <a href=\"http://www.fwiep.nl/\" rel=\"external\">FWieP</a>
+			</div>
+			
+			</div>
+			</div>
+			
+			</div>
+			
+			</body>
+			</html>",
+		
+		$CurrentUser != null ? sprintf("
+			Logged in as <a href=\"user_view.php?user_id=%3\$d\"><strong>%1\$s</strong></a>.<br />Last login: %2\$s",
+			htmlentities($CurrentUser->getUserName()),
+			$CurrentUser->getPreLastLogin() > 0 ? date('j F Y', $CurrentUser->getPreLastLogin()) : 'never',
+			$CurrentUser->getID()
+		) : '&nbsp;'
+		
+		);
 	}
 	
 	/**

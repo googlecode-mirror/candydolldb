@@ -146,5 +146,5 @@ echo HTMLstuff::HtmlHeader('Dirty sets', $CurrentUser);
 <?php
 echo HTMLstuff::Button('index.php');
 
-echo HTMLstuff::HtmlFooter();
+echo HTMLstuff::HtmlFooter($CurrentUser);
 ?>

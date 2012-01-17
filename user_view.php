@@ -211,5 +211,5 @@ echo HTMLstuff::HtmlHeader($User->GetFullName(), $CurrentUser);
 </form>
 
 <?php
-echo HTMLstuff::HtmlFooter();
+echo HTMLstuff::HtmlFooter($CurrentUser);
 ?>

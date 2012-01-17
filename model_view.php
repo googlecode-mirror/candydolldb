@@ -131,5 +131,5 @@ if($ModelID)
 </form>
 
 <?php
-echo HTMLstuff::HtmlFooter();
+echo HTMLstuff::HtmlFooter($CurrentUser);
 ?>

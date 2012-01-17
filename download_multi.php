@@ -113,7 +113,7 @@ echo HTMLstuff::HtmlHeader('Download');
 <?php echo ($SetsOptions ? $SetsOptions : '<option value=""></option>'); ?>
 </select>
 
-<select id="selImages" name="selImages[]" multiple="multiple" style="width:350px;height:400px;float:left;margin-left:20px;">
+<select id="selImages" name="selImages[]" multiple="multiple" style="width:450px;height:400px;float:left;margin-left:20px;">
 <?php echo ($ImagesOptions ? $ImagesOptions : '<option value=""></option>'); ?>
 </select>
 
@@ -150,6 +150,6 @@ echo HTMLstuff::HtmlHeader('Download');
 
 echo HTMLstuff::Button('index.php');
 
-echo HTMLstuff::HtmlFooter();
+echo HTMLstuff::HtmlFooter($CurrentUser);
 
 ?>
