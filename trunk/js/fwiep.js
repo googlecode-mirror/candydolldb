@@ -16,7 +16,7 @@ if (!/android|iphone|ipod|series60|symbian|windows ce|blackberry/i.test(navigato
 
 function ResizeContent(){
 	$('#Content').css('min-height',
-		($(window).height() - (125 + 100) ) + 'px'
+		($(window).height() - 225 ) + 'px'
 	);
 }
 
