@@ -56,14 +56,22 @@ class HTMLstuff
 				<li><a href=\"setup_data.php\">Process XML</a></li>
 				<li><a href=\"model_view.php\">New model</a></li>
 				<li><a href=\"set_dirty.php\">Dirty sets</a></li>
+				<li><a href=\"#\">Admin-panel</a></li>
 				<li><a href=\"download_multi.php\">Multi-download</a></li>
 				</ul>
 		
 			</li>
-			<li><a href=\"user.php\">Users</a></li>
-			<li><a href=\"#\">Admin-panel</a></li>
+			<li><a href=\"user.php\">Users</a>
+			
+				<ul>
+				<li><a href=\"user_view.php?user_id=%1\$d\">My account</a></li>
+				</ul>
+			
+			</li>
 			<li><a href=\"logout.php\">Logout</a></li>
-			</ul>");
+			</ul>",
+			
+			$CurrentUser->getID());
 		}
 
 		return $Output;
