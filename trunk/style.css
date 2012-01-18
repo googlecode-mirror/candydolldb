@@ -232,9 +232,12 @@ form.FilterForm input[type=submit]{
 	width: 430px;
 }
 .CenterForm p{
+	margin-top: 0;
 	text-align: center;
 }
-
+.CenterForm form label{
+	width: 110px;
+}
 .Lefty{
 	text-align: left;
 }
