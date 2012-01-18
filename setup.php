@@ -357,17 +357,6 @@ define('SMTP_PASSWORD', 			'%12\$s');
 define('SMTP_PORT', 				%13\$d);
 define('SMTP_AUTH', 				%14\$s);
 
-define('ALTERNATE_STYLE',			false);
-define('ALTERNATE_STYLE_OVERRIDE', "<style type=\"text/css\">
-		body{
-			background-image: url('images/background_alt.png');
-		}
-		label, h2, h2 a{
-			color: #2d3d3d;
-		}
-	</style>
-");
-
 \$MailTemplateResetPassword = "Dear %%1\\\$s,\\n".
 	"\\n".
 	"You have requested the option to reset the password of your CandyDoll DB account.\\n".

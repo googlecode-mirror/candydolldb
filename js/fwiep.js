@@ -42,7 +42,7 @@ $(function(){
 		}
 	});
 
-	$('.ErrorList').css('margin-left', (($(window).width()/2) - (520/2)) + 'px').fadeIn(400).click(CloseOverlay);
+	$('.ErrorList').css('margin-left', (($(window).width()/2) - (568/2)) + 'px').fadeIn(400).click(CloseOverlay);
 
 	$('a[rel^=external]').attr('target', 'new');
 
