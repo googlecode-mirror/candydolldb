@@ -157,7 +157,7 @@ if($SetID)
 
 <h2><?php echo sprintf('<a href="index.php">Home</a> - <a href="model_view.php?model_id=%1$d">%2$s</a> - <a href="set.php?model_id=%1$d">Sets</a> - %3$s',
 	$ModelID,
-	htmlentities($Model->GetShortName()),
+	htmlentities($Model->GetShortName(true)),
 	htmlentities($Set->getName())
 ); ?></h2>
 
