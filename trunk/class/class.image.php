@@ -356,7 +356,7 @@ class Image
 	 * @param int $width
 	 * @param int $height
 	 */
-	public static function OutputImage($filename = 'images/missing.jpg', $width = 800, $height = 600, $cachable = true, $cacheFilenameToBe = null)
+	public static function OutputImage($filename = 'images/missing.jpg', $width = 800, $height = 600, $cachable = true, $cacheFilenameToBe = null, $downloadFilenameToBe = null)
 	{
 		$filename = $filename ? $filename : 'images/missing.jpg';
 	
@@ -390,6 +390,14 @@ class Image
 			header("Expires: Thu, 15 Sep 1983 08:43:00 GMT");
 		}
 		
+		if(!is_null($downloadFilenameToBe)){
+			header(
+				sprintf('Content-Disposition: attachment; filename="%1$s"',
+					$downloadFilenameToBe
+				)
+			);
+		}
+		
 		header('Content-Type: image/jpeg');
 		
 		@ob_clean();
@@ -399,8 +407,6 @@ class Image
 		
 		exit;
 	}
-	
-	
 }
 
 ?>

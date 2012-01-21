@@ -181,6 +181,10 @@ form label{
 	float: left;
 	width: 150px;
 }
+form .WideForm label{
+	width: 730px;
+}
+
 form label em{
 	color: #cc0000;
 	font-weight: bold;

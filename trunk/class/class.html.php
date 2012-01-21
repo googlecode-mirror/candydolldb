@@ -56,7 +56,7 @@ class HTMLstuff
 				<li><a href=\"setup_data.php\">Process XML</a></li>
 				<li><a href=\"model_view.php\">New model</a></li>
 				<li><a href=\"set_dirty.php\">Dirty sets</a></li>
-				<li><a href=\"#\">Admin-panel</a></li>
+				<li><a href=\"admin_panel.php\">Admin-panel</a></li>
 				<li><a href=\"download_multi.php\">Multi-download</a></li>
 				</ul>
 		

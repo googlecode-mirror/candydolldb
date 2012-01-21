@@ -21,6 +21,7 @@ class ThumbnailSettings
 $indexImage = null;
 $finalWidth = null;
 $finalHeight = null;
+$promptDownload = false;
 $pathPrefix = (isset($argv) && $argc > 0) ? dirname($_SERVER['PHP_SELF']).'/' : '';  
 
 if(array_key_exists('width', $_GET) && isset($_GET['width']) && is_numeric($_GET['width']))
@@ -28,6 +29,10 @@ if(array_key_exists('width', $_GET) && isset($_GET['width']) && is_numeric($_GET
 
 if(array_key_exists('height', $_GET) && isset($_GET['height']) && is_numeric($_GET['height']))
 { $finalHeight = (int)$_GET['height']; }
+
+if(array_key_exists('download', $_GET) && isset($_GET['download']) && $_GET['download'] == 'true')
+{ $promptDownload = true; }
+
 
 $ModelID = null;
 
@@ -513,7 +518,20 @@ CacheImage::InsertCacheImage($CacheImage, $CurrentUser);
 imagejpeg($indexImage, $CacheImage->getFilenameOnDisk());
 
 header('Content-Type: image/jpeg');
+
+if($promptDownload){
+	header(
+		sprintf('Content-Disposition: attachment; filename="%1$s.jpg"',
+			$Sets[0]->getModel()->getFullName()
+		)
+	);
+}
+
+@ob_clean();
+flush();
 imagejpeg($indexImage);
 imagedestroy($indexImage);
+
+exit;
 
 ?>
