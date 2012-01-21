@@ -11,6 +11,7 @@ $ModelID = null;
 $CacheImage = null;
 $Width = null;
 $Height = null;
+$PromptDownload = false;
 $PortraitOnly = false;
 $LandscapeOnly = false;
 
@@ -36,6 +37,7 @@ if(array_key_exists('width', $_GET) && isset($_GET['width']) && is_numeric($_GET
 if(array_key_exists('height', $_GET) && isset($_GET['height']) && is_numeric($_GET['height']))
 { $Height = abs((int)$_GET['height']); }
 
+$PromptDownload = array_key_exists('download', $_GET) && isset($_GET['download']) && $_GET['download'] == 'true';
 $PortraitOnly = array_key_exists('portrait_only', $_GET) && isset($_GET['portrait_only']) && $_GET['portrait_only'] == 'true';
 $LandscapeOnly = array_key_exists('landscape_only', $_GET) && isset($_GET['landscape_only']) && $_GET['landscape_only'] == 'true';
 
@@ -59,20 +61,26 @@ if($ModelIndexID)
 	if($CacheImage)
 	{
 		$CacheImage = $CacheImage[0];
+		$Model = Model::GetModels(sprintf('model_id = %1$d AND mut_deleted = -1', $ModelIndexID));
+		$Model = $Model[0];
+		
 		Image::OutputImage(
 			$CacheImage->getFilenameOnDisk(),
 			$CacheImage->getImageWidth(),
 			$CacheImage->getImageHeight(),
-			true
+			true,
+			null,
+			$PromptDownload ? sprintf('%1$s.jpg', $Model->GetFullName()) : null
 		);
 	}
 	else
 	{
 		header(sprintf(
-			'location:download_index.php?model_id=%1$d&width=%2$d&height=%3$d',
+			'location:download_index.php?model_id=%1$d&width=%2$d&height=%3$d&download=%4$s',
 			$ModelIndexID,
 			$Width,
-			$Height
+			$Height,
+			$PromptDownload ? 'true':'false'
 		));
 	}
 }
