@@ -7,11 +7,11 @@
 
 So far, screenshots are taken with Chromium 15 and Firefox 8 on Ubuntu Oneiric. Feel free to submit your own.
 
-== Index page (v1.5, not yet released) == 
+== Index page (v1.5) == 
 
 [http://fwiep.nl/download/b9230d0f-54dd-4225-a7c1-794487731dbf.jpg http://fwiep.nl/download/b9230d0f-54dd-4225-a7c1-794487731dbfs.jpg]
 
-== Index page == 
+== Index page (< v1.5) == 
 
 [http://fwiep.nl/download/6277492e-9bcb-4383-a702-e5db97cdb4cd.jpg http://fwiep.nl/download/6277492e-9bcb-4383-a702-e5db97cdb4cds.jpg]
 
