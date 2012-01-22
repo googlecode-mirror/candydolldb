@@ -493,6 +493,8 @@ else
 
 echo HTMLstuff::HtmlHeader('Setup'); ?>
 
+<h2 class="Hidden">Application Setup</h2>
+
 <div class="CenterForm">
 
 <form action="<?php echo $_SERVER['REQUEST_URI'];?>" method="post"> 
