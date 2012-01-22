@@ -20,8 +20,11 @@ if(!defined('DBHOSTNAME') || strlen(DBHOSTNAME) == 0 ||
    !defined('DBUSERNAME') || strlen(DBUSERNAME) == 0 ||
    !defined('DBPASSWORD'))
 {
-	header('location:setup.php');
-	exit(128);
+	if(basename($_SERVER['REQUEST_URI']) != 'setup.php')
+	{
+		header('location:setup.php');
+		exit(128);
+	}
 }
 
 define('CANDYDOLLDB_VERSION', '1.5');
@@ -66,9 +69,14 @@ include('class/class.db.php');
 if(!array_key_exists('Errors', $_SESSION))
 { $_SESSION['Errors'] = serialize(array()); }
 
-$db = new DB(DBHOSTNAME, DBUSERNAME, DBPASSWORD);
-$db->Connect();
-$db->setDatabaseName('candydolldb');
+if(defined('DBHOSTNAME') &&
+   defined('DBUSERNAME') &&
+   defined('DBPASSWORD'))
+{
+	$db = new DB(DBHOSTNAME, DBUSERNAME, DBPASSWORD);
+	$db->Connect();
+	$db->setDatabaseName('candydolldb');
+}
 
 include('class/class.user.php');
 include('class/class.date.php');
