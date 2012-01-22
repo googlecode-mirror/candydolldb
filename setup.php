@@ -1,6 +1,6 @@
 <?php
 
-require_once('class/class.global.php');
+require_once('cd.php');
 
 function BackToThisPage($Text)
 { return sprintf('<a href="%2$s">%1$s</a>', $Text, $_SERVER['REQUEST_URI']); }
@@ -491,33 +491,9 @@ else
 	$SmtpAuth = true;
 }
 
-?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"> 
-<html xmlns="http://www.w3.org/1999/xhtml"> 
+echo HTMLstuff::HtmlHeader('Setup'); ?>
 
-<head> 
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /> 
-<meta name="language" content="en-US" /> 
-
-<link rel="stylesheet" type="text/css" href="style.css" title="CandyDoll DB" /> 
-<link rel="shortcut icon" href="favicon.ico" /> 
-<link rel="icon" href="favicon.ico" /> 
-		
-<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script> 
-<script type="text/javascript" src="js/fwiep.js"></script> 
-<title>CandyDoll DB :: Setup</title> 
-</head> 
- 
-<body> 
- 
-<div id="Container"> 
-<div id="Header"> 
- 
-<h1>CandyDoll DB :: Setup</h1> 
-<p>by <a href="http://www.fwiep.nl/" rel="external" title="FWieP">FWieP</a></p> 
-	
-</div> 
- 
-<div class="CenterForm"> 
+<div class="CenterForm">
 
 <form action="<?php echo $_SERVER['REQUEST_URI'];?>" method="post"> 
 <fieldset>
@@ -525,7 +501,7 @@ else
 <legend>Set up your CandyDoll DB:</legend> 
 <input type="hidden" id="hidAction" name="hidAction" value="SetupCDDB" />
 
-<h2>Database</h2>
+<h3>Database</h3>
 
 <div class="FormRow">
 <label for="txtDBHostName">Hostname: <em>*</em></label>
@@ -542,7 +518,7 @@ else
 <input type="text" id="txtDBPassword" name="txtDBPassword" maxlength="100" value="<?php echo $DBPassword;?>" />
 </div>
 
-<h2>System</h2>
+<h3>System</h3>
 
 <div class="FormRow">
 <label for="txtUserName">Username: <em>*</em></label>
@@ -569,7 +545,7 @@ else
 <input type="text" id="txtEmail" name="txtEmail" maxlength="255" value="<?php echo $UserEmail;?>" />
 </div>
 
-<h2>Candydoll collection</h2>
+<h3>Candydoll collection</h3>
 
 <div class="FormRow">
 <label for="txtCandyImagePath">Image-path:</label>
@@ -582,11 +558,11 @@ else
 </div>
 
 <div class="FormRow">
-<label for="txtCandyVideoThumbPath">Thumbnail-subpath:</label>
+<label for="txtCandyVideoThumbPath">Thumbnails:</label>
 <input type="text" id="txtCandyVideoThumbPath" name="txtCandyVideoThumbPath" maxlength="255" value="<?php echo $CandyVideoThumbPath;?>" />
 </div>
 
-<h2>Mailserver (SMTP, optional)</h2>
+<h3>Mailserver (SMTP, optional)</h3>
 
 <div class="FormRow">
 <label for="txtSmtpFromAddress">Sender-address: <em>*</em></label>
@@ -619,7 +595,7 @@ else
 </div>
 
 <div class="FormRow">
-<label for="txtSmtpPassword">SMTP-authentication: <em>*</em></label>
+<label for="txtSmtpPassword">SMTP-auth: <em>*</em></label>
 <input type="checkbox" id="chkSmtpAuth" name="chkSmtpAuth"<?php echo $SmtpAuth ? ' checked="checked"' : null; ?> />
 </div>
    
@@ -628,9 +604,6 @@ else
 </fieldset> 
 </form> 
  
-</div> 
- 
-</div> 
- 
-</body> 
-</html>
+</div>
+
+<?php echo HTMLstuff::HtmlFooter(); ?>
