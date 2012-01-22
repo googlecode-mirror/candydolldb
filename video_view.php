@@ -109,7 +109,7 @@ echo HTMLstuff::HtmlHeader($Model->GetShortName().' - Set '.$Set->getName().' - 
 	$ModelID,
 	$SetID,
 	$VideoID,
-	htmlentities($Model->GetShortName()),
+	htmlentities($Model->GetShortName(true)),
 	htmlentities($Set->getName()),
 	htmlentities($Video->getFileName())
 ); ?></h2>

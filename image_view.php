@@ -123,7 +123,7 @@ if($ImageID)
 	$ModelID,
 	$SetID,
 	$ImageID,
-	htmlentities($Model->GetShortName()),
+	htmlentities($Model->GetShortName(true)),
 	htmlentities($Set->getName()),
 	htmlentities($Image->getFileName())
 ); ?></h2>
