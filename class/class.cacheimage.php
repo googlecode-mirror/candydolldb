@@ -242,6 +242,28 @@ class CacheImage
 		);
 	}
 	
+	/**
+	* Removes multiple CacheImages from the database.
+	* @param array(CacheImage) $CacheImages
+	* @param User $CurrentUser
+	* @return bool
+	*/
+	public static function DeleteImages($CacheImages, $CurrentUser)
+	{
+		$outBool = true;
+		
+		if(is_array($CacheImages)){
+			foreach($CacheImages as $CacheImage){
+				
+				$outBool = CacheImage::DeleteImage($CacheImage, $CurrentUser);
+				if(!$outBool)
+				{ break; }
+				
+			}
+		}
+		return $outBool;
+	}
+	
 	public static function FilterCacheImages($CacheImageArray, $CacheImageKind = null, $ModelID = null, $ModelIndexID = null, $SetID = null, $ImageID = null, $VideoID = null, $CacheImageID = null)
 	{
 		$OutArray = array();
