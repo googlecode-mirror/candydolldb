@@ -14,6 +14,33 @@ foreach ($Models as $Model){
 	);
 }
 
+$CacheFolder = 'cache';
+$CacheImages = CacheImage::GetCacheImages();
+
+/* @var $it RecursiveDirectoryIterator */
+$it = new RecursiveDirectoryIterator(
+	$CacheFolder,
+	FileSystemIterator::SKIP_DOTS | FileSystemIterator::CURRENT_AS_FILEINFO
+);
+
+$PhysicalCacheImageCount = 0;
+
+/* @var $file SplFileInfo */
+foreach($it as $file){
+	if($file->isFile()){
+		$PhysicalCacheImageCount++;
+	}
+}
+
+$CacheInSync = '<span>No orphan files</span>';
+if($PhysicalCacheImageCount != count($CacheImages))
+{
+	$CacheInSync = sprintf('<span class="WarningRed">%1$d orphan file%2$s</span>',
+		$PhysicalCacheImageCount - count($CacheImages),
+		$PhysicalCacheImageCount - count($CacheImages) == 1 ? null : 's'
+	);
+} 
+
 echo HTMLstuff::HtmlHeader('Admin-panel', $CurrentUser);
 
 ?>
@@ -26,6 +53,7 @@ echo HTMLstuff::HtmlHeader('Admin-panel', $CurrentUser);
 <div class="FormRow WideForm">
 <label>To remove all files in the application's cache-folder that do not have a corresponding entry in the CacheImage-table.</label>
 <input type="button" id="btnCleanCache" name="btnCleanCache" value="Clean" onclick="window.location='cacheimage_nuke.php';" />
+<?php echo $CacheInSync; ?>
 </div>
 
 <hr />

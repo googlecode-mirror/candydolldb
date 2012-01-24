@@ -38,6 +38,9 @@ h2{
 .Hidden{
 	display: none;
 }
+.WarningRed{
+	color: #c44;
+}
 
 .Loading{
 	background-image: url('images/loading.gif');

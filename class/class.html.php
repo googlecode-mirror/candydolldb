@@ -107,7 +107,7 @@ class HTMLstuff
 		$CurrentUser != null ? sprintf("<div class=\"userstats\">
 			Logged in as <a href=\"user_view.php?user_id=%3\$d\"><strong>%1\$s</strong></a>.<br />Last login: %2\$s</div>",
 			htmlentities($CurrentUser->getUserName()),
-			$CurrentUser->getPreLastLogin() > 0 ? date('j F Y', $CurrentUser->getPreLastLogin()) : 'never',
+			$CurrentUser->getPreLastLogin() > 0 ? date('Y-m-d H:i', $CurrentUser->getPreLastLogin()) : 'never',
 			$CurrentUser->getID()
 		) : '&nbsp;',
 		
