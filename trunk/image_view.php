@@ -166,7 +166,7 @@ if($ImageID)
 <div class="FormRow"><label>&nbsp;</label>
 <input type="submit" class="FormButton" value="<?php echo $DeleteImage ? 'Delete' : 'Save'; ?>" />
 <input type="button" class="FormButton" value="Cancel" onclick="window.location='<?php echo htmlentities($ReturnURL); ?>';" />
-<input type="button" class="FormButton" value="Clear cacheimage" onclick="window.location='cacheimage_delete.php?image_id=<?php echo $ImageID ?>';" />
+<input type="button" class="FormButton" value="Clear cacheimage" onclick="window.location='cacheimage_delete.php?image_id=<?php echo $ImageID ?>';"<?php echo HTMLstuff::DisabledStr($DeleteImage); ?> />
 </div>
 
 <div class="Separator"></div>

@@ -114,8 +114,8 @@ if($ModelID)
 
 <div class="FormRow">
 <label>&nbsp;</label>
-<input type="button" class="FormButton" value="Clear cacheimage" onclick="window.location='cacheimage_delete.php?model_id=<?php echo $ModelID ?>';" />
-<input type="button" class="FormButton" value="Clear thumbnailscache" onclick="window.location='cacheimage_delete.php?index_id=<?php echo $ModelID ?>';" />
+<input type="button" class="FormButton" value="Clear cacheimage" onclick="window.location='cacheimage_delete.php?model_id=<?php echo $ModelID ?>';"<?php echo HTMLstuff::DisabledStr($DeleteModel); ?> />
+<input type="button" class="FormButton" value="Clear thumbnailscache" onclick="window.location='cacheimage_delete.php?index_id=<?php echo $ModelID ?>';"<?php echo HTMLstuff::DisabledStr($DeleteModel); ?> />
 </div>
 
 <div class="Separator"></div>
