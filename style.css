@@ -48,17 +48,6 @@ h2{
 	background-repeat: no-repeat;
 }
 
-div#ErrorContainer{
-	background-color: #000000;
-	display: none;
-	height: 100%;
-	left: 0;
-	position: absolute;
-	top: 0;
-	width: 100%;
-	z-index: 3;
-}
-
 table{
 	width: 100%;
 }
@@ -82,13 +71,14 @@ table td em{
 
 div#Wrapper{
 	background-image: url('images/background_container.png');
+	background-repeat: repeat-y;
 	margin: 0 auto;
 	min-height: 200px;
-	width: 1014px;
+	width: 1000px;
 }
 div#Header{
 	background-image: url('images/background_header.jpg');
-	background-position: 5px 0;
+	background-position: 1px 0;
 	background-repeat: no-repeat;
 	height: 125px;
 }
@@ -132,7 +122,7 @@ ul#TopNavigation li a + ul:hover{
 
 div#Content{
 	line-height: 15pt;
-	padding: 20px 15px 30px 15px;
+	padding: 20px 20px 20px 15px;
 }
 
 div#Content table{
@@ -141,7 +131,7 @@ div#Content table{
 
 div#Footer{
 	background-image: url('images/background_footer.jpg');
-	background-position: 5px 0;
+	background-position: 1px 0;
 	background-repeat: no-repeat;
 	clear: both;
 	height: 100px;
@@ -165,10 +155,10 @@ div.cddbstuff a{
 }
 
 div.cddbstuff{
-	left: 834px;
+	left: 810px;
 }
 div.userstats{
-	left: 658px;
+	left: 634px;
 }
 
 form .FormRow{
@@ -280,6 +270,17 @@ a.Button:focus, a.Button:hover{
 }
 
 /* Errorlist */
+div#ErrorContainer{
+	background-color: #000000;
+	display: none;
+	height: 100%;
+	left: 0;
+	position: absolute;
+	top: 0;
+	width: 100%;
+	z-index: 4;
+}
+
 div.ErrorList{
 	background-color: #7b000e;
 	background-image: url('images/error_gradient.png');
@@ -294,7 +295,7 @@ div.ErrorList{
 	position: absolute;
 	top: 150px;
 	width: 520px;
-	z-index: 4;
+	z-index: 5;
 }
 div.ErrorList ul{
 	background-image: url('images/error.png');
@@ -315,7 +316,7 @@ div.ErrorList ul li{
 	float: left;
 	margin: 0 20px 20px 20px; 
 	padding: 15px 5px 5px 5px;
-	width: 275px;
+	width: 270px;
 }
 .ThumbImageWrapper{
 	margin: 0 auto;
