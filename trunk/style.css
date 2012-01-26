@@ -280,8 +280,16 @@ div#ErrorContainer{
 	width: 100%;
 	z-index: 4;
 }
-
 div.ErrorList{
+	display: none;
+	left: 0;
+	height:100%;
+	position:absolute;
+	top: 0;
+	width:100%;
+	z-index:5;
+}
+div.ErrorList div{
 	background-color: #7b000e;
 	background-image: url('images/error_gradient.png');
 	background-position: top left;
@@ -289,23 +297,19 @@ div.ErrorList{
 	border: solid 4px #8f2323;
 	color: #dedede;
 	cursor: pointer;
-	display: none;
 	font-size: 12pt;
+	font-weight: bold;
+	margin:150px auto 0 auto;
 	padding: 20px;
-	position: absolute;
-	top: 150px;
 	width: 520px;
-	z-index: 5;
 }
-div.ErrorList ul{
+div.ErrorList div ul{
 	background-image: url('images/error.png');
 	background-repeat: no-repeat;
 	list-style-type: none;
 	margin: 0;
 	min-height: 120px;
 	padding: 0 0 0 130px;
-}
-div.ErrorList ul li{
 }
 
 
