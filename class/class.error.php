@@ -64,7 +64,7 @@ class Error
 		if($inErrors !== null && is_array($inErrors) && count($inErrors) > 0)
 		{
 			$inErrors = array_reverse($inErrors);
-			$errorList .= "\n<div class=\"ErrorList\" title=\"Click to close this message.\"><ul>";
+			$errorList .= "\n<div class=\"ErrorList\" title=\"Click to close this message.\"><div><ul>";
 			
 			/* @var $Error Error */
 		 	while(($Error = array_pop($inErrors)) !== null)
@@ -74,7 +74,7 @@ class Error
 				);
 				$errorCount++;
 			}
-			$errorList .= "</ul></div>";
+			$errorList .= "</ul></div></div>";
 		}
 		
 		$_SESSION['Errors'] = serialize($inErrors);
