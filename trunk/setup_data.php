@@ -138,6 +138,9 @@ if($XmlFromFile)
 				Set::InsertSet($Set2Process, $CurrentUser);
 				$setid = $db->GetLatestID();
 				if($setid) { $Set2Process->setID($setid); }
+				
+				$CacheImages = CacheImage::GetCacheImages(sprintf('index_id = %1$d', $Model2Process->getID()));
+				CacheImage::DeleteImages($CacheImages, $CurrentUser);
 			}
 			
 			$datesPic = array();
