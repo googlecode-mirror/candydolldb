@@ -170,15 +170,23 @@ if(file_exists($tmpFile))
 {
 	header('Content-Description: File Transfer');
 	header('Content-Type: application/octet-stream');
-	header('Content-Disposition: attachment; filename='.$finalFile);
+	header('Content-Disposition: attachment; filename="'.$finalFile.'"');
 	header('Content-Transfer-Encoding: binary');
 	header('Expires: 0');
 	header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
 	header('Pragma: public');
 	header('Content-Length: '.filesize($tmpFile));
 	@ob_clean();
-	flush();
-	readfile($tmpFile);
+	
+	$f = fopen($tmpFile, "r");
+	if($f !== false)
+	{
+		while($chunk = fread($f, 16777216))
+		{ echo $chunk; }
+		
+		fclose($f);
+	}
+
 	unlink($tmpFile);
 	exit;
 }
