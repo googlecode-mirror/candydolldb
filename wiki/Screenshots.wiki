@@ -7,33 +7,25 @@
 
 So far, screenshots are taken with Chromium 15 and Firefox 8 on Ubuntu Oneiric. Feel free to submit your own.
 
-== Index page (v1.5) == 
+== Index page == 
 
 [http://fwiep.nl/download/b9230d0f-54dd-4225-a7c1-794487731dbf.jpg http://fwiep.nl/download/b9230d0f-54dd-4225-a7c1-794487731dbfs.jpg]
 
-== Index page (< v1.5) == 
-
-[http://fwiep.nl/download/6277492e-9bcb-4383-a702-e5db97cdb4cd.jpg http://fwiep.nl/download/6277492e-9bcb-4383-a702-e5db97cdb4cds.jpg]
-
 == Set details == 
 
-[http://fwiep.nl/download/fbe045bd-ae4b-4160-9df0-cd2e37f401b4.jpg http://fwiep.nl/download/fbe045bd-ae4b-4160-9df0-cd2e37f401b4s.jpg]
+[http://fwiep.nl/download/10e40236-e6cf-4fae-9c5d-42ec59a1958a.jpg http://fwiep.nl/download/10e40236-e6cf-4fae-9c5d-42ec59a1958as.jpg]
 
 == Set overview == 
 
-[http://fwiep.nl/download/cada6bd7-08b2-41b4-82c3-8449d1136291.jpg http://fwiep.nl/download/cada6bd7-08b2-41b4-82c3-8449d1136291s.jpg]
+[http://fwiep.nl/download/559c0085-20a2-4953-832c-86334ba8d68f.jpg http://fwiep.nl/download/559c0085-20a2-4953-832c-86334ba8d68fs.jpg]
 
 == Model form == 
 
-[http://fwiep.nl/download/f1ede4e8-8ca5-4c82-b737-9ca04109032b.jpg http://fwiep.nl/download/f1ede4e8-8ca5-4c82-b737-9ca04109032bs.jpg]
+[http://fwiep.nl/download/b013e8a1-585c-412b-b50b-7ffb89982ae6.jpg http://fwiep.nl/download/b013e8a1-585c-412b-b50b-7ffb89982ae6s.jpg]
 
 == Batch video-import == 
 
 [http://fwiep.nl/download/2f09e963-5cb7-49b4-aa14-65975a969a5e.jpg http://fwiep.nl/download/2f09e963-5cb7-49b4-aa14-65975a969a5es.jpg]
-
-== Alternate style == 
-
-[http://fwiep.nl/download/17abeb5b-fce5-4605-9c78-21eb989cddd0.jpg http://fwiep.nl/download/17abeb5b-fce5-4605-9c78-21eb989cddd0s.jpg]
 
 == Automatic index generator == 
 
