@@ -16,6 +16,7 @@ class HTMLstuff
 		<head>
 		<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\" />
 		<meta name=\"language\" content=\"en-US\" />
+		<meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\" />
 		
 		<link rel=\"stylesheet\" type=\"text/css\" href=\"style.css\" title=\"CandyDoll DB\" />
 		<link rel=\"shortcut icon\" href=\"favicon.ico\" />

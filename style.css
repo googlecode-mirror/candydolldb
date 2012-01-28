@@ -21,8 +21,12 @@ a:focus, a:hover{
 a img{
 	border-width: 0;
 }
+form{
+	padding: 0;
+}
 fieldset{
 	border-width: 0;
+	padding: 0;
 }
 legend{
 	display: none;
@@ -114,6 +118,9 @@ ul#TopNavigation ul{
 ul#TopNavigation ul li{
 	float: none;
 }
+ul#TopNavigation ul li a{
+	min-width: 100px;
+}
 ul#TopNavigation li a:focus + ul,
 ul#TopNavigation li a:hover + ul,
 ul#TopNavigation li a + ul:hover{
@@ -199,12 +206,10 @@ form.FilterForm{
 	background-color: #dedede;
 	float: right;
 	margin-right: 20px;
-	width: 440px;
+	padding: 10px 20px;
 }
 form.FilterForm label{
 	float: none;
-	height: 30px;
-	line-height: 30px;
 	width: auto;
 }
 form.FilterForm input[type=text]{
