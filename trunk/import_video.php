@@ -60,9 +60,9 @@ for($i = 0; $i < count($Models); $i++)
 	if(!file_exists($VideoFolder)) { continue; }
 	
 	/* @var $it RecursiveIteratorIterator */
-	$it = new RecursiveIteratorIterator(new RecursiveDirectoryIterator(
+	$it = new RecursiveDirectoryIterator(
 			$VideoFolder,	
-		 	FileSystemIterator::SKIP_DOTS | FileSystemIterator::CURRENT_AS_FILEINFO));
+		 	FileSystemIterator::SKIP_DOTS | FileSystemIterator::CURRENT_AS_FILEINFO);
 
 	$itArray = array();
 	foreach($it as $file)
