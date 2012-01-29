@@ -30,3 +30,7 @@ So far, screenshots are taken with Chromium 15 and Firefox 8 on Ubuntu Oneiric. 
 == Automatic index generator == 
 
 [http://fwiep.nl/download/1f962fc0-419f-43a7-b0b4-3732c4f9580a.jpg http://fwiep.nl/download/1f962fc0-419f-43a7-b0b4-3732c4f9580as.jpg]
+
+== Admin-panel ==
+
+[http://fwiep.nl/download/17c3291c-a6fe-4f50-b246-852837d684af.jpg http://fwiep.nl/download/17c3291c-a6fe-4f50-b246-852837d684afs.jpg]
