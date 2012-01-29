@@ -171,7 +171,7 @@ else if($SetID)
 			$imagefileondisk = 	$Set->getModel()->GetFileFromDisk(
 				$PortraitOnly,
 				$LandscapeOnly,
-				sprintf('%1$s%2$s', $Set->getPrefix(), $Set->getName())
+				$Set->getID()
 			);
 
 			if($imagefileondisk)
