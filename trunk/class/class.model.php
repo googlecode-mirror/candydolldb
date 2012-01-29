@@ -122,53 +122,47 @@ class Model
 	 * Returns a random image-filename of the current model.
 	 * @return string|NULL
 	 */
-	public function GetFileFromDisk($PortraitOnly = false, $LandscapeOnly = false, $FullSetName = null)
+	public function GetFileFromDisk($PortraitOnly = false, $LandscapeOnly = false, $SetID = null)
 	{
 		$folderPath = sprintf('%1$s/%2$s%3$s', CANDYIMAGEPATH, $this->GetFullName(), ($FullSetName ? '/'.$FullSetName : null)); 
 		if(!file_exists($folderPath)){ return null; }
-
-		$it = new RecursiveIteratorIterator(new RecursiveDirectoryIterator(
-			$folderPath,	
-		 	FileSystemIterator::SKIP_DOTS | FileSystemIterator::CURRENT_AS_FILEINFO));
-		 	
-		$files = array();
-	
-		/* @var $file SplFileInfo */
-		foreach($it as $file)
+		
+		$whereClause = sprintf('model_id = %1$d AND mut_deleted = -1', $this->getID());
+		
+		if($PortraitOnly){
+			$whereClause .= ' AND image_height > image_width';
+		}
+		if($LandscapeOnly){
+			$whereClause .= ' AND image_width > image_height';
+		}
+		if($SetID){
+			$whereClause .= sprintf(' AND set_id = %1$d', $SetID);
+		}
+		
+		$orderClause = sprintf('RAND()');
+		$limitClause = sprintf('1');
+		
+		$Images = Image::GetImages($whereClause, $orderClause, $limitClause);
+		if(!$Images)
 		{
-			if($file->isFile())
-			{
-				if($PortraitOnly || $LandscapeOnly)
-				{
-					$info = getimagesize($it->getRealPath());
-					
-					if($PortraitOnly && $info[0] > $info[1]) { continue; }
-					if($LandscapeOnly && $info[0] < $info[1]) { continue; }
-				}
-				
-				$files[] = $it->getRealPath();
+			/* Work-around for returning at least ONE image when none fit the specified aspect ratio */
+			$whereClause = sprintf('model_id = %1$d AND mut_deleted = -1', $this->getID());
+			
+			if($SetID){
+				$whereClause .= sprintf(' AND set_id = %1$d', $SetID);
 			}
 		}
 		
-		/* Work-around for adding at least one image if
-		 * there were none with the specified aspect ratio.
-		 * It's not pretty, but it works. For now... */
-		if(!$files && $it)
+		$Images = Image::GetImages($whereClause, $orderClause, $limitClause);
+		if($Images)
 		{
-			foreach($it as $file)
-			{
-				if($file->isFile())
-				{
-					$files[] = $it->getRealPath();
-					break;
-				}
-			}
+			$Image = $Images[0];
+			return $Image->getFilenameOnDisk();
 		}
-		
-		if($files)
-		{ return $files[array_rand($files)];  }
 		else
-		{ return null; }
+		{
+			return null;
+		}
 	}
 
 	
