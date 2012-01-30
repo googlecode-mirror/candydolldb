@@ -124,7 +124,7 @@
 	</xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="ModelType">
+<xs:complexType name="ModelType" mixed="true">
 	<xs:sequence>
 		<xs:element name="Sets" minOccurs="0" maxOccurs="1" type="SetsType">
 			<xs:unique name="uniqueSetName">
@@ -132,6 +132,7 @@
 				<xs:field xpath="@name"/>
 			</xs:unique>
 		</xs:element>
+		<xs:element name="Remarks" minOccurs="0" maxOccurs="1" type="xs:string" />
 	</xs:sequence>
 
 	<xs:attribute name="firstname" type="Name" use="required"/>
