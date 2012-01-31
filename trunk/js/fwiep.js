@@ -62,6 +62,6 @@ $(window).resize(function(){
 
 if (!/android|iphone|ipod|series60|symbian|windows ce|blackberry/i.test(navigator.userAgent)) {
 	jQuery(function($) {
-		$("a[rel^='lightbox']").colorbox({ photo: true, slideshow: true  });
+		$("a[rel^='lightbox']").colorbox({ photo: true, slideshowSpeed: 2890, slideshow: true, transition: 'fade', speed: 200 });
 	});
 }
