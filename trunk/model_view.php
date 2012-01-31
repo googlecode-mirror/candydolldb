@@ -37,7 +37,7 @@ if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'ModelView')
 	{ $Model->setBirthDate(-1); }
 
 	$Model->setRemarks($_POST['txtRemarks']);
-
+	
 	if($Model->getID())
 	{
 		if($DeleteModel)
@@ -62,9 +62,11 @@ if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'ModelView')
 		if(Model::InsertModel($Model, $CurrentUser))
 		{
 			header('location:index.php');
-			exit;
+		    exit;
 		}
 	}
+	
+	
 }
 
 echo HTMLstuff::HtmlHeader($Model->GetShortName(), $CurrentUser);
@@ -81,6 +83,7 @@ if($ModelID)
 	
 	echo '<div class="PhotoContainer Loading"></div>';
 }
+
 
 ?>
 

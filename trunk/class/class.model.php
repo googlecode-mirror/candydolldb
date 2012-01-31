@@ -117,7 +117,7 @@ class Model
 	 * @param string $Remarks
 	 */
 	public function setRemarks($Remarks)
-	{ $this->Remarks = $Remarks; }
+	{ $this->Remarks = preg_replace("/(?<=^|\n)[\t\v ]+/i", '', $Remarks); }
 	
 	/**
 	 * Gets the Model's set count, defaults to 0.
