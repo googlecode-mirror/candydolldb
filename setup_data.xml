@@ -87,7 +87,6 @@
 			<Set name="17" date_pic="2010-10-22" date_vid="2010-10-22" />
 			<Set name="18" date_pic="2010-11-26" date_vid="2010-11-26" />
 		</Sets>
-		
 		<Remarks>
 			Real birthdate: 1996-03-19
 			URL: http://vk.com/id25102676
@@ -527,7 +526,6 @@
 			<Set name="36" date_pic="" date_vid="2011-12-09" />
 			<Set name="37" date_pic="" date_vid="2012-01-27" />
 		</Sets>
-		
 		<Remarks>
 			Real name: Lerusya Bugorskaya
 			URL: http://vk.com/id94393813
@@ -1191,12 +1189,10 @@
 			<Set name="42" date_pic="" date_vid="2011-09-30" />
 			<Set name="43" date_pic="" date_vid="2011-10-28" />
 		</Sets>
-		
 		<Remarks>
 			Real name: Veronika Serebryakova
 			URL: http://vk.com/id59922538
 		</Remarks>
-		
 	</Model>
 	<Model firstname="Valeriya" lastname="Levytska" birthdate="1996-05-02">
 		<Sets>
@@ -1283,13 +1279,11 @@
 			<Set name="42" date_pic="" date_vid="2011-11-18" />
 			<Set name="43" date_pic="" date_vid="2011-11-25" />
 		</Sets>
-		
 		<Remarks>
 			Real name: Viktoria Zadorozhnaya
 			Real birthdate: 1996-04-24
 			URL: http://vk.com/id59171339 
 		</Remarks>
-		
 	</Model>
 	<Model firstname="Violeta" lastname="K" birthdate="1996-08-27">
 		<Sets>
