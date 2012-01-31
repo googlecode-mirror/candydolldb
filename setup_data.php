@@ -74,6 +74,10 @@ if($XmlFromFile)
 		$birthDate = strtotime((string)$Model->attributes()->birthdate); 
 		if($birthDate !== false) { $Model2Process->setBirthdate($birthDate); }
 		else { $Model2Process->setBirthdate(-1); }
+		
+		if($Model->Remarks){
+			$Model2Process->setRemarks($Model->Remarks);
+		}
 
 		if($Model2Process->getID())
 		{
