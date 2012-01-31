@@ -36,6 +36,8 @@ if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'ModelView')
 	else
 	{ $Model->setBirthDate(-1); }
 
+	$Model->setRemarks($_POST['txtRemarks']);
+
 	if($Model->getID())
 	{
 		if($DeleteModel)
@@ -104,6 +106,11 @@ if($ModelID)
 <div class="FormRow">
 <label for="txtBirthDate">Birthdate:</label>
 <input type="text" id="txtBirthDate" name="txtBirthDate" class="DatePicker"	maxlength="10" value="<?php echo $Model->getBirthDate() > 0 ? date('Y-m-d', $Model->getBirthDate()) : null; ?>"<?php echo HTMLstuff::DisabledStr($DeleteModel); ?> />
+</div>
+
+<div class="FormRow">
+<label for="txtRemarks">Remarks:</label>
+<textarea id="txtRemarks" name="txtRemarks" cols="42" rows="16" <?php echo HTMLstuff::DisabledStr($DeleteModel); ?>><?php echo $Model->getRemarks(); ?></textarea>
 </div>
 
 <div class="FormRow">

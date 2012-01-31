@@ -6,6 +6,7 @@ class Model
 	private $FirstName;
 	private $LastName;
 	private $BirthDate = -1;
+	private $Remarks;
 	private $SetCount = 0;
 	
 	/**
@@ -103,6 +104,20 @@ class Model
 	 */
 	public function setBirthDate($BirthDate)
 	{ $this->BirthDate = $BirthDate; }
+
+	/**
+	 * Gets the Model's remarks.
+	 * 
+	 * @return string
+	 */
+	public function getRemarks()
+	{ return $this->Remarks; }
+	
+	/**
+	 * @param string $Remarks
+	 */
+	public function setRemarks($Remarks)
+	{ $this->Remarks = $Remarks; }
 	
 	/**
 	 * Gets the Model's set count, defaults to 0.
@@ -191,10 +206,11 @@ class Model
 					{
 						switch($ColumnKey)
 						{
-							case 'model_id'			: $ModelObject->setID($ColumnValue);		break;
+							case 'model_id'		: $ModelObject->setID($ColumnValue);		break;
 							case 'model_firstname'	: $ModelObject->setFirstName($ColumnValue);	break;
 							case 'model_lastname'	: $ModelObject->setLastName($ColumnValue);	break;
 							case 'model_birthdate'	: $ModelObject->setBirthDate($ColumnValue);	break;
+							case 'model_remarks'	: $ModelObject->setRemarks($ColumnValue);	break;
 							case 'model_setcount'	: $ModelObject->setSetCount($ColumnValue);	break;
 						}
 					}
@@ -222,13 +238,14 @@ class Model
 	    return $db->Insert(
 		'Model',
 		array(
-		    mysql_real_escape_string($Model->getFirstName()),
-		    mysql_real_escape_string($Model->getLastName()),
-		    $Model->getBirthDate(),
-		    $CurrentUser->getID(),
-		    time()
+			mysql_real_escape_string($Model->getFirstName()),
+			mysql_real_escape_string($Model->getLastName()),
+			$Model->getBirthDate(),
+			$Model->getRmarks(),
+			$CurrentUser->getID(),
+			time()
 		),
-		'model_firstname, model_lastname, model_birthdate, mut_id, mut_date'
+		'model_firstname, model_lastname, model_birthdate, model_remarks, mut_id, mut_date'
 	    );
 	}
 	
@@ -249,6 +266,7 @@ class Model
 				'model_firstname' => mysql_real_escape_string($Model->getFirstName()),
 				'model_lastname' => mysql_real_escape_string($Model->getLastName()),
 				'model_birthdate' => $Model->getBirthDate(),
+				'model_remarks' => mysql_real_escape_string($Model->getRemarks()),
 				'mut_id' => $CurrentUser->getID(),
 				'mut_date' => time()
 			),
