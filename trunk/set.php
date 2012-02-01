@@ -103,7 +103,7 @@ else
 	if($Models) { $Model = $Models[0]; }
 }
 
-echo HTMLstuff::HtmlHeader($Model->GetShortName().' - Sets', $CurrentUser);
+echo HTMLstuff::HtmlHeader($Model->GetShortName(true).' - Sets', $CurrentUser);
 
 ?>
 
