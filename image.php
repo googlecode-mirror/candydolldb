@@ -83,7 +83,7 @@ if(!$Set)
 	}
 }
 
-echo HTMLstuff::HtmlHeader(sprintf('%1$s - Set %2$s - Images', $Model->GetShortName(), $Set->getName()), $CurrentUser);
+echo HTMLstuff::HtmlHeader(sprintf('%1$s - Set %2$s - Images', $Model->GetShortName(true), $Set->getName()), $CurrentUser);
 
 ?>
 

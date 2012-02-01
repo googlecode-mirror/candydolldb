@@ -493,9 +493,9 @@ else
 	$SmtpAuth = true;
 }
 
-echo HTMLstuff::HtmlHeader('Setup'); ?>
+echo HTMLstuff::HtmlHeader('Application setup'); ?>
 
-<h2 class="Hidden">Application Setup</h2>
+<h2 class="Hidden">Application setup</h2>
 
 <div class="CenterForm">
 

@@ -101,7 +101,7 @@ if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'ImageView')
 	}
 }
 
-echo HTMLstuff::HtmlHeader($Model->GetShortName().' - Set '.$Set->getName().' - Image', $CurrentUser);
+echo HTMLstuff::HtmlHeader($Model->GetShortName(true).' - Set '.$Set->getName().' - Image', $CurrentUser);
 
 if($ImageID)
 {

@@ -69,7 +69,7 @@ if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'ModelView')
 	
 }
 
-echo HTMLstuff::HtmlHeader($Model->GetShortName(), $CurrentUser);
+echo HTMLstuff::HtmlHeader($Model->GetFullName(), $CurrentUser);
 
 if($ModelID)
 {

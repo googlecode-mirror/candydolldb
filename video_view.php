@@ -100,7 +100,7 @@ if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'VideoView')
 	}
 }
 
-echo HTMLstuff::HtmlHeader($Model->GetShortName().' - Set '.$Set->getName().' - Video', $CurrentUser);
+echo HTMLstuff::HtmlHeader($Model->GetShortName(true).' - Set '.$Set->getName().' - Video', $CurrentUser);
 
 if($VideoID)
 {
