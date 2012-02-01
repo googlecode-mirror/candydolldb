@@ -103,6 +103,11 @@ else
 	if($Models) { $Model = $Models[0]; }
 }
 
+if(!$Model){
+	header('location:index.php');
+	exit;
+}
+
 echo HTMLstuff::HtmlHeader($Model->GetShortName(true).' - Sets', $CurrentUser);
 
 ?>
