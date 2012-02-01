@@ -241,7 +241,7 @@ class Model
 			mysql_real_escape_string($Model->getFirstName()),
 			mysql_real_escape_string($Model->getLastName()),
 			$Model->getBirthDate(),
-			$Model->getRmarks(),
+			mysql_real_escape_string($Model->getRemarks()),
 			$CurrentUser->getID(),
 			time()
 		),
