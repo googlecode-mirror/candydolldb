@@ -131,7 +131,7 @@ echo HTMLstuff::HtmlHeader('Home', $CurrentUser);
 			<th style="width: 22px;">&nbsp;</th>
 			<th style="width: 22px;">&nbsp;</th>
 			<th style="width: 22px;">&nbsp;</th>
-			<th style="width: 22px;">&nbsp;</th>
+			<th style="width: 22px;"><a href="#" title="View slideshow" onclick="OpenSlideColorBox();"><img src="images/button_view.png" alt="View slideshow" width="16" height="16" /></a></th>
 			<th style="width: 22px;">&nbsp;</th>
 		</tr>
 	</thead>

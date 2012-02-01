@@ -107,7 +107,7 @@ echo HTMLstuff::HtmlHeader(sprintf('%1$s - Set %2$s - Images', $Model->GetShortN
 			<th style="width: 65px;">Height</th>
 			<th style="width: 160px;">Checksum</th>
 			<th style="width: 22px;">&nbsp;</th>
-			<th style="width: 22px;">&nbsp;</th>
+			<th style="width: 22px;"><a href="#" title="View slideshow" onclick="OpenSlideColorBox();"><img src="images/button_view.png" alt="View slideshow" width="16" height="16" /></a></th>
 			<th style="width: 22px;">&nbsp;</th>
 		</tr>
 	</thead>
