@@ -18,6 +18,7 @@ else
 
 if(!defined('DBHOSTNAME') || strlen(DBHOSTNAME) == 0 ||
    !defined('DBUSERNAME') || strlen(DBUSERNAME) == 0 ||
+   !defined('DBNAME') || strlen(DBNAME) == 0 ||
    !defined('DBPASSWORD'))
 {
 	if(basename($_SERVER['REQUEST_URI']) != 'setup.php')
@@ -75,7 +76,7 @@ if(defined('DBHOSTNAME') &&
 {
 	$db = new DB(DBHOSTNAME, DBUSERNAME, DBPASSWORD);
 	$db->Connect();
-	$db->setDatabaseName('candydolldb');
+	$db->setDatabaseName(DBNAME);
 }
 
 include('class/class.user.php');

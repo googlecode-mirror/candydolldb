@@ -29,6 +29,7 @@ if(file_exists('config.php'))
 $DBHostName = null;
 $DBUserName = null;
 $DBPassword = null;
+$DBName = 'candydolldb';
 
 $UserName = null;
 $Password = null;
@@ -83,10 +84,9 @@ START TRANSACTION;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8 */;
 
-DROP DATABASE IF EXISTS `cdtvdb`;
-DROP DATABASE IF EXISTS `candydolldb`;
-CREATE DATABASE `candydolldb` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
-USE `candydolldb`;
+DROP DATABASE IF EXISTS `%1\$s`;
+CREATE DATABASE `%1\$s` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `%1\$s`;
 
 DROP TABLE IF EXISTS `Date`;
 CREATE TABLE IF NOT EXISTS `Date` (
@@ -349,6 +349,7 @@ define('CANDYVIDEOTHUMBPATH', 		'%4\$s');
 define('DBHOSTNAME',				'%5\$s');
 define('DBUSERNAME',				'%6\$s');
 define('DBPASSWORD',				'%7\$s');
+define('DBNAME',					'%18\$s');
 define('CMDLINE_USERID',			%17\$d);
 
 define('SMTP_FROM_ADDRESS', 		'%8\$s');
@@ -377,9 +378,10 @@ FjbMNnvUJheiwewUJfheJheuehFJDUHdywgwwgHGfgywug;
 
 if(array_key_exists('hidAction', $_POST) && isset($_POST['hidAction']) && $_POST['hidAction'] == 'SetupCDDB')
 {
-	$DBHostName = isset($_POST['txtDBHostName']) && strlen($_POST['txtDBHostName']) > 0 ? (string)$_POST['txtDBHostName'] : null;
-	$DBUserName = isset($_POST['txtDBUserName']) && strlen($_POST['txtDBUserName']) > 0 ? (string)$_POST['txtDBUserName'] : null;
+	$DBHostName = isset($_POST['txtDBHostName']) && strlen($_POST['txtDBHostName']) > 0 ? (string)$_POST['txtDBHostName']  : null;
+	$DBUserName = isset($_POST['txtDBUserName']) && strlen($_POST['txtDBUserName']) > 0 ? (string)$_POST['txtDBUserName']  : null;
 	$DBPassword = isset($_POST['txtDBPassword']) && strlen($_POST['txtDBPassword']) >= 0 ? (string)$_POST['txtDBPassword'] : null;
+	$DBName 	= isset($_POST['txtDBName']) 	 && strlen($_POST['txtDBName']) > 0 ? 	  (string)$_POST['txtDBName'] 	   : null;
 	
 	$UserName 		= isset($_POST['txtUserName']) && strlen($_POST['txtUserName']) > 0 ? (string)$_POST['txtUserName'] : null;
 	$Password 		= isset($_POST['txtPassword']) && strlen($_POST['txtPassword']) > 0 ? (string)$_POST['txtPassword'] : null;
@@ -403,11 +405,14 @@ if(array_key_exists('hidAction', $_POST) && isset($_POST['hidAction']) && $_POST
 	{
 		if(@mysql_pconnect($DBHostName, $DBUserName, $DBPassword) !== false)
 		{
-			if(ExecuteQueries($CreateDBSQL) !== false)
+			if(ExecuteQueries(sprintf(
+				$CreateDBSQL,
+				mysql_real_escape_string($DBName)
+			)) !== false)
 			{
 				$UserSalt = Utils::GenerateGarbage(20);
 				
-				@mysql_select_db('candydolldb');
+				@mysql_select_db($DBName);
 				if(@mysql_query(sprintf(
 						$InsertUserSQL,
 						mysql_escape_string($UserName),
@@ -438,7 +443,8 @@ if(array_key_exists('hidAction', $_POST) && isset($_POST['hidAction']) && $_POST
 						$SmtpAuth ? 'true' : 'false',
 						$UserFirstName,
 						$UserLastName,
-						$NewUserID);
+						$NewUserID,
+						$DBName);
 					
 					if(@file_put_contents('config.php', $NewConfig, LOCK_EX) !== false)
 					{
@@ -454,7 +460,7 @@ if(array_key_exists('hidAction', $_POST) && isset($_POST['hidAction']) && $_POST
 			{ die(sprintf('Something went wrong while creating the database (\'%2$s\'), please %1$s.', BackToThisPage('try again'), mysql_error())); }	
 		}
 		else
-		{ die(sprintf('Could not connect to the database, please %1$s the database-settings.', BackToThisPage('re-enter'))); }
+		{ die(sprintf('Could not connect to the database-server, please %1$s the database-settings.', BackToThisPage('re-enter'))); }
 	}
 	else
 	{ die(sprintf('Could not connect to the database, please %1$s the database-settings.', BackToThisPage('re-enter'))); }
@@ -520,6 +526,11 @@ echo HTMLstuff::HtmlHeader('Application setup'); ?>
 <div class="FormRow">
 <label for="txtDBPassword">Password: <em>*</em></label>
 <input type="text" id="txtDBPassword" name="txtDBPassword" maxlength="100" value="<?php echo $DBPassword;?>" />
+</div>
+
+<div class="FormRow">
+<label for="txtDBName">Databasename: <em>*</em></label>
+<input type="text" id="txtDBName" name="txtDBName" maxlength="100" value="<?php echo $DBName;?>" />
 </div>
 
 <h3>System</h3>
