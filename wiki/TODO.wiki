@@ -9,9 +9,11 @@
 
   * Lots of feedback :-)
 
-  * A new, more spiffy lay-out and design. Any suggestions?
-
 == Could Use ==
+
+  * Multiple lay-out themes (header/footers), possibly switchable.
+
+  * URL-rewrite compatibility. Apache, IIS or both?
 
   * HTML5-interface instead of XHTML 1.0 Strict.
 
