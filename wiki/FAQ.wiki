@@ -7,13 +7,6 @@
 
 ----
 
-== What exactly is CandyDoll.TV? ==
-
-It is a Japanese modelingsite, that features young female models of European heritage. In their own words:<br>
-  _ !CandyDoll.TV is the place where you can enjoy the beauty of little girls. We made collection of young and petite girls. You will definitely find these excellent photos worth to be called true masterpieces. _
-
-----
-
 == What is the expected direcory-structure for CandyDollDB? ==
 
 The full path of an image in CandyDollDB contains a few components: 
