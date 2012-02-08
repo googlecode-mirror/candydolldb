@@ -3,14 +3,20 @@
 
 = FAQ =
 
-* Q: What exactly is [http://www.candydoll.tv/ CandyDoll.TV]?<br>
-* A: It is a Japanese modelingsite, that features young female models of European heritage. In their own words:<br>
+<wiki:toc max_depth="2" />
+
+----
+
+== What exactly is CandyDoll.TV? ==
+
+It is a Japanese modelingsite, that features young female models of European heritage. In their own words:<br>
   _ !CandyDoll.TV is the place where you can enjoy the beauty of little girls. We made collection of young and petite girls. You will definitely find these excellent photos worth to be called true masterpieces. _
 
 ----
 
-* Q: What is the expected direcory-structure for CandyDollDB?<br>
-* A: The full path of an image in CandyDollDB contains a few components: 
+== What is the expected direcory-structure for CandyDollDB? ==
+
+The full path of an image in CandyDollDB contains a few components: 
 <pre>  {CANDYIMAGEPATH}\{FullModelName}\{SetPrefix}{SetName}\{ImageFilename}.{ImageExtension}</pre> (Windows) or (GNU/Linux)<pre>  {CANDYIMAGEPATH}/{FullModelName}/{SetPrefix}{SetName}/{ImageFilename}.{ImageExtension}</pre>
 An example path could be
 <pre>
@@ -20,8 +26,9 @@ D:\CandyDoll\Alyona Gromova\set_01\AlyonaG01_001.jpg</pre> on Windows or
 
 ----
 
-* Q: During setup, I keep getting a database-error although all my settings are correct?<br>
-* A: CandyDollDB versions 1.3 and below did not allow for a blank database-password (as is customary with for example XAMPP, EasyPHP and others). Please update to the [http://code.google.com/p/candydolldb/downloads/list latest version].
+== During setup, I keep getting a database-error although all my settings are correct? ==
+
+CandyDollDB versions 1.3 and below did not allow for a blank database-password (as is customary with for example XAMPP, EasyPHP and others). Please update to the [http://code.google.com/p/candydolldb/downloads/list latest version].
 
 ----
 
@@ -30,5 +37,6 @@ D:\CandyDoll\Alyona Gromova\set_01\AlyonaG01_001.jpg</pre> on Windows or
 
 ----
 
-* Q: What exectly are the 'Index'- and 'Thumbnail'-settings during the application's setup?<br>
-* A: Both are images containing thumbnails of either all a model's sets or a set's movie. They are regularly posted on [http://binsearch.info/index.php?q=CD+IDX&m=&max=250&adv_g=alt.binaries.pictures.sierra&adv_age=999&adv_sort=date&minsize=&maxsize=&font=&postdate= Usenet], most notably by [http://binsearch.info/?server=2&max=250&g=alt.binaries.pictures.sierra&a=Horac+%3CSTarring%40nothing.com%3E Horac]. Since v1.3 of CandyDollDB, the indexes are being automatically generated. Hence this setting has been removed.
+== What exectly are the 'Index'- and 'Thumbnail'-settings during the application's setup? ==
+
+Both are images containing thumbnails of either all a model's sets or a set's movie. They are regularly posted on [http://binsearch.info/index.php?q=CD+IDX&m=&max=250&adv_g=alt.binaries.pictures.sierra&adv_age=999&adv_sort=date&minsize=&maxsize=&font=&postdate= Usenet], most notably by [http://binsearch.info/?server=2&max=250&g=alt.binaries.pictures.sierra&a=Horac+%3CSTarring%40nothing.com%3E Horac]. Since v1.3 of CandyDollDB, the indexes are being automatically generated. Hence this setting has been removed.
