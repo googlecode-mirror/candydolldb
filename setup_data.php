@@ -3,6 +3,7 @@
 include('cd.php');
 ini_set('max_execution_time', '3600');
 $CurrentUser = Authentication::Authenticate();
+$ModelID = null;
 
 /**
  * Parses an array of strings into an array of Date objects.
@@ -35,6 +36,8 @@ function ParseDates($InArray, $DateKind = DATE_KIND_UNKNOWN, $Set = null)
 	return $OutArray;	
 }
 
+if(array_key_exists('model_id', $_GET) && isset($_GET['model_id']) && is_numeric($_GET['model_id']))
+{ $ModelID = (int)$_GET['model_id']; }
 
 if(isset($argv) && $argc > 0)
 {
@@ -68,6 +71,11 @@ if($XmlFromFile)
 
 		/* @var $Model2Process Model */
 		$Model2Process = $ModelInDb ? $ModelInDb : new Model();
+		
+		// Provide a one-model-only import for impatient developers
+		if($Model2Process->getID() && $ModelID && $Model2Process->getID() !== $ModelID)
+		{ continue; }
+		
 		$Model2Process->setFirstName((string)$Model->attributes()->firstname);
 		$Model2Process->setLastName((string)$Model->attributes()->lastname);
 
@@ -112,25 +120,21 @@ if($XmlFromFile)
 			{
 				$Set2Process->setPrefix('SP_');
 				$Set2Process->setName(preg_replace('/^SP_/i', '', (string)$Set->attributes()->name));
-				$Set2Process->setContainsWhat(SET_CONTENT_IMAGE | SET_CONTENT_VIDEO);
 			}
 			else if($Set2Process->getModel()->getFirstName() == 'Interviews')
 			{
 				$Set2Process->setPrefix('In_');
 				$Set2Process->setName((string)$Set->attributes()->name);
-				$Set2Process->setContainsWhat(SET_CONTENT_VIDEO);
 			}
 			else if($Set2Process->getModel()->getFirstName() == 'Promotions')
 			{
 				$Set2Process->setPrefix(null);
 				$Set2Process->setName((string)$Set->attributes()->name);
-				$Set2Process->setContainsWhat(SET_CONTENT_VIDEO);
 			}
 			else
 			{
 				$Set2Process->setPrefix('set_');
 				$Set2Process->setName((string)$Set->attributes()->name);
-				$Set2Process->setContainsWhat(SET_CONTENT_IMAGE | SET_CONTENT_VIDEO);
 			}
 			
 			if($Set2Process->getID())
@@ -159,6 +163,29 @@ if($XmlFromFile)
 			$Set2Process->setDatesVid(
 				ParseDates($datesVid[0], DATE_KIND_VIDEO, $Set2Process)
 			);
+			
+			
+			// Reset the Set's CONTAINS_WHAT
+			$Set2Process->setContainsWhat(SET_CONTENT_NONE);
+			
+			
+			if($Set2Process->getDatesPic())
+			{
+				$Set2Process->setContainsWhat(
+					$Set2Process->getContainsWhat() | SET_CONTENT_IMAGE
+				);
+			}
+			
+			if($Set2Process->getDatesVid())
+			{
+				$Set2Process->setContainsWhat(
+					$Set2Process->getContainsWhat() | SET_CONTENT_VIDEO
+				);
+			}
+			
+			// Update the Set's CONTAINS_WHAT 
+			Set::UpdateSet($Set2Process, $CurrentUser);
+			
 			
 			/* @var $Date Date */
 			/* @var $dateInDb Date */
