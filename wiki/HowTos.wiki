@@ -9,8 +9,8 @@
 
 To setup the application, proceed as follows:
 
-  # [http://code.google.com/p/candydolldb/downloads/list Download] a public release of CandyDollDB, or check out a the most current release in [http://code.google.com/p/candydolldb/source/checkout SubVersion].
-  # Place the application in a directory accessable through a webserver (e.g. `/var/www/cdtvdb/`).
+  # [http://code.google.com/p/candydolldb/downloads/list Download] a public release of CandyDollDB, or check out a the most current release from [http://code.google.com/p/candydolldb/source/checkout SubVersion].
+  # Place the application in a directory accessable through a webserver (e.g. `/var/www/candydolldb/` or `C:\xampp\htdocs\candydolldb`).
   # Check if the configuration-file (`config.php`) already exists. If it does, remove it.<br>All subsequent page-requests will be redirected to `setup.php`.
   # Enter all the required data, e.g. database connection data, user account data, SMTP connection data.<br>If all goes well, you should then be prompted to log in.
 
@@ -21,33 +21,33 @@ Among those are the e-mailtemplate to use when a user forgot her/his password an
 Once you are logged in, you can start importing models and sets:
 
   # Make sure you use the most up-to-date XML-file with all model- and setdata.<br>The XML-file can be downloaded from the [http://code.google.com/p/candydolldb/downloads/list Downloads]-page and must be renamed to `setup_data.xml`.
-  # Click the 'Process XML-data' button on the main page (`index.php`).<br>This can take a while.
+  # Click the 'Process XML-data' button in the Features-menu.<br>This can take a while.
   # Now you can import images and videos into their corresponding sets.<br>You can either
     * do it manually (great fun, if you've got some time to kill), or
     * do it automatically (see section [#Batch-imports Batch-imports]).
 
 == Batch-imports ==
 
-Because of the long duration of an all-images-all-videos-import, it is best to do this on the commandline of your server. There, no HTTP-time-out exists. In the next examples, the application is located in /var/www/cdtvdb/ on a GNU/Linux system with PHP5.
+Because of the long duration of an all-images-all-videos-import, it is best to do this on the commandline of your server. In the next examples, the application is located in /var/www/candydolldb/ on a GNU/Linux system with PHP5.
 
 Open a terminal and enter the following command to import all images:
 
 {{{
-$ php5 -f /var/www/cdtvdb/import_image.php
+$ php5 -f /var/www/candydolldb/import_image.php
 }}}
 
 For importing videos, use the following:
 
 {{{
-$ php5 -f /var/www/cdtvdb/import_video.php
+$ php5 -f /var/www/candydolldb/import_video.php
 }}}
 
 == Regular updates ==
 
   # Make sure you use the most up-to-date XML-file with all model- and setdata. The XML-file can be downloaded from the [http://code.google.com/p/candydolldb/downloads/list Downloads]-page and must be renamed to `setup_data.xml`. It contains the most complete list of models, their first- and lastnames, birthdates, sets and all releasedates.
-  # Click the 'Process XML-data' button on the main page (`index.php`).<br>This can take a while. Alternatively, you can import the data via the commandline:<br>
+  # Click the 'Process XML-data' button in the Features-menu.<br>This can take a while. Alternatively, you can import the data via the commandline:<br>
 {{{
-$ php5 -f /var/www/cdtvdb/setup_data.php
+$ php5 -f /var/www/candydolldb/setup_data.php
 }}}
 
 == Validate a CandydollDB XML-file ==
