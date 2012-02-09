@@ -15,6 +15,7 @@ if(array_key_exists('model_id', $_GET) && isset($_GET['model_id']) && is_numeric
 $Model = null;
 $SearchModel = '';
 $SearchDate = '';
+$FilterVIP = false;
 $SetRows = '';
 $SetCount = 0;
 $ImageCount = 0;
@@ -26,11 +27,13 @@ if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'DirtySetFilt
 {
 	$SearchModel = $_SESSION['txtSearchModel'] 	= $_POST['txtSearchModel'];
 	$SearchDate = $_SESSION['txtSearchDate'] 	= $_POST['txtSearchDate'];
+	$FilterVIP = $_SESSION['chkFilterVIP'] 		= array_key_exists('chkFilterVIP', $_POST);
 }
 else
 {
 	$SearchModel = array_key_exists('txtSearchModel', $_SESSION) ? $_SESSION['txtSearchModel'] : '';
 	$SearchDate = array_key_exists('txtSearchDate', $_SESSION) ? $_SESSION['txtSearchDate'] : '';
+	$FilterVIP = array_key_exists('chkFilterVIP', $_SESSION) ? (bool)$_SESSION['chkFilterVIP'] : true;
 }
 
 $WhereClause = sprintf(
@@ -48,6 +51,9 @@ if($Sets)
 	foreach($Sets as $Set)
 	{
 		if(!$Set->getSetIsDirty())
+		{ continue; }
+		
+		if($FilterVIP && $Set->getModel()->GetFullName() == 'VIP')
 		{ continue; }
 		
 		$DatesThisSet = Date::FilterDates($Dates, null, $ModelID, $Set->getID());
@@ -110,6 +116,9 @@ echo HTMLstuff::HtmlHeader('Dirty sets', $CurrentUser);
 
 <label for="txtSearchDate">Date</label>
 <input type="text" id="txtSearchDate" name="txtSearchDate" class="DatePicker" maxlength="10" style="width:100px;" value="<?php echo $SearchDate; ?>" />
+
+<label for="chkFilterVIP">NO-VIP</label>
+<input type="checkbox" id="chkFilterVIP" name="chkFilterVIP"<?php echo HTMLstuff::CheckedStr($FilterVIP); ?> />
 
 <input type="submit" id="btnSearch" name="btnSearch" value="Search" />
 
