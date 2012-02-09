@@ -11,6 +11,7 @@ To setup the application, proceed as follows:
 
   # [http://code.google.com/p/candydolldb/downloads/list Download] a public release of CandyDollDB, or check out a the most current release from [http://code.google.com/p/candydolldb/source/checkout SubVersion].
   # Place the application in a directory accessable through a webserver (e.g. `/var/www/candydolldb/` or `C:\xampp\htdocs\candydolldb`).
+  # Make sure that the user running the webserver has sufficient read- and or writepermissions in the application's root- and cache directories. Don't forget read-permission for your CD-collection, too.
   # Check if the configuration-file (`config.php`) already exists. If it does, remove it.<br>All subsequent page-requests will be redirected to `setup.php`.
   # Enter all the required data, e.g. database connection data, user account data, SMTP connection data.<br>If all goes well, you should then be prompted to log in.
 
