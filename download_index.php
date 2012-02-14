@@ -48,7 +48,7 @@ $Sets = Set::GetSets(sprintf('model_id = %1$d AND mut_deleted = -1', $ModelID));
 
 if($Sets && !in_array($Sets[0]->getModel()->getFullName(), array('VIP', 'Promotions', 'Interviews')))
 {
-	ini_set('max_execution_time', '300');
+	ini_set('max_execution_time', '3600');
 	$indexImage = imagecreatefrompng($pathPrefix.'images/index_background.png'); 
 	$candyColor = imagecolorallocate($indexImage, 255, 246, 195);
 	$font = $pathPrefix.'images/FreeSerifBoldItalic.ttf';

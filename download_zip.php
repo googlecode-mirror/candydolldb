@@ -43,7 +43,7 @@ else
 /* @var $Model Model */
 if($resource === true)
 {
-	ini_set('max_execution_time', '300');
+	ini_set('max_execution_time', '3600');
 	$zip->setArchiveComment('Downloaded from CandyDoll DB'."\nhttps://code.google.com/p/candydolldb/");
 
 	if($ImageID)
