@@ -317,8 +317,40 @@ div.ErrorList div ul{
 }
 
 
-/* Set-Thumbnails */
+/* Model thumbnails */
 .ThumbGalItem{
+	background-image: url('images/background_modelitem.png');
+	color: #dedede;
+	float: left;
+	margin: 0 15px 20px 15px; 
+	padding: 15px 5px 10px 5px;
+	width: 200px;
+}
+.ThumbImageWrapper{
+	margin: 0 auto;
+	width: 150px;
+}
+.ThumbDataWrapper{
+}
+.ThumbDataWrapper ul{
+ 	list-style-type:none;
+ 	margin: 0;
+ 	padding: 5px 5px 15px 20px;
+}
+.ThumbDataWrapper ul li em{
+	color: red;
+	font-weight: bolder;
+}
+.ThumbButtonWrapper{
+	margin: 0 auto;
+	width: 150px;
+}
+.ThumbButtonWrapper a{
+	margin: 0 5px 0 0;
+}
+
+/* Set thumbnails */
+.SetThumbGalItem{
 	background-image: url('images/background_setitem.png');
 	color: #dedede;
 	float: left;
@@ -326,30 +358,30 @@ div.ErrorList div ul{
 	padding: 15px 5px 5px 5px;
 	width: 270px;
 }
-.ThumbImageWrapper{
+.SetThumbImageWrapper{
 	margin: 0 auto;
 	width: 225px;
 }
-.ThumbDataWrapper{
+.SetThumbDataWrapper{
 	float:left;
 	width:200px;
 }
-.ThumbDataWrapper ul{
+.SetThumbDataWrapper ul{
  	list-style-type:none;
 }
-.ThumbDataWrapper ul li.Dirty{
+.SetThumbDataWrapper ul li.Dirty{
 	color: red;
 	font-weight: bolder;
 }
-.ThumbDataWrapper ul ul{
+.SetThumbDataWrapper ul ul{
  	padding-left: 20px;
 }
-.ThumbButtonWrapper{
+.SetThumbButtonWrapper{
 	float:left;
 	padding-top: 20px;
 	width:50px;
 }
-.ThumbButtonWrapper a img{
+.SetThumbButtonWrapper a img{
 	margin: 0 5px 10px 0;
 }
 
