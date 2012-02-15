@@ -60,35 +60,48 @@ if($Models)
 		$ModelCount++;
 		
 		$SetCount += $Model->getSetCount();
-
+		
 		$ModelRows .= sprintf(
-		"\n<tr class=\"Row%13\$d\">".
-    		"<td title=\"%5\$s\"><a href=\"model_view.php?model_id=%1\$d\">%6\$s</a></td>".
-	        "<td class=\"Center\"%11\$s><a href=\"set.php?model_id=%1\$d\">%2\$d%10\$s</a></td>".
-	    	"<td>%3\$s</td>".
-        	"<td>%4\$s</td>".
-        	"<td class=\"Center\">%7\$s</td>".
-			"<td%9\$s>%8\$s</td>".
-			"<td class=\"Center\"><a href=\"import_image.php?model_id=%1\$d\"><img src=\"images/button_upload.png\" width=\"16\" height=\"16\" alt=\"Import model's images\" title=\"Import model's images\" /></a></td>".
-			"<td class=\"Center\"><a href=\"import_video.php?model_id=%1\$d\"><img src=\"images/button_upload.png\" width=\"16\" height=\"16\" alt=\"Import model's videos\" title=\"Import model's videos\" /></a></td>".
-			"<td class=\"Center\"><a href=\"download_zip.php?model_id=%1\$d\"><img src=\"images/button_download.png\" width=\"16\" height=\"16\" alt=\"Download model's images\" title=\"Download model's images\" /></a></td>".
-			"<td class=\"Center\"><a href=\"download_image.php?index_id=%1\$d&amp;width=500&amp;height=750\" rel=\"lightbox-index\" title=\"Index of %6\$s\"><img src=\"images/button_view.png\" width=\"16\" height=\"16\" alt=\"Index of %6\$s\" /></a></td>".
-			"<td class=\"Center\"><a href=\"model_view.php?model_id=%1\$d&amp;cmd=%12\$s\" title=\"Delete model\"><img src=\"images/button_delete.png\" width=\"16\" height=\"16\" alt=\"Delete\" /></a></td>".
-        "</tr>",
-		$Model->getID(),
-		$Model->getSetCount(),
-		htmlentities($Model->getFirstName()),
-		htmlentities($Model->getLastName()),
-		htmlentities($Model->GetShortName()),
-		htmlentities($Model->GetFullName()),
-		$Model->getBirthdate() > 0 ? sprintf('%1$.1f', Utils::CalculateAge($Model->getBirthdate())) : '&nbsp;',
-		$Model->getBirthdate() > 0 ? date('j F Y', $Model->getBirthdate()) : '&nbsp;',
-		$Model->getBirthdate() > 0 ? ' title="'.date('l', $Model->getBirthdate()).'"' : null,
-		$DirtySetCount > 0 ? '<em> !</em>' : null,
-		$DirtySetCount > 0 ? sprintf(' title="%1$d empty or incomplete set(s)"', $DirtySetCount) : null,
-		COMMAND_DELETE,
-		$ModelCount % 2 == 0 ? 2 : 1
+			"<div class=\"ThumbGalItem\">
+			<h3 class=\"Hidden\">%1\$s</h3>
+			
+			<div class=\"ThumbImageWrapper\">
+			<a href=\"set.php?model_id=%2\$d\">
+			<img src=\"download_image.php?model_id=%2\$d&amp;portrait_only=true&amp;width=150&amp;height=225\" width=\"150\" height=\"225\" alt=\"%1\$s\" title=\"%1\$s\" />
+			</a>
+			</div>
+			
+			<div class=\"ThumbDataWrapper\">
+			<ul>
+			<li>Name: %1\$s</li>
+			<li>Birthdate: %5\$s%6\$s</li>
+			<li>Sets: %8\$d%7\$s</li>
+			</ul>
+			</div>
+			
+			<div class=\"ThumbButtonWrapper\">
+			<a href=\"model_view.php?model_id=%2\$d\"><img src=\"images/button_edit.png\" width=\"16\" height=\"16\" title=\"Edit model\" alt=\"Edit model\"/></a>
+			<a href=\"import_image.php?model_id=%2\$d\"><img src=\"images/button_upload.png\" width=\"16\" height=\"16\" alt=\"Import model's images\" title=\"Import model's images\" /></a>
+			<a href=\"import_video.php?model_id=%2\$d\"><img src=\"images/button_upload.png\" width=\"16\" height=\"16\" alt=\"Import model's videos\" title=\"Import model's videos\" /></a>
+			<a href=\"download_zip.php?model_id=%2\$d\"><img src=\"images/button_download.png\" width=\"16\" height=\"16\" alt=\"Download model's images\" title=\"Download model's images\" /></a>
+			<a href=\"download_image.php?index_id=%2\$d&amp;width=500&amp;height=750\" rel=\"lightbox-index\" title=\"Index of %1\$s\"><img src=\"images/button_view.png\" width=\"16\" height=\"16\" alt=\"Index of %1\$s\" /></a>
+			<a href=\"model_view.php?model_id=%2\$d&amp;cmd=%3\$s\" title=\"Delete model\"><img src=\"images/button_delete.png\" width=\"16\" height=\"16\" alt=\"Delete\" /></a>
+			</div>
+			
+			</div>
+			
+			%4\$s",
+			
+			htmlentities($Model->GetFullName()),
+			$Model->getID(),
+			COMMAND_DELETE,
+			($ModelCount % 4 == 0 ? "<div class=\"Clear\"></div>" : null),
+			$Model->getBirthdate() > 0 ? date('j-m-Y', $Model->getBirthdate()) : '&nbsp;',
+			$Model->getBirthdate() > 0 ? sprintf(' (%1$.1f)', Utils::CalculateAge($Model->getBirthdate())) : '&nbsp;',
+			$DirtySetCount > 0 ? sprintf(', <em>%1$d dirty</em>', $DirtySetCount) : null,
+			$Model->getSetCount()
 		);
+		
 	}
 	unset($Model);
 }
@@ -114,38 +127,16 @@ echo HTMLstuff::HtmlHeader('Home', $CurrentUser);
 
 <input type="submit" id="btnSearch" name="btnSearch" value="Search" />
 
+<input type="button" id="btnSlideshow" name="btnSlideshow" value="Index-slideshow" onclick="OpenSlideColorBox();" />
+
 </fieldset>
 </form>
 
 <h2>Home</h2>
 
-<table border="0" cellpadding="4" cellspacing="0">
-	<thead>
-		<tr>
-			<th>Model</th>
-			<th style="width: 60px;"># Sets</th>
-			<th style="width: 110px;">Firstname</th>
-			<th style="width: 120px;">Lastname</th>
-			<th style="width: 40px;">Age</th>
-			<th style="width: 140px;">Birthdate</th>
-			<th style="width: 22px;">&nbsp;</th>
-			<th style="width: 22px;">&nbsp;</th>
-			<th style="width: 22px;">&nbsp;</th>
-			<th style="width: 22px;"><a href="#" title="View slideshow" onclick="OpenSlideColorBox();"><img src="images/button_view.png" alt="View slideshow" width="16" height="16" /></a></th>
-			<th style="width: 22px;">&nbsp;</th>
-		</tr>
-	</thead>
-	<tfoot>
-		<tr>
-			<th colspan="11">Total model count: <?php echo sprintf("%1\$d (%2\$d sets)", $ModelCount, $SetCount); ?></th>
-		</tr>
-	</tfoot>
-	<tbody>
-	<?php echo $ModelRows ? $ModelRows : '<tr class="Row1"><td colspan="11">&nbsp;</td></tr>'; ?>
-	</tbody>
-</table>
-
 <?php
+
+echo "<div class=\"Clear\"></div>".$ModelRows."<div class=\"Clear\"></div>";
 
 echo HTMLstuff::HtmlFooter($CurrentUser);
 

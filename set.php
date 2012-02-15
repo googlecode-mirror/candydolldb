@@ -47,16 +47,16 @@ if($Sets)
 		}
 		
 		$SetRows .= sprintf(
-			"<div class=\"ThumbGalItem\">
+			"<div class=\"SetThumbGalItem\">
 			<h3 class=\"Hidden\">%1\$s set %2\$s</h3>
 			
-			<div class=\"ThumbImageWrapper\">
+			<div class=\"SetThumbImageWrapper\">
 			<a href=\"image.php?model_id=%8\$d&amp;set_id=%6\$d\">
 			<img src=\"download_image.php?set_id=%6\$d&amp;landscape_only=true&amp;width=225&amp;height=150\" width=\"225\" height=\"150\" alt=\"%1\$s set %2\$s\" title=\"%1\$s set %2\$s\" />
 			</a>
 			</div>
 			
-			<div class=\"ThumbDataWrapper\">
+			<div class=\"SetThumbDataWrapper\">
 			<ul>
 			<li>Prefix: %3\$s</li>
 			<li>Name: %2\$s</li>
@@ -66,7 +66,7 @@ if($Sets)
 			</ul>
 			</div>
 			
-			<div class=\"ThumbButtonWrapper\">
+			<div class=\"SetThumbButtonWrapper\">
 			<a href=\"set_view.php?model_id=%8\$d&amp;set_id=%6\$d\"><img src=\"images/button_edit.png\" width=\"16\" height=\"16\" title=\"Edit set\" alt=\"Edit set\"/></a>
 			<a href=\"set_view.php?model_id=%8\$d&amp;set_id=%6\$d&amp;cmd=%7\$s\"><img src=\"images/button_delete.png\" width=\"16\" height=\"16\" title=\"Delete set\" alt=\"Delete set\"/></a>
 			<a href=\"import_image.php?set_id=%6\$d\"><img src=\"images/button_upload.png\" width=\"16\" height=\"16\" title=\"Import images\" alt=\"Import images\"/></a>
