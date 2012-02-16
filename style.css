@@ -104,7 +104,7 @@ ul#TopNavigation li a{
 	display: block;
 	height: 25px;
 	line-height: 25px;
-	padding: 0 10px;]
+	padding: 0 10px;
 }
 ul#TopNavigation li a:focus,
 ul#TopNavigation li a:hover{
@@ -435,7 +435,9 @@ div.ErrorList div ul{
   The following fixes a problem where IE7 and IE8 replace a PNG's alpha transparency with a black fill
   when an alpha filter (opacity change) is set on the element or ancestor element.  This style is not applied to or needed in IE9.
   See: http://jacklmoore.com/notes/ie-transparency-problems/
-*/
+  
+  2012-02-16 FWieP: Commented out because of non-valid style.
+
 .cboxIE #cboxTopLeft,
 .cboxIE #cboxTopCenter,
 .cboxIE #cboxTopRight,
@@ -445,4 +447,4 @@ div.ErrorList div ul{
 .cboxIE #cboxMiddleLeft,
 .cboxIE #cboxMiddleRight {
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#00FFFFFF,endColorstr=#00FFFFFF);
-}
+}*/
