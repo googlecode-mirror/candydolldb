@@ -153,6 +153,7 @@ class HTMLstuff
 					$(this).hide();
 					$('.Loading').removeClass('Loading').append(this);
 					$(this).fadeIn();
+					AddDeleteOverlay();
 				}).attr({
 					width : %2\$d,
 					height : %3\$d,
