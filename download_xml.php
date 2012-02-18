@@ -21,7 +21,7 @@ $xmlw->startDocument('1.0', 'UTF-8');
 
 $xmlw->startElement('Models');
 $xmlw->writeAttributeNs('xmlns', 'xsi', null, 'http://www.w3.org/2001/XMLSchema-instance');
-$xmlw->writeAttributeNs('xsi', 'noNamespaceSchemaLocation', null, 'cdtvdb.xsd');
+$xmlw->writeAttributeNs('xsi', 'noNamespaceSchemaLocation', null, 'candydolldb.xsd');
 $xmlw->writeAttribute('xmlns', null);
 
 
