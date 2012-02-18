@@ -91,6 +91,13 @@ foreach ($Models as $Model)
 			$xmlw->endElement();
 		}
 		$xmlw->endElement();
+		
+		if($Model->getRemarks())
+		{
+			$xmlw->startElement('Remarks');
+			$xmlw->text($Model->getRemarks());
+			$xmlw->endElement();
+		}
 	}
 	$xmlw->endElement();
 }
