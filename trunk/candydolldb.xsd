@@ -9,7 +9,7 @@
 	</xs:unique>
 </xs:element>
 
-<!-- ============================================= -->
+<!-- ================================================================== -->
 
 <xs:simpleType name="Name">
 	<xs:restriction base="xs:string">
@@ -51,7 +51,7 @@
 
 <xs:simpleType name="Hex32">
 	<xs:restriction base="xs:string">
-		<xs:pattern value="([a-zA-Z0-9]){32}" />
+		<xs:pattern value="([a-fA-F0-9]){32}" />
 	</xs:restriction>
 </xs:simpleType>
 
@@ -68,31 +68,33 @@
 	</xs:restriction>
 </xs:simpleType>
 
-<xs:complexType name="ImageType">
-	<xs:attribute name="name" type="Name" use="required" />
-	<xs:attribute name="extension" type="ExtensionsImage" use="required" />
-	<xs:attribute name="filesize" type="xs:nonNegativeInteger" use="required" />
-	<xs:attribute name="checksum" type="EmptyHex32" use="required" />
-	<xs:attribute name="width" type="xs:nonNegativeInteger" use="required" />
-	<xs:attribute name="height" type="xs:nonNegativeInteger" use="required" />
-</xs:complexType>
+<!-- ================================================================== -->
 
-<xs:complexType name="ImagesType">
+<xs:complexType name="ModelsType">
 	<xs:sequence>
-		<xs:element name="Image" minOccurs="1" maxOccurs="unbounded" type="ImageType" />
+		<xs:element name="Model" minOccurs="0" maxOccurs="unbounded" type="ModelType" />
 	</xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="VideoType">
-	<xs:attribute name="name" type="Name" use="required" />
-	<xs:attribute name="extension" type="ExtensionsVideo" use="required" />
-	<xs:attribute name="filesize" type="xs:nonNegativeInteger" use="required" />
-	<xs:attribute name="checksum" type="EmptyHex32" use="required" />
+<xs:complexType name="ModelType" mixed="true">
+	<xs:sequence>
+		<xs:element name="Sets" minOccurs="0" maxOccurs="1" type="SetsType">
+			<xs:unique name="uniqueSetName">
+				<xs:selector xpath="./Set"/>
+				<xs:field xpath="@name"/>
+			</xs:unique>
+		</xs:element>
+		<xs:element name="Remarks" minOccurs="0" maxOccurs="1" type="xs:string" />
+	</xs:sequence>
+
+	<xs:attribute name="firstname" type="Name" use="required"/>
+	<xs:attribute name="lastname" type="EmptyName" use="optional" default=""/>
+	<xs:attribute name="birthdate" type="EmptyDate" use="optional" default=""/>	
 </xs:complexType>
 
-<xs:complexType name="VideosType">
+<xs:complexType name="SetsType">
 	<xs:sequence>
-		<xs:element name="Video" minOccurs="1" maxOccurs="unbounded" type="VideoType" />
+		<xs:element name="Set" minOccurs="1" maxOccurs="unbounded" type="SetType" />
 	</xs:sequence>
 </xs:complexType>
 
@@ -118,32 +120,32 @@
 	<xs:attribute name="date_vid" type="EmptyMultiDate" use="optional" default=""/>
 </xs:complexType>
 
-<xs:complexType name="SetsType">
+<xs:complexType name="ImagesType">
 	<xs:sequence>
-		<xs:element name="Set" minOccurs="1" maxOccurs="unbounded" type="SetType" />
+		<xs:element name="Image" minOccurs="1" maxOccurs="unbounded" type="ImageType" />
 	</xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="ModelType" mixed="true">
-	<xs:sequence>
-		<xs:element name="Sets" minOccurs="0" maxOccurs="1" type="SetsType">
-			<xs:unique name="uniqueSetName">
-				<xs:selector xpath="./Set"/>
-				<xs:field xpath="@name"/>
-			</xs:unique>
-		</xs:element>
-		<xs:element name="Remarks" minOccurs="0" maxOccurs="1" type="xs:string" />
-	</xs:sequence>
-
-	<xs:attribute name="firstname" type="Name" use="required"/>
-	<xs:attribute name="lastname" type="EmptyName" use="optional" default=""/>
-	<xs:attribute name="birthdate" type="EmptyDate" use="optional" default=""/>	
+<xs:complexType name="ImageType">
+	<xs:attribute name="name" type="Name" use="required" />
+	<xs:attribute name="extension" type="ExtensionsImage" use="required" />
+	<xs:attribute name="filesize" type="xs:nonNegativeInteger" use="required" />
+	<xs:attribute name="checksum" type="EmptyHex32" use="required" />
+	<xs:attribute name="width" type="xs:nonNegativeInteger" use="required" />
+	<xs:attribute name="height" type="xs:nonNegativeInteger" use="required" />
 </xs:complexType>
 
-<xs:complexType name="ModelsType">
+<xs:complexType name="VideosType">
 	<xs:sequence>
-		<xs:element name="Model" minOccurs="0" maxOccurs="unbounded" type="ModelType" />
+		<xs:element name="Video" minOccurs="1" maxOccurs="unbounded" type="VideoType" />
 	</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="VideoType">
+	<xs:attribute name="name" type="Name" use="required" />
+	<xs:attribute name="extension" type="ExtensionsVideo" use="required" />
+	<xs:attribute name="filesize" type="xs:nonNegativeInteger" use="required" />
+	<xs:attribute name="checksum" type="EmptyHex32" use="required" />
 </xs:complexType>
    
 </xs:schema>
