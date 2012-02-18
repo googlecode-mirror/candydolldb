@@ -3,44 +3,18 @@
 include('cd.php');
 $CurrentUser = Authentication::Authenticate();
 
-$ImageID = null;
-$VideoID = null;
-$SetID = null;
-$ModelIndexID = null;
-$ModelID = null;
+$ImageID = Utils::SafeIntFromQS('image_id');
+$VideoID = Utils::SafeIntFromQS('video_id');
+$SetID = Utils::SafeIntFromQS('set_id');
+$ModelIndexID = Utils::SafeIntFromQS('index_id');
+$ModelID = Utils::SafeIntFromQS('model_id');
+$Width = Utils::SafeIntFromQS('width');
+$Height = Utils::SafeIntFromQS('height');;
+$PromptDownload = Utils::SafeBoolFromQS('download');
+$PortraitOnly = Utils::SafeBoolFromQS('portrait_only');
+$LandscapeOnly = Utils::SafeBoolFromQS('landscape_only');
+
 $CacheImage = null;
-$Width = null;
-$Height = null;
-$PromptDownload = false;
-$PortraitOnly = false;
-$LandscapeOnly = false;
-
-
-if(array_key_exists('image_id', $_GET) && isset($_GET['image_id']) && is_numeric($_GET['image_id']))
-{ $ImageID = (int)$_GET['image_id']; }
-
-if(array_key_exists('video_id', $_GET) && isset($_GET['video_id']) && is_numeric($_GET['video_id']))
-{ $VideoID = (int)$_GET['video_id']; }
-
-if(array_key_exists('set_id', $_GET) && isset($_GET['set_id']) && is_numeric($_GET['set_id']))
-{ $SetID = (int)$_GET['set_id']; }
-
-if(array_key_exists('index_id', $_GET) && isset($_GET['index_id']) && is_numeric($_GET['index_id']))
-{ $ModelIndexID = (int)$_GET['index_id']; }
-
-if(array_key_exists('model_id', $_GET) && isset($_GET['model_id']) && is_numeric($_GET['model_id']))
-{ $ModelID = (int)$_GET['model_id']; }
-
-if(array_key_exists('width', $_GET) && isset($_GET['width']) && is_numeric($_GET['width']))
-{ $Width = abs((int)$_GET['width']); }
-
-if(array_key_exists('height', $_GET) && isset($_GET['height']) && is_numeric($_GET['height']))
-{ $Height = abs((int)$_GET['height']); }
-
-$PromptDownload = array_key_exists('download', $_GET) && isset($_GET['download']) && $_GET['download'] == 'true';
-$PortraitOnly = array_key_exists('portrait_only', $_GET) && isset($_GET['portrait_only']) && $_GET['portrait_only'] == 'true';
-$LandscapeOnly = array_key_exists('landscape_only', $_GET) && isset($_GET['landscape_only']) && $_GET['landscape_only'] == 'true';
-
 
 /* @var $CacheImage CacheImage */
 /* @var $Video Video */

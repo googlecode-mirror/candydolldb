@@ -3,13 +3,14 @@
 include('cd.php');
 $CurrentUser = Authentication::Authenticate();
 
-if(!array_key_exists('model_id', $_GET) || !$_GET['model_id'] || !is_numeric($_GET['model_id']))
+$ModelID = Utils::SafeIntFromQS('model_id');
+
+if(!isset($ModelID))
 {
 	header('location:index.php');
 	exit;
 }
 
-$ModelID = (int)$_GET['model_id'];
 $Model = null;
 $SetRows = '';
 $SetCount = 0;

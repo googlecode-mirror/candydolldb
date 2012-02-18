@@ -3,18 +3,14 @@
 include('cd.php');
 $CurrentUser = Authentication::Authenticate();
 
-if(array_key_exists('user_id', $_GET) && $_GET['user_id'] && is_numeric($_GET['user_id'])){
-	$UserID = (int)$_GET['user_id'];
-}else{
-	$UserID = null;
-}
-
-/* @var $User User */
+$UserID = Utils::SafeIntFromQS('user_id');
 $DeleteUser = (array_key_exists('cmd', $_GET) && $_GET['cmd'] && ($_GET['cmd'] == COMMAND_DELETE));
+
 $_SESSION['UserSalt'] = null;
 $PasswordError = false; 
 
 
+/* @var $User User */
 if($UserID)
 {
 	$WhereClause = sprintf('user_id = %1$d AND mut_deleted = -1', $UserID);

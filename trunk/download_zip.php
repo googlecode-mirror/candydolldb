@@ -3,28 +3,15 @@
 include('cd.php');
 $CurrentUser = Authentication::Authenticate();
 
-
-$ModelID = null;
-$SetID = null;
-$ImageID = null;
+$ModelID = Utils::SafeIntFromQS('model_id');
+$SetID = Utils::SafeIntFromQS('set_id');
+$ImageID = Utils::SafeIntFromQS('image_id');
+$UseSubfolders = Utils::SafeBoolFromQS('usesub');
 $ImageIDs = array();
-$UseSubfolders = false;
 
-
-if(array_key_exists('model_id', $_GET) && isset($_GET['model_id']) && is_numeric($_GET['model_id']))
-{ $ModelID = (int)$_GET['model_id']; }
-
-if(array_key_exists('set_id', $_GET) && isset($_GET['set_id']) && is_numeric($_GET['set_id']))
-{ $SetID = (int)$_GET['set_id']; }
-
-if(array_key_exists('image_id', $_GET) && isset($_GET['image_id']) && is_numeric($_GET['image_id']))
-{ $ImageID = (int)$_GET['image_id']; }
 
 if(array_key_exists('image_ids', $_GET) && isset($_GET['image_ids']))
 { $ImageIDs = Utils::SafeInts(explode(',', $_GET['image_ids'])); }
-
-if(array_key_exists('usesub', $_GET) && isset($_GET['usesub']) && $_GET['usesub'] == '1')
-{ $UseSubfolders = true; }
 
 
 $tmpFile = sprintf('%1$s/%2$s.zip', sys_get_temp_dir(), Utils::GUID());

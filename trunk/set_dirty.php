@@ -4,12 +4,7 @@ include('cd.php');
 $CurrentUser = Authentication::Authenticate();
 
 
-$ModelID = null;
-
-
-if(array_key_exists('model_id', $_GET) && isset($_GET['model_id']) && is_numeric($_GET['model_id'])){
-	$ModelID = (int)$_GET['model_id'];
-}
+$ModelID = Utils::SafeIntFromQS('model_id');
 
 
 $Model = null;

@@ -3,24 +3,20 @@
 include('cd.php');
 $CurrentUser = Authentication::Authenticate();
 
-if(!array_key_exists('model_id', $_GET) || !$_GET['model_id'] || !is_numeric($_GET['model_id']))
+$ModelID = Utils::SafeIntFromQS('model_id');
+$SetID = Utils::SafeIntFromQS('set_id');
+$ImageID = Utils::SafeIntFromQS('image_id');
+
+if(!isset($ModelID))
 {
 	header('location:index.php');
 	exit;
 }
-$ModelID = (int)$_GET['model_id'];
 
-if(!array_key_exists('set_id', $_GET) || !$_GET['set_id'] || !is_numeric($_GET['set_id']))
+if(!isset($SetID))
 {
 	header('location:set.php?model_id='.$ModelID);
 	exit;
-}
-$SetID = (int)$_GET['set_id'];
-
-if(array_key_exists('image_id', $_GET) && $_GET['image_id'] && is_numeric($_GET['image_id'])){
-	$ImageID = (int)$_GET['image_id'];
-}else{
-	$ImageID = null;
 }
 
 $DeleteImage = (array_key_exists('cmd', $_GET) && $_GET['cmd'] && ($_GET['cmd'] == COMMAND_DELETE));

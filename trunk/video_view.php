@@ -3,28 +3,25 @@
 include('cd.php');
 $CurrentUser = Authentication::Authenticate();
 
-if(!array_key_exists('model_id', $_GET) || !$_GET['model_id'] || !is_numeric($_GET['model_id']))
+$ModelID = Utils::SafeIntFromQS('model_id');
+$SetID = Utils::SafeIntFromQS('set_id');
+$VideoID = Utils::SafeIntFromQS('video_id');
+
+if(!isset($ModelID))
 {
 	header('location:index.php');
 	exit;
 }
-$ModelID = (int)$_GET['model_id'];
 
-if(!array_key_exists('set_id', $_GET) || !$_GET['set_id'] || !is_numeric($_GET['set_id']))
+if(!isset($SetID))
 {
 	header('location:set.php?model_id='.$ModelID);
 	exit;
 }
-$SetID = (int)$_GET['set_id'];
-
-if(array_key_exists('video_id', $_GET) && $_GET['video_id'] && is_numeric($_GET['video_id'])){
-	$VideoID = (int)$_GET['video_id'];
-}else{
-	$VideoID = null;
-}
 
 $DeleteVideo = (array_key_exists('cmd', $_GET) && $_GET['cmd'] && ($_GET['cmd'] == COMMAND_DELETE));
 $ReturnURL = sprintf('video.php?model_id=%1$d&set_id=%2$d', $ModelID, $SetID);
+
 
 /* @var $Video Video */
 /* @var $Set Set */

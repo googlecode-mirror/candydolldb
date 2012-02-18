@@ -4,19 +4,9 @@ include('cd.php');
 $CurrentUser = Authentication::Authenticate();
 
 
-$ModelID = null;
-$SetID = null;
-$VideoID = null;
-
-
-if(array_key_exists('model_id', $_GET) && isset($_GET['model_id']) && is_numeric($_GET['model_id']))
-{ $ModelID = (int)$_GET['model_id']; }
-
-if(array_key_exists('set_id', $_GET) && isset($_GET['set_id']) && is_numeric($_GET['set_id']))
-{ $SetID = (int)$_GET['set_id']; }
-
-if(array_key_exists('video_id', $_GET) && isset($_GET['video_id']) && is_numeric($_GET['video_id']))
-{ $VideoID = (int)$_GET['video_id']; }
+$ModelID = Utils::SafeIntFromQS('model_id');
+$SetID = Utils::SafeIntFromQS('set_id');
+$VideoID = Utils::SafeIntFromQS('video_id');
 
 
 /* @var $Video Video */

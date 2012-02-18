@@ -75,7 +75,7 @@ if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'DownloadMult
 				header(
 					sprintf('location:download_zip.php?image_ids=%1$s&usesub=%2$s',
 						join(',', $SelectedImageIDs),
-						$UseSubfoldersInDownload
+						$UseSubfoldersInDownload ? 'true' : 'false'
 					)
 				);
 				exit;
