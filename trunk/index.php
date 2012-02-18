@@ -9,7 +9,6 @@ $SearchDirty = true;
 $SearchClean = true;
 $ModelRows = '';
 $ModelCount = 0;
-$SetCount = 0;
 
 
 if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'ModelFilter')
@@ -59,8 +58,6 @@ if($Models)
 		
 		$ModelCount++;
 		
-		$SetCount += $Model->getSetCount();
-		
 		$ModelRows .= sprintf(
 			"<div class=\"ThumbGalItem\">
 			<h3 class=\"Hidden\">%1\$s</h3>
@@ -96,7 +93,7 @@ if($Models)
 			$Model->getID(),
 			COMMAND_DELETE,
 			($ModelCount % 4 == 0 ? "<div class=\"Clear\"></div>" : null),
-			$Model->getBirthdate() > 0 ? date('j-m-Y', $Model->getBirthdate()) : '&nbsp;',
+			$Model->getBirthdate() > 0 ? date('j-n-Y', $Model->getBirthdate()) : '&nbsp;',
 			$Model->getBirthdate() > 0 ? sprintf(' (%1$.1f)', Utils::CalculateAge($Model->getBirthdate())) : '&nbsp;',
 			$DirtySetCount > 0 ? sprintf(', <em>%1$d dirty</em>', $DirtySetCount) : null,
 			$Model->getSetCount()
