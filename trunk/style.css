@@ -385,6 +385,30 @@ div.ErrorList div ul{
 	margin: 0 5px 10px 0;
 }
 
+
+/* CacheImage delete */
+.ImageOverlay{
+	background-color: #fff;
+	display: none;
+	position: absolute;
+	z-index: 3;
+}
+.RemoveCacheImage{
+	display: none;
+	position: absolute;
+	z-index: 4;	
+}
+.RemoveCacheImage a{
+	float: right;
+	margin: 3px 3px 0 0;
+}
+.RemoveCacheImage a:hover img,
+.RemoveCacheImage a:focus img{
+	height: 14px;
+	width: 14px;
+}
+
+
 /*
     ColorBox Core Style:
     The following CSS is consistent between example themes and should not be altered.

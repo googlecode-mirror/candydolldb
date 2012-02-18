@@ -37,10 +37,60 @@ function CloseOverlay(){
 	return true;
 }
 
+function AddDeleteOverlay(){
+	var rcidiv =
+		'<div class="RemoveCacheImage">' +
+		'<a href="#" title="Delete image">' +
+		'<img src="images/button_delete.png" width="16" height="16" alt="Delete image" />'+
+		'</a>' +
+		'</div>';
+	
+	$('img[src*="download_image.php"]').hover(
+		function(){
+
+			var img = $(this);
+			$(img).parent().children('.ImageOverlay, .RemoveCacheImage').remove();
+			
+			var o = $('<div class="ImageOverlay"></div>');
+			$(img).before(o);
+			
+			var d = $(rcidiv);
+			$(img).before(d);
+			
+			$('a', d).click(function(){
+				$(img).attr('src', 'images/missing.jpg?t=' + new Date().getTime());
+				return false;
+			});
+			
+			$(o)
+			.css({
+				'height':$(img).height()+'px',
+				'width':$(img).width()+'px' })
+			.fadeTo(200, 0.2);
+			
+			$(d)
+			.css({
+				'height':$(img).height()+'px',
+				'width':$(img).width()+'px' })
+			.mouseleave(function(){
+				$(d).fadeOut(200, function(){
+					$(d).remove();
+				});
+				$(o).fadeOut(200, function(){
+					$(o).remove();
+				});
+			})
+			.fadeTo(200, 1.0)
+		},
+		null
+	);
+}
+
 $(function(){
 
 	ResizeContent();
 	AddDefaultColorBox();
+	AddDeleteOverlay();
 	
 	$('#ErrorContainer').fadeTo(400, 0.65).click(CloseOverlay).each(function(){
 		if($(this).is(':visible')){
