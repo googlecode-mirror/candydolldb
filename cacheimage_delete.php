@@ -9,6 +9,10 @@ $VideoID = null;
 $SetID = null;
 $ModelIndexID = null;
 $ModelID = null;
+$Width = null;
+$Height = null;
+$WhereClause = null;
+
 
 /* @var $CacheImage CacheImage */
 $CacheImage = null;
@@ -29,26 +33,47 @@ if(array_key_exists('index_id', $_GET) && isset($_GET['index_id']) && is_numeric
 if(array_key_exists('model_id', $_GET) && isset($_GET['model_id']) && is_numeric($_GET['model_id']))
 { $ModelID = (int)$_GET['model_id']; }
 
+if(array_key_exists('width', $_GET) && isset($_GET['width']) && is_numeric($_GET['width']))
+{ $Width = (int)$_GET['width']; }
+
+if(array_key_exists('height', $_GET) && isset($_GET['height']) && is_numeric($_GET['height']))
+{ $Height = (int)$_GET['height']; }
+
 
 if(isset($ImageID))
 {
-	$CacheImage = CacheImage::GetCacheImages(sprintf('image_id = %1$d', $ImageID));
+	$WhereClause = sprintf('image_id = %1$d', $ImageID);
 }
 else if(isset($VideoID))
 {
-	$CacheImage = CacheImage::GetCacheImages(sprintf('video_id = %1$d', $VideoID));
+	$WhereClause = sprintf('video_id = %1$d', $VideoID);
 }
 else if(isset($SetID))
 {
-	$CacheImage = CacheImage::GetCacheImages(sprintf('set_id = %1$d', $SetID));
+	$WhereClause = sprintf('set_id = %1$d', $SetID);
 }
 else if(isset($ModelIndexID))
 {
-	$CacheImage = CacheImage::GetCacheImages(sprintf('index_id = %1$d', $ModelIndexID));
+	$WhereClause = sprintf('index_id = %1$d', $ModelIndexID);
 }
 else if(isset($ModelID))
 {
-	$CacheImage = CacheImage::GetCacheImages(sprintf('model_id = %1$d', $ModelID));
+	$WhereClause = sprintf('model_id = %1$d', $ModelID);
+}
+
+if(!is_null($WhereClause) && isset($Width))
+{
+	$WhereClause .= sprintf(' AND cache_imagewidth = %1$d', $Width);
+}
+
+if(!is_null($WhereClause) && isset($Height))
+{
+	$WhereClause .= sprintf(' AND cache_imageheight = %1$d', $Height);
+}
+
+if(!is_null($WhereClause))
+{
+	$CacheImage = CacheImage::GetCacheImages($WhereClause);
 }
 
 if(!is_null($CacheImage))

@@ -58,7 +58,18 @@ function AddDeleteOverlay(){
 			$(img).before(d);
 			
 			$('a', d).click(function(){
-				$(img).attr('src', 'images/missing.jpg?t=' + new Date().getTime());
+				var s = $(img).attr('src');
+				if(s.indexOf('missing.jpg') == -1){
+					$(img).attr('src', 'images/missing.jpg');
+				
+					$.get(
+						s.replace('download_image', 'cacheimage_delete'),
+						null,
+						function(){
+							$(img).attr('src', s + '&t=' + new Date().getTime());
+						}
+					);
+				}
 				return false;
 			});
 			
@@ -66,7 +77,7 @@ function AddDeleteOverlay(){
 			.css({
 				'height':$(img).height()+'px',
 				'width':$(img).width()+'px' })
-			.fadeTo(200, 0.2);
+			.fadeTo(200, 0.1);
 			
 			$(d)
 			.css({
