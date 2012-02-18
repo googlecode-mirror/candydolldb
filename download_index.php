@@ -17,30 +17,17 @@ class ThumbnailSettings
 	public $numberOfRows;
 }
 
+$ModelID = Utils::SafeIntFromQS('model_id');
+$IndexID = Utils::SafeIntFromQS('index_id');
+$ModelID = isset($IndexID) ? $IndexID : $ModelID;
 
-$indexImage = null;
-$finalWidth = null;
-$finalHeight = null;
-$promptDownload = false;
-$pathPrefix = (isset($argv) && $argc > 0) ? dirname($_SERVER['PHP_SELF']).'/' : '';  
+$finalWidth = Utils::SafeIntFromQS('width');
+$finalHeight = Utils::SafeIntFromQS('height');
+$promptDownload = Utils::SafeBoolFromQS('download');
 
-if(array_key_exists('width', $_GET) && isset($_GET['width']) && is_numeric($_GET['width']))
-{ $finalWidth = (int)$_GET['width']; }
+$pathPrefix = (isset($argv) && $argc > 0) ? dirname($_SERVER['PHP_SELF']).'/' : '';
+$indexImage = null;  
 
-if(array_key_exists('height', $_GET) && isset($_GET['height']) && is_numeric($_GET['height']))
-{ $finalHeight = (int)$_GET['height']; }
-
-if(array_key_exists('download', $_GET) && isset($_GET['download']) && $_GET['download'] == 'true')
-{ $promptDownload = true; }
-
-
-$ModelID = null;
-
-if(array_key_exists('model_id', $_GET) && isset($_GET['model_id']) && is_numeric($_GET['model_id']))
-{ $ModelID = (int)$_GET['model_id']; }
-
-if(array_key_exists('index_id', $_GET) && isset($_GET['index_id']) && is_numeric($_GET['index_id']))
-{ $ModelID = (int)$_GET['index_id']; }
 
 $Images = Image::GetImages(sprintf('model_id = %1$d AND mut_deleted = -1', $ModelID));
 $Sets = Set::GetSets(sprintf('model_id = %1$d AND mut_deleted = -1', $ModelID));

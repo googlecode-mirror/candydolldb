@@ -3,11 +3,7 @@
 include('cd.php');
 $CurrentUser = Authentication::Authenticate();
 
-if(array_key_exists('model_id', $_GET) && $_GET['model_id'] && is_numeric($_GET['model_id'])){
-	$ModelID = (int)$_GET['model_id'];
-}else{
-	$ModelID = null;
-}
+$ModelID = Utils::SafeIntFromQS('model_id');
 
 $DeleteModel = (array_key_exists('cmd', $_GET) && $_GET['cmd'] && ($_GET['cmd'] == COMMAND_DELETE)); 
 

@@ -171,6 +171,23 @@ class Utils
 		return $OutString;
 	}
 	
+	public static function SafeIntFromQS($name)
+	{
+		if(array_key_exists($name, $_GET) && isset($_GET[$name]) && is_numeric($_GET[$name]))
+		{ return abs((int)$_GET[$name]); }
+		
+		return null;
+	}
+	
+	public static function SafeBoolFromQS($name)
+	{
+		return (
+			array_key_exists($name, $_GET) &&
+			isset($_GET[$name]) &&
+			($_GET[$name] == 'true' || $_GET[$name] == '1')
+		);
+	}
+	
 	/**
 	 * Returns an array of integers, safe to be processed in, for example, an SQL-in-query
 	 * @param array $inArray

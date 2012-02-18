@@ -3,7 +3,7 @@
 include('cd.php');
 ini_set('max_execution_time', '3600');
 $CurrentUser = Authentication::Authenticate();
-$ModelID = null;
+$ModelID = Utils::SafeIntFromQS('model_id');
 
 /**
  * Parses an array of strings into an array of Date objects.
@@ -35,9 +35,6 @@ function ParseDates($InArray, $DateKind = DATE_KIND_UNKNOWN, $Set = null)
 	}
 	return $OutArray;	
 }
-
-if(array_key_exists('model_id', $_GET) && isset($_GET['model_id']) && is_numeric($_GET['model_id']))
-{ $ModelID = (int)$_GET['model_id']; }
 
 if(isset($argv) && $argc > 0)
 {
