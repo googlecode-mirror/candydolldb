@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Models xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="cdtvdb.xsd" xmlns="">
+<Models xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="candydolldb.xsd" xmlns="">
 	<Model firstname="Adriana" lastname="E" birthdate="1999-11-17">
 		<Sets>
 			<Set name="01" date_pic="2011-04-29" date_vid="" />
