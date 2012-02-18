@@ -45,7 +45,7 @@ function AddDeleteOverlay(){
 		'</a>' +
 		'</div>';
 	
-	$('img[src*="download_image.php"]').hover(
+	$('img[src*="download_image.php"]').mouseenter(
 		function(){
 
 			var img = $(this);
@@ -92,8 +92,7 @@ function AddDeleteOverlay(){
 				});
 			})
 			.fadeTo(200, 1.0)
-		},
-		null
+		}
 	);
 }
 
