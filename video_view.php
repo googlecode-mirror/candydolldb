@@ -102,19 +102,6 @@ if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'VideoView')
 
 echo HTMLstuff::HtmlHeader($Model->GetShortName(true).' - Set '.$Set->getName().' - Video', $CurrentUser);
 
-if($VideoID)
-{
-	echo HTMLstuff::ImageLoading(
-		sprintf('download_image.php?video_id=%1$d&width=400&height=400', $VideoID),
-		400,
-		400,
-		htmlentities($Model->GetFullName()),
-		htmlentities($Model->GetFullName())
-	);
-
-	echo '<div class="PhotoContainer Loading"></div>';
-}
-
 ?>
 
 <h2><?php echo sprintf(
