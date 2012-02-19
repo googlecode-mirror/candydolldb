@@ -224,4 +224,6 @@ Please return to the login-page.</p>
 
 </div>
 
-<?php echo HTMLstuff::HtmlFooter(); ?>
+<?php
+echo HTMLstuff::HtmlFooter();
+?>

@@ -171,6 +171,11 @@ class Utils
 		return $OutString;
 	}
 	
+	/**
+	 * Searches the GET-array for a key named $name and returns its absolute integer value, or NULL on failure.
+	 * @param string $name
+	 * @return int
+	 */
 	public static function SafeIntFromQS($name)
 	{
 		if(array_key_exists($name, $_GET) && isset($_GET[$name]) && is_numeric($_GET[$name]))
@@ -178,7 +183,12 @@ class Utils
 		
 		return null;
 	}
-	
+
+	/**
+	* Searches the GET-array for a key named $name and returns its value (TRUE or FALSE), or FALSE on failure.
+	* @param string $name
+	* @return bool
+	*/
 	public static function SafeBoolFromQS($name)
 	{
 		return (

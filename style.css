@@ -80,6 +80,11 @@ div#Wrapper{
 	min-height: 200px;
 	width: 1000px;
 }
+div#ContentBG{
+	background-image: url('images/background_container.jpg');
+	margin: 0 0 0 2px;
+	width: 988px;
+}
 div#Header{
 	background-image: url('images/background_header.jpg');
 	background-position: 1px 0;
@@ -322,7 +327,7 @@ div.ErrorList div ul{
 	background-image: url('images/background_modelitem.png');
 	color: #dedede;
 	float: left;
-	margin: 0 15px 20px 15px; 
+	margin: 0 12px 20px 12px; 
 	padding: 15px 5px 10px 5px;
 	width: 200px;
 }
@@ -354,7 +359,7 @@ div.ErrorList div ul{
 	background-image: url('images/background_setitem.png');
 	color: #dedede;
 	float: left;
-	margin: 0 20px 20px 20px; 
+	margin: 0 18px 20px 18px; 
 	padding: 15px 5px 5px 5px;
 	width: 270px;
 }
