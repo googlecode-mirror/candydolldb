@@ -91,7 +91,7 @@ function AddDeleteOverlay(){
 					$(o).remove();
 				});
 			})
-			.fadeTo(200, 1.0)
+			.fadeTo(200, 1.0);
 		}
 	);
 }

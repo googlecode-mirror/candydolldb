@@ -37,6 +37,7 @@ class HTMLstuff
 		<div id=\"Header\">
 		</div>
 		
+		<div id=\"ContentBG\">
 		<div id=\"Content\">",
 
 			CANDYDOLLDB_VERSION,
@@ -85,6 +86,7 @@ class HTMLstuff
 	public static function HtmlFooter($CurrentUser = null)
 	{
 		return sprintf("
+			</div>
 			</div>
 			
 			<div id=\"Footer\">

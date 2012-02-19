@@ -621,4 +621,6 @@ echo HTMLstuff::HtmlHeader('Application setup'); ?>
  
 </div>
 
-<?php echo HTMLstuff::HtmlFooter(); ?>
+<?php
+echo HTMLstuff::HtmlFooter();
+?>

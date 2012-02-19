@@ -114,4 +114,6 @@ $(document).ready(function(){
 
 </div>
 
-<?php echo HTMLstuff::HtmlFooter(); ?>
+<?php
+echo HTMLstuff::HtmlFooter();
+?>
