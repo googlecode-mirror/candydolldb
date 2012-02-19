@@ -8,11 +8,13 @@ $ModelID = Utils::SafeIntFromQS('model_id');
 
 
 $Model = null;
+$PreviousModel = null;
 $SearchModel = '';
 $SearchDate = '';
 $FilterVIP = false;
 $SetRows = '';
 $SetCount = 0;
+$SetCountModel = 0;
 $ImageCount = 0;
 $VideoCount = 0;
 
@@ -61,10 +63,23 @@ if($Sets)
 			{ continue; }
 		}
 		
+		
 		$SetCount++;
 		$Model = $Set->getModel();
 		$ImageCount += $Set->getAmountPicsInDB();
 		$VideoCount += $Set->getAmountVidsInDB();
+		
+		if(isset($PreviousModel) && $Model->getID() != $PreviousModel->getID())
+		{
+			$SetRows .= "\n<tr><td colspan=\"10\" style=\"height:10px;\"></td></tr>";
+			$SetCountModel = 0;
+		}
+		else
+		{
+			$SetCountModel++;
+		}
+		
+		$PreviousModel = $Model;
 		
 
 		$SetRows .= sprintf(
@@ -90,9 +105,13 @@ if($Sets)
 		htmlentities($Model->GetFullName()),
 		htmlentities($Model->GetShortName()),
 		$Model->getID(),
-		$SetCount % 2 == 0 ? 2 : 1,
+		$SetCountModel % 2 == 0 ? 2 : 1,
 		Date::FormatDates($DatesThisSet, 'Y-m-d', true)
 		);
+		
+		
+		
+		
 	}
 }
 
