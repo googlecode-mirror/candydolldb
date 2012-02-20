@@ -38,13 +38,32 @@ if($Models)
 	/* @var $Model Model */
 	foreach($Models as $Model)
 	{
+		$SetPicCount = 0;
+		$SetVidCount = 0;
+		
 		$DirtySetCount = 0;
+		$DirtySetPicCount = 0;
+		$DirtySetVidCount = 0;
 		
 		/* @var $Set Set */
 		foreach(Set::FilterSets($Sets, $Model->getID()) as $Set)
 		{
 			if($Set->getSetIsDirty())
-			{ $DirtySetCount++; }
+			{
+				if($Set->getSetIsDirtyPic())
+				{ $DirtySetPicCount++; }
+				
+				if($Set->getSetIsDirtyVid())
+				{ $DirtySetVidCount++; }
+				
+				$DirtySetCount++;
+			}
+			
+			if(($Set->getContainsWhat() & SET_CONTENT_IMAGE) > 0)
+			{ $SetPicCount++; }
+				
+			if(($Set->getContainsWhat() & SET_CONTENT_VIDEO) > 0)
+			{ $SetVidCount++; }
 		}
 		unset($Set);
 		
@@ -72,7 +91,8 @@ if($Models)
 			<ul>
 			<li>Name: %1\$s</li>
 			<li>Birthdate: %5\$s%6\$s</li>
-			<li>Sets: %8\$d%7\$s</li>
+			<li>Pic-sets: %8\$d%7\$s</li>
+			<li>Vid-sets: %10\$d%9\$s</li>
 			</ul>
 			</div>
 			
@@ -95,8 +115,10 @@ if($Models)
 			($ModelCount % 4 == 0 ? "<div class=\"Clear\"></div>" : null),
 			$Model->getBirthdate() > 0 ? date('j-n-Y', $Model->getBirthdate()) : '&nbsp;',
 			$Model->getBirthdate() > 0 ? sprintf(' (%1$.1f)', Utils::CalculateAge($Model->getBirthdate())) : '&nbsp;',
-			$DirtySetCount > 0 ? sprintf(', <em>%1$d dirty</em>', $DirtySetCount) : null,
-			$Model->getSetCount()
+			$DirtySetPicCount > 0 ? sprintf(', <em>%1$d dirty</em>', $DirtySetPicCount) : null,
+			$SetPicCount,
+			$DirtySetVidCount > 0 ? sprintf(', <em>%1$d dirty</em>', $DirtySetVidCount) : null,
+			$SetVidCount
 		);
 		
 	}
