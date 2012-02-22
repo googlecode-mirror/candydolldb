@@ -21,7 +21,12 @@ if(!defined('DBHOSTNAME') || strlen(DBHOSTNAME) == 0 ||
    !defined('DBNAME') || strlen(DBNAME) == 0 ||
    !defined('DBPASSWORD'))
 {
-	if(basename($_SERVER['REQUEST_URI']) != 'setup.php')
+	if(!in_array('REQUEST_URI', $_SERVER))
+	{
+		echo "Please use the webinterface for setting up this application.\n";
+		exit(128);
+	}
+	else if(basename($_SERVER['REQUEST_URI']) != 'setup.php')
 	{
 		header('location:setup.php');
 		exit(128);
