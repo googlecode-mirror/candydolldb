@@ -21,7 +21,8 @@ if(!defined('DBHOSTNAME') || strlen(DBHOSTNAME) == 0 ||
    !defined('DBNAME') || strlen(DBNAME) == 0 ||
    !defined('DBPASSWORD'))
 {
-	if(!in_array('REQUEST_URI', $_SERVER))
+
+	if(!array_key_exists('REQUEST_URI', $_SERVER))
 	{
 		echo "Please use the webinterface for setting up this application.\n";
 		exit(128);
