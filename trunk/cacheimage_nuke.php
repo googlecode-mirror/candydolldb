@@ -3,7 +3,7 @@
 include('cd.php');
 ini_set('max_execution_time', '3600');
 $CurrentUser = Authentication::Authenticate();
-
+$FileToFind = '';
 
 $CacheFolder = null;
 $CacheImages = CacheImage::GetCacheImages();
@@ -25,14 +25,22 @@ $it = new RecursiveIteratorIterator(new RecursiveDirectoryIterator(
 foreach($it as $file)
 {
 	$idToFind = $file->getBasename('.jpg');
-	
+
 	if(!preg_match('/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/i', $idToFind))
 	{ continue; }
-	
+
 	$CacheImageInDB = CacheImage::FilterCacheImages($CacheImages, null, null, null, null, null, null, $idToFind);
-	
+
 	if(!$CacheImageInDB)
-	{ unlink($file->getRealPath()); }	
+	{ unlink($file->getRealPath()); }
+}
+
+foreach($CacheImages as $CacheImage)
+{
+	$DeleteArray = array();
+	$FileToFind = $CacheImage->getFilenameOnDisk();
+	if(!file_exists($FileToFind))
+	{ CacheImage::DeleteImage($CacheImage, $CurrentUser); }
 }
 
 HTMLstuff::RefererRedirect();
