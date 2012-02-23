@@ -76,13 +76,15 @@ function AddDeleteOverlay(){
 			$(o)
 			.css({
 				'height':$(img).height()+'px',
-				'width':$(img).width()+'px' })
+				'width':$(img).width()+'px'
+			})
 			.fadeTo(200, 0.1);
 			
 			$(d)
 			.css({
 				'height':$(img).height()+'px',
-				'width':$(img).width()+'px' })
+				'width':$(img).width()+'px'
+			})
 			.mouseleave(function(){
 				$(d).fadeOut(200, function(){
 					$(d).remove();
