@@ -364,7 +364,9 @@ div.ErrorList div ul{
 	width: 270px;
 }
 .SetThumbImageWrapper{
-	text-align: center;
+	margin-left: 25px;
+}
+.SetThumbImageWrapper a{
 }
 .SetThumbDataWrapper{
 	float:left;
