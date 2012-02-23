@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 include('cd.php');
 $CurrentUser = Authentication::Authenticate();
@@ -33,13 +33,20 @@ foreach($it as $file){
 }
 
 $CacheInSync = '<span>No orphan files</span>';
-if($PhysicalCacheImageCount != count($CacheImages))
+if($PhysicalCacheImageCount > count($CacheImages))
 {
 	$CacheInSync = sprintf('<span class="WarningRed">%1$d orphan file%2$s</span>',
 		$PhysicalCacheImageCount - count($CacheImages),
 		$PhysicalCacheImageCount - count($CacheImages) == 1 ? null : 's'
 	);
-} 
+}
+elseif($PhysicalCacheImageCount < count($CacheImages))
+{
+	$CacheInSync = sprintf('<span class="WarningRed">%1$d missing file%2$s</span>',
+		count($CacheImages) - $PhysicalCacheImageCount,
+		count($CacheImages) - $PhysicalCacheImageCount == 1 ? null : 's'
+	);
+}
 
 echo HTMLstuff::HtmlHeader('Admin-panel', $CurrentUser);
 
@@ -74,21 +81,21 @@ echo HTMLstuff::HtmlHeader('Admin-panel', $CurrentUser);
 
 		if(!isNaN(modelId) && !isNaN(indexWidth) && !isNaN(indexHeight))
 		{
-			indexWidth = (indexWidth <= 0 || indexWidth > 1200 ) ? 1200 : indexWidth; 
+			indexWidth = (indexWidth <= 0 || indexWidth > 1200 ) ? 1200 : indexWidth;
 			indexHeight = (indexHeight <= 0 || indexHeight > 1800) ? 1800 : indexHeight;
 
 			var url = 'download_image.php?' +
-			'index_id=' + modelId + 
-			'&width=' + indexWidth + 
-			'&height=' + indexHeight + 
+			'index_id=' + modelId +
+			'&width=' + indexWidth +
+			'&height=' + indexHeight +
 			'&download=true';
 
 			window.location = url;
 			return true;
-		} 
-		
+		}
+
 		return false;
-	}           
+	}
 //]]>
 </script>
 
@@ -109,7 +116,7 @@ echo HTMLstuff::HtmlHeader('Admin-panel', $CurrentUser);
 
 <div class="FormRow WideForm">
 <label>To download an automatically generated custom size index of a given model. Size is maxed to 1200x1800 pixels.</label>
-<input type="button" id="btnDownloadIndex" name="btnDownloadIndex" value="Download" onclick="RedirToIndex();" /> 
+<input type="button" id="btnDownloadIndex" name="btnDownloadIndex" value="Download" onclick="RedirToIndex();" />
 </div>
 
 <hr />
