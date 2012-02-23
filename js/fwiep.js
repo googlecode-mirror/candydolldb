@@ -50,7 +50,7 @@ function AddDeleteOverlay(){
 
 			var img = $(this);
 			$(img).parent().children('.ImageOverlay, .RemoveCacheImage').remove();
-			
+
 			var o = $('<div class="ImageOverlay"></div>');
 			$(img).before(o);
 			

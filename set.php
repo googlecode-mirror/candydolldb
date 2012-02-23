@@ -53,7 +53,7 @@ if($Sets)
 			
 			<div class=\"SetThumbImageWrapper\">
 			<a href=\"image.php?model_id=%8\$d&amp;set_id=%6\$d\">
-			<img id=\"img%6\$d\" src=\"download_image.php?set_id=%6\$d&amp;landscape_only=true&amp;width=225&amp;height=150\" width=\"225\" height=\"150\" alt=\"%1\$s set %2\$s\" title=\"%1\$s set %2\$s\" />
+			<img src=\"download_image.php?set_id=%6\$d&amp;landscape_only=true&amp;width=225&amp;height=150\" height=\"150\" alt=\"%1\$s set %2\$s\" title=\"%1\$s set %2\$s\" />
 			</a>
 			</div>
 			
@@ -112,22 +112,6 @@ if(!$Model){
 echo HTMLstuff::HtmlHeader($Model->GetShortName(true).' - Sets', $CurrentUser);
 
 ?>
-
-<script type="text/javascript">
-//<[CDATA[
-          
-          $(function(){
-	          
-	          	var img = new Image();
-	          	img.src = 'download_image.php?set_id=878&landscape_only=true&width=225&height=150';
-	          	img.onload = function(){
-	          		$('#img878').attr({ 'width': img.width });
-	          	};
-	          
-          });
-//]]>
-</script>
-
 
 <h2><?php echo sprintf('<a href="index.php">Home</a> - <a href="model_view.php?model_id=%1$d">%2$s</a> - Sets',
 	$ModelID,
