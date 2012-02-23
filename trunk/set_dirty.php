@@ -11,27 +11,29 @@ $Model = null;
 $PreviousModel = null;
 $SearchModel = '';
 $SearchDate = '';
-$FilterVIP = false;
+$FilterSPECIAL = false;
+$FilterTYPE = 0;
 $SetRows = '';
 $SetCount = 0;
 $SetCountModel = 0;
 $ImageCount = 0;
 $VideoCount = 0;
 
-
-
 if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'DirtySetFilter')
 {
 	$SearchModel = $_SESSION['txtSearchModel'] 	= $_POST['txtSearchModel'];
 	$SearchDate = $_SESSION['txtSearchDate'] 	= $_POST['txtSearchDate'];
-	$FilterVIP = $_SESSION['chkFilterVIP'] 		= array_key_exists('chkFilterVIP', $_POST);
+	$FilterSPECIAL = $_SESSION['chkFilterSPECIAL'] 		= array_key_exists('chkFilterSPECIAL', $_POST);
+	$FilterTYPE = $_SESSION['chkFilterTYPE'] 		= isset($_POST['chkFilterTYPE']) ? $_POST['chkFilterTYPE'] : 0;
 }
 else
 {
 	$SearchModel = array_key_exists('txtSearchModel', $_SESSION) ? $_SESSION['txtSearchModel'] : '';
 	$SearchDate = array_key_exists('txtSearchDate', $_SESSION) ? $_SESSION['txtSearchDate'] : '';
-	$FilterVIP = array_key_exists('chkFilterVIP', $_SESSION) ? (bool)$_SESSION['chkFilterVIP'] : true;
+	$FilterSPECIAL = array_key_exists('chkFilterSPECIAL', $_SESSION) ? (bool)$_SESSION['chkFilterSPECIAL'] : true;
+	$FilterTYPE = array_key_exists('chkFilterTYPE', $_SESSION) ? (int)($_SESSION['chkFilterTYPE']) : 0;
 }
+
 
 $WhereClause = sprintf(
 	"model_id = IFNULL(%1\$s, model_id) AND CONCAT_WS(' ', model_firstname, model_lastname) LIKE '%%%2\$s%%' AND mut_deleted = -1",
@@ -49,26 +51,32 @@ if($Sets)
 	{
 		if(!$Set->getSetIsDirty())
 		{ continue; }
-		
-		if($FilterVIP && $Set->getModel()->GetFullName() == 'VIP')
+
+		if($FilterSPECIAL && ($Set->getModel()->GetFullName() == 'VIP' || $Set->getModel()->GetFullName() == 'Interviews' || $Set->getModel()->GetFullName() == 'Promotions'))
 		{ continue; }
-		
+
+		if($FilterTYPE == 1 && $Set->getSetIsDirtyVid() && !$Set->getSetIsDirtyPic())
+		{ continue; }
+
+		if($FilterTYPE == 2 && !$Set->getSetIsDirtyVid() && $Set->getSetIsDirtyPic())
+		{ continue; }
+
 		$DatesThisSet = Date::FilterDates($Dates, null, $ModelID, $Set->getID());
-		
+
 		if($SearchDate && strtotime($SearchDate) !== false)
 		{
 			$DatesThisSet = Date::FilterDates($DatesThisSet, null, $ModelID, $Set->getID(), null, strtotime($SearchDate));
-			
+
 			if(!$DatesThisSet)
 			{ continue; }
 		}
-		
-		
+
+
 		$SetCount++;
 		$Model = $Set->getModel();
 		$ImageCount += $Set->getAmountPicsInDB();
 		$VideoCount += $Set->getAmountVidsInDB();
-		
+
 		if(isset($PreviousModel) && $Model->getID() != $PreviousModel->getID())
 		{
 			$SetRows .= "\n<tr><td colspan=\"10\" style=\"height:10px;\"></td></tr>";
@@ -78,9 +86,8 @@ if($Sets)
 		{
 			$SetCountModel++;
 		}
-		
+
 		$PreviousModel = $Model;
-		
 
 		$SetRows .= sprintf(
 		"\n<tr class=\"Row%11\$d\">".
@@ -105,13 +112,13 @@ if($Sets)
 		htmlentities($Model->GetFullName()),
 		htmlentities($Model->GetShortName()),
 		$Model->getID(),
-		$SetCountModel % 2 == 0 ? 2 : 1,
+		$SetCount % 2 == 0 ? 2 : 1,
 		Date::FormatDates($DatesThisSet, 'Y-m-d', true)
 		);
-		
-		
-		
-		
+
+
+
+
 	}
 }
 
@@ -119,7 +126,7 @@ echo HTMLstuff::HtmlHeader('Dirty sets', $CurrentUser);
 
 ?>
 
-<form action="<?php echo $_SERVER['REQUEST_URI']; ?>" method="post" class="FilterForm">
+<form action="<?php echo $_SERVER['REQUEST_URI']; ?>" method="post" class="FilterForm" style="text-align:center" name="FilterSets">
 <fieldset>
 
 <legend>Find specific sets:</legend>
@@ -130,14 +137,44 @@ echo HTMLstuff::HtmlHeader('Dirty sets', $CurrentUser);
 
 <label for="txtSearchDate">Date</label>
 <input type="text" id="txtSearchDate" name="txtSearchDate" class="DatePicker" maxlength="10" style="width:100px;" value="<?php echo $SearchDate; ?>" />
-
-<label for="chkFilterVIP">NO-VIP</label>
-<input type="checkbox" id="chkFilterVIP" name="chkFilterVIP"<?php echo HTMLstuff::CheckedStr($FilterVIP); ?> />
+<br />
+<label for="chkFilterSPECIAL">NO-SPECIALS</label>
+<input type="checkbox" id="chkFilterSPECIAL" name="chkFilterSPECIAL"<?php echo HTMLstuff::CheckedStr($FilterSPECIAL); ?> />
+<label for="chkFilterTYPE">NO-PICS</label>
+<input type="checkbox" id="chkFilterTYPE" name="chkFilterTYPE" value="2"<?php echo $FilterTYPE == '2' ? "checked=\"checked\"" : null ?> />
+<label for="chkFilterVID">NO-VIDS</label>
+<input type="checkbox" id="chkFilterVID" name="chkFilterTYPE" value="1"<?php echo $FilterTYPE == '1' ? "checked=\"checked\"" : null ?> />
 
 <input type="submit" id="btnSearch" name="btnSearch" value="Search" />
 
 </fieldset>
 </form>
+
+<script type="text/javascript">
+//<[CDATA[
+
+function Cb2Rb( setRef )
+{
+ this.boxGroup = setRef;
+
+ for( var i=0, len=setRef.length; i<len; i++ )
+  setRef[ i ].onclick=( function(inst, idx){return function(){inst.scan(idx)}} )(this, i);
+
+ this.scan=function(index)
+ {
+  if( this.boxGroup[ index ].checked )
+   for(var i=0, g=this.boxGroup, len=g.length; i<len; i++)
+    if( i != index )
+     g[i].checked = false;
+ }
+  /*28432953637269707465726C61746976652E636F6D*/
+}
+
+new Cb2Rb( document.forms.FilterSets.chkFilterTYPE );
+
+
+//]]>
+</script>
 
 <h2><?php echo sprintf('<a href="index.php">Home</a> - Dirty sets'); ?></h2>
 
