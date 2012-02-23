@@ -37,7 +37,6 @@ foreach($it as $file)
 
 foreach($CacheImages as $CacheImage)
 {
-	$DeleteArray = array();
 	$FileToFind = $CacheImage->getFilenameOnDisk();
 	if(!file_exists($FileToFind))
 	{ CacheImage::DeleteImage($CacheImage, $CurrentUser); }
