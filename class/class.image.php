@@ -359,8 +359,13 @@ class Image
 	public static function OutputImage($filename = 'images/missing.jpg', $width = 800, $height = 600, $cachable = true, $cacheFilenameToBe = null, $downloadFilenameToBe = null)
 	{
 		$filename = $filename ? $filename : 'images/missing.jpg';
-	
 		$info = getimagesize($filename);
+		
+		if($info === false)
+		{
+			$filename = 'images/missing.jpg';
+			$info = getimagesize($filename);
+		}
 		
 		$FactorX = $info[0] / $width;
 		$FactorY = $info[1] / $height;
