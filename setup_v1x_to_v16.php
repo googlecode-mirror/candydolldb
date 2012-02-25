@@ -21,8 +21,6 @@ $UpdateDBSQL = <<<FjbMNnvUJheiwewUJfheJheuehFJDUHdywgwwgHGfgywug
 SET AUTOCOMMIT=0;
 START TRANSACTION;
 
--- =================================================
-
 DROP TABLE IF EXISTS `CacheImage`;
 CREATE TABLE IF NOT EXISTS `CacheImage` (
   `cache_id` varchar(36) NOT NULL,
@@ -41,36 +39,11 @@ CREATE TABLE IF NOT EXISTS `CacheImage` (
   KEY `video_id` (`video_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- =================================================
-
--- Thanks to Vladimir Dobriakov
-
-DELIMITER $$
-
-DROP PROCEDURE IF EXISTS upgrade_candydolldb $$
-
-CREATE PROCEDURE upgrade_candydolldb()
-BEGIN
-
-	IF NOT EXISTS( (SELECT * FROM information_schema.COLUMNS WHERE TABLE_SCHEMA=DATABASE() AND COLUMN_NAME='model_remarks' AND TABLE_NAME='Model') ) THEN
-		ALTER TABLE Model ADD model_remarks TEXT NULL DEFAULT NULL AFTER model_birthdate;
-	END IF;
-
-END $$
-
-CALL upgrade_candydolldb() $$
-
-DROP PROCEDURE IF EXISTS upgrade_candydolldb $$
-
-DELIMITER ;
-
--- =================================================
+ALTER TABLE Model ADD model_remarks TEXT NULL DEFAULT NULL AFTER model_birthdate;
 
 DROP VIEW IF EXISTS `vw_Model`;
 
 CREATE ALGORITHM=UNDEFINED VIEW `vw_Model` AS select `Model`.`model_id` AS `model_id`,`Model`.`model_firstname` AS `model_firstname`,`Model`.`model_lastname` AS `model_lastname`,`Model`.`model_birthdate` AS `model_birthdate`, `Model`.`model_remarks` AS `model_remarks`, `Model`.`mut_deleted` AS `mut_deleted`,(select count(`Set`.`model_id`) AS `count(``model_id``)` from `Set` where ((`Set`.`model_id` = `Model`.`model_id`) and (`Set`.`mut_deleted` = -(1)))) AS `model_setcount` from `Model`;
-
--- =================================================
 
 COMMIT;
 SET AUTOCOMMIT=1;
