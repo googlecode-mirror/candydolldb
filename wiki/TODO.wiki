@@ -25,10 +25,12 @@
 
   * Multi-threadedness. Currently only one concurrent user is allowed for imports.
 
+  * Automatic updateing, automatic downloading and installing of new releases.
+
 == Would Be Nice ==
 
   * Overlay with loading-animation during lengthy imports (for example using AJAX)
 
   * More complete list of the models's lastnames and birthdates<br>(currently 79/93 have a known birthdate and 32/93 a known lastname)
 
-  * Automatic import of updates<br>(for example a scheduled wget-request of the updatepage, then parsing the response)
+  * Automatic import of CD-updates<br>(for example a scheduled wget-request of the updatepage, then parsing the response)
