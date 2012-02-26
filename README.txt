@@ -57,11 +57,11 @@ UPDATE FROM v1.3, v1.4 or v1.5:
  * Extract the downloaded archive into the directory in which you
  installed CandyDollDB, overwriting all files in the process.
  * Look for the following line in your config.php. If it does not
- exists, add it before the closing ?> tag:
+ already exist, add it before the closing ?> tag:
  
  	define('DBNAME', 'candydolldb');
  
- * In your browser, navigate to setup_v1x-to-v16.php and click 'yes'.
+ * In your browser, navigate to setup_v1x_to_v16.php and click 'yes'.
  * After the update is complete, log in and click Features -> Process XML.
 
 
