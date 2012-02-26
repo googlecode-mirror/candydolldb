@@ -1,4 +1,19 @@
 <?php
+/*	This file is part of CandyDollDB.
+
+CandyDollDB is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+CandyDollDB is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with CandyDollDB.  If not, see <http://www.gnu.org/licenses/>.
+*/
 
 include('cd.php');
 $CurrentUser = Authentication::Authenticate();
@@ -12,7 +27,8 @@ $PreviousModel = null;
 $SearchModel = '';
 $SearchDate = '';
 $FilterSPECIAL = false;
-$FilterTYPE = 0;
+$FilterPIC = false;
+$FilterVID = false;
 $SetRows = '';
 $SetCount = 0;
 $SetCountModel = 0;
@@ -21,19 +37,20 @@ $VideoCount = 0;
 
 if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'DirtySetFilter')
 {
-	$SearchModel = $_SESSION['txtSearchModel'] 	= $_POST['txtSearchModel'];
-	$SearchDate = $_SESSION['txtSearchDate'] 	= $_POST['txtSearchDate'];
-	$FilterSPECIAL = $_SESSION['chkFilterSPECIAL'] 		= array_key_exists('chkFilterSPECIAL', $_POST);
-	$FilterTYPE = $_SESSION['chkFilterTYPE'] 		= isset($_POST['chkFilterTYPE']) ? $_POST['chkFilterTYPE'] : 0;
+	$SearchModel = $_SESSION['txtSearchModel']		= $_POST['txtSearchModel'];
+	$SearchDate = $_SESSION['txtSearchDate'] 		= $_POST['txtSearchDate'];
+	$FilterSPECIAL = $_SESSION['chkFilterSPECIAL']	= array_key_exists('chkFilterSPECIAL', $_POST);
+	$FilterPIC = $_SESSION['chkFilterPIC']			= array_key_exists('chkFilterPIC', $_POST);
+	$FilterVID = $_SESSION['chkFilterVID']			= array_key_exists('chkFilterVID', $_POST);
 }
 else
 {
 	$SearchModel = array_key_exists('txtSearchModel', $_SESSION) ? $_SESSION['txtSearchModel'] : '';
 	$SearchDate = array_key_exists('txtSearchDate', $_SESSION) ? $_SESSION['txtSearchDate'] : '';
 	$FilterSPECIAL = array_key_exists('chkFilterSPECIAL', $_SESSION) ? (bool)$_SESSION['chkFilterSPECIAL'] : true;
-	$FilterTYPE = array_key_exists('chkFilterTYPE', $_SESSION) ? (int)($_SESSION['chkFilterTYPE']) : 0;
+	$FilterPIC = array_key_exists('chkFilterPIC', $_SESSION) ? (bool)$_SESSION['chkFilterPIC'] : false;
+	$FilterVID = array_key_exists('chkFilterVID', $_SESSION) ? (bool)$_SESSION['chkFilterVID'] : false;
 }
-
 
 $WhereClause = sprintf(
 	"model_id = IFNULL(%1\$s, model_id) AND CONCAT_WS(' ', model_firstname, model_lastname) LIKE '%%%2\$s%%' AND mut_deleted = -1",
@@ -55,10 +72,10 @@ if($Sets)
 		if($FilterSPECIAL && ($Set->getModel()->GetFullName() == 'VIP' || $Set->getModel()->GetFullName() == 'Interviews' || $Set->getModel()->GetFullName() == 'Promotions'))
 		{ continue; }
 
-		if($FilterTYPE == 1 && $Set->getSetIsDirtyVid() && !$Set->getSetIsDirtyPic())
+		if($FilterPIC && $Set->getSetIsDirtyPic() && !$Set->getSetIsDirtyVid())
 		{ continue; }
 
-		if($FilterTYPE == 2 && !$Set->getSetIsDirtyVid() && $Set->getSetIsDirtyPic())
+		if($FilterVID && $Set->getSetIsDirtyVid() && !$Set->getSetIsDirtyPic())
 		{ continue; }
 
 		$DatesThisSet = Date::FilterDates($Dates, null, $ModelID, $Set->getID());
@@ -99,7 +116,7 @@ if($Sets)
 			"<td class=\"Center\"><a href=\"import_image.php?set_id=%1\$d\"><img src=\"images/button_upload.png\" width=\"16\" height=\"16\" alt=\"Import set's images\" title=\"Import set's images\" /></a></td>".
 			"<td class=\"Center\"><a href=\"video.php?model_id=%10\$d&amp;set_id=%1\$d\">%3\$d%5\$s</a></td>".
 			"<td class=\"Center\"><a href=\"import_video.php?set_id=%1\$d\"><img src=\"images/button_upload.png\" width=\"16\" height=\"16\" alt=\"Import set's videos\" title=\"Import set's videos\" /></a></td>".
-			"<td class=\"Center\"><a href=\"https://www.binsearch.info/?q=%9\$s%7\$s&amp;max=100&adv_age=&amp;server=2\" rel=\"external\"><img src=\"images/button_search.png\" width=\"16\" height=\"16\" alt=\"Search on BinSearch.info\" title=\"Search on BinSearch.info\" /></a></td>".
+			"<td class=\"Center\"><a href=\"https://www.binsearch.info/?q=%9\$s%7\$s&amp;max=100&amp;adv_age=&amp;server=2\" rel=\"external\"><img src=\"images/button_search.png\" width=\"16\" height=\"16\" alt=\"Search on BinSearch.info\" title=\"Search on BinSearch.info\" /></a></td>".
 			"<td class=\"Center\"><a href=\"http://www.google.com/search?q=%9\$s%7\$s\" rel=\"external\"><img src=\"images/button_search.png\" width=\"16\" height=\"16\" alt=\"Search on Google.com\" title=\"Search on Google.com\" /></a></td>".
         "</tr>",
 		$Set->getID(),
@@ -115,10 +132,6 @@ if($Sets)
 		$SetCount % 2 == 0 ? 2 : 1,
 		Date::FormatDates($DatesThisSet, 'Y-m-d', true)
 		);
-
-
-
-
 	}
 }
 
@@ -126,7 +139,7 @@ echo HTMLstuff::HtmlHeader('Dirty sets', $CurrentUser);
 
 ?>
 
-<form action="<?php echo $_SERVER['REQUEST_URI']; ?>" method="post" class="FilterForm" style="text-align:center" name="FilterSets">
+<form action="<?php echo $_SERVER['REQUEST_URI']; ?>" method="post" class="FilterForm" style="text-align:center">
 <fieldset>
 
 <legend>Find specific sets:</legend>
@@ -140,41 +153,15 @@ echo HTMLstuff::HtmlHeader('Dirty sets', $CurrentUser);
 <br />
 <label for="chkFilterSPECIAL">NO-SPECIALS</label>
 <input type="checkbox" id="chkFilterSPECIAL" name="chkFilterSPECIAL"<?php echo HTMLstuff::CheckedStr($FilterSPECIAL); ?> />
-<label for="chkFilterTYPE">NO-PICS</label>
-<input type="checkbox" id="chkFilterTYPE" name="chkFilterTYPE" value="2"<?php echo $FilterTYPE == '2' ? "checked=\"checked\"" : null ?> />
+<label for="chkFilterPIC">NO-PICS</label>
+<input type="checkbox" id="chkFilterPIC" name="chkFilterPIC"<?php echo HTMLstuff::CheckedStr($FilterPIC); ?> />
 <label for="chkFilterVID">NO-VIDS</label>
-<input type="checkbox" id="chkFilterVID" name="chkFilterTYPE" value="1"<?php echo $FilterTYPE == '1' ? "checked=\"checked\"" : null ?> />
+<input type="checkbox" id="chkFilterVID" name="chkFilterVID"<?php echo HTMLstuff::CheckedStr($FilterVID); ?> />
 
 <input type="submit" id="btnSearch" name="btnSearch" value="Search" />
 
 </fieldset>
 </form>
-
-<script type="text/javascript">
-//<[CDATA[
-
-function Cb2Rb( setRef )
-{
- this.boxGroup = setRef;
-
- for( var i=0, len=setRef.length; i<len; i++ )
-  setRef[ i ].onclick=( function(inst, idx){return function(){inst.scan(idx)}} )(this, i);
-
- this.scan=function(index)
- {
-  if( this.boxGroup[ index ].checked )
-   for(var i=0, g=this.boxGroup, len=g.length; i<len; i++)
-    if( i != index )
-     g[i].checked = false;
- }
-  /*28432953637269707465726C61746976652E636F6D*/
-}
-
-new Cb2Rb( document.forms.FilterSets.chkFilterTYPE );
-
-
-//]]>
-</script>
 
 <h2><?php echo sprintf('<a href="index.php">Home</a> - Dirty sets'); ?></h2>
 
