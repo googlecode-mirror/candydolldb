@@ -62,6 +62,7 @@ UPDATE FROM v1.3, v1.4 or v1.5:
  	define('DBNAME', 'candydolldb');
  
  * In your browser, navigate to setup_v1x-to-v16.php and click 'yes'.
+ * After the update is complete, log in and click Features -> Process XML.
 
 
 
