@@ -21,7 +21,7 @@ So far, screenshots are taken with Chromium 15 and Firefox 8 on Ubuntu Oneiric. 
 
 == Model form == 
 
-[http://fwiep.nl/download/b013e8a1-585c-412b-b50b-7ffb89982ae6.jpg http://fwiep.nl/download/b013e8a1-585c-412b-b50b-7ffb89982ae6s.jpg]
+[http://fwiep.nl/download/f16a697b-f953-4540-8444-ef9fa9330dd9.jpg http://fwiep.nl/download/f16a697b-f953-4540-8444-ef9fa9330dd9s.jpg]
 
 == Batch video-import == 
 
