@@ -32,6 +32,9 @@ if(!defined('DBHOSTNAME') || strlen(DBHOSTNAME) == 0 ||
 		header('location:setup.php');
 		exit(128);
 	}
+	
+	if(!defined('DBNAME'))
+	{ define('DBNAME', 'candydolldb'); }
 }
 
 define('CANDYDOLLDB_VERSION', '1.6');
