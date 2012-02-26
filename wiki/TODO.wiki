@@ -7,6 +7,8 @@
 
 == Must Have ==
 
+  * IF EXISTS checks in update- and upgrade scripts
+
   * Lots of feedback :-)
 
 == Could Use ==
