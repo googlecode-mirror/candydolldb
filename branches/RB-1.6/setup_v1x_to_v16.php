@@ -32,7 +32,7 @@ if(array_key_exists('hidAction', $_POST) && isset($_POST['hidAction']) && $_POST
         mysql_query("ALTER TABLE Model ADD model_remarks TEXT NULL DEFAULT NULL AFTER model_birthdate");
     }
 
-$UpdateDBSQL = <<<FjbMNnvUJheiwewUJfheJheuehFJDUHdywgwwgHGfgywug
+	$UpdateDBSQL = <<<FjbMNnvUJheiwewUJfheJheuehFJDUHdywgwwgHGfgywug
 SET AUTOCOMMIT=0;
 START TRANSACTION;
 
@@ -62,8 +62,6 @@ SET AUTOCOMMIT=1;
 
 FjbMNnvUJheiwewUJfheJheuehFJDUHdywgwwgHGfgywug;
 
-
-
 	/* @var $db DB*/
 	if($db->ExecuteQueries($UpdateDBSQL))
 	{
@@ -74,7 +72,7 @@ FjbMNnvUJheiwewUJfheJheuehFJDUHdywgwwgHGfgywug;
 }
 else
 {
-echo HTMLstuff::HtmlHeader('Setup'); ?>
+	echo HTMLstuff::HtmlHeader('Setup'); ?>
 
 <h2 class="Hidden">Application Setup</h2>
 
@@ -104,4 +102,5 @@ echo HTMLstuff::HtmlHeader('Setup'); ?>
 
 <?php
 }
-echo HTMLstuff::HtmlFooter(); ?>
+echo HTMLstuff::HtmlFooter();
+?>
