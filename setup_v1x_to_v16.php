@@ -21,7 +21,6 @@ $UpdateDBSQL = <<<FjbMNnvUJheiwewUJfheJheuehFJDUHdywgwwgHGfgywug
 SET AUTOCOMMIT=0;
 START TRANSACTION;
 
-DROP TABLE IF EXISTS `CacheImage`;
 CREATE TABLE IF NOT EXISTS `CacheImage` (
   `cache_id` varchar(36) NOT NULL,
   `model_id` bigint(20) DEFAULT NULL,

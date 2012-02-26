@@ -57,7 +57,6 @@ UPDATE FROM v1.3, v1.4 or v1.5:
  * Extract the downloaded archive into the directory in which you
  installed CandyDollDB, overwriting all files in the process.
  * In your browser, navigate to setup_v1x-to-v16.php and click 'yes'.
- * NOTE: The CacheImage table will be dropped before being recreated.
 
 
 
@@ -74,12 +73,12 @@ HISTORY:
 		Added a split pics- and videolist of dirty sets on main page;
 		Added functionality for cleaning both cachetable and -folder;
 		Fixed the stretching of thumbnail images on portrait-only sets;
-		Tweaked the set's import to decrease number of dirty sets;
+		Tweaked the set import to decrease number of dirty sets;
 		Tweaked timeout setting for lengthy operations;
 		Updated the PHPMailer class;
 		Centralized the handling of querystring variables; 
 		Changed the inner workings of the random-image grabber;
-		Minor cosmetic surgery and code clean up; 
+		Minor cosmetic surgery, bugfixes and code clean up; 
 
 2012-01-28 1.5
 		Added a new lay-out and design (Vika is such a beauty, isn't she?);
