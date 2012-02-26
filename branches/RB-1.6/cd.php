@@ -42,11 +42,14 @@ if(!defined('DBHOSTNAME') || strlen(DBHOSTNAME) == 0 ||
 		echo "Please use the webinterface for setting up this application.\n";
 		exit(128);
 	}
-	else if(basename($_SERVER['REQUEST_URI']) != 'setup.php')
+	else if(!in_array(basename($_SERVER['REQUEST_URI']), array('setup.php', 'setup_v1x_to_v16.php')))
 	{
 		header('location:setup.php');
 		exit(128);
 	}
+	
+	if(!defined('DBNAME'))
+	{ define('DBNAME', 'candydolldb'); }
 }
 
 define('CANDYDOLLDB_VERSION', '1.6');
