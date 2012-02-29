@@ -17,6 +17,10 @@
 
   * URL-rewrite compatibility. Apache, IIS or both?
 
+  * Tagging of models, sets, images, videos.
+
+  * Searching capability using these tags.
+
   * HTML5-interface instead of XHTML 1.0 Strict.
 
   * Usage-reports on non-Linux platforms, for inter-platform testing of filehandling, imports and downloads.
