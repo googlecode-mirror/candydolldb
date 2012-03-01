@@ -111,4 +111,6 @@ if(in_array(basename($_SERVER['PHP_SELF']), $EmailPages))
 	$ml->SMTPAuth = SMTP_AUTH;
 }
 
+$DateStyleArray =array("d-m-Y","j-n-Y","j F Y","m-d-Y","n-j-Y","F j, Y");
+
 ?>

@@ -16,7 +16,8 @@ class User
 	private $LastLogin = -1;
 	private $PreLastLogin = -1;
 	private $Rights = 0;
-	
+	private $DateDisplayoptions = 0;
+
 	/**
 	 * Returns a concatenation of the User's firstname, optional insertion and lastname.
 	 * @return string
@@ -254,8 +255,22 @@ class User
 	 */
 	public function setRights($Rights)
 	{ $this->Rights = $Rights; }
-	
-	
+
+
+	/**
+	 * Gets the User's display options
+	 * @return int
+	 */
+	public function getDateDisplayOptions()
+	{ return $this->DateDisplayoptions; }
+
+	/**
+	 * @param int $DateDisplayoptions
+	 */
+	public function setDateDisplayOptions($DateDisplayoptions)
+	{ $this->DateDisplayoptions = $DateDisplayoptions; }
+
+
 	/**
 	 * Gets an array of Users from the database, or NULL on failure. The array can be empty.
 	 * @param string $WhereClause
@@ -295,6 +310,7 @@ class User
 							case 'user_lastlogin'	: $UserObject->setLastLogin($ColumnValue);		break;
 							case 'user_prelastlogin': $UserObject->setPreLastLogin($ColumnValue);	break;
 							case 'user_rights'		: $UserObject->setRights($ColumnValue);			break;
+							case 'user_datedisplayopts'		: $UserObject->setDateDisplayOptions($ColumnValue);$_SESSION['displaydateoptions'] = $ColumnValue;			break;
 						}
 					}
 					
@@ -327,12 +343,13 @@ class User
 			mysql_real_escape_string($User->getInsertion()),
 		    mysql_real_escape_string($User->getLastName()),
 		    mysql_real_escape_string($User->getEmailAddress()),
+		    mysql_real_escape_string($User->getDateDisplayOptions()),
 		    $User->getGender(),
 		    $User->getBirthDate(),
 		    $CurrentUser->getID(),
 		    time()
 		),
-		'user_username, user_password, user_salt, user_firstname, user_insertion, user_lastname, user_email, user_gender, user_birthdate, mut_id, mut_date'
+		'user_username, user_password, user_salt, user_firstname, user_insertion, user_lastname, user_email, user_datedisplayopts, user_gender, user_birthdate, mut_id, mut_date'
 	    );
 	}
 	
@@ -356,6 +373,7 @@ class User
 				'user_insertion' => mysql_real_escape_string($User->getInsertion()),
 				'user_lastname' => mysql_real_escape_string($User->getLastName()),
 				'user_email' => mysql_real_escape_string($User->getEmailAddress()),
+				'user_datedisplayopts' => mysql_real_escape_string($User->getDateDisplayOptions()),
 				'user_gender' => $User->getGender(),
 				'user_birthdate' => $User->getBirthDate(),
 				'user_lastactive' => $User->getLastActive(),

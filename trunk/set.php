@@ -39,7 +39,7 @@ if($Sets)
 			foreach ($DatesThisSet as $date) {
 				$DatesOutput .= sprintf(
 					"<li>%1\$s (%2\$s)</li>",
-					date('j F Y', $date->getTimeStamp()),
+					date($DateStyleArray[$_SESSION["displaydateoptions"]], $date->getTimeStamp()),
 					($date->getDateKind() == DATE_KIND_VIDEO ? 'V' : ($date->getDateKind() == DATE_KIND_IMAGE ? 'P' : '?'))
 				);
 			}
