@@ -113,7 +113,7 @@ if($Models)
 			$Model->getID(),
 			COMMAND_DELETE,
 			($ModelCount % 4 == 0 ? "<div class=\"Clear\"></div>" : null),
-			$Model->getBirthdate() > 0 ? date('j-n-Y', $Model->getBirthdate()) : '&nbsp;',
+			$Model->getBirthdate() > 0 ? date($DateStyleArray[$_SESSION["displaydateoptions"]], $Model->getBirthdate()) : '&nbsp;',
 			$Model->getBirthdate() > 0 ? sprintf(' (%1$.1f)', Utils::CalculateAge($Model->getBirthdate())) : '&nbsp;',
 			$DirtySetPicCount > 0 ? sprintf(', <em>%1$d dirty</em>', $DirtySetPicCount) : null,
 			$SetPicCount,

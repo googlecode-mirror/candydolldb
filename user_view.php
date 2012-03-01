@@ -40,7 +40,8 @@ if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'UserView')
 	$User->setInsertion($_POST['txtInsertion']);
 	$User->setLastName($_POST['txtLastName']);
 	$User->setEmailAddress($_POST['txtEmailAddress']);
-	
+	$User->setDateDisplayOptions($_POST['optdatedisplay']);
+
 	if(array_key_exists('radGender', $_POST))
 	{
 		switch (intval($_POST['radGender']))
@@ -159,6 +160,27 @@ echo HTMLstuff::HtmlHeader($User->GetFullName(), $CurrentUser);
 <div class="FormRow">
 <label for="txtRepeatPassword">Repeat password:<?php echo $UserID ? '' : ' <em>*</em>'; ?></label>
 <input type="password" id="txtRepeatPassword" name="txtRepeatPassword" maxlength="100" value=""<?php echo HTMLstuff::DisabledStr($DeleteUser); ?> />
+</div>
+
+<div class="FormRow">
+<label for="optdatedisplay">Select Date Style:</label>
+<select id="optdatedisplay" name="optdatedisplay">
+	<?php 
+	foreach($DateStyleArray as $key => $datekey)
+	{
+		$optionrow .= sprintf("
+		<option value=\"%1\$d\"%2\$s>%3\$s%4\$s</option>",
+  $key,
+  $User->getDateDisplayOptions() == $key ? ' selected' : null,
+  date($datekey),
+  $key == 0 ? ' [Default]' : null 
+  );
+}
+ echo $optionrow;
+ ?>
+
+  
+</select>
 </div>
 
 <div class="FormRow">
