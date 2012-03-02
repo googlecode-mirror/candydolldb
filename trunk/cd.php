@@ -69,6 +69,15 @@ define('SQL_ERR_NOSUCHTABLE', 33366);
 define('SYNTAX_ERR_EMAILADDRESS', 33367);
 define('REQUIRED_FIELD_MISSING', 33368);
 
+$DateStyleArray = array(
+	"d-m-Y",
+	"j-n-Y",
+	"j F Y",
+	"m-d-Y",
+	"n-j-Y",
+	"F j, Y"
+);
+
 include('class/class.global.php');
 include('class/class.error.php');
 include('class/class.html.php');
@@ -111,6 +120,6 @@ if(in_array(basename($_SERVER['PHP_SELF']), $EmailPages))
 	$ml->SMTPAuth = SMTP_AUTH;
 }
 
-$DateStyleArray =array("d-m-Y","j-n-Y","j F Y","m-d-Y","n-j-Y","F j, Y");
+
 
 ?>
