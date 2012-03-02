@@ -8,6 +8,7 @@ class Video
 	private $FileExtension;
 	private $FileSize;
 	private $FileCheckSum;
+	private $Tags = null;
 	
 	/**
 	 * @param int $ID
@@ -93,6 +94,18 @@ class Video
 	public function setFileCheckSum($FileCheckSum)
 	{ $this->FileCheckSum = $FileCheckSum; }
 	
+	/**
+	* @return string
+	*/
+	public function getTags()
+	{ return $this->Tags; }
+	
+	/**
+	* @param string $Tags
+	*/
+	public function setTags($Tags)
+	{ $this->Tags = $Tags; }
+	
 	
 	/**
 	 * @param string $WhereClause
@@ -124,15 +137,18 @@ class Video
 							case 'video_fileextension'	: $VideoObject->setFileExtension($ColumnValue); break;
 							case 'video_filesize'		: $VideoObject->setFileSize($ColumnValue); 		break;
 							case 'video_filechecksum'	: $VideoObject->setFileCheckSum($ColumnValue); 	break;
+							case 'video_tags'			: $VideoObject->setTags($ColumnValue);			break;
 							
 							case 'set_id'			: $SetObject->setID($ColumnValue);				break;
 							case 'set_prefix'		: $SetObject->setPrefix($ColumnValue);			break;
 							case 'set_name'			: $SetObject->setName($ColumnValue);			break;
 							case 'set_containswhat'	: $SetObject->setContainsWhat($ColumnValue);	break;
+							case 'set_tags'			: $SetObject->setTags($ColumnValue);			break;
 							
 							case 'model_id'			: $ModelObject->setID($ColumnValue);			break;
 							case 'model_firstname'	: $ModelObject->setFirstName($ColumnValue);		break;
 							case 'model_lastname'	: $ModelObject->setLastName($ColumnValue);		break;
+							case 'model_tags'		: $ModelObject->setTags($ColumnValue);			break;
 						}
 					}
 					
@@ -167,10 +183,11 @@ class Video
 		    mysql_real_escape_string($Video->getFileExtension()),
 		    $Video->getFileSize(),
 		    mysql_real_escape_string($Video->getFileCheckSum()),
+	    	mysql_real_escape_string($Video->getTags()),
 		    $CurrentUser->getID(),
 		    time()
 		),
-		'set_id, video_filename, video_fileextension, video_filesize, video_filechecksum, mut_id, mut_date'
+		'set_id, video_filename, video_fileextension, video_filesize, video_filechecksum, video_tags, mut_id, mut_date'
 	    );
 	}
 	
@@ -192,7 +209,8 @@ class Video
 				'video_filename' => mysql_real_escape_string($Video->getFileName()),
 				'video_fileextension' => mysql_real_escape_string($Video->getFileExtension()),
 				'video_filesize' => $Video->getFileSize(),
-				'video_filechecksum' => $Video->getFileCheckSum(),
+				'video_filechecksum' => mysql_real_escape_string($Video->getFileCheckSum()),
+				'video_tags' => mysql_real_escape_string($Video->getTags()),
 				'mut_id' => $CurrentUser->getID(),
 				'mut_date' => time()
 			),

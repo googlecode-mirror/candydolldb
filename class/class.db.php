@@ -406,6 +406,8 @@ class DB
 				
 				$OutBool = @mysql_query($q);
 				
+				$melding = mysql_error();
+				
 				if($OutBool === false) { break; }
 			}
 			return $OutBool;			

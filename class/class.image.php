@@ -10,6 +10,7 @@ class Image
 	private $FileCheckSum;
 	private $ImageWidth = 0;
 	private $ImageHeight = 0;
+	private $Tags = null;
 	
 	/**
 	 * @param int $ID
@@ -117,6 +118,18 @@ class Image
 	 */
 	public function setFileCheckSum($FileCheckSum)
 	{ $this->FileCheckSum = $FileCheckSum; }
+	
+	/**
+	* @return string
+	*/
+	public function getTags()
+	{ return $this->Tags; }
+	
+	/**
+	 * @param string $Tags
+	 */
+	public function setTags($Tags)
+	{ $this->Tags = $Tags; }
 
 	
 	/**
@@ -222,6 +235,7 @@ class Image
 							case 'image_filechecksum'	: $ImageObject->setFileCheckSum($ColumnValue); 	break;
 							case 'image_width'			: $ImageObject->setImageWidth($ColumnValue); 	break;
 							case 'image_height'			: $ImageObject->setImageHeight($ColumnValue); 	break;
+							case 'image_tags'			: $ImageObject->setTags($ColumnValue);			break;
 							
 							case 'set_id'			: $SetObject->setID($ColumnValue);				break;
 							case 'set_prefix'		: $SetObject->setPrefix($ColumnValue);			break;
@@ -229,10 +243,12 @@ class Image
 							case 'set_date_pic'		: $SetObject->setDatePic($ColumnValue);			break;
 							case 'set_date_vid'		: $SetObject->setDateVid($ColumnValue);			break;
 							case 'set_containswhat'	: $SetObject->setContainsWhat($ColumnValue);	break;
+							case 'set_tags'			: $SetObject->setTags($ColumnValue);			break;
 							
 							case 'model_id'			: $ModelObject->setID($ColumnValue);			break;
 							case 'model_firstname'	: $ModelObject->setFirstName($ColumnValue);		break;
 							case 'model_lastname'	: $ModelObject->setLastName($ColumnValue);		break;
+							case 'model_tags'		: $ModelObject->setTags($ColumnValue);			break;
 						}
 					}
 					
@@ -268,10 +284,11 @@ class Image
 		    mysql_real_escape_string($Image->getFileCheckSum()),
 		    $Image->getImageWidth(),
 		    $Image->getImageHeight(),
+	    	mysql_real_escape_string($Image->getTags()),
 		    $CurrentUser->getID(),
 		    time()
 		),
-		'set_id, image_filename, image_fileextension, image_filesize, image_filechecksum, image_width, image_height, mut_id, mut_date'
+		'set_id, image_filename, image_fileextension, image_filesize, image_filechecksum, image_width, image_height, image_tags, mut_id, mut_date'
 	    );
 	}
 	
@@ -293,9 +310,10 @@ class Image
 				'image_filename' => mysql_real_escape_string($Image->getFileName()),
 				'image_fileextension' => mysql_real_escape_string($Image->getFileExtension()),
 				'image_filesize' => $Image->getFileSize(),
-				'image_filechecksum' => $Image->getFileCheckSum(),
+				'image_filechecksum' => mysql_real_escape_string($Image->getFileCheckSum()),
 				'image_width' => $Image->getImageWidth(),
 				'image_height' => $Image->getImageHeight(),
+				'image_tags' => mysql_real_escape_string($Image->getTags()),
 				'mut_id' => $CurrentUser->getID(),
 				'mut_date' => time()
 			),
