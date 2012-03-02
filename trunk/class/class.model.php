@@ -8,6 +8,7 @@ class Model
 	private $BirthDate = -1;
 	private $Remarks;
 	private $SetCount = 0;
+	private $Tags = null;
 	
 	/**
 	 * Returns a concatenation of the Model's firstname and the first character of the Model's lastname.
@@ -134,6 +135,18 @@ class Model
 	{ $this->SetCount = $SetCount;}
 	
 	/**
+	* @return string
+	*/
+	public function getTags()
+	{ return $this->Tags; }
+	
+	/**
+	 * @param string $Tags
+	 */
+	public function setTags($Tags)
+	{ $this->Tags = $Tags; }
+	
+	/**
 	 * Returns a random image-filename of the current model.
 	 * @return string|NULL
 	 */
@@ -206,12 +219,13 @@ class Model
 					{
 						switch($ColumnKey)
 						{
-							case 'model_id'		: $ModelObject->setID($ColumnValue);		break;
+							case 'model_id'			: $ModelObject->setID($ColumnValue);		break;
 							case 'model_firstname'	: $ModelObject->setFirstName($ColumnValue);	break;
 							case 'model_lastname'	: $ModelObject->setLastName($ColumnValue);	break;
 							case 'model_birthdate'	: $ModelObject->setBirthDate($ColumnValue);	break;
 							case 'model_remarks'	: $ModelObject->setRemarks($ColumnValue);	break;
 							case 'model_setcount'	: $ModelObject->setSetCount($ColumnValue);	break;
+							case 'model_tags'		: $ModelObject->setTags($ColumnValue);		break;
 						}
 					}
 					
@@ -242,10 +256,11 @@ class Model
 			mysql_real_escape_string($Model->getLastName()),
 			$Model->getBirthDate(),
 			mysql_real_escape_string($Model->getRemarks()),
+	    	mysql_real_escape_string($Model->getTags()),
 			$CurrentUser->getID(),
 			time()
 		),
-		'model_firstname, model_lastname, model_birthdate, model_remarks, mut_id, mut_date'
+		'model_firstname, model_lastname, model_birthdate, model_remarks, model_tags, mut_id, mut_date'
 	    );
 	}
 	
@@ -267,6 +282,7 @@ class Model
 				'model_lastname' => mysql_real_escape_string($Model->getLastName()),
 				'model_birthdate' => $Model->getBirthDate(),
 				'model_remarks' => mysql_real_escape_string($Model->getRemarks()),
+				'model_tags' => mysql_real_escape_string($Model->getTags()),
 				'mut_id' => $CurrentUser->getID(),
 				'mut_date' => time()
 			),
@@ -321,8 +337,6 @@ class Model
 		}
 		return $OutArray;
 	}
-	
-
 }
 
 ?>

@@ -104,6 +104,7 @@ include('class/class.cacheimage.php');
 include('class/class.model.php');
 include('class/class.set.php');
 include('class/class.video.php');
+include('class/class.tag.php');
 
 $EmailPages = array('password.php');
 if(in_array(basename($_SERVER['PHP_SELF']), $EmailPages))
