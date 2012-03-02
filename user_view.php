@@ -7,7 +7,8 @@ $UserID = Utils::SafeIntFromQS('user_id');
 $DeleteUser = (array_key_exists('cmd', $_GET) && $_GET['cmd'] && ($_GET['cmd'] == COMMAND_DELETE));
 
 $_SESSION['UserSalt'] = null;
-$PasswordError = false; 
+$PasswordError = false;
+$DateFormatOptions = null; 
 
 
 /* @var $User User */
@@ -31,6 +32,17 @@ else
 	$User = new User(null, 'New user');
 }
 
+foreach($DateStyleArray as $index => $format)
+{
+	$DateFormatOptions .= sprintf("
+		<option value=\"%1\$d\"%2\$s>%3\$s%4\$s</option>",
+		$index,
+		$User->getDateDisplayOptions() == $index ? ' selected="selected"' : null,
+		date($format),
+		$index == 0 ? ' [Default]' : null
+	);
+}
+
 if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'UserView')
 {
 	$User->setUserName($_POST['txtUserName']);
@@ -40,7 +52,7 @@ if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'UserView')
 	$User->setInsertion($_POST['txtInsertion']);
 	$User->setLastName($_POST['txtLastName']);
 	$User->setEmailAddress($_POST['txtEmailAddress']);
-	$User->setDateDisplayOptions($_POST['optdatedisplay']);
+	$User->setDateDisplayOptions($_POST['selectDateformat']);
 
 	if(array_key_exists('radGender', $_POST))
 	{
@@ -163,24 +175,8 @@ echo HTMLstuff::HtmlHeader($User->GetFullName(), $CurrentUser);
 </div>
 
 <div class="FormRow">
-<label for="optdatedisplay">Select Date Style:</label>
-<select id="optdatedisplay" name="optdatedisplay">
-	<?php 
-	foreach($DateStyleArray as $key => $datekey)
-	{
-		$optionrow .= sprintf("
-		<option value=\"%1\$d\"%2\$s>%3\$s%4\$s</option>",
-  $key,
-  $User->getDateDisplayOptions() == $key ? ' selected' : null,
-  date($datekey),
-  $key == 0 ? ' [Default]' : null 
-  );
-}
- echo $optionrow;
- ?>
-
-  
-</select>
+<label for="selectDateformat">Select date format:</label>
+<select id="selectDateformat" name="selectDateformat"><?php echo $DateFormatOptions ?></select>
 </div>
 
 <div class="FormRow">

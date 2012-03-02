@@ -179,6 +179,29 @@ class User
 	{ $this->EmailAddress = $EmailAddress; }
 	
 	/**
+	* Gets the User's date display options
+	* @return int
+	*/
+	public function getDateDisplayOptions()
+	{ return $this->DateDisplayoptions; }
+	
+	/**
+	* @param int $DateDisplayoptions
+	*/
+	public function setDateDisplayOptions($DateDisplayoptions)
+	{ $this->DateDisplayoptions = $DateDisplayoptions; }
+	
+	/**
+	* Gets the User's preferred dateformatstring
+	* @return string
+	*/
+	public function getDateFormat()
+	{
+		global $DateStyleArray;
+		return $DateStyleArray[$this->DateDisplayoptions];
+	}
+	
+	/**
 	 * Gets the User's gender, represented as a TINYINT, as defined in the main INCLUDE-file.
 	 * @return int 
 	 */
@@ -257,18 +280,7 @@ class User
 	{ $this->Rights = $Rights; }
 
 
-	/**
-	 * Gets the User's display options
-	 * @return int
-	 */
-	public function getDateDisplayOptions()
-	{ return $this->DateDisplayoptions; }
 
-	/**
-	 * @param int $DateDisplayoptions
-	 */
-	public function setDateDisplayOptions($DateDisplayoptions)
-	{ $this->DateDisplayoptions = $DateDisplayoptions; }
 
 
 	/**
@@ -296,21 +308,21 @@ class User
 					{
 						switch($ColumnKey)
 						{
-							case 'user_id'			: $UserObject->setID($ColumnValue);				break;
-							case 'user_username'	: $UserObject->setUserName($ColumnValue);		break;
-							case 'user_password'	: $UserObject->setPassword($ColumnValue);		break;
-							case 'user_salt'		: $UserObject->setSalt($ColumnValue);			break;
-							case 'user_firstname'	: $UserObject->setFirstName($ColumnValue);		break;
-							case 'user_insertion'	: $UserObject->setInsertion($ColumnValue);		break;
-							case 'user_lastname'	: $UserObject->setLastName($ColumnValue);		break;
-							case 'user_email'		: $UserObject->setEmailAddress($ColumnValue);	break;
-							case 'user_gender'		: $UserObject->setGender($ColumnValue);			break;
-							case 'user_birthdate'	: $UserObject->setBirthDate($ColumnValue);		break;
-							case 'user_lastactive'	: $UserObject->setLastActive($ColumnValue);		break;
-							case 'user_lastlogin'	: $UserObject->setLastLogin($ColumnValue);		break;
-							case 'user_prelastlogin': $UserObject->setPreLastLogin($ColumnValue);	break;
-							case 'user_rights'		: $UserObject->setRights($ColumnValue);			break;
-							case 'user_datedisplayopts'		: $UserObject->setDateDisplayOptions($ColumnValue);$_SESSION['displaydateoptions'] = $ColumnValue;			break;
+							case 'user_id'				: $UserObject->setID($ColumnValue);					break;
+							case 'user_username'		: $UserObject->setUserName($ColumnValue);			break;
+							case 'user_password'		: $UserObject->setPassword($ColumnValue);			break;
+							case 'user_salt'			: $UserObject->setSalt($ColumnValue);				break;
+							case 'user_firstname'		: $UserObject->setFirstName($ColumnValue);			break;
+							case 'user_insertion'		: $UserObject->setInsertion($ColumnValue);			break;
+							case 'user_lastname'		: $UserObject->setLastName($ColumnValue);			break;
+							case 'user_email'			: $UserObject->setEmailAddress($ColumnValue);		break;
+							case 'user_datedisplayopts'	: $UserObject->setDateDisplayOptions($ColumnValue);	break;
+							case 'user_gender'			: $UserObject->setGender($ColumnValue);				break;
+							case 'user_birthdate'		: $UserObject->setBirthDate($ColumnValue);			break;
+							case 'user_lastactive'		: $UserObject->setLastActive($ColumnValue);			break;
+							case 'user_lastlogin'		: $UserObject->setLastLogin($ColumnValue);			break;
+							case 'user_prelastlogin'	: $UserObject->setPreLastLogin($ColumnValue);		break;
+							case 'user_rights'			: $UserObject->setRights($ColumnValue);				break;
 						}
 					}
 					
@@ -343,7 +355,7 @@ class User
 			mysql_real_escape_string($User->getInsertion()),
 		    mysql_real_escape_string($User->getLastName()),
 		    mysql_real_escape_string($User->getEmailAddress()),
-		    mysql_real_escape_string($User->getDateDisplayOptions()),
+		    $User->getDateDisplayOptions(),
 		    $User->getGender(),
 		    $User->getBirthDate(),
 		    $CurrentUser->getID(),
@@ -373,7 +385,7 @@ class User
 				'user_insertion' => mysql_real_escape_string($User->getInsertion()),
 				'user_lastname' => mysql_real_escape_string($User->getLastName()),
 				'user_email' => mysql_real_escape_string($User->getEmailAddress()),
-				'user_datedisplayopts' => mysql_real_escape_string($User->getDateDisplayOptions()),
+				'user_datedisplayopts' => $User->getDateDisplayOptions(),
 				'user_gender' => $User->getGender(),
 				'user_birthdate' => $User->getBirthDate(),
 				'user_lastactive' => $User->getLastActive(),
