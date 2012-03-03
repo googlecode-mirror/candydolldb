@@ -32,6 +32,7 @@ if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'ModelView')
 	else
 	{ $Model->setBirthDate(-1); }
 
+	$Model->setTags($_POST['txtTags']);
 	$Model->setRemarks($_POST['txtRemarks']);
 	
 	if($Model->getID())
@@ -105,6 +106,11 @@ if($ModelID)
 <div class="FormRow">
 <label for="txtBirthDate">Birthdate:</label>
 <input type="text" id="txtBirthDate" name="txtBirthDate" class="DatePicker"	maxlength="10" value="<?php echo $Model->getBirthDate() > 0 ? date('Y-m-d', $Model->getBirthDate()) : null; ?>"<?php echo HTMLstuff::DisabledStr($DeleteModel); ?> />
+</div>
+
+<div class="FormRow">
+<label for="txtTags">Tags (CSV):</label>
+<input type="text" id="txtTags" name="txtTags" maxlength="200" value="<?php echo $Model->getTags();?>"<?php echo HTMLstuff::DisabledStr($DeleteModel); ?> />
 </div>
 
 <div class="FormRow">

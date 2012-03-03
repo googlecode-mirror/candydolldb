@@ -30,6 +30,21 @@ class Tag
 	*/
 	public function setName($Name)
 	{ $this->Name = $Name; }
+	
+	
+	/**
+	* Returns a sorted string array of all comma separated pieces in the input
+	* @param string $tagString
+	* @return array
+	*/
+	public static function GetTagArray($tagString)
+	{
+		$pattern = '/\s*(?<!\\\),\s*/';
+		$s = preg_split($pattern, $tagString.',', null, PREG_SPLIT_NO_EMPTY);
+		sort($s);
+		return $s;
+	}
+	
 
 	/**
 	* Gets an array of Tags from the database, or NULL on failure. The array can be empty.
@@ -70,24 +85,42 @@ class Tag
 		{ return null; }
 	}
 	
+
+	/**
+	 * Inserts all strings into the Tags table, ignoring any duplicates
+	 * @param array $strings
+	 * @param User $CurrentUser
+	 */
+	public static function InsertStrings($strings, $CurrentUser)
+	{
+		foreach ($strings as $tag)
+		{
+			$t = new Tag();
+			$t->setName($tag);
+			Tag::InsertTag($t, $CurrentUser, true);
+		}
+	}
+	
 	/**
 	* Inserts the given tag into the database.
 	* @param Tag $Tag
 	* @param User $CurrentUser
+	* @param bool $AddIgnore, for ignoring duplicate key violations
 	* @return bool
 	*/
-	public static function InsertTag($Tag, $CurrentUser)
+	public static function InsertTag($Tag, $CurrentUser, $AddIgnore = false)
 	{
 		global $db;
 		 
 		return $db->Insert(
 			'Tag',
-		array(
-			mysql_real_escape_string($Tag->getName()),
-			$CurrentUser->getID(),
-			time()
-		),
-			'tag_name, mut_id, mut_date'
+			array(
+				mysql_real_escape_string($Tag->getName()),
+				$CurrentUser->getID(),
+				time()
+			),
+			'tag_name, mut_id, mut_date',
+			$AddIgnore
 		);
 	}
 	
@@ -97,7 +130,7 @@ class Tag
 	* @param User $CurrentUser
 	* @return bool
 	*/
-	public static function UpdateUser($Tag, $CurrentUser)
+	public static function UpdateTag($Tag, $CurrentUser)
 	{
 		global $db;
 	
@@ -118,7 +151,7 @@ class Tag
 	* @param User $CurrentUser
 	* @return bool
 	*/
-	public static function DeleteUser($Tag, $CurrentUser)
+	public static function DeleteTag($Tag, $CurrentUser)
 	{
 		global $db;
 	

@@ -97,8 +97,20 @@ class Video
 	/**
 	* @return string
 	*/
-	public function getTags()
+	private function getRawTags()
 	{ return $this->Tags; }
+	
+	/**
+	 * @return array
+	 */
+	public function getTagsArray()
+	{ return Tag::GetTagArray($this->getRawTags()); }
+	
+	/**
+	* @return string
+	*/
+	public function getTags()
+	{ return join(', ', $this->getTagsArray()); }
 	
 	/**
 	* @param string $Tags
@@ -175,20 +187,25 @@ class Video
 	{
 	    global $db;
 	    
-	    return $db->Insert(
-		'Video',
-		array(
-		    $Video->getSet()->getID(),
-			mysql_real_escape_string($Video->getFileName()),
-		    mysql_real_escape_string($Video->getFileExtension()),
-		    $Video->getFileSize(),
-		    mysql_real_escape_string($Video->getFileCheckSum()),
-	    	mysql_real_escape_string($Video->getTags()),
-		    $CurrentUser->getID(),
-		    time()
-		),
-		'set_id, video_filename, video_fileextension, video_filesize, video_filechecksum, video_tags, mut_id, mut_date'
+	    $result = $db->Insert(
+			'Video',
+			array(
+			    $Video->getSet()->getID(),
+				mysql_real_escape_string($Video->getFileName()),
+			    mysql_real_escape_string($Video->getFileExtension()),
+			    $Video->getFileSize(),
+			    mysql_real_escape_string($Video->getFileCheckSum()),
+		    	mysql_real_escape_string($Video->getTags()),
+			    $CurrentUser->getID(),
+			    time()
+			),
+			'set_id, video_filename, video_fileextension, video_filesize, video_filechecksum, video_tags, mut_id, mut_date'
 	    );
+	    
+	    if($result == true)
+	    { Tag::InsertStrings($Video->getTagsArray(), $CurrentUser); }
+	    
+	    return $result;
 	}
 	
 	/**
@@ -202,7 +219,7 @@ class Video
 	{
 		global $db;
 		
-		return $db->Update(
+		$result = $db->Update(
 			'Video',
 			array(
 				'set_id' => $Video->getSet()->getID(),
@@ -217,6 +234,11 @@ class Video
 			array(
 				'video_id', $Video->getID())
 		);
+		
+		if($result == true)
+		{ Tag::InsertStrings($Video->getTagsArray(), $CurrentUser); }
+		
+		return $result;
 	}
 	
 	/**

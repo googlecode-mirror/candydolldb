@@ -194,18 +194,24 @@ class DB
 	/**
 	 * @param string $Table
 	 * @param array() $Values
-	 * @param string $Rows, comma separated column names
+	 * @param string $Columns, comma separated column names
+	 * @param bool $AddIgnore, add the IGNORE keyword
 	 * @return bool, TRUE on success, FALSE on failure
 	 */
-	public function Insert($Table, $Values, $Rows = null)
+	public function Insert($Table, $Values, $Columns = null, $AddIgnore = false)
 	{
 		//Thanks to http://net.tutsplus.com/
 		if($this->TableExists($Table))
 		{
-			$Insert = 'INSERT INTO `'.$Table.'`';
+			$Insert = 'INSERT ';
+			
+			if($AddIgnore)
+			{ $Insert .= ' IGNORE'; }
+			
+			$Insert .= ' INTO `'.$Table.'`';
 
-			if($Rows != null)
-			{ $Insert .= ' ('.$Rows.')'; }
+			if($Columns != null)
+			{ $Insert .= ' ('.$Columns.')'; }
 
 			for($i = 0; $i < count($Values); $i++)
 			{
@@ -217,7 +223,7 @@ class DB
 			
 			$Values = implode(', ',$Values);
 			$Insert .= ' VALUES ('.$Values.')';
-		
+			
 			$ins = @mysql_query($Insert);
 			
 			if($ins)
@@ -393,9 +399,8 @@ class DB
 	 */
 	public function ExecuteQueries($SQL)
 	{
-		// Thanks to http://www.dev-explorer.com/articles/multiple-mysql-queries
-		$splitregex = "/;+(?=([^'|^\\\']*['|\\\'][^'|^\\\']*['|\\\'])*[^'|^\\\']*[^'|^\\\']$)/";
-		$queries = preg_split($splitregex, $SQL);
+		global $SplitRegex;
+		$queries = preg_split($SplitRegex, $SQL);
 		
 		if($this->ConnectionEstablished)
 		{

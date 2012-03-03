@@ -69,6 +69,7 @@ define('SQL_ERR_NOSUCHTABLE', 33366);
 define('SYNTAX_ERR_EMAILADDRESS', 33367);
 define('REQUIRED_FIELD_MISSING', 33368);
 
+$SplitRegex = "/;+(?=([^'|^\\\']*['|\\\'][^'|^\\\']*['|\\\'])*[^'|^\\\']*[^'|^\\\']$)/";
 $DateStyleArray = array(
 	"d-m-Y",
 	"j-n-Y",
