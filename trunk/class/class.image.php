@@ -122,8 +122,20 @@ class Image
 	/**
 	* @return string
 	*/
-	public function getTags()
+	private function getRawTags()
 	{ return $this->Tags; }
+	
+	/**
+	 * @return array
+	 */
+	public function getTagsArray()
+	{ return Tag::GetTagArray($this->getRawTags()); }
+	
+	/**
+	* @return string
+	*/
+	public function getTags()
+	{ return join(', ', $this->getTagsArray()); }
 	
 	/**
 	 * @param string $Tags
@@ -274,22 +286,27 @@ class Image
 	{
 	    global $db;
 	    
-	    return $db->Insert(
-		'Image',
-		array(
-		    $Image->getSet()->getID(),
-			mysql_real_escape_string($Image->getFileName()),
-		    mysql_real_escape_string($Image->getFileExtension()),
-		    $Image->getFileSize(),
-		    mysql_real_escape_string($Image->getFileCheckSum()),
-		    $Image->getImageWidth(),
-		    $Image->getImageHeight(),
-	    	mysql_real_escape_string($Image->getTags()),
-		    $CurrentUser->getID(),
-		    time()
-		),
-		'set_id, image_filename, image_fileextension, image_filesize, image_filechecksum, image_width, image_height, image_tags, mut_id, mut_date'
+	    $result = $db->Insert(
+			'Image',
+			array(
+			    $Image->getSet()->getID(),
+				mysql_real_escape_string($Image->getFileName()),
+			    mysql_real_escape_string($Image->getFileExtension()),
+			    $Image->getFileSize(),
+			    mysql_real_escape_string($Image->getFileCheckSum()),
+			    $Image->getImageWidth(),
+			    $Image->getImageHeight(),
+		    	mysql_real_escape_string($Image->getTags()),
+			    $CurrentUser->getID(),
+			    time()
+			),
+			'set_id, image_filename, image_fileextension, image_filesize, image_filechecksum, image_width, image_height, image_tags, mut_id, mut_date'
 	    );
+	    
+	    if($result == true)
+	    { Tag::InsertStrings($Image->getTagsArray(), $CurrentUser); }
+	    
+	    return $result;
 	}
 	
 	/**
@@ -303,7 +320,7 @@ class Image
 	{
 		global $db;
 		
-		return $db->Update(
+		$result = $db->Update(
 			'Image',
 			array(
 				'set_id' => $Image->getSet()->getID(),
@@ -320,6 +337,11 @@ class Image
 			array(
 				'image_id', $Image->getID())
 		);
+		
+		if($result == true)
+		{ Tag::InsertStrings($Image->getTagsArray(), $CurrentUser); }
+		
+		return $result;
 	}
 	
 	/**

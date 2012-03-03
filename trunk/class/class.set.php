@@ -156,9 +156,21 @@ class Set
 	/**
 	* @return string
 	*/
-	public function getTags()
+	private function getRawTags()
 	{ return $this->Tags; }
 	
+	/**
+	 * @return array
+	 */
+	public function getTagsArray()
+	{ return Tag::GetTagArray($this->getRawTags()); }
+	
+	/**
+	* @return string
+	*/
+	public function getTags()
+	{ return join(', ', $this->getTagsArray()); }
+		
 	/**
 	 * @param string $Tags
 	 */
@@ -260,7 +272,7 @@ class Set
 	{
 		global $db;
 		
-		return $db->Insert(
+		$result = $db->Insert(
 			'Set',
 			array(
 				$Set->getModel()->getID(),
@@ -272,6 +284,11 @@ class Set
 				time()),
 			'model_id, set_prefix, set_name, set_containswhat, set_tags, mut_id, mut_date'
 		);
+		
+		if($result == true)
+		{ Tag::InsertStrings($Set->getTagsArray(), $CurrentUser); }
+		
+		return $result;
 	}
 	
 	/**
@@ -285,7 +302,7 @@ class Set
 	{
 		global $db;
 		
-		return $db->Update(
+		$result = $db->Update(
 			'Set',
 			array(
 				'model_id' => $Set->getModel()->getID(),
@@ -299,6 +316,11 @@ class Set
 			array(
 				'set_id', $Set->getID())
 		);
+		
+		if($result == true)
+		{ Tag::InsertStrings($Set->getTagsArray(), $CurrentUser); }
+		
+		return $result;
 	}
 	
 	

@@ -60,6 +60,7 @@ if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'SetView')
 {
 	$Set->setPrefix($_POST['txtPrefix']);
 	$Set->setName($_POST['txtName']);
+	$Set->setTags($_POST['txtTags']);
 
 	if(array_key_exists('radContains', $_POST) && $_POST['radContains'])
 	{ $Set->setContainsWhat(intval($_POST['radContains'])); }
@@ -225,6 +226,11 @@ foreach ($DatesThisSet as $Date)
 	}
 }
 ?>
+
+<div class="FormRow">
+<label for="txtTags">Tags (CSV):</label>
+<input type="text" id="txtTags" name="txtTags" maxlength="200" value="<?php echo $Set->getTags();?>"<?php echo HTMLstuff::DisabledStr($DeleteSet); ?> />
+</div>
 
 <div class="FormRow">
 <label>&nbsp;</label>

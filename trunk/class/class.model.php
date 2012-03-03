@@ -137,8 +137,20 @@ class Model
 	/**
 	* @return string
 	*/
-	public function getTags()
+	private function getRawTags()
 	{ return $this->Tags; }
+	
+	/**
+	 * @return array
+	 */
+	public function getTagsArray()
+	{ return Tag::GetTagArray($this->getRawTags()); }
+	
+	/**
+	* @return string
+	*/
+	public function getTags()
+	{ return join(', ', $this->getTagsArray()); }
 	
 	/**
 	 * @param string $Tags
@@ -249,19 +261,24 @@ class Model
 	{
 	    global $db;
 	    
-	    return $db->Insert(
-		'Model',
-		array(
-			mysql_real_escape_string($Model->getFirstName()),
-			mysql_real_escape_string($Model->getLastName()),
-			$Model->getBirthDate(),
-			mysql_real_escape_string($Model->getRemarks()),
-	    	mysql_real_escape_string($Model->getTags()),
-			$CurrentUser->getID(),
-			time()
-		),
-		'model_firstname, model_lastname, model_birthdate, model_remarks, model_tags, mut_id, mut_date'
+	    $result = $db->Insert(
+			'Model',
+			array(
+				mysql_real_escape_string($Model->getFirstName()),
+				mysql_real_escape_string($Model->getLastName()),
+				$Model->getBirthDate(),
+				mysql_real_escape_string($Model->getRemarks()),
+		    	mysql_real_escape_string($Model->getTags()),
+				$CurrentUser->getID(),
+				time()
+			),
+			'model_firstname, model_lastname, model_birthdate, model_remarks, model_tags, mut_id, mut_date'
 	    );
+	    
+	    if($result == true)
+	    { Tag::InsertStrings($Model->getTagsArray(), $CurrentUser); }
+	    
+	    return $result;
 	}
 	
 	/**
@@ -275,7 +292,7 @@ class Model
 	{
 		global $db;
 		
-		return $db->Update(
+		$result = $db->Update(
 			'Model',
 			array(
 				'model_firstname' => mysql_real_escape_string($Model->getFirstName()),
@@ -288,6 +305,11 @@ class Model
 			),
 			array('model_id', $Model->getID())
 		);
+		
+		if($result == true)
+		{ Tag::InsertStrings($Model->getTagsArray(), $CurrentUser); }
+		
+		return $result;
 	}
 	
 	

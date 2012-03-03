@@ -23,20 +23,44 @@ $NoError = true;
 
 if(array_key_exists('hidAction', $_POST) && isset($_POST['hidAction']) && $_POST['hidAction'] == 'UpdateCandyDollDB')
 {
-	/* model_tags column */
-	$q = mysql_query("SHOW COLUMNS FROM `Model` LIKE 'model_tags'");
-	$Exists = mysql_fetch_assoc($q);  
-	
-	if($NoError && !$Exists)
-	{ $NoError = $db->ExecuteQueries("ALTER TABLE `Model` ADD `model_tags` varchar(200) DEFAULT NULL AFTER `model_birthdate`"); }
-
-	
 	/* user_datedisplayoptions column */
 	$q = mysql_query("SHOW COLUMNS FROM `User` LIKE 'user_datedisplayopts'");
 	$Exists = mysql_fetch_assoc($q);
 	
 	if($NoError && !$Exists)
 	{ $NoError = $db->ExecuteQueries("ALTER TABLE `User` ADD `user_datedisplayopts` int NOT NULL DEFAULT 0 AFTER `user_email`"); }
+	
+	
+	/* model_tags column */
+	$q = mysql_query("SHOW COLUMNS FROM `Model` LIKE 'model_tags'");
+	$Exists = mysql_fetch_assoc($q);
+	
+	if($NoError && !$Exists)
+	{ $NoError = $db->ExecuteQueries("ALTER TABLE `Model` ADD `model_tags` varchar(200) DEFAULT NULL AFTER `model_remarks`"); }
+	
+	
+	/* set_tags column */
+	$q = mysql_query("SHOW COLUMNS FROM `Set` LIKE 'set_tags'");
+	$Exists = mysql_fetch_assoc($q);
+	
+	if($NoError && !$Exists)
+	{ $NoError = $db->ExecuteQueries("ALTER TABLE `Set` ADD `set_tags` varchar(200) DEFAULT NULL AFTER `set_containswhat`"); }
+	
+	
+	/* image_tags column */
+	$q = mysql_query("SHOW COLUMNS FROM `Image` LIKE 'image_tags'");
+	$Exists = mysql_fetch_assoc($q);
+	
+	if($NoError && !$Exists)
+	{ $NoError = $db->ExecuteQueries("ALTER TABLE `Image` ADD `image_tags` varchar(200) DEFAULT NULL AFTER `image_height`"); }
+	
+	
+	/* video_tags column */
+	$q = mysql_query("SHOW COLUMNS FROM `Video` LIKE 'video_tags'");
+	$Exists = mysql_fetch_assoc($q);
+	
+	if($NoError && !$Exists)
+	{ $NoError = $db->ExecuteQueries("ALTER TABLE `Video` ADD `video_tags` varchar(200) DEFAULT NULL AFTER `video_filechecksum`"); }
 
 	
 	$UpdateDBSQL = <<<FjbMNnvUJheiwewUJfheJheuehFJDUHdywgwwgHGfgywug
