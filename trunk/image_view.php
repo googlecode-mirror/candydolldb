@@ -162,7 +162,7 @@ if($ImageID)
 
 <div class="FormRow">
 <label for="txtTags">Tags (CSV):</label>
-<input type="text" id="txtTags" name="txtTags" maxlength="200" value="<?php echo $Image->getTags();?>"<?php echo HTMLstuff::DisabledStr($DeleteImage); ?> />
+<input type="text" id="txtTags" name="txtTags" maxlength="200" class="TagsBox" value="<?php echo $Image->getTags();?>"<?php echo HTMLstuff::DisabledStr($DeleteImage); ?> />
 </div>
 
 <div class="FormRow"><label>&nbsp;</label>

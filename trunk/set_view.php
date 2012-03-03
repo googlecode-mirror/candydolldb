@@ -229,7 +229,7 @@ foreach ($DatesThisSet as $Date)
 
 <div class="FormRow">
 <label for="txtTags">Tags (CSV):</label>
-<input type="text" id="txtTags" name="txtTags" maxlength="200" value="<?php echo $Set->getTags();?>"<?php echo HTMLstuff::DisabledStr($DeleteSet); ?> />
+<input type="text" id="txtTags" name="txtTags" maxlength="200" class="TagsBox" value="<?php echo $Set->getTags();?>"<?php echo HTMLstuff::DisabledStr($DeleteSet); ?> />
 </div>
 
 <div class="FormRow">
