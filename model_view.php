@@ -110,7 +110,7 @@ if($ModelID)
 
 <div class="FormRow">
 <label for="txtTags">Tags (CSV):</label>
-<input type="text" id="txtTags" name="txtTags" maxlength="200" value="<?php echo $Model->getTags();?>"<?php echo HTMLstuff::DisabledStr($DeleteModel); ?> />
+<input type="text" id="txtTags" name="txtTags" maxlength="200" class="TagsBox" value="<?php echo $Model->getTags();?>"<?php echo HTMLstuff::DisabledStr($DeleteModel); ?> />
 </div>
 
 <div class="FormRow">

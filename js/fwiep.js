@@ -98,11 +98,53 @@ function AddDeleteOverlay(){
 	);
 }
 
+function AddTagAutoSuggest(){
+	$('.TagsBox').attr('autocomplete', 'off').keyup(function(e){
+		
+		var b = $(this);
+		
+		if(e.which == 13 || e.which == 9)
+		{
+			$(b).parent().children('.AutoSuggest').remove();
+			return true;
+		}
+
+	 	$.post('ajax_gettags.php', { 'q': $(b).val() }, function(data){
+				
+			$(b).parent().children('.AutoSuggest').remove();
+	 		
+			var r = $('<div class="AutoSuggest"></div>');
+			$(b).after($(r));
+				
+			$(r).html(data).fadeIn('slow').children('a').click(function(){
+				var a = $(this);
+					
+				$(b).val(function(index, value){
+					return value.replace(/[^,\s]*$/gi, '') + $(a).text()
+				});
+
+				$(r).fadeOut('fast').remove();
+				$(b).focus();
+				
+				return false;
+				
+			}).keyup(function(e){
+				
+				if(e.which == 13){
+					$(r).fadeOut('fast').remove();
+					e.preventDefault();
+				}
+			});
+		});
+	});
+}
+
 $(function(){
 
 	ResizeContent();
 	AddDefaultColorBox();
 	AddDeleteOverlay();
+	AddTagAutoSuggest();
 	
 	$('#ErrorContainer').fadeTo(400, 0.65).click(CloseOverlay).each(function(){
 		if($(this).is(':visible')){

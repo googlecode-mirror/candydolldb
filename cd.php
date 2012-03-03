@@ -70,6 +70,7 @@ define('SYNTAX_ERR_EMAILADDRESS', 33367);
 define('REQUIRED_FIELD_MISSING', 33368);
 
 $SplitRegex = "/;+(?=([^'|^\\\']*['|\\\'][^'|^\\\']*['|\\\'])*[^'|^\\\']*[^'|^\\\']$)/";
+$CSVRegex = '/\s*(?<!\\\),\s*/';
 $DateStyleArray = array(
 	"d-m-Y",
 	"j-n-Y",

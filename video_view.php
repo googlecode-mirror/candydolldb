@@ -140,7 +140,7 @@ echo HTMLstuff::HtmlHeader($Model->GetShortName(true).' - Set '.$Set->getName().
 
 <div class="FormRow">
 <label for="txtTags">Tags (CSV):</label>
-<input type="text" id="txtTags" name="txtTags" maxlength="200" value="<?php echo $Video->getTags();?>"<?php echo HTMLstuff::DisabledStr($DeleteVideo); ?> />
+<input type="text" id="txtTags" name="txtTags" maxlength="200" class="TagsBox" value="<?php echo $Video->getTags();?>"<?php echo HTMLstuff::DisabledStr($DeleteVideo); ?> />
 </div>
 
 <div class="FormRow"><label>&nbsp;</label>

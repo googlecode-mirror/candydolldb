@@ -39,8 +39,9 @@ class Tag
 	*/
 	public static function GetTagArray($tagString)
 	{
-		$pattern = '/\s*(?<!\\\),\s*/';
-		$s = preg_split($pattern, $tagString.',', null, PREG_SPLIT_NO_EMPTY);
+		global $CSVRegex;
+		$s = preg_split($CSVRegex, $tagString.',', null, PREG_SPLIT_NO_EMPTY);
+		array_unique($s);
 		sort($s);
 		return $s;
 	}
