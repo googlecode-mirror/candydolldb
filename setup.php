@@ -7,9 +7,8 @@ function BackToThisPage($Text)
 
 function ExecuteQueries($SQL)
 {
-	// Thanks to http://www.dev-explorer.com/articles/multiple-mysql-queries
-	$splitregex = "/;+(?=([^'|^\\\']*['|\\\'][^'|^\\\']*['|\\\'])*[^'|^\\\']*[^'|^\\\']$)/";
-	$queries = preg_split($splitregex, $SQL);
+	global $SplitRegex;
+	$queries = preg_split($SplitRegex, $SQL);
 
 	$OutBool = true;
 	foreach($queries as $q)
@@ -113,7 +112,6 @@ CREATE TABLE IF NOT EXISTS `Image` (
   `image_filechecksum` varchar(32) DEFAULT NULL,
   `image_width` int(11) NOT NULL DEFAULT '0',
   `image_height` int(11) NOT NULL DEFAULT '0',
-  `image_tags` varchar(200) DEFAULT NULL,
   `mut_id` bigint(20) NOT NULL,
   `mut_date` bigint(20) NOT NULL DEFAULT '-1',
   `mut_deleted` bigint(20) NOT NULL DEFAULT '-1',
@@ -130,7 +128,6 @@ CREATE TABLE IF NOT EXISTS `Model` (
   `model_firstname` varchar(100) NOT NULL,
   `model_lastname` varchar(100) DEFAULT NULL,
   `model_birthdate` bigint(20) NOT NULL DEFAULT '-1',
-  `model_tags` varchar(200) DEFAULT NULL,
   `model_remarks` text NULL DEFAULT NULL,
   `mut_id` bigint(20) NOT NULL,
   `mut_date` bigint(20) NOT NULL,
@@ -148,7 +145,6 @@ CREATE TABLE IF NOT EXISTS `Set` (
   `set_prefix` varchar(50) DEFAULT NULL,
   `set_name` varchar(100) NOT NULL,
   `set_containswhat` tinyint(4) NOT NULL DEFAULT '3',
-  `set_tags` varchar(200) DEFAULT NULL,
   `mut_id` bigint(20) NOT NULL,
   `mut_date` bigint(20) NOT NULL,
   `mut_deleted` bigint(20) NOT NULL DEFAULT '-1',
@@ -191,7 +187,6 @@ CREATE TABLE IF NOT EXISTS `Video` (
   `video_fileextension` varchar(10) NOT NULL,
   `video_filesize` bigint(20) NOT NULL DEFAULT '0',
   `video_filechecksum` varchar(32) DEFAULT NULL,
-  `video_tags` varchar(200) DEFAULT NULL,
   `mut_id` bigint(20) NOT NULL,
   `mut_date` bigint(20) NOT NULL,
   `mut_deleted` bigint(20) NOT NULL DEFAULT '-1',
@@ -230,108 +225,42 @@ CREATE TABLE IF NOT EXISTS `Tag` (
   PRIMARY KEY (`tag_id`),
   UNIQUE KEY `UNIQ_TAG` (`mut_deleted`,`tag_name`),
   KEY `mut_id` (`mut_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
+
+DROP TABLE IF EXISTS `Tag2All`;
+CREATE TABLE IF NOT EXISTS `Tag2All` (
+  `tag_id` bigint(20) NOT NULL,
+  `model_id` bigint(20) NULL DEFAULT NULL,
+  `set_id` bigint(20) NULL DEFAULT NULL,
+  `image_id` bigint(20) NULL DEFAULT NULL,
+  `video_id` bigint(20) NULL DEFAULT NULL,
+  KEY `tag_id` (`tag_id`),
+  KEY `model_id` (`model_id`),
+  KEY `set_id` (`set_id`),
+  KEY `image_id` (`image_id`),
+  KEY `video_id` (`video_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
+
 DROP VIEW IF EXISTS `vw_Date`;
-CREATE TABLE IF NOT EXISTS `vw_Date` (
-`date_id` bigint(20)
-,`date_kind` tinyint(4)
-,`date_timestamp` bigint(20)
-,`mut_deleted` bigint(20)
-,`set_id` bigint(20)
-,`set_prefix` varchar(50)
-,`set_name` varchar(100)
-,`set_containswhat` tinyint(4)
-,`model_id` bigint(20)
-,`model_firstname` varchar(100)
-,`model_lastname` varchar(100)
-);
-
-DROP VIEW IF EXISTS `vw_Image`;
-CREATE TABLE IF NOT EXISTS `vw_Image` (
-`image_id` bigint(20)
-,`image_filename` varchar(100)
-,`image_fileextension` varchar(10)
-,`image_filesize` bigint(20)
-,`image_filechecksum` varchar(32)
-,`image_width` int(11)
-,`image_height` int(11)
-,`image_tags` varchar(200)
-,`mut_deleted` bigint(20)
-,`set_id` bigint(20)
-,`set_prefix` varchar(50)
-,`set_name` varchar(100)
-,`set_containswhat` tinyint(4)
-,`set_tags` varchar(200)
-,`model_id` bigint(20)
-,`model_firstname` varchar(100)
-,`model_lastname` varchar(100)
-,`model_tags` varchar(200)
-);
-
-DROP VIEW IF EXISTS `vw_Model`;
-CREATE TABLE IF NOT EXISTS `vw_Model` (
-`model_id` bigint(20)
-,`model_firstname` varchar(100)
-,`model_lastname` varchar(100)
-,`model_birthdate` bigint(20)
-,`model_tags` varchar(200)
-,`model_remarks` text
-,`mut_deleted` bigint(20)
-,`model_setcount` bigint(21)
-);
-
-DROP VIEW IF EXISTS `vw_Set`;
-CREATE TABLE IF NOT EXISTS `vw_Set` (
-`set_id` bigint(20)
-,`set_prefix` varchar(50)
-,`set_name` varchar(100)
-,`set_containswhat` tinyint(4)
-,`set_tags` varchar(200)
-,`mut_deleted` bigint(20)
-,`model_id` bigint(20)
-,`model_firstname` varchar(100)
-,`model_lastname` varchar(100)
-,`model_tags` varchar(200)
-,`set_amount_pics_in_db` bigint(21)
-,`set_amount_vids_in_db` bigint(21)
-);
-
-DROP VIEW IF EXISTS `vw_Video`;
-CREATE TABLE IF NOT EXISTS `vw_Video` (
-`video_id` bigint(20)
-,`video_filename` varchar(100)
-,`video_fileextension` varchar(10)
-,`video_filesize` bigint(20)
-,`video_filechecksum` varchar(32)
-,`video_tags` varchar(200)
-,`mut_deleted` bigint(20)
-,`set_id` bigint(20)
-,`set_prefix` varchar(50)
-,`set_name` varchar(100)
-,`set_containswhat` tinyint(4)
-,`set_tags` varchar(200)
-,`model_id` bigint(20)
-,`model_firstname` varchar(100)
-,`model_lastname` varchar(100)
-,`model_tags` varchar(200)
-);
-
-DROP TABLE IF EXISTS `vw_Date`;
 CREATE ALGORITHM=UNDEFINED VIEW `vw_Date` AS select `Date`.`date_id` AS `date_id`,`Date`.`date_kind` AS `date_kind`,`Date`.`date_timestamp` AS `date_timestamp`,`Date`.`mut_deleted` AS `mut_deleted`,`Date`.`set_id` AS `set_id`,`Set`.`set_prefix` AS `set_prefix`,`Set`.`set_name` AS `set_name`,`Set`.`set_containswhat` AS `set_containswhat`,`Model`.`model_id` AS `model_id`,`Model`.`model_firstname` AS `model_firstname`,`Model`.`model_lastname` AS `model_lastname` from ((`Date` left join `Set` on((`Set`.`set_id` = `Date`.`set_id`))) left join `Model` on((`Model`.`model_id` = `Set`.`model_id`))) where ((`Set`.`mut_deleted` = -(1)) and (`Model`.`mut_deleted` = -(1)));
 
-DROP TABLE IF EXISTS `vw_Image`;
-CREATE ALGORITHM=UNDEFINED VIEW `vw_Image` AS select `Image`.`image_id` AS `image_id`, `Image`.`image_filename` AS `image_filename`, `Image`.`image_fileextension` AS `image_fileextension`, `Image`.`image_filesize` AS `image_filesize`, `Image`.`image_filechecksum` AS `image_filechecksum`, `Image`.`image_width` AS `image_width`, `Image`.`image_height` AS `image_height`, `Image`.`image_tags` AS `image_tags`, `Image`.`mut_deleted` AS `mut_deleted`, `Set`.`set_id` AS `set_id`, `Set`.`set_prefix` AS `set_prefix`, `Set`.`set_name` AS `set_name`, `Set`.`set_containswhat` AS `set_containswhat`, `Set`.`set_tags` AS `set_tags`, `Model`.`model_id` AS `model_id`, `Model`.`model_firstname` AS `model_firstname`, `Model`.`model_lastname` AS `model_lastname`, `Model`.`model_tags` AS `model_tags` from ((`Image` left join `Set` on((`Image`.`set_id` = `Set`.`set_id`))) left join `Model` on((`Model`.`model_id` = `Set`.`model_id`))) where ((`Set`.`mut_deleted` = -(1)) and (`Model`.`mut_deleted` = -(1)));
+DROP VIEW IF EXISTS `vw_Image`;
+CREATE ALGORITHM=UNDEFINED VIEW `vw_Image` AS select `Image`.`image_id` AS `image_id`, `Image`.`image_filename` AS `image_filename`, `Image`.`image_fileextension` AS `image_fileextension`, `Image`.`image_filesize` AS `image_filesize`, `Image`.`image_filechecksum` AS `image_filechecksum`, `Image`.`image_width` AS `image_width`, `Image`.`image_height` AS `image_height`, `Image`.`mut_deleted` AS `mut_deleted`, `Set`.`set_id` AS `set_id`, `Set`.`set_prefix` AS `set_prefix`, `Set`.`set_name` AS `set_name`, `Set`.`set_containswhat` AS `set_containswhat`, `Model`.`model_id` AS `model_id`, `Model`.`model_firstname` AS `model_firstname`, `Model`.`model_lastname` AS `model_lastname` from ((`Image` left join `Set` on((`Image`.`set_id` = `Set`.`set_id`))) left join `Model` on((`Model`.`model_id` = `Set`.`model_id`))) where ((`Set`.`mut_deleted` = -(1)) and (`Model`.`mut_deleted` = -(1)));
 
-DROP TABLE IF EXISTS `vw_Model`;
-CREATE ALGORITHM=UNDEFINED VIEW `vw_Model` AS select `Model`.`model_id` AS `model_id`,`Model`.`model_firstname` AS `model_firstname`,`Model`.`model_lastname` AS `model_lastname`, `Model`.`model_birthdate` AS `model_birthdate`, `Model`.`model_tags` as `model_tags`, `Model`.`model_remarks` AS `model_remarks`, `Model`.`mut_deleted` AS `mut_deleted`,(select count(`Set`.`model_id`) AS `count(``model_id``)` from `Set` where ((`Set`.`model_id` = `Model`.`model_id`) and (`Set`.`mut_deleted` = -(1)))) AS `model_setcount` from `Model`;
+DROP VIEW IF EXISTS `vw_Model`;
+CREATE ALGORITHM=UNDEFINED VIEW `vw_Model` AS select `Model`.`model_id` AS `model_id`,`Model`.`model_firstname` AS `model_firstname`,`Model`.`model_lastname` AS `model_lastname`, `Model`.`model_birthdate` AS `model_birthdate`, `Model`.`model_remarks` AS `model_remarks`, `Model`.`mut_deleted` AS `mut_deleted`,(select count(`Set`.`model_id`) AS `count(``model_id``)` from `Set` where ((`Set`.`model_id` = `Model`.`model_id`) and (`Set`.`mut_deleted` = -(1)))) AS `model_setcount` from `Model`;
 
-DROP TABLE IF EXISTS `vw_Set`;
-CREATE ALGORITHM=UNDEFINED VIEW `vw_Set` AS select `Set`.`set_id` AS `set_id`,`Set`.`set_prefix` AS `set_prefix`,`Set`.`set_name` AS `set_name`,`Set`.`set_containswhat` AS `set_containswhat`, `Set`.`set_tags` as `set_tags`, `Set`.`mut_deleted` AS `mut_deleted`,`Model`.`model_id` AS `model_id`,`Model`.`model_firstname` AS `model_firstname`,`Model`.`model_lastname` AS `model_lastname`,`Model`.`model_tags` as `model_tags`,(select count(`Image`.`image_id`) AS `COUNT(image_id)` from `Image` where ((`Image`.`set_id` = `Set`.`set_id`) and (`Image`.`mut_deleted` = -(1)))) AS `set_amount_pics_in_db`,(select count(`Video`.`video_id`) AS `COUNT(video_id)` from `Video` where ((`Video`.`set_id` = `Set`.`set_id`) and (`Video`.`mut_deleted` = -(1)))) AS `set_amount_vids_in_db` from (`Set` left join `Model` on((`Set`.`model_id` = `Model`.`model_id`))) where (`Model`.`mut_deleted` = -(1));
+DROP VIEW IF EXISTS `vw_Set`;
+CREATE ALGORITHM=UNDEFINED VIEW `vw_Set` AS select `Set`.`set_id` AS `set_id`,`Set`.`set_prefix` AS `set_prefix`,`Set`.`set_name` AS `set_name`,`Set`.`set_containswhat` AS `set_containswhat`, `Set`.`mut_deleted` AS `mut_deleted`,`Model`.`model_id` AS `model_id`,`Model`.`model_firstname` AS `model_firstname`,`Model`.`model_lastname` AS `model_lastname`,(select count(`Image`.`image_id`) AS `COUNT(image_id)` from `Image` where ((`Image`.`set_id` = `Set`.`set_id`) and (`Image`.`mut_deleted` = -(1)))) AS `set_amount_pics_in_db`,(select count(`Video`.`video_id`) AS `COUNT(video_id)` from `Video` where ((`Video`.`set_id` = `Set`.`set_id`) and (`Video`.`mut_deleted` = -(1)))) AS `set_amount_vids_in_db` from (`Set` left join `Model` on((`Set`.`model_id` = `Model`.`model_id`))) where (`Model`.`mut_deleted` = -(1));
 
-DROP TABLE IF EXISTS `vw_Video`;
-CREATE ALGORITHM=UNDEFINED VIEW `vw_Video` AS select `Video`.`video_id` AS `video_id`,`Video`.`video_filename` AS `video_filename`,`Video`.`video_fileextension` AS `video_fileextension`,`Video`.`video_filesize` AS `video_filesize`,`Video`.`video_filechecksum` AS `video_filechecksum`,`Video`.`video_tags` as `video_tags`,`Video`.`mut_deleted` AS `mut_deleted`,`Set`.`set_id` AS `set_id`,`Set`.`set_prefix` AS `set_prefix`,`Set`.`set_name` AS `set_name`,`Set`.`set_containswhat` AS `set_containswhat`,`Set`.`set_tags` as `set_tags`,`Model`.`model_id` AS `model_id`,`Model`.`model_firstname` AS `model_firstname`,`Model`.`model_lastname` AS `model_lastname`,`Model`.`model_tags` as `model_tags` from ((`Video` left join `Set` on((`Video`.`set_id` = `Set`.`set_id`))) left join `Model` on((`Model`.`model_id` = `Set`.`model_id`))) where ((`Set`.`mut_deleted` = -(1)) and (`Model`.`mut_deleted` = -(1)));
+DROP VIEW IF EXISTS `vw_Video`;
+CREATE ALGORITHM=UNDEFINED VIEW `vw_Video` AS select `Video`.`video_id` AS `video_id`,`Video`.`video_filename` AS `video_filename`,`Video`.`video_fileextension` AS `video_fileextension`,`Video`.`video_filesize` AS `video_filesize`,`Video`.`video_filechecksum` AS `video_filechecksum`,`Video`.`mut_deleted` AS `mut_deleted`,`Set`.`set_id` AS `set_id`,`Set`.`set_prefix` AS `set_prefix`,`Set`.`set_name` AS `set_name`,`Set`.`set_containswhat` AS `set_containswhat`,`Model`.`model_id` AS `model_id`,`Model`.`model_firstname` AS `model_firstname`,`Model`.`model_lastname` AS `model_lastname` from ((`Video` left join `Set` on((`Video`.`set_id` = `Set`.`set_id`))) left join `Model` on((`Model`.`model_id` = `Set`.`model_id`))) where ((`Set`.`mut_deleted` = -(1)) and (`Model`.`mut_deleted` = -(1)));
 
+DROP VIEW IF EXISTS `vw_Tag2All`;
+CREATE ALGORITHM=UNDEFINED VIEW `vw_Tag2All` AS	select `Tag2All`.`tag_id` AS `tag_id`, `Tag`.`tag_name` AS `tag_name`, `Tag2All`.`model_id` AS `model_id`, `Tag2All`.`set_id` AS `set_id`, `Tag2All`.`image_id` AS `image_id`, `Tag2All`.`video_id` AS `video_id` from `Tag2All` join `Tag` on `Tag`.`tag_id` = `Tag2All`.`tag_id`;
+
+		
 ALTER TABLE `Date`
   ADD CONSTRAINT `Date_ibfk_1` FOREIGN KEY (`set_id`) REFERENCES `Set` (`set_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `Date_ibfk_2` FOREIGN KEY (`mut_id`) REFERENCES `User` (`user_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
@@ -360,6 +289,13 @@ ALTER TABLE `CacheImage`
  
 ALTER TABLE `Tag`
   ADD CONSTRAINT `Tag_ibfk_1` FOREIGN KEY (`mut_id`) REFERENCES `User` (`user_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  
+ALTER TABLE `Tag2All`
+  ADD CONSTRAINT `Tag2All_ibfk_1` FOREIGN KEY (`tag_id`)   REFERENCES `Tag`   (`tag_id`)   ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `Tag2All_ibfk_2` FOREIGN KEY (`model_id`) REFERENCES `Model` (`model_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `Tag2All_ibfk_3` FOREIGN KEY (`set_id`)   REFERENCES `Set`   (`set_id`)   ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `Tag2All_ibfk_4` FOREIGN KEY (`image_id`) REFERENCES `Image` (`image_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `Tag2All_ibfk_5` FOREIGN KEY (`video_id`) REFERENCES `Video` (`video_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 COMMIT;
 

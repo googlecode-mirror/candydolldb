@@ -64,7 +64,7 @@ if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'ImageView')
 	$Image->setFileCheckSum($_POST['txtFileChecksum']);
 	$Image->setImageWidth(abs(intval($_POST['txtImageWidth'])));
 	$Image->setImageHeight(abs(intval($_POST['txtImageHeight'])));
-	$Image->setTags($_POST['txtTags']);
+	//$Image->setTags($_POST['txtTags']);
 	
 	if($Image->getImageWidth() == 0) { $Image->setImageHeight(0); }
 	if($Image->getImageHeight() == 0) { $Image->setImageWidth(0); }
@@ -162,7 +162,7 @@ if($ImageID)
 
 <div class="FormRow">
 <label for="txtTags">Tags (CSV):</label>
-<input type="text" id="txtTags" name="txtTags" maxlength="200" class="TagsBox" value="<?php echo $Image->getTags();?>"<?php echo HTMLstuff::DisabledStr($DeleteImage); ?> />
+<input type="text" id="txtTags" name="txtTags" maxlength="200" class="TagsBox" value="<?php echo null; ?>"<?php echo HTMLstuff::DisabledStr($DeleteImage); ?> />
 </div>
 
 <div class="FormRow"><label>&nbsp;</label>

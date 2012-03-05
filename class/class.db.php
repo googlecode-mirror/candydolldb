@@ -104,16 +104,16 @@ class DB
 
 	/**
 	 * @param string $Table
-	 * @param string $Rows
+	 * @param string $Columns
 	 * @param string $Where
 	 * @param string $Order
 	 * @param string $Limit
 	 * @return bool, TRUE on success, FALSE on failure
 	 */
-	public function Select($Table, $Rows = '*', $Where = null, $Order = null, $Limit = null)
+	public function Select($Table, $Columns = '*', $Where = null, $Order = null, $Limit = null)
 	{
 		// Thanks to http://net.tutsplus.com/
-		$q = 'SELECT '.$Rows.' FROM '.$Table;
+		$q = 'SELECT '.$Columns.' FROM '.$Table;
 
 		if($Where != null)
 		{ $q .= ' WHERE '.$Where; }

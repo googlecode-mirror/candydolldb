@@ -23,7 +23,7 @@ if(!is_null($q))
 {
 	foreach ($Tags as $t)
 	{
-		if(strpos($t->getName(), $q) !== false)
+		if(stripos($t->getName(), $q) !== false)
 		{
 			$a[] = $t;
 		}

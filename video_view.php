@@ -67,7 +67,7 @@ if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'VideoView')
 	$Video->setFileExtension($_POST['txtFileExtension']);
 	$Video->setFileSize(intval($_POST['txtFilesize']));
 	$Video->setFileCheckSum($_POST['txtFileChecksum']);
-	$Video->setTags($_POST['txtTags']);
+	//$Video->setTags($_POST['txtTags']);
 	
 	if($Video->getID())
 	{
@@ -140,7 +140,7 @@ echo HTMLstuff::HtmlHeader($Model->GetShortName(true).' - Set '.$Set->getName().
 
 <div class="FormRow">
 <label for="txtTags">Tags (CSV):</label>
-<input type="text" id="txtTags" name="txtTags" maxlength="200" class="TagsBox" value="<?php echo $Video->getTags();?>"<?php echo HTMLstuff::DisabledStr($DeleteVideo); ?> />
+<input type="text" id="txtTags" name="txtTags" maxlength="200" class="TagsBox" value="<?php echo null; ?>"<?php echo HTMLstuff::DisabledStr($DeleteVideo); ?> />
 </div>
 
 <div class="FormRow"><label>&nbsp;</label>

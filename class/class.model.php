@@ -8,7 +8,6 @@ class Model
 	private $BirthDate = -1;
 	private $Remarks;
 	private $SetCount = 0;
-	private $Tags = null;
 	
 	/**
 	 * Returns a concatenation of the Model's firstname and the first character of the Model's lastname.
@@ -135,30 +134,6 @@ class Model
 	{ $this->SetCount = $SetCount;}
 	
 	/**
-	* @return string
-	*/
-	private function getRawTags()
-	{ return $this->Tags; }
-	
-	/**
-	 * @return array
-	 */
-	public function getTagsArray()
-	{ return Tag::GetTagArray($this->getRawTags()); }
-	
-	/**
-	* @return string
-	*/
-	public function getTags()
-	{ return join(', ', $this->getTagsArray()); }
-	
-	/**
-	 * @param string $Tags
-	 */
-	public function setTags($Tags)
-	{ $this->Tags = $Tags; }
-	
-	/**
 	 * Returns a random image-filename of the current model.
 	 * @return string|NULL
 	 */
@@ -237,7 +212,6 @@ class Model
 							case 'model_birthdate'	: $ModelObject->setBirthDate($ColumnValue);	break;
 							case 'model_remarks'	: $ModelObject->setRemarks($ColumnValue);	break;
 							case 'model_setcount'	: $ModelObject->setSetCount($ColumnValue);	break;
-							case 'model_tags'		: $ModelObject->setTags($ColumnValue);		break;
 						}
 					}
 					
@@ -268,15 +242,11 @@ class Model
 				mysql_real_escape_string($Model->getLastName()),
 				$Model->getBirthDate(),
 				mysql_real_escape_string($Model->getRemarks()),
-		    	mysql_real_escape_string($Model->getTags()),
 				$CurrentUser->getID(),
 				time()
 			),
-			'model_firstname, model_lastname, model_birthdate, model_remarks, model_tags, mut_id, mut_date'
+			'model_firstname, model_lastname, model_birthdate, model_remarks, mut_id, mut_date'
 	    );
-	    
-	    if($result == true)
-	    { Tag::InsertStrings($Model->getTagsArray(), $CurrentUser); }
 	    
 	    return $result;
 	}
@@ -299,15 +269,11 @@ class Model
 				'model_lastname' => mysql_real_escape_string($Model->getLastName()),
 				'model_birthdate' => $Model->getBirthDate(),
 				'model_remarks' => mysql_real_escape_string($Model->getRemarks()),
-				'model_tags' => mysql_real_escape_string($Model->getTags()),
 				'mut_id' => $CurrentUser->getID(),
 				'mut_date' => time()
 			),
 			array('model_id', $Model->getID())
 		);
-		
-		if($result == true)
-		{ Tag::InsertStrings($Model->getTagsArray(), $CurrentUser); }
 		
 		return $result;
 	}
