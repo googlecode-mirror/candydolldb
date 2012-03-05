@@ -11,7 +11,6 @@ class Set
 	private $ContainsWhat = SET_CONTENT_NONE;
 	private $AmountPicsInDB = 0;
 	private $AmountVidsInDB = 0;
-	private $Tags = null;
 	
 	/**
 	 * @param int $ID
@@ -154,30 +153,6 @@ class Set
 	{ $this->AmountVidsInDB = $AmountVidsInDB; }
 	
 	/**
-	* @return string
-	*/
-	private function getRawTags()
-	{ return $this->Tags; }
-	
-	/**
-	 * @return array
-	 */
-	public function getTagsArray()
-	{ return Tag::GetTagArray($this->getRawTags()); }
-	
-	/**
-	* @return string
-	*/
-	public function getTags()
-	{ return join(', ', $this->getTagsArray()); }
-		
-	/**
-	 * @param string $Tags
-	 */
-	public function setTags($Tags)
-	{ $this->Tags = $Tags; }
-	
-	/**
 	 * @return bool
 	 */
 	public function getSetIsDirtyPic()
@@ -243,12 +218,10 @@ class Set
 							case 'set_containswhat'		: $SetObject->setContainsWhat($ColumnValue);	break;
 							case 'set_amount_pics_in_db': $SetObject->setAmountPicsInDB($ColumnValue);	break;
 							case 'set_amount_vids_in_db': $SetObject->setAmountVidsInDB($ColumnValue);	break;
-							case 'set_tags'				: $SetObject->setTags($ColumnValue);			break;
 							
 							case 'model_id'			: $ModelObject->setID($ColumnValue);		break;
 							case 'model_firstname'	: $ModelObject->setFirstName($ColumnValue);	break;
 							case 'model_lastname'	: $ModelObject->setLastName($ColumnValue);	break;
-							case 'model_tags'		: $ModelObject->setTags($ColumnValue);		break;
 						}
 					}
 					
@@ -279,14 +252,10 @@ class Set
 				mysql_real_escape_string($Set->getPrefix()),
 				mysql_real_escape_string($Set->getName()),
 				$Set->getContainsWhat(),
-				mysql_real_escape_string($Set->getTags()),
 				$CurrentUser->getID(),
 				time()),
-			'model_id, set_prefix, set_name, set_containswhat, set_tags, mut_id, mut_date'
+			'model_id, set_prefix, set_name, set_containswhat, mut_id, mut_date'
 		);
-		
-		if($result == true)
-		{ Tag::InsertStrings($Set->getTagsArray(), $CurrentUser); }
 		
 		return $result;
 	}
@@ -309,16 +278,12 @@ class Set
 				'set_prefix' => mysql_real_escape_string($Set->getPrefix()),
 				'set_name' => mysql_real_escape_string($Set->getName()),
 				'set_containswhat' => $Set->getContainsWhat(),
-				'set_tags' => mysql_real_escape_string($Set->getTags()),
 				'mut_id' => $CurrentUser->getID(),
 				'mut_date' => time()
 			),
 			array(
 				'set_id', $Set->getID())
 		);
-		
-		if($result == true)
-		{ Tag::InsertStrings($Set->getTagsArray(), $CurrentUser); }
 		
 		return $result;
 	}
