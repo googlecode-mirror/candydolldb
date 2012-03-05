@@ -55,6 +55,16 @@
 	</xs:restriction>
 </xs:simpleType>
 
+<xs:simpleType name="EmptyCSV">
+	<xs:union memberTypes="Empty CSV"  />
+</xs:simpleType>
+
+<xs:simpleType name="CSV">
+	<xs:restriction base="xs:string">
+		<xs:pattern value="([^,]+(,[^,]+)*)" />
+	</xs:restriction>
+</xs:simpleType>
+
 <xs:simpleType name="ExtensionsImage">
 	<xs:restriction base="xs:string">
 		<xs:enumeration value="jpg"/>
@@ -89,7 +99,8 @@
 
 	<xs:attribute name="firstname" type="Name" use="required"/>
 	<xs:attribute name="lastname" type="EmptyName" use="optional" default=""/>
-	<xs:attribute name="birthdate" type="EmptyDate" use="optional" default=""/>	
+	<xs:attribute name="birthdate" type="EmptyDate" use="optional" default=""/>
+	<xs:attribute name="tags" type="EmptyCSV" use="optional" default=""/>	
 </xs:complexType>
 
 <xs:complexType name="SetsType">
@@ -118,6 +129,7 @@
 	<xs:attribute name="name" type="DigitName" use="required" />
 	<xs:attribute name="date_pic" type="EmptyMultiDate" use="optional" default=""/>
 	<xs:attribute name="date_vid" type="EmptyMultiDate" use="optional" default=""/>
+	<xs:attribute name="tags" type="EmptyCSV" use="optional" default=""/>
 </xs:complexType>
 
 <xs:complexType name="ImagesType">
@@ -133,6 +145,7 @@
 	<xs:attribute name="checksum" type="EmptyHex32" use="required" />
 	<xs:attribute name="width" type="xs:nonNegativeInteger" use="required" />
 	<xs:attribute name="height" type="xs:nonNegativeInteger" use="required" />
+	<xs:attribute name="tags" type="EmptyCSV" use="optional" default=""/>
 </xs:complexType>
 
 <xs:complexType name="VideosType">
@@ -146,6 +159,7 @@
 	<xs:attribute name="extension" type="ExtensionsVideo" use="required" />
 	<xs:attribute name="filesize" type="xs:nonNegativeInteger" use="required" />
 	<xs:attribute name="checksum" type="EmptyHex32" use="required" />
+	<xs:attribute name="tags" type="EmptyCSV" use="optional" default=""/>
 </xs:complexType>
    
 </xs:schema>
