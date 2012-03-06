@@ -225,8 +225,6 @@ class Image
 							case 'set_id'			: $SetObject->setID($ColumnValue);				break;
 							case 'set_prefix'		: $SetObject->setPrefix($ColumnValue);			break;
 							case 'set_name'			: $SetObject->setName($ColumnValue);			break;
-							case 'set_date_pic'		: $SetObject->setDatePic($ColumnValue);			break;
-							case 'set_date_vid'		: $SetObject->setDateVid($ColumnValue);			break;
 							case 'set_containswhat'	: $SetObject->setContainsWhat($ColumnValue);	break;
 							
 							case 'model_id'			: $ModelObject->setID($ColumnValue);			break;
