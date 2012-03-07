@@ -51,6 +51,16 @@ h2{
 	background-position: center center; 
 	background-repeat: no-repeat;
 }
+.FlLefty{
+	float: left;
+}
+
+a.TagSelect{
+	background-color: #a9a27c;
+	float: left;
+	margin: 0 10px 10px 0;
+	padding: 3px 7px;
+}
 
 table{
 	width: 100%;

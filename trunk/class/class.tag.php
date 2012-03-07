@@ -87,6 +87,28 @@ class Tag
 	}
 	
 	/**
+	 * Filters the supplied array for Tags having the specified ID
+	 * @param array(Tag) $Tags
+	 * @param int $TagID
+	 */
+	public static function FilterTags($Tags, $TagID = null)
+	{
+		$OutArray = array();
+		
+		/* @var $Tag Tag */
+		foreach($Tags as $Tag)
+		{
+			if(
+				(is_null($TagID) || $Tag->getID() == $TagID)
+			){
+				$OutArray[] = $Tag;
+			}
+		}
+		
+		return $OutArray;
+	}
+	
+	/**
 	* Filters the supplied tags by all CSV tags in the input string
 	* @param array(Tag) $Tags
 	* @param string $input
@@ -113,21 +135,6 @@ class Tag
 		}
 
 		return $OutArray;
-	}
-	
-	/**
-	 * Inserts all strings into the Tags table, ignoring any duplicates
-	 * @param array $strings
-	 * @param User $CurrentUser
-	 */
-	public static function InsertStrings($strings, $CurrentUser)
-	{
-		foreach ($strings as $tag)
-		{
-			$t = new Tag();
-			$t->setName($tag);
-			Tag::InsertTag($t, $CurrentUser, true);
-		}
 	}
 	
 	/**
