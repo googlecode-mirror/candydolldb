@@ -72,6 +72,54 @@ class Tag2All
 	 */
 	public function setVideoID($VideoID)
 	{ $this->VideoID = $VideoID; }
+	
+	
+	/**
+	 * Inserts the given Tag2All into the database
+	 * @param Tag2All $Tag2All
+	 * @param User $CurrentUser
+	 */
+	public static function Insert($Tag2All, $CurrentUser)
+	{
+		global $db;
+		 
+		$result = $db->Insert(
+			'Tag2All',
+			array(
+				$Tag2All->getTag()->getID(),
+				$Tag2All->getModelID(),
+				$Tag2All->getSetID(),
+				$Tag2All->getImageID(),
+				$Tag2All->getVideoID()
+			),
+			'tag_id, model_id, set_id, image_id, video_id'
+		);
+		 
+		return $result;
+	}
+	
+	/**
+	* Deletes the given Tag2All from the database
+	* @param Tag2All $Tag2All
+	* @param User $CurrentUser
+	*/
+	public static function Delete($Tag2All, $CurrentUser)
+	{
+		global $db;
+			
+		$result = $db->Delete(
+			'Tag2All',
+			sprintf('tag_id = %1$d%2$s%3$s%4$s%5$s',
+				$Tag2All->getTag()->getID(),
+				$Tag2All->getModelID() ? ' AND model_id = '.$Tag2All->getModelID() : null,
+				$Tag2All->getSetID()   ? ' AND set_id = '  .$Tag2All->getSetID()   : null,
+				$Tag2All->getImageID() ? ' AND image_id = '.$Tag2All->getImageID() : null,
+				$Tag2All->getVideoID() ? ' AND video_id = '.$Tag2All->getVideoID() : null
+			)
+		);
+			
+		return $result;
+	}
 
 	/**
 	 * Gets Tag2All records from the database
