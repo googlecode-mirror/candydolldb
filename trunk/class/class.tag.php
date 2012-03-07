@@ -86,7 +86,35 @@ class Tag
 		{ return null; }
 	}
 	
+	/**
+	* Filters the supplied tags by all CSV tags in the input string
+	* @param array(Tag) $Tags
+	* @param string $input
+	*/
+	public static function FilterTagsByCSV($Tags, $input)
+	{
+		global $CSVRegex;
+		$OutArray = array();
 
+		$a = preg_split($CSVRegex, $input.',', null, PREG_SPLIT_NO_EMPTY);
+		
+		if(!is_null($a))
+		{
+			foreach ($a as $q)
+			{
+				foreach ($Tags as $t)
+				{
+					if(stripos($t->getName(), $q) !== false)
+					{
+						$OutArray[] = $t;
+					}
+				}
+			}
+		}
+
+		return $OutArray;
+	}
+	
 	/**
 	 * Inserts all strings into the Tags table, ignoring any duplicates
 	 * @param array $strings
