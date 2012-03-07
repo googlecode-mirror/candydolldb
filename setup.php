@@ -12,7 +12,7 @@ function ExecuteQueries($SQL)
 
 	$OutBool = true;
 	foreach($queries as $q)
-	{	
+	{
 		if(strlen(trim($q)) == 0) { continue; }
 		$OutBool = @mysql_query($q);
 		if($OutBool === false) { break; }
@@ -57,6 +57,7 @@ INSERT INTO `User` (
   `user_firstname`,
   `user_lastname`,
   `user_email`,
+  `user_datedisplayopts`,
   `mut_id`,
   `mut_date`,
   `mut_deleted`
@@ -67,6 +68,7 @@ INSERT INTO `User` (
 	'%4\$s',
 	'%5\$s',
 	'%6\$s',
+	0,
 	1,
 	UNIX_TIMESTAMP(),
 	-1
@@ -165,6 +167,7 @@ CREATE TABLE IF NOT EXISTS `User` (
   `user_insertion` varchar(20) DEFAULT NULL,
   `user_lastname` varchar(100) NOT NULL,
   `user_email` varchar(253) NOT NULL,
+  `user_datedisplayopts` int NOT NULL DEFAULT '0',
   `user_gender` tinyint(4) NOT NULL DEFAULT '0',
   `user_birthdate` bigint(20) NOT NULL DEFAULT '-1',
   `user_lastactive` bigint(20) NOT NULL DEFAULT '-1',
@@ -260,7 +263,7 @@ CREATE ALGORITHM=UNDEFINED VIEW `vw_Video` AS select `Video`.`video_id` AS `vide
 DROP VIEW IF EXISTS `vw_Tag2All`;
 CREATE ALGORITHM=UNDEFINED VIEW `vw_Tag2All` AS	select `Tag2All`.`tag_id` AS `tag_id`, `Tag`.`tag_name` AS `tag_name`, `Tag2All`.`model_id` AS `model_id`, `Tag2All`.`set_id` AS `set_id`, `Tag2All`.`image_id` AS `image_id`, `Tag2All`.`video_id` AS `video_id` from `Tag2All` join `Tag` on `Tag`.`tag_id` = `Tag2All`.`tag_id`;
 
-		
+
 ALTER TABLE `Date`
   ADD CONSTRAINT `Date_ibfk_1` FOREIGN KEY (`set_id`) REFERENCES `Set` (`set_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `Date_ibfk_2` FOREIGN KEY (`mut_id`) REFERENCES `User` (`user_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
@@ -279,17 +282,17 @@ ALTER TABLE `Set`
 ALTER TABLE `Video`
   ADD CONSTRAINT `Video_ibfk_1` FOREIGN KEY (`set_id`) REFERENCES `Set` (`set_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `Video_ibfk_2` FOREIGN KEY (`mut_id`) REFERENCES `User` (`user_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-  
+
 ALTER TABLE `CacheImage`
   ADD CONSTRAINT `CacheImage_ibfk_1` FOREIGN KEY (`model_id`) REFERENCES `Model` (`model_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `CacheImage_ibfk_2` FOREIGN KEY (`index_id`) REFERENCES `Model` (`model_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `CacheImage_ibfk_3` FOREIGN KEY (`set_id`)   REFERENCES `Set`   (`set_id`)   ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `CacheImage_ibfk_4` FOREIGN KEY (`image_id`) REFERENCES `Image` (`image_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `CacheImage_ibfk_5` FOREIGN KEY (`video_id`) REFERENCES `Video` (`video_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
- 
+
 ALTER TABLE `Tag`
   ADD CONSTRAINT `Tag_ibfk_1` FOREIGN KEY (`mut_id`) REFERENCES `User` (`user_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-  
+
 ALTER TABLE `Tag2All`
   ADD CONSTRAINT `Tag2All_ibfk_1` FOREIGN KEY (`tag_id`)   REFERENCES `Tag`   (`tag_id`)   ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `Tag2All_ibfk_2` FOREIGN KEY (`model_id`) REFERENCES `Model` (`model_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
@@ -346,17 +349,17 @@ if(array_key_exists('hidAction', $_POST) && isset($_POST['hidAction']) && $_POST
 	$DBUserName = isset($_POST['txtDBUserName']) && strlen($_POST['txtDBUserName']) > 0 ? (string)$_POST['txtDBUserName']  : null;
 	$DBPassword = isset($_POST['txtDBPassword']) && strlen($_POST['txtDBPassword']) >= 0 ? (string)$_POST['txtDBPassword'] : null;
 	$DBName 	= isset($_POST['txtDBName']) 	 && strlen($_POST['txtDBName']) > 0 ? 	  (string)$_POST['txtDBName'] 	   : null;
-	
+
 	$UserName 		= isset($_POST['txtUserName']) && strlen($_POST['txtUserName']) > 0 ? (string)$_POST['txtUserName'] : null;
 	$Password 		= isset($_POST['txtPassword']) && strlen($_POST['txtPassword']) > 0 ? (string)$_POST['txtPassword'] : null;
 	$UserFirstName	= isset($_POST['txtFirstName']) && strlen($_POST['txtFirstName']) > 0 ? (string)$_POST['txtFirstName'] : null;
 	$UserLastName 	= isset($_POST['txtLastName']) && strlen($_POST['txtLastName']) > 0 ? (string)$_POST['txtLastName'] : null;
 	$UserEmail 		= isset($_POST['txtEmail']) && strlen($_POST['txtEmail']) > 0 ? (string)$_POST['txtEmail'] : null;
-	
+
 	$CandyImagePath 	= isset($_POST['txtCandyImagePath']) && strlen($_POST['txtCandyImagePath']) > 0 ? (string)$_POST['txtCandyImagePath'] : null;
 	$CandyVideoPath 	= isset($_POST['txtCandyVideoPath']) && strlen($_POST['txtCandyVideoPath']) > 0 ? (string)$_POST['txtCandyVideoPath'] : null;
 	$CandyVideoThumbPath = isset($_POST['txtCandyVideoThumbPath']) && strlen($_POST['txtCandyVideoThumbPath']) > 0 ? (string)$_POST['txtCandyVideoThumbPath'] : null;
-	
+
 	$SmtpFromAddress = isset($_POST['txtSmtpFromAddress']) && strlen($_POST['txtSmtpFromAddress']) > 0 ? (string)$_POST['txtSmtpFromAddress'] : null;
 	$SmtpFromName 	= isset($_POST['txtSmtpFromName']) && strlen($_POST['txtSmtpFromName']) > 0 ? (string)$_POST['txtSmtpFromName'] : null;
 	$SmtpHostname	= isset($_POST['txtSmtpHostname']) && strlen($_POST['txtSmtpHostname']) > 0 ? (string)$_POST['txtSmtpHostname'] : null;
@@ -364,7 +367,7 @@ if(array_key_exists('hidAction', $_POST) && isset($_POST['hidAction']) && $_POST
 	$SmtpPassword	= isset($_POST['txtSmtpPassword']) && strlen($_POST['txtSmtpPassword']) > 0 ? (string)$_POST['txtSmtpPassword'] : null;
 	$SmtpPort 		= isset($_POST['txtSmtpPort']) && intval($_POST['txtSmtpPort']) > 0 ? intval($_POST['txtSmtpPort']) : 0;
 	$SmtpAuth 		= array_key_exists('chkSmtpAuth', $_POST);
-	
+
 	if(isset($DBHostName) && isset($DBUserName) && isset($DBPassword))
 	{
 		if(@mysql_pconnect($DBHostName, $DBUserName, $DBPassword) !== false)
@@ -375,7 +378,7 @@ if(array_key_exists('hidAction', $_POST) && isset($_POST['hidAction']) && $_POST
 			)) !== false)
 			{
 				$UserSalt = Utils::GenerateGarbage(20);
-				
+
 				@mysql_select_db($DBName);
 				if(@mysql_query(sprintf(
 						$InsertUserSQL,
@@ -389,7 +392,7 @@ if(array_key_exists('hidAction', $_POST) && isset($_POST['hidAction']) && $_POST
 				{
 					$NewUserID = mysql_fetch_array(mysql_query('SELECT LAST_INSERT_ID() AS `LastID`;'));
 					$NewUserID = intval($NewUserID['LastID']);
-					
+
 					$NewConfig = sprintf($ConfigTemplate,
 						str_ireplace('\\', '\\\\', $CandyImagePath),
 						str_ireplace('\\', '\\\\', $CandyVideoPath),
@@ -409,19 +412,19 @@ if(array_key_exists('hidAction', $_POST) && isset($_POST['hidAction']) && $_POST
 						$UserLastName,
 						$NewUserID,
 						$DBName);
-					
+
 					if(@file_put_contents('config.php', $NewConfig, LOCK_EX) !== false)
 					{
 						die('All done! Configuration written to \'config.php\'. Please remove this page from the installation and <a href="login.php">log in</a>.');
 					}
-					else	
+					else
 					{ die(sprintf('Something went wrong while writing the new config. Please check permissions and %1$s.', BackToThisPage('try again'))); }
 				}
-				else 
-				{ die(sprintf('Something went wrong while creating the user (\'%2$s\'), please %1$s.', BackToThisPage('try again'), mysql_error())); }	
+				else
+				{ die(sprintf('Something went wrong while creating the user (\'%2$s\'), please %1$s.', BackToThisPage('try again'), mysql_error())); }
 			}
 			else
-			{ die(sprintf('Something went wrong while creating the database (\'%2$s\'), please %1$s.', BackToThisPage('try again'), mysql_error())); }	
+			{ die(sprintf('Something went wrong while creating the database (\'%2$s\'), please %1$s.', BackToThisPage('try again'), mysql_error())); }
 		}
 		else
 		{ die(sprintf('Could not connect to the database-server, please %1$s the database-settings.', BackToThisPage('re-enter'))); }
@@ -434,7 +437,7 @@ else
 	$DBHostName = 'localhost';
 	$DBUserName = 'username';
 	$DBPassword = 'p@ssw0rd';
-	
+
 	$UserName = 'your_name_here';
 	$Password = 'your_password_here';
 	$UserFirstName = 'Firstname';
@@ -469,10 +472,10 @@ echo HTMLstuff::HtmlHeader('Application setup'); ?>
 
 <div class="CenterForm">
 
-<form action="<?php echo $_SERVER['REQUEST_URI'];?>" method="post"> 
+<form action="<?php echo $_SERVER['REQUEST_URI'];?>" method="post">
 <fieldset>
- 
-<legend>Set up your CandyDoll DB:</legend> 
+
+<legend>Set up your CandyDoll DB:</legend>
 <input type="hidden" id="hidAction" name="hidAction" value="SetupCDDB" />
 
 <h3>Database</h3>
@@ -577,12 +580,12 @@ echo HTMLstuff::HtmlHeader('Application setup'); ?>
 <label for="txtSmtpPassword">SMTP-auth: <em>*</em></label>
 <input type="checkbox" id="chkSmtpAuth" name="chkSmtpAuth"<?php echo $SmtpAuth ? ' checked="checked"' : null; ?> />
 </div>
-   
-<input type="submit" id="btnSubmit" name="btnSubmit" value="Setup" /> 
- 
-</fieldset> 
-</form> 
- 
+
+<input type="submit" id="btnSubmit" name="btnSubmit" value="Setup" />
+
+</fieldset>
+</form>
+
 </div>
 
 <?php
