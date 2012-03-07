@@ -4,10 +4,14 @@ include('cd.php');
 $CurrentUser = Authentication::Authenticate();
 
 $q = null;
+$results = null;
+$Tags = Tag::GetTags();
 
 if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'Search')
 {
 	$q = $_POST['q'];
+	
+	$results = Tag::FilterTagsByCSV($Tags, $q);
 }
 
 echo HTMLstuff::HtmlHeader('Tag search', $CurrentUser);
@@ -21,8 +25,12 @@ echo HTMLstuff::HtmlHeader('Tag search', $CurrentUser);
 
 <input type="hidden" id="hidAction" name="hidAction" value="Search" />
 
-<input type="text" id="q" name="q" value="<?php echo $q; ?>" />
+<input type="text" id="q" name="q" class="TagsBox" value="<?php echo $q; ?>" />
 <input type="submit" class="FormButton" value="Search" />
+
+<div class="Separator"></div>
+
+<?php var_dump($results); ?>
 
 <div class="Separator"></div>
 
