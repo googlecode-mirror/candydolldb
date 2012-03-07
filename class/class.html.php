@@ -57,6 +57,7 @@ class HTMLstuff
 				<ul>
 				<li><a href=\"setup_data.php\">Process XML</a></li>
 				<li><a href=\"model_view.php\">New model</a></li>
+				<li><a href=\"tag.php\">Manage tags</a></li>
 				<li><a href=\"admin_panel.php\">Admin-panel</a></li>
 				<li><a href=\"download_multi.php\">Multi-download</a></li>
 				</ul>
