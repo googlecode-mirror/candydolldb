@@ -131,7 +131,7 @@ class Tag2All
 	{
 		global $db;
 
-		if($db->Select('vw_Tag2All', '*', $WhereClause, $OrderClause, $LimitClause))
+		if($db->Select('vw_Tag2All', '*', $WhereClause, $OrderClause, null))
 		{
 			$OutArray = array();
 
@@ -196,6 +196,25 @@ class Tag2All
 			}
 		}
 		return $OutArray;
+	}
+	
+	/**
+	* Returns a CSV string of all the Tag2All's Tag-names
+	* @param array $Tag2Alls
+	* @return string
+	*/
+	public static function Tags2AllCSV($Tag2Alls)
+	{
+		$s = null;
+		if(is_array($Tag2Alls))
+		{
+			foreach ($Tag2Alls as $t2a)
+			{
+				$s .= sprintf('%1$s, ', $t2a->getTag()->getName());
+			}
+			return trim(trim($s), ',');
+		}
+		return s;
 	}
 }
 
