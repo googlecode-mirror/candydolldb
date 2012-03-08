@@ -4,8 +4,9 @@ include('cd.php');
 $CurrentUser = Authentication::Authenticate();
 
 $ModelID = Utils::SafeIntFromQS('model_id');
+$DeleteModel = (array_key_exists('cmd', $_GET) && $_GET['cmd'] && ($_GET['cmd'] == COMMAND_DELETE));
 
-$DeleteModel = (array_key_exists('cmd', $_GET) && $_GET['cmd'] && ($_GET['cmd'] == COMMAND_DELETE)); 
+$TagsThisModel = Tag2All::GetTag2Alls(sprintf('model_id = %1$d', $ModelID));
 
 if($ModelID)
 {
@@ -32,6 +33,9 @@ if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'ModelView')
 	else
 	{ $Model->setBirthDate(-1); }
 
+	$tags = Tag::GetTagArray($_POST['txtTags']);
+	
+	
 	//$Model->setTags($_POST['txtTags']);
 	$Model->setRemarks($_POST['txtRemarks']);
 	
@@ -110,7 +114,7 @@ if($ModelID)
 
 <div class="FormRow">
 <label for="txtTags">Tags (CSV):</label>
-<input type="text" id="txtTags" name="txtTags" maxlength="200" class="TagsBox" value="<?php echo null; ?>"<?php echo HTMLstuff::DisabledStr($DeleteModel); ?> />
+<input type="text" id="txtTags" name="txtTags" maxlength="200" class="TagsBox" value="<?php echo Tag2All::Tags2AllCSV($TagsThisModel); ?>"<?php echo HTMLstuff::DisabledStr($DeleteModel); ?> />
 </div>
 
 <div class="FormRow">

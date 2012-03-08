@@ -46,9 +46,10 @@ if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'TagView')
 }
 
 foreach($Tags as $t){
-	$TagList .= sprintf('<a class="TagSelect" href="tag.php?tag_id=%1$d">%2$s</a>',
+	$TagList .= sprintf('<a class="TagSelect" href="tag.php?tag_id=%1$d">%2$s%3$s</a>',
 		$t->getID(),
-		htmlentities($t->getName())
+		htmlentities($t->getName()),
+		$t->getID() == $Tag->getID() ? ' <span>*</span>' : null
 	);
 }
 

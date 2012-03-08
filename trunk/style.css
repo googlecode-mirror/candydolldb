@@ -61,6 +61,10 @@ a.TagSelect{
 	margin: 0 10px 10px 0;
 	padding: 3px 7px;
 }
+a.TagSelect span{
+	color: #dd0000;
+	font-weight: bold;
+}
 
 table{
 	width: 100%;
