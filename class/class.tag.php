@@ -90,8 +90,9 @@ class Tag
 	 * Filters the supplied array for Tags having the specified ID
 	 * @param array(Tag) $Tags
 	 * @param int $TagID
+	 * @param string $TagName
 	 */
-	public static function FilterTags($Tags, $TagID = null)
+	public static function FilterTags($Tags, $TagID = null, $TagName = null)
 	{
 		$OutArray = array();
 		
@@ -99,7 +100,8 @@ class Tag
 		foreach($Tags as $Tag)
 		{
 			if(
-				(is_null($TagID) || $Tag->getID() == $TagID)
+				(is_null($TagID) || $Tag->getID() == $TagID) &&
+				(is_null($TagName) || strcasecmp($Tag->getName(), $TagName) == 0)
 			){
 				$OutArray[] = $Tag;
 			}
