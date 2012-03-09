@@ -7,6 +7,48 @@ $ModelID = Utils::SafeIntFromQS('model_id');
 $DeleteModel = (array_key_exists('cmd', $_GET) && $_GET['cmd'] && ($_GET['cmd'] == COMMAND_DELETE));
 
 $TagsThisModel = Tag2All::GetTag2Alls(sprintf('model_id = %1$d', $ModelID));
+$TagsInDB = Tag::GetTags();
+
+
+function HandleModelTags($newTags)
+{
+	global $TagsThisModel, $TagsInDB, $CurrentUser, $db, $ModelID;
+	
+	foreach($newTags as $string)
+	{
+		$tInDB = Tag::FilterTags($TagsInDB, null, $string);
+	
+		if(!$tInDB)
+		{
+			$tNew = new Tag();
+			$tNew->setName($string);
+	
+			Tag::InsertTag($tNew, $CurrentUser);
+			$tagid = $db->GetLatestID();
+			if($tagid) {
+				$tNew->setID($tagid);
+			}
+				
+			$TagsInDB[] = $tNew;
+		}
+	}
+	
+	foreach($TagsThisModel as $ttm)
+	{
+		Tag2All::Delete($ttm, $CurrentUser);
+	}
+	
+	foreach($newTags as $string)
+	{
+		$tInDB = Tag::FilterTags($TagsInDB, null, $string);
+	
+		$t2a = new Tag2All();
+		$t2a->setTag($tInDB[0]);
+		$t2a->setModelID($ModelID);
+	
+		Tag2All::Insert($t2a, $CurrentUser);
+	}
+}
 
 if($ModelID)
 {
@@ -34,9 +76,7 @@ if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'ModelView')
 	{ $Model->setBirthDate(-1); }
 
 	$tags = Tag::GetTagArray($_POST['txtTags']);
-	
-	
-	//$Model->setTags($_POST['txtTags']);
+
 	$Model->setRemarks($_POST['txtRemarks']);
 	
 	if($Model->getID())
@@ -53,6 +93,7 @@ if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'ModelView')
 		{
 		    if(Model::UpdateModel($Model, $CurrentUser))
 		    {
+		    	HandleModelTags($tags);
 		    	header('location:index.php');
 		    	exit;
 		    }
@@ -62,6 +103,12 @@ if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'ModelView')
 	{
 		if(Model::InsertModel($Model, $CurrentUser))
 		{
+			$modelid = $db->GetLatestID();
+			if($modelid) {
+				$Model->setID($modelid);
+			}
+			
+			HandleModelTags($tags);
 			header('location:index.php');
 		    exit;
 		}
@@ -84,7 +131,6 @@ if($ModelID)
 	
 	echo '<div class="PhotoContainer Loading"></div>';
 }
-
 
 ?>
 
