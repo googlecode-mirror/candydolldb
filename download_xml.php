@@ -7,6 +7,7 @@ $CurrentUser = Authentication::Authenticate();
 $Models = Model::GetModels();
 $Sets = Set::GetSets();
 $Dates = Date::GetDates();
+$Tag2Alls = Tag2All::GetTag2Alls();
 
 /* Unfortunately, this is a huge performance killer... */
 $Images = array(); // Image::GetImages();
@@ -33,6 +34,9 @@ foreach ($Models as $Model)
 	$xmlw->writeAttribute('lastname', $Model->getLastName());
 	$xmlw->writeAttribute('birthdate', $Model->getBirthdate() > 0 ? date('Y-m-d', $Model->getBirthdate()) : null);
 	
+	$TagsThisModel = Tag2All::FilterTag2Alls($Tag2Alls, null, $Model->getID(), null, null, null);
+	$xmlw->writeAttribute('tags', Tag2All::Tags2AllCSV($TagsThisModel));
+	
 	$SetsThisModel = Set::FilterSets($Sets, $Model->getID());
 	if($SetsThisModel)
 	{
@@ -45,11 +49,13 @@ foreach ($Models as $Model)
 		{
 			$PicDatesThisSet = Date::FilterDates($DatesThisModel, null, null, $Set->getID(), DATE_KIND_IMAGE);
 			$VidDatesThisSet = Date::FilterDates($DatesThisModel, null, null, $Set->getID(), DATE_KIND_VIDEO);
+			$TagsThisSet = Tag2All::FilterTag2Alls($Tag2Alls, null, null, $Set->getID(), null, null);
 			
 			$xmlw->startElement('Set');
 				$xmlw->writeAttribute('name', $Set->getName());
 				$xmlw->writeAttribute('date_pic', Date::FormatDates($PicDatesThisSet, 'Y-m-d', false, ' '));
 				$xmlw->writeAttribute('date_vid', Date::FormatDates($VidDatesThisSet, 'Y-m-d', false, ' '));
+				$xmlw->writeAttribute('tags', Tag2All::Tags2AllCSV($TagsThisSet));
 			
 			$ImagesThisSet = Image::FilterImages($Images, $Model->getID(), $Set->getID());
 			if($ImagesThisSet)
@@ -59,6 +65,8 @@ foreach ($Models as $Model)
 				/* @var $Image Image */
 				foreach($ImagesThisSet as $Image)
 				{
+					$TagsThisImage = Tag2All::FilterTag2Alls($Tag2Alls, null, null, null, $Image->getID(), null);
+					
 					$xmlw->startElement('Image');
 						$xmlw->writeAttribute('name', $Image->getFileName());
 						$xmlw->writeAttribute('extension', $Image->getFileExtension());
@@ -66,6 +74,7 @@ foreach ($Models as $Model)
 						$xmlw->writeAttribute('height', $Image->getImageHeight());
 						$xmlw->writeAttribute('width', $Image->getImageWidth());
 						$xmlw->writeAttribute('checksum', $Image->getFileCheckSum());
+						$xmlw->writeAttribute('tags', Tag2All::Tags2AllCSV($TagsThisImage));
 					$xmlw->endElement();
 				}
 				$xmlw->endElement();
@@ -79,11 +88,14 @@ foreach ($Models as $Model)
 				/* @var $Video Video */
 				foreach($VideosThisSet as $Video)
 				{
+					$TagsThisVideo = Tag2All::FilterTag2Alls($Tag2Alls, null, null, null, null, $Video->getID());
+					
 					$xmlw->startElement('Video');
 						$xmlw->writeAttribute('name', $Video->getFileName());
 						$xmlw->writeAttribute('extension', $Video->getFileExtension());
 						$xmlw->writeAttribute('filesize', $Video->getFileSize());
 						$xmlw->writeAttribute('checksum', $Video->getFileCheckSum());
+						$xmlw->writeAttribute('tags', Tag2All::Tags2AllCSV($TagsThisVideo));
 					$xmlw->endElement();
 				}
 				$xmlw->endElement();
