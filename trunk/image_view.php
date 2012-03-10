@@ -7,6 +7,9 @@ $ModelID = Utils::SafeIntFromQS('model_id');
 $SetID = Utils::SafeIntFromQS('set_id');
 $ImageID = Utils::SafeIntFromQS('image_id');
 
+$TagsThisImage = Tag2All::GetTag2Alls(sprintf('image_id = %1$d', $ImageID));
+$TagsInDB = Tag::GetTags();
+
 if(!isset($ModelID))
 {
 	header('location:index.php');
@@ -64,7 +67,8 @@ if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'ImageView')
 	$Image->setFileCheckSum($_POST['txtFileChecksum']);
 	$Image->setImageWidth(abs(intval($_POST['txtImageWidth'])));
 	$Image->setImageHeight(abs(intval($_POST['txtImageHeight'])));
-	//$Image->setTags($_POST['txtTags']);
+	
+	$tags = Tag::GetTagArray($_POST['txtTags']);
 	
 	if($Image->getImageWidth() == 0) { $Image->setImageHeight(0); }
 	if($Image->getImageHeight() == 0) { $Image->setImageWidth(0); }
@@ -83,6 +87,7 @@ if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'ImageView')
 		{
 			if(Image::UpdateImage($Image, $CurrentUser))
 			{
+				Tag2All::HandleTags($tags, $TagsThisImage, $TagsInDB, $CurrentUser, null, null, $Image->getID(), null);
 				header('location:'.$ReturnURL);
 				exit;
 			}
@@ -92,6 +97,12 @@ if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'ImageView')
 	{
 		if(Image::InsertImage($Image, $CurrentUser))
 		{
+			$imageid = $db->GetLatestID();
+			if($imageid) {
+				$Image->setID($imageid);
+			}
+			
+			Tag2All::HandleTags($tags, $TagsThisImage, $TagsInDB, $CurrentUser, null, null, $Image->getID(), null);
 			header('location:'.$ReturnURL);
 			exit;
 		}
@@ -162,7 +173,7 @@ if($ImageID)
 
 <div class="FormRow">
 <label for="txtTags">Tags (CSV):</label>
-<input type="text" id="txtTags" name="txtTags" maxlength="200" class="TagsBox" value="<?php echo null; ?>"<?php echo HTMLstuff::DisabledStr($DeleteImage); ?> />
+<input type="text" id="txtTags" name="txtTags" maxlength="200" class="TagsBox" value="<?php echo Tag2All::Tags2AllCSV($TagsThisImage); ?>"<?php echo HTMLstuff::DisabledStr($DeleteImage); ?> />
 </div>
 
 <div class="FormRow"><label>&nbsp;</label>
