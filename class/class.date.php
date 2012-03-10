@@ -249,6 +249,37 @@ class Date
 		}
 		return trim($OutString, ', ');
 	}
+	
+	/**
+	* Parses an array of strings into an array of Date objects.
+	* @param array(string) $InArray
+	* @param int $DateKind
+	* @param Set $Set
+	* @return array(Date)
+	*/
+	public static function ParseDates($InArray, $DateKind = DATE_KIND_UNKNOWN, $Set = null)
+	{
+		$OutArray = array();
+		if(is_array($InArray) && count($InArray) > 0)
+		{
+			for ($i = 0; $i < count($InArray); $i++)
+			{
+				$timestamp = strtotime($InArray[$i]);
+				if($timestamp !== false)
+				{
+					/* @var $Date Date */
+					$Date = new Date();
+	
+					$Date->setSet($Set);
+					$Date->setDateKind($DateKind);
+					$Date->setTimeStamp($timestamp);
+	
+					$OutArray[] = $Date;
+				}
+			}
+		}
+		return $OutArray;
+	}
 }
 
 ?>

@@ -5,36 +5,9 @@ ini_set('max_execution_time', '3600');
 $CurrentUser = Authentication::Authenticate();
 $ModelID = Utils::SafeIntFromQS('model_id');
 
-/**
- * Parses an array of strings into an array of Date objects.
- * @param array(string) $InArray
- * @param int $DateKind
- * @param Set $Set
- * @return array(Date)
- */
-function ParseDates($InArray, $DateKind = DATE_KIND_UNKNOWN, $Set = null)
-{
-	$OutArray = array();
-	if(is_array($InArray) && count($InArray) > 0)
-	{
-		for ($i = 0; $i < count($InArray); $i++)
-		{
-			$timestamp = strtotime($InArray[$i]);
-			if($timestamp !== false)
-			{
-				/* @var $Date Date */
-				$Date = new Date();
-				
-				$Date->setSet($Set);
-				$Date->setDateKind($DateKind);
-				$Date->setTimeStamp($timestamp);
-				
-				$OutArray[] = $Date;
-			}
-		} 
-	}
-	return $OutArray;	
-}
+$Tag2AllsInDB = Tag2All::GetTag2Alls();
+$TagsInDB = Tag::GetTags();
+
 
 if(isset($argv) && $argc > 0)
 {
@@ -95,6 +68,10 @@ if($XmlFromFile)
 			if($modelid) { $Model2Process->setID($modelid); }
 		}
 		
+		$modeltags = Tag::GetTagArray((string)$Model->attributes()->tags);
+		$Tag2AllThisModel = Tag2All::FilterTag2Alls($Tag2AllsInDB, null, $Model2Process->getID(), null, null, null);
+		Tag2All::HandleTags($modeltags, $Tag2AllThisModel, $TagsInDB, $CurrentUser, $Model2Process->getID(), null, null, null);
+		
 		if(!$Model->Sets)
 		{ continue; }
 
@@ -148,17 +125,21 @@ if($XmlFromFile)
 				CacheImage::DeleteImages($CacheImages, $CurrentUser);
 			}
 			
+			$settags = Tag::GetTagArray((string)$Set->attributes()->tags);
+			$Tag2AllThisSet = Tag2All::FilterTag2Alls($Tag2AllsInDB, null, null, $Set2Process->getID(), null, null);
+			Tag2All::HandleTags($settags, $Tag2AllThisSet, $TagsInDB, $CurrentUser, null, $Set2Process->getID(), null, null);
+			
 			$datesPic = array();
 			$datesVid = array();
 			
 			preg_match_all('/[0-9]{4}-[01][0-9]-[0123][0-9]/ix', (string)$Set->attributes()->date_pic, $datesPic);
 			$Set2Process->setDatesPic(
-				ParseDates($datesPic[0], DATE_KIND_IMAGE, $Set2Process)
+				Date::ParseDates($datesPic[0], DATE_KIND_IMAGE, $Set2Process)
 			);
 
 			preg_match_all('/[0-9]{4}-[01][0-9]-[0123][0-9]/ix', (string)$Set->attributes()->date_vid, $datesVid);
 			$Set2Process->setDatesVid(
-				ParseDates($datesVid[0], DATE_KIND_VIDEO, $Set2Process)
+				Date::ParseDates($datesVid[0], DATE_KIND_VIDEO, $Set2Process)
 			);
 			
 			
