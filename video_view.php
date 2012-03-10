@@ -7,6 +7,9 @@ $ModelID = Utils::SafeIntFromQS('model_id');
 $SetID = Utils::SafeIntFromQS('set_id');
 $VideoID = Utils::SafeIntFromQS('video_id');
 
+$TagsThisVideo = Tag2All::GetTag2Alls(sprintf('video_id = %1$d', $VideoID));
+$TagsInDB = Tag::GetTags();
+
 if(!isset($ModelID))
 {
 	header('location:index.php');
@@ -67,7 +70,8 @@ if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'VideoView')
 	$Video->setFileExtension($_POST['txtFileExtension']);
 	$Video->setFileSize(intval($_POST['txtFilesize']));
 	$Video->setFileCheckSum($_POST['txtFileChecksum']);
-	//$Video->setTags($_POST['txtTags']);
+	
+	$tags = Tag::GetTagArray($_POST['txtTags']);
 	
 	if($Video->getID())
 	{
@@ -83,6 +87,7 @@ if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'VideoView')
 		{
 			if(Video::UpdateVideo($Video, $CurrentUser))
 			{
+				Tag2All::HandleTags($tags, $TagsThisVideo, $TagsInDB, $CurrentUser, null, null, null, $Video->getID(), null);
 				header('location:'.$ReturnURL);
 				exit;
 			}
@@ -92,6 +97,12 @@ if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'VideoView')
 	{
 		if(Video::InsertVideo($Video, $CurrentUser))
 		{
+			$videoid = $db->GetLatestID();
+			if($videoid) {
+				$Video->setID($videoid);
+			}
+			
+			Tag2All::HandleTags($tags, $TagsThisVideo, $TagsInDB, $CurrentUser, null, null, null, $Video->getID());
 			header('location:'.$ReturnURL);
 			exit;
 		}
@@ -140,7 +151,7 @@ echo HTMLstuff::HtmlHeader($Model->GetShortName(true).' - Set '.$Set->getName().
 
 <div class="FormRow">
 <label for="txtTags">Tags (CSV):</label>
-<input type="text" id="txtTags" name="txtTags" maxlength="200" class="TagsBox" value="<?php echo null; ?>"<?php echo HTMLstuff::DisabledStr($DeleteVideo); ?> />
+<input type="text" id="txtTags" name="txtTags" maxlength="200" class="TagsBox" value="<?php echo Tag2All::Tags2AllCSV($TagsThisVideo); ?>"<?php echo HTMLstuff::DisabledStr($DeleteVideo); ?> />
 </div>
 
 <div class="FormRow"><label>&nbsp;</label>

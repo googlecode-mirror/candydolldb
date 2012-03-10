@@ -216,6 +216,72 @@ class Tag2All
 		}
 		return s;
 	}
+	
+	/**
+	 * Handles
+	 * a) the adding of new Tags to the database,
+	 * b) the deleting of all existing Tag2All for this Model|Set|Image|Video and
+	 * c) inserting the appropriate Tag2All records for this Model|Set|Image|Video
+	 * @param array(string) $newTags
+	 * @param array(Tag2All) $Tag2AllsThisItem
+	 * @param array(Tag) $TagsInDB, passed by reference
+	 * @param User $CurrentUser
+	 * @param int $ModelID
+	 * @param int $SetID
+	 * @param int $ImageID
+	 * @param int $VideoID
+	 */
+	public static function HandleTags($newTags, $Tag2AllsThisItem, &$TagsInDB, $CurrentUser, $ModelID = null, $SetID = null, $ImageID = null, $VideoID = null)
+	{
+		global $db;
+	
+		foreach($newTags as $string)
+		{
+			$tInDB = Tag::FilterTags($TagsInDB, null, $string);
+	
+			if(!$tInDB)
+			{
+				$tNew = new Tag();
+				$tNew->setName($string);
+	
+				Tag::InsertTag($tNew, $CurrentUser);
+				$tagid = $db->GetLatestID();
+				if($tagid) {
+					$tNew->setID($tagid);
+				}
+	
+				$TagsInDB[] = $tNew;
+			}
+		}
+	
+		foreach($Tag2AllsThisItem as $tti)
+		{
+			Tag2All::Delete($tti, $CurrentUser);
+		}
+	
+		foreach($newTags as $string)
+		{
+			$tInDB = Tag::FilterTags($TagsInDB, null, $string);
+	
+			$t2a = new Tag2All();
+			$t2a->setTag($tInDB[0]);
+			
+			if(!is_null($ModelID)){
+				$t2a->setModelID($ModelID);
+			}
+			else if(!is_null($SetID)){
+				$t2a->setSetID($SetID);
+			}
+			else if(!is_null($ImageID)){
+				$t2a->setImageID($ImageID);
+			}
+			else if(!is_null($VideoID)){
+				$t2a->setVideoID($VideoID);
+			}
+	
+			Tag2All::Insert($t2a, $CurrentUser);
+		}
+	}
 }
 
 ?>

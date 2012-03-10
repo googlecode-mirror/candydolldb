@@ -22,6 +22,13 @@ if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'TagView')
 		{
 			if(Tag::DeleteTag($Tag, $CurrentUser))
 			{
+				$wc = sprintf('tag_id = %1d', $Tag->getID());
+				$t2as = Tag2All::GetTag2Alls($wc);
+				
+				foreach($t2as as $t2a){
+					Tag2All::Delete($t2a, $CurrentUser);
+				}
+				
 				header('location:'.$_SERVER['PHP_SELF']);
 				exit;
 			}

@@ -6,6 +6,9 @@ $CurrentUser = Authentication::Authenticate();
 $ModelID = Utils::SafeIntFromQS('model_id');
 $SetID = Utils::SafeIntFromQS('set_id');
 
+$TagsThisSet = Tag2All::GetTag2Alls(sprintf('set_id = %1$d', $SetID));
+$TagsInDB = Tag::GetTags();
+
 if(!isset($ModelID))
 {
 	header('location:index.php');
@@ -60,7 +63,8 @@ if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'SetView')
 {
 	$Set->setPrefix($_POST['txtPrefix']);
 	$Set->setName($_POST['txtName']);
-	//$Set->setTags($_POST['txtTags']);
+
+	$tags = Tag::GetTagArray($_POST['txtTags']);
 
 	if(array_key_exists('radContains', $_POST) && $_POST['radContains'])
 	{ $Set->setContainsWhat(intval($_POST['radContains'])); }
@@ -81,6 +85,10 @@ if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'SetView')
 		else
 		{
 			$NoErrorDuringPostback = Set::UpdateSet($Set, $CurrentUser);
+			
+			if($NoErrorDuringPostback){
+				Tag2All::HandleTags($tags, $TagsThisSet, $TagsInDB, $CurrentUser, null, $Set->getID(), null, null);
+			}
 		}
 	}
 	else
@@ -92,6 +100,8 @@ if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'SetView')
 			
 			$setid = $db->GetLatestID();
 			if($setid) { $Set->setID($setid); }
+			
+			Tag2All::HandleTags($tags, $TagsThisSet, $TagsInDB, $CurrentUser, null, $Set->getID(), null, null);
 		}
 	}
 	
@@ -229,7 +239,7 @@ foreach ($DatesThisSet as $Date)
 
 <div class="FormRow">
 <label for="txtTags">Tags (CSV):</label>
-<input type="text" id="txtTags" name="txtTags" maxlength="200" class="TagsBox" value="<?php echo null; ?>"<?php echo HTMLstuff::DisabledStr($DeleteSet); ?> />
+<input type="text" id="txtTags" name="txtTags" maxlength="200" class="TagsBox" value="<?php echo Tag2All::Tags2AllCSV($TagsThisSet); ?>"<?php echo HTMLstuff::DisabledStr($DeleteSet); ?> />
 </div>
 
 <div class="FormRow">

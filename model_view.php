@@ -9,47 +9,6 @@ $DeleteModel = (array_key_exists('cmd', $_GET) && $_GET['cmd'] && ($_GET['cmd'] 
 $TagsThisModel = Tag2All::GetTag2Alls(sprintf('model_id = %1$d', $ModelID));
 $TagsInDB = Tag::GetTags();
 
-
-function HandleModelTags($newTags)
-{
-	global $TagsThisModel, $TagsInDB, $CurrentUser, $db, $ModelID;
-	
-	foreach($newTags as $string)
-	{
-		$tInDB = Tag::FilterTags($TagsInDB, null, $string);
-	
-		if(!$tInDB)
-		{
-			$tNew = new Tag();
-			$tNew->setName($string);
-	
-			Tag::InsertTag($tNew, $CurrentUser);
-			$tagid = $db->GetLatestID();
-			if($tagid) {
-				$tNew->setID($tagid);
-			}
-				
-			$TagsInDB[] = $tNew;
-		}
-	}
-	
-	foreach($TagsThisModel as $ttm)
-	{
-		Tag2All::Delete($ttm, $CurrentUser);
-	}
-	
-	foreach($newTags as $string)
-	{
-		$tInDB = Tag::FilterTags($TagsInDB, null, $string);
-	
-		$t2a = new Tag2All();
-		$t2a->setTag($tInDB[0]);
-		$t2a->setModelID($ModelID);
-	
-		Tag2All::Insert($t2a, $CurrentUser);
-	}
-}
-
 if($ModelID)
 {
 	$WhereClause = sprintf('model_id = %1$d AND mut_deleted = -1', $ModelID);
@@ -93,7 +52,7 @@ if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'ModelView')
 		{
 		    if(Model::UpdateModel($Model, $CurrentUser))
 		    {
-		    	HandleModelTags($tags);
+		    	Tag2All::HandleTags($tags, $TagsThisModel, $TagsInDB, $CurrentUser, $Model->getID(), null, null, null);
 		    	header('location:index.php');
 		    	exit;
 		    }
@@ -108,7 +67,7 @@ if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'ModelView')
 				$Model->setID($modelid);
 			}
 			
-			HandleModelTags($tags);
+			Tag2All::HandleTags($tags, $TagsThisModel, $TagsInDB, $CurrentUser, $Model->getID(), null, null, null);
 			header('location:index.php');
 		    exit;
 		}
