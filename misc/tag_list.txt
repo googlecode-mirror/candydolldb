@@ -1,0 +1,121 @@
+; ==================================================
+; A proposed list of tags to be used in CandyDollDB
+;
+; Feel free to submit your comments and suggestions!
+;
+; (don't mind the syntax of this file, it's just a
+; simple list. Maybe we can make it importable,
+; someday...:-) ) 
+; ==================================================
+
+
+; Colors
+; How do we handle these?
+; [color] clothes, [color] eyes, [color] hair?
+black
+blue
+brown
+gold
+green
+pink
+purple
+red
+silver
+turquoise
+yellow
+
+
+; Hair
+; Do we have separate [color] hairs?
+blond
+braids
+pigtails
+ponytail
+wig
+
+
+; Shoes
+boots
+slippers
+sneakers
+stilettos
+
+
+; Jewelry
+bracelet
+contact lenses
+crown
+diadem 
+earrings
+necklace
+
+
+; Clothes
+ballet
+bikini
+bunny
+camouflage
+corset
+cosplay
+costume
+fishnet
+gloves
+latex
+leather
+leopard
+maid
+nurse
+nylon
+pants
+polkadot
+pvc
+schoolgirl
+skirt
+stockings
+swimsuit
+tanktop
+tie
+uniform
+zebra
+
+
+; Decor, accessories
+balloon
+barstool
+bath
+bathtub
+beachball
+bed
+briefcase
+chair
+church
+curtain
+door
+drapes
+fireplace
+mask
+mirror
+outdoor
+plant
+riding cane
+riding cap
+rose
+shower
+sofa
+stairs
+stool
+toy
+tree
+window
+windowsill
+
+
+; Poses
+squat
+crouch
+
+
+
+; Photography
+close-up
+upside down
