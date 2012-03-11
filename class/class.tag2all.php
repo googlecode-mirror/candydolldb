@@ -279,7 +279,8 @@ class Tag2All
 				$t2a->setVideoID($VideoID);
 			}
 	
-			Tag2All::Insert($t2a, $CurrentUser);
+			if($t2a->getModelID() || $t2a->getSetID() || $t2a->getImageID() || $t2a->getVideoID())
+			{ Tag2All::Insert($t2a, $CurrentUser); }
 		}
 	}
 }
