@@ -32,17 +32,6 @@ else
 	$User = new User(null, 'New user');
 }
 
-foreach($DateStyleArray as $index => $format)
-{
-	$DateFormatOptions .= sprintf("
-		<option value=\"%1\$d\"%2\$s>%3\$s%4\$s</option>",
-		$index,
-		$User->getDateDisplayOptions() == $index ? ' selected="selected"' : null,
-		date($format),
-		$index == 0 ? ' [Default]' : null
-	);
-}
-
 if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'UserView')
 {
 	$User->setUserName($_POST['txtUserName']);
@@ -140,6 +129,17 @@ if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'UserView')
 		$LoginError->setErrorMessage(LoginError::TranslateLoginError(LOGIN_ERR_PASSWORDSNOTIDENTICAL));
 		Error::AddError($LoginError);
 	}
+}
+
+foreach($DateStyleArray as $index => $format)
+{
+	$DateFormatOptions .= sprintf("
+		<option value=\"%1\$d\"%2\$s>%3\$s%4\$s</option>",
+		$index,
+		$User->getDateDisplayOptions() == $index ? ' selected="selected"' : null,
+		date($format),
+		$index == 0 ? ' [Default]' : null
+	);
 }
 
 echo HTMLstuff::HtmlHeader($User->GetFullName(), $CurrentUser);
