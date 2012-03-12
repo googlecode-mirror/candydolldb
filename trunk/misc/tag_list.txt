@@ -3,7 +3,7 @@
 ;
 ; As of 2012-03-12 the categories that need the most
 ; work are: Shoes, Poses and Photography. it will
-l take someone with an English native tongue to fill
+; take someone with an English native tongue to fill
 ; them up. Should we add an Audio-category for the
 ; videos too?
 ;
