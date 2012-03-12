@@ -8,7 +8,7 @@ $CurrentUser = Authentication::Authenticate();
 $TagsInDb = Tag::GetTags();
 
 function NotComment($line){
-	return !preg_match('/^;/i', $line);
+	return !preg_match('/^\s*;/i', $line);
 }
 
 if(isset($argv) && $argc > 0)
