@@ -2,18 +2,14 @@
 ; A proposed list of tags to be used in CandyDollDB
 ;
 ; As of 2012-03-12 the categories that need the most
-; work are: Shoes, Poses and Photography. it will
-; take someone with an English native tongue to fill
-; them up. Should we add an Audio-category for the
-; videos too?
+; work are: Shoes, Poses and Photography. Should we
+; add an Audio-category for the videos too?
 ;
 ; Feel free to submit your comments and suggestions!
 ;
 ; The tags will be processed comma separated, so you
 ; can use spaces as much you like.
-;
-; (don't mind the syntax of this file, it's just a
-; simple list - Made importable for development only.) 
+; 
 ; ====================================================
 
 
@@ -55,7 +51,7 @@ stilettos
 bracelet
 contact lenses
 crown
-diadem 
+diadem
 earrings
 necklace
 
@@ -74,6 +70,7 @@ cosplay
 costume
 fishnet
 gloves
+hat
 latex
 leather
 leopard
@@ -113,6 +110,7 @@ curtain
 door
 drapes
 fireplace
+garden
 mask
 mirror
 outdoor
@@ -124,6 +122,8 @@ shower
 sofa
 stairs
 stool
+table
+terrace
 toy
 tree
 window

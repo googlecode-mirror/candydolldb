@@ -8,22 +8,22 @@
 	</Model>
 	<Model firstname="Adriana" lastname="E" birthdate="1999-11-17" tags="">
 		<Sets>
-			<Set name="01" date_pic="2011-04-29" date_vid="" tags="" />
-			<Set name="02" date_pic="2011-05-13" date_vid="" tags="" />
-			<Set name="03" date_pic="2011-05-20" date_vid="" tags="" />
+			<Set name="01" date_pic="2011-04-29" date_vid="" tags="black, boots, drapes, pvc, red, rose"/>
+			<Set name="02" date_pic="2011-05-13" date_vid="" tags="braids, swimsuit"/>
+			<Set name="03" date_pic="2011-05-20" date_vid="" tags="bikini, drapes"/>
 		</Sets>
 	</Model>
 	<Model firstname="Alice" lastname="L" birthdate="" tags="">
 		<Sets>
-			<Set name="01" date_pic="2010-01-01" date_vid="2010-01-01" tags="" />
-			<Set name="02" date_pic="2010-02-05" date_vid="2010-02-05" tags="" />
-			<Set name="03" date_pic="2010-03-26" date_vid="2010-03-26" tags="" />
-			<Set name="04" date_pic="2010-05-07" date_vid="2010-05-07" tags="" />
-			<Set name="05" date_pic="2010-05-28" date_vid="2010-05-28" tags="" />
-			<Set name="06" date_pic="2010-06-25" date_vid="2010-06-25" tags="" />
-			<Set name="07" date_pic="2010-07-23" date_vid="2010-07-23" tags="" />
-			<Set name="08" date_pic="2010-08-06" date_vid="2010-08-06" tags="" />
-			<Set name="09" date_pic="2010-08-20" date_vid="2010-08-20" tags="" />
+			<Set name="01" date_pic="2010-01-01" date_vid="2010-01-01" tags="garden, outdoor, plant, stairs, terrace, windowsill"/>
+			<Set name="02" date_pic="2010-02-05" date_vid="2010-02-05" tags="bed, blue, swimsuit, windowsill"/>
+			<Set name="03" date_pic="2010-03-26" date_vid="2010-03-26" tags="chair, hat, table"/>
+			<Set name="04" date_pic="2010-05-07" date_vid="2010-05-07" tags="ballet, crown, window"/>
+			<Set name="05" date_pic="2010-05-28" date_vid="2010-05-28" tags="bikini, green, slippers, window"/>
+			<Set name="06" date_pic="2010-06-25" date_vid="2010-06-25" tags="pink"/>
+			<Set name="07" date_pic="2010-07-23" date_vid="2010-07-23" tags="black, gloves, nylon, pvc, riding cane, sofa"/>
+			<Set name="08" date_pic="2010-08-06" date_vid="2010-08-06" tags="bed"/>
+			<Set name="09" date_pic="2010-08-20" date_vid="2010-08-20" tags="diadem, stairs"/>
 			<Set name="10" date_pic="2010-10-01" date_vid="2010-10-01" tags="" />
 			<Set name="11" date_pic="2010-10-15" date_vid="2010-10-15" tags="" />
 			<Set name="12" date_pic="2010-11-19" date_vid="2010-11-19" tags="" />

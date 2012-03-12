@@ -101,7 +101,7 @@ class Tag
 		{
 			if(
 				(is_null($TagID) || $Tag->getID() == $TagID) &&
-				(is_null($TagName) || strcasecmp($Tag->getName(), $TagName) == 0)
+				(is_null($TagName) || strcasecmp(trim($Tag->getName()), trim($TagName)) == 0)
 			){
 				$OutArray[] = $Tag;
 			}
