@@ -242,7 +242,7 @@ class Tag2All
 			if(!$tInDB)
 			{
 				$tNew = new Tag();
-				$tNew->setName($string);
+				$tNew->setName(trim($string));
 	
 				Tag::InsertTag($tNew, $CurrentUser);
 				$tagid = $db->GetLatestID();
