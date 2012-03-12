@@ -1,17 +1,23 @@
-; ==================================================
+; ====================================================
 ; A proposed list of tags to be used in CandyDollDB
+;
+; As of 2012-03-12 the categories that need the most
+; work are: Shoes, Poses and Photography. it will
+l take someone with an English native tongue to fill
+; them up. Should we add an Audio-category for the
+; videos too?
 ;
 ; Feel free to submit your comments and suggestions!
 ;
+; The tags will be processed comma separated, so you
+; can use spaces as much you like.
+;
 ; (don't mind the syntax of this file, it's just a
-; simple list. Maybe we can make it importable,
-; someday...:-) ) 
-; ==================================================
+; simple list - Made importable for development only.) 
+; ====================================================
 
 
 ; Colors
-; How do we handle these?
-; [color] clothes, [color] eyes, [color] hair?
 black
 blue
 brown
@@ -26,11 +32,15 @@ yellow
 
 
 ; Hair
-; Do we have separate [color] hairs?
-blond
+black hair
+blond hair
+blue hair
 braids
+brown hair
 pigtails
+pink hair
 ponytail
+red hair
 wig
 
 
@@ -53,6 +63,10 @@ necklace
 ; Clothes
 ballet
 bikini
+black latex
+black pvc
+blue latex
+blue pvc
 bunny
 camouflage
 corset
@@ -69,6 +83,8 @@ nylon
 pants
 polkadot
 pvc
+red latex
+red pvc
 schoolgirl
 skirt
 stockings
@@ -76,6 +92,10 @@ swimsuit
 tanktop
 tie
 uniform
+white latex
+white pvc
+yellow latex
+yellow pvc
 zebra
 
 
