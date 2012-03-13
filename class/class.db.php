@@ -130,7 +130,8 @@ class DB
 			
 			if($query)
 			{
-				$this->Result = array();				
+				$this->Result = array();
+				$this->FieldInfo = array();
 				$numCols = mysql_num_fields($query);
 
 				if($numCols > 0)
@@ -138,8 +139,6 @@ class DB
 					for($k = 0; $k < $numCols; $k++)
 					{ $this->FieldInfo[] = mysql_fetch_field($query, $k); }
 				}
-				else
-				{ $this->FieldInfo = null; }
 			
 				$this->NumResults = mysql_num_rows($query);
 				for($i = 0; $i < $this->NumResults; $i++)
@@ -351,7 +350,6 @@ class DB
 	public function getResult()
 	{ return $this->Result; }
 
-
 	public function getFieldInfo()
 	{ return $this->FieldInfo; }
 
@@ -361,10 +359,10 @@ class DB
 	public function getConnectionEstablished()
 	{ return $this->ConnectionEstablished; }
 
-
 	public function getDatabaseName()
 	{ return $this->DatabaseName; }
 
+	
 	/**
 	 * @param string $DatabaseName
 	 * @return bool
@@ -410,8 +408,6 @@ class DB
 				if(strlen(trim($q)) == 0) { continue; }
 				
 				$OutBool = @mysql_query($q);
-				
-				$melding = mysql_error();
 				
 				if($OutBool === false) { break; }
 			}
