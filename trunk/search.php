@@ -4,14 +4,21 @@ include('cd.php');
 $CurrentUser = Authentication::Authenticate();
 
 $q = null;
-$results = null;
+$Models = array();
 $Tags = Tag::GetTags();
 
 if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'Search')
 {
 	$q = $_POST['q'];
 	
-	$results = Tag::FilterTagsByCSV($Tags, $q);
+	$filteredTags = Tag::FilterTagsByCSV($Tags, $q);
+	$filteredTagIDs = array();
+	
+	foreach($filteredTags as $t){
+		$filteredTagIDs[] = $t->getID();
+	}
+	
+	$Models = Search::ModelByTagIDs($filteredTagIDs);
 }
 
 echo HTMLstuff::HtmlHeader('Tag search', $CurrentUser);
@@ -30,7 +37,7 @@ echo HTMLstuff::HtmlHeader('Tag search', $CurrentUser);
 
 <div class="Separator"></div>
 
-<?php var_dump($results); ?>
+<?php var_dump($Models); ?>
 
 <div class="Separator"></div>
 

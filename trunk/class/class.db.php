@@ -101,6 +101,68 @@ class DB
 		else 
 		{ return false; }
 	}
+	
+	/**
+	 * Executes the given SELECT statement and places the resultset into $db->result()
+	 * @param string $q
+	 * @return bool
+	 */
+	public function ExecuteSelect($q)
+	{
+		$query = @mysql_query($q);
+			
+		if($query)
+		{
+			$this->Result = array();
+			$this->FieldInfo = array();
+			$numCols = mysql_num_fields($query);
+		
+			if($numCols > 0)
+			{
+				for($k = 0; $k < $numCols; $k++)
+				{ $this->FieldInfo[] = mysql_fetch_field($query, $k); }
+			}
+				
+			$this->NumResults = mysql_num_rows($query);
+			for($i = 0; $i < $this->NumResults; $i++)
+			{
+				$r = mysql_fetch_array($query);
+				$key = array_keys($r);
+		
+				for($x = 0; $x < count($key); $x++)
+				{
+					if(!is_int($key[$x]))
+					{
+						if($this->NumResults > 0)
+						{
+							switch(DB::FindType($this->FieldInfo, $key[$x]))
+							{
+								case 'int':
+									$this->Result[$i][$key[$x]] = (int) $r[$key[$x]];
+									break;
+										
+								case 'string':
+								default:
+									$this->Result[$i][$key[$x]] = (string) $r[$key[$x]];
+									break;
+							}
+						}
+						else
+						{$this->Result = null; }
+					}
+				}
+			}
+			return true;
+		}
+		else
+		{
+			$SQLError = new SQLerror();
+			$SQLError->setErrorNumber(mysql_errno());
+			$SQLError->setErrorMessage(mysql_error());
+			Error::AddError($SQLError);
+			return false;
+		}
+	}
 
 	/**
 	 * @param string $Table
@@ -126,59 +188,7 @@ class DB
 
 		if($this->TableExists($Table))
 		{
-			$query = @mysql_query($q);
-			
-			if($query)
-			{
-				$this->Result = array();
-				$this->FieldInfo = array();
-				$numCols = mysql_num_fields($query);
-
-				if($numCols > 0)
-				{
-					for($k = 0; $k < $numCols; $k++)
-					{ $this->FieldInfo[] = mysql_fetch_field($query, $k); }
-				}
-			
-				$this->NumResults = mysql_num_rows($query);
-				for($i = 0; $i < $this->NumResults; $i++)
-				{
-					$r = mysql_fetch_array($query);
-					$key = array_keys($r);
-
-					for($x = 0; $x < count($key); $x++)
-					{
-						if(!is_int($key[$x]))
-						{
-							if($this->NumResults > 0)
-							{
-								switch(DB::FindType($this->FieldInfo, $key[$x]))
-								{
-									case 'int':
-										$this->Result[$i][$key[$x]] = (int) $r[$key[$x]];
-										break;
-											
-									case 'string':
-									default:
-										$this->Result[$i][$key[$x]] = (string) $r[$key[$x]];
-										break;
-								}
-							}
-							else
-							{$this->Result = null; }
-						}
-					}
-				}
-				return true;
-			}
-			else
-			{
-				$SQLError = new SQLerror();
-				$SQLError->setErrorNumber(mysql_errno());
-				$SQLError->setErrorMessage(mysql_error());
-				Error::AddError($SQLError);
-				return false;
-			}
+			return $this->ExecuteSelect($q);
 		}
 		else
 		{

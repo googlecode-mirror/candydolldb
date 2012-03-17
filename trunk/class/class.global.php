@@ -209,7 +209,7 @@ class Utils
 	
 		if(is_array($inArray)){
 			foreach ($inArray as $value) {
-				$outArray[] = intval($value);
+				$outArray[] = abs(intval($value));
 			}
 		}
 	
