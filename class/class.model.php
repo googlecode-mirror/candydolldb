@@ -200,28 +200,38 @@ class Model
 			{
 				foreach($db->getResult() as $ModelItem)
 				{
-					$ModelObject = new Model();
-					
-					foreach($ModelItem as $ColumnKey => $ColumnValue)
-					{
-						switch($ColumnKey)
-						{
-							case 'model_id'			: $ModelObject->setID($ColumnValue);		break;
-							case 'model_firstname'	: $ModelObject->setFirstName($ColumnValue);	break;
-							case 'model_lastname'	: $ModelObject->setLastName($ColumnValue);	break;
-							case 'model_birthdate'	: $ModelObject->setBirthDate($ColumnValue);	break;
-							case 'model_remarks'	: $ModelObject->setRemarks($ColumnValue);	break;
-							case 'model_setcount'	: $ModelObject->setSetCount($ColumnValue);	break;
-						}
-					}
-					
-					$OutArray[] = $ModelObject;
+					$OutArray[] = self::ProcessDBitem($ModelItem);
 				}
 			}
 			return $OutArray;
 		}
 		else
 		{ return null; }
+	}
+	
+	/**
+	 * Process a DB->result() datarow into a Model object.
+	 * @param array $ModelItem
+	 * @return Model
+	 */
+	public static function ProcessDBitem($ModelItem)
+	{
+		$ModelObject = new Model();
+			
+		foreach($ModelItem as $ColumnKey => $ColumnValue)
+		{
+			switch($ColumnKey)
+			{
+				case 'model_id'			: $ModelObject->setID($ColumnValue);		break;
+				case 'model_firstname'	: $ModelObject->setFirstName($ColumnValue);	break;
+				case 'model_lastname'	: $ModelObject->setLastName($ColumnValue);	break;
+				case 'model_birthdate'	: $ModelObject->setBirthDate($ColumnValue);	break;
+				case 'model_remarks'	: $ModelObject->setRemarks($ColumnValue);	break;
+				case 'model_setcount'	: $ModelObject->setSetCount($ColumnValue);	break;
+			}
+		}
+		
+		return $ModelObject;
 	}
 	
 	/**
