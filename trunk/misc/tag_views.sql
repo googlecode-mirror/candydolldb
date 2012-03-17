@@ -1,8 +1,23 @@
 -- SQL views for searching the application's Tag2All table.
 --
--- The queries are constructed so that each Set inherits its
--- model's tags, each Image and Video its Set's and Model's tags.
+-- The queries are constructed so that each Model, Set, Image
+-- and Video inherits the tags of all its parents AND children.
 --
+
+
+
+-- AllIDs
+create ALGORITHM = UNDEFINED view `vw_IDs`
+as
+select M.model_id, NULL as set_id, NULL as image_id, NULL as video_id from `Model` as M
+	union
+select S.model_id, S.set_id, NULL as image_id, NULL as video_id from `Set` as S
+	union
+select S.model_id, I.set_id, I.image_id, NULL as video_id from `Image` as I join `Set` as S on S.set_id = I.set_id
+	union
+select S.model_id, V.set_id, NULL as image_id, V.video_id from `Video` as V join `Set` as S on S.set_id = V.set_id
+
+
 
 
 -- Model
@@ -10,21 +25,21 @@ select
 	VWT.tag_id,
 	VWT.tag_name,
 
-	VWM.model_id,
-	VWM.model_firstname,
-	VWM.model_lastname,
-	VWM.model_birthdate,
-	VWM.model_remarks,
-	VWM.model_setcount
+	M.model_id,
+	M.model_firstname,
+	M.model_lastname,
+	M.model_birthdate,
+	M.model_remarks
 from
 	vw_Tag2All as VWT
-	join vw_Model as VWM on VWM.model_id = VWT.model_id
+	join vw_IDs as VWI on (VWI.model_id = VWT.model_id or VWI.set_id = VWT.set_id or VWI.image_id = VWT.image_id or VWI.video_id = VWT.video_id)
+	join `Model` as M on M.model_id = VWI.model_id
 where
-	VWM.mut_deleted = -1	
+	M.mut_deleted = -1	
 	and
 	VWT.tag_id in (1,2,3,4,5,6,7,8,9)
 group by
-	VWT.model_id
+	M.model_id
 
 
 
@@ -33,25 +48,25 @@ select
 	VWT.tag_id,
 	VWT.tag_name,
 	
-	VWS.set_id,
-	VWS.set_prefix,
-	VWS.set_name,
-	VWS.set_containswhat,
-	VWS.set_amount_pics_in_db,
-	VWS.set_amount_vids_in_db,
+	S.set_id,
+	S.set_prefix,
+	S.set_name,
+	S.set_containswhat,
 
-	VWS.model_id,
-	VWS.model_firstname,
-	VWS.model_lastname
+	M.model_id,
+	M.model_firstname,
+	M.model_lastname
 from
 	vw_Tag2All as VWT
-	join vw_Set as VWS on (VWS.set_id = VWT.set_id or VWS.model_id = VWT.model_id)
+	join vw_IDs as VWI on (VWI.model_id = VWT.model_id or VWI.set_id = VWT.set_id or VWI.image_id = VWT.image_id or VWI.video_id = VWT.video_id)
+	join `Set` as S on S.set_id = VWI.set_id
+	join `Model` as M on M.model_id = S.model_id
 where
-	VWS.mut_deleted = -1	
+	S.mut_deleted = -1
 	and
 	VWT.tag_id in (1,2,3,4,5,6,7,8,9)
 group by
-	VWS.set_id
+	S.set_id
 
 
 
