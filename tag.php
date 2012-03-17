@@ -68,9 +68,7 @@ echo HTMLstuff::HtmlHeader('Manage tags', $CurrentUser);
 	htmlentities($Tag->getID() ? $Tag->getName() : 'New')
 ); ?></h2>
 
-<div class="FlLefty" style="margin-right:100px;width:450px;">
-<?php echo $TagList; ?>
-</div>
+<div style="float:right; margin: 0 0 48px 30px;">
 
 <form action="<?php echo $_SERVER['REQUEST_URI'];?>" method="post">
 <fieldset><legend>Please fill in these fields:</legend>
@@ -98,6 +96,10 @@ echo HTMLstuff::HtmlHeader('Manage tags', $CurrentUser);
 
 </fieldset>
 </form>
+
+</div>
+
+<?php echo $TagList; ?>
 
 <div class="Clear Separator"></div>
 
