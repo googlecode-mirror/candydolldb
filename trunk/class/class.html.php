@@ -24,6 +24,7 @@ class HTMLstuff
 		
 		<script type=\"text/javascript\" src=\"%4\$s://code.jquery.com/jquery.min.js\"></script>
 		<script type=\"text/javascript\" src=\"js/fwiep.js\"></script>
+		<script type=\"text/javascript\" src=\"js/jquery.ba-outside-events.js\"></script>
 
 		<title>CandyDoll DB v%1\$s%2\$s</title>
 		</head>

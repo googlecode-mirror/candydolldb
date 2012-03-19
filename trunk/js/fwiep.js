@@ -135,6 +135,10 @@ function AddTagAutoSuggest(){
 					e.preventDefault();
 				}
 			});
+			
+			$(r).bind( "clickoutside", function(event){
+						$(r).fadeOut('fast').remove();
+			});
 		});
 	});
 }
