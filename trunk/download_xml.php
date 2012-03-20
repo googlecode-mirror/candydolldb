@@ -2,6 +2,7 @@
 
 include('cd.php');
 $CurrentUser = Authentication::Authenticate();
+$ModelID = Utils::SafeIntFromQS('model_id');
 
 
 $Models = Model::GetModels();
@@ -29,6 +30,10 @@ $xmlw->writeAttribute('xmlns', null);
 /* @var $Model Model */
 foreach ($Models as $Model)
 {
+	// Provide a one-model-only export for impatient developers
+	if($ModelID && $Model->getID() !== $ModelID)
+	{ continue; }
+	
 	$xmlw->startElement('Model');
 	$xmlw->writeAttribute('firstname', $Model->getFirstName());
 	$xmlw->writeAttribute('lastname', $Model->getLastName());
