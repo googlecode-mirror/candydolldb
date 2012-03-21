@@ -131,82 +131,82 @@ Real birthdate: 1996-03-19
 	</Model>
 	<Model firstname="Anita" lastname="D" birthdate="1996-03-17" tags="">
 		<Sets>
-			<Set name="01" date_pic="2009-03-06" date_vid="2009-03-06" tags="" />
-			<Set name="02" date_pic="2009-03-27" date_vid="2009-03-27" tags="" />
-			<Set name="03" date_pic="2009-04-10" date_vid="2009-04-10" tags="" />
-			<Set name="04" date_pic="2009-06-12" date_vid="2009-06-12" tags="" />
-			<Set name="05" date_pic="2009-07-17" date_vid="2009-07-17" tags="" />
-			<Set name="06" date_pic="2010-01-08" date_vid="2010-01-08" tags="" />
-			<Set name="07" date_pic="2010-02-19" date_vid="2010-02-19" tags="" />
-			<Set name="08" date_pic="2010-04-16" date_vid="2010-04-16" tags="" />
-			<Set name="09" date_pic="2010-04-23" date_vid="2010-04-23" tags="" />
-			<Set name="10" date_pic="2010-05-14" date_vid="2010-05-14" tags="" />
+			<Set name="01" date_pic="2009-03-06" date_vid="2009-03-06" tags="outdoor, stairs, tie, uniform"/>
+			<Set name="02" date_pic="2009-03-27" date_vid="2009-03-27" tags="balloon, pigtails, white, wood floor"/>
+			<Set name="03" date_pic="2009-04-10" date_vid="2009-04-10" tags="bikini, crucifix, ponytail, sofa, window"/>
+			<Set name="04" date_pic="2009-06-12" date_vid="2009-06-12" tags="black, chair, maid, stockings, wood floor"/>
+			<Set name="05" date_pic="2009-07-17" date_vid="2009-07-17" tags="bare feet, crucifix, sofa, swimsuit, window"/>
+			<Set name="06" date_pic="2010-01-08" date_vid="2010-01-08" tags="plant, ponytail, red, swimsuit, white socks, windowsill, wood floor"/>
+			<Set name="07" date_pic="2010-02-19" date_vid="2010-02-19" tags="bare feet, bikini, curtain, green, pigtails, sofa, window, wood floor"/>
+			<Set name="08" date_pic="2010-04-16" date_vid="2010-04-16" tags="bed, black, bracelet, gloves, maid, window"/>
+			<Set name="09" date_pic="2010-04-23" date_vid="2010-04-23" tags="blue, curtain, door, ribbon, wood floor"/>
+			<Set name="10" date_pic="2010-05-14" date_vid="2010-05-14" tags="bathtub, bikini, mirror, shower, wet"/>
 		</Sets>
 	</Model>
 	<Model firstname="Anjelika" lastname="L" birthdate="1996-11-20" tags="">
 		<Sets>
-			<Set name="01" date_pic="2009-02-06" date_vid="2009-02-06" tags="" />
-			<Set name="02" date_pic="2009-02-13" date_vid="2009-02-13" tags="" />
-			<Set name="03" date_pic="2009-03-27" date_vid="2009-03-27" tags="" />
-			<Set name="04" date_pic="2009-04-17" date_vid="2009-04-17" tags="" />
-			<Set name="05" date_pic="2009-05-15" date_vid="2009-05-15" tags="" />
-			<Set name="06" date_pic="2009-05-29" date_vid="2009-05-29" tags="" />
-			<Set name="07" date_pic="2009-06-26" date_vid="2009-06-26" tags="" />
-			<Set name="08" date_pic="2009-07-03" date_vid="2009-07-03" tags="" />
-			<Set name="09" date_pic="2009-07-17" date_vid="2009-07-17" tags="" />
-			<Set name="10" date_pic="2009-07-24" date_vid="2009-07-24" tags="" />
-			<Set name="11" date_pic="2009-08-14" date_vid="2009-08-14" tags="" />
-			<Set name="12" date_pic="2009-08-21" date_vid="2009-08-21" tags="" />
-			<Set name="13" date_pic="2009-09-18" date_vid="2009-09-18" tags="" />
-			<Set name="14" date_pic="2009-10-16" date_vid="2009-10-16" tags="" />
-			<Set name="15" date_pic="2009-11-13" date_vid="2009-11-13" tags="" />
-			<Set name="16" date_pic="2011-04-29" date_vid="2011-01-28" tags="" />
-			<Set name="17" date_pic="2011-05-06" date_vid="2011-03-11" tags="" />
+			<Set name="01" date_pic="2009-02-06" date_vid="2009-02-06" tags="costume, fence, maid, outdoor, plaid, windowsill"/>
+			<Set name="02" date_pic="2009-02-13" date_vid="2009-02-13" tags="cosplay, crucifix, gloves, windowsill, wood floor, yellow"/>
+			<Set name="03" date_pic="2009-03-27" date_vid="2009-03-27" tags="bare feet, black, sofa"/>
+			<Set name="04" date_pic="2009-04-17" date_vid="2009-04-17" tags="bed, pigtails, white, white socks, wood floor"/>
+			<Set name="05" date_pic="2009-05-15" date_vid="2009-05-15" tags="black, boots, door, gloves, pigtails, pvc, window, zebra"/>
+			<Set name="06" date_pic="2009-05-29" date_vid="2009-05-29" tags="cupboard, mirror, pink, ponytail"/>
+			<Set name="07" date_pic="2009-06-26" date_vid="2009-06-26" tags="chair, white, window, wood floor"/>
+			<Set name="08" date_pic="2009-07-03" date_vid="2009-07-03" tags="cosplay, gloves, sofa"/>
+			<Set name="09" date_pic="2009-07-17" date_vid="2009-07-17" tags="black, gloves, leopard, windowsill"/>
+			<Set name="10" date_pic="2009-07-24" date_vid="2009-07-24" tags="bathtub, bikini, pigtails, shower"/>
+			<Set name="11" date_pic="2009-08-14" date_vid="2009-08-14" tags="crucifix, white, wood floor"/>
+			<Set name="12" date_pic="2009-08-21" date_vid="2009-08-21" tags="cupboard, mirror, pink, swimsuit"/>
+			<Set name="13" date_pic="2009-09-18" date_vid="2009-09-18" tags="bed, clubs, ponytail, three, white, white socks"/>
+			<Set name="14" date_pic="2009-10-16" date_vid="2009-10-16" tags="beachball, bikini, crucifix, curtain, diadem, white, wood floor"/>
+			<Set name="15" date_pic="2009-11-13" date_vid="2009-11-13" tags="black, crucifix, gloves, maid, pigtails, sofa, stockings, wood floor"/>
+			<Set name="16" date_pic="2011-04-29" date_vid="2011-01-28" tags="black, chair, drapes, gloves, stockings"/>
+			<Set name="17" date_pic="2011-05-06" date_vid="2011-03-11" tags="devil horns, drapes, pink"/>
 			<Set name="18" date_pic="" date_vid="2011-04-15" tags="" />
 			<Set name="19" date_pic="" date_vid="2011-06-03" tags="" />
 		</Sets>
 	</Model>
 	<Model firstname="Anna" lastname="Thebryk" birthdate="1995-09-11" tags="">
 		<Sets>
-			<Set name="01" date_pic="2008-01-25" date_vid="2008-01-25" tags="" />
-			<Set name="02" date_pic="2008-03-07" date_vid="2008-03-07" tags="" />
-			<Set name="03" date_pic="2008-04-18" date_vid="2008-04-18" tags="" />
-			<Set name="04" date_pic="2008-05-02" date_vid="2008-05-02" tags="" />
-			<Set name="05" date_pic="2008-05-23" date_vid="2008-05-23" tags="" />
-			<Set name="06" date_pic="2008-05-30" date_vid="2008-05-30" tags="" />
-			<Set name="07" date_pic="2008-06-20" date_vid="2008-06-20" tags="" />
-			<Set name="08" date_pic="2008-07-18" date_vid="2008-07-18" tags="" />
-			<Set name="09" date_pic="2008-08-08" date_vid="2008-08-08" tags="" />
-			<Set name="10" date_pic="2008-08-29" date_vid="2008-08-29" tags="" />
-			<Set name="11" date_pic="2008-10-03" date_vid="2008-10-03" tags="" />
+			<Set name="01" date_pic="2008-01-25" date_vid="2008-01-25" tags="bed, flowers, hairbrush, toothbrush, window"/>
+			<Set name="02" date_pic="2008-03-07" date_vid="2008-03-07" tags="chair, tiara, white, windowsill"/>
+			<Set name="03" date_pic="2008-04-18" date_vid="2008-04-18" tags="blue, hula hoop, swimsuit"/>
+			<Set name="04" date_pic="2008-05-02" date_vid="2008-05-02" tags="braids, chair, pink, table, windowsill"/>
+			<Set name="05" date_pic="2008-05-23" date_vid="2008-05-23" tags="black, gloves, grapes, pigtails, sofa, toy"/>
+			<Set name="06" date_pic="2008-05-30" date_vid="2008-05-30" tags="sofa, white, white socks, window"/>
+			<Set name="07" date_pic="2008-06-20" date_vid="2008-06-20" tags="candy, chair, mirror, pants, sneakers, window"/>
+			<Set name="08" date_pic="2008-07-18" date_vid="2008-07-18" tags="blue, pigtails, swimsuit, windowsill"/>
+			<Set name="09" date_pic="2008-08-08" date_vid="2008-08-08" tags="pigtails, skipping rope, white"/>
+			<Set name="10" date_pic="2008-08-29" date_vid="2008-08-29" tags="earrings, eating, fan, pigtails, sofa"/>
+			<Set name="11" date_pic="2008-10-03" date_vid="2008-10-03" tags="curtain, diadem, green, mirror, phone"/>
 		</Sets>
 	</Model>
 	<Model firstname="Anna" lastname="Zalevska" birthdate="1995-11-03" tags="">
 		<Sets>
-			<Set name="01" date_pic="2008-01-25" date_vid="2008-01-25" tags="" />
-			<Set name="02" date_pic="2008-03-28" date_vid="2008-03-28" tags="" />
-			<Set name="03" date_pic="2008-05-09" date_vid="2008-05-09" tags="" />
-			<Set name="04" date_pic="2008-06-13" date_vid="2008-06-13" tags="" />
-			<Set name="05" date_pic="2009-01-30" date_vid="2009-01-30" tags="" />
+			<Set name="01" date_pic="2008-01-25" date_vid="2008-01-25" tags="black, drapes, lamp, rose, stockings"/>
+			<Set name="02" date_pic="2008-03-28" date_vid="2008-03-28" tags="hula hoop, ringer t-shirt, table, white socks, window"/>
+			<Set name="03" date_pic="2008-05-09" date_vid="2008-05-09" tags="balloon, bed, bikini, diadem, ponytail, window, yellow"/>
+			<Set name="04" date_pic="2008-06-13" date_vid="2008-06-13" tags="blue, pigtails, plaid, tie, window"/>
+			<Set name="05" date_pic="2009-01-30" date_vid="2009-01-30" tags="pigtails, red, swimsuit, windowsill"/>
 		</Sets>
 	</Model>
 	<Model firstname="Annie" lastname="B" birthdate="2001-11-17" tags="">
 		<Sets>
-			<Set name="01" date_pic="2011-12-02" date_vid="2011-12-23" tags="" />
-			<Set name="02" date_pic="2011-12-16" date_vid="2011-12-30" tags="" />
-			<Set name="03" date_pic="2012-01-06" date_vid="2012-01-20" tags="" />
-			<Set name="04" date_pic="2012-02-03" date_vid="2012-02-10" tags="" />
+			<Set name="01" date_pic="2011-12-02" date_vid="2011-12-23" tags="backpack, blue, braids, diadem, drapes, swimsuit, white socks"/>
+			<Set name="02" date_pic="2011-12-16" date_vid="2011-12-30" tags="drapes, polkadot, stool"/>
+			<Set name="03" date_pic="2012-01-06" date_vid="2012-01-20" tags="chair, drapes, gloves, white"/>
+			<Set name="04" date_pic="2012-02-03" date_vid="2012-02-10" tags="diadem, drapes, earrings, leg warmers, stool, white"/>
 		</Sets>
 	</Model>
 	<Model firstname="Ashley" lastname="S" birthdate="2000-11-05" tags="">
 		<Sets>
-			<Set name="01" date_pic="2010-06-18" date_vid="2010-06-18" tags="" />
-			<Set name="02" date_pic="2010-08-13" date_vid="2010-08-13" tags="" />
-			<Set name="03" date_pic="2010-10-08" date_vid="2010-10-08" tags="" />
-			<Set name="04" date_pic="2010-11-19" date_vid="2010-11-19" tags="" />
-			<Set name="05" date_pic="2011-04-08" date_vid="" tags="" />
-			<Set name="06" date_pic="2011-04-22" date_vid="" tags="" />
-			<Set name="07" date_pic="2011-05-06" date_vid="" tags="" />
+			<Set name="01" date_pic="2010-06-18" date_vid="2010-06-18" tags="cosplay, pink, wood floor"/>
+			<Set name="02" date_pic="2010-08-13" date_vid="2010-08-13" tags="bed, earrings, pigtails, polkadot, wood floor"/>
+			<Set name="03" date_pic="2010-10-08" date_vid="2010-10-08" tags="bare feet, black, drapes, swimsuit, windowsill, wood floor"/>
+			<Set name="04" date_pic="2010-11-19" date_vid="2010-11-19" tags="diadem, earrings, purple, stars"/>
+			<Set name="05" date_pic="2011-04-08" date_vid="" tags="bracelet, braids, drapes, earrings, pigtails, striped"/>
+			<Set name="06" date_pic="2011-04-22" date_vid="" tags="bracelet, drapes, leg warmers, white"/>
+			<Set name="07" date_pic="2011-05-06" date_vid="" tags="black, cat ears, drapes, earrings, purple, stockings, tail"/>
 		</Sets>
 	</Model>
 	<Model firstname="Biyanka" lastname="S" birthdate="1997-07-05" tags="">
