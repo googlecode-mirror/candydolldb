@@ -7,36 +7,32 @@
 
 == Must Have ==
 
-  * IF EXISTS checks in update- and upgrade scripts
+  * Import file with all models and sets tagged
+
+  * Usable and efficient tag-searching capabilities
 
   * Lots of feedback :-)
 
 == Could Use ==
 
-  * Multiple lay-out themes (header/footers), possibly switchable.
+  * Comprehensive tag-structure for handling e.g. colors, sizes, etc.
+
+  * Multiple lay-out themes (header/footers), possibly switchable
 
   * URL-rewrite compatibility. Apache, IIS or both?
 
-  * Tagging of models, sets, images, videos.
+  * HTML5-interface instead of XHTML 1.0 Strict
 
-  * Searching capability using these tags.
-
-  * HTML5-interface instead of XHTML 1.0 Strict.
-
-  * Usage-reports on non-Linux platforms, for inter-platform testing of filehandling, imports and downloads.
-
-  * 'remember-me' option when logging in<br>(currently not implemented because of the use of SESSION[])
+  * Usage-reports on non-Linux platforms, for inter-platform testing of filehandling, imports and downloads
 
   * More flexible and robust filename-handling<br>(no hardcoded prefixes during import)
 
-  * Multi-threadedness. Currently only one concurrent user is allowed for imports.
+  * Multi-threadedness. Currently only one concurrent user is allowed for imports
 
-  * Automatic updateing, automatic downloading and installing of new releases.
+  * Automatic updateing, automatic downloading and installing of new releases
 
 == Would Be Nice ==
 
   * Overlay with loading-animation during lengthy imports (for example using AJAX)
 
   * More complete list of the models's lastnames and birthdates<br>(currently 79/93 have a known birthdate and 32/93 a known lastname)
-
-  * Automatic import of CD-updates<br>(for example a scheduled wget-request of the updatepage, then parsing the response)
