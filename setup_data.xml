@@ -64,6 +64,7 @@
 			<Set name="03" date_pic="2012-02-03" date_vid="2012-03-02" tags="bikini, earrings, leopard, pink, strawberry"/>
 			<Set name="04" date_pic="2012-02-10" date_vid="2012-03-09" tags="pink"/>
 			<Set name="05" date_pic="2012-03-09" date_vid="2012-03-16" tags="black, chair, drapes, red"/>
+			<Set name="06" date_pic="2012-03-23" date_vid="" tags=""/>
 		</Sets>
 	</Model>
 	<Model firstname="Alyona" lastname="Gromova" birthdate="1996-03-19" tags="">
@@ -112,7 +113,7 @@ Real birthdate: 1996-03-19
 	<Model firstname="Anastasia" lastname="R" birthdate="1999-04-03" tags="">
 		<Sets>
 			<Set name="01" date_pic="2012-01-06" date_vid="2012-03-09" tags="balls, bare feet, earrings, yellow"/>
-			<Set name="02" date_pic="2012-02-17" date_vid="" tags="bare feet, blue, earrings, pillows, swimsuit"/>
+			<Set name="02" date_pic="2012-02-17" date_vid="2012-03-23" tags="bare feet, blue, earrings, pillows, swimsuit"/>
 			<Set name="03" date_pic="2012-03-16" date_vid="" tags="black socks, chair, drapes, white"/>
 		</Sets>
 	</Model>
@@ -229,7 +230,7 @@ Real birthdate: 1996-03-19
 			<Set name="02" date_pic="2011-12-30" date_vid="2011-12-16" tags="" />
 			<Set name="03" date_pic="2012-01-06" date_vid="2012-01-13" tags="" />
 			<Set name="04" date_pic="2012-01-20" date_vid="2012-02-10" tags="" />
-			<Set name="05" date_pic="2012-02-03" date_vid="" tags="" />
+			<Set name="05" date_pic="2012-02-03" date_vid="2012-03-23" tags="" />
 		</Sets>
 	</Model>
 	<Model firstname="Chris" lastname="G" birthdate="" tags="">
@@ -384,7 +385,7 @@ Real birthdate: 1996-03-19
 	<Model firstname="Hanna" lastname="F" birthdate="" tags="">
 		<Sets>
 			<Set name="01" date_pic="2012-03-09" date_vid="2012-03-16" tags="" />
-			<Set name="02" date_pic="2012-03-16" date_vid="" tags="" />
+			<Set name="02" date_pic="2012-03-16 2012-03-23" date_vid="" tags="" />
 		</Sets>
 	</Model>
 	<Model firstname="Inna" lastname="Lyublinskaya" birthdate="1997-01-06" tags="">
@@ -483,8 +484,9 @@ Real birthdate: 1996-03-19
 			<Set name="01" date_pic="2012-02-10" date_vid="2011-12-30" tags="" />
 			<Set name="02" date_pic="2012-02-17" date_vid="2012-03-02" tags="" />
 			<Set name="03" date_pic="2012-02-24" date_vid="2012-03-09" tags="" />
-			<Set name="04" date_pic="2012-03-09" date_vid="" tags="" />
+			<Set name="04" date_pic="2012-03-09" date_vid="2012-03-23" tags="" />
 			<Set name="05" date_pic="2012-03-16" date_vid="" tags="" />
+			<Set name="06" date_pic="2012-03-23" date_vid="" tags="" />
 		</Sets>
 	</Model>
 	<Model firstname="Klara" lastname="H" birthdate="2001-10-05" tags="">
@@ -953,7 +955,8 @@ Real birthdate: 1996-03-19
 	</Model>
 	<Model firstname="Sabina" lastname="C" birthdate="" tags="">
 		<Sets>
-			<Set name="01" date_pic="2012-03-16" date_vid="" tags="" />
+			<Set name="01" date_pic="2012-03-16" date_vid="2012-03-23" tags="" />
+			<Set name="02" date_pic="2012-03-23" date_vid="" tags="" />
 		</Sets>
 	</Model>
 	<Model firstname="Sanya" lastname="V" birthdate="1999-09-17" tags="">
@@ -1520,7 +1523,7 @@ Real birthdate: 1996-03-19
 			<Set name="74" date_pic="2012-03-02" date_vid="2011-11-25" tags="" />
 			<Set name="75" date_pic="2012-03-09" date_vid="2011-12-02" tags="" />
 			<Set name="76" date_pic="2012-03-16" date_vid="2011-12-09" tags="" />
-			<Set name="77" date_pic="" date_vid="2011-12-16" tags="" />
+			<Set name="77" date_pic="2012-03-23" date_vid="2011-12-16" tags="" />
 			<Set name="78" date_pic="" date_vid="2011-12-23" tags="" />
 			<Set name="79" date_pic="" date_vid="2011-12-30" tags="" />
 			<Set name="80" date_pic="" date_vid="2012-01-06" tags="" />
@@ -1534,6 +1537,7 @@ Real birthdate: 1996-03-19
 			<Set name="88" date_pic="" date_vid="2012-03-02" tags="" />
 			<Set name="89" date_pic="" date_vid="2012-03-09" tags="" />
 			<Set name="90" date_pic="" date_vid="2012-03-16" tags="" />
+			<Set name="91" date_pic="" date_vid="2012-03-23" tags="" />
 		</Sets>
 	</Model>
 	<Model firstname="Promotions">
