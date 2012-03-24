@@ -124,7 +124,7 @@ echo HTMLstuff::HtmlHeader('Dirty sets', $CurrentUser);
 
 ?>
 
-<form action="<?php echo $_SERVER['REQUEST_URI']; ?>" method="post" class="FilterForm" style="text-align:center">
+<form action="<?php echo htmlentities($_SERVER['REQUEST_URI']); ?>" method="post" class="FilterForm" style="text-align:center">
 <fieldset>
 
 <legend>Find specific sets:</legend>

@@ -98,7 +98,7 @@ else
 
 <div class="CenterForm">
 
-<form action="<?php echo $_SERVER['REQUEST_URI'];?>" method="post">
+<form action="<?php echo htmlentities($_SERVER['REQUEST_URI']); ?>" method="post">
 <fieldset>
 
 <legend>Update your CandyDoll DB:</legend>
