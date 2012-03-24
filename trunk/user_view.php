@@ -150,8 +150,8 @@ echo HTMLstuff::HtmlHeader($User->GetFullName(), $CurrentUser);
 	htmlentities($User->getUserName())
 ); ?></h2>
 
-<fieldset>
 <form action="<?php echo htmlentities($_SERVER['REQUEST_URI']);?>" method="post">
+<fieldset>
 <legend>Please fill in these fields:</legend>
 
 <input type="hidden" id="hidAction" name="hidAction" value="UserView" />
