@@ -150,8 +150,8 @@ echo HTMLstuff::HtmlHeader($User->GetFullName(), $CurrentUser);
 	htmlentities($User->getUserName())
 ); ?></h2>
 
-<form action="<?php echo $_SERVER['REQUEST_URI'];?>" method="post">
 <fieldset>
+<form action="<?php echo htmlentities($_SERVER['REQUEST_URI']);?>" method="post">
 <legend>Please fill in these fields:</legend>
 
 <input type="hidden" id="hidAction" name="hidAction" value="UserView" />
@@ -176,7 +176,7 @@ echo HTMLstuff::HtmlHeader($User->GetFullName(), $CurrentUser);
 
 <div class="FormRow">
 <label for="selectDateformat">Select date format:</label>
-<select id="selectDateformat" name="selectDateformat"><?php echo $DateFormatOptions ?></select>
+<select id="selectDateformat" name="selectDateformat"<?php echo HTMLstuff::DisabledStr($DeleteUser); ?>><?php echo $DateFormatOptions ?></select>
 </div>
 
 <div class="FormRow">
