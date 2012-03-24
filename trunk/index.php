@@ -129,7 +129,7 @@ echo HTMLstuff::HtmlHeader('Home', $CurrentUser);
 
 ?>
 
-<form action="<?php echo $_SERVER['REQUEST_URI']; ?>" method="post" class="FilterForm">
+<form action="<?php echo htmlentities($_SERVER['REQUEST_URI']); ?>" method="post" class="FilterForm">
 <fieldset>
 
 <legend>Find a specific model:</legend>

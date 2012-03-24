@@ -97,7 +97,7 @@ if($ModelID)
 	htmlentities($Model->GetFullName())
 ); ?></h2>
 
-<form action="<?php echo $_SERVER['REQUEST_URI'];?>" method="post">
+<form action="<?php echo htmlentities($_SERVER['REQUEST_URI']); ?>" method="post">
 <fieldset><legend>Please fill in these fields:</legend>
 
 <input type="hidden" id="hidAction" name="hidAction" value="ModelView" />

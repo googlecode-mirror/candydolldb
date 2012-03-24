@@ -19,6 +19,33 @@ select S.model_id, V.set_id, NULL as image_id, V.video_id from `Video` as V join
 
 
 
+-- vw_Tag2AllIDs
+create ALGORITHM = UNDEFINED view `vw_Tag2AllIDs`
+as
+select
+	T2A.tag_id, VWI.model_id, VWI.set_id, VWI.image_id, VWI.video_id
+from
+	Tag2All as T2A
+	join vw_IDs as VWI on (VWI.model_id = T2A.model_id or VWI.set_id = T2A.set_id or VWI.image_id = T2A.image_id or VWI.video_id = T2A.video_id)
+
+
+-- Model
+select
+	X.tag_id,
+	X.model_id,
+	M.model_firstname,
+	M.model_lastname,
+	M.model_birthdate,
+	M.model_remarks
+from
+	`vw_Tag2AllIDs` as X
+	join `Model` as M on M.model_id = X.model_id
+where
+	M.mut_deleted = -1
+	and X.tag_id in ( 1, 13 )
+group by
+	M.model_id
+
 
 -- Model
 select

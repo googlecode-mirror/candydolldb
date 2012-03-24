@@ -1,5 +1,71 @@
 <?php
 
+class TagModel extends Model
+{
+	private $TagID;
+	private $TagName;
+	
+	public function getTagID()
+	{ return $this->TagID; }
+	
+	public function setTagID($TagID)
+	{ $this->TagID = $TagID; }
+	
+	public function getTagName()
+	{ return $this->TagName; }
+
+ 	public function setTagName($TagName)
+ 	{ $this->TagName = $TagName; }
+ 	
+ 	public function setModelID($ModelID)
+ 	{ parent::setID($ModelID); }
+ 	
+ 	public function getModelID()
+ 	{ return parent::getID(); }
+
+	/**
+	* Process a DB->result() datarow into a TagModel object.
+	* @param array $TagModelItem
+	* @return TagModel
+	*/
+	public static function ProcessDBitem($TagModelItem)
+	{
+		$TagModelObject = new TagModel();
+			
+		foreach($TagModelItem as $ColumnKey => $ColumnValue)
+		{
+			switch($ColumnKey)
+			{
+				case 'tag_id'			: $TagModelObject->setTagID($ColumnValue);		break;
+				case 'tag_name'			: $TagModelObject->setTagName($ColumnValue);	break;
+				
+				case 'model_id'			: $TagModelObject->setModelID($ColumnValue);	break;
+				case 'model_firstname'	: $TagModelObject->setFirstName($ColumnValue);	break;
+				case 'model_lastname'	: $TagModelObject->setLastName($ColumnValue);	break;
+				case 'model_birthdate'	: $TagModelObject->setBirthDate($ColumnValue);	break;
+				case 'model_remarks'	: $TagModelObject->setRemarks($ColumnValue);	break;
+			}
+		}
+	
+		return $TagModelObject;
+	}
+	
+	public static function FilterTagModels($TagModels, $ModelID, $TagID)
+	{
+		$OutArray = array();
+		foreach($TagModels as $tm)
+		{
+			if(
+				$tm->getModelID() == $ModelID &&
+				$tm->getTagID() == $TagID
+			){
+				$OutArray[] = $tm;
+			}
+		}
+		return $OutArray;
+	}
+}
+
 class Search
 {
 	private static $qModelByTagID = <<<uyhfueffgg8fg484gyirghirguy4gh4g4uiogfjh4984h
@@ -20,8 +86,6 @@ class Search
 		M.mut_deleted = -1	
 		and
 		VWT.tag_id in ( %1\$s )
-	group by
-		M.model_id
 	
 uyhfueffgg8fg484gyirghirguy4gh4g4uiogfjh4984h;
 
@@ -49,17 +113,25 @@ uyhfueffgg8fg484gyirghirguy4gh4g4uiogfjh4984h;
 	{
 		global $db;
 		
+		echo self::ModelsByTagIDsSQL($TagIDs);
+		
 		if($db->ExecuteSelect(self::ModelsByTagIDsSQL($TagIDs)))
 		{
-			$OutArray = array();
+			$tmFromDB = array();
 			if($db->getResult())
 			{
-				foreach($db->getResult() as $ModelItem)
+				foreach($db->getResult() as $TagModelItem)
 				{
-					$OutArray[] = Model::ProcessDBitem($ModelItem);
+					$tmFromDB[] = TagModel::ProcessDBitem($TagModelItem);
 				}
 			}
-			return $OutArray;
+			
+			$addthismodel = true;
+			$OutArray = array();
+			
+			
+			
+			return $tmFromDB;
 		}
 		else
 		{ return null; }

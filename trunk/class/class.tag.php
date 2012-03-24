@@ -128,7 +128,7 @@ class Tag
 			{
 				foreach ($Tags as $t)
 				{
-					if(stripos($t->getName(), $q) !== false)
+					if(strtoupper($t->getName()) == strtoupper($q))
 					{
 						$OutArray[] = $t;
 					}

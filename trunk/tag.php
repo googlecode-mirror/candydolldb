@@ -70,7 +70,7 @@ echo HTMLstuff::HtmlHeader('Manage tags', $CurrentUser);
 
 <div style="float:right; margin: 0 0 48px 30px;">
 
-<form action="<?php echo $_SERVER['REQUEST_URI'];?>" method="post">
+<form action="<?php echo htmlentities($_SERVER['REQUEST_URI']); ?>" method="post">
 <fieldset><legend>Please fill in these fields:</legend>
 
 <input type="hidden" id="hidAction" name="hidAction" value="TagView" />

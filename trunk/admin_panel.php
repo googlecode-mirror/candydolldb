@@ -54,7 +54,7 @@ echo HTMLstuff::HtmlHeader('Admin-panel', $CurrentUser);
 
 <h2><?php echo sprintf('<a href="index.php">Home</a> - Admin-panel'); ?></h2>
 
-<form action="<?php echo $_SERVER['REQUEST_URI'];?>" method="post">
+<form action="<?php echo htmlentities($_SERVER['REQUEST_URI']); ?>" method="post">
 <fieldset>
 
 <div class="FormRow WideForm">
