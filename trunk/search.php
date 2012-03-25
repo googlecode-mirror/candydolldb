@@ -49,5 +49,3 @@ echo HTMLstuff::HtmlHeader('Tag search', $CurrentUser);
 <?php
 echo HTMLstuff::HtmlFooter($CurrentUser);
 ?>
-
-?>
