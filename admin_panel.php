@@ -3,7 +3,7 @@
 include('cd.php');
 $CurrentUser = Authentication::Authenticate();
 
-$ModelsOptions = '<option value=\"\"></option>';
+$ModelsOptions = '<option value=""></option>';
 $Models = Model::GetModels();
 
 /* @var $Model Model */
