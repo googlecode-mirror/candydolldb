@@ -7,6 +7,12 @@ $q = null;
 $Models = array();
 $Tags = Tag::GetTags();
 
+// Unfortunately, this is a killer-query. It maxes out my 128M PHP-memory limit... :(
+//$AllIDs = AllIDs::GetAllIDs();
+
+$Tag2Alls = Tag2All::GetTag2Alls();
+
+
 if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'Search')
 {
 	$q = $_POST['q'];
@@ -17,15 +23,13 @@ if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'Search')
 	foreach($filteredTags as $t){
 		$filteredTagIDs[] = $t->getID();
 	}
-	
-	$Models = Search::ModelByTagIDs($filteredTagIDs);
 }
 
 echo HTMLstuff::HtmlHeader('Tag search', $CurrentUser);
 
 ?>
 
-<h2><?php echo sprintf('<a href="index.php">Home</a> - Tag search'); ?></h2>
+<h2><a href="index.php">Home</a> - Tag search</h2>
 
 <form action="<?php echo htmlentities($_SERVER['REQUEST_URI']);?>" method="post">
 <fieldset><legend>Please fill in these fields:</legend>
