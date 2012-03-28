@@ -14,7 +14,7 @@ class Tag2All
 	 */
 	public function getTag()
 	{ return $this->Tag; }
-
+	
 	/**
 	 * @param Tag $Tag
 	 */
@@ -186,11 +186,11 @@ class Tag2All
 		foreach($Tag2AllArray as $Tag2All)
 		{
 			if(
-				(is_null($TagID)   || $Tag2All->getTagID()   == $TagID)			&&
-				(is_null($ModelID) || $Tag2All->getModelID() == $ModelID)		&&
-				(is_null($SetID)   || $Tag2All->getSetID()   == $SetID)			&&
-				(is_null($ImageID) || $Tag2All->getImageID() == $ImageID)		&&
-				(is_null($VideoID) || $Tag2All->getVideoID() == $VideoID)
+				(is_null($TagID)   || $Tag2All->getTag()->getID()   == $TagID)			&&
+				(is_null($ModelID) || $Tag2All->getModelID() 		== $ModelID)		&&
+				(is_null($SetID)   || $Tag2All->getSetID()   		== $SetID)			&&
+				(is_null($ImageID) || $Tag2All->getImageID() 		== $ImageID)		&&
+				(is_null($VideoID) || $Tag2All->getVideoID() 		== $VideoID)
 			){
 				$OutArray[] = $Tag2All;
 			}
