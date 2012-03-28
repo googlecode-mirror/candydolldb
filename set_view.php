@@ -6,7 +6,7 @@ $CurrentUser = Authentication::Authenticate();
 $ModelID = Utils::SafeIntFromQS('model_id');
 $SetID = Utils::SafeIntFromQS('set_id');
 
-$TagsThisSet = Tag2All::GetTag2Alls(sprintf('set_id = %1$d', $SetID));
+$TagsThisSet = Tag2All::GetTag2Alls(sprintf('model_id = %1$d AND set_id = %2$d AND image_id is null AND video_id is null', $ModelID, $SetID));
 $TagsInDB = Tag::GetTags();
 
 if(!isset($ModelID))
@@ -87,7 +87,7 @@ if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'SetView')
 			$NoErrorDuringPostback = Set::UpdateSet($Set, $CurrentUser);
 			
 			if($NoErrorDuringPostback){
-				Tag2All::HandleTags($tags, $TagsThisSet, $TagsInDB, $CurrentUser, null, $Set->getID(), null, null);
+				Tag2All::HandleTags($tags, $TagsThisSet, $TagsInDB, $CurrentUser, $ModelID, $Set->getID(), null, null);
 			}
 		}
 	}
@@ -101,7 +101,7 @@ if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'SetView')
 			$setid = $db->GetLatestID();
 			if($setid) { $Set->setID($setid); }
 			
-			Tag2All::HandleTags($tags, $TagsThisSet, $TagsInDB, $CurrentUser, null, $Set->getID(), null, null);
+			Tag2All::HandleTags($tags, $TagsThisSet, $TagsInDB, $CurrentUser, $ModelID, $Set->getID(), null, null);
 		}
 	}
 	
@@ -250,7 +250,6 @@ foreach ($DatesThisSet as $Date)
 </div>
 
 <div class="Separator"></div>
-
 
 <?php
 	if($Set && ($Set->getContainsWhat() & SET_CONTENT_IMAGE) > 0) 

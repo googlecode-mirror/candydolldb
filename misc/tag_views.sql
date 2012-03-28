@@ -1,23 +1,50 @@
 -- SQL views for searching the application's Tag2All table.
 --
--- Current suggestion: Get all IDs from the DB into PHP,
--- get all Tag2Alls from the DB into PHP, then match and filter
--- until you're left with a list of (Model-, Set-, Image- or Video-) IDs.
 --
--- Then you can request these items very efficiently.
+
+
+SELECT
+	T2A.tag_id, T2A.model_id, T2A.set_id, T2A.image_id, T2A.video_id
+FROM
+	`Tag2All` as T2A
+WHERE
+	tag_id in (160)
 
 
 
--- AllIDs
-create ALGORITHM = UNDEFINED view `vw_IDs`
-as
-select M.model_id, NULL as set_id, NULL as image_id, NULL as video_id from `Model` as M
-	union
-select S.model_id, S.set_id, NULL as image_id, NULL as video_id from `Set` as S
-	union
-select S.model_id, I.set_id, I.image_id, NULL as video_id from `Image` as I join `Set` as S on S.set_id = I.set_id
-	union
-select S.model_id, V.set_id, NULL as image_id, V.video_id from `Video` as V join `Set` as S on S.set_id = V.set_id
+SELECT
+	T2A.tag_id, S.model_id, S.set_id, null as image_id, null as video_id
+FROM
+	`Set` as S
+	right join `Tag2All` as T2A on (T2A.set_id = S.set_id or T2A.model_id = S.model_id)
+WHERE
+	tag_id in (160)
+
+
+
+SELECT
+	T2A.tag_id, S.model_id, S.set_id, IM.image_id, null as video_id
+FROM 
+	Image as IM
+	right join `Set` as S on S.set_id = IM.set_id
+	right join `Tag2All` as T2A on ( T2A.image_id = IM.image_id or T2A.set_id = S.set_id or T2A.model_id = S.model_id)
+WHERE
+	tag_id in (160)
+
+
+
+
+SELECT
+	T2A.tag_id, S.model_id, S.set_id, null as image_id, VD.video_id
+FROM 
+	Video as VD
+	right join `Set` as S on S.set_id = VD.set_id
+	right join `Tag2All` as T2A on ( T2A.video_id = VD.video_id or T2A.set_id = S.set_id or T2A.model_id = S.model_id)
+WHERE
+	tag_id in (160)
+
+
+
 
 
 

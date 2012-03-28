@@ -269,13 +269,13 @@ class Tag2All
 			if(!is_null($ModelID)){
 				$t2a->setModelID($ModelID);
 			}
-			else if(!is_null($SetID)){
+			if(!is_null($SetID)){
 				$t2a->setSetID($SetID);
 			}
-			else if(!is_null($ImageID)){
+			if(!is_null($ImageID)){
 				$t2a->setImageID($ImageID);
 			}
-			else if(!is_null($VideoID)){
+			if(!is_null($VideoID)){
 				$t2a->setVideoID($VideoID);
 			}
 	
