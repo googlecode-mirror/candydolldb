@@ -6,7 +6,7 @@ $CurrentUser = Authentication::Authenticate();
 $ModelID = Utils::SafeIntFromQS('model_id');
 $DeleteModel = (array_key_exists('cmd', $_GET) && $_GET['cmd'] && ($_GET['cmd'] == COMMAND_DELETE));
 
-$TagsThisModel = Tag2All::GetTag2Alls(sprintf('model_id = %1$d', $ModelID));
+$TagsThisModel = Tag2All::GetTag2Alls(sprintf('model_id = %1$d AND set_id is null AND image_id is null AND video_id is null', $ModelID));
 $TagsInDB = Tag::GetTags();
 
 if($ModelID)

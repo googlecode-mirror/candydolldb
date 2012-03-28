@@ -7,8 +7,8 @@ $ModelID = Utils::SafeIntFromQS('model_id');
 $SetID = Utils::SafeIntFromQS('set_id');
 $ImageID = Utils::SafeIntFromQS('image_id');
 
-$TagsThisImage = Tag2All::GetTag2Alls(sprintf('image_id = %1$d', $ImageID));
 $TagsInDB = Tag::GetTags();
+$TagsThisImage = Tag2All::GetTag2Alls(sprintf('model_id = %1$d AND set_id = %2$d AND image_id = %3$d AND video_id is null', $ModelID, $SetID, $ImageID));
 
 if(!isset($ModelID))
 {
@@ -87,7 +87,7 @@ if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'ImageView')
 		{
 			if(Image::UpdateImage($Image, $CurrentUser))
 			{
-				Tag2All::HandleTags($tags, $TagsThisImage, $TagsInDB, $CurrentUser, null, null, $Image->getID(), null);
+				Tag2All::HandleTags($tags, $TagsThisImage, $TagsInDB, $CurrentUser, $ModelID, $SetID, $Image->getID(), null);
 				header('location:'.$ReturnURL);
 				exit;
 			}
@@ -102,7 +102,7 @@ if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'ImageView')
 				$Image->setID($imageid);
 			}
 			
-			Tag2All::HandleTags($tags, $TagsThisImage, $TagsInDB, $CurrentUser, null, null, $Image->getID(), null);
+			Tag2All::HandleTags($tags, $TagsThisImage, $TagsInDB, $CurrentUser, $ModelID, $SetID, $Image->getID(), null);
 			header('location:'.$ReturnURL);
 			exit;
 		}
