@@ -4,6 +4,7 @@ include('cd.php');
 $CurrentUser = Authentication::Authenticate();
 
 $q = null;
+$searchMode = 'MODEL';
 $Tags = Tag::GetTags();
 $Tag2Alls = array();
 
@@ -101,13 +102,64 @@ if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'Search')
 	/* @TODO
 	 * Fetch and show what we want to see:
 	 * 
-	 * Model::Fetch(model_id in $ModelIDsToShow)	or
-	 * Set::Fetch(set_id in $SetIDsToShow)			or
-	 * Image::Fetch(image_id in $ImageIDsToShow)	or
-	 * Video::Fetch(video_id in $VideoIDsToShow)
+	 * Model::Fetch(model_id in $ModelIDsToShow)
+	 * Set::Fetch(set_id in $SetIDsToShow or model_id in $ModelIDsToShow)
+	 * Image::Fetch(image_id in $ImageIDsToShow or set_id in $SetIDsToShow)
+	 * Video::Fetch(video_id in $VideoIDsToShow or set_id in $SetIDsToShow)
 	 * 
 	 * Construct DIVs with thumbnails, etc.
 	 */
+	
+	switch ($searchMode)
+	{
+		
+		case 'MODEL':
+			if(!$ModelIDsToShow){
+				break;
+			}
+			$where = sprintf('model_id in ( %1$s ) AND mut_deleted = -1', join(', ', $ModelIDsToShow));
+			$ToShow = Model::GetModels($where);
+			break;
+
+			
+		case 'SET':
+			if(!$SetIDsToShow && !$ModelIDsToShow){
+				break;
+			}
+			$where = sprintf('( set_id in ( %1$s ) OR model_id in ( %2$s ) ) AND mut_deleted = -1',
+				join(', ', $SetIDsToShow),
+				join(', ', $ModelIDsToShow)
+			);
+			$ToShow = Set::GetSets($where);
+			break;
+			
+			
+		case 'IMAGE':
+			break;
+			
+			
+		case 'VIDEO':
+			break;
+	}
+	
+	
+	echo "ModelIDs => ";
+	var_dump($ModelIDsToShow);
+	
+	echo "<br />\n";
+	
+	echo "SetIDs => ";
+	var_dump($SetIDsToShow);
+	
+	echo "<br />\n";
+	
+	echo "ImageIDs => ";
+	var_dump($ImageIDsToShow);
+	
+	echo "<br />\n";
+	
+	echo "VideoIDs => ";
+	var_dump($VideoIDsToShow);
 	
 }
 
