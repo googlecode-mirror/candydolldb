@@ -230,6 +230,10 @@ form input[type=text].Small,
 form input[type=password].Small{
 	width: 120px;
 }
+form.Search label{
+	float: none;
+	width: auto;
+}
 form.FilterForm{
 	background-color: #dedede;
 	float: right;
@@ -414,6 +418,24 @@ div.ErrorList div ul{
 .SetThumbButtonWrapper a img{
 	margin: 0 5px 10px 0;
 }
+
+/* Search */
+.SearchThumbDataWrapper{
+	float:left;
+}
+.SearchThumbDataWrapper ul{
+ 	list-style-type:none;
+}
+.SearchThumbDataWrapper ul li.Dirty{
+	color: red;
+	font-weight: bolder;
+}
+.SearchThumbDataWrapper ul ul{
+ 	padding-left: 20px;
+}
+
+
+
 
 
 /* CacheImage delete */
