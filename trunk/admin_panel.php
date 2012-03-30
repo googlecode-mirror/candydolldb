@@ -66,14 +66,21 @@ echo HTMLstuff::HtmlHeader('Admin-panel', $CurrentUser);
 <hr />
 
 <div class="FormRow WideForm">
-<label>To download an XML-file, similar to the weekly updated setup_data.xml, based on your own CandyDollDB-collection.</label>
-<input type="button" id="btnDownloadExport" name="btnDownloadExport" value="Download" onclick="window.location='download_xml.php';" />
+<label>To download an XML-file, based on your own CandyDollDB-collection.</label>
+<input type="button" id="btnDownloadExport" name="btnDownloadExport" value="Download" onclick="RedirToXML();" />
+<br />
+<label for="chkXMLIncludePic" style="float:none;width:auto;"><input type="checkbox" id="chkXMLIncludePic" name="chkXMLIncludePic" />&nbsp;Include images</label>
+<label for="chkXMLIncludeVid" style="float:none;width:auto;"><input type="checkbox" id="chkXMLIncludeVid" name="chkXMLIncludeVid" />&nbsp;Include videos</label>
 </div>
 
 <hr />
 
 <script type="text/javascript">
 //<![CDATA[
+	function RedirToXML(){
+		//window.location='download_xml.php';
+	}
+           
 	function RedirToIndex(){
 		var modelId = parseInt( $('#selModel').val() );
 		var indexWidth = parseInt( $('#txtIndexWidth').val() );
