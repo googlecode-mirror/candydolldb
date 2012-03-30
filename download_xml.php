@@ -1,8 +1,11 @@
 <?php
 
 include('cd.php');
+ini_set('max_execution_time', '3600');
 $CurrentUser = Authentication::Authenticate();
 $ModelID = Utils::SafeIntFromQS('model_id');
+$IncludeImages = Utils::SafeBoolFromQS('includeimages');
+$IncludeVideos = Utils::SafeBoolFromQS('includevideos');
 
 
 $Models = Model::GetModels();
@@ -10,13 +13,13 @@ $Sets = Set::GetSets();
 $Dates = Date::GetDates();
 $Tag2Alls = Tag2All::GetTag2Alls();
 
-/* Unfortunately, this is a huge performance killer... */
-$Images = array(); // Image::GetImages();
-$Videos = array(); // Video::GetVideos();
+
+header('Content-Type: text/xml');
+header('Content-Disposition: attachment; filename=CandyDollDB.xml');
 
 
 $xmlw = new XMLWriter();
-$xmlw->openMemory();
+$xmlw->openUri('php://output');
 $xmlw->setIndent(true);
 $xmlw->setIndentString("\t");
 $xmlw->startDocument('1.0', 'UTF-8');
@@ -61,49 +64,61 @@ foreach ($Models as $Model)
 				$xmlw->writeAttribute('date_pic', Date::FormatDates($PicDatesThisSet, 'Y-m-d', false, ' '));
 				$xmlw->writeAttribute('date_vid', Date::FormatDates($VidDatesThisSet, 'Y-m-d', false, ' '));
 				$xmlw->writeAttribute('tags', Tag2All::Tags2AllCSV($TagsThisSet));
-			
-			$ImagesThisSet = Image::FilterImages($Images, $Model->getID(), $Set->getID());
-			if($ImagesThisSet)
-			{
-				$xmlw->startElement('Images');
 				
-				/* @var $Image Image */
-				foreach($ImagesThisSet as $Image)
+			if($IncludeImages)
+			{
+				$where = sprintf('model_id = %1$d AND set_id = %2$d AND mut_deleted = -1', $Model->getID(), $Set->getID());
+				$ImagesThisSet = Image::GetImages($where);
+				
+				if($ImagesThisSet)
 				{
-					$TagsThisImage = Tag2All::FilterTag2Alls($Tag2Alls, null, null, null, $Image->getID(), null);
+					$xmlw->startElement('Images');
 					
-					$xmlw->startElement('Image');
-						$xmlw->writeAttribute('name', $Image->getFileName());
-						$xmlw->writeAttribute('extension', $Image->getFileExtension());
-						$xmlw->writeAttribute('filesize', $Image->getFileSize());
-						$xmlw->writeAttribute('height', $Image->getImageHeight());
-						$xmlw->writeAttribute('width', $Image->getImageWidth());
-						$xmlw->writeAttribute('checksum', $Image->getFileCheckSum());
-						$xmlw->writeAttribute('tags', Tag2All::Tags2AllCSV($TagsThisImage));
+					/* @var $Image Image */
+					foreach($ImagesThisSet as $Image)
+					{
+						$TagsThisImage = Tag2All::FilterTag2Alls($Tag2Alls, null, null, null, $Image->getID(), null);
+						
+						$xmlw->startElement('Image');
+							$xmlw->writeAttribute('name', $Image->getFileName());
+							$xmlw->writeAttribute('extension', $Image->getFileExtension());
+							$xmlw->writeAttribute('filesize', $Image->getFileSize());
+							$xmlw->writeAttribute('height', $Image->getImageHeight());
+							$xmlw->writeAttribute('width', $Image->getImageWidth());
+							$xmlw->writeAttribute('checksum', $Image->getFileCheckSum());
+							$xmlw->writeAttribute('tags', Tag2All::Tags2AllCSV($TagsThisImage));
+						$xmlw->endElement();
+					}
 					$xmlw->endElement();
+					unset($ImagesThisSet);
 				}
-				$xmlw->endElement();
 			}
 			
-			$VideosThisSet = Video::FilterVideos($Videos, $Model->getID(), $Set->getID());
-			if($VideosThisSet)
+			if($IncludeVideos)
 			{
-				$xmlw->startElement('Videos');
+				$where = sprintf('model_id = %1$d AND set_id = %2$d AND mut_deleted = -1', $Model->getID(), $Set->getID());
+				$VideosThisSet = Video::GetVideos($where);
 				
-				/* @var $Video Video */
-				foreach($VideosThisSet as $Video)
+				if($VideosThisSet)
 				{
-					$TagsThisVideo = Tag2All::FilterTag2Alls($Tag2Alls, null, null, null, null, $Video->getID());
+					$xmlw->startElement('Videos');
 					
-					$xmlw->startElement('Video');
-						$xmlw->writeAttribute('name', $Video->getFileName());
-						$xmlw->writeAttribute('extension', $Video->getFileExtension());
-						$xmlw->writeAttribute('filesize', $Video->getFileSize());
-						$xmlw->writeAttribute('checksum', $Video->getFileCheckSum());
-						$xmlw->writeAttribute('tags', Tag2All::Tags2AllCSV($TagsThisVideo));
+					/* @var $Video Video */
+					foreach($VideosThisSet as $Video)
+					{
+						$TagsThisVideo = Tag2All::FilterTag2Alls($Tag2Alls, null, null, null, null, $Video->getID());
+						
+						$xmlw->startElement('Video');
+							$xmlw->writeAttribute('name', $Video->getFileName());
+							$xmlw->writeAttribute('extension', $Video->getFileExtension());
+							$xmlw->writeAttribute('filesize', $Video->getFileSize());
+							$xmlw->writeAttribute('checksum', $Video->getFileCheckSum());
+							$xmlw->writeAttribute('tags', Tag2All::Tags2AllCSV($TagsThisVideo));
+						$xmlw->endElement();
+					}
 					$xmlw->endElement();
+					unset($VideosThisSet);
 				}
-				$xmlw->endElement();
 			}
 			$xmlw->endElement();
 		}
@@ -117,14 +132,12 @@ foreach ($Models as $Model)
 		}
 	}
 	$xmlw->endElement();
+	$xmlw->flush();
 }
 
 $xmlw->endElement();
 $xmlw->endDocument();
 
-header('Content-Type: text/xml');
-header('Content-Disposition: attachment; filename=CandyDollDB.xml');
-echo $xmlw->outputMemory(true);
 exit;
 
 ?>
