@@ -129,9 +129,8 @@ if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'Search')
 			if(!$SetIDsToShow && !$ModelIDsToShow){
 				break;
 			}
-			$where = sprintf('( set_id in ( %1$s ) OR model_id in ( %2$s ) ) AND mut_deleted = -1',
-				join(', ', $SetIDsToShow),
-				join(', ', $ModelIDsToShow)
+			$where = sprintf('set_id in ( %1$s ) AND mut_deleted = -1',
+				join(', ', $SetIDsToShow)
 			);
 			$ToShow = Set::GetSets($where);
 			break;
