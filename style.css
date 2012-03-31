@@ -420,11 +420,17 @@ div.ErrorList div ul{
 }
 
 /* Search */
+.SearchSummary{
+	font-weight: bold;
+	text-align: center;
+}
 .SearchThumbDataWrapper{
-	float:left;
+	text-align: center;
+	width: 100%;
 }
 .SearchThumbDataWrapper ul{
  	list-style-type:none;
+ 	padding: 0;
 }
 .SearchThumbDataWrapper ul li.Dirty{
 	color: red;
