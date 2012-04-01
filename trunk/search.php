@@ -117,9 +117,17 @@ if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'Search')
 			break;
 			
 		case 'IMAGE':
+			if(!$SetIDsToShow || !$ModelIDsToShow){ break; }
+			$where = $ImageIDsToShow ? sprintf('(image_id in ( %1$s ) OR set_id in ( %2$s )) AND mut_deleted = -1',	join(', ', $ImageIDsToShow), join(', ', $SetIDsToShow)) : null;
+			$where = $where ? $where : sprintf('set_id in ( %1$s ) AND mut_deleted = -1',	join(', ', $SetIDsToShow));
+			$ToShow = Image::GetImages($where);
 			break;
 			
 		case 'VIDEO':
+			if(!$SetIDsToShow || !$ModelIDsToShow){ break; }
+			$where = $VideoIDsToShow ? sprintf('(video_id in ( %1$s ) OR set_id in ( %2$s )) AND mut_deleted = -1',	join(', ', $VideoIDsToShow), join(', ', $SetIDsToShow)) : null;
+			$where = $where ? $where : sprintf('set_id in ( %1$s ) AND mut_deleted = -1',	join(', ', $SetIDsToShow));
+			$ToShow = Video::GetVideos($where);
 			break;
 	}
 
@@ -186,9 +194,69 @@ if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'Search')
 				break;
 					
 			case "IMAGE":
+				foreach($ToShow as $Image)
+				{
+					/* @var $Image Image */
+					$ItemCount++;
+					$Results .= sprintf(
+						"<div class=\"SetThumbGalItem\">
+							<h3 class=\"Hidden\">%4\$s.%5\$s</h3>
+							<div class=\"SetThumbImageWrapper\">
+								<a href=\"image_view.php?model_id=%6\$d&amp;set_id=%7\$d&amp;image_id=%8\$d\" title=\"%4\$s.%5\$s\">
+									<img src=\"download_image.php?image_id=%8\$d&amp;width=225&amp;height=150\" height=\"150\" alt=\"%4\$s.%5\$s\" />
+								</a>
+							</div>
+							<div class=\"SearchThumbDataWrapper\">
+								<ul>
+									<li>%4\$s.%5\$s</li>
+								</ul>
+							</div>
+						</div>
+						%9\$s",
+						htmlentities($Image->getSet()->getModel()->GetFullName()),
+						htmlentities($Image->getSet()->getPrefix()),
+						htmlentities($Image->getSet()->getName()),
+						htmlentities($Image->getFileName()),
+						htmlentities($Image->getFileExtension()),
+						$Image->getSet()->getModel()->getID(),
+						$Image->getSet()->getID(),
+						$Image->getID(),
+						($ItemCount % 3 == 0 ? "<div class=\"Clear\"></div>" : null)
+					);
+				}
 				break;
 				
 			case "VIDEO":
+				foreach($ToShow as $Video)
+				{
+					/* @var $Video Video */
+					$ItemCount++;
+					$Results .= sprintf(
+						"<div class=\"SetThumbGalItem\">
+							<h3 class=\"Hidden\">%4\$s.%5\$s</h3>
+							<div class=\"SetThumbImageWrapper\">
+								<a href=\"video_view.php?model_id=%6\$d&amp;set_id=%7\$d&amp;video_id=%8\$d\" title=\"%4\$s.%5\$s\">
+									<img src=\"download_image.php?video_id=%8\$d&amp;width=225&amp;height=150\" height=\"150\" alt=\"%4\$s.%5\$s\" />
+								</a>
+							</div>
+							<div class=\"SearchThumbDataWrapper\">
+								<ul>
+									<li>%4\$s.%5\$s</li>
+								</ul>
+							</div>
+						</div>
+						%9\$s",
+						htmlentities($Video->getSet()->getModel()->GetFullName()),
+						htmlentities($Video->getSet()->getPrefix()),
+						htmlentities($Video->getSet()->getName()),
+						htmlentities($Video->getFileName()),
+						htmlentities($Video->getFileExtension()),
+						$Video->getSet()->getModel()->getID(),
+						$Video->getSet()->getID(),
+						$Video->getID(),
+						($ItemCount % 3 == 0 ? "<div class=\"Clear\"></div>" : null)
+					);
+				}
 				break;
 		}
 	}
@@ -226,8 +294,6 @@ echo HTMLstuff::HtmlHeader('Tag search', $CurrentUser);
 <div class="SearchSummary">
 <p><?php echo $ItemCount ?> result(s) returned</p>
 </div>
-
-<div class="Separator"></div>
 
 <?php echo HTMLstuff::Button('index.php'); ?>
 
