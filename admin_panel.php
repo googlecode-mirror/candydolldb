@@ -52,6 +52,46 @@ echo HTMLstuff::HtmlHeader('Admin-panel', $CurrentUser);
 
 ?>
 
+<script type="text/javascript">
+//<![CDATA[
+	
+	function RedirToXML(){
+		var includePic = $('#chkXMLIncludePic').is(':checked');
+		var includeVid = $('#chkXMLIncludeVid').is(':checked');
+		var url = 'download_xml.php';
+
+		url += '?includeimages=' + (includePic ? 'true' : 'false');
+		url += '&includevideos=' + (includeVid ? 'true' : 'false');		
+
+		window.location = url;
+		return true;
+	}
+           
+	function RedirToIndex(){
+		var modelId = parseInt( $('#selModel').val() );
+		var indexWidth = parseInt( $('#txtIndexWidth').val() );
+		var indexHeight = parseInt( $('#txtIndexHeight').val() );
+
+		if(!isNaN(modelId) && !isNaN(indexWidth) && !isNaN(indexHeight))
+		{
+			indexWidth = (indexWidth <= 0 || indexWidth > 1200 ) ? 1200 : indexWidth;
+			indexHeight = (indexHeight <= 0 || indexHeight > 1800) ? 1800 : indexHeight;
+
+			var url = 'download_image.php' +
+			'?index_id=' + modelId +
+			'&width=' + indexWidth +
+			'&height=' + indexHeight +
+			'&download=true';
+
+			window.location = url;
+			return true;
+		}
+
+		return false;
+	}
+//]]>
+</script>
+
 <h2><?php echo sprintf('<a href="index.php">Home</a> - Admin-panel'); ?></h2>
 
 <form action="<?php echo htmlentities($_SERVER['REQUEST_URI']); ?>" method="post">
@@ -74,37 +114,6 @@ echo HTMLstuff::HtmlHeader('Admin-panel', $CurrentUser);
 </div>
 
 <hr />
-
-<script type="text/javascript">
-//<![CDATA[
-	function RedirToXML(){
-		//window.location='download_xml.php';
-	}
-           
-	function RedirToIndex(){
-		var modelId = parseInt( $('#selModel').val() );
-		var indexWidth = parseInt( $('#txtIndexWidth').val() );
-		var indexHeight = parseInt( $('#txtIndexHeight').val() );
-
-		if(!isNaN(modelId) && !isNaN(indexWidth) && !isNaN(indexHeight))
-		{
-			indexWidth = (indexWidth <= 0 || indexWidth > 1200 ) ? 1200 : indexWidth;
-			indexHeight = (indexHeight <= 0 || indexHeight > 1800) ? 1800 : indexHeight;
-
-			var url = 'download_image.php?' +
-			'index_id=' + modelId +
-			'&width=' + indexWidth +
-			'&height=' + indexHeight +
-			'&download=true';
-
-			window.location = url;
-			return true;
-		}
-
-		return false;
-	}
-//]]>
-</script>
 
 <div class="FormRow">
 <label for="selModel">Model: </label>

@@ -2,6 +2,7 @@
 
 include('cd.php');
 ini_set('max_execution_time', '3600');
+ob_start();
 $CurrentUser = Authentication::Authenticate();
 $ModelID = Utils::SafeIntFromQS('model_id');
 $IncludeImages = Utils::SafeBoolFromQS('includeimages');
@@ -58,7 +59,7 @@ foreach ($Models as $Model)
 			$PicDatesThisSet = Date::FilterDates($DatesThisModel, null, null, $Set->getID(), DATE_KIND_IMAGE);
 			$VidDatesThisSet = Date::FilterDates($DatesThisModel, null, null, $Set->getID(), DATE_KIND_VIDEO);
 			$TagsThisSet = Tag2All::FilterTag2Alls($Tag2Alls, null, null, $Set->getID(), null, null);
-			
+
 			$xmlw->startElement('Set');
 				$xmlw->writeAttribute('name', $Set->getName());
 				$xmlw->writeAttribute('date_pic', Date::FormatDates($PicDatesThisSet, 'Y-m-d', false, ' '));
@@ -90,6 +91,9 @@ foreach ($Models as $Model)
 						$xmlw->endElement();
 					}
 					$xmlw->endElement();
+					$xmlw->flush();
+					ob_flush();
+					flush();
 					unset($ImagesThisSet);
 				}
 			}
@@ -117,12 +121,18 @@ foreach ($Models as $Model)
 						$xmlw->endElement();
 					}
 					$xmlw->endElement();
+					$xmlw->flush();
+					ob_flush();
+					flush();
 					unset($VideosThisSet);
 				}
 			}
 			$xmlw->endElement();
 		}
 		$xmlw->endElement();
+		$xmlw->flush();
+		ob_flush();
+		flush();
 		
 		if($Model->getRemarks())
 		{
@@ -133,10 +143,14 @@ foreach ($Models as $Model)
 	}
 	$xmlw->endElement();
 	$xmlw->flush();
+	ob_flush();
+	flush();
 }
 
 $xmlw->endElement();
 $xmlw->endDocument();
+ob_end_flush();
+flush();
 
 exit;
 
