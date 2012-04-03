@@ -74,7 +74,7 @@ class HTMLstuff
 			<li><a href=\"#\">Search</a>
 				
 				<ul>
-				<li><a href=\"search.php\">Tag search</a></li>
+				<li><a href=\"search.php?q=\">Tag search</a></li>
 				<li><a href=\"set_dirty.php\">Dirty sets</a></li>
 				</ul>	
 			
