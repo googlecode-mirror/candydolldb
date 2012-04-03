@@ -392,7 +392,7 @@ div.ErrorList div ul{
 	width: 270px;
 }
 .SetThumbImageWrapper{
-	margin-left: 25px;
+	text-align: center;
 }
 .SetThumbImageWrapper a{
 }
@@ -445,25 +445,25 @@ div.ErrorList div ul{
 
 
 /* CacheImage delete */
-.ImageOverlay{
-	background-color: #fff;
-	display: none;
-	position: absolute;
-	z-index: 3;
+.image-thumb, .image-thumb img {
+	margin: 0 auto;
+	position:relative;
 }
-.RemoveCacheImage{
-	display: none;
-	position: absolute;
-	z-index: 4;	
+.image-del {
+	background-image:url(images/button_delete.png);
+	background-repeat: no-repeat;
+	top:2px;
+	display:none;
+	height:16px;
+	left:2px;
+	position:absolute;
+	width:16px;
 }
-.RemoveCacheImage a{
-	float: right;
-	margin: 3px 3px 0 0;
+.image-thumb:hover .image-del {
+	display:block;
 }
-.RemoveCacheImage a:hover img,
-.RemoveCacheImage a:focus img{
-	height: 14px;
-	width: 14px;
+.image-del:hover {
+	background-position: 2px 2px;
 }
 
 

@@ -38,64 +38,34 @@ function CloseOverlay(){
 }
 
 function AddDeleteOverlay(){
-	var rcidiv =
-		'<div class="RemoveCacheImage">' +
-		'<a href="#" title="Delete image">' +
-		'<img src="images/button_delete.png" width="16" height="16" alt="Delete image" />'+
-		'</a>' +
-		'</div>';
+	var rcidiv = '<div class="image-thumb">' + '</div>';
+	var dela = '<a href="#" class="image-del"></a>';
 	
-	$('img[src*="download_image.php"]').mouseenter(
-		function(){
-
-			var img = $(this);
-			$(img).parent().children('.ImageOverlay, .RemoveCacheImage').remove();
-
-			var o = $('<div class="ImageOverlay"></div>');
-			$(img).before(o);
-			
-			var d = $(rcidiv);
-			$(img).before(d);
-			
-			$('a', d).click(function(){
-				var s = $(img).attr('src');
-				if(s.indexOf('missing.jpg') == -1){
-					$(img).attr('src', 'images/missing.jpg');
-				
-					$.get(
-						s.replace('download_image', 'cacheimage_delete'),
-						null,
-						function(){
-							$(img).attr('src', s + '&t=' + new Date().getTime());
-						}
-					);
-				}
-				return false;
-			});
-			
-			$(o)
-			.css({
-				'height':$(img).height()+'px',
-				'width':$(img).width()+'px'
-			})
-			.fadeTo(200, 0.1);
-			
-			$(d)
-			.css({
-				'height':$(img).height()+'px',
-				'width':$(img).width()+'px'
-			})
-			.mouseleave(function(){
-				$(d).fadeOut(200, function(){
-					$(d).remove();
-				});
-				$(o).fadeOut(200, function(){
-					$(o).remove();
-				});
-			})
-			.fadeTo(200, 1.0);
-		}
-	);
+	$('img[src*="download_image.php"]').parents('a').wrap(function(){
+		
+		var b = $(rcidiv).css({ 'width': $(this).children('img').width() + 'px' });
+		return b;
+		
+	}).after(function(){
+		
+		var img = $(this).children('img[src*="download_image.php"]');
+		var b = $(dela).click(function(){
+            var s = $(img).attr('src');
+            if(s.indexOf('missing.jpg') == -1){
+            	$(img).attr('src', 'images/missing.jpg');
+                $.get(
+                	s.replace('download_image', 'cacheimage_delete'),
+                	null,
+                    function(){
+                		$(img).attr('src', s + '&t=' + new Date().getTime());
+                	}
+                );
+            }
+            return false;
+		});
+		return b;
+		
+	});
 }
 
 function AddTagAutoSuggest(){
@@ -143,11 +113,14 @@ function AddTagAutoSuggest(){
 	});
 }
 
+$(window).load(function(){
+	AddDeleteOverlay();
+});
+
 $(function(){
 
 	ResizeContent();
 	AddDefaultColorBox();
-	AddDeleteOverlay();
 	AddTagAutoSuggest();
 	
 	$('#ErrorContainer').fadeTo(400, 0.65).click(CloseOverlay).each(function(){

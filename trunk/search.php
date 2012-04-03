@@ -330,7 +330,10 @@ if($page < $TotalPages)
 <div class="Clear"></div>
 
 <p>Showing <?php echo $Total ? (($from+1).' to '.(($from+$max_results > $Total) ? $Total : $from+$max_results).' of '.$Total) : '0' ?> result(s) returned</p>
+
 </div>
+
+<div class="Clear"></div>
 
 <?php echo HTMLstuff::Button('index.php'); ?>
 
