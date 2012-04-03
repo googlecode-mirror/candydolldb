@@ -163,8 +163,8 @@ class HTMLstuff
 				$(img).load(function(){
 					$(this).hide();
 					$('.Loading').removeClass('Loading').append(this);
-					$(this).fadeIn();
-					AddDeleteOverlay();
+					$(this).wrap('<a href="#"></a>').fadeIn();
+					AddDeleteOverlay();	
 				}).attr({
 					width : %2\$d,
 					height : %3\$d,
@@ -173,7 +173,7 @@ class HTMLstuff
 					src : '%1\$s'
 				});
 			});
-		           
+	           
 		//]]>
 		</script>
 HfuheuhUHfuh3e83uhfuhdfu3;
