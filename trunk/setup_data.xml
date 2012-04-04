@@ -213,16 +213,16 @@ Real birthdate: 1996-03-19
 	</Model>
 	<Model firstname="Biyanka" lastname="S" birthdate="1997-07-05" tags="">
 		<Sets>
-			<Set name="01" date_pic="2009-02-06" date_vid="2009-02-06" tags="" />
-			<Set name="02" date_pic="2009-02-20" date_vid="2009-02-20" tags="" />
-			<Set name="03" date_pic="2009-03-27" date_vid="2009-03-27" tags="" />
-			<Set name="04" date_pic="2009-05-22" date_vid="2009-05-22" tags="" />
-			<Set name="05" date_pic="2009-06-19" date_vid="2009-06-19" tags="" />
-			<Set name="06" date_pic="2010-01-22" date_vid="2010-01-22" tags="" />
-			<Set name="07" date_pic="2010-02-19" date_vid="2010-02-19" tags="" />
-			<Set name="08" date_pic="2010-03-12" date_vid="2010-03-12" tags="" />
-			<Set name="09" date_pic="2010-03-19" date_vid="2010-03-19" tags="" />
-			<Set name="10" date_pic="2010-05-07" date_vid="2010-05-07" tags="" />
+			<Set name="01" date_pic="2009-02-06" date_vid="2009-02-06" tags="bag, braids, flowers, outdoor, schoolgirl, stairs"/>
+			<Set name="02" date_pic="2009-02-20" date_vid="2009-02-20" tags="ballet, earrings, sofa, window, wood floor"/>
+			<Set name="03" date_pic="2009-03-27" date_vid="2009-03-27" tags="bath, bikini, earrings, pigtails, shower"/>
+			<Set name="04" date_pic="2009-05-22" date_vid="2009-05-22" tags="earrings, swimsuit, windowsill, wood floor"/>
+			<Set name="05" date_pic="2009-06-19" date_vid="2009-06-19" tags="earrings, green, ponytail, sofa, t-shirt, white, white socks, wood floor"/>
+			<Set name="06" date_pic="2010-01-22" date_vid="2010-01-22" tags="black, boots, earrings, gloves, pigtails, silver latex, sofa"/>
+			<Set name="07" date_pic="2010-02-19" date_vid="2010-02-19" tags="bikini, drapes, earrings, ponytail, wood floor, yellow"/>
+			<Set name="08" date_pic="2010-03-12" date_vid="2010-03-12" tags="black, red shoes, stairs, wood floor"/>
+			<Set name="09" date_pic="2010-03-19" date_vid="2010-03-19" tags="bikini, blue, pigtails, sofa, windowsill"/>
+			<Set name="10" date_pic="2010-05-07" date_vid="2010-05-07" tags="black shoes, earrings, garters, gloves, leopard, mirror, pigtails, stairs"/>
 		</Sets>
 	</Model>
 	<Model firstname="Cherie" lastname="B" birthdate="2002-04-07" tags="">
