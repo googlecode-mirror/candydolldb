@@ -117,7 +117,10 @@ class Model
 	 * @param string $Remarks
 	 */
 	public function setRemarks($Remarks)
-	{ $this->Remarks = preg_replace("/(?<=^|\n)[\t\v ]+/i", '', $Remarks); }
+	{
+		$this->Remarks =
+			(empty($Remarks) ? null : preg_replace("/(?<=^|\n)[\t\v ]+/i", '', $Remarks));
+	}
 	
 	/**
 	 * Gets the Model's set count, defaults to 0.
@@ -192,6 +195,7 @@ class Model
 	public static function GetModels($WhereClause = 'mut_deleted = -1', $OrderClause = 'model_firstname ASC, model_lastname ASC', $LimitClause = null)
 	{
 		global $db;
+		$OrderClause = is_null($OrderClause) ? 'model_firstname ASC, model_lastname ASC' : $OrderClause; 
 		
 		if($db->Select('vw_Model', '*', $WhereClause, $OrderClause, $LimitClause))
 		{

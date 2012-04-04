@@ -58,7 +58,7 @@ foreach ($Models as $Model)
 		{
 			$PicDatesThisSet = Date::FilterDates($DatesThisModel, null, null, $Set->getID(), DATE_KIND_IMAGE);
 			$VidDatesThisSet = Date::FilterDates($DatesThisModel, null, null, $Set->getID(), DATE_KIND_VIDEO);
-			$TagsThisSet = Tag2All::FilterTag2Alls($Tag2Alls, null, null, $Set->getID(), null, null);
+			$TagsThisSet = Tag2All::FilterTag2Alls($Tag2Alls, null, $Model->getID(), $Set->getID(), null, null);
 
 			$xmlw->startElement('Set');
 				$xmlw->writeAttribute('name', $Set->getName());
@@ -78,7 +78,7 @@ foreach ($Models as $Model)
 					/* @var $Image Image */
 					foreach($ImagesThisSet as $Image)
 					{
-						$TagsThisImage = Tag2All::FilterTag2Alls($Tag2Alls, null, null, null, $Image->getID(), null);
+						$TagsThisImage = Tag2All::FilterTag2Alls($Tag2Alls, null, $Model->getID(), $Set->getID(), $Image->getID(), null);
 						
 						$xmlw->startElement('Image');
 							$xmlw->writeAttribute('name', $Image->getFileName());
@@ -110,7 +110,7 @@ foreach ($Models as $Model)
 					/* @var $Video Video */
 					foreach($VideosThisSet as $Video)
 					{
-						$TagsThisVideo = Tag2All::FilterTag2Alls($Tag2Alls, null, null, null, null, $Video->getID());
+						$TagsThisVideo = Tag2All::FilterTag2Alls($Tag2Alls, null, $Model->getID(), $Set->getID(), null, $Video->getID());
 						
 						$xmlw->startElement('Video');
 							$xmlw->writeAttribute('name', $Video->getFileName());

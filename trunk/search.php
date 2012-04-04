@@ -63,10 +63,11 @@ foreach(array_unique($AllModelIDs) as $modelid)
 {
 	foreach ($filteredTagIDs as $ftid)
 	{
-		if(count(Tag2All::FilterTag2Alls($Tag2Alls, $ftid, $modelid, null, null, null)) == 0)
+		if(count(Tag2All::FilterTag2Alls($Tag2Alls, $ftid, $modelid, FALSE, FALSE, FALSE)) == 0)
 		{ continue 2; }
 	}
-	$ModelIDsToShow[] = $modelid;
+	if(!is_null($modelid))
+	{ $ModelIDsToShow[] = $modelid; }
 }
 
 /* Set-filtering */
@@ -80,11 +81,13 @@ foreach(array_unique($AllSetIDs) as $setid)
 {
 	foreach ($filteredTagIDs as $ftid)
 	{
-		if(count(Tag2All::FilterTag2Alls($Tag2Alls, $ftid, null, $setid, null, null)) == 0)
+		if(count(Tag2All::FilterTag2Alls($Tag2Alls, $ftid, FALSE, $setid, FALSE, FALSE)) == 0)
 		{ continue 2; }
 	}
-	$SetIDsToShow[] = $setid;
+	if(!is_null($setid))
+	{ $SetIDsToShow[] = $setid; }
 }
+
 
 /* Image-filtering */
 $AllImageIDs = array();
@@ -97,10 +100,11 @@ foreach(array_unique($AllImageIDs) as $imageid)
 {
 	foreach ($filteredTagIDs as $ftid)
 	{
-		if(count(Tag2All::FilterTag2Alls($Tag2Alls, $ftid, null, null, $imageid, null)) == 0)
+		if(count(Tag2All::FilterTag2Alls($Tag2Alls, $ftid, FALSE, FALSE, $imageid, FALSE)) == 0)
 		{ continue 2; }
 	}
-	$ImageIDsToShow[] = $imageid;
+	if(!is_null($imageid))
+	{ $ImageIDsToShow[] = $imageid; }
 }
 
 /* Video-filtering */
@@ -114,10 +118,11 @@ foreach(array_unique($AllVideoIDs) as $videoid)
 {
 	foreach ($filteredTagIDs as $ftid)
 	{
-		if(count(Tag2All::FilterTag2Alls($Tag2Alls, $ftid, null, null, null, $videoid)) == 0)
+		if(count(Tag2All::FilterTag2Alls($Tag2Alls, $ftid, FALSE, FALSE, FALSE, $videoid)) == 0)
 		{ continue 2; }
 	}
-	$VideoIDsToShow[] = $videoid;
+	if(!is_null($videoid))
+	{ $VideoIDsToShow[] = $videoid; }
 }
 
 switch ($searchMode)
@@ -302,7 +307,7 @@ echo HTMLstuff::HtmlHeader('Tag search', $CurrentUser);
 </select>
 
 <label for="q">tagged with</label>
-<input type="text" id="q" name="q" class="TagsBox" style="width:500px;" value="<?php echo $q; ?>" />
+<input type="text" id="q" name="q" class="TagsBox" style="width:470px;" value="<?php echo $q; ?>" />
 <input type="submit" class="FormButton" value="Search" />
 <label for="x">Results per page</label>
 <input type="text" id="x" name="x" class="TagsBox" style="width:50px;" value="<?php echo $max_results; ?>" />
