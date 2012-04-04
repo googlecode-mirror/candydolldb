@@ -39,7 +39,7 @@ function CloseOverlay(){
 
 function AddDeleteOverlay(){
 	var rcidiv = '<div class="image-thumb">' + '</div>';
-	var dela = '<a href="#" class="image-del"></a>';
+	var dela = '<a href="#" title="Delete cached image" class="image-del"></a>';
 	
 	$('img[src*="download_image.php"]').parents('a').wrap(function(){
 		
