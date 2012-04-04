@@ -192,6 +192,7 @@ class Set
 	public static function GetSets($WhereClause = 'mut_deleted = -1', $OrderClause = 'model_firstname ASC, model_lastname ASC, set_prefix ASC, set_name ASC', $LimitClause = null)
 	{
 		global $db;
+		$OrderClause = is_null($OrderClause) ? 'model_firstname ASC, model_lastname ASC, set_prefix ASC, set_name ASC' : $OrderClause;
 		
 		if($db->Select('vw_Set', '*', $WhereClause, $OrderClause, $LimitClause))
 		{

@@ -164,8 +164,7 @@ class Tag2All
 			return $OutArray;
 		}
 		else
-		{ return null;
-		}
+		{ return null; }
 	}
 
 	/**
@@ -186,11 +185,11 @@ class Tag2All
 		foreach($Tag2AllArray as $Tag2All)
 		{
 			if(
-				(is_null($TagID)   || $Tag2All->getTag()->getID()   == $TagID)			&&
-				(is_null($ModelID) || $Tag2All->getModelID() 		== $ModelID)		&&
-				(is_null($SetID)   || $Tag2All->getSetID()   		== $SetID)			&&
-				(is_null($ImageID) || $Tag2All->getImageID() 		== $ImageID)		&&
-				(is_null($VideoID) || $Tag2All->getVideoID() 		== $VideoID)
+				(is_null($TagID) || $Tag2All->getTag()->getID() === $TagID)	&&
+				($ModelID === FALSE || $Tag2All->getModelID() === $ModelID)	&&
+				($SetID === FALSE || $Tag2All->getSetID()   === $SetID)		&&
+				($ImageID === FALSE || $Tag2All->getImageID() === $ImageID)	&&
+				($VideoID === FALSE || $Tag2All->getVideoID() === $VideoID)
 			){
 				$OutArray[] = $Tag2All;
 			}

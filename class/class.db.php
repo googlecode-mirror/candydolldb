@@ -138,12 +138,12 @@ class DB
 							switch(DB::FindType($this->FieldInfo, $key[$x]))
 							{
 								case 'int':
-									$this->Result[$i][$key[$x]] = (int) $r[$key[$x]];
+									$this->Result[$i][$key[$x]] = (strlen($r[$key[$x]]) == 0 ? null : (int)$r[$key[$x]]);
 									break;
 										
 								case 'string':
 								default:
-									$this->Result[$i][$key[$x]] = (string) $r[$key[$x]];
+									$this->Result[$i][$key[$x]] = (strlen($r[$key[$x]]) == 0 ? null : (string)$r[$key[$x]]);
 									break;
 							}
 						}
@@ -390,6 +390,7 @@ class DB
 	/**
 	 * @param array $FieldInfo
 	 * @param string $NameToFind
+	 * @return string
 	 */
 	private static function FindType($FieldInfo, $NameToFind)
 	{
