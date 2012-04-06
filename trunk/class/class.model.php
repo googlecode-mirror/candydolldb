@@ -325,14 +325,17 @@ class Model
 	public static function FilterModels($ModelArray, $ModelID = null, $FirstName = null, $LastName = null)
 	{
 		$OutArray = array();
+		$ModelID = empty($ModelID) ? FALSE : $ModelID;
+		$FirstName = empty($FirstName) ? FALSE : $FirstName;
+		$LastName = empty($LastName) ? FALSE : $LastName;
 		
 		/* @var $Model Model */
 		foreach($ModelArray as $Model)
 		{
 			if(
-				(is_null($ModelID) || $Model->getID() == $ModelID)		&&
-				(is_null($FirstName) || $Model->getFirstName() == $FirstName)	&&
-				(is_null($LastName) || $Model->getLastName() == $LastName)
+				($ModelID === FALSE || $Model->getID() === $ModelID)			&&
+				($FirstName === FALSE || $Model->getFirstName() === $FirstName)	&&
+				($LastName === FALSE || $Model->getLastName() === $LastName)
 			){
 				$OutArray[] = $Model;
 			}
