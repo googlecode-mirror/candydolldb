@@ -41,14 +41,23 @@ class Error
 	
 	
 	/**
-	 * Adds an error to the 'global' Error-array.
+	 * Adds an error to the 'global' Error-array, or outputs it to STERR.
 	 * @param Error $InError
 	 */
 	public static function AddError($InError)
 	{
-		$Errors = unserialize($_SESSION['Errors']);
-		$Errors[] = $InError;
-		$_SESSION['Errors'] = serialize($Errors);
+		global $argv, $argc;
+		
+		if(isset($argv) && $argc > 0)
+		{
+			fwrite(STDERR, $InError->getErrorMessage()."\n");
+		}
+		else 
+		{
+			$Errors = unserialize($_SESSION['Errors']);
+			$Errors[] = $InError;
+			$_SESSION['Errors'] = serialize($Errors);
+		}
 	}
 	
 	/**
