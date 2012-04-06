@@ -96,7 +96,6 @@ class HTMLstuff
 	{
 		return sprintf("
 			</div>
-			</div>
 
 			<div id=\"Footer\">
 			<hr class=\"Hidden\" />
@@ -108,6 +107,7 @@ class HTMLstuff
 			CandyDollDB v%2\$s<br />by <a href=\"http://www.fwiep.nl/\" rel=\"external\">FWieP</a>
 			</div>
 			
+			</div>
 			</div>
 			</div>
 			
