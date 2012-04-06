@@ -96,6 +96,7 @@ class HTMLstuff
 	{
 		return sprintf("
 			</div>
+			</div>
 
 			<div id=\"Footer\">
 			<hr class=\"Hidden\" />
