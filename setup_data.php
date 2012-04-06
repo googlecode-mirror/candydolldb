@@ -36,8 +36,15 @@ if($XmlFromFile)
 		if(isset($argv) && $argc > 0)
 		{ $bi->Next(); }
 		
-		$ModelInDb = Model::FilterModels($ModelsInDb, null, $Model['firstname'], $Model['lastname']);
-		if($ModelInDb){ $ModelInDb = $ModelInDb[0]; }
+		$ModelInDb = Model::FilterModels(
+			$ModelsInDb,
+			null,
+			(string)$Model->attributes()->firstname,
+			(string)$Model->attributes()->lastname
+		);
+		
+		if($ModelInDb)
+		{ $ModelInDb = $ModelInDb[0]; }
 
 		/* @var $Model2Process Model */
 		$Model2Process = $ModelInDb ? $ModelInDb : new Model();
