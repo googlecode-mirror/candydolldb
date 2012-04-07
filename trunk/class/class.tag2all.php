@@ -111,10 +111,10 @@ class Tag2All
 			'Tag2All',
 			sprintf('tag_id = %1$d%2$s%3$s%4$s%5$s',
 				$Tag2All->getTag()->getID(),
-				$Tag2All->getModelID() ? ' AND model_id = '.$Tag2All->getModelID() : null,
-				$Tag2All->getSetID()   ? ' AND set_id = '  .$Tag2All->getSetID()   : null,
-				$Tag2All->getImageID() ? ' AND image_id = '.$Tag2All->getImageID() : null,
-				$Tag2All->getVideoID() ? ' AND video_id = '.$Tag2All->getVideoID() : null
+				$Tag2All->getModelID() ? ' AND model_id = '.$Tag2All->getModelID() : ' AND model_id is null',
+				$Tag2All->getSetID()   ? ' AND set_id = '  .$Tag2All->getSetID()   : ' AND set_id is null',
+				$Tag2All->getImageID() ? ' AND image_id = '.$Tag2All->getImageID() : ' AND image_id is null',
+				$Tag2All->getVideoID() ? ' AND video_id = '.$Tag2All->getVideoID() : ' AND video_id is null'
 			)
 		);
 			
@@ -234,7 +234,7 @@ class Tag2All
 	{
 		global $db;
 	
-		foreach($newTags as $string)
+		foreach(array_unique($newTags) as $string)
 		{
 			$tInDB = Tag::FilterTags($TagsInDB, null, $string);
 	
@@ -258,7 +258,7 @@ class Tag2All
 			Tag2All::Delete($tti, $CurrentUser);
 		}
 	
-		foreach($newTags as $string)
+		foreach(array_unique($newTags) as $string)
 		{
 			$tInDB = Tag::FilterTags($TagsInDB, null, $string);
 	
