@@ -133,7 +133,7 @@ if($XmlFromFile)
 			}
 			
 			$settags = Tag::GetTagArray((string)$Set->attributes()->tags);
-			$Tag2AllThisSet = Tag2All::FilterTag2Alls($Tag2AllsInDB, null, null, $Set2Process->getID(), null, null);
+			$Tag2AllThisSet = Tag2All::FilterTag2Alls($Tag2AllsInDB, null, $Model2Process->getID(), $Set2Process->getID(), null, null);
 			Tag2All::HandleTags($settags, $Tag2AllThisSet, $TagsInDB, $CurrentUser, $Model2Process->getID(), $Set2Process->getID(), null, null);
 			
 			$datesPic = array();
