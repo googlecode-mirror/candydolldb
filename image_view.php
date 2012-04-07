@@ -113,10 +113,13 @@ echo HTMLstuff::HtmlHeader($Model->GetShortName(true).' - Set '.$Set->getName().
 
 if($ImageID)
 {
+	$width = $Image->getImageWidthToppedOff(400, 600);
+	$height = $Image->getImageHeightToppedOff(400, 600);
+	
 	echo HTMLstuff::ImageLoading(
-		sprintf('download_image.php?image_id=%1$d&width=400&height=600&portrait_only=true', $ImageID),
-		400,
-		600,
+		sprintf('download_image.php?image_id=%1$d&width=%2$d&height=%3$d&portrait_only=true', $ImageID, $width, $height),
+		$width,
+		$height,
 		htmlentities($Model->GetFullName()),
 		htmlentities($Model->GetFullName())
 	);
