@@ -92,6 +92,8 @@ echo HTMLstuff::HtmlHeader('Manage tags', $CurrentUser);
 		$('#txtName, #chkDel').attr('disabled', 'disabled');
 		$('input[type=submit]').val('Delete');" />
 <?php } ?>
+
+<input type="button" class="FormButton" value="Clean" title="Clear unused tags from list" onclick="window.location='tag_nuke.php';" />
 </div>
 
 </fieldset>
