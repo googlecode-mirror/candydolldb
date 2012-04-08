@@ -25,11 +25,13 @@
 
   * Usage-reports on non-Linux platforms, for inter-platform testing of filehandling, imports and downloads
 
-  * More flexible and robust filename-handling<br>(no hardcoded prefixes during import)
+  * More flexible and robust filename-handling (no hardcoded prefixes during import)
 
   * Multi-threadedness. Currently only one concurrent user is allowed for imports
 
   * Automatic updateing, automatic downloading and installing of new releases
+
+  * User roles/rights for allowing per-user permissions (login, import, export, download, add, edit, delete...)
 
 == Would Be Nice ==
 
