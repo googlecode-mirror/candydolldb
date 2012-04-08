@@ -227,53 +227,53 @@ Real birthdate: 1996-03-19
 	</Model>
 	<Model firstname="Cherie" lastname="B" birthdate="2002-04-07" tags="">
 		<Sets>
-			<Set name="01" date_pic="2011-12-23" date_vid="2011-12-02" tags="" />
-			<Set name="02" date_pic="2011-12-30" date_vid="2011-12-16" tags="" />
-			<Set name="03" date_pic="2012-01-06" date_vid="2012-01-13" tags="" />
-			<Set name="04" date_pic="2012-01-20" date_vid="2012-02-10" tags="" />
-			<Set name="05" date_pic="2012-02-03" date_vid="2012-03-23" tags="" />
+			<Set name="01" date_pic="2011-12-23" date_vid="2011-12-02" tags="drapes, gloves, mask, stool, white, white socks"/>
+			<Set name="02" date_pic="2011-12-30" date_vid="2011-12-16" tags="beachball, bikini, plaid, ponytail"/>
+			<Set name="03" date_pic="2012-01-06" date_vid="2012-01-13" tags="blue, drapes, gloves, jewelry, princess, stockings, stool, tiara, window"/>
+			<Set name="04" date_pic="2012-01-20" date_vid="2012-02-10" tags="pink, ponytail, sofa, window"/>
+			<Set name="05" date_pic="2012-02-03" date_vid="2012-03-23" tags="chair, diadem, drapes, plaid, white"/>
 		</Sets>
 	</Model>
 	<Model firstname="Chris" lastname="G" birthdate="" tags="">
 		<Sets>
-			<Set name="01" date_pic="2010-07-02" date_vid="2010-07-02" tags="" />
-			<Set name="02" date_pic="2010-07-09" date_vid="2010-07-09" tags="" />
-			<Set name="03" date_pic="2010-08-20" date_vid="2010-08-20" tags="" />
-			<Set name="04" date_pic="2010-10-01" date_vid="2010-10-01" tags="" />
-			<Set name="05" date_pic="2010-11-26" date_vid="2010-11-26" tags="" />
+			<Set name="01" date_pic="2010-07-02" date_vid="2010-07-02" tags="bag, black, plaid, schoolgirl, sofa, wood floor"/>
+			<Set name="02" date_pic="2010-07-09" date_vid="2010-07-09" tags="pigtails, sofa, t-shirt, white socks, wood floor"/>
+			<Set name="03" date_pic="2010-08-20" date_vid="2010-08-20" tags="bare feet, diadem, football, green, one-piece, stool, wood floor"/>
+			<Set name="04" date_pic="2010-10-01" date_vid="2010-10-01" tags="bikini, chair, door, polkadot, stairs, yellow"/>
+			<Set name="05" date_pic="2010-11-26" date_vid="2010-11-26" tags="blue latex, diadem, fireplace, gloves, sofa, white boots"/>
 		</Sets>
 	</Model>
 	<Model firstname="Darya" lastname="V" birthdate="1999-04-03" tags="">
 		<Sets>
-			<Set name="01" date_pic="2011-09-09" date_vid="2011-09-16" tags="" />
-			<Set name="02" date_pic="2011-10-21" date_vid="2011-10-14" tags="" />
-			<Set name="03" date_pic="2011-12-09" date_vid="2012-02-03" tags="" />
-			<Set name="04" date_pic="2012-01-13" date_vid="2012-02-10" tags="" />
+			<Set name="01" date_pic="2011-09-09" date_vid="2011-09-16" tags="blue, bracelet, chair, drapes, earrings, necklace, polkadot, slippers"/>
+			<Set name="02" date_pic="2011-10-21" date_vid="2011-10-14" tags="badminton, beachball, drapes, earrings, red, ringer t-shirt, stool, white"/>
+			<Set name="03" date_pic="2011-12-09" date_vid="2012-02-03" tags="balls, bare feet, blue, chair, curls, drapes, swimsuit"/>
+			<Set name="04" date_pic="2012-01-13" date_vid="2012-02-10" tags="barstool, black, boots, drapes, earrings, gloves, pvc"/>
 		</Sets>
 	</Model>
 	<Model firstname="Diana" lastname="M" birthdate="" tags="">
 		<Sets>
-			<Set name="01" date_pic="2010-07-30" date_vid="2010-07-30" tags="" />
-			<Set name="02" date_pic="2010-09-17" date_vid="2010-09-17" tags="" />
-			<Set name="03" date_pic="2010-10-08" date_vid="2010-10-08" tags="" />
-			<Set name="04" date_pic="2010-12-31" date_vid="2010-12-31" tags="" />
-			<Set name="05" date_pic="2011-01-14" date_vid="2011-03-18" tags="" />
-			<Set name="06" date_pic="2011-02-04" date_vid="2011-03-25" tags="" />
-			<Set name="07" date_pic="2011-07-08" date_vid="2011-04-22" tags="" />
-			<Set name="08" date_pic="2011-07-22" date_vid="2011-05-13" tags="" />
-			<Set name="09" date_pic="2011-10-28" date_vid="2011-07-15" tags="" />
-			<Set name="10" date_pic="2011-11-11" date_vid="2011-08-05" tags="" />
+			<Set name="01" date_pic="2010-07-30" date_vid="2010-07-30" tags="bag, door, earrings, plaid, schoolgirl, stairs"/>
+			<Set name="02" date_pic="2010-09-17" date_vid="2010-09-17" tags="bare feet, earrings, red, sofa, swimsuit"/>
+			<Set name="03" date_pic="2010-10-08" date_vid="2010-10-08" tags="black shorts, earrings, skipping rope, t-shirt, white, white socks, window, wood floor"/>
+			<Set name="04" date_pic="2010-12-31" date_vid="2010-12-31" tags="black, necklace, sofa, stockings, white socks, wood floor"/>
+			<Set name="05" date_pic="2011-01-14" date_vid="2011-03-18" tags="bare feet, bed, bikini, chequered, diadem"/>
+			<Set name="06" date_pic="2011-02-04" date_vid="2011-03-25" tags="bracelet, pink, white socks"/>
+			<Set name="07" date_pic="2011-07-08" date_vid="2011-04-22" tags="candle, diadem, drapes, earrings, flame., gloves, rose, stool, white"/>
+			<Set name="08" date_pic="2011-07-22" date_vid="2011-05-13" tags="bare feet, bikini, blue, bracelet, drapes, earrings, necklace, stool"/>
+			<Set name="09" date_pic="2011-10-28" date_vid="2011-07-15" tags="barstool, black boots, drapes, earrings, gloves, green, pvc, wood floor"/>
+			<Set name="10" date_pic="2011-11-11" date_vid="2011-08-05" tags="beachball, blue, chair, drapes, earrings, swimsuit, wood floor"/>
 			<Set name="11" date_pic="" date_vid="2011-08-26" tags="" />
 			<Set name="12" date_pic="" date_vid="2011-10-21" tags="" />
 		</Sets>
 	</Model>
 	<Model firstname="Dina" lastname="Y" birthdate="1996-12-12" tags="">
 		<Sets>
-			<Set name="01" date_pic="2009-08-14" date_vid="2009-08-14" tags="" />
-			<Set name="02" date_pic="2009-08-28" date_vid="2009-08-28" tags="" />
-			<Set name="03" date_pic="2009-09-11" date_vid="2009-09-11" tags="" />
-			<Set name="04" date_pic="2009-10-23" date_vid="2009-10-23" tags="" />
-			<Set name="05" date_pic="2009-11-13" date_vid="2009-11-13" tags="" />
+			<Set name="01" date_pic="2009-08-14" date_vid="2009-08-14" tags="black boots, earrings, gloves, purple latex, riding cane, sofa, window"/>
+			<Set name="02" date_pic="2009-08-28" date_vid="2009-08-28" tags="bed, bikini, bracelet, brown, gold, window"/>
+			<Set name="03" date_pic="2009-09-11" date_vid="2009-09-11" tags="black, black boots, chair, diadem, door, gloves, mirror, pvc, stairs"/>
+			<Set name="04" date_pic="2009-10-23" date_vid="2009-10-23" tags="beachball, blue, curtain, pigtails, swimsuit, window, wood floor"/>
+			<Set name="05" date_pic="2009-11-13" date_vid="2009-11-13" tags="door, earrings, gloves, silver latex, wood floor"/>
 		</Sets>
 	</Model>
 	<Model firstname="Elena" lastname="V" birthdate="1999-12-28" tags="">
