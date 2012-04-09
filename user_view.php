@@ -42,6 +42,7 @@ if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'UserView')
 	$User->setLastName($_POST['txtLastName']);
 	$User->setEmailAddress($_POST['txtEmailAddress']);
 	$User->setDateDisplayOptions($_POST['selectDateformat']);
+	$User->setImageview($_POST['selectImageview']);
 
 	if(array_key_exists('radGender', $_POST))
 	{
@@ -177,6 +178,15 @@ echo HTMLstuff::HtmlHeader($User->GetFullName(), $CurrentUser);
 <div class="FormRow">
 <label for="selectDateformat">Select date format:</label>
 <select id="selectDateformat" name="selectDateformat"<?php echo HTMLstuff::DisabledStr($DeleteUser); ?>><?php echo $DateFormatOptions ?></select>
+</div>
+
+<div class="FormRow">
+<label for="selectImageview">Select image view format:</label>
+<select id="selectImageview" name="selectImageview"<?php echo HTMLstuff::DisabledStr($DeleteUser); ?>>
+<option value="detail" <?php echo $User->getImageview() == 'detail' ? ' selected="selected"' : null ?>>Detail View [Default]</option>
+<option value="thumb" <?php echo $User->getImageview() == 'thumb' ? ' selected="selected"' : null ?>>Thumbnail View</option>
+
+</select>
 </div>
 
 <div class="FormRow">

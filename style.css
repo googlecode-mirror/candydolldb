@@ -419,6 +419,16 @@ div.ErrorList div ul{
 	margin: 0 5px 10px 0;
 }
 
+/* image thumbnails */
+
+.ImageButtonWrapper{
+	text-align: center;
+	padding-top: 5px;
+}
+.ImageButtonWrapper a img{
+	margin: 0 5px 10px 0;
+}
+
 /* Search */
 .SearchSummary{
 	font-weight: bold;
