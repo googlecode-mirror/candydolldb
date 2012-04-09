@@ -156,7 +156,9 @@ echo HTMLstuff::HtmlHeader('Home', $CurrentUser);
 <?php
 
 echo "<div class=\"Clear\"></div>".$ModelRows."<div class=\"Clear\"></div>";
-
+?>
+<div style="font-weight:bold;text-align:center">Total Model Count: <?php printf('%1$d', $ModelCount); ?></div>
+<?php
 echo HTMLstuff::HtmlFooter($CurrentUser);
 
 ?>

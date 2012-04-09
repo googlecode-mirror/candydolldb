@@ -31,7 +31,7 @@ if(!is_null($q))
 
 	foreach ($a as $t)
 	{
-		$o .= sprintf('<a href="#">%1$s</a><br />',
+		$o .= sprintf('<a href="#" style="display:block">%1$s</a>',
 			str_ireplace($q, '<strong>'.htmlentities($q).'</strong>', $t->getName())
 		);
 	}

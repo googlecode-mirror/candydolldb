@@ -26,11 +26,17 @@ if(array_key_exists('hidAction', $_POST) && isset($_POST['hidAction']) && $_POST
 	/* user_datedisplayoptions column */
 	$q = mysql_query("SHOW COLUMNS FROM `User` LIKE 'user_datedisplayopts'");
 	$Exists = mysql_fetch_assoc($q);
-	
+
 	if($NoError && !$Exists)
 	{ $NoError = $db->ExecuteQueries("ALTER TABLE `User` ADD `user_datedisplayopts` int NOT NULL DEFAULT 0 AFTER `user_email`"); }
 
-	
+	/* user_imageview column */
+	$q = mysql_query("SHOW COLUMNS FROM `User` LIKE 'user_imageview'");
+	$Exists = mysql_fetch_assoc($q);
+
+	if($NoError && !$Exists)
+	{ $NoError = $db->ExecuteQueries("ALTER TABLE `User` ADD `user_imageview` varchar(20) NOT NULL DEFAULT 'detail' AFTER `user_datedisplayopts`"); }
+
 	$UpdateDBSQL = <<<FjbMNnvUJheiwewUJfheJheuehFJDUHdywgwwgHGfgywug
 SET AUTOCOMMIT=0;
 START TRANSACTION;

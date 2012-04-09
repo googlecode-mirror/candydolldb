@@ -17,6 +17,7 @@ class User
 	private $PreLastLogin = -1;
 	private $Rights = 0;
 	private $DateDisplayoptions = 0;
+	private $Imageview;
 
 	/**
 	 * Returns a concatenation of the User's firstname, optional insertion and lastname.
@@ -191,6 +192,20 @@ class User
 	public function setDateDisplayOptions($DateDisplayoptions)
 	{ $this->DateDisplayoptions = $DateDisplayoptions; }
 	
+
+	/**
+	* Gets the User's image display options
+	* @return int
+	*/
+	public function getImageview()
+	{ return $this->Imageview; }
+
+	/**
+	* @param int $Imageview
+	*/
+	public function setImageview($Imageview)
+	{ $this->Imageview = $Imageview; }
+
 	/**
 	* Gets the User's preferred dateformatstring
 	* @return string
@@ -317,6 +332,7 @@ class User
 							case 'user_lastname'		: $UserObject->setLastName($ColumnValue);			break;
 							case 'user_email'			: $UserObject->setEmailAddress($ColumnValue);		break;
 							case 'user_datedisplayopts'	: $UserObject->setDateDisplayOptions($ColumnValue);	break;
+							case 'user_imageview'	: $UserObject->setImageview($ColumnValue);	break;
 							case 'user_gender'			: $UserObject->setGender($ColumnValue);				break;
 							case 'user_birthdate'		: $UserObject->setBirthDate($ColumnValue);			break;
 							case 'user_lastactive'		: $UserObject->setLastActive($ColumnValue);			break;
@@ -356,12 +372,13 @@ class User
 		    mysql_real_escape_string($User->getLastName()),
 		    mysql_real_escape_string($User->getEmailAddress()),
 		    $User->getDateDisplayOptions(),
+		    $User->getImageview(),
 		    $User->getGender(),
 		    $User->getBirthDate(),
 		    $CurrentUser->getID(),
 		    time()
 		),
-		'user_username, user_password, user_salt, user_firstname, user_insertion, user_lastname, user_email, user_datedisplayopts, user_gender, user_birthdate, mut_id, mut_date'
+		'user_username, user_password, user_salt, user_firstname, user_insertion, user_lastname, user_email, user_datedisplayopts, user_imageview,  user_gender, user_birthdate, mut_id, mut_date'
 	    );
 	}
 	
@@ -386,6 +403,7 @@ class User
 				'user_lastname' => mysql_real_escape_string($User->getLastName()),
 				'user_email' => mysql_real_escape_string($User->getEmailAddress()),
 				'user_datedisplayopts' => $User->getDateDisplayOptions(),
+				'user_imageview' => $User->getImageview(),
 				'user_gender' => $User->getGender(),
 				'user_birthdate' => $User->getBirthDate(),
 				'user_lastactive' => $User->getLastActive(),
