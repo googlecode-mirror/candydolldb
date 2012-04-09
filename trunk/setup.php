@@ -70,6 +70,7 @@ INSERT INTO `User` (
 	'%5\$s',
 	'%6\$s',
 	0,
+	'detail',
 	1,
 	UNIX_TIMESTAMP(),
 	-1
