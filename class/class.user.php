@@ -17,7 +17,7 @@ class User
 	private $PreLastLogin = -1;
 	private $Rights = 0;
 	private $DateDisplayoptions = 0;
-	private $Imageview;
+	private $Imageview = 'detail';
 
 	/**
 	 * Returns a concatenation of the User's firstname, optional insertion and lastname.
@@ -192,16 +192,15 @@ class User
 	public function setDateDisplayOptions($DateDisplayoptions)
 	{ $this->DateDisplayoptions = $DateDisplayoptions; }
 	
-
 	/**
 	* Gets the User's image display options
-	* @return int
+	* @return string
 	*/
 	public function getImageview()
 	{ return $this->Imageview; }
 
 	/**
-	* @param int $Imageview
+	* @param string $Imageview
 	*/
 	public function setImageview($Imageview)
 	{ $this->Imageview = $Imageview; }
