@@ -147,6 +147,20 @@ echo HTMLstuff::HtmlHeader($User->GetFullName(), $CurrentUser);
 
 ?>
 
+<script type="text/javascript">
+//<![CDATA[
+
+setInterval(function () {
+  if($("#txtRepeatPassword").val().length > 0) {
+    $("#submitform").removeAttr("disabled");
+  } else {
+    $("#submitform").attr("disabled", "disabled");
+  }
+}, 500); //Runs every 0.5s
+
+//]]>
+</script>
+
 <h2><?php echo sprintf('<a href="index.php">Home</a> - <a href="user.php">Users</a> - %1$s',
 	htmlentities($User->getUserName())
 ); ?></h2>
