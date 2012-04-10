@@ -159,11 +159,3 @@ $(function(){
 $(window).resize(function(){
 	ResizeContent();
 });
-
-setInterval(function () {
-  if($("#txtRepeatPassword").val().length > 0) {
-    $("#submitform").removeAttr("disabled");
-  } else {
-    $("#submitform").attr("disabled", "disabled");
-  }
-}, 500); //Runs every 0.5s
