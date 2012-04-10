@@ -22,7 +22,7 @@ class HTMLstuff
 		<link rel=\"shortcut icon\" href=\"favicon.ico\" />
 		<link rel=\"icon\" href=\"favicon.ico\" />
 		
-		<script type=\"text/javascript\" src=\"%4\$s://code.jquery.com/jquery.min.js\"></script>
+		<script type=\"text/javascript\" src=\"%4\$s://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js\"></script>
 		<script type=\"text/javascript\" src=\"js/fwiep.js\"></script>
 		<script type=\"text/javascript\" src=\"js/jquery.ba-outside-events.js\"></script>
 
