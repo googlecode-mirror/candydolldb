@@ -224,7 +224,7 @@ echo HTMLstuff::HtmlHeader($User->GetFullName(), $CurrentUser);
 
 <div class="FormRow">
 <label>&nbsp;</label>
-<input type="submit" class="FormButton" value="<?php echo $DeleteUser ? 'Delete' : 'Save'; ?>" />
+<input type="submit" id="submitform" class="FormButton" value="<?php echo $DeleteUser ? 'Delete' : 'Save'; ?>" disabled="disabled" />
 <input type="button" class="FormButton" value="Cancel" onclick="window.location='user.php';" />
 </div>
 
