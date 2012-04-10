@@ -722,21 +722,21 @@ Real birthdate: 1996-03-19
 	</Model>
 	<Model firstname="Masha" lastname="Shevkunova" birthdate="1996-01-30" tags="">
 		<Sets>
-			<Set name="01" date_pic="2008-08-01" date_vid="2008-08-01" tags="" />
-			<Set name="02" date_pic="2008-08-29" date_vid="2008-08-29" tags="" />
-			<Set name="03" date_pic="2008-09-19" date_vid="2008-09-19" tags="" />
-			<Set name="04" date_pic="2008-10-03" date_vid="2008-10-03" tags="" />
-			<Set name="05" date_pic="2008-10-17" date_vid="2008-10-17" tags="" />
-			<Set name="06" date_pic="2008-10-24" date_vid="2008-10-24" tags="" />
-			<Set name="07" date_pic="2008-10-31" date_vid="2008-10-31" tags="" />
-			<Set name="08" date_pic="2008-11-07" date_vid="2008-11-07" tags="" />
-			<Set name="09" date_pic="2008-12-12" date_vid="2008-12-12" tags="" />
-			<Set name="10" date_pic="2009-01-02" date_vid="2009-01-02" tags="" />
-			<Set name="11" date_pic="2009-02-06" date_vid="2009-02-06" tags="" />
-			<Set name="12" date_pic="2009-03-06" date_vid="2009-03-06" tags="" />
-			<Set name="13" date_pic="2009-03-27" date_vid="2009-03-27" tags="" />
-			<Set name="14" date_pic="2009-05-15" date_vid="2009-05-15" tags="" />
-			<Set name="15" date_pic="2009-06-05" date_vid="2009-06-05" tags="" />
+			<Set name="01" date_pic="2008-08-01" date_vid="2008-08-01" tags="dress, sofa, thigh highs"/>
+			<Set name="02" date_pic="2008-08-29" date_vid="2008-08-29" tags="flowers, outdoor, schoolgirl"/>
+			<Set name="03" date_pic="2008-09-19" date_vid="2008-09-19" tags="costume, flowers, garden, outdoor"/>
+			<Set name="04" date_pic="2008-10-03" date_vid="2008-10-03" tags="balls, door, gym outfit"/>
+			<Set name="05" date_pic="2008-10-17" date_vid="2008-10-17" tags="bath, bathtub, swimsuit"/>
+			<Set name="06" date_pic="2008-10-24" date_vid="2008-10-24" tags="ballet, door, stairs"/>
+			<Set name="07" date_pic="2008-10-31" date_vid="2008-10-31" tags="pink, sofa"/>
+			<Set name="08" date_pic="2008-11-07" date_vid="2008-11-07" tags="bed, black boots, gloves, purple latex, riding cane"/>
+			<Set name="09" date_pic="2008-12-12" date_vid="2008-12-12" tags="sofa, swimsuit"/>
+			<Set name="10" date_pic="2009-01-02" date_vid="2009-01-02" tags="cat ears, leopard, stairs, window"/>
+			<Set name="11" date_pic="2009-02-06" date_vid="2009-02-06" tags="dress, table, wood floor"/>
+			<Set name="12" date_pic="2009-03-06" date_vid="2009-03-06" tags="bed, unikini, window, windowsill"/>
+			<Set name="13" date_pic="2009-03-27" date_vid="2009-03-27" tags="black boots, dress, sofa, window"/>
+			<Set name="14" date_pic="2009-05-15" date_vid="2009-05-15" tags="blue hair, costume, window, wood floor"/>
+			<Set name="15" date_pic="2009-06-05" date_vid="2009-06-05" tags="black boots, black latex, door, gloves, window, windowsill, wood floor"/>
 		</Sets>
 	</Model>
 	<Model firstname="Maya" lastname="L" birthdate="1997-10-29" tags="">
@@ -780,51 +780,51 @@ Real birthdate: 1996-03-19
 	</Model>
 	<Model firstname="Mila" lastname="V" birthdate="1997-11-04" tags="">
 		<Sets>
-			<Set name="01" date_pic="2009-03-20" date_vid="2009-03-20" tags="" />
-			<Set name="02" date_pic="2009-04-17" date_vid="2009-04-17" tags="" />
-			<Set name="03" date_pic="2009-05-29" date_vid="2009-05-29" tags="" />
-			<Set name="04" date_pic="2009-06-12" date_vid="2009-06-12" tags="" />
-			<Set name="05" date_pic="2009-06-26" date_vid="2009-06-26" tags="" />
+			<Set name="01" date_pic="2009-03-20" date_vid="2009-03-20" tags="backpack, outdoor, schoolgirl, stairs"/>
+			<Set name="02" date_pic="2009-04-17" date_vid="2009-04-17" tags="swimsuit, window, wood floor"/>
+			<Set name="03" date_pic="2009-05-29" date_vid="2009-05-29" tags="hotpants, sports bra, stairs, wood floor"/>
+			<Set name="04" date_pic="2009-06-12" date_vid="2009-06-12" tags="gym outfit, sofa, wood floor"/>
+			<Set name="05" date_pic="2009-06-26" date_vid="2009-06-26" tags="bed, bikini, window"/>
 		</Sets>
 	</Model>
 	<Model firstname="Milena" lastname="S" birthdate="1995-06-19" tags="">
 		<Sets>
-			<Set name="01" date_pic="2009-08-28" date_vid="2009-08-28" tags="" />
-			<Set name="02" date_pic="2009-09-18" date_vid="2009-09-18" tags="" />
-			<Set name="03" date_pic="2009-10-30" date_vid="2009-10-30" tags="" />
-			<Set name="04" date_pic="2009-11-06" date_vid="2009-11-06" tags="" />
-			<Set name="05" date_pic="2009-12-04" date_vid="2009-12-04" tags="" />
+			<Set name="01" date_pic="2009-08-28" date_vid="2009-08-28" tags="bed, bikini bottom, t-shirt, window, windowsill"/>
+			<Set name="02" date_pic="2009-09-18" date_vid="2009-09-18" tags="railing, swimsuit, wood floor"/>
+			<Set name="03" date_pic="2009-10-30" date_vid="2009-10-30" tags="dresser, mirror, purple latex, sofa"/>
+			<Set name="04" date_pic="2009-11-06" date_vid="2009-11-06" tags="door, mirror, stairs, swimsuit, window"/>
+			<Set name="05" date_pic="2009-12-04" date_vid="2009-12-04" tags="bikini, chair, outdoor, window, wood floor"/>
 		</Sets>
 	</Model>
 	<Model firstname="Monika" lastname="D" birthdate="1996-09-07" tags="">
 		<Sets>
-			<Set name="01" date_pic="2009-02-13" date_vid="2009-02-13" tags="" />
-			<Set name="02" date_pic="2009-02-27" date_vid="2009-02-27" tags="" />
-			<Set name="03" date_pic="2009-03-13" date_vid="2009-03-13" tags="" />
-			<Set name="04" date_pic="2009-04-03" date_vid="2009-04-03" tags="" />
-			<Set name="05" date_pic="2009-05-01" date_vid="2009-05-01" tags="" />
-			<Set name="06" date_pic="2009-06-12" date_vid="2009-06-12" tags="" />
-			<Set name="07" date_pic="2009-07-24" date_vid="2009-07-24" tags="" />
-			<Set name="08" date_pic="2009-07-31" date_vid="2009-07-31" tags="" />
-			<Set name="09" date_pic="2009-08-14" date_vid="2009-08-14" tags="" />
+			<Set name="01" date_pic="2009-02-13" date_vid="2009-02-13" tags="briefcase, outdoor, schoolgirl, stairs"/>
+			<Set name="02" date_pic="2009-02-27" date_vid="2009-02-27" tags="ballet, carpet, leg warmers, window"/>
+			<Set name="03" date_pic="2009-03-13" date_vid="2009-03-13" tags="bed, dress, pink stockings, table, window"/>
+			<Set name="04" date_pic="2009-04-03" date_vid="2009-04-03" tags="gym outfit, window, windowsill"/>
+			<Set name="05" date_pic="2009-05-01" date_vid="2009-05-01" tags="bath, bathtub, bikini, blue boots, mirror, shower, wet"/>
+			<Set name="06" date_pic="2009-06-12" date_vid="2009-06-12" tags="pigtails, sofa, swimsuit"/>
+			<Set name="07" date_pic="2009-07-24" date_vid="2009-07-24" tags="bed, bow, dress shirt, swimsuit"/>
+			<Set name="08" date_pic="2009-07-31" date_vid="2009-07-31" tags="chair, stairs, tutu, window"/>
+			<Set name="09" date_pic="2009-08-14" date_vid="2009-08-14" tags="door, hotpants, leg warmers, window, windowsill"/>
 		</Sets>
 	</Model>
 	<Model firstname="Nadya" lastname="Stupak" birthdate="1996-04-15" tags="">
 		<Sets>
-			<Set name="01" date_pic="2008-11-21" date_vid="2008-11-21" tags="" />
-			<Set name="02" date_pic="2008-12-05" date_vid="2008-12-05" tags="" />
-			<Set name="03" date_pic="2008-12-26" date_vid="2008-12-26" tags="" />
-			<Set name="04" date_pic="2009-01-02" date_vid="2009-01-02" tags="" />
-			<Set name="05" date_pic="2009-01-23" date_vid="2009-01-23" tags="" />
+			<Set name="01" date_pic="2008-11-21" date_vid="2008-11-21" tags="outdoor, schoolgirl"/>
+			<Set name="02" date_pic="2008-12-05" date_vid="2008-12-05" tags="bath, bathtub, gym outfit"/>
+			<Set name="03" date_pic="2008-12-26" date_vid="2008-12-26" tags="ballet, chair, table, window"/>
+			<Set name="04" date_pic="2009-01-02" date_vid="2009-01-02" tags="gym outfit, outdoor, playground, sneakers"/>
+			<Set name="05" date_pic="2009-01-23" date_vid="2009-01-23" tags="sofa, swimsuit, window"/>
 		</Sets>
 	</Model>
 	<Model firstname="Nastia" lastname="Kravehenko" birthdate="1997-05-20" tags="">
 		<Sets>
-			<Set name="01" date_pic="2008-11-14" date_vid="2008-11-14" tags="" />
-			<Set name="02" date_pic="2008-12-05" date_vid="2008-12-05" tags="" />
-			<Set name="03" date_pic="2008-12-26" date_vid="2008-12-26" tags="" />
-			<Set name="04" date_pic="2009-01-02" date_vid="2009-01-02" tags="" />
-			<Set name="05" date_pic="2009-01-16" date_vid="2009-01-16" tags="" />
+			<Set name="01" date_pic="2008-11-14" date_vid="2008-11-14" tags="briefcase, outdoor, schoolgirl"/>
+			<Set name="02" date_pic="2008-12-05" date_vid="2008-12-05" tags="gym outfit, outdoor, playground"/>
+			<Set name="03" date_pic="2008-12-26" date_vid="2008-12-26" tags="bed, cosplay, door, wood floor"/>
+			<Set name="04" date_pic="2009-01-02" date_vid="2009-01-02" tags="black boots, black shorts, black top, gloves, stairs, window, windowsill"/>
+			<Set name="05" date_pic="2009-01-16" date_vid="2009-01-16" tags="bikini, sofa"/>
 		</Sets>
 	</Model>
 	<Model firstname="Natasha" lastname="C" birthdate="1995-04-04" tags="">
@@ -857,27 +857,27 @@ Real birthdate: 1996-03-19
 	</Model>
 	<Model firstname="Nina" lastname="T" birthdate="1997-08-05" tags="">
 		<Sets>
-			<Set name="01" date_pic="2009-02-27" date_vid="2009-02-27" tags="" />
-			<Set name="02" date_pic="2009-03-13" date_vid="2009-03-13" tags="" />
-			<Set name="03" date_pic="2009-03-20" date_vid="2009-03-20" tags="" />
-			<Set name="04" date_pic="2009-06-05" date_vid="2009-06-05" tags="" />
-			<Set name="05" date_pic="2009-07-10" date_vid="2009-07-10" tags="" />
+			<Set name="01" date_pic="2009-02-27" date_vid="2009-02-27" tags="maid, sofa, window, wood floor"/>
+			<Set name="02" date_pic="2009-03-13" date_vid="2009-03-13" tags="gym outfit, pigtails, window"/>
+			<Set name="03" date_pic="2009-03-20" date_vid="2009-03-20" tags="bath, bathtub, swimsuit"/>
+			<Set name="04" date_pic="2009-06-05" date_vid="2009-06-05" tags="backpack, outdoor, schoolgirl, stairs"/>
+			<Set name="05" date_pic="2009-07-10" date_vid="2009-07-10" tags="swimsuit, window, windowsill, wood floor"/>
 		</Sets>
 	</Model>
 	<Model firstname="Oksana" lastname="" birthdate="1995-12-04" tags="">
 		<Sets>
-			<Set name="01" date_pic="2008-01-25" date_vid="2008-01-25" tags="" />
-			<Set name="02" date_pic="2008-02-29" date_vid="2008-02-29" tags="" />
-			<Set name="03" date_pic="2008-03-07" date_vid="2008-03-07" tags="" />
+			<Set name="01" date_pic="2008-01-25" date_vid="2008-01-25" tags="chair, dress, plant, window, windowsill"/>
+			<Set name="02" date_pic="2008-02-29" date_vid="2008-02-29" tags="church, dress, gloves"/>
+			<Set name="03" date_pic="2008-03-07" date_vid="2008-03-07" tags="black boots, cat ears, gloves, outdoor, tree, zebra"/>
 		</Sets>
 	</Model>
 	<Model firstname="Oksana" lastname="Cherkasskaya" birthdate="1997-08-09" tags="">
 		<Sets>
-			<Set name="01" date_pic="2008-11-07" date_vid="2008-11-07" tags="" />
-			<Set name="02" date_pic="2008-11-28" date_vid="2008-11-28" tags="" />
-			<Set name="03" date_pic="2008-12-05" date_vid="2008-12-05" tags="" />
-			<Set name="04" date_pic="2009-01-09" date_vid="2009-01-09" tags="" />
-			<Set name="05" date_pic="2009-01-23" date_vid="2009-01-23" tags="" />
+			<Set name="01" date_pic="2008-11-07" date_vid="2008-11-07" tags="flowers, outdoor, sailor"/>
+			<Set name="02" date_pic="2008-11-28" date_vid="2008-11-28" tags="gym shorts, sofa, sports bra"/>
+			<Set name="03" date_pic="2008-12-05" date_vid="2008-12-05" tags="bunny ears, swimsuit, window, windowsill"/>
+			<Set name="04" date_pic="2009-01-09" date_vid="2009-01-09" tags="balls, door, shorts, tanktop"/>
+			<Set name="05" date_pic="2009-01-23" date_vid="2009-01-23" tags="bath, bathtub, silver latex"/>
 		</Sets>
 	</Model>
 	<Model firstname="Olesya" lastname="Z" birthdate="1998-08-19" tags="">
