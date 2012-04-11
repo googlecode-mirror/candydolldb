@@ -34,9 +34,14 @@ else
 
 if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'UserView')
 {
-	$User->setUserName($_POST['txtUserName']);
-	$User->setPassword($_POST['hidPassword']);
-	$User->setSalt($_SESSION['UserSalt']);
+	if((array_key_exists('txtUserName', $_POST)) && (array_key_exists('hidPassword', $_POST)) && (array_key_exists('UserSalt', $_SESSION)))
+	{
+		$User->setUserName($_POST['txtUserName']);
+		$User->setPassword($_POST['hidPassword']);
+		$User->setSalt($_SESSION['UserSalt']);
+	}
+
+
 	$User->setFirstName($_POST['txtFirstName']);
 	$User->setInsertion($_POST['txtInsertion']);
 	$User->setLastName($_POST['txtLastName']);
@@ -62,8 +67,8 @@ if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'UserView')
 	}
 	else
 	{ $User->setGender(GENDER_UNKNOWN); }
-	
-	if($_POST['txtPassword'])
+
+	if($_POST['txtPassword'] && ($User->getID() == $CurrentUser->getID()))
 	{
 		if($_POST['txtRepeatPassword'] && $_POST['txtRepeatPassword'] == $_POST['txtPassword'])
 		{
@@ -172,6 +177,7 @@ setInterval(function () {
 <input type="hidden" id="hidAction" name="hidAction" value="UserView" />
 <input type="hidden" id="hidPassword" name="hidPassword" value="<?php echo $User->getPassword(); ?>" />
 
+<?php if($User->getID() == $CurrentUser->getID()){ ?>
 <div class="FormRow">
 <label for="txtUserName">Username: <em>*</em></label>
 <input type="text" id="txtUserName" name="txtUserName" maxlength="50" value="<?php echo $User->getUserName();?>"<?php echo HTMLstuff::DisabledStr($DeleteUser); ?> />
@@ -188,7 +194,7 @@ setInterval(function () {
 <label for="txtRepeatPassword">Repeat password:<?php echo $UserID ? '' : ' <em>*</em>'; ?></label>
 <input type="password" id="txtRepeatPassword" name="txtRepeatPassword" maxlength="100" value=""<?php echo HTMLstuff::DisabledStr($DeleteUser); ?> />
 </div>
-
+<? } ?>
 <div class="FormRow">
 <label for="selectDateformat">Select date format:</label>
 <select id="selectDateformat" name="selectDateformat"<?php echo HTMLstuff::DisabledStr($DeleteUser); ?>><?php echo $DateFormatOptions ?></select>
@@ -238,7 +244,7 @@ setInterval(function () {
 
 <div class="FormRow">
 <label>&nbsp;</label>
-<input type="submit" id="submitform" class="FormButton" value="<?php echo $DeleteUser ? 'Delete' : 'Save'; ?>" disabled="disabled" />
+<input type="submit" id="submitform" class="FormButton" value="<?php echo $DeleteUser ? 'Delete' : 'Save'; ?>"<?php echo ($User->getID() != $CurrentUser->getID()) ? null : 'disabled="disabled"' ?> />
 <input type="button" class="FormButton" value="Cancel" onclick="window.location='user.php';" />
 </div>
 
