@@ -167,8 +167,15 @@ if($XmlFromFile)
 					$Set2Process->getContainsWhat() | SET_CONTENT_VIDEO
 				);
 			}
-			
-			// Update the Set's CONTAINS_WHAT 
+
+			if($Set2Process->getModel()->getFirstName() == 'Promotions')
+			{
+				$Set2Process->setContainsWhat(
+					$Set2Process->getContainsWhat() | SET_CONTENT_VIDEO
+				);
+			}
+
+			// Update the Set's CONTAINS_WHAT
 			Set::UpdateSet($Set2Process, $CurrentUser);
 			
 			
