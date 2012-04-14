@@ -91,9 +91,14 @@ function AddTagAutoSuggest(){
 				
 			$(r).html(data).fadeIn('slow').children('a').click(function(){
 				var a = $(this);
-					
+				
 				$(b).val(function(index, value){
-					return value.replace(/[^,\s]*$/gi, '') + $(a).text()
+					
+					return value.replace(
+							/,?\s*[^,]+\s*$/,
+							($(b).val().indexOf(',') == -1 ? '' : ', ')
+							+ $(a).text()
+					); 
 				});
 
 				$(r).fadeOut('fast').remove();
