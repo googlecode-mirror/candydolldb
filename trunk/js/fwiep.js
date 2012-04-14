@@ -83,7 +83,10 @@ function AddTagAutoSuggest(){
 				
 			$(b).parent().children('.AutoSuggest').remove();
 	 		
-			var r = $('<div class="AutoSuggest"></div>');
+			var r = $('<div class="AutoSuggest"></div>').css(
+					{'left': $(b).position().left + 'px'}
+			);
+			
 			$(b).after($(r));
 				
 			$(r).html(data).fadeIn('slow').children('a').click(function(){
