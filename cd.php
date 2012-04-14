@@ -72,12 +72,12 @@ define('REQUIRED_FIELD_MISSING', 33368);
 $SplitRegex = "/;+(?=([^'|^\\\']*['|\\\'][^'|^\\\']*['|\\\'])*[^'|^\\\']*[^'|^\\\']$)/";
 $CSVRegex = '/\s*(?<!\\\),\s*/';
 $DateStyleArray = array(
-	"d-m-Y",
-	"j-n-Y",
-	"j F Y",
-	"m-d-Y",
-	"n-j-Y",
-	"F j, Y"
+	"d-m-Y",	// 14-04-2012
+	"j-n-Y",	// 14-4-2012
+	"j F Y",	// 14 April 2012 
+	"m-d-Y",	// 04-14-2012 
+	"n-j-Y",	// 4-14-2012 
+	"F j, Y"	// April 14, 2012 
 );
 
 include('class/class.global.php');
@@ -124,7 +124,5 @@ if(in_array(basename($_SERVER['PHP_SELF']), $EmailPages))
 	$ml->Port = SMTP_PORT;
 	$ml->SMTPAuth = SMTP_AUTH;
 }
-
-
 
 ?>
