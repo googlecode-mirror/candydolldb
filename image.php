@@ -43,26 +43,25 @@ if($Images)
 			case 'thumb':
 				$ImageRows .= sprintf(
 				"<div class=\"SetThumbGalItem\">
-				<h3 class=\"Hidden\">%4\$s.%5\$s</h3>
-				<div class=\"SetThumbImageWrapper\">
-				<a href=\"download_image.php?image_id=%8\$d&amp;width=%10\$d&amp;height=%11\$d\" title=\"%1\$s\" rel=\"lightbox-gal\">
-				<img src=\"download_image.php?image_id=%8\$d&amp;width=225&amp;height=150\" height=\"150\" alt=\"%4\$s.%5\$s\" />
-				</a>
-				</div>
-				<div class=\"ThumbDataWrapper\">
-				<ul>
-				<li>Filename: %4\$s.%5\$s</li>
-				<li>Filesize: %13\$s</li>
-				<li>Width: %14\$d</li>
-				<li>Height: %15\$d</li>
-				<li>Checksum: %16\$s</li>
-				</ul>
-				</div>
-				<div class=\"ImageButtonWrapper\">
-				<a href=\"image_view.php?model_id=%6\$d&amp;set_id=%7\$d&amp;image_id=%8\$d\"><img src=\"images/button_edit.png\" width=\"16\" height=\"16\" title=\"Edit model\" alt=\"Edit model\"/></a>
-				<a href=\"download_zip.php?image_id=%8\$d\"><img src=\"images/button_download.png\" width=\"16\" height=\"16\" alt=\"Download image\" title=\"Download image\" /></a>
-				<a href=\"image_view.php?model_id=%6\$d&amp;set_id=%7\$d&amp;image_id=%8\$d&amp;cmd=%12\$s\" title=\"Delete image\"><img src=\"images/button_delete.png\" width=\"16\" height=\"16\" alt=\"Delete\" /></a>
-				</div>
+					<h3 class=\"Hidden\">%4\$s.%5\$s</h3>
+					<div class=\"SetThumbImageWrapper\">
+						<a href=\"download_image.php?image_id=%8\$d&amp;width=%10\$d&amp;height=%11\$d\" title=\"%1\$s\" rel=\"lightbox-gal\">
+							<img src=\"download_image.php?image_id=%8\$d&amp;width=225&amp;height=150\" height=\"150\" alt=\"%4\$s.%5\$s\" />
+						</a>
+					</div>
+					<div class=\"ThumbDataWrapper\">
+						<ul style=\"padding-left:0;text-align:center;\">
+							<li>Filename: %4\$s.%5\$s</li>
+							<li>Filesize: %13\$s</li>
+							<li>Width: %14\$d</li>
+							<li>Height: %15\$d</li>
+						</ul>
+					</div>
+					<div class=\"ImageButtonWrapper\">
+						<a href=\"image_view.php?model_id=%6\$d&amp;set_id=%7\$d&amp;image_id=%8\$d\"><img src=\"images/button_edit.png\" width=\"16\" height=\"16\" title=\"Edit model\" alt=\"Edit model\"/></a>
+						<a href=\"download_zip.php?image_id=%8\$d\"><img src=\"images/button_download.png\" width=\"16\" height=\"16\" alt=\"Download image\" title=\"Download image\" /></a>
+						<a href=\"image_view.php?model_id=%6\$d&amp;set_id=%7\$d&amp;image_id=%8\$d&amp;cmd=%12\$s\" title=\"Delete image\"><img src=\"images/button_delete.png\" width=\"16\" height=\"16\" alt=\"Delete\" /></a>
+					</div>
 				</div>
 				%9\$s",
 				htmlentities($Image->getSet()->getModel()->GetFullName()),
@@ -79,23 +78,22 @@ if($Images)
 				COMMAND_DELETE,
 				Utils::ReadableFilesize($Image->getFileSize()),
 				$Image->getImageWidth(),
-				$Image->getImageHeight(),
-				htmlentities($Image->getFileCheckSum())
+				$Image->getImageHeight()
 				);
 			break;
 
 			case 'detail':
 				$ImageRows .= sprintf(
 				"\n<tr class=\"Row%12\$d\">".
-				"<td><a href=\"image_view.php?model_id=%3\$d&amp;set_id=%2\$d&amp;image_id=%1\$d\">%4\$s</a></td>".
-				"<td class=\"Center\">%5\$s</td>".
-				"<td class=\"Center\">%6\$s</td>".
-				"<td class=\"Center\">%9\$d</td>".
-				"<td class=\"Center\">%10\$d</td>".
-				"<td>%7\$s</td>".
-				"<td class=\"Center\"><a href=\"download_zip.php?image_id=%1\$d\"><img src=\"images/button_download.png\" width=\"16\" height=\"16\" alt=\"Download image\" title=\"Download image\" /></a></td>".
-				"<td class=\"Center\"><a href=\"download_image.php?image_id=%1\$d&amp;width=%13\$d&amp;height=%14\$d\" title=\"%4\$s\" rel=\"lightbox-gal\"><img src=\"images/button_view.png\" width=\"16\" height=\"16\" alt=\"View image\" title=\"View image\" /></a></td>".
-				"<td class=\"Center\"><a href=\"image_view.php?model_id=%3\$d&amp;set_id=%2\$d&amp;image_id=%1\$d&amp;cmd=%11\$s\" title=\"Delete image\"><img src=\"images/button_delete.png\" width=\"16\" height=\"16\" alt=\"Delete\" /></a></td>".
+					"<td><a href=\"image_view.php?model_id=%3\$d&amp;set_id=%2\$d&amp;image_id=%1\$d\">%4\$s</a></td>".
+					"<td class=\"Center\">%5\$s</td>".
+					"<td class=\"Center\">%6\$s</td>".
+					"<td class=\"Center\">%9\$d</td>".
+					"<td class=\"Center\">%10\$d</td>".
+					"<td>%7\$s</td>".
+					"<td class=\"Center\"><a href=\"download_zip.php?image_id=%1\$d\"><img src=\"images/button_download.png\" width=\"16\" height=\"16\" alt=\"Download image\" title=\"Download image\" /></a></td>".
+					"<td class=\"Center\"><a href=\"download_image.php?image_id=%1\$d&amp;width=%13\$d&amp;height=%14\$d\" title=\"%4\$s\" rel=\"lightbox-gal\"><img src=\"images/button_view.png\" width=\"16\" height=\"16\" alt=\"View image\" title=\"View image\" /></a></td>".
+					"<td class=\"Center\"><a href=\"image_view.php?model_id=%3\$d&amp;set_id=%2\$d&amp;image_id=%1\$d&amp;cmd=%11\$s\" title=\"Delete image\"><img src=\"images/button_delete.png\" width=\"16\" height=\"16\" alt=\"Delete\" /></a></td>".
 				"</tr>",
 				$Image->getID(),
 				$Set->getID(),
@@ -162,11 +160,11 @@ case 'detail':
 	<thead>
 		<tr>
 			<th>Filename</th>
-			<th style="width: 60px;">Extension</th>
-			<th style="width: 80px;">Filesize</th>
-			<th style="width: 65px;">Width</th>
-			<th style="width: 65px;">Height</th>
-			<th style="width: 160px;">Checksum</th>
+			<th class="Center" style="width: 60px;">Extension</th>
+			<th class="Center" style="width: 80px;">Filesize</th>
+			<th class="Center" style="width: 65px;">Width</th>
+			<th class="Center" style="width: 65px;">Height</th>
+			<th class="Center" style="width: 160px;">Checksum</th>
 			<th style="width: 22px;">&nbsp;</th>
 			<th style="width: 22px;"><a href="#" title="View slideshow" onclick="OpenSlideColorBox();"><img src="images/button_view.png" alt="View slideshow" width="16" height="16" /></a></th>
 			<th style="width: 22px;">&nbsp;</th>
@@ -190,11 +188,8 @@ break;
 
 <?php
 echo HTMLstuff::Button(sprintf('image_view.php?model_id=%1$d&amp;set_id=%2$d', $ModelID, $SetID), 'New image');
-
 echo HTMLstuff::Button(sprintf('import_image.php?model_id=%1$d&amp;set_id=%2$d', $ModelID, $SetID), 'Import images');
-
 echo HTMLstuff::Button(sprintf('set.php?model_id=%1$d', $ModelID), 'Sets');
-
 echo HTMLstuff::Button('index.php');
 
 echo HTMLstuff::HtmlFooter($CurrentUser);
