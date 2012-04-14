@@ -201,7 +201,7 @@ setInterval(function () {
 </div>
 
 <div class="FormRow">
-<label for="selectImageview">Select image view format:</label>
+<label for="selectImageview">Select image format:</label>
 <select id="selectImageview" name="selectImageview"<?php echo HTMLstuff::DisabledStr($DeleteUser); ?>>
 <option value="detail" <?php echo $User->getImageview() == 'detail' ? ' selected="selected"' : null ?>>Detail View [Default]</option>
 <option value="thumb" <?php echo $User->getImageview() == 'thumb' ? ' selected="selected"' : null ?>>Thumbnail View</option>
