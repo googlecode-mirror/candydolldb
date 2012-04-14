@@ -128,4 +128,5 @@ else
 
 <?php
 }
-echo HTMLstuff::HtmlFooter(); ?>
+echo HTMLstuff::HtmlFooter();
+?>
