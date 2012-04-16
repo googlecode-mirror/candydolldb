@@ -449,9 +449,6 @@ div.ErrorList div ul{
 }
 
 
-
-
-
 /* CacheImage delete */
 .image-thumb, .image-thumb img {
 	margin: 0 auto;
@@ -462,16 +459,16 @@ div.ErrorList div ul{
 	background-repeat: no-repeat;
 	top:2px;
 	display:none;
-	height:16px;
+	height:17px;
 	left:2px;
 	position:absolute;
-	width:16px;
+	width:17px;
 }
 .image-thumb:hover .image-del {
 	display:block;
 }
 .image-del:hover {
-	background-position: 2px 2px;
+	background-position: 1px 1px;
 }
 
 
