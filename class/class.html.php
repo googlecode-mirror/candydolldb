@@ -164,6 +164,10 @@ class HTMLstuff
 					$(this).hide();
 					$('.Loading').removeClass('Loading').append(this);
 					$(this).wrap('<a href="#"></a>').fadeIn();
+					
+					if($.browser.msie){
+						AddDeleteOverlay();
+					}
 				}).attr({
 					width : %2\$d,
 					height : %3\$d,
