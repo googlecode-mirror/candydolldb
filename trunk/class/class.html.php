@@ -24,7 +24,7 @@ class HTMLstuff
 		
 		<script type=\"text/javascript\" src=\"js/jquery.min.js\"></script>
 		<script type=\"text/javascript\" src=\"js/jquery.ba-outside-events.js\"></script>
-		<script type=\"text/javascript\" src=\"js/fwiep.js\"></script>
+		<script type=\"text/javascript\" src=\"js/candydolldb.js\"></script>
 
 		<title>CandyDoll DB v%1\$s%2\$s</title>
 		</head>
@@ -104,7 +104,7 @@ class HTMLstuff
 			%1\$s
 			
 			<div class=\"cddbstuff\">
-			CandyDollDB v%2\$s<br />by <a href=\"http://www.fwiep.nl/\" rel=\"external\">FWieP</a>
+			CandyDollDB v%2\$s<br />by <a href=\"http://www.fwiep.nl/\" rel=\"external\">FWieP</a> et al.
 			</div>
 			
 			</div>
