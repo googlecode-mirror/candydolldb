@@ -367,29 +367,29 @@ Real birthdate: 1996-03-19
 	</Model>
 	<Model firstname="Eva" lastname="G" birthdate="" tags="">
 		<Sets>
-			<Set name="01" date_pic="2010-01-22" date_vid="2010-01-22" tags="" />
-			<Set name="02" date_pic="2010-01-29" date_vid="2010-01-29" tags="" />
-			<Set name="03" date_pic="2010-03-19" date_vid="2010-03-19" tags="" />
-			<Set name="04" date_pic="2010-04-23" date_vid="2010-04-23" tags="" />
-			<Set name="05" date_pic="2010-05-07" date_vid="2010-05-07" tags="" />
+			<Set name="01" date_pic="2010-01-22" date_vid="2010-01-22" tags="diadem, earrings, gloves, outdoor, red, tile, toy, white socks, white stockings, windowsill, wood floor"/>
+			<Set name="02" date_pic="2010-01-29" date_vid="2010-01-29" tags="bare feet, blue, braids, earrings, sofa, swimsuit, windowsill"/>
+			<Set name="03" date_pic="2010-03-19" date_vid="2010-03-19" tags="diadem, earrings, ribbon, sofa, swimsuit, wood floor"/>
+			<Set name="04" date_pic="2010-04-23" date_vid="2010-04-23" tags="balcony, blue shorts, chair, earrings, ponytail, radiator, sweater, t-shirt, white, windowsill, wood floor, yellow"/>
+			<Set name="05" date_pic="2010-05-07" date_vid="2010-05-07" tags="bed, curtain, earrings, pigtails, pink, polkadot, white socks, windowsill"/>
 		</Sets>
 	</Model>
 	<Model firstname="Faina" lastname="A" birthdate="2001-09-19" tags="">
 		<Sets>
-			<Set name="01" date_pic="2011-12-09" date_vid="2011-12-02" tags="" />
-			<Set name="02" date_pic="2011-12-16" date_vid="2011-12-30" tags="" />
-			<Set name="03" date_pic="2011-12-23" date_vid="2012-01-27" tags="" />
-			<Set name="04" date_pic="2012-01-20" date_vid="2012-02-17" tags="" />
-			<Set name="05" date_pic="2012-03-02" date_vid="2012-02-24" tags="" />
+			<Set name="01" date_pic="2011-12-09" date_vid="2011-12-02" tags="cat ears, chair, garters, gloves, lace, red drapes, white, white stockings"/>
+			<Set name="02" date_pic="2011-12-16" date_vid="2011-12-30" tags="backpack, balls, black shorts, blue drapes, pigtails, ringer t-shirt, stool, white, white socks"/>
+			<Set name="03" date_pic="2011-12-23" date_vid="2012-01-27" tags="bare feet, beachball, blue drapes, orange, ponytail, stool, swimsuit"/>
+			<Set name="04" date_pic="2012-01-20" date_vid="2012-02-17" tags="blanket, diadem, drapes, gloves, necklace, pink, striped socks, white shoes"/>
+			<Set name="05" date_pic="2012-03-02" date_vid="2012-02-24" tags="bare feet, blue, red drapes, skipping rope, swimsuit"/>
 		</Sets>
 	</Model>
 	<Model firstname="Hanna" lastname="F" birthdate="" tags="">
 		<Sets>
-			<Set name="01" date_pic="2012-03-09" date_vid="2012-03-16" tags="" />
-			<Set name="02" date_pic="2012-03-16 2012-03-23" date_vid="2012-03-30" tags="" />
-			<Set name="03" date_pic="2012-03-30" date_vid="2012-04-06" tags="" />
-			<Set name="04" date_pic="2012-04-06" date_vid="" tags="" />
-			<Set name="05" date_pic="2012-04-13" date_vid="" tags="" />
+			<Set name="01" date_pic="2012-03-09" date_vid="2012-03-16" tags="bare feet, beachball, seamless background, white, yellow"/>
+			<Set name="02" date_pic="2012-03-16 2012-03-23" date_vid="2012-03-30" tags="bare feet, pink, seamless background, stilettos"/>
+			<Set name="03" date_pic="2012-03-30" date_vid="2012-04-06" tags="black shoes, black socks, chair, ring, schoolgirl, seamless background"/>
+			<Set name="04" date_pic="2012-04-06" date_vid="" tags="blue, chair, diadem, red drapes, underwear, white socks"/>
+			<Set name="05" date_pic="2012-04-13" date_vid="" tags="basketball, pigtails, red, seamless background, skipping rope, swimsuit, white socks"/>
 		</Sets>
 	</Model>
 	<Model firstname="Inna" lastname="Lyublinskaya" birthdate="1997-01-06" tags="">
@@ -408,11 +408,11 @@ Real birthdate: 1996-03-19
 	</Model>
 	<Model firstname="Ira" lastname="Kosterova" birthdate="1996-08-12" tags="">
 		<Sets>
-			<Set name="01" date_pic="2008-11-07" date_vid="2008-11-07" tags="" />
-			<Set name="02" date_pic="2008-11-21" date_vid="2008-11-21" tags="" />
-			<Set name="03" date_pic="2008-11-28" date_vid="2008-11-28" tags="" />
-			<Set name="04" date_pic="2009-01-02" date_vid="2009-01-02" tags="" />
-			<Set name="05" date_pic="2009-01-09" date_vid="2009-01-09" tags="" />
+			<Set name="01" date_pic="2008-11-07" date_vid="2008-11-07" tags="bag, black shoes, garden, outdoor, pigtails, schoolgirl, white socks"/>
+			<Set name="02" date_pic="2008-11-21" date_vid="2008-11-21" tags="black shorts, grass, monkey bars, outdoor, pigtails, t-shirt, white"/>
+			<Set name="03" date_pic="2008-11-28" date_vid="2008-11-28" tags="outdoor, tiara, tree, white, white socks"/>
+			<Set name="04" date_pic="2009-01-02" date_vid="2009-01-02" tags="bed, bracelet, curtain, necklace, pigtails, pink, white stockings, window"/>
+			<Set name="05" date_pic="2009-01-09" date_vid="2009-01-09" tags="bikini, cabinet, hair buns, lace, white, window, wood floor"/>
 		</Sets>
 	</Model>
 	<Model firstname="Irina" lastname="Belous" birthdate="1996-11-15" tags="">
