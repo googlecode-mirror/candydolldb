@@ -197,6 +197,7 @@ class Image
 	public static function GetImages($WhereClause = 'mut_deleted = -1', $OrderClause = 'model_firstname ASC, model_lastname ASC, set_prefix ASC, set_name ASC, image_filename ASC', $LimitClause = null)
 	{
 		global $db;
+		$WhereClause = is_null($WhereClause) ? 'mut_deleted = -1' : $WhereClause;
 		$OrderClause = is_null($OrderClause) ? 'model_firstname ASC, model_lastname ASC, set_prefix ASC, set_name ASC, image_filename ASC' : $OrderClause; 
 			
 		if($db->Select('vw_Image', '*', $WhereClause, $OrderClause, $LimitClause))

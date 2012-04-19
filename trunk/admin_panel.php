@@ -3,7 +3,7 @@
 include('cd.php');
 $CurrentUser = Authentication::Authenticate();
 
-$ModelsOptions = '<option value=""></option>';
+$ModelsOptions = '';
 $Models = Model::GetModels();
 
 /* @var $Model Model */
@@ -56,11 +56,13 @@ echo HTMLstuff::HtmlHeader('Admin-panel', $CurrentUser);
 //<![CDATA[
 	
 	function RedirToXML(){
+		var modelIdXml = parseInt( $('#selModelXml').val() );
 		var includePic = $('#chkXMLIncludePic').is(':checked');
 		var includeVid = $('#chkXMLIncludeVid').is(':checked');
 		var url = 'download_xml.php';
 
-		url += '?includeimages=' + (includePic ? 'true' : 'false');
+		url += '?model_id=' + (isNaN(modelIdXml) || modelIdXml <= 0 ? '' : modelIdXml); 
+		url += '&includeimages=' + (includePic ? 'true' : 'false');
 		url += '&includevideos=' + (includeVid ? 'true' : 'false');		
 
 		window.location = url;
@@ -109,6 +111,11 @@ echo HTMLstuff::HtmlHeader('Admin-panel', $CurrentUser);
 <label>To download an XML-file, based on your own CandyDollDB-collection.</label>
 <input type="button" id="btnDownloadExport" name="btnDownloadExport" value="Download" onclick="RedirToXML();" />
 <br />
+<label for="selModelXml" style="float:none;width:auto;">Model: </label>
+<select id="selModelXml" name="selModel">
+	<option value="">All models</option>
+	<?php echo $ModelsOptions; ?>
+</select>
 <label for="chkXMLIncludePic" style="float:none;width:auto;"><input type="checkbox" id="chkXMLIncludePic" name="chkXMLIncludePic" />&nbsp;Include images</label>
 <label for="chkXMLIncludeVid" style="float:none;width:auto;"><input type="checkbox" id="chkXMLIncludeVid" name="chkXMLIncludeVid" />&nbsp;Include videos</label>
 </div>
@@ -117,7 +124,10 @@ echo HTMLstuff::HtmlHeader('Admin-panel', $CurrentUser);
 
 <div class="FormRow">
 <label for="selModel">Model: </label>
-<select id="selModel" name="selModel"><?php echo $ModelsOptions; ?></select>
+<select id="selModel" name="selModel">
+	<option value=""></option>
+	<?php echo $ModelsOptions; ?>
+</select>
 </div>
 
 <div class="FormRow">

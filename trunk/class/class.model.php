@@ -195,6 +195,7 @@ class Model
 	public static function GetModels($WhereClause = 'mut_deleted = -1', $OrderClause = 'model_firstname ASC, model_lastname ASC', $LimitClause = null)
 	{
 		global $db;
+		$WhereClause = is_null($WhereClause) ? 'mut_deleted = -1' : $WhereClause;
 		$OrderClause = is_null($OrderClause) ? 'model_firstname ASC, model_lastname ASC' : $OrderClause; 
 		
 		if($db->Select('vw_Model', '*', $WhereClause, $OrderClause, $LimitClause))
