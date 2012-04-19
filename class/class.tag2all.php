@@ -130,6 +130,7 @@ class Tag2All
 	public static function GetTag2Alls($WhereClause = null, $OrderClause = 'tag_name ASC')
 	{
 		global $db;
+		$OrderClause = is_null($OrderClause) ? 'tag_name ASC' : $OrderClause;
 
 		if($db->Select('vw_Tag2All', '*', $WhereClause, $OrderClause, null))
 		{

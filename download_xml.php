@@ -4,19 +4,32 @@ include('cd.php');
 ini_set('max_execution_time', '3600');
 ob_start();
 $CurrentUser = Authentication::Authenticate();
+
 $ModelID = Utils::SafeIntFromQS('model_id');
 $IncludeImages = Utils::SafeBoolFromQS('includeimages');
 $IncludeVideos = Utils::SafeBoolFromQS('includevideos');
 
 
-$Models = Model::GetModels();
-$Sets = Set::GetSets();
+$Models = Model::GetModels(
+	$ModelID ? sprintf('model_id = %1$d AND mut_deleted = -1', $ModelID) : null
+);
+
+$Sets = Set::GetSets(
+	$ModelID ? sprintf('model_id = %1$d AND mut_deleted = -1', $ModelID) : null
+);
+
 $Dates = Date::GetDates();
 $Tag2Alls = Tag2All::GetTag2Alls();
 
 
+$outfile = 'CandyDollDB.xml';
+if($ModelID && count($Models) > 0){
+	$Model = $Models[0];
+	$outfile = sprintf('CandyDollDB %1$s.xml', $Model->GetFullName());
+}
+
 header('Content-Type: text/xml');
-header('Content-Disposition: attachment; filename=CandyDollDB.xml');
+header(sprintf('Content-Disposition: attachment; filename="%1$s"', $outfile));
 
 
 $xmlw = new XMLWriter();
@@ -34,7 +47,6 @@ $xmlw->writeAttribute('xmlns', null);
 /* @var $Model Model */
 foreach ($Models as $Model)
 {
-	// Provide a one-model-only export for impatient developers
 	if($ModelID && $Model->getID() !== $ModelID)
 	{ continue; }
 	

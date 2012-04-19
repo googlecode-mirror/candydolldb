@@ -57,6 +57,8 @@ class Tag
 	public static function GetTags($WhereClause = 'mut_deleted = -1', $OrderClause = 'tag_name ASC', $LimitClause = null)
 	{
 		global $db;
+		$WhereClause = is_null($WhereClause) ? 'mut_deleted = -1' : $WhereClause;
+		$OrderClause = is_null($OrderClause) ? 'tag_name ASC' : $OrderClause;
 	
 		if($db->Select('Tag', '*', $WhereClause, $OrderClause, $LimitClause))
 		{
