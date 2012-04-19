@@ -388,7 +388,7 @@ Real birthdate: 1996-03-19
 			<Set name="01" date_pic="2012-03-09" date_vid="2012-03-16" tags="bare feet, beachball, seamless background, white, yellow"/>
 			<Set name="02" date_pic="2012-03-16 2012-03-23" date_vid="2012-03-30" tags="bare feet, pink, seamless background, stilettos"/>
 			<Set name="03" date_pic="2012-03-30" date_vid="2012-04-06" tags="black shoes, black socks, chair, ring, schoolgirl, seamless background"/>
-			<Set name="04" date_pic="2012-04-06" date_vid="" tags="blue, chair, diadem, red drapes, underwear, white socks"/>
+			<Set name="04" date_pic="2012-04-06" date_vid="2012-04-20" tags="blue, chair, diadem, red drapes, underwear, white socks"/>
 			<Set name="05" date_pic="2012-04-13" date_vid="" tags="basketball, pigtails, red, seamless background, skipping rope, swimsuit, white socks"/>
 		</Sets>
 	</Model>
@@ -492,7 +492,8 @@ Real birthdate: 1996-03-19
 			<Set name="05" date_pic="2012-03-16" date_vid="2012-03-30" tags="" />
 			<Set name="06" date_pic="2012-03-23" date_vid="2012-04-06" tags="" />
 			<Set name="07" date_pic="2012-03-30" date_vid="2012-04-13" tags="" />
-			<Set name="08" date_pic="2012-04-13" date_vid="" tags="" />
+			<Set name="08" date_pic="2012-04-13" date_vid="2012-04-20" tags="" />
+			<Set name="09" date_pic="2012-04-20" date_vid="" tags="" />
 		</Sets>
 	</Model>
 	<Model firstname="Klara" lastname="H" birthdate="2001-10-05" tags="">
@@ -511,6 +512,7 @@ Real birthdate: 1996-03-19
 	<Model firstname="Kleo" lastname="M" birthdate="" tags="">
 		<Sets>
 			<Set name="01" date_pic="2012-03-30" date_vid="2012-04-13" tags="" />
+			<Set name="02" date_pic="2012-04-20" date_vid="" tags="" />
 		</Sets>
 	</Model>
 	<Model firstname="Larisa" lastname="Havriluyk" birthdate="1993-11-06" tags="">
@@ -662,6 +664,7 @@ Real birthdate: 1996-03-19
 	<Model firstname="Margaret" lastname="M" birthdate="" tags="">
 		<Sets>
 			<Set name="01" date_pic="2012-04-13" date_vid="2012-03-16" tags="" />
+			<Set name="02" date_pic="" date_vid="2012-04-20" tags="" />
 		</Sets>
 	</Model>
 	<Model firstname="Margarita" lastname="D" birthdate="1997-08-18" tags="">
@@ -691,6 +694,7 @@ Real birthdate: 1996-03-19
 	<Model firstname="Marina" lastname="T" birthdate="" tags="">
 		<Sets>
 			<Set name="01" date_pic="2012-04-06" date_vid="2012-03-30" tags="chair, fishnet, garters, leopard"/>
+			<Set name="02" date_pic="2012-04-20" date_vid="" tags=""/>
 		</Sets>
 	</Model>
 	<Model firstname="Mariya" lastname="D" birthdate="2000-09-01" tags="">
@@ -973,7 +977,7 @@ Real birthdate: 1996-03-19
 		<Sets>
 			<Set name="01" date_pic="2012-03-16" date_vid="2012-03-23" tags="" />
 			<Set name="02" date_pic="2012-03-23" date_vid="2012-03-30" tags="" />
-			<Set name="03" date_pic="2012-04-06" date_vid="" tags="" />
+			<Set name="03" date_pic="2012-04-06" date_vid="2012-04-20" tags="" />
 			<Set name="04" date_pic="2012-04-13" date_vid="" tags="" />
 		</Sets>
 	</Model>
@@ -1151,7 +1155,7 @@ Real birthdate: 1996-03-19
 	</Model>
 	<Model firstname="Sundi" lastname="Z" birthdate="" tags="">
 		<Sets>
-			<Set name="01" date_pic="" date_vid="2012-03-02" tags="" />
+			<Set name="01" date_pic="2012-04-20" date_vid="2012-03-02" tags="" />
 			<Set name="02" date_pic="" date_vid="2012-03-16" tags="" />
 		</Sets>
 	</Model>
@@ -1545,7 +1549,7 @@ Real birthdate: 1996-03-19
 			<Set name="78" date_pic="2012-03-30" date_vid="2011-12-23" tags="" />
 			<Set name="79" date_pic="2012-04-06" date_vid="2011-12-30" tags="" />
 			<Set name="80" date_pic="2012-04-13" date_vid="2012-01-06" tags="" />
-			<Set name="81" date_pic="" date_vid="2012-01-13" tags="" />
+			<Set name="81" date_pic="2012-04-20" date_vid="2012-01-13" tags="" />
 			<Set name="82" date_pic="" date_vid="2012-01-20" tags="" />
 			<Set name="83" date_pic="" date_vid="2012-01-27" tags="" />
 			<Set name="84" date_pic="" date_vid="2012-02-03" tags="" />
@@ -1559,6 +1563,7 @@ Real birthdate: 1996-03-19
 			<Set name="92" date_pic="" date_vid="2012-03-30" tags="" />
 			<Set name="93" date_pic="" date_vid="2012-04-06" tags="" />
 			<Set name="94" date_pic="" date_vid="2012-04-13" tags="" />
+			<Set name="95" date_pic="" date_vid="2012-04-20" tags="" />
 		</Sets>
 	</Model>
 	<Model firstname="Promotions">
