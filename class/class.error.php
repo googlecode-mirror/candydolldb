@@ -101,14 +101,15 @@ class Error
 	 */
 	public static function TranslateError($InError)
 	{
+		global $lang;
 		$OutMessage = null;
 		
 		switch($InError)
 		{
 			case REQUIRED_FIELD_MISSING:
-				$OutMessage = 'Not all required data was entered.'; break;
+				$OutMessage = $lang->g('ErrorNotAllRequiredData'); break;
 			default:
-				$OutMessage = 'Unknown error'; break;
+				$OutMessage = $lang->g('ErrorUnknownError'); break;
 		}
 		return $OutMessage;
 	}
@@ -126,22 +127,23 @@ class LoginError extends Error
 	 */
 	public static function TranslateLoginError($InError)
 	{
+		global $lang;
 		$OutMessage = null;
 		
 		switch($InError)
 		{
 			case LOGIN_ERR_PASSWORDSNOTIDENTICAL:
-				$OutMessage = 'The provided passwords are not identical'; break;
+				$OutMessage = $lang->g('ErrorLoginErrorPasswordsNotIdentical'); break;
 			case LOGIN_ERR_RESETCODENOTFOUND:
-				$OutMessage = 'The hypelink you have used is not or no longer valid'; break;
+				$OutMessage = $lang->g('ErrorLoginErrorHyperlinkInvalid'); break;
 			case LOGIN_ERR_USERNAMENOTFOUND:
-				$OutMessage = 'The specified username was not found'; break;
+				$OutMessage = $lang->g('ErrorLoginErrorUsernameNotFound'); break;
 			case LOGIN_ERR_USERNAMEANDMAILADDRESNOTFOUND:
-				$OutMessage = 'The specified combination of username and e-mailaddress was not found'; break;
+				$OutMessage = $lang->g('ErrorLoginErrorUsernameEmailCombo'); break;
 			case LOGIN_ERR_PASSWORDINCORRECT:
-				$OutMessage = 'The specified password is not correct'; break;
+				$OutMessage = $lang->g('ErrorLoginErrorPasswordIncorect'); break;
 			default:
-				$OutMessage = 'Unknown login error'; break;
+				$OutMessage = $lang->g('ErrorLoginErrorUnknown'); break;
 		}
 		return $OutMessage;
 	}
@@ -160,13 +162,14 @@ class SQLerror extends Error
 	public static function TranslateSQLError($InError)
 	{
 		$OutMessage = null;
+		global $lang;
 		
 		switch($InError)
 		{
 			case SQL_ERR_NOSUCHTABLE:
-				$OutMessage = 'The specified table does not exist'; break;
+				$OutMessage = $lang->g('ErrorSQLErrorTableNotExist'); break;
 			default:
-				$OutMessage = 'Unknown SQL error'; break;
+				$OutMessage = $lang->g('ErrorSQLErrorUnknown'); break;
 		}
 		return $OutMessage;
 	}
@@ -185,13 +188,14 @@ class SyntaxError extends Error
 	public static function TranslateSyntaxError($InError)
 	{
 		$OutMessage = null;
+		global $lang;
 		
 		switch($InError)
 		{
 			case SYNTAX_ERR_EMAILADDRESS:
-				$OutMessage = 'The specified emailaddress is not valid'; break;
+				$OutMessage = $lang->g('ErrorSyntaxEmailAddress'); break;
 			default:
-				$OutMessage = 'Unknown syntax error'; break;
+				$OutMessage = $lang->g('ErrorSyntaxErrorUnknown'); break;
 		}
 		return $OutMessage;
 	}
@@ -210,27 +214,28 @@ class UploadError extends Error
 	public static function TranslateUploadError($InError)
 	{
 		$OutMessage = null;
+		global $lang;
 		
 		switch($InError)
 		{
 			case UPLOAD_ERR_OK:
-				$OutMessage = 'There is no error, the file uploaded with success'; break;
+				$OutMessage = $lang->g('ErrorUploadErrorOK'); break;
 			case UPLOAD_ERR_INI_SIZE:
-				$OutMessage = 'The uploaded file exceeds the upload_max_filesize directive in php.ini'; break;
+				$OutMessage = $lang->g('ErrorUploadErrorMaxFilesizeIni') ; break;
 			case UPLOAD_ERR_FORM_SIZE:
-				$OutMessage = 'The uploaded file exceeds the MAX_FILE_SIZE directive that was specified in the HTML form'; break;
+				$OutMessage = $lang->g('ErrorUploadErrorMaxFilesize'); break;
 			case UPLOAD_ERR_PARTIAL:
-				$OutMessage = 'The uploaded file was only partially uploaded'; break;
+				$OutMessage = $lang->g('ErrorUploadErrorPartialUpload'); break;
 			case UPLOAD_ERR_NO_FILE:
-				$OutMessage = 'No file was uploaded'; break;
+				$OutMessage = $lang->g('ErrorUploadErrorNoFile'); break;
 			case UPLOAD_ERR_NO_TMP_DIR:
-				$OutMessage = 'Missing a temporary folder'; break;
+				$OutMessage = $lang->g('ErrorUploadErrorMissingTempFolder'); break;
 			case UPLOAD_ERR_CANT_WRITE:
-				$OutMessage = 'Failed to write file to disk'; break;
+				$OutMessage = $lang->g('ErrorUploadErrorWriteToDisk'); break;
 			case UPLOAD_ERR_EXTENSION:
-				$OutMessage = 'A PHP extension stopped the file upload'; break;
+				$OutMessage = $lang->g('ErrorUploadErrorPHPExtension'); break;
 			default:
-				$OutMessage = 'Unknown upload error'; break;
+				$OutMessage = $lang->g('ErrorUploadErrorUnknown'); break;
 		}
 		return $OutMessage;
 	}
