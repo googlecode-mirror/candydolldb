@@ -33,7 +33,37 @@ class LabelsDE extends Labels
 		'ErrorUploadErrorPHPExtension' => '',
 		'ErrorUploadErrorUnknown' => '',
 		'ErrorUploadErrorWriteToDisk' => '',
-		'ErrorUploadErrorWriteToDisk' => ''
+		'ErrorUploadErrorWriteToDisk' => '',
+		
+		'CLIFinished' => 'Fertig.',
+		'FooterBy' => '',
+		'FooterLoggedInAs' => '',
+		'FooterLastLogin' => 'Letzter Besuch',
+		'FooterNever' => 'niemals',
+		
+		'NavigationHome' => '',
+		'NavigationFeatures' => '',
+		'NavigationProcessXML' => '',
+		'NavigationNewModel' => 'Neues Model',
+		'NavigationManageTags' => '',
+		'NavigationAdminPanel' => '',
+		'NavigationMultiDownload' => '',
+		'NavigationUsers' => 'Benutzer',
+		'NavigationMyAccount' => '',
+		'NavigationSearch' => 'Suchen',
+		'NavigationTagSearch' => 'Tag-Suche',
+		'NavigationDirtySets' => '',
+		'NavigationLogOut' => 'Abmelden',
+		
+		'LabelDate' => 'Datum',
+		'LabelImagesParentheses' => '(Fotos)',
+		'LabelVideosParentheses' => '(Videos)',
+		'LabelDeleteDate' => 'Datum löschen',
+		'LabelTitleMrMrs' => '',
+		'LabelTitleMr' => '',
+		'LabelTitleMrs' => '',
+		
+		'MessageSureDeleteDate' => ''
 	);
 }
 

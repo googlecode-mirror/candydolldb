@@ -32,7 +32,37 @@ class LabelsEN extends Labels
 		'ErrorUploadErrorPartialUpload' => 'The uploaded file was only partially uploaded.',
 		'ErrorUploadErrorPHPExtension' => 'A PHP extension stopped the file upload.',
 		'ErrorUploadErrorUnknown' => 'Unknown upload error.',
-		'ErrorUploadErrorWriteToDisk' => 'Failed to write file to disk.'
+		'ErrorUploadErrorWriteToDisk' => 'Failed to write file to disk.',
+		
+		'CLIFinished' => 'Finished.',
+		'FooterBy' => 'by',
+		'FooterLoggedInAs' => 'Logged in as',
+		'FooterLastLogin' => 'Last login',
+		'FooterNever' => 'never',
+		
+		'NavigationHome' => 'Home',
+		'NavigationFeatures' => 'Features',
+		'NavigationProcessXML' => 'Process XML',
+		'NavigationNewModel' => 'New model',
+		'NavigationManageTags' => 'Manage tags',
+		'NavigationAdminPanel' => 'Admin-panel',
+		'NavigationMultiDownload' => 'Multi-download',
+		'NavigationUsers' => 'Users',
+		'NavigationMyAccount' => 'My account',
+		'NavigationSearch' => 'Search',
+		'NavigationTagSearch' => 'Tag-search',
+		'NavigationDirtySets' => 'Dirty sets',
+		'NavigationLogOut' => 'Logout',
+		
+		'LabelDate' => 'Date',
+		'LabelImagesParentheses' => '(images)',
+		'LabelVideosParentheses' => '(videos)',
+		'LabelDeleteDate' => 'Delete date',
+		'LabelTitleMrMrs' => 'Mr./Mrs.',
+		'LabelTitleMr' => 'Mr.',
+		'LabelTitleMrs' => 'Mrs.',
+		
+		'MessageSureDeleteDate' => 'Are you sure you wish to delete this date?'
 	);
 }
 
