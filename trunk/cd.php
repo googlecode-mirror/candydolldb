@@ -3,6 +3,30 @@
 error_reporting(E_ALL);
 date_default_timezone_set(@date_default_timezone_get());
 
+
+include('class/class.i18n.php');
+include('class/class.i18n.en.php');
+include('class/class.i18n.nl.php');
+include('class/class.i18n.de.php');
+
+$lang = new i18n();
+
+if(array_key_exists('HTTP_ACCEPT_LANGUAGE', $_SERVER))
+{
+	$preferredLangs = array();
+	$p = preg_match_all('/([^,;]+)/i', $_SERVER['HTTP_ACCEPT_LANGUAGE'], $preferredLangs);
+	
+	if($p > 0)
+	{
+		$preferredLangs = array_filter($preferredLangs[0], function($var){
+			return (preg_match('/^[a-z]{2}/i', $var));
+		});
+		
+		$lang->setLanguages($preferredLangs);
+	}
+}
+
+
 if(isset($argv) && $argc > 0)
 {
 	// On the commandline, include using absolute path
@@ -21,10 +45,9 @@ if(!defined('DBHOSTNAME') || strlen(DBHOSTNAME) == 0 ||
    !defined('DBNAME') || strlen(DBNAME) == 0 ||
    !defined('DBPASSWORD'))
 {
-
 	if(!array_key_exists('REQUEST_URI', $_SERVER))
 	{
-		echo "Please use the webinterface for setting up this application.\n";
+		echo $lang->g('ErrorPleaseUseWebInterfaceForSetup')."\n";
 		exit(128);
 	}
 	else if(basename($_SERVER['REQUEST_URI']) != 'setup.php')
