@@ -141,7 +141,13 @@ class BusyIndicator
 	 */
 	public function Finish()
 	{
-		printf("%1\$s Finished.\n", $this->stringPrefix);
+		global $lang;
+		
+		printf(
+			"%1\$s %2\$s\n",
+			$this->stringPrefix,
+			$lang->g('CLIFinished')
+		);
 	}
 }
 

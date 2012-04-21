@@ -50,14 +50,15 @@ class User
 	 */
 	public function FormatTitle($Gender)
 	{
+		global $lang;
+		
 		switch ($Gender){
 			default:
-			case GENDER_UNKNOWN: return 'Mr./Mrs.'; break;
-			case GENDER_FEMALE: return 'Mrs.'; break;
-			case GENDER_MALE: return 'Mr.'; break;
+			case GENDER_UNKNOWN: return $lang->g('LabelTitleMrMrs'); break;
+			case GENDER_FEMALE: return $lang->g('LabelTitleMrs'); break;
+			case GENDER_MALE: return $lang->g('LabelTitleMr'); break;
 		}
 	}
-	
 	
 	/**
 	 * Instantiates a new User object.

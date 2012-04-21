@@ -10,12 +10,14 @@ class HTMLstuff
 	 */
 	public static function HtmlHeader($Title = null, $CurrentUser = null)
 	{
+		global $lang;
+		
 		$Output = sprintf("<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\">
 		<html xmlns=\"http://www.w3.org/1999/xhtml\">
 
 		<head>
 		<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\" />
-		<meta name=\"language\" content=\"en-US\" />
+		<meta name=\"language\" content=\"%5\$s\" />
 		<meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\" />
 		
 		<link rel=\"stylesheet\" type=\"text/css\" href=\"style.css\" title=\"CandyDoll DB\" />
@@ -44,45 +46,59 @@ class HTMLstuff
 			CANDYDOLLDB_VERSION,
 			$Title ? ' :: '.htmlentities($Title) : null,
 			Error::GenerateErrorList(),
-			(isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off' ? 'https' : 'http') 
+			(isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off' ? 'https' : 'http'),
+			"en-US" // should be $lang-dependent, or even better: $CurrentUser-dependent 
 		);
-
 
 		if($CurrentUser != null) {
 		
 			$Output .= sprintf("
 			<ul id=\"TopNavigation\">
-			<li><a href=\"index.php\">Home</a></li>
-			<li><a href=\"#\">Features</a>
+			<li><a href=\"index.php\">%2\$s</a></li>
+			<li><a href=\"#\">%3\$s</a>
 		
 				<ul>
-				<li><a href=\"setup_data.php\">Process XML</a></li>
-				<li><a href=\"model_view.php\">New model</a></li>
-				<li><a href=\"tag.php\">Manage tags</a></li>
-				<li><a href=\"admin_panel.php\">Admin-panel</a></li>
-				<li><a href=\"download_multi.php\">Multi-download</a></li>
+				<li><a href=\"setup_data.php\">%4\$s</a></li>
+				<li><a href=\"model_view.php\">%5\$s</a></li>
+				<li><a href=\"tag.php\">%6\$s</a></li>
+				<li><a href=\"admin_panel.php\">%7\$s</a></li>
+				<li><a href=\"download_multi.php\">%8\$s</a></li>
 				</ul>
 		
 			</li>
-			<li><a href=\"user.php\">Users</a>
+			<li><a href=\"user.php\">%9\$s</a>
 			
 				<ul>
-				<li><a href=\"user_view.php?user_id=%1\$d\">My account</a></li>
+				<li><a href=\"user_view.php?user_id=%1\$d\">%10\$s</a></li>
 				</ul>
 			
 			</li>
-			<li><a href=\"#\">Search</a>
+			<li><a href=\"#\">%11\$s</a>
 				
 				<ul>
-				<li><a href=\"search.php?q=\">Tag search</a></li>
-				<li><a href=\"set_dirty.php\">Dirty sets</a></li>
+				<li><a href=\"search.php?q=\">%12\$s</a></li>
+				<li><a href=\"set_dirty.php\">%13\$s</a></li>
 				</ul>	
 			
 			</li>
-			<li><a href=\"logout.php\">Logout</a></li>
+			<li><a href=\"logout.php\">%14\$s</a></li>
 			</ul>",
 			
-			$CurrentUser->getID());
+			$CurrentUser->getID(),
+			$lang->g('NavigationHome'),
+			$lang->g('NavigationFeatures'),
+			$lang->g('NavigationProcessXML'),
+			$lang->g('NavigationNewModel'),
+			$lang->g('NavigationManageTags'),
+			$lang->g('NavigationAdminPanel'),
+			$lang->g('NavigationMultiDownload'),
+			$lang->g('NavigationUsers'),
+			$lang->g('NavigationMyAccount'),
+			$lang->g('NavigationSearch'),
+			$lang->g('NavigationTagSearch'),
+			$lang->g('NavigationDirtySets'),
+			$lang->g('NavigationLogOut')
+			);
 		}
 
 		return $Output;
@@ -94,6 +110,8 @@ class HTMLstuff
 	 */
 	public static function HtmlFooter($CurrentUser = null)
 	{
+		global $lang;
+		
 		return sprintf("
 			</div>
 
@@ -104,7 +122,7 @@ class HTMLstuff
 			%1\$s
 			
 			<div class=\"cddbstuff\">
-			CandyDollDB v%2\$s<br />by <a href=\"http://www.fwiep.nl/\" rel=\"external\">FWieP</a> et al.
+			CandyDollDB v%2\$s<br />%3\$s <a href=\"http://www.fwiep.nl/\" rel=\"external\">FWieP</a> et al.
 			</div>
 			
 			</div>
@@ -117,13 +135,16 @@ class HTMLstuff
 			</html>",
 		
 		$CurrentUser != null ? sprintf("<div class=\"userstats\">
-			Logged in as <a href=\"user_view.php?user_id=%3\$d\"><strong>%1\$s</strong></a>.<br />Last login: %2\$s</div>",
+			%4\$s <a href=\"user_view.php?user_id=%3\$d\"><strong>%1\$s</strong></a>.<br />%5\$s: %2\$s</div>",
 			htmlentities($CurrentUser->getUserName()),
-			$CurrentUser->getPreLastLogin() > 0 ? date('Y-m-d H:i', $CurrentUser->getPreLastLogin()) : 'never',
-			$CurrentUser->getID()
+			$CurrentUser->getPreLastLogin() > 0 ? date('Y-m-d H:i', $CurrentUser->getPreLastLogin()) : $lang->g('FooterNever'),
+			$CurrentUser->getID(),
+			$lang->g('FooterLoggedInAs'),
+			$lang->g('FooterLastLogin')
 		) : '&nbsp;',
 		
-		CANDYDOLLDB_VERSION
+		CANDYDOLLDB_VERSION,
+		$lang->g('FooterBy')
 		);
 	}
 	
@@ -136,10 +157,12 @@ class HTMLstuff
 	 */
 	public static function Button($URL = null, $ButtonText = null, $CustomAttributes = null)
 	{
+		global $lang;
+		
 		return sprintf(
 			"<a href=\"%1\$s\" class=\"Button\"%3\$s>%2\$s</a>",
 		 	$URL ? $URL : (array_key_exists('HTTP_REFERER', $_SERVER) ? $_SERVER['HTTP_REFERER'] : 'index.php'),
-			$ButtonText ? htmlentities($ButtonText) : 'Home',
+			$ButtonText ? htmlentities($ButtonText) : $lang->g('NavigationHome'),
 			$CustomAttributes ? $CustomAttributes : null 
 		);
 	}
@@ -194,9 +217,11 @@ HfuheuhUHfuh3e83uhfuhdfu3;
 	 */
 	public static function DateFormField($UniqueId, $Value = null, $DateKind = DATE_KIND_UNKNOWN, $Disabled = false)
 	{
+		global $lang;
+		
 		$template = <<<GYtguefggefegfgefgegfgfuguf
 		<div class="FormRow">
-		<label for="txtDate%2\$s%3\$d">Date%1\$s:</label>
+		<label for="txtDate%2\$s%3\$d">%7\$s%1\$s:</label>
 		<input type="text" id="txtDate%2\$s%3\$d" name="txtDate%2\$s%3\$d" class="DatePicker" maxlength="10" value="%4\$s"%5\$s />
 		%6\$s
 		</div>
@@ -204,13 +229,21 @@ HfuheuhUHfuh3e83uhfuhdfu3;
 GYtguefggefegfgefgegfgfuguf;
 
 		return sprintf($template,
-			$DateKind == DATE_KIND_IMAGE ? ' (images)' : ($DateKind == DATE_KIND_VIDEO ? ' (videos)' : ''),
+			$DateKind == DATE_KIND_IMAGE ? ' '.$lang->g('LabelImagesParentheses') : ($DateKind == DATE_KIND_VIDEO ? ' '.$lang->g('LabelVideosParentheses') : ''),
 			$DateKind == DATE_KIND_IMAGE ? 'Pic' : ($DateKind == DATE_KIND_VIDEO ? 'Vid' : ''),
 			$UniqueId,
 			$Value,
 			HTMLstuff::DisabledStr($Disabled),
-			($UniqueId && !$Disabled ? sprintf("<a href=\"date_delete.php?date_id=%1\$d\" onclick=\"if(!confirm('Are you sure you wish to delete this date?')){return false;}\"><img src=\"images/button_delete.png\" title=\"Delete date\" alt=\"Delete date\"/></a>", $UniqueId ) : null)
 			
+			($UniqueId && !$Disabled ? sprintf(
+				"<a href=\"date_delete.php?date_id=%1\$d\" onclick=\"if(!confirm('%2\$s')){return false;}\">".
+				"<img src=\"images/button_delete.png\" title=\"%3\$s\" alt=\"%3\$s\"/></a>",
+				$UniqueId,
+				$lang->g('MessageSureDeleteDate'),
+				$lang->g('LabelDeleteDate')
+			) : null),
+			
+			$lang->g('LabelDate')
 		);
 	}
 	

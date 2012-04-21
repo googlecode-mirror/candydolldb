@@ -32,7 +32,37 @@ class LabelsNL extends Labels
 		'ErrorUploadErrorPartialUpload' => 'Het bestand is niet volledig opgeslagen.',
 		'ErrorUploadErrorPHPExtension' => 'Een geïnstalleerde PHP extensie heeft het uploaden gestopt.',
 		'ErrorUploadErrorUnknown' => 'Onbekende upload-fout.',
-		'ErrorUploadErrorWriteToDisk' => 'Het bestand kon niet worden weggeschreven.'
+		'ErrorUploadErrorWriteToDisk' => 'Het bestand kon niet worden weggeschreven.',
+		
+		'CLIFinished' => 'Finished.',
+		'FooterBy' => 'door',
+		'FooterLoggedInAs' => 'Aangemeld als',
+		'FooterLastLogin' => 'Laatste bezoek',
+		'FooterNever' => 'nooit',
+		
+		'NavigationHome' => 'Home',
+		'NavigationFeatures' => 'Onderdelen',
+		'NavigationProcessXML' => 'XML verwerken',
+		'NavigationNewModel' => 'Nieuw model',
+		'NavigationManageTags' => 'Tags beheren',
+		'NavigationAdminPanel' => 'Admin-pagina',
+		'NavigationMultiDownload' => 'Multi-download',
+		'NavigationUsers' => 'Gebruikers',
+		'NavigationMyAccount' => 'Mijn account',
+		'NavigationSearch' => 'Zoeken',
+		'NavigationTagSearch' => 'Tags zoeken',
+		'NavigationDirtySets' => 'Incomplete sets',
+		'NavigationLogOut' => 'Afmelden',
+		
+		'LabelDate' => 'Datum',
+		'LabelImagesParentheses' => '(foto\'s)',
+		'LabelVideosParentheses' => '(video\'s)',
+		'LabelDeleteDate' => 'Datum verwijderen',
+		'LabelTitleMrMrs' => 'Dhr./Mevr.',
+		'LabelTitleMr' => 'Dhr.',
+		'LabelTitleMrs' => 'Mevr.',
+		
+		'MessageSureDeleteDate' => 'Weet u zeker dat u deze datum wil verwijderen?'
 	);
 }
 
