@@ -77,9 +77,16 @@ class LabelsDE extends Labels
 		'LabelIncludeVideos' => '',
 		'LabelWidth' => 'Breite',
 		'LabelHeight' => 'Höhe',
+		'LabelMultiDownloadUseSubfolders' => '',
+		'LabelMultiDownloadStep1' => '',
+		'LabelMultiDownloadStep2' => '',
+		'LabelMultiDownloadStep3' => '',
 		
 		'ButtonClean' => '',
+		'ButtonNext' => 'Weiter',
 		'ButtonDownload' => 'Herunterladen',
+		'ButtonReset' => '',
+		'ButtonCancel' => 'Abbrechen',
 		
 		'MessageSureDeleteDate' => ''
 	);

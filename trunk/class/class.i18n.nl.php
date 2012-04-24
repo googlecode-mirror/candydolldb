@@ -76,9 +76,16 @@ class LabelsNL extends Labels
 		'LabelIncludeVideos' => 'Inclusief video\'s',
 		'LabelWidth' => 'Breedte',
 		'LabelHeight' => 'Hoogte',
+		'LabelMultiDownloadUseSubfolders' => 'Submappen in download',
+		'LabelMultiDownloadStep1' => 'Selecteer één of meer modellen, klik volgende.',
+		'LabelMultiDownloadStep2' => 'Selecteer één of meer van de getoonde sets, klik volgende.',
+		'LabelMultiDownloadStep3' => 'Selecteer één of meer van de getoonde foto\'s, klik Download.',
 		
 		'ButtonClean' => 'Opruimen',
+		'ButtonNext' => 'Volgende',
 		'ButtonDownload' => 'Download',
+		'ButtonReset' => 'Reset',
+		'ButtonCancel' => 'Annuleren',
 		
 		'MessageSureDeleteDate' => 'Weet u zeker dat u deze datum wil verwijderen?'
 	);
