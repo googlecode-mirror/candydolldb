@@ -62,6 +62,24 @@ class LabelsDE extends Labels
 		'LabelTitleMrMrs' => '',
 		'LabelTitleMr' => '',
 		'LabelTitleMrs' => '',
+		'LabelOrphanFiles0' => '',
+		'LabelOrphanFiles1' => '',
+		'LabelOrphanFilesX' => '',
+		'LabelMissingFiles0' => '',
+		'LabelMissingFiles1' => '',
+		'LabelMissingFilesX' => '',
+		'LabelCleanCacheFolder' => '',
+		'LabelDownloadXML' => '',
+		'LabelDownloadIndex' => '',
+		'LabelModel' => 'Model',
+		'LabelAllModels' => '',
+		'LabelIncludeImages' => '',
+		'LabelIncludeVideos' => '',
+		'LabelWidth' => 'Breite',
+		'LabelHeight' => 'Höhe',
+		
+		'ButtonClean' => '',
+		'ButtonDownload' => 'Herunterladen',
 		
 		'MessageSureDeleteDate' => ''
 	);

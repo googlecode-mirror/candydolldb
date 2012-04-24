@@ -32,23 +32,23 @@ foreach($it as $file){
 	}
 }
 
-$CacheInSync = '<span>No orphan files</span>';
+$CacheInSync = sprintf('<span>%1$s</span>', $lang->g('LabelOrphanFiles0'));
 if($PhysicalCacheImageCount > count($CacheImages))
 {
-	$CacheInSync = sprintf('<span class="WarningRed">%1$d orphan file%2$s</span>',
-		$PhysicalCacheImageCount - count($CacheImages),
-		$PhysicalCacheImageCount - count($CacheImages) == 1 ? null : 's'
-	);
+	$CacheInSync = '<span class="WarningRed">'.sprintf(
+		$PhysicalCacheImageCount - count($CacheImages) == 1 ? $lang->g('LabelOrphanFiles1') : $lang->g('LabelOrphanFilesX'),
+		$PhysicalCacheImageCount - count($CacheImages)
+	).'</span>';
 }
 elseif($PhysicalCacheImageCount < count($CacheImages))
 {
-	$CacheInSync = sprintf('<span class="WarningRed">%1$d missing file%2$s</span>',
-		count($CacheImages) - $PhysicalCacheImageCount,
-		count($CacheImages) - $PhysicalCacheImageCount == 1 ? null : 's'
-	);
+	$CacheInSync = '<span class="WarningRed">'.sprintf(
+		count($CacheImages) - $PhysicalCacheImageCount == 1 ? $lang->g('LabelMissingFiles1') : $lang->g('LabelMissingFilesX'),
+		count($CacheImages) - $PhysicalCacheImageCount
+	).'</span>';
 }
 
-echo HTMLstuff::HtmlHeader('Admin-panel', $CurrentUser);
+echo HTMLstuff::HtmlHeader($lang->g('NavigationAdminPanel'), $CurrentUser);
 
 ?>
 
@@ -94,36 +94,36 @@ echo HTMLstuff::HtmlHeader('Admin-panel', $CurrentUser);
 //]]>
 </script>
 
-<h2><?php echo sprintf('<a href="index.php">Home</a> - Admin-panel'); ?></h2>
+<h2><?php echo sprintf('<a href="index.php">%1$s</a> - %2$s', $lang->g('NavigationHome'), $lang->g('NavigationAdminPanel')); ?></h2>
 
 <form action="<?php echo htmlentities($_SERVER['REQUEST_URI']); ?>" method="post">
 <fieldset>
 
 <div class="FormRow WideForm">
-<label>To remove all files in the application's cache-folder that do not have a corresponding entry in the CacheImage-table.</label>
-<input type="button" id="btnCleanCache" name="btnCleanCache" value="Clean" onclick="window.location='cacheimage_nuke.php';" />
+<label><?php echo $lang->g('LabelCleanCacheFolder'); ?></label>
+<input type="button" id="btnCleanCache" name="btnCleanCache" value="<?php echo $lang->g('ButtonClean'); ?>" onclick="window.location='cacheimage_nuke.php';" />
 <?php echo $CacheInSync; ?>
 </div>
 
 <hr />
 
 <div class="FormRow WideForm">
-<label>To download an XML-file, based on your own CandyDollDB-collection.</label>
-<input type="button" id="btnDownloadExport" name="btnDownloadExport" value="Download" onclick="RedirToXML();" />
+<label><?php echo $lang->g('LabelDownloadXML'); ?></label>
+<input type="button" id="btnDownloadExport" name="btnDownloadExport" value="<?php echo $lang->g('ButtonDownload'); ?>" onclick="RedirToXML();" />
 <br />
-<label for="selModelXml" style="float:none;width:auto;">Model: </label>
+<label for="selModelXml" style="float:none;width:auto;"><?php echo $lang->g('LabelModel');?>: </label>
 <select id="selModelXml" name="selModel">
-	<option value="">All models</option>
+	<option value=""><?php echo $lang->g('LabelAllModels');?></option>
 	<?php echo $ModelsOptions; ?>
 </select>
-<label for="chkXMLIncludePic" style="float:none;width:auto;"><input type="checkbox" id="chkXMLIncludePic" name="chkXMLIncludePic" />&nbsp;Include images</label>
-<label for="chkXMLIncludeVid" style="float:none;width:auto;"><input type="checkbox" id="chkXMLIncludeVid" name="chkXMLIncludeVid" />&nbsp;Include videos</label>
+<label for="chkXMLIncludePic" style="float:none;width:auto;"><input type="checkbox" id="chkXMLIncludePic" name="chkXMLIncludePic" />&nbsp;<?php echo $lang->g('LabelIncludeImages');?></label>
+<label for="chkXMLIncludeVid" style="float:none;width:auto;"><input type="checkbox" id="chkXMLIncludeVid" name="chkXMLIncludeVid" />&nbsp;<?php echo $lang->g('LabelIncludeVideos');?></label>
 </div>
 
 <hr />
 
 <div class="FormRow">
-<label for="selModel">Model: </label>
+<label for="selModel"><?php echo $lang->g('LabelModel');?>: </label>
 <select id="selModel" name="selModel">
 	<option value=""></option>
 	<?php echo $ModelsOptions; ?>
@@ -131,18 +131,18 @@ echo HTMLstuff::HtmlHeader('Admin-panel', $CurrentUser);
 </div>
 
 <div class="FormRow">
-<label for="txtIndexWidth">Width: </label>
+<label for="txtIndexWidth"><?php echo $lang->g('LabelWidth');?>: </label>
 <input type="text" id="txtIndexWidth" name="txtIndexWidth" value="1200" />
 </div>
 
 <div class="FormRow">
-<label for="txtIndexHeight">Height: </label>
+<label for="txtIndexHeight"><?php echo $lang->g('LabelHeight');?>: </label>
 <input type="text" id="txtIndexHeight" name="txtIndexHeight" value="1800" />
 </div>
 
 <div class="FormRow WideForm">
-<label>To download an automatically generated custom size index of a given model. Size is maxed to 1200x1800 pixels.</label>
-<input type="button" id="btnDownloadIndex" name="btnDownloadIndex" value="Download" onclick="RedirToIndex();" />
+<label><?php echo $lang->g('LabelDownloadIndex');?></label>
+<input type="button" id="btnDownloadIndex" name="btnDownloadIndex" value="<?php echo $lang->g('ButtonDownload');?>" onclick="RedirToIndex();" />
 </div>
 
 <hr />

@@ -61,6 +61,24 @@ class LabelsNL extends Labels
 		'LabelTitleMrMrs' => 'Dhr./Mevr.',
 		'LabelTitleMr' => 'Dhr.',
 		'LabelTitleMrs' => 'Mevr.',
+		'LabelOrphanFiles0' => 'Geen loze bestanden',
+		'LabelOrphanFiles1' => '1 loos bestand',
+		'LabelOrphanFilesX' => '%1$d loze bestanden',
+		'LabelMissingFiles0' => 'Geen ontbrekende bestanden',
+		'LabelMissingFiles1' => '1 ontbrekend bestand',
+		'LabelMissingFilesX' => '%1$d ontbrekende bestanden',
+		'LabelCleanCacheFolder' => 'De map met cache-bestanden en de cache-tabel opruimen.',
+		'LabelDownloadXML' => 'Een XML-bestand downloaden, gebaseerd op de eigen CandyDollDB-collectie.',
+		'LabelDownloadIndex' => 'Een automatisch gegenereerde index downloaden van maximaal 1200x1800 pixels.',
+		'LabelModel' => 'Model',
+		'LabelAllModels' => 'Alle modellen',
+		'LabelIncludeImages' => 'Inclusief foto\'s',
+		'LabelIncludeVideos' => 'Inclusief video\'s',
+		'LabelWidth' => 'Breedte',
+		'LabelHeight' => 'Hoogte',
+		
+		'ButtonClean' => 'Opruimen',
+		'ButtonDownload' => 'Download',
 		
 		'MessageSureDeleteDate' => 'Weet u zeker dat u deze datum wil verwijderen?'
 	);

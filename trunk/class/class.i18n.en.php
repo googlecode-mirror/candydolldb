@@ -61,6 +61,24 @@ class LabelsEN extends Labels
 		'LabelTitleMrMrs' => 'Mr./Mrs.',
 		'LabelTitleMr' => 'Mr.',
 		'LabelTitleMrs' => 'Mrs.',
+		'LabelOrphanFiles0' => 'No orphan files',
+		'LabelOrphanFiles1' => '1 orphan file',
+		'LabelOrphanFilesX' => '%1$d orphan files',
+		'LabelMissingFiles0' => 'No missing files',
+		'LabelMissingFiles1' => '1 missing file',
+		'LabelMissingFilesX' => '%1$d missing files',
+		'LabelCleanCacheFolder' => 'To clean the application\'s cache-folder and cache-table.',
+		'LabelDownloadXML' => 'To download an XML-file, based on your own CandyDollDB-collection.',
+		'LabelDownloadIndex' => 'Download an automatically generated index of a given model. Size is maxed to 1200x1800 pixels.',
+		'LabelModel' => 'Model',
+		'LabelAllModels' => 'All models',
+		'LabelIncludeImages' => 'Include images',
+		'LabelIncludeVideos' => 'Include videos',
+		'LabelWidth' => 'Width',
+		'LabelHeight' => 'Height',
+
+		'ButtonClean' => 'Clean',
+		'ButtonDownload' => 'Download',
 		
 		'MessageSureDeleteDate' => 'Are you sure you wish to delete this date?'
 	);
