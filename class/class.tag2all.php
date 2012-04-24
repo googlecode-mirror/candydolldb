@@ -230,8 +230,9 @@ class Tag2All
 	 * @param int $SetID
 	 * @param int $ImageID
 	 * @param int $VideoID
+	 * @param bool $DeleteOldTag2Alls determines whether to delete or merge existing Tag2Alls
 	 */
-	public static function HandleTags($newTags, $Tag2AllsThisItem, &$TagsInDB, $CurrentUser, $ModelID = null, $SetID = null, $ImageID = null, $VideoID = null)
+	public static function HandleTags($newTags, $Tag2AllsThisItem, &$TagsInDB, $CurrentUser, $ModelID = null, $SetID = null, $ImageID = null, $VideoID = null, $DeleteOldTag2Alls = true)
 	{
 		global $db;
 	
@@ -254,14 +255,25 @@ class Tag2All
 			}
 		}
 	
-		foreach($Tag2AllsThisItem as $tti)
+		if($DeleteOldTag2Alls)
 		{
-			Tag2All::Delete($tti, $CurrentUser);
+			foreach($Tag2AllsThisItem as $tti)
+			{
+				Tag2All::Delete($tti, $CurrentUser);
+			}
 		}
 	
 		foreach(array_unique($newTags) as $string)
 		{
 			$tInDB = Tag::FilterTags($TagsInDB, null, $string);
+			
+			if(!$DeleteOldTag2Alls)
+			{
+				$ttits = Tag2All::FilterTag2Alls($Tag2AllsThisItem, $tInDB[0]->getID());
+				
+				if($ttits)
+				{ continue; }
+			}
 	
 			$t2a = new Tag2All();
 			$t2a->setTag($tInDB[0]);
