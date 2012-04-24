@@ -76,9 +76,16 @@ class LabelsEN extends Labels
 		'LabelIncludeVideos' => 'Include videos',
 		'LabelWidth' => 'Width',
 		'LabelHeight' => 'Height',
+		'LabelMultiDownloadUseSubfolders' => 'Use subfolders in download',
+		'LabelMultiDownloadStep1' => 'Select one or more models, click Next.',
+		'LabelMultiDownloadStep2' => 'Then, select one or more of these models\' sets, click Next.',
+		'LabelMultiDownloadStep3' => 'Select one or more images of the selected sets, click Download.',
 
 		'ButtonClean' => 'Clean',
+		'ButtonNext' => 'Next',
 		'ButtonDownload' => 'Download',
+		'ButtonReset' => 'Reset',
+		'ButtonCancel' => 'Cancel',
 		
 		'MessageSureDeleteDate' => 'Are you sure you wish to delete this date?'
 	);
