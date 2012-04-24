@@ -44,11 +44,9 @@ $xmlw->writeAttributeNs('xsi', 'noNamespaceSchemaLocation', null, 'candydolldb.x
 $xmlw->writeAttribute('xmlns', null);
 
 
-/* @var $Model Model */
-foreach ($Models as $Model)
+function XmlOutputModel($Model)
 {
-	if($ModelID && $Model->getID() !== $ModelID)
-	{ continue; }
+	global $xmlw, $Sets, $Dates, $Tag2Alls, $IncludeImages, $IncludeVideos;
 	
 	$xmlw->startElement('Model');
 	$xmlw->writeAttribute('firstname', $Model->getFirstName());
@@ -62,44 +60,44 @@ foreach ($Models as $Model)
 	if($SetsThisModel)
 	{
 		$xmlw->startElement('Sets');
-		
+	
 		$DatesThisModel = Date::FilterDates($Dates, null, $Model->getID());
-		
+	
 		/* @var $Set Set */
 		foreach ($SetsThisModel as $Set)
 		{
 			$PicDatesThisSet = Date::FilterDates($DatesThisModel, null, null, $Set->getID(), DATE_KIND_IMAGE);
 			$VidDatesThisSet = Date::FilterDates($DatesThisModel, null, null, $Set->getID(), DATE_KIND_VIDEO);
 			$TagsThisSet = Tag2All::FilterTag2Alls($Tag2Alls, null, $Model->getID(), $Set->getID(), null, null);
-
+	
 			$xmlw->startElement('Set');
-				$xmlw->writeAttribute('name', $Set->getName());
-				$xmlw->writeAttribute('date_pic', Date::FormatDates($PicDatesThisSet, 'Y-m-d', false, ' '));
-				$xmlw->writeAttribute('date_vid', Date::FormatDates($VidDatesThisSet, 'Y-m-d', false, ' '));
-				$xmlw->writeAttribute('tags', Tag2All::Tags2AllCSV($TagsThisSet));
-				
+			$xmlw->writeAttribute('name', $Set->getName());
+			$xmlw->writeAttribute('date_pic', Date::FormatDates($PicDatesThisSet, 'Y-m-d', false, ' '));
+			$xmlw->writeAttribute('date_vid', Date::FormatDates($VidDatesThisSet, 'Y-m-d', false, ' '));
+			$xmlw->writeAttribute('tags', Tag2All::Tags2AllCSV($TagsThisSet));
+	
 			if($IncludeImages)
 			{
 				$where = sprintf('model_id = %1$d AND set_id = %2$d AND mut_deleted = -1', $Model->getID(), $Set->getID());
 				$ImagesThisSet = Image::GetImages($where);
-				
+	
 				if($ImagesThisSet)
 				{
 					$xmlw->startElement('Images');
-					
+						
 					/* @var $Image Image */
 					foreach($ImagesThisSet as $Image)
 					{
 						$TagsThisImage = Tag2All::FilterTag2Alls($Tag2Alls, null, $Model->getID(), $Set->getID(), $Image->getID(), null);
-						
+	
 						$xmlw->startElement('Image');
-							$xmlw->writeAttribute('name', $Image->getFileName());
-							$xmlw->writeAttribute('extension', $Image->getFileExtension());
-							$xmlw->writeAttribute('filesize', $Image->getFileSize());
-							$xmlw->writeAttribute('height', $Image->getImageHeight());
-							$xmlw->writeAttribute('width', $Image->getImageWidth());
-							$xmlw->writeAttribute('checksum', $Image->getFileCheckSum());
-							$xmlw->writeAttribute('tags', Tag2All::Tags2AllCSV($TagsThisImage));
+						$xmlw->writeAttribute('name', $Image->getFileName());
+						$xmlw->writeAttribute('extension', $Image->getFileExtension());
+						$xmlw->writeAttribute('filesize', $Image->getFileSize());
+						$xmlw->writeAttribute('height', $Image->getImageHeight());
+						$xmlw->writeAttribute('width', $Image->getImageWidth());
+						$xmlw->writeAttribute('checksum', $Image->getFileCheckSum());
+						$xmlw->writeAttribute('tags', Tag2All::Tags2AllCSV($TagsThisImage));
 						$xmlw->endElement();
 					}
 					$xmlw->endElement();
@@ -109,27 +107,27 @@ foreach ($Models as $Model)
 					unset($ImagesThisSet);
 				}
 			}
-			
+				
 			if($IncludeVideos)
 			{
 				$where = sprintf('model_id = %1$d AND set_id = %2$d AND mut_deleted = -1', $Model->getID(), $Set->getID());
 				$VideosThisSet = Video::GetVideos($where);
-				
+	
 				if($VideosThisSet)
 				{
 					$xmlw->startElement('Videos');
-					
+						
 					/* @var $Video Video */
 					foreach($VideosThisSet as $Video)
 					{
 						$TagsThisVideo = Tag2All::FilterTag2Alls($Tag2Alls, null, $Model->getID(), $Set->getID(), null, $Video->getID());
-						
+	
 						$xmlw->startElement('Video');
-							$xmlw->writeAttribute('name', $Video->getFileName());
-							$xmlw->writeAttribute('extension', $Video->getFileExtension());
-							$xmlw->writeAttribute('filesize', $Video->getFileSize());
-							$xmlw->writeAttribute('checksum', $Video->getFileCheckSum());
-							$xmlw->writeAttribute('tags', Tag2All::Tags2AllCSV($TagsThisVideo));
+						$xmlw->writeAttribute('name', $Video->getFileName());
+						$xmlw->writeAttribute('extension', $Video->getFileExtension());
+						$xmlw->writeAttribute('filesize', $Video->getFileSize());
+						$xmlw->writeAttribute('checksum', $Video->getFileCheckSum());
+						$xmlw->writeAttribute('tags', Tag2All::Tags2AllCSV($TagsThisVideo));
 						$xmlw->endElement();
 					}
 					$xmlw->endElement();
@@ -145,7 +143,7 @@ foreach ($Models as $Model)
 		$xmlw->flush();
 		ob_flush();
 		flush();
-		
+	
 		if($Model->getRemarks())
 		{
 			$xmlw->startElement('Remarks');
@@ -157,6 +155,33 @@ foreach ($Models as $Model)
 	$xmlw->flush();
 	ob_flush();
 	flush();
+}
+
+
+/* @var $SpecialModels array(Model) */
+$SpecialModels = array();
+
+
+/* @var $Model Model */
+foreach ($Models as $Model)
+{
+	if($ModelID && $Model->getID() !== $ModelID)
+	{ continue; }
+	
+	if( $Model->getFirstName() == 'Interviews' ||
+		$Model->getFirstName() == 'Promotions' ||
+		$Model->getFirstName() == 'VIP')
+	{
+		$SpecialModels[] = $Model;
+		continue;
+	}
+	
+	XmlOutputModel($Model);
+}
+
+foreach ($SpecialModels as $Model)
+{
+	XmlOutputModel($Model);
 }
 
 $xmlw->endElement();
