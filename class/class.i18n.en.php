@@ -94,6 +94,12 @@ class LabelsEN extends Labels
 		'LabelFilesize' => 'Filesize',
 		'LabelExtension' => 'Extension',
 		'LabelFilename' => 'Filename',
+		'LabelEditModel' => 'Edit model',
+		'LabelDownloadImage' => 'Download image',
+		'LabelDeleteImage' => 'Delete image',
+		'LabelViewImage' => 'View image',
+		'LabelTotalImageCount' => 'Total image count',
+		'LabelViewSlideshow' => 'View slideshow',
 
 		'ButtonClean' => 'Clean',
 		'ButtonNext' => 'Next',
@@ -103,6 +109,8 @@ class LabelsEN extends Labels
 		'ButtonSave' => 'Save',
 		'ButtonDelete' => 'Delete',
 		'ButtonClearCacheImage' => 'Clear cacheimage',
+		'ButtonNewImage' => 'New image',
+		'ButtonImportImages' => 'Import images',
 		
 		'MessageSureDeleteDate' => 'Are you sure you wish to delete this date?'
 	);
