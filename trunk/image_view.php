@@ -43,7 +43,7 @@ if($ImageID != null)
 }
 else
 {
-	$Image = new Image(null, 'New');
+	$Image = new Image(null, $lang->g('LabelNew'));
 	$Set = Set::GetSets(sprintf('set_id = %1d AND mut_deleted = -1', $SetID));
 
 	if($Set)
@@ -87,7 +87,7 @@ if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'ImageView')
 		{
 			if(Image::UpdateImage($Image, $CurrentUser))
 			{
-				Tag2All::HandleTags($tags, $TagsThisImage, $TagsInDB, $CurrentUser, $ModelID, $SetID, $Image->getID(), null);
+				Tag2All::HandleTags($tags, $TagsThisImage, $TagsInDB, $CurrentUser, $ModelID, $SetID, $Image->getID(), null, true);
 				header('location:'.$ReturnURL);
 				exit;
 			}
@@ -102,14 +102,20 @@ if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'ImageView')
 				$Image->setID($imageid);
 			}
 			
-			Tag2All::HandleTags($tags, $TagsThisImage, $TagsInDB, $CurrentUser, $ModelID, $SetID, $Image->getID(), null);
+			Tag2All::HandleTags($tags, $TagsThisImage, $TagsInDB, $CurrentUser, $ModelID, $SetID, $Image->getID(), null, true);
 			header('location:'.$ReturnURL);
 			exit;
 		}
 	}
 }
 
-echo HTMLstuff::HtmlHeader($Model->GetShortName(true).' - Set '.$Set->getName().' - Image', $CurrentUser);
+echo HTMLstuff::HtmlHeader(sprintf('%1$s - %2$s - %3$s',
+		$Model->GetShortName(true),
+		$lang->g('NavigationImages'),
+		$Image->getFileName()
+	),
+	$CurrentUser
+);
 
 if($ImageID)
 {
@@ -130,59 +136,63 @@ if($ImageID)
 ?>
 
 <h2><?php echo sprintf(
-	'<a href="index.php">Home</a> - <a href="model_view.php?model_id=%1$d">%4$s</a> - <a href="set.php?model_id=%1$d">Sets</a> -  <a href="set_view.php?model_id=%1$d&amp;set_id=%2$d">Set %5$s</a> - <a href="image.php?model_id=%1$d&amp;set_id=%2$d">Images</a> - %6$s',
+	'<a href="index.php">%7$s</a> - <a href="model_view.php?model_id=%1$d">%4$s</a> - <a href="set.php?model_id=%1$d">%8$s</a> -  <a href="set_view.php?model_id=%1$d&amp;set_id=%2$d">%9$s %5$s</a> - <a href="image.php?model_id=%1$d&amp;set_id=%2$d">%10$s</a> - %6$s',
 	$ModelID,
 	$SetID,
 	$ImageID,
 	htmlentities($Model->GetShortName(true)),
 	htmlentities($Set->getName()),
-	htmlentities($Image->getFileName())
+	htmlentities($Image->getFileName()),
+	$lang->g('NavigationHome'),
+	$lang->g('NavigationSets'),
+	$lang->g('NavigationSet'),
+	$lang->g('NavigationImages')
 ); ?></h2>
 
 <form action="<?php echo htmlentities($_SERVER['REQUEST_URI']);?>" method="post">
-<fieldset><legend>Please fill in these fields:</legend>
+<fieldset>
 
 <input type="hidden" id="hidAction" name="hidAction" value="ImageView" />
 
 <div class="FormRow">
-<label for="txtFilename">Filename: <em>*</em></label>
+<label for="txtFilename"><?php echo $lang->g('LabelFilename');?>: <em>*</em></label>
 <input type="text" id="txtFilename" name="txtFilename" maxlength="100" value="<?php echo $Image->getFileName();?>"<?php echo HTMLstuff::DisabledStr($DeleteImage); ?> />
 </div>
 
 <div class="FormRow">
-<label for="txtFileExtension">Extension: <em>*</em></label>
+<label for="txtFileExtension"><?php echo $lang->g('LabelExtension');?>: <em>*</em></label>
 <input type="text" id="txtFileExtension" name="txtFileExtension" maxlength="10" value="<?php echo $Image->getFileExtension();?>"<?php echo HTMLstuff::DisabledStr($DeleteImage); ?> />
 </div>
 
 <div class="FormRow">
-<label for="txtFilesize">Filesize (bytes): <em>*</em></label>
+<label for="txtFilesize"><?php echo $lang->g('LabelFilesize');?> (bytes): <em>*</em></label>
 <input type="text" id="txtFilesize" name="txtFilesize" maxlength="10" value="<?php echo $Image->getFileSize(); ?>"<?php echo HTMLstuff::DisabledStr($DeleteImage); ?> />
 </div>
 
 <div class="FormRow">
-<label for="txtFileChecksum">Checksum: <em>*</em></label>
+<label for="txtFileChecksum"><?php echo $lang->g('LabelChecksum');?>: <em>*</em></label>
 <input type="text" id="txtFileChecksum" name="txtFileChecksum" maxlength="32" value="<?php echo $Image->getFileCheckSum();?>"<?php echo HTMLstuff::DisabledStr($DeleteImage); ?> />
 </div>
 
 <div class="FormRow">
-<label for="txtImageWidth">Width (pixels):</label>
+<label for="txtImageWidth"><?php echo $lang->g('LabelWidth');?> (pixels):</label>
 <input type="text" id="txtImageWidth" name="txtImageWidth" maxlength="10" value="<?php echo $Image->getImageWidth(); ?>"<?php echo HTMLstuff::DisabledStr($DeleteImage); ?> />
 </div>
 
 <div class="FormRow">
-<label for="txtImageHeight">Height (pixels):</label>
+<label for="txtImageHeight"><?php echo $lang->g('LabelHeight');?> (pixels):</label>
 <input type="text" id="txtImageHeight" name="txtImageHeight" maxlength="10" value="<?php echo $Image->getImageHeight(); ?>"<?php echo HTMLstuff::DisabledStr($DeleteImage); ?> />
 </div>
 
 <div class="FormRow">
-<label for="txtTags">Tags (CSV):</label>
+<label for="txtTags"><?php echo $lang->g('LabelTags');?> (CSV):</label>
 <input type="text" id="txtTags" name="txtTags" maxlength="200" class="TagsBox" value="<?php echo Tag2All::Tags2AllCSV($TagsThisImage); ?>"<?php echo HTMLstuff::DisabledStr($DeleteImage); ?> />
 </div>
 
 <div class="FormRow"><label>&nbsp;</label>
-<input type="submit" class="FormButton" value="<?php echo $DeleteImage ? 'Delete' : 'Save'; ?>" />
-<input type="button" class="FormButton" value="Cancel" onclick="window.location='<?php echo htmlentities($ReturnURL); ?>';" />
-<input type="button" class="FormButton" value="Clear cacheimage" onclick="window.location='cacheimage_delete.php?image_id=<?php echo $ImageID ?>';"<?php echo HTMLstuff::DisabledStr($DeleteImage); ?> />
+<input type="submit" class="FormButton" value="<?php echo $DeleteImage ? $lang->g('ButtonDelete') : $lang->g('ButtonSave'); ?>" />
+<input type="button" class="FormButton" value="<?php echo $lang->g('ButtonCancel');?>" onclick="window.location='<?php echo htmlentities($ReturnURL); ?>';" />
+<input type="button" class="FormButton" value="<?php echo $lang->g('ButtonClearCacheImage');?>" onclick="window.location='cacheimage_delete.php?image_id=<?php echo $ImageID ?>';"<?php echo HTMLstuff::DisabledStr($DeleteImage); ?> />
 </div>
 
 <div class="Separator"></div>

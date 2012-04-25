@@ -54,6 +54,14 @@ class LabelsDE extends Labels
 		'NavigationTagSearch' => 'Tag-Suche',
 		'NavigationDirtySets' => '',
 		'NavigationLogOut' => 'Abmelden',
+		'NavigationModels' => 'Modelle',
+		'NavigationModel' => '',
+		'NavigationSets' => '',
+		'NavigationSet' => '',
+		'NavigationImages' => '',
+		'NavigationImage' => '',
+		'NavigationVideos' => '',
+		'NavigationVideo' => '',
 		
 		'LabelDate' => 'Datum',
 		'LabelImagesParentheses' => '(Fotos)',
@@ -81,12 +89,21 @@ class LabelsDE extends Labels
 		'LabelMultiDownloadStep1' => '',
 		'LabelMultiDownloadStep2' => '',
 		'LabelMultiDownloadStep3' => '',
+		'LabelNew' => 'Neu',
+		'LabelTags' => '',
+		'LabelChecksum' => 'Prüfsumme',
+		'LabelFilesize' => 'Dateigröße',
+		'LabelExtension' => 'Dateiendung',
+		'LabelFilename' => 'Dateiname',
 		
 		'ButtonClean' => '',
 		'ButtonNext' => 'Weiter',
 		'ButtonDownload' => 'Herunterladen',
 		'ButtonReset' => '',
 		'ButtonCancel' => 'Abbrechen',
+		'ButtonSave' => 'Speichern',
+		'ButtonDelete' => 'Löschen',
+		'ButtonClearCacheImage' => '',
 		
 		'MessageSureDeleteDate' => ''
 	);

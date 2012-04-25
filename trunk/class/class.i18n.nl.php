@@ -53,6 +53,14 @@ class LabelsNL extends Labels
 		'NavigationTagSearch' => 'Tags zoeken',
 		'NavigationDirtySets' => 'Incomplete sets',
 		'NavigationLogOut' => 'Afmelden',
+		'NavigationModels' => 'Modellen',
+		'NavigationModel' => 'Model',
+		'NavigationSets' => 'Sets',
+		'NavigationSet' => 'Set',
+		'NavigationImages' => 'Foto\'s',
+		'NavigationImage' => 'Foto',
+		'NavigationVideos' => 'Video\'s',
+		'NavigationVideo' => 'Video',
 		
 		'LabelDate' => 'Datum',
 		'LabelImagesParentheses' => '(foto\'s)',
@@ -80,12 +88,21 @@ class LabelsNL extends Labels
 		'LabelMultiDownloadStep1' => 'Selecteer één of meer modellen, klik volgende.',
 		'LabelMultiDownloadStep2' => 'Selecteer één of meer van de getoonde sets, klik volgende.',
 		'LabelMultiDownloadStep3' => 'Selecteer één of meer van de getoonde foto\'s, klik Download.',
+		'LabelNew' => 'Nieuw',
+		'LabelTags' => 'Tags',
+		'LabelChecksum' => 'Controlecijfer',
+		'LabelFilesize' => 'Grootte',
+		'LabelExtension' => 'Extensie',
+		'LabelFilename' => 'Bestandsnaam',
 		
 		'ButtonClean' => 'Opruimen',
 		'ButtonNext' => 'Volgende',
 		'ButtonDownload' => 'Download',
 		'ButtonReset' => 'Reset',
 		'ButtonCancel' => 'Annuleren',
+		'ButtonSave' => 'Opslaan',
+		'ButtonDelete' => 'Verwijderen',
+		'ButtonClearCacheImage' => 'Cachefoto verwijderen',
 		
 		'MessageSureDeleteDate' => 'Weet u zeker dat u deze datum wil verwijderen?'
 	);

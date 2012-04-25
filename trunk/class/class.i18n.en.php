@@ -53,6 +53,14 @@ class LabelsEN extends Labels
 		'NavigationTagSearch' => 'Tag-search',
 		'NavigationDirtySets' => 'Dirty sets',
 		'NavigationLogOut' => 'Logout',
+		'NavigationModels' => 'Models',
+		'NavigationModel' => 'Model',
+		'NavigationSets' => 'Sets',
+		'NavigationSet' => 'Set',
+		'NavigationImages' => 'Images',
+		'NavigationImage' => 'Image',
+		'NavigationVideos' => 'Videos',
+		'NavigationVideo' => 'Video',
 		
 		'LabelDate' => 'Date',
 		'LabelImagesParentheses' => '(images)',
@@ -80,12 +88,21 @@ class LabelsEN extends Labels
 		'LabelMultiDownloadStep1' => 'Select one or more models, click Next.',
 		'LabelMultiDownloadStep2' => 'Then, select one or more of these models\' sets, click Next.',
 		'LabelMultiDownloadStep3' => 'Select one or more images of the selected sets, click Download.',
+		'LabelNew' => 'New',
+		'LabelTags' => 'Tags',
+		'LabelChecksum' => 'Checksum',
+		'LabelFilesize' => 'Filesize',
+		'LabelExtension' => 'Extension',
+		'LabelFilename' => 'Filename',
 
 		'ButtonClean' => 'Clean',
 		'ButtonNext' => 'Next',
 		'ButtonDownload' => 'Download',
 		'ButtonReset' => 'Reset',
 		'ButtonCancel' => 'Cancel',
+		'ButtonSave' => 'Save',
+		'ButtonDelete' => 'Delete',
+		'ButtonClearCacheImage' => 'Clear cacheimage',
 		
 		'MessageSureDeleteDate' => 'Are you sure you wish to delete this date?'
 	);
