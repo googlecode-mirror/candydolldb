@@ -31,9 +31,6 @@ if($ModelID && count($Models) > 0){
 header('Content-Type: text/xml');
 header(sprintf('Content-Disposition: attachment; filename="%1$s"', $outfile));
 
-$SpecialSet = array();
-$RegularSet = array();
-
 $xmlw = new XMLWriter();
 $xmlw->openUri('php://output');
 $xmlw->setIndent(true);
@@ -65,6 +62,9 @@ function XmlOutputModel($Model)
 	
 		$DatesThisModel = Date::FilterDates($Dates, null, $Model->getID());
 	
+		$SpecialSet = array();
+		$RegularSet = array();
+
 		/* @var $Set Set */
 		foreach ($SetsThisModel as $Set)
 		{
@@ -77,9 +77,9 @@ function XmlOutputModel($Model)
 				$RegularSet[] = $Set;
 			}
 		}
-		$RegularSet = (isset($RegularSet)) ? $RegularSet : array();
-		$SpecialSet = (isset($SpecialSet)) ? $SpecialSet : array();
+
 		$FinalSets = array_merge($SpecialSet,$RegularSet);
+
 		foreach ($FinalSets as $Set)
 		{
 			$PicDatesThisSet = Date::FilterDates($DatesThisModel, null, null, $Set->getID(), DATE_KIND_IMAGE);
