@@ -89,20 +89,20 @@ if($Models)
 			
 			<div class=\"ThumbDataWrapper\">
 			<ul>
-			<li>Name: %1\$s</li>
-			<li>Birthdate: %5\$s%6\$s</li>
-			<li>Pic-sets: %8\$d%7\$s</li>
-			<li>Vid-sets: %10\$d%9\$s</li>
+			<li>%11\$s: %1\$s</li>
+			<li>%12\$s: %5\$s%6\$s</li>
+			<li>%13\$s: %8\$d%7\$s</li>
+			<li>%14\$s: %10\$d%9\$s</li>
 			</ul>
 			</div>
 			
 			<div class=\"ThumbButtonWrapper\">
-			<a href=\"model_view.php?model_id=%2\$d\"><img src=\"images/button_edit.png\" width=\"16\" height=\"16\" title=\"Edit model\" alt=\"Edit model\"/></a>
-			<a href=\"import_image.php?model_id=%2\$d\"><img src=\"images/button_upload.png\" width=\"16\" height=\"16\" alt=\"Import model's images\" title=\"Import model's images\" /></a>
-			<a href=\"import_video.php?model_id=%2\$d\"><img src=\"images/button_upload.png\" width=\"16\" height=\"16\" alt=\"Import model's videos\" title=\"Import model's videos\" /></a>
-			<a href=\"download_zip.php?model_id=%2\$d\"><img src=\"images/button_download.png\" width=\"16\" height=\"16\" alt=\"Download model's images\" title=\"Download model's images\" /></a>
-			<a href=\"download_image.php?index_id=%2\$d&amp;width=500&amp;height=750\" rel=\"lightbox-index\" title=\"Index of %1\$s\"><img src=\"images/button_view.png\" width=\"16\" height=\"16\" alt=\"Index of %1\$s\" /></a>
-			<a href=\"model_view.php?model_id=%2\$d&amp;cmd=%3\$s\" title=\"Delete model\"><img src=\"images/button_delete.png\" width=\"16\" height=\"16\" alt=\"Delete\" /></a>
+			<a href=\"model_view.php?model_id=%2\$d\"><img src=\"images/button_edit.png\" width=\"16\" height=\"16\" title=\"%15\$s\" alt=\"%15\$s\"/></a>
+			<a href=\"import_image.php?model_id=%2\$d\"><img src=\"images/button_upload.png\" width=\"16\" height=\"16\" alt=\"%16\$s\" title=\"%16\$s\" /></a>
+			<a href=\"import_video.php?model_id=%2\$d\"><img src=\"images/button_upload.png\" width=\"16\" height=\"16\" alt=\"%17\$s\" title=\"%17\$s\" /></a>
+			<a href=\"download_zip.php?model_id=%2\$d\"><img src=\"images/button_download.png\" width=\"16\" height=\"16\" alt=\"%18\$s\" title=\"%18\$s\" /></a>
+			<a href=\"download_image.php?index_id=%2\$d&amp;width=500&amp;height=750\" rel=\"lightbox-index\" title=\"%19\$s %1\$s\"><img src=\"images/button_view.png\" width=\"16\" height=\"16\" alt=\"%19\$s %1\$s\" /></a>
+			<a href=\"model_view.php?model_id=%2\$d&amp;cmd=%3\$s\" title=\"%20\$s\"><img src=\"images/button_delete.png\" width=\"16\" height=\"16\" alt=\"%20\$s\" /></a>
 			</div>
 			
 			</div>
@@ -115,50 +115,60 @@ if($Models)
 			($ModelCount % 4 == 0 ? "<div class=\"Clear\"></div>" : null),
 			$Model->getBirthdate() > 0 ? date($CurrentUser->getDateFormat(), $Model->getBirthdate()) : '&nbsp;',
 			$Model->getBirthdate() > 0 ? sprintf(' (%1$.1f)', Utils::CalculateAge($Model->getBirthdate())) : '&nbsp;',
-			$DirtySetPicCount > 0 ? sprintf(', <em>%1$d dirty</em>', $DirtySetPicCount) : null,
+			$DirtySetPicCount > 0 ? sprintf(', <em>%1$d %2$s</em>', $DirtySetPicCount, strtolower($lang->g('LabelDirty'))) : null,
 			$SetPicCount,
-			$DirtySetVidCount > 0 ? sprintf(', <em>%1$d dirty</em>', $DirtySetVidCount) : null,
-			$SetVidCount
+			$DirtySetVidCount > 0 ? sprintf(', <em>%1$d %2$s</em>', $DirtySetVidCount, strtolower($lang->g('LabelDirty'))) : null,
+			$SetVidCount,
+			$lang->g('LabelName'),
+			$lang->g('LabelBirthdateShort'),
+			$lang->g('LabelPicSets'),
+			$lang->g('LabelVidSets'),
+			$lang->g('LabelEditModel'),
+			$lang->g('ButtonImportImages'),
+			$lang->g('ButtonImportVideos'),
+			$lang->g('LabelDownloadImages'),
+			$lang->g('LabelIndexOf'),
+			$lang->g('LabelDeleteModel')
 		);
 		
 	}
 	unset($Model);
 }
 
-echo HTMLstuff::HtmlHeader('Home', $CurrentUser);
+echo HTMLstuff::HtmlHeader($lang->g('NavigationHome'), $CurrentUser);
 
 ?>
 
 <form action="<?php echo htmlentities($_SERVER['REQUEST_URI']); ?>" method="post" class="FilterForm">
 <fieldset>
 
-<legend>Find a specific model:</legend>
 <input type="hidden" id="hidAction" name="hidAction" value="ModelFilter" />
 
-<label for="txtSearchModel">Model</label>
+<label for="txtSearchModel"><?php echo $lang->g('LabelModel');?></label>
 <input type="text" id="txtSearchModel" name="txtSearchModel" maxlength="50" value="<?php echo $SearchModel; ?>" />
 
-<label for="chkDirty">Dirty</label>
+<label for="chkDirty"><?php echo $lang->g('LabelDirty')?></label>
 <input type="checkbox" id="chkDirty" name="chkDirty"<?php echo HTMLstuff::CheckedStr($SearchDirty); ?> />
 
-<label for="chkClean">Clean</label>
+<label for="chkClean"><?php echo $lang->g('LabelClean');?></label>
 <input type="checkbox" id="chkClean" name="chkClean"<?php echo HTMLstuff::CheckedStr($SearchClean); ?> />
 
-<input type="submit" id="btnSearch" name="btnSearch" value="Search" />
+<input type="submit" id="btnSearch" name="btnSearch" value="<?php echo $lang->g('ButtonSearch');?>" />
 
-<input type="button" id="btnSlideshow" name="btnSlideshow" value="Index-slideshow" onclick="OpenSlideColorBox();" />
+<input type="button" id="btnSlideshow" name="btnSlideshow" value="<?php echo $lang->g('ButtonIndexSlideshow');?>" onclick="OpenSlideColorBox();" />
 
 </fieldset>
 </form>
 
-<h2>Home</h2>
+<h2><?php echo $lang->g('NavigationHome');?></h2>
 
 <?php
 
 echo "<div class=\"Clear\"></div>".$ModelRows."<div class=\"Clear\"></div>";
 ?>
-<div style="font-weight:bold;text-align:center">Total Model Count: <?php printf('%1$d', $ModelCount); ?></div>
+
+<div style="font-weight:bold;text-align:center"><?php echo $lang->g('LabelTotalModelCount');?>: <?php printf('%1$d', $ModelCount); ?></div>
+
 <?php
 echo HTMLstuff::HtmlFooter($CurrentUser);
-
 ?>
