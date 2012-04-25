@@ -94,6 +94,12 @@ class LabelsNL extends Labels
 		'LabelFilesize' => 'Grootte',
 		'LabelExtension' => 'Extensie',
 		'LabelFilename' => 'Bestandsnaam',
+		'LabelEditModel' => 'Model bewerken',
+		'LabelDownloadImage' => 'Download foto',
+		'LabelDeleteImage' => 'Foto verwijderen',
+		'LabelViewImage' => 'Foto bekijken',
+		'LabelTotalImageCount' => 'Totaal aantal foto\'s',
+		'LabelViewSlideshow' => 'Diashow bekijken',
 		
 		'ButtonClean' => 'Opruimen',
 		'ButtonNext' => 'Volgende',
@@ -103,6 +109,8 @@ class LabelsNL extends Labels
 		'ButtonSave' => 'Opslaan',
 		'ButtonDelete' => 'Verwijderen',
 		'ButtonClearCacheImage' => 'Cachefoto verwijderen',
+		'ButtonNewImage' => 'Nieuwe foto',
+		'ButtonImportImages' => 'Foto\'s importeren',
 		
 		'MessageSureDeleteDate' => 'Weet u zeker dat u deze datum wil verwijderen?'
 	);
