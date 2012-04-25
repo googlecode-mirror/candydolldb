@@ -10,6 +10,7 @@ $Tags = Tag::GetTags();
 $Tag = Tag::FilterTags($Tags, $TagID);
 $Tag = $TagID && $Tag ? $Tag[0] : new Tag();
 
+$Tagcount = 0;
 $TagList = null;
 
 if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'TagView')
@@ -53,6 +54,7 @@ if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'TagView')
 }
 
 foreach($Tags as $t){
+	$Tagcount++;
 	$TagList .= sprintf('<a class="TagSelect" href="tag.php?tag_id=%1$d">%2$s%3$s</a>',
 		$t->getID(),
 		htmlentities($t->getName()),
@@ -105,6 +107,8 @@ echo HTMLstuff::HtmlHeader('Manage tags', $CurrentUser);
 
 <div class="Clear Separator"></div>
 
+<?php echo '<div style="text-align: center;font-weight: bold">Total # of Tags : '.$Tagcount.'</div>'; ?>
+<div class="Clear Separator"></div>
 <?php
 echo HTMLstuff::Button('tag.php', 'Create new tag');
 echo HTMLstuff::Button('index.php');
