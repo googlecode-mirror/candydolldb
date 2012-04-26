@@ -82,7 +82,7 @@ class LabelsNL extends Labels
 		'LabelExtension' => 'Extensie',
 		'LabelFilename' => 'Bestandsnaam',
 		'LabelFilesize' => 'Grootte',
-		'LabelLastname' => 'Voornaam',
+		'LabelFirstname' => 'Voornaam',
 		'LabelHeight' => 'Hoogte',
 		'LabelImagesParentheses' => '(foto\'s)',
 		'LabelIncludeImages' => 'Inclusief foto\'s',
