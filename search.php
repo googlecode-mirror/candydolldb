@@ -178,14 +178,15 @@ if($ToShow)
 						</div>
 						<div class=\"SearchThumbDataWrapper\">
 							<ul>
-								<li>Name: %1\$s</li>
+								<li>%4\$s: %1\$s</li>
 							</ul>
 						</div>
 					</div>
 					%3\$s",
 					htmlentities($Model->GetFullName()),
 					$Model->getID(),
-					($ItemCount % 4 == 0 ? "<div class=\"Clear\"></div>" : null)
+					($ItemCount % 4 == 0 ? "<div class=\"Clear\"></div>" : null),
+					$lang->g('LabelName')
 				);
 			}
 			break;
@@ -205,8 +206,8 @@ if($ToShow)
 						</div>
 						<div class=\"SearchThumbDataWrapper\">
 							<ul>
-								<li>Model: %1\$s</li>
-								<li>Setname: %3\$s</li>
+								<li>%7\$s: %1\$s</li>
+								<li>%8\$s: %3\$s</li>
 							</ul>
 						</div>
 					</div>
@@ -216,7 +217,9 @@ if($ToShow)
 					htmlentities($Set->getName()),
 					$Set->getModel()->getID(),
 					$Set->getID(),
-					($ItemCount % 3 == 0 ? "<div class=\"Clear\"></div>" : null)
+					($ItemCount % 3 == 0 ? "<div class=\"Clear\"></div>" : null),
+					$lang->g('NavigationModel'),
+					$lang->g('NavigationSet')
 				);
 			}
 			break;
@@ -289,27 +292,27 @@ if($ToShow)
 	}
 }
 
-echo HTMLstuff::HtmlHeader('Tag search', $CurrentUser);
+echo HTMLstuff::HtmlHeader($lang->g('NavigationTagSearch'), $CurrentUser);
 
 ?>
 
-<h2><a href="index.php">Home</a> - Tag search</h2>
+<h2><a href="index.php"><?php echo $lang->g('NavigationHome');?></a> - <?php echo $lang->g('NavigationTagSearch');?></h2>
 
 <form action="<?php echo htmlentities($_SERVER['REQUEST_URI']);?>" method="get" class="Search">
-<fieldset><legend>Please fill in these fields:</legend>
+<fieldset>
 
-<label for="t">Search for</label>
+<label for="t"><?php echo $lang->g('LabelSearchFor');?></label>
 <select id="t" name="t">
-	<option value="MODEL" <?php echo $searchMode == "MODEL" ? ' selected="selected"' : null ?>>Models</option>
-	<option value="SET" <?php echo $searchMode == "SET" ? ' selected="selected"' : null ?>>Sets</option>
-	<option value="IMAGE" <?php echo $searchMode == "IMAGE" ? ' selected="selected"' : null ?>>Images</option>
-	<option value="VIDEO" <?php echo $searchMode == "VIDEO" ? ' selected="selected"' : null ?>>Videos</option>
+	<option value="MODEL" <?php echo $searchMode == "MODEL" ? ' selected="selected"' : null ?>><?php echo $lang->g('NavigationModels');?></option>
+	<option value="SET" <?php echo $searchMode == "SET" ? ' selected="selected"' : null ?>><?php echo $lang->g('NavigationSets');?></option>
+	<option value="IMAGE" <?php echo $searchMode == "IMAGE" ? ' selected="selected"' : null ?>><?php echo $lang->g('NavigationImages');?></option>
+	<option value="VIDEO" <?php echo $searchMode == "VIDEO" ? ' selected="selected"' : null ?>><?php echo $lang->g('NavigationVideos');?></option>
 </select>
 
-<label for="q">tagged with</label>
+<label for="q"><?php echo $lang->g('LabelTaggedWith');?></label>
 <input type="text" id="q" name="q" class="TagsBox" style="width:470px;" value="<?php echo $q; ?>" />
-<input type="submit" class="FormButton" value="Search" />
-<label for="x">Results per page</label>
+<input type="submit" class="FormButton" value="<?php echo $lang->g('ButtonSearch');?>" />
+<label for="x"><?php echo $lang->g('LabelResultsPerPage');?></label>
 <input type="text" id="x" name="x" class="TagsBox" style="width:50px;" value="<?php echo $max_results; ?>" />
 
 <div class="Separator"></div>
@@ -322,19 +325,23 @@ echo HTMLstuff::HtmlHeader('Tag search', $CurrentUser);
 <?php
 if($page > 1)
 {
-	echo HTMLStuff::Button('search.php?p=1&amp;t='.$searchMode.'&amp;q='.$q.'&amp;x='.$max_results, 'First Page', ' style="float:left"');
-	echo HTMLStuff::Button('search.php?p='.($page-1).'&amp;t='.$searchMode.'&amp;q='.$q.'&amp;x='.$max_results, 'Previous Page', ' style="float:left"');
+	echo HTMLStuff::Button('search.php?p=1&amp;t='.$searchMode.'&amp;q='.$q.'&amp;x='.$max_results, $lang->g('ButtonPageFirst'), ' style="float:left"');
+	echo HTMLStuff::Button('search.php?p='.($page-1).'&amp;t='.$searchMode.'&amp;q='.$q.'&amp;x='.$max_results, $lang->g('ButtonPagePrevious'), ' style="float:left"');
 }
 
 if($page < $TotalPages)
 {
-	echo HTMLStuff::Button('search.php?p='.($TotalPages).'&amp;t='.$searchMode.'&amp;q='.$q.'&amp;x='.$max_results, 'Last Page', ' style="float:right"');
-	echo HTMLStuff::Button('search.php?p='.($page+1).'&amp;t='.$searchMode.'&amp;q='.$q.'&amp;x='.$max_results, 'Next Page', ' style="float:right"');
+	echo HTMLStuff::Button('search.php?p='.($TotalPages).'&amp;t='.$searchMode.'&amp;q='.$q.'&amp;x='.$max_results, $lang->g('ButtonPageLast'), ' style="float:right"');
+	echo HTMLStuff::Button('search.php?p='.($page+1).'&amp;t='.$searchMode.'&amp;q='.$q.'&amp;x='.$max_results, $lang->g('ButtonPageNext'), ' style="float:right"');
 }
 ?>
 <div class="Clear"></div>
 
-<p>Showing <?php echo $Total ? (($from+1).' to '.(($from+$max_results > $Total) ? $Total : $from+$max_results).' of '.$Total) : '0' ?> result(s) returned</p>
+<?php
+echo sprintf($lang->g('LabelShowingXResults'),
+	$Total ? sprintf($lang->g('LabelXtoYofZ'), ($from+1), (($from+$max_results > $Total) ? $Total : $from+$max_results), $Total) : '0'
+);
+?>
 
 </div>
 
