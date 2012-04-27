@@ -55,6 +55,7 @@ class LabelsEN extends Labels
 		'NavigationMyAccount' => 'My account',
 		'NavigationNewModel' => 'New model',
 		'NavigationProcessXML' => 'Process XML',
+		'NavigationResetYourPassword' => 'Reset your password',
 		'NavigationSearch' => 'Search',
 		'NavigationSet' => 'Set',
 		'NavigationSets' => 'Sets',
@@ -79,6 +80,7 @@ class LabelsEN extends Labels
 		'LabelDownloadIndex' => 'Download an automatically generated index of a given model. Size is maxed to 1200x1800 pixels.',
 		'LabelDownloadXML' => 'To download an XML-file, based on your own CandyDollDB-collection.',
 		'LabelEditModel' => 'Edit model',
+		'LabelEmailAddress' => 'Emailaddress',
 		'LabelExtension' => 'Extension',
 		'LabelFilename' => 'Filename',
 		'LabelFilesize' => 'Filesize',
@@ -100,12 +102,14 @@ class LabelsEN extends Labels
 		'LabelMultiDownloadUseSubfolders' => 'Use subfolders in download',
 		'LabelName' => 'Name',
 		'LabelNew' => 'New',
+		'LabelNewPassword' => 'New password',
 		'LabelOrphanFiles0' => 'No orphan files',
 		'LabelOrphanFiles1' => '1 orphan file',
 		'LabelOrphanFilesX' => '%1$d orphan files',
 		'LabelPassword' => 'Password',
 		'LabelPicSets' => 'Pic-sets',
 		'LabelRemarks' => 'Remarks',
+		'LabelRepeatPassword' => 'Repeat password',
 		'LabelTags' => 'Tags',
 		'LabelTitleMr' => 'Mr.',
 		'LabelTitleMrMrs' => 'Mr./Mrs.',
@@ -134,13 +138,20 @@ class LabelsEN extends Labels
 		'ButtonNewImage' => 'New image',
 		'ButtonNext' => 'Next',
 		'ButtonReset' => 'Reset',
+		'ButtonReturn' => 'Return',
 		'ButtonSave' => 'Save',
 		'ButtonSearch' => 'Search',
+		'ButtonSend' => 'Send',
 		
 		'MessageForgotYourPassword' => 'Forgot your password?',
 		'MessageSureDeleteDate' => 'Are you sure you wish to delete this date?',
 		'MessageCDDBInfo' => "<p>This application is a tribute to the breathtaking beauty of the models shown on <a href=\"http://www.candydoll.tv/\" rel=\"external\">CandyDoll.tv</a> (キャンディドール).</p><p>In CandyDoll's own words:</p>",
-		'MessageEnjoy' => 'Enjoy!'
+		'MessageEnjoy' => 'Enjoy!',
+		'MessagePasswordReset' => '<p>Please provide the username and e-mailaddress of the account for which you would like to reset the password. A hyperlink will then be sent which will enable you to reset the password.</p>',
+		'MessagePasswordEnterRepeat' => '<p>Please provide a new password for your account, and repeat it to avoid typing mistakes. Once your password is reset, you will be loggin in automatically.</p>',
+		'MessagePasswordResetError' => '<p>The hypelink you have used is not or no longer valid.<br />Please return to the login-page.</p>',
+		'MessagePasswordResetSuccess' => '<p>An e-mail containing a hyperlink has been sent to your e-mailaddress. Use it ito reset your account\'s password.</p>',
+		'MessagePasswordResetSendError' => '<p>An error occurred while sending your e-mail. Please contact the system\'s administrator.</p>'
 	);
 }
 
