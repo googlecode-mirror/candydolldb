@@ -56,6 +56,7 @@ class LabelsDE extends Labels
 		'NavigationMyAccount' => '',
 		'NavigationNewModel' => 'Neues Model',
 		'NavigationProcessXML' => '',
+		'NavigationResetYourPassword' => 'Kennwort zurücksetzen',
 		'NavigationSearch' => 'Suchen',
 		'NavigationSet' => '',
 		'NavigationSets' => '',
@@ -80,6 +81,7 @@ class LabelsDE extends Labels
 		'LabelDownloadIndex' => '',
 		'LabelDownloadXML' => '',
 		'LabelEditModel' => 'Model bearbeiten',
+		'LabelEmailAddress' => '',
 		'LabelExtension' => 'Dateiendung',
 		'LabelFilename' => 'Dateiname',
 		'LabelFilesize' => 'Dateigröße',
@@ -101,12 +103,14 @@ class LabelsDE extends Labels
 		'LabelMultiDownloadUseSubfolders' => '',
 		'LabelName' => 'Name',
 		'LabelNew' => 'Neu',
+		'LabelNewPassword' => 'Neues Kennwort',
 		'LabelOrphanFiles0' => '',
 		'LabelOrphanFiles1' => '',
 		'LabelOrphanFilesX' => '',
 		'LabelPassword' => 'Kennwort',
 		'LabelPicSets' => '',
 		'LabelRemarks' => '',
+		'LabelRepeatPassword' => '',
 		'LabelTags' => '',
 		'LabelTitleMr' => '',
 		'LabelTitleMrMrs' => '',
@@ -135,13 +139,20 @@ class LabelsDE extends Labels
 		'ButtonNewImage' => '',
 		'ButtonNext' => 'Weiter',
 		'ButtonReset' => '',
+		'ButtonReturn' => 'Zurück',
 		'ButtonSave' => 'Speichern',
 		'ButtonSearch' => 'Suchen',
+		'ButtonSend' => '',
 
 		'MessageForgotYourPassword' => '',
 		'MessageSureDeleteDate' => '',
 		'MessageCDDBInfo' => "<p>This application is a tribute to the breathtaking beauty of the models shown on <a href=\"http://www.candydoll.tv/\" rel=\"external\">CandyDoll.tv</a> (キャンディドール).</p><p>In CandyDoll's own words:</p>",
-		'MessageEnjoy' => 'Enjoy!'
+		'MessageEnjoy' => 'Enjoy!',
+		'MessagePasswordReset' => '',
+		'MessagePasswordEnterRepeat' => '',
+		'MessagePasswordResetError' => '',
+		'MessagePasswordResetSuccess' => '',
+		'MessagePasswordResetSendError' => ''
 	);
 }
 

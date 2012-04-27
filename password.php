@@ -126,32 +126,32 @@ else if (!array_key_exists('hidAction', $_POST) && array_key_exists('Hash', $_GE
 	}
 }
 
-echo HTMLstuff::HtmlHeader('Reset your password'); ?>
+echo HTMLstuff::HtmlHeader($lang->g('NavigationResetYourPassword')); ?>
 
 <div class="CenterForm">
 
 <form method="post" action="<?php echo $_SERVER['REQUEST_URI']; ?>">
-<fieldset><legend>Please log in:</legend>
+<fieldset>
 
 <?php if(!$Hash && is_null($MailSent)) { ?>
 <input type="hidden" id="hidAction" name="hidAction" value="PasswordPassword" />
 
-<p>Please provide the username and e-mailaddress of the account for which you would like to reset the password. A hyperlink will then be sent which will enable you to reset the password.</p>
+<?php echo $lang->g('MessagePasswordReset');?>
 
 <div class="FormRow">
-<label for="txtUserName">Username: <em>*</em></label>
+<label for="txtUserName"><?php echo $lang->g('LabelUsername');?>: <em>*</em></label>
 <input type="text" id="txtUserName" name="txtUserName" maxlength="50" value="<?php echo $UserName; ?>" />
 </div>
 
 <div class="FormRow">
-<label for="txtEmailAddress">E-mailaddress: <em>*</em></label>
+<label for="txtEmailAddress"><?php echo $lang->g('LabelEmailAddress');?>: <em>*</em></label>
 <input type="text" id="txtEmailAddress" name="txtEmailAddress" maxlength="254" value="<?php echo $EmailAddress; ?>" />
 </div>
 
 <div class="FormRow">
 <label>&nbsp;</label>
-<input type="submit" id="btnSend" name="btnSend" value="Send" />
-<input type="button" id="btnCancel" name="btnCancel" value="Cancel" onclick="window.location='login.php';" />
+<input type="submit" id="btnSend" name="btnSend" value="<?php echo $lang->g('ButtonSend');?>" />
+<input type="button" id="btnCancel" name="btnCancel" value="<?php echo $lang->g('ButtonCancel');?>" onclick="window.location='login.php';" />
 </div>
 
 <?php } ?>
@@ -160,61 +160,60 @@ echo HTMLstuff::HtmlHeader('Reset your password'); ?>
 
 <input type="hidden" id="hidAction" name="hidAction" value="PasswordReset" />
 
-<p>Please provide a new password for your account, and repeat it to avoid typing mistakes. Once your password is reset, you will be loggin in automatically.</p>
+<?php echo $lang->g('MessagePasswordEnterRepeat');?>
 
 <div class="FormRow">
-<label>Username:</label>
+<label><?php echo $lang->g('LabelUsername');?>:</label>
 <span><?php echo htmlentities($User->getUserName()); ?></span>
 </div>
 
 <div class="FormRow">
-<label for="txtNewPassword">New password: <em>*</em></label>
+<label for="txtNewPassword"><?php echo $lang->g('LabelNewPassword');?>: <em>*</em></label>
 <input type="password" id="txtNewPassword" name="txtNewPassword" maxlength="50" />
 </div>
 
 <div class="FormRow">
-<label for="txtRepeatPassword">Repeat password: <em>*</em></label>
+<label for="txtRepeatPassword"><?php echo $lang->g('LabelRepeatPassword');?>: <em>*</em></label>
 <input type="password" id="txtRepeatPassword" name="txtRepeatPassword" maxlength="50" />
 </div>
 
 <div class="FormRow">
 <label>&nbsp;</label>
-<input type="submit" id="btnSend" name="btnSend" value="Reset" />
-<input type="button" id="btnCancel" name="btnCancel" value="Cancel" onclick="window.location='login.php';" />
+<input type="submit" id="btnSend" name="btnSend" value="<?php echo $lang->g('ButtonReset');?>" />
+<input type="button" id="btnCancel" name="btnCancel" value="<?php echo $lang->g('ButtonCancel');?>" onclick="window.location='login.php';" />
 </div>
 
 <?php } ?>
 
 <?php if($HashError){ ?>
 
-<p>The hypelink you have used is not or no longer valid.<br />
-Please return to the login-page.</p>
+<?php echo $lang->g('MessagePasswordResetError');?>
 
 <div class="FormRow">
 <label>&nbsp;</label>
-<input type="button" id="btnCancel" name="btnCancel" value="Return" onclick="window.location='login.php';" />
+<input type="button" id="btnCancel" name="btnCancel" value="<?php echo $lang->g('ButtonReturn');?>" onclick="window.location='login.php';" />
 </div>
 
 <?php } ?>
 
 <?php if(!is_null($MailSent) && $MailSent === true){ ?>
 
-<p>An e-mail containing a hyperlink has been sent to your e-mailaddress. Use it ito reset your account's password.</p>
+<?php echo $lang->g('MessagePasswordResetSuccess');?>
 
 <div class="FormRow">
 <label>&nbsp;</label>
-<input type="button" id="btnCancel" name="btnCancel" value="Return" onclick="window.location='login.php';" />
+<input type="button" id="btnCancel" name="btnCancel" value="<?php echo $lang->g('ButtonReturn');?>" onclick="window.location='login.php';" />
 </div>
 
 <?php } ?>
 
 <?php if(!is_null($MailSent) && $MailSent === false){ ?>
 
-<p>An error occurred while sending your e-mail. Please contact the system's administrator.</p>
+<?php echo $lang->g('MessagePasswordResetSendError');?>
 
 <div class="FormRow">
 <label>&nbsp;</label>
-<input type="button" id="btnCancel" name="btnCancel" value="Return" onclick="window.location='login.php';" />
+<input type="button" id="btnCancel" name="btnCancel" value="<?php echo $lang->g('ButtonReturn');?>" onclick="window.location='login.php';" />
 </div>
 
 <?php } ?>
