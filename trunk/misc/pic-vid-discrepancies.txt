@@ -1,0 +1,8 @@
+; This file should serve as a gathering place for all CD-Model's sets
+; that have a pics-vids discrepancy.
+;
+; E.g. the set's pictures feature a model in bathing suite, yet the video
+; with that same name shows the model wearing latex in a different setting.
+;
+
+Yuliya K set 04
