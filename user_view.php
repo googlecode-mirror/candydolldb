@@ -244,7 +244,7 @@ setInterval(function () {
 
 <div class="FormRow">
 <label>&nbsp;</label>
-<input type="submit" id="submitform" class="FormButton" value="<?php echo $DeleteUser ? 'Delete' : 'Save'; ?>"<?php echo ($User->getID() == $CurrentUser->getID() || $User->getUserName() == 'New user') ?  'disabled="disabled"' : null ?> />
+<input type="submit" id="submitform" class="FormButton" value="<?php echo $DeleteUser ? 'Delete' : 'Save'; ?>" <?php echo ($User->getID() == $CurrentUser->getID() || $User->getUserName() == 'New user') ?  'disabled="disabled"' : null ?> />
 <input type="button" class="FormButton" value="Cancel" onclick="window.location='user.php';" />
 </div>
 
