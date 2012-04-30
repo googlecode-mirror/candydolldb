@@ -6,7 +6,35 @@
 ;
 
 Alissa P set 03
+
 Anastasia R set 01
+
 Anjelika L set 16
 Anjelika L set 17
+
+Diana M set 05
+Diana M set 06
+Diana M set 07
+Diana M set 08
+Diana M set 09
+Diana M set 10
+Diana M set 11
+Diana M set 12
+
+Elisa M set 01
+Elisa M set 02 == Elisa M set 07?
+Elisa M set 03 == Elisa M set 06?
+Elisa M set 15
+
+Erica R set 01
+Erica R set 02
+Erica R set 03
+Erica R set 04
+Erica R set 05 == Erica R set 09?
+Erica R set 06 == Erica R set 10?
+Erica R set 07 == Erica R set 11?
+Erica R set 08 == Erica R set 12?
+
+Hanna F set 01
+
 Yuliya K set 04
