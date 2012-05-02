@@ -22,19 +22,29 @@ Diana M set 11
 Diana M set 12
 
 Elisa M set 01
-Elisa M set 02 == Elisa M set 07?
-Elisa M set 03 == Elisa M set 06?
+Elisa M set 02 == set 07?
+Elisa M set 03 == set 06?
 Elisa M set 15
 
 Erica R set 01
 Erica R set 02
 Erica R set 03
 Erica R set 04
-Erica R set 05 == Erica R set 09?
-Erica R set 06 == Erica R set 10?
-Erica R set 07 == Erica R set 11?
-Erica R set 08 == Erica R set 12?
+Erica R set 05 == set 09?
+Erica R set 06 == set 10?
+Erica R set 07 == set 11?
+Erica R set 08 == set 12?
 
 Hanna F set 01
+
+Klara H set 01
+Klara H set 02
+Klara H set 03 == set 01?
+Klara H set 04 == set 02?
+Klara H set 05 == set 03?
+Klara H set 06 == set 04?
+Klara H set 07 == set 05?
+Klara H set 08 == set 06?
+Klara H set 09 == set 07?
 
 Yuliya K set 04
