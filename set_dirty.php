@@ -98,11 +98,11 @@ if($Sets)
 	    	"<td><a href=\"set_view.php?model_id=%10\$d&amp;set_id=%1\$d\">%7\$s</a></td>".
 			"<td><a href=\"set_view.php?model_id=%10\$d&amp;set_id=%1\$d\">%12\$s</a></td>".
 			"<td class=\"Center\"><a href=\"image.php?model_id=%10\$d&amp;set_id=%1\$d\">%2\$d%4\$s</a></td>".
-			"<td class=\"Center\"><a href=\"import_image.php?set_id=%1\$d\"><img src=\"images/button_upload.png\" width=\"16\" height=\"16\" alt=\"Import set's images\" title=\"Import set's images\" /></a></td>".
+			"<td class=\"Center\"><a href=\"import_image.php?set_id=%1\$d\"><img src=\"images/button_upload.png\" width=\"16\" height=\"16\" alt=\"%13\$s\" title=\"%13\$s\" /></a></td>".
 			"<td class=\"Center\"><a href=\"video.php?model_id=%10\$d&amp;set_id=%1\$d\">%3\$d%5\$s</a></td>".
-			"<td class=\"Center\"><a href=\"import_video.php?set_id=%1\$d\"><img src=\"images/button_upload.png\" width=\"16\" height=\"16\" alt=\"Import set's videos\" title=\"Import set's videos\" /></a></td>".
-			"<td class=\"Center\"><a href=\"https://www.binsearch.info/?q=%9\$s%7\$s&amp;max=100&amp;adv_age=&amp;server=2\" rel=\"external\"><img src=\"images/button_search.png\" width=\"16\" height=\"16\" alt=\"Search on BinSearch.info\" title=\"Search on BinSearch.info\" /></a></td>".
-			"<td class=\"Center\"><a href=\"http://www.google.com/search?q=%9\$s%7\$s\" rel=\"external\"><img src=\"images/button_search.png\" width=\"16\" height=\"16\" alt=\"Search on Google.com\" title=\"Search on Google.com\" /></a></td>".
+			"<td class=\"Center\"><a href=\"import_video.php?set_id=%1\$d\"><img src=\"images/button_upload.png\" width=\"16\" height=\"16\" alt=\"%14\$s\" title=\"%14\$s\" /></a></td>".
+			"<td class=\"Center\"><a href=\"https://www.binsearch.info/?q=%9\$s%7\$s&amp;max=100&amp;adv_age=&amp;server=2\" rel=\"external\"><img src=\"images/button_search.png\" width=\"16\" height=\"16\" alt=\"BinSearch.info\" title=\"BinSearch.info\" /></a></td>".
+			"<td class=\"Center\"><a href=\"https://www.google.com/search?q=%9\$s%7\$s\" rel=\"external\"><img src=\"images/button_search.png\" width=\"16\" height=\"16\" alt=\"Google.com\" title=\"Google.com\" /></a></td>".
         "</tr>",
 		$Set->getID(),
 		$Set->getAmountPicsInDB(),
@@ -115,7 +115,9 @@ if($Sets)
 		htmlentities($Model->GetShortName()),
 		$Model->getID(),
 		$SetCount % 2 == 0 ? 2 : 1,
-		Date::FormatDates($DatesThisSet, 'Y-m-d', true)
+		Date::FormatDates($DatesThisSet, 'Y-m-d', true),
+		$lang->g('ButtonImportImages'),
+		$lang->g('ButtonImportVideos')
 		);
 	}
 }
@@ -127,13 +129,12 @@ echo HTMLstuff::HtmlHeader('Dirty sets', $CurrentUser);
 <form action="<?php echo htmlentities($_SERVER['REQUEST_URI']); ?>" method="post" class="FilterForm" style="text-align:center">
 <fieldset>
 
-<legend>Find specific sets:</legend>
 <input type="hidden" id="hidAction" name="hidAction" value="DirtySetFilter" />
 
-<label for="txtSearchModel">Model</label>
+<label for="txtSearchModel"><?php echo $lang->g('LabelModel');?></label>
 <input type="text" id="txtSearchModel" name="txtSearchModel" maxlength="50" style="width:130px;" value="<?php echo $SearchModel; ?>" />
 
-<label for="txtSearchDate">Date</label>
+<label for="txtSearchDate"><?php echo $lang->g('LabelDate');?></label>
 <input type="text" id="txtSearchDate" name="txtSearchDate" class="DatePicker" maxlength="10" style="width:100px;" value="<?php echo $SearchDate; ?>" />
 <br />
 <label for="chkFilterSPECIAL">NO-SPECIALS</label>
@@ -143,31 +144,31 @@ echo HTMLstuff::HtmlHeader('Dirty sets', $CurrentUser);
 <label for="chkFilterVID">NO-VIDS</label>
 <input type="checkbox" id="chkFilterVID" name="chkFilterVID"<?php echo HTMLstuff::CheckedStr($FilterVID); ?> />
 
-<input type="submit" id="btnSearch" name="btnSearch" value="Search" />
+<input type="submit" id="btnSearch" name="btnSearch" value="<?php echo $lang->g('ButtonSearch');?>" />
 
 </fieldset>
 </form>
 
-<h2><?php echo sprintf('<a href="index.php">Home</a> - Dirty sets'); ?></h2>
+<h2><?php echo sprintf('<a href="index.php">%1$s</a> - %2$s', $lang->g('NavigationHome'), $lang->g('NavigationDirtySets')); ?></h2>
 
 <table border="0" cellpadding="4" cellspacing="0">
 	<thead>
 		<tr>
-			<th>Modelname</th>
-			<th style="width: 50px;">Prefix</th>
-			<th style="width: 100px;">Setname</th>
-			<th style="width: 210px;">Dates</th>
-			<th style="width: 80px;"># Img DB</th>
-			<th style="width: 22px;">&nbsp;</th>
-			<th style="width: 80px;"># Vid DB</th>
-			<th style="width: 22px;">&nbsp;</th>
-			<th style="width: 22px;">&nbsp;</th>
-			<th style="width: 22px;">&nbsp;</th>
+			<th><?php echo $lang->g('NavigationModel');?></th>
+			<th style="width: 50px;"><?php echo $lang->g('LabelPrefix');?></th>
+			<th style="width: 80px;"><?php echo $lang->g('NavigationSet');?></th>
+			<th style="width: 230px;"><?php echo $lang->g('LabelDates');?></th>
+			<th style="width: 40px;" class="Center">#PIC</th>
+			<th style="width: 22px;" class="Center">&nbsp;</th>
+			<th style="width: 40px;" class="Center">#VID</th>
+			<th style="width: 22px;" class="Center">&nbsp;</th>
+			<th style="width: 22px;" class="Center">&nbsp;</th>
+			<th style="width: 22px;" class="Center">&nbsp;</th>
 		</tr>
 	</thead>
 	<tfoot>
 		<tr>
-			<th colspan="10">Total set count: <?php printf("%1\$d (%2\$d images, %3\$d videos)", $SetCount, $ImageCount, $VideoCount); ?></th>
+			<th colspan="10"><?php echo $lang->g('LabelTotalSetCount');?>: <?php printf("%1\$d (%2\$d %4\$s, %3\$d %5\$s)", $SetCount, $ImageCount, $VideoCount, strtolower($lang->g('NavigationImages')), strtolower($lang->g('NavigationVideos'))); ?></th>
 		</tr>
 	</tfoot>
 	<tbody>
