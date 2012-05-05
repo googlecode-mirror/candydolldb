@@ -176,7 +176,7 @@ if($SetID)
 ?>
 
 <h2><?php echo sprintf(
-	'<a href="index.php">%5$s</a> - <a href="model_view.php?model_id=%1$d">%3$s</a> - <a href="set.php?model_id=%1$d">%6$s</a> -  %7$s %4$s',
+	'<a href="index.php">%5$s</a> - <a href="model_view.php?model_id=%1$d">%3$s</a> - <a href="set.php?model_id=%1$d">%6$s</a> - %7$s %4$s',
 	$ModelID,
 	$SetID,
 	htmlentities($Model->GetShortName(true)),
