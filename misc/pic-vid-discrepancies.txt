@@ -47,4 +47,47 @@ Klara H set 07 == set 05?
 Klara H set 08 == set 06?
 Klara H set 09 == set 07?
 
+Laura B set 26
+Laura B set 27
+Laura B set 28
+Laura B set 29
+Laura B set 30
+Laura B set 31
+Laura B set 32 == set 31?
+Laura B set 33 == set 32?
+Laura B set 34 == set 33?
+Laura B set 35 == set 34?
+Laura B set 36 == set 35?
+Laura B set 37 == set 36?
+
+Lidiya A set 01
+Lidiya A set 02
+Lidiya A set 03
+Lidiya A set 04
+Lidiya A set 05 == set 08?
+Lidiya A set 06 == set 09?
+
+Liliya Y set 27
+Liliya Y set 28
+Liliya Y set 29
+Liliya Y set 30
+Liliya Y set 31
+Liliya Y set 32 == set 33?
+Liliya Y set 33 == set 34?
+Liliya Y set 34 == set 35?
+Liliya Y set 35 == set 36?
+Liliya Y set 36 == set 37?
+Liliya Y set 37 == set 38?
+Liliya Y set 38 == set 39?
+Liliya Y set 39 == set 40?
+Liliya Y set 40 == set 41?
+Liliya Y set 41 == set 42?
+Liliya Y set 42 == set 43?
+
+Lina I set 13
+Lina I set 14
+Lina I set 15
+Lina I set 16
+Lina I set 17
+
 Yuliya K set 04
