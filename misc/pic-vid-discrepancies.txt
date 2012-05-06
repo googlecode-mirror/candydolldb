@@ -106,4 +106,32 @@ Olesya Z set 04 == set 06
 Olesya Z set 05 == set 07
 Olesya Z set 06 == set 08
 
+Sabina C set 02
+
+Sanya V set 10
+Sanya V set 11
+Sanya V set 12
+Sanya V set 13
+Sanya V set 14 == set 16
+Sanya V set 15 == set 17
+Sanya V set 16 == set 18
+Sanya V set 17 == set 19
+Sanya V set 18 == set 20
+Sanya V set 19 == set 21
+
+Sarah K set 05 == set 06
+Sarah K set 06 == set 07
+Sarah K set 07 == set 08
+Sarah K set 08 == set 09
+
+Sofiya V set 11
+Sofiya V set 12
+Sofiya V set 13
+Sofiya V set 14
+Sofiya V set 15
+Sofiya V set 16 == set 17
+Sofiya V set 17 == set 18
+Sofiya V set 18 == set 19
+Sofiya V set 19 == set 20
+
 Yuliya K set 04
