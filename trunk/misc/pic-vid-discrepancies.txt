@@ -1,3 +1,5 @@
+; Last update 2012-05-06
+;
 ; This file should serve as a gathering place for all CD-Model's sets
 ; that have a pics-vids discrepancy.
 ;
@@ -5,7 +7,7 @@
 ; with that same name shows the model wearing latex in a different setting.
 ;
 ; VideoFile [== corresponding pic-set]
-;
+; 
 
 Alissa P set 03
 
