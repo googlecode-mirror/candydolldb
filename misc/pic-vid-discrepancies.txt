@@ -4,6 +4,8 @@
 ; E.g. the set's pictures feature a model in bathing suite, yet the video
 ; with that same name shows the model wearing latex in a different setting.
 ;
+; VideoFile [== corresponding pic-set]
+;
 
 Alissa P set 03
 
@@ -134,4 +136,58 @@ Sofiya V set 17 == set 18
 Sofiya V set 18 == set 19
 Sofiya V set 19 == set 20
 
+Tatyana Z set 01 == set 03
+Tatyana Z set 02 == set 04
+Tatyana Z set 03 == set 05
+
+Valensiya S set 29
+Valensiya S set 30
+Valensiya S set 31
+Valensiya S set 32
+Valensiya S set 33
+Valensiya S set 34
+Valensiya S set 35
+Valensiya S set 36
+Valensiya S set 37
+Valensiya S set 38
+Valensiya S set 39 == set 37
+Valensiya S set 40 == set 38
+Valensiya S set 41 == set 39
+Valensiya S set 42 == set 40
+Valensiya S set 43 == set 41
+
+Vika Z set 31
+Vika Z set 32
+Vika Z set 33
+Vika Z set 34
+Vika Z set 35 == set 31
+Vika Z set 36 == set 32
+Vika Z set 37 == set 33
+Vika Z set 38 == set 34
+Vika Z set 39 == set 35
+Vika Z set 40 == set 36
+Vika Z set 41 == set 37
+Vika Z set 42 == set 38
+Vika Z set 43 == set 39
+
+Yuliya K set 01
+Yuliya K set 02
+Yuliya K set 03
 Yuliya K set 04
+Yuliya K set 05
+Yuliya K set 06
+Yuliya K set 07
+Yuliya K set 08
+Yuliya K set 09
+Yuliya K set 10
+Yuliya K set 11
+Yuliya K set 12 == set 11
+Yuliya K set 13 == set 12
+Yuliya K set 14 == set 13
+Yuliya K set 15 == set 14
+Yuliya K set 16 == set 15
+Yuliya K set 17 == set 16
+Yuliya K set 18 == set 17
+Yuliya K set 19 == set 18
+Yuliya K set 20 == set 19
+Yuliya K set 21 == set 20
