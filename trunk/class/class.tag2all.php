@@ -269,7 +269,7 @@ class Tag2All
 			
 			if(!$DeleteOldTag2Alls)
 			{
-				$ttits = Tag2All::FilterTag2Alls($Tag2AllsThisItem, $tInDB[0]->getID());
+				$ttits = Tag2All::FilterTag2Alls($Tag2AllsThisItem, $tInDB[0]->getID(), $ModelID, $SetID, $ImageID, $VideoID);
 				
 				if($ttits)
 				{ continue; }
