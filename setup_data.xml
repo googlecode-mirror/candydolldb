@@ -440,22 +440,22 @@ Real birthdate: 1996-03-19
 	</Model>
 	<Model firstname="Iryna" lastname="Mihalina" birthdate="1997-02-03" tags="">
 		<Sets>
-			<Set name="01" date_pic="2008-01-25" date_vid="2008-01-25" tags="" />
-			<Set name="02" date_pic="2008-05-16" date_vid="2008-05-16" tags="" />
-			<Set name="03" date_pic="2008-06-27" date_vid="2008-06-27" tags="" />
-			<Set name="04" date_pic="2008-07-11" date_vid="2008-07-11" tags="" />
-			<Set name="05" date_pic="2008-07-25" date_vid="2008-07-25" tags="" />
-			<Set name="06" date_pic="2008-09-05" date_vid="2008-09-05" tags="" />
+			<Set name="01" date_pic="2008-01-25" date_vid="2008-01-25" tags="balcony, bare feet, bikini, bracelet, chairs, diadem, earrings"/>
+			<Set name="02" date_pic="2008-05-16" date_vid="2008-05-16" tags="airconditioning, bed, earrings, green shorts, pigtails, t-shirt, white, white socks, window"/>
+			<Set name="03" date_pic="2008-06-27" date_vid="2008-06-27" tags="candy, chair, cup, curtain, earrings, fur, mirror, pink, window"/>
+			<Set name="04" date_pic="2008-07-11" date_vid="2008-07-11" tags="bath, black, braids, earrings, mirror, radiator, slippers, swimsuit"/>
+			<Set name="05" date_pic="2008-07-25" date_vid="2008-07-25" tags="curtain, earrings, hair buns, pink, tiara, windowsill"/>
+			<Set name="06" date_pic="2008-09-05" date_vid="2008-09-05" tags="balloon, bracelet, earrings, jewelry, mirror, white"/>
 		</Sets>
 	</Model>
 	<Model firstname="Jasmin" lastname="P" birthdate="1996-07-05" tags="">
 		<Sets>
-			<Set name="01" date_pic="2009-04-17" date_vid="2009-04-17" tags="" />
-			<Set name="02" date_pic="2009-05-01" date_vid="2009-05-01" tags="" />
-			<Set name="03" date_pic="2009-05-08" date_vid="2009-05-08" tags="" />
-			<Set name="04" date_pic="2009-06-19" date_vid="2009-06-19" tags="" />
-			<Set name="05" date_pic="2009-07-03" date_vid="2009-07-03" tags="" />
-			<Set name="06" date_pic="2011-01-28" date_vid="" tags="" />
+			<Set name="01" date_pic="2009-04-17" date_vid="2009-04-17" tags="black shoes, briefcase, fence, garden, outdoor, pigtails, schoolgirl, stairs, terrace, white socks"/>
+			<Set name="02" date_pic="2009-05-01" date_vid="2009-05-01" tags="bed, bikini, diadem, wood floor"/>
+			<Set name="03" date_pic="2009-05-08" date_vid="2009-05-08" tags="black, black shoes, chair, wood floor"/>
+			<Set name="04" date_pic="2009-06-19" date_vid="2009-06-19" tags="black boots, black latex, blue latex, fireplace, gloves, sofa"/>
+			<Set name="05" date_pic="2009-07-03" date_vid="2009-07-03" tags="ballet, chair, white, wood floor"/>
+			<Set name="06" date_pic="2011-01-28" date_vid="" tags="bikini, chair, cup, stove, windowsill"/>
 		</Sets>
 	</Model>
 	<Model firstname="Juliya" lastname="Rasskazova" birthdate="1996-03-06" tags="">
@@ -519,8 +519,8 @@ Real birthdate: 1996-03-19
 	</Model>
 	<Model firstname="Kleo" lastname="M" birthdate="" tags="">
 		<Sets>
-			<Set name="01" date_pic="2012-03-30" date_vid="2012-04-13" tags="" />
-			<Set name="02" date_pic="2012-04-20" date_vid="2012-04-27" tags="" />
+			<Set name="01" date_pic="2012-03-30" date_vid="2012-04-13" tags="black shoes, chair, gold, red drapes, yellow socks"/>
+			<Set name="02" date_pic="2012-04-20" date_vid="2012-04-27" tags="basketball, blue shorts, chair, red drapes, skipping rope, t-shirt, white"/>
 		</Sets>
 	</Model>
 	<Model firstname="Larisa" lastname="Havriluyk" birthdate="1993-11-06" tags="">
@@ -671,8 +671,8 @@ Real birthdate: 1996-03-19
 	</Model>
 	<Model firstname="Margaret" lastname="M" birthdate="" tags="">
 		<Sets>
-			<Set name="01" date_pic="2012-04-13" date_vid="2012-03-16" tags="" />
-			<Set name="02" date_pic="2012-04-27" date_vid="2012-04-20" tags="" />
+			<Set name="01" date_pic="2012-04-13" date_vid="2012-03-16" tags="chair, earrings, pigtails, red, red drapes, ribbon"/>
+			<Set name="02" date_pic="2012-04-27" date_vid="2012-04-20" tags="beachball, blue drapes, diadem, green shorts, t-shirt, white, white shoes, white socks"/>
 			<Set name="03" date_pic="" date_vid="2012-05-11" tags="" />
 		</Sets>
 	</Model>
@@ -702,8 +702,8 @@ Real birthdate: 1996-03-19
 	</Model>
 	<Model firstname="Marina" lastname="T" birthdate="" tags="">
 		<Sets>
-			<Set name="01" date_pic="2012-04-06" date_vid="2012-03-30" tags="chair, fishnet, garters, leopard"/>
-			<Set name="02" date_pic="2012-04-20" date_vid="2012-04-27" tags=""/>
+			<Set name="01" date_pic="2012-04-06" date_vid="2012-03-30" tags="chair, fishnet, garters, gloves, gold drapes, tiger"/>
+			<Set name="02" date_pic="2012-04-20" date_vid="2012-04-27" tags="bikini, black stockings, chair, gloves, purple, red drapes"/>
 		</Sets>
 	</Model>
 	<Model firstname="Mariya" lastname="D" birthdate="2000-09-01" tags="">
