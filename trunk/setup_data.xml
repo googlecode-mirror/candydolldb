@@ -460,32 +460,32 @@ Real birthdate: 1996-03-19
 	</Model>
 	<Model firstname="Juliya" lastname="Rasskazova" birthdate="1996-03-06" tags="">
 		<Sets>
-			<Set name="01" date_pic="2008-08-01" date_vid="2008-08-01" tags="" />
-			<Set name="02" date_pic="2008-08-29" date_vid="2008-08-29" tags="" />
-			<Set name="03" date_pic="2008-09-26" date_vid="2008-09-26" tags="" />
-			<Set name="04" date_pic="2008-10-17" date_vid="2008-10-17" tags="" />
-			<Set name="05" date_pic="2008-11-21" date_vid="2008-11-21" tags="" />
-			<Set name="06" date_pic="2008-11-28" date_vid="2008-11-28" tags="" />
-			<Set name="07" date_pic="2008-12-12" date_vid="2008-12-12" tags="" />
-			<Set name="08" date_pic="2008-12-19" date_vid="2008-12-19" tags="" />
-			<Set name="09" date_pic="2009-01-02" date_vid="2009-01-02" tags="" />
-			<Set name="10" date_pic="2009-08-14" date_vid="2009-08-14" tags="" />
-			<Set name="11" date_pic="2009-09-04" date_vid="2009-09-04" tags="" />
-			<Set name="12" date_pic="2009-10-09" date_vid="2009-10-09" tags="" />
-			<Set name="13" date_pic="2009-12-04" date_vid="2009-12-04" tags="" />
-			<Set name="14" date_pic="2009-12-11" date_vid="2009-12-11" tags="" />
+			<Set name="01" date_pic="2008-08-01" date_vid="2008-08-01" tags="black boots, black stockings, chair, door, earrings, gloves, mirror, purple latex"/>
+			<Set name="02" date_pic="2008-08-29" date_vid="2008-08-29" tags="black boots, black latex, bracelet, earrings, pvc, stairs, window"/>
+			<Set name="03" date_pic="2008-09-26" date_vid="2008-09-26" tags="bed, earrings, garters, gloves, leopard, wood floor"/>
+			<Set name="04" date_pic="2008-10-17" date_vid="2008-10-17" tags="door, necklace, red boots, red latex"/>
+			<Set name="05" date_pic="2008-11-21" date_vid="2008-11-21" tags="black socks, blue skirt, diadem, outdoor, schoolgirl, tree, white"/>
+			<Set name="06" date_pic="2008-11-28" date_vid="2008-11-28" tags="bat, cosplay, door, pink hair, red boots, wood floor"/>
+			<Set name="07" date_pic="2008-12-12" date_vid="2008-12-12" tags="bathtub, bikini, earrings, green, plaid, shower"/>
+			<Set name="08" date_pic="2008-12-19" date_vid="2008-12-19" tags="balcony, door, stairs, white, white shoes, white socks, wood floor"/>
+			<Set name="09" date_pic="2009-01-02" date_vid="2009-01-02" tags="black boots, cosplay, fence, jewelry, outdoor"/>
+			<Set name="10" date_pic="2009-08-14" date_vid="2009-08-14" tags="bikini, earrings, slippers, sofa, wood floor"/>
+			<Set name="11" date_pic="2009-09-04" date_vid="2009-09-04" tags="earrings, hair flower, red, sofa, wood floor"/>
+			<Set name="12" date_pic="2009-10-09" date_vid="2009-10-09" tags="black shoes, cupboard, leopard, mirror, wood floor"/>
+			<Set name="13" date_pic="2009-12-04" date_vid="2009-12-04" tags="bare feet, door, earrings, hair clip, red, swimsuit, windowsill, wood floor"/>
+			<Set name="14" date_pic="2009-12-11" date_vid="2009-12-11" tags="balcony, black shoes, camouflage, chair, earrings, garters, tile"/>
 		</Sets>
 	</Model>
 	<Model firstname="Kateryna" lastname="Voitsykhovska" birthdate="" tags="">
 		<Sets>
-			<Set name="01" date_pic="2008-01-25" date_vid="2008-01-25" tags="" />
-			<Set name="02" date_pic="2008-02-08" date_vid="2008-02-08" tags="" />
-			<Set name="03" date_pic="2008-03-14" date_vid="2008-03-14" tags="" />
-			<Set name="04" date_pic="2008-03-28" date_vid="2008-03-28" tags="" />
-			<Set name="05" date_pic="2008-05-30" date_vid="2008-05-30" tags="" />
-			<Set name="06" date_pic="2008-06-13" date_vid="2008-06-13" tags="" />
-			<Set name="07" date_pic="2008-07-11" date_vid="2008-07-11" tags="" />
-			<Set name="08" date_pic="2008-08-15" date_vid="2008-08-15" tags="" />
+			<Set name="01" date_pic="2008-01-25" date_vid="2008-01-25" tags="dress, mirror, white, white stockings"/>
+			<Set name="02" date_pic="2008-02-08" date_vid="2008-02-08" tags="blue, cat ears, pigtails, stairs, swimsuit"/>
+			<Set name="03" date_pic="2008-03-14" date_vid="2008-03-14" tags="ballet, blue, bracelet, white"/>
+			<Set name="04" date_pic="2008-03-28" date_vid="2008-03-28" tags="balcony, balloons, black shoes, earrings, gray, pigtails, schoolgirl"/>
+			<Set name="05" date_pic="2008-05-30" date_vid="2008-05-30" tags="balloon, bed, bikini, bracelet, curtain, earrings, pigtails, slippers"/>
+			<Set name="06" date_pic="2008-06-13" date_vid="2008-06-13" tags="blue, earrings, ponytail, slippers, swimsuit"/>
+			<Set name="07" date_pic="2008-07-11" date_vid="2008-07-11" tags="bed, curtain, earrings, hair flower, ribbon"/>
+			<Set name="08" date_pic="2008-08-15" date_vid="2008-08-15" tags="black shoes, black stockings, earrings, jewelry, pink, skirt, sofa, t-shirt"/>
 		</Sets>
 	</Model>
 	<Model firstname="Katie" lastname="M" birthdate="1999-04-03" tags="">
