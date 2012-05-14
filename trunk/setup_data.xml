@@ -490,18 +490,19 @@ Real birthdate: 1996-03-19
 	</Model>
 	<Model firstname="Katie" lastname="M" birthdate="1999-04-03" tags="">
 		<Sets>
-			<Set name="01" date_pic="2012-02-10" date_vid="2011-12-30" tags="" />
-			<Set name="02" date_pic="2012-02-17" date_vid="2012-03-02" tags="" />
-			<Set name="03" date_pic="2012-02-24" date_vid="2012-03-09" tags="" />
-			<Set name="04" date_pic="2012-03-09" date_vid="2012-03-23" tags="" />
-			<Set name="05" date_pic="2012-03-16" date_vid="2012-03-30" tags="" />
-			<Set name="06" date_pic="2012-03-23" date_vid="2012-04-06" tags="" />
-			<Set name="07" date_pic="2012-03-30" date_vid="2012-04-13" tags="" />
-			<Set name="08" date_pic="2012-04-13" date_vid="2012-04-20" tags="" />
-			<Set name="09" date_pic="2012-04-20" date_vid="2012-05-04" tags="" />
-			<Set name="10" date_pic="2012-04-27" date_vid="2012-05-11" tags="" />
-			<Set name="11" date_pic="2012-05-04" date_vid="" tags="" />
-			<Set name="12" date_pic="2012-05-11" date_vid="" tags="" />
+			<Set name="01" date_pic="2012-02-10" date_vid="2011-12-30" tags="bare feet, beachball, earrings, red, red drapes"/>
+			<Set name="02" date_pic="2012-02-17" date_vid="2012-03-02" tags="bare feet, beachball, bracelet, earrings, white drapes"/>
+			<Set name="03" date_pic="2012-02-24" date_vid="2012-03-09" tags="bare feet, bikini, chair, earrings, seamless background, yellow"/>
+			<Set name="04" date_pic="2012-03-09" date_vid="2012-03-23" tags="black, black shoes, bracelet, chair, earrings, fishnet, gray, seamless background"/>
+			<Set name="05" date_pic="2012-03-16" date_vid="2012-03-30" tags="black shoes, bracelet, earrings, zebra"/>
+			<Set name="06" date_pic="2012-03-23" date_vid="2012-04-06" tags="beachball, black shorts, bracelet, braids, earrings, ringer t-shirt, skipping rope, white, white shoes, white socks"/>
+			<Set name="07" date_pic="2012-03-30" date_vid="2012-04-13" tags="bare feet, bikini, bracelet, chair, earrings, pink, red drapes, ring, yellow"/>
+			<Set name="08" date_pic="2012-04-13" date_vid="2012-04-20" tags="cat ears, chair, earrings, necklace, ring, swimsuit, tail, white stockings"/>
+			<Set name="09" date_pic="2012-04-20" date_vid="2012-05-04" tags="chair, earrings, gloves, red drapes, tiara, white, white socks"/>
+			<Set name="10" date_pic="2012-04-27" date_vid="2012-05-11" tags="chair, earrings, green, ponytail, red drapes, ribbon, swimsuit"/>
+			<Set name="11" date_pic="2012-05-04" date_vid="" tags="black shoes, chair, earrings, pink drapes, schoolgirl, white socks"/>
+			<Set name="12" date_pic="2012-05-11" date_vid="" tags="bare feet, beachball, chair, earrings, pigtails, red, red drapes, swimsuit"/>
+
 		</Sets>
 	</Model>
 	<Model firstname="Klara" lastname="H" birthdate="2001-10-05" tags="">
