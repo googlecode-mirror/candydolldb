@@ -10,9 +10,9 @@
 	</Model>
 	<Model firstname="Adriana" lastname="E" birthdate="1999-11-17" tags="">
 		<Sets>
-			<Set name="01" date_pic="2011-04-29" date_vid="" tags="black, boots, drapes, pvc, red, rose"/>
-			<Set name="02" date_pic="2011-05-13" date_vid="" tags="braids, swimsuit"/>
-			<Set name="03" date_pic="2011-05-20" date_vid="" tags="bikini, drapes"/>
+			<Set name="01" date_pic="2011-04-29" date_vid="" tags="black, boots, pvc, red drapes, rose"/>
+			<Set name="02" date_pic="2011-05-13" date_vid="" tags="braids, earrings, swimsuit, yellow drapes"/>
+			<Set name="03" date_pic="2011-05-20" date_vid="" tags="bare feet, bikini, bracelet, earrings, necklace, pigtails, purple drapes"/>
 		</Sets>
 	</Model>
 	<Model firstname="Alice" lastname="L" birthdate="" tags="">
@@ -516,15 +516,15 @@ Real birthdate: 1996-03-19
 	</Model>
 	<Model firstname="Klara" lastname="H" birthdate="2001-10-05" tags="">
 		<Sets>
-			<Set name="01" date_pic="2011-10-07" date_vid="2011-03-18" tags="" />
-			<Set name="02" date_pic="2011-11-25" date_vid="2011-03-25" tags="" />
-			<Set name="03" date_pic="2011-12-09" date_vid="2011-10-14" tags="" />
-			<Set name="04" date_pic="2011-12-23" date_vid="2011-10-28" tags="" />
-			<Set name="05" date_pic="2012-01-27" date_vid="2011-12-16" tags="" />
-			<Set name="06" date_pic="2012-02-24" date_vid="2012-01-06" tags="" />
-			<Set name="07" date_pic="2012-03-09" date_vid="2012-01-13" tags="" />
-			<Set name="08" date_pic="" date_vid="2012-01-20" tags="" />
-			<Set name="09" date_pic="" date_vid="2012-02-17" tags="" />
+			<Set name="01" date_pic="2011-10-07" date_vid="2011-03-18" tags="beachball, black shoes, gloves, gold, hair buns, purple drapes"/>
+			<Set name="02" date_pic="2011-11-25" date_vid="2011-03-25" tags="bare feet, green drapes, hair buns, stool, swimsuit"/>
+			<Set name="03" date_pic="2011-12-09" date_vid="2011-10-14" tags="black shoes, chair, hair buns, red drapes, stool, turquoise, white socks"/>
+			<Set name="04" date_pic="2011-12-23" date_vid="2011-10-28" tags="balls, blue drapes, bracelet, hair flower, stool, white stockings"/>
+			<Set name="05" date_pic="2012-01-27" date_vid="2011-12-16" tags="blanket, dress, gloves, pigtails, pink drapes, red, sofa, white, white shoes, white socks, window"/>
+			<Set name="06" date_pic="2012-02-24" date_vid="2012-01-06" tags="blue drapes, chair, pigtails, stool, white, white shoes, white socks"/>
+			<Set name="07" date_pic="2012-03-09" date_vid="2012-01-13" tags="apple, blue drapes, bracelet, chair, cook, fruit, hat, pan, spoon, vegetables, yellow stockings"/>
+			<Set name="08" date_pic="" date_vid="2012-01-20" tags=""/>
+			<Set name="09" date_pic="" date_vid="2012-02-17" tags=""/>
 		</Sets>
 	</Model>
 	<Model firstname="Kleo" lastname="M" birthdate="" tags="">
@@ -535,13 +535,13 @@ Real birthdate: 1996-03-19
 	</Model>
 	<Model firstname="Larisa" lastname="Havriluyk" birthdate="1993-11-06" tags="">
 		<Sets>
-			<Set name="01" date_pic="2008-01-25" date_vid="2008-01-25" tags="" />
-			<Set name="02" date_pic="2008-02-22" date_vid="2008-02-22" tags="" />
-			<Set name="03" date_pic="2008-04-04" date_vid="2008-04-04" tags="" />
-			<Set name="04" date_pic="2008-07-04" date_vid="2008-07-04" tags="" />
-			<Set name="05" date_pic="2008-10-03" date_vid="2008-10-03" tags="" />
-			<Set name="06" date_pic="2008-12-19" date_vid="2008-12-19" tags="" />
-			<Set name="07" date_pic="2009-01-23" date_vid="2009-01-23" tags="" />
+			<Set name="01" date_pic="2008-01-25" date_vid="2008-01-25" tags="earrings, flowers, hair buns, pink, plant, sofa, window"/>
+			<Set name="02" date_pic="2008-02-22" date_vid="2008-02-22" tags="earrings, gloves, hair buns, purple, tile, white, white shoes, white stockings"/>
+			<Set name="03" date_pic="2008-04-04" date_vid="2008-04-04" tags="baton, earrings, hair clip, pigtails, pink shorts, t-shirt, table, white, white socks"/>
+			<Set name="04" date_pic="2008-07-04" date_vid="2008-07-04" tags="bag, balcony, black socks, chair, curtain, earrings, mirror, ponytail, schoolgirl, skirt, white, window"/>
+			<Set name="05" date_pic="2008-10-03" date_vid="2008-10-03" tags="chair, earrings, white, white leggings, white shoes"/>
+			<Set name="06" date_pic="2008-12-19" date_vid="2008-12-19" tags="balloon, bed, bell, earrings, elk ears, fur, heart, red stockings"/>
+			<Set name="07" date_pic="2009-01-23" date_vid="2009-01-23" tags="angel wings, bed, cosplay, earrings, gloves, outdoor, pigtails, white socks, window"/>
 		</Sets>
 	</Model>
 	<Model firstname="Laura" lastname="B" birthdate="2000-06-13" tags="">
