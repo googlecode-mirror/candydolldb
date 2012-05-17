@@ -5,6 +5,7 @@
 			<Set name="01" date_pic="2012-04-06" date_vid="2012-02-24" tags="bare feet, blue, chair, earrings, pigtails, red drapes, skipping rope, swimsuit"/>
 			<Set name="02" date_pic="2012-04-27" date_vid="2012-03-02" tags="bare feet, braids, hair buns, red drapes, ribbon, white"/>
 			<Set name="03" date_pic="2012-05-11" date_vid="2012-05-04" tags="bare feet, bikini, cat ears, chair, earrings, pink drapes"/>
+			<Set name="04" date_pic="" date_vid="2012-05-18" tags=""/>
 		</Sets>
 	</Model>
 	<Model firstname="Adriana" lastname="E" birthdate="1999-11-17" tags="">
@@ -68,6 +69,7 @@
 			<Set name="06" date_pic="2012-03-23" date_vid="2012-04-06" tags="bride, chair, gloves, red drapes, veil, white"/>
 			<Set name="07" date_pic="2012-03-30" date_vid="2012-04-13" tags="chair, earrings, gold, hair buns, pink, white shorts, white socks"/>
 			<Set name="08" date_pic="2012-04-27" date_vid="" tags="black shoes, black socks, chair, earrings, pigtails, pink drapes, schoolgirl"/>
+			<Set name="09" date_pic="2012-05-18" date_vid="" tags=""/>
 		</Sets>
 	</Model>
 	<Model firstname="Alyona" lastname="Gromova" birthdate="1996-03-19" tags="">
@@ -119,6 +121,7 @@ Real birthdate: 1996-03-19
 			<Set name="02" date_pic="2012-02-17" date_vid="2012-03-23 2012-04-06" tags="bare feet, blue, earrings, pillows, swimsuit"/>
 			<Set name="03" date_pic="2012-03-16" date_vid="2012-04-13" tags="black socks, chair, drapes, white"/>
 			<Set name="04" date_pic="2012-05-04" date_vid="2012-05-11" tags="earrings, pink, ponytail, red drapes, white, white leggings, white shoes"/>
+			<Set name="05" date_pic="2012-05-18" date_vid="" tags=""/>
 		</Sets>
 	</Model>
 	<Model firstname="Anastasia" lastname="Spasuk" birthdate="1997-01-28" tags="">
@@ -394,7 +397,8 @@ Real birthdate: 1996-03-19
 			<Set name="04" date_pic="2012-04-06" date_vid="2012-04-20" tags="blue, chair, diadem, red drapes, underwear, white socks"/>
 			<Set name="05" date_pic="2012-04-13" date_vid="2012-04-27" tags="basketball, pigtails, red, seamless background, skipping rope, swimsuit, white socks"/>
 			<Set name="06" date_pic="2012-05-04" date_vid="2012-05-04" tags="beachball, blue drapes, blue shorts, chair, hair buns, ringer t-shirt, skipping rope, white, white socks"/>
-			<Set name="07" date_pic="2012-05-11" date_vid="" tags="bare feet, chair, gold drapes, pigtails, skipping rope, swimsuit"/>
+			<Set name="07" date_pic="2012-05-11" date_vid="2012-05-18" tags="bare feet, chair, gold drapes, pigtails, skipping rope, swimsuit"/>
+			<Set name="08" date_pic="2012-05-18" date_vid="" tags=""/>
 		</Sets>
 	</Model>
 	<Model firstname="Inna" lastname="Lyublinskaya" birthdate="1997-01-06" tags="">
@@ -502,7 +506,12 @@ Real birthdate: 1996-03-19
 			<Set name="10" date_pic="2012-04-27" date_vid="2012-05-11" tags="chair, earrings, green, ponytail, red drapes, ribbon, swimsuit"/>
 			<Set name="11" date_pic="2012-05-04" date_vid="" tags="black shoes, chair, earrings, pink drapes, schoolgirl, white socks"/>
 			<Set name="12" date_pic="2012-05-11" date_vid="" tags="bare feet, beachball, chair, earrings, pigtails, red, red drapes, swimsuit"/>
-
+			<Set name="13" date_pic="2012-05-18" date_vid="" tags=""/>
+		</Sets>
+	</Model>
+	<Model firstname="Khloe" lastname="R" birthdate="" tags="">
+		<Sets>
+			<Set name="01" date_pic="" date_vid="2012-05-18" tags=""/>
 		</Sets>
 	</Model>
 	<Model firstname="Klara" lastname="H" birthdate="2001-10-05" tags="">
@@ -713,6 +722,11 @@ Real birthdate: 1996-03-19
 			<Set name="02" date_pic="" date_vid="2011-02-25" tags="" />
 			<Set name="03" date_pic="" date_vid="2011-04-29" tags="" />
 			<Set name="04" date_pic="" date_vid="2011-06-17" tags="" />
+		</Sets>
+	</Model>
+	<Model firstname="Maryam" lastname="K" birthdate="" tags="">
+		<Sets>
+			<Set name="01" date_pic="" date_vid="2012-05-18" tags="" />
 		</Sets>
 	</Model>
 	<Model firstname="Masha" lastname="M" birthdate="2001-09-27" tags="">
@@ -1565,7 +1579,7 @@ Real birthdate: 1996-03-19
 			<Set name="82" date_pic="2012-04-27" date_vid="2012-01-20" tags="" />
 			<Set name="83" date_pic="2012-05-04" date_vid="2012-01-27" tags="" />
 			<Set name="84" date_pic="2012-05-11" date_vid="2012-02-03" tags="" />
-			<Set name="85" date_pic="" date_vid="2012-02-10" tags="" />
+			<Set name="85" date_pic="2012-05-18" date_vid="2012-02-10" tags="" />
 			<Set name="86" date_pic="" date_vid="2012-02-17" tags="" />
 			<Set name="87" date_pic="" date_vid="2012-02-24" tags="" />
 			<Set name="88" date_pic="" date_vid="2012-03-02" tags="" />
@@ -1579,6 +1593,7 @@ Real birthdate: 1996-03-19
 			<Set name="96" date_pic="" date_vid="2012-04-27" tags="" />
 			<Set name="97" date_pic="" date_vid="2012-05-04" tags="" />
 			<Set name="98" date_pic="" date_vid="2012-05-11" tags="" />
+			<Set name="99" date_pic="" date_vid="2012-05-18" tags="" />
 		</Sets>
 	</Model>
 	<Model firstname="Promotions">
