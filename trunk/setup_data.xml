@@ -546,24 +546,24 @@ Real birthdate: 1996-03-19
 	</Model>
 	<Model firstname="Laura" lastname="B" birthdate="2000-06-13" tags="">
 		<Sets>
-			<Set name="01" date_pic="2009-08-14" date_vid="2009-08-14" tags="" />
-			<Set name="02" date_pic="2009-08-21" date_vid="2009-08-21" tags="" />
-			<Set name="03" date_pic="2009-08-28" date_vid="2009-08-28" tags="" />
-			<Set name="04" date_pic="2009-09-25" date_vid="2009-09-25" tags="" />
-			<Set name="05" date_pic="2009-10-09" date_vid="2009-10-09" tags="" />
-			<Set name="06" date_pic="2009-10-30" date_vid="2009-10-30" tags="" />
-			<Set name="07" date_pic="2009-11-06" date_vid="2009-11-06" tags="" />
-			<Set name="08" date_pic="2009-11-20" date_vid="2009-11-20" tags="" />
-			<Set name="09" date_pic="2009-11-27" date_vid="2009-11-27" tags="" />
-			<Set name="10" date_pic="2009-12-04" date_vid="2009-12-04" tags="" />
-			<Set name="11" date_pic="2010-01-15" date_vid="2010-01-15" tags="" />
-			<Set name="12" date_pic="2010-02-12" date_vid="2010-02-12" tags="" />
-			<Set name="13" date_pic="2010-04-30" date_vid="2010-04-30" tags="" />
-			<Set name="14" date_pic="2010-05-21" date_vid="2010-05-21" tags="" />
-			<Set name="15" date_pic="2010-06-04" date_vid="2010-06-04" tags="" />
-			<Set name="16" date_pic="2010-07-16" date_vid="2010-07-16" tags="" />
-			<Set name="17" date_pic="2010-07-30" date_vid="2010-07-30" tags="" />
-			<Set name="18" date_pic="2010-09-10" date_vid="2010-09-10" tags="" />
+			<Set name="01" date_pic="2009-08-14" date_vid="2009-08-14" tags="blue shorts, braids, cap, earrings, outdoor, skipping rope, t-shirt, terrace, white, white socks"/>
+			<Set name="02" date_pic="2009-08-21" date_vid="2009-08-21" tags="curtain, earrings, hair buns, turquoise, white, wood floor"/>
+			<Set name="03" date_pic="2009-08-28" date_vid="2009-08-28" tags="bare feet, bathtub, black, earrings, hair clip, pigtails, tile"/>
+			<Set name="04" date_pic="2009-09-25" date_vid="2009-09-25" tags="earrings, hair buns, skipping rope, sofa, wood floor"/>
+			<Set name="05" date_pic="2009-10-09" date_vid="2009-10-09" tags="bare feet, bed, bikini, earrings, inflatable ring, pigtails, pink, slippers, wood floor"/>
+			<Set name="06" date_pic="2009-10-30" date_vid="2009-10-30" tags="black boots, black latex, black stockings, cane, cat ears, chair, earrings, fireplace, gloves, pvc, sofa, wood floor"/>
+			<Set name="07" date_pic="2009-11-06" date_vid="2009-11-06" tags="cap, earrings, pink, sofa, white shorts, white socks, wood floor"/>
+			<Set name="08" date_pic="2009-11-20" date_vid="2009-11-20" tags="bare feet, beachball, bikini, blue, bubbles, hair clip, railing, wood floor"/>
+			<Set name="09" date_pic="2009-11-27" date_vid="2009-11-27" tags="door, earrings, mirror, plant, radiator, stairs, tile, white shoes, yellow"/>
+			<Set name="10" date_pic="2009-12-04" date_vid="2009-12-04" tags="cupboard, earrings, pilar, purple, swimsuit, wood floor"/>
+			<Set name="11" date_pic="2010-01-15" date_vid="2010-01-15" tags="bare feet, earrings, pigtails, radiator, striped, windowsill, wood floor"/>
+			<Set name="12" date_pic="2010-02-12" date_vid="2010-02-12" tags="bare feet, bikini, earrings, plant, red, stairs, white"/>
+			<Set name="13" date_pic="2010-04-30" date_vid="2010-04-30" tags="crown, curtain, earrings, magic wand, sofa, white, wood floor"/>
+			<Set name="14" date_pic="2010-05-21" date_vid="2010-05-21" tags="beachball, bed, dotted, earrings, pigtails, red stockings"/>
+			<Set name="15" date_pic="2010-06-04" date_vid="2010-06-04" tags="blue, curtain, earrings, hair buns, radiator, sofa, swimsuit, white socks, windowsill"/>
+			<Set name="16" date_pic="2010-07-16" date_vid="2010-07-16" tags="curtain, earrings, orange, ponytail, wood floor"/>
+			<Set name="17" date_pic="2010-07-30" date_vid="2010-07-30" tags="bare feet, bed, blue, earrings, swimsuit"/>
+			<Set name="18" date_pic="2010-09-10" date_vid="2010-09-10" tags="black boots, chair, earrings, fishnet, gloves, red latex, sofa, wood floor"/>
 			<Set name="19" date_pic="2010-09-17" date_vid="2010-09-17" tags="" />
 			<Set name="20" date_pic="2010-10-22" date_vid="2010-10-22" tags="" />
 			<Set name="21" date_pic="2010-11-05" date_vid="2010-11-05" tags="" />
