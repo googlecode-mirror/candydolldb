@@ -218,7 +218,7 @@ Real birthdate: 1996-03-19
 			<Set name="07" date_pic="2011-05-06" date_vid="" tags="black, cat ears, drapes, earrings, purple, stockings, tail"/>
 		</Sets>
 	</Model>
-	<Model firstname="Bella" lastname="K" birthdate="" tags="">
+	<Model firstname="Bella" lastname="K" birthdate="1999-04-11" tags="">
 		<Sets>
 			<Set name="01" date_pic="2012-06-01" date_vid="2012-05-25" tags=""/>
 		</Sets>
