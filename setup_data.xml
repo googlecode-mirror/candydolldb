@@ -607,11 +607,11 @@ Real birthdate: 1996-03-19
 	<Model firstname="Lena" lastname="" />
 	<Model firstname="Lera" lastname="Cicima" birthdate="1995-01-25" tags="">
 		<Sets>
-			<Set name="01" date_pic="2008-08-15" date_vid="2008-08-15" tags="" />
-			<Set name="02" date_pic="2008-09-19" date_vid="2008-09-19" tags="" />
-			<Set name="03" date_pic="2008-10-17" date_vid="2008-10-17" tags="" />
-			<Set name="04" date_pic="2008-11-07" date_vid="2008-11-07" tags="" />
-			<Set name="05" date_pic="2009-01-23" date_vid="2009-01-23" tags="" />
+			<Set name="01" date_pic="2008-08-15" date_vid="2008-08-15" tags="bag, black shoes, earrings, fence, grass, outdoor, schoolgirl, skirt, tie, white socks"/>
+			<Set name="02" date_pic="2008-09-19" date_vid="2008-09-19" tags="earrings, grass, green shorts, outdoor, pigtails, playground, t-shirt, white, white shoes, white socks"/>
+			<Set name="03" date_pic="2008-10-17" date_vid="2008-10-17" tags="black, black shoes, black stockings, door, earrings, miniskirt, necklace, wood floor"/>
+			<Set name="04" date_pic="2008-11-07" date_vid="2008-11-07" tags="bare feet, blue, earrings, plant, sofa, swimsuit, window"/>
+			<Set name="05" date_pic="2009-01-23" date_vid="2009-01-23" tags="beachball, door, ribbon, silver, wood floor"/>
 		</Sets>
 	</Model>
 	<Model firstname="Lidiya" lastname="A" birthdate="1999-05-27" tags="">
