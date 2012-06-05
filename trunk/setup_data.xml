@@ -69,8 +69,8 @@
 			<Set name="06" date_pic="2012-03-23" date_vid="2012-04-06" tags="bride, chair, gloves, red drapes, veil, white"/>
 			<Set name="07" date_pic="2012-03-30" date_vid="2012-04-13" tags="chair, earrings, gold, hair buns, pink, white shorts, white socks"/>
 			<Set name="08" date_pic="2012-04-27" date_vid="2012-06-01" tags="black shoes, black socks, chair, earrings, pigtails, pink drapes, schoolgirl"/>
-			<Set name="09" date_pic="2012-05-18" date_vid="" tags=""/>
-			<Set name="10" date_pic="2012-05-25" date_vid="" tags=""/>
+			<Set name="09" date_pic="2012-05-18" date_vid="" tags="black, black shoes, cat ears, earrings, gloves, necklace, seamless background"/>
+			<Set name="10" date_pic="2012-05-25" date_vid="" tags="chair, earrings, gloves, hair buns, necklace, parasol, pink, pink socks, red drapes, white shoes"/>
 		</Sets>
 		<Remarks>
 			Previous birthdate: 1999-04-03
@@ -125,7 +125,7 @@ Real birthdate: 1996-03-19
 			<Set name="02" date_pic="2012-02-17" date_vid="2012-03-23 2012-04-06" tags="bare feet, blue, earrings, pillows, swimsuit"/>
 			<Set name="03" date_pic="2012-03-16" date_vid="2012-04-13" tags="black socks, chair, drapes, white"/>
 			<Set name="04" date_pic="2012-05-04" date_vid="2012-05-11" tags="earrings, pink, ponytail, red drapes, white, white leggings, white shoes"/>
-			<Set name="05" date_pic="2012-05-18" date_vid="2012-05-25" tags=""/>
+			<Set name="05" date_pic="2012-05-18" date_vid="2012-05-25" tags="bare feet, bracelet, earrings, lace, seamless background, white"/>
 		</Sets>
 	</Model>
 	<Model firstname="Anastasia" lastname="Spasuk" birthdate="1997-01-28" tags="">
@@ -223,7 +223,7 @@ Real birthdate: 1996-03-19
 	</Model>
 	<Model firstname="Bella" lastname="K" birthdate="1999-04-11" tags="">
 		<Sets>
-			<Set name="01" date_pic="2012-06-01" date_vid="2012-05-25" tags=""/>
+			<Set name="01" date_pic="2012-06-01" date_vid="2012-05-25" tags="black shorts, blue shoes, chair, pigtails, red drapes, ringer t-shirt, white, white socks"/>
 		</Sets>
 	</Model>
 	<Model firstname="Biyanka" lastname="S" birthdate="1997-07-05" tags="">
@@ -616,15 +616,15 @@ Real birthdate: 1996-03-19
 	</Model>
 	<Model firstname="Lidiya" lastname="A" birthdate="1999-05-27" tags="">
 		<Sets>
-			<Set name="01" date_pic="2011-04-01" date_vid="2011-01-28" tags="" />
-			<Set name="02" date_pic="2011-04-15" date_vid="2011-03-11" tags="" />
-			<Set name="03" date_pic="2011-05-13" date_vid="2011-03-18" tags="" />
-			<Set name="04" date_pic="2011-05-20" date_vid="2011-06-10" tags="" />
-			<Set name="05" date_pic="2011-05-27" date_vid="2011-07-29" tags="" />
-			<Set name="06" date_pic="2011-06-03" date_vid="2011-08-19" tags="" />
-			<Set name="07" date_pic="2011-06-10" date_vid="" tags="" />
-			<Set name="08" date_pic="2011-07-22" date_vid="" tags="" />
-			<Set name="09" date_pic="2011-08-26" date_vid="" tags="" />
+			<Set name="01" date_pic="2011-04-01" date_vid="2011-01-28" tags="blue drapes, gloves, strapless, white latex, white shoes"/>
+			<Set name="02" date_pic="2011-04-15" date_vid="2011-03-11" tags="black shoes, blue drapes, hair clip, yellow, yellow socks"/>
+			<Set name="03" date_pic="2011-05-13" date_vid="2011-03-18" tags="fishnet, hair flower, pigtails, silver shoes, sofa, white"/>
+			<Set name="04" date_pic="2011-05-20" date_vid="2011-06-10" tags="bare feet, bikini, blue, hair clip, pink drapes"/>
+			<Set name="05" date_pic="2011-05-27" date_vid="2011-07-29" tags="bare feet, dress, earrings, green drapes, hair buns, hair flower, stool, yellow"/>
+			<Set name="06" date_pic="2011-06-03" date_vid="2011-08-19" tags="bare feet, pink drapes, swimsuit, yellow"/>
+			<Set name="07" date_pic="2011-06-10" date_vid="" tags="blue drapes, ponytail, red shoes, red shorts, t-shirt, white, white socks"/>
+			<Set name="08" date_pic="2011-07-22" date_vid="" tags="chair, fruit, green, hair clip, pigtails, swimsuit"/>
+			<Set name="09" date_pic="2011-08-26" date_vid="" tags="blanket, chair, hat, lace, red drapes, rose, white, white shoes"/>
 		</Sets>
 	</Model>
 	<Model firstname="Liliya" lastname="Y" birthdate="1997-10-05" tags="">
