@@ -30,3 +30,5 @@
  * CSV-support (export, comparing of collections)
  * CRC32-support for images and videos (instead of md5?)
  * HTML5 interface instead of XHTML 1.0 Strict
+ * Hard-coded pic counts for each set for later port-ability
+ * Addition of extra XML sub-types for later port-ability
