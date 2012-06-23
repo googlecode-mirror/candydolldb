@@ -9,6 +9,7 @@ $SearchDirty = true;
 $SearchClean = true;
 $ModelRows = '';
 $ModelCount = 0;
+$SetCount = 0;
 
 
 if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'ModelFilter')
@@ -44,10 +45,22 @@ if($Models)
 		$DirtySetCount = 0;
 		$DirtySetPicCount = 0;
 		$DirtySetVidCount = 0;
+		$WhereDateClause = sprintf('model_id = %1$d AND mut_deleted = -1', $Model->getID());
+		$Dates = Date::GetDates($WhereDateClause, "date_timestamp ASC");
+		if($Dates)
+		{
+			$datestart = $Dates[0];
+			$datestartshow = date($CurrentUser->getDateFormat(), $datestart->getTimeStamp());
+			$dateend = end($Dates);
+			$dateendshow = date($CurrentUser->getDateFormat(), $dateend->getTimeStamp());
+			//var_dump($Dateshow);
+		}
+		//$DateGet = $Dates[1];
 		
 		/* @var $Set Set */
 		foreach(Set::FilterSets($Sets, $Model->getID()) as $Set)
 		{
+			$SetCount++;
 			if($Set->getSetIsDirty())
 			{
 				if($Set->getSetIsDirtyPic())
@@ -91,6 +104,8 @@ if($Models)
 			<ul>
 			<li>%11\$s: %1\$s</li>
 			<li>%12\$s: %5\$s%6\$s</li>
+			<li>%23\$s: %21\$s</li>
+			<li>%24\$s: %22\$s</li>
 			<li>%13\$s: %8\$d%7\$s</li>
 			<li>%14\$s: %10\$d%9\$s</li>
 			</ul>
@@ -128,7 +143,11 @@ if($Models)
 			$lang->g('ButtonImportVideos'),
 			$lang->g('LabelDownloadImages'),
 			$lang->g('LabelIndexOf'),
-			$lang->g('LabelDeleteModel')
+			$lang->g('LabelDeleteModel'),
+			$datestartshow,
+			$dateendshow,
+			$lang->g('LabelStartDate'),
+			$lang->g('LabelLastUpdated')
 		);
 		
 	}
@@ -167,7 +186,7 @@ echo HTMLstuff::HtmlHeader($lang->g('NavigationHome'), $CurrentUser);
 echo "<div class=\"Clear\"></div>".$ModelRows."<div class=\"Clear\"></div>";
 ?>
 
-<div style="font-weight:bold;text-align:center"><?php echo $lang->g('LabelTotalModelCount');?>: <?php printf('%1$d', $ModelCount); ?></div>
+<div style="font-weight:bold;text-align:center"><?php echo $lang->g('LabelTotalModelCount');?>: <?php printf('%1$d', $ModelCount); ?> | <?php echo $lang->g('LabelTotalSetCount');?>: <?php printf('%1$d', $SetCount); ?></div>
 
 <?php
 echo HTMLstuff::HtmlFooter($CurrentUser);

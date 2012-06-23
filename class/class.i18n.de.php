@@ -33,7 +33,6 @@ class LabelsDE extends Labels
 		'ErrorUploadErrorPHPExtension' => '',
 		'ErrorUploadErrorUnknown' => '',
 		'ErrorUploadErrorWriteToDisk' => '',
-		'ErrorUploadErrorWriteToDisk' => '',
 		
 		'CLIFinished' => 'Fertig.',
 		'FooterBy' => '',
@@ -99,6 +98,7 @@ class LabelsDE extends Labels
 		'LabelIndexOf' => '',
 		'LabelInfo' => 'Info',
 		'LabelLastname' => 'Nachname',
+		'LabelLastUpdated' => '',
 		'LabelMissingFiles0' => '',
 		'LabelMissingFiles1' => '',
 		'LabelMissingFilesX' => '',
@@ -121,6 +121,7 @@ class LabelsDE extends Labels
 		'LabelResultsPerPage' => '',
 		'LabelSearchFor' => 'Suchen nach',
 		'LabelShowingXResults' => '<p>%1$s Treffer</p>',
+		'LabelStartDate' => '',
 		'LabelTaggedWith' => '',
 		'LabelTags' => '',
 		'LabelTitleMr' => '',
