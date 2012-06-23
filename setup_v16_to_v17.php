@@ -86,12 +86,12 @@ FjbMNnvUJheiwewUJfheJheuehFJDUHdywgwwgHGfgywug;
 
 	if($NoError && $db->ExecuteQueries($UpdateDBSQL))
 	{
-		die('The database has been updated, please <a href="login.php">log-in</a>.');
+		die($lang->g('MessageDataseUpdated'));
 	}
 	else
 	{
 		die(sprintf(
-			'Something went wrong while updating, please <a href="%1$s">try again</a>.',
+			$lang->g('ErrorUpdateTryAgain'),
 			$_SERVER['REQUEST_URI']
 		));
 	}
@@ -107,7 +107,6 @@ else
 <form action="<?php echo htmlentities($_SERVER['REQUEST_URI']); ?>" method="post">
 <fieldset>
 
-<legend>Update your CandyDoll DB:</legend>
 <input type="hidden" id="hidAction" name="hidAction" value="UpdateCandyDollDB" />
 
 <h2 class="Center">Update to v1.7</h2>

@@ -19,6 +19,7 @@ class LabelsDE extends Labels
 		'ErrorLoginErrorUsernameNotFound' => '',
 		'ErrorNotAllRequiredData' => '',
 		'ErrorPleaseUseWebInterfaceForSetup' => 'Benutzen Sie bitte das Webformular zur Einrichtung dieses Programms.',
+		'ErrorUpdateTryAgain' => '',
 		'ErrorSQLErrorTableNotExist' => '',
 		'ErrorSQLErrorUnknown' => '',
 		'ErrorSyntaxEmailAddress' => '',
@@ -168,7 +169,8 @@ class LabelsDE extends Labels
 
 		'MessageForgotYourPassword' => '',
 		'MessageSureDeleteDate' => '',
-		'MessageCDDBInfo' => "<p>This application is a tribute to the breathtaking beauty of the models shown on <a href=\"http://www.candydoll.tv/\" rel=\"external\">CandyDoll.tv</a> (キャンディドール).</p><p>In CandyDoll's own words:</p>",
+		'MessageCDDBInfo' => "",
+		'MessageDataseUpdated' => '',
 		'MessageEnjoy' => 'Enjoy!',
 		'MessagePasswordReset' => '',
 		'MessagePasswordEnterRepeat' => '',
