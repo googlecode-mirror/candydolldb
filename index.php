@@ -53,9 +53,12 @@ if($Models)
 			$datestartshow = date($CurrentUser->getDateFormat(), $datestart->getTimeStamp());
 			$dateend = end($Dates);
 			$dateendshow = date($CurrentUser->getDateFormat(), $dateend->getTimeStamp());
-			//var_dump($Dateshow);
 		}
-		//$DateGet = $Dates[1];
+		else
+		{
+			$datestartshow = null;
+			$dateendshow = null;
+		}
 		
 		/* @var $Set Set */
 		foreach(Set::FilterSets($Sets, $Model->getID()) as $Set)
