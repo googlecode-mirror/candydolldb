@@ -22,13 +22,18 @@ function ExecuteQueries($SQL)
 
 
 if(file_exists('config.php'))
-{ die(sprintf('Setup already complete, please remove \'config.php\' from your installation directory and %1$s.', BackToThisPage('revisit this page'))); }
+{
+	die(sprintf(
+		$lang->g('ErrorSetupAlreadyComplete'),
+		BackToThisPage($lang->g('RevisitThisPage')
+	)));
+}
 
 
 $DBHostName = null;
 $DBUserName = null;
 $DBPassword = null;
-$DBName = 'candydolldb';
+$DBName = DBNAME;
 
 $UserName = null;
 $Password = null;
@@ -418,22 +423,22 @@ if(array_key_exists('hidAction', $_POST) && isset($_POST['hidAction']) && $_POST
 
 					if(@file_put_contents('config.php', $NewConfig, LOCK_EX) !== false)
 					{
-						die('All done! Configuration written to \'config.php\'. Please remove this page from the installation and <a href="login.php">log in</a>.');
+						die($lang->g('MessageAllDoneConfigWritten'));
 					}
 					else
-					{ die(sprintf('Something went wrong while writing the new config. Please check permissions and %1$s.', BackToThisPage('try again'))); }
+					{ die(sprintf($lang->g('ErrorSetupWritingConfig'), BackToThisPage($lang->g('LabelTryAgain')))); }
 				}
 				else
-				{ die(sprintf('Something went wrong while creating the user (\'%2$s\'), please %1$s.', BackToThisPage('try again'), mysql_error())); }
+				{ die(sprintf($lang->g('ErrorSetupCreatingUser'), BackToThisPage($lang->g('LabelTryAgain')), mysql_error())); }
 			}
 			else
-			{ die(sprintf('Something went wrong while creating the database (\'%2$s\'), please %1$s.', BackToThisPage('try again'), mysql_error())); }
+			{ die(sprintf($lang->g('ErrorSetupCreatingUser'), BackToThisPage($lang->g('LabelTryAgain')), mysql_error())); }
 		}
 		else
-		{ die(sprintf('Could not connect to the database-server, please %1$s the database-settings.', BackToThisPage('re-enter'))); }
+		{ die(sprintf($lang->g('ErrorSetupConnectDatabase'), BackToThisPage($lang->g('LabelReEnter')))); }
 	}
 	else
-	{ die(sprintf('Could not connect to the database, please %1$s the database-settings.', BackToThisPage('re-enter'))); }
+	{ die(sprintf($lang->g('ErrorSetupConnectDatabase'), BackToThisPage($lang->g('LabelReEnter')))); }
 }
 else
 {
@@ -469,16 +474,15 @@ else
 	$SmtpAuth = true;
 }
 
-echo HTMLstuff::HtmlHeader('Application setup'); ?>
+echo HTMLstuff::HtmlHeader($lang->g('LabelSetup')); ?>
 
-<h2 class="Hidden">Application setup</h2>
+<h2 class="Hidden"><?php echo $lang->g('LabelSetup');?></h2>
 
 <div class="CenterForm">
 
 <form action="<?php echo htmlentities($_SERVER['REQUEST_URI']); ?>" method="post">
 <fieldset>
 
-<legend>Set up your CandyDoll DB:</legend>
 <input type="hidden" id="hidAction" name="hidAction" value="SetupCDDB" />
 
 <h3>Database</h3>
@@ -584,7 +588,7 @@ echo HTMLstuff::HtmlHeader('Application setup'); ?>
 <input type="checkbox" id="chkSmtpAuth" name="chkSmtpAuth"<?php echo $SmtpAuth ? ' checked="checked"' : null; ?> />
 </div>
 
-<input type="submit" id="btnSubmit" name="btnSubmit" value="Setup" />
+<input type="submit" id="btnSubmit" name="btnSubmit" value="<?php echo $lang->g('ButtonSetup');?>" />
 
 </fieldset>
 </form>
