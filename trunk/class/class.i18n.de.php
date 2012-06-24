@@ -121,6 +121,7 @@ class LabelsDE extends Labels
 		'LabelRepeatPassword' => '',
 		'LabelResultsPerPage' => '',
 		'LabelSearchFor' => 'Suchen nach',
+		'LabelSetup' => '',
 		'LabelShowingXResults' => '<p>%1$s Treffer</p>',
 		'LabelStartDate' => '',
 		'LabelTaggedWith' => '',
@@ -131,6 +132,7 @@ class LabelsDE extends Labels
 		'LabelTotalImageCount' => '',
 		'LabelTotalModelCount' => '',
 		'LabelTotalSetCount' => '',
+		'LabelUpdateToVersionX' => 'v%1$s',
 		'LabelUsername' => 'Benutzername',
 		'LabelVideosParentheses' => '(Videos)',
 		'LabelVidSets' => '',
@@ -157,6 +159,7 @@ class LabelsDE extends Labels
 		'ButtonNewImage' => '',
 		'ButtonNewSet' => '',
 		'ButtonNext' => 'Weiter',
+		'ButtonNoThanks' => 'Nein danke',
 		'ButtonPageFirst' => 'Erste Seite',
 		'ButtonPageLast' => 'letzte Seite',
 		'ButtonPageNext' => 'Nächste Seite',
@@ -166,6 +169,7 @@ class LabelsDE extends Labels
 		'ButtonSave' => 'Speichern',
 		'ButtonSearch' => 'Suchen',
 		'ButtonSend' => '',
+		'ButtonYesPleaseUpdate' => 'Ja, bitte!',
 
 		'MessageForgotYourPassword' => '',
 		'MessageSureDeleteDate' => '',
@@ -176,7 +180,8 @@ class LabelsDE extends Labels
 		'MessagePasswordEnterRepeat' => '',
 		'MessagePasswordResetError' => '',
 		'MessagePasswordResetSuccess' => '',
-		'MessagePasswordResetSendError' => ''
+		'MessagePasswordResetSendError' => '',
+		'MessageSureUpdateToX' => 'v%1$s'
 	);
 }
 

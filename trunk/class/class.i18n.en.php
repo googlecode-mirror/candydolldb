@@ -121,6 +121,7 @@ class LabelsEN extends Labels
 		'LabelRepeatPassword' => 'Repeat password',
 		'LabelResultsPerPage' => 'Results per page',
 		'LabelSearchFor' => 'Search for',
+		'LabelSetup' => 'Setup',
 		'LabelShowingXResults' => '<p>Showing %1$s result(s) returned</p>',
 		'LabelStartDate' => 'Start date',
 		'LabelTaggedWith' => 'tagged with',
@@ -131,6 +132,7 @@ class LabelsEN extends Labels
 		'LabelTotalImageCount' => 'Total image count',
 		'LabelTotalModelCount' => 'Total model count',
 		'LabelTotalSetCount' => 'Total set count',
+		'LabelUpdateToVersionX' => 'Update to v%1$s',
 		'LabelUsername' => 'Username',
 		'LabelVideosParentheses' => '(videos)',
 		'LabelVidSets' => 'Vid-sets',
@@ -157,6 +159,7 @@ class LabelsEN extends Labels
 		'ButtonNewImage' => 'New image',
 		'ButtonNewSet' => 'New set',
 		'ButtonNext' => 'Next',
+		'ButtonNoThanks' => 'No thanks',
 		'ButtonPageFirst' => 'First page',
 		'ButtonPageLast' => 'Last page',
 		'ButtonPageNext' => 'Next page',
@@ -166,6 +169,7 @@ class LabelsEN extends Labels
 		'ButtonSave' => 'Save',
 		'ButtonSearch' => 'Search',
 		'ButtonSend' => 'Send',
+		'ButtonYesPleaseUpdate' => 'Yes, please update',
 		
 		'MessageForgotYourPassword' => 'Forgot your password?',
 		'MessageSureDeleteDate' => 'Are you sure you wish to delete this date?',
@@ -176,7 +180,8 @@ class LabelsEN extends Labels
 		'MessagePasswordEnterRepeat' => '<p>Please provide a new password for your account, and repeat it to avoid typing mistakes. Once your password is reset, you will be loggin in automatically.</p>',
 		'MessagePasswordResetError' => '<p>The hypelink you have used is not or no longer valid.<br />Please return to the login-page.</p>',
 		'MessagePasswordResetSuccess' => '<p>An e-mail containing a hyperlink has been sent to your e-mailaddress. Use it ito reset your account\'s password.</p>',
-		'MessagePasswordResetSendError' => '<p>An error occurred while sending your e-mail. Please contact the system\'s administrator.</p>'
+		'MessagePasswordResetSendError' => '<p>An error occurred while sending your e-mail. Please contact the system\'s administrator.</p>',
+		'MessageSureUpdateToX' => '<p>Are you sure you want to update the application to v%1$s?</p>'
 	);
 }
 
