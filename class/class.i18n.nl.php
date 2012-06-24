@@ -121,6 +121,7 @@ class LabelsNL extends Labels
 		'LabelRepeatPassword' => 'Wachtwoord herhalen',
 		'LabelResultsPerPage' => 'per pagina',
 		'LabelSearchFor' => 'Zoeken naar',
+		'LabelSetup' => 'Setup',
 		'LabelShowingXResults' => '<p>%1$s resultaten</p>',
 		'LabelStartDate' => 'Startdatum',
 		'LabelTaggedWith' => 'tagged met',
@@ -131,6 +132,7 @@ class LabelsNL extends Labels
 		'LabelTotalImageCount' => 'Totaal aantal foto\'s',
 		'LabelTotalModelCount' => 'Totaal aantal modellen',
 		'LabelTotalSetCount' => 'Totaal aantal sets',
+		'LabelUpdateToVersionX' => 'Bijwerken naar v%1$s',
 		'LabelUsername' => 'Gebruikersnaam',
 		'LabelVideosParentheses' => '(video\'s)',
 		'LabelVidSets' => 'Video-sets',
@@ -157,6 +159,7 @@ class LabelsNL extends Labels
 		'ButtonNewImage' => 'Nieuwe foto',
 		'ButtonNewSet' => 'Nieuw set',
 		'ButtonNext' => 'Volgende',
+		'ButtonNoThanks' => 'Nee bedankt',
 		'ButtonPageFirst' => 'Eerste pagina',
 		'ButtonPageLast' => 'Laatste pagina',
 		'ButtonPageNext' => 'Volgende pagina',
@@ -166,6 +169,7 @@ class LabelsNL extends Labels
 		'ButtonSave' => 'Opslaan',
 		'ButtonSearch' => 'Zoeken',
 		'ButtonSend' => 'Versturen',
+		'ButtonYesPleaseUpdate' => 'Ja, graag',
 
 		'MessageForgotYourPassword' => 'Wachtwoord vergeten?',
 		'MessageSureDeleteDate' => 'Weet u zeker dat u deze datum wil verwijderen?',
@@ -176,7 +180,8 @@ class LabelsNL extends Labels
 		'MessagePasswordEnterRepeat' => '<p>Vul een nieuw wachtwoord in, en bevestig datzelfde wachtwoord. Zodra het wachtwoord opnieuw is ingesteld, wordt u automatisch aangemeld.</p>',
 		'MessagePasswordResetError' => '<p>De toegepaste hypelink is niet (meer) geldig.<br />Meld u alstublieft opnieuw aan.</p>',
 		'MessagePasswordResetSuccess' => '<p>Er is een e-mail verstuurd met een hyperlink waarmee u het wachtwoord van uw account kunt herstellen.</p>',
-		'MessagePasswordResetSendError' => '<p>Er is een fout opgetreden tijdens het versturen van uw e-mail. Neem contact op met de systeembeheerder.</p>'
+		'MessagePasswordResetSendError' => '<p>Er is een fout opgetreden tijdens het versturen van uw e-mail. Neem contact op met de systeembeheerder.</p>',
+		'MessageSureUpdateToX' => '<p>Weet u zeker dat u de applicatie wilt bijwerken naar v%1$s?</p>'
 	);
 }
 

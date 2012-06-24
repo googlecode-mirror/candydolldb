@@ -98,9 +98,9 @@ FjbMNnvUJheiwewUJfheJheuehFJDUHdywgwwgHGfgywug;
 }
 else
 {
-	echo HTMLstuff::HtmlHeader('Setup'); ?>
+	echo HTMLstuff::HtmlHeader($lang->g('LabelSetup')); ?>
 
-<h2 class="Hidden">Application Setup</h2>
+<h2 class="Hidden"><?php echo $lang->g('LabelSetup'); ?></h2>
 
 <div class="CenterForm">
 
@@ -109,15 +109,15 @@ else
 
 <input type="hidden" id="hidAction" name="hidAction" value="UpdateCandyDollDB" />
 
-<h2 class="Center">Update to v1.7</h2>
+<h2 class="Center"><?php echo sprintf($lang->g('LabelUpdateToVersionX'), CANDYDOLLDB_VERSION);?></h2>
 
-<p>Are you sure you want to update your<br />CandyDollDB to v1.7?</p>
+<?php echo sprintf($lang->g('MessageSureUpdateToX'), CANDYDOLLDB_VERSION); ?>
 
 <div class="Separator"></div>
 
 <div class="Center">
-<input type="submit" id="btnSubmit" name="btnSubmit" value="Yes, please update" />
-<input type="button" id="btnCancel" name="btnCancel" value="No thanks" onclick="alert('Then why do you visit this page?'); return false;" />
+<input type="submit" id="btnSubmit" name="btnSubmit" value="<?php echo $lang->g('ButtonYesPleaseUpdate' );?>" />
+<input type="button" id="btnCancel" name="btnCancel" value="<?php echo $lang->g('ButtonNoThanks' );?>" onclick="return false;" />
 </div>
 
 </fieldset>
