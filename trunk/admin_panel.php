@@ -59,11 +59,13 @@ echo HTMLstuff::HtmlHeader($lang->g('NavigationAdminPanel'), $CurrentUser);
 		var modelIdXml = parseInt( $('#selModelXml').val() );
 		var includePic = $('#chkXMLIncludePic').is(':checked');
 		var includeVid = $('#chkXMLIncludeVid').is(':checked');
+		var taggedonly = $('#chkXMLIncludeTag').is(':checked');
 		var url = 'download_xml.php';
 
 		url += '?model_id=' + (isNaN(modelIdXml) || modelIdXml <= 0 ? '' : modelIdXml); 
 		url += '&includeimages=' + (includePic ? 'true' : 'false');
 		url += '&includevideos=' + (includeVid ? 'true' : 'false');		
+		url += '&taggedonly=' + (taggedonly ? 'true' : 'false');
 
 		window.location = url;
 		return true;
@@ -118,6 +120,7 @@ echo HTMLstuff::HtmlHeader($lang->g('NavigationAdminPanel'), $CurrentUser);
 </select>
 <label for="chkXMLIncludePic" style="float:none;width:auto;"><input type="checkbox" id="chkXMLIncludePic" name="chkXMLIncludePic" />&nbsp;<?php echo $lang->g('LabelIncludeImages');?></label>
 <label for="chkXMLIncludeVid" style="float:none;width:auto;"><input type="checkbox" id="chkXMLIncludeVid" name="chkXMLIncludeVid" />&nbsp;<?php echo $lang->g('LabelIncludeVideos');?></label>
+<label for="chkXMLIncludeTag" style="float:none;width:auto;"><input type="checkbox" id="chkXMLIncludeTag" name="chkXMLIncludeTag" />&nbsp;<?php echo $lang->g('LabelIncludeTags');?></label>
 </div>
 
 <hr />

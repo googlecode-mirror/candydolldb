@@ -99,6 +99,7 @@ class LabelsDE extends Labels
 		'LabelHeight' => 'Höhe',
 		'LabelImagesParentheses' => '(Fotos)',
 		'LabelIncludeImages' => '',
+		'LabelIncludeTags' => '',
 		'LabelIncludeVideos' => '',
 		'LabelIndexOf' => '',
 		'LabelInfo' => 'Info',

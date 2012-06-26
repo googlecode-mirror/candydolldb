@@ -99,6 +99,7 @@ class LabelsEN extends Labels
 		'LabelHeight' => 'Height',
 		'LabelImagesParentheses' => '(images)',
 		'LabelIncludeImages' => 'Include images',
+		'LabelIncludeTags' => 'Include tagged items only (used with include images or video)',
 		'LabelIncludeVideos' => 'Include videos',
 		'LabelIndexOf' => 'Index of',
 		'LabelInfo' => 'Info',
