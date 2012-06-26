@@ -99,6 +99,7 @@ class LabelsNL extends Labels
 		'LabelHeight' => 'Hoogte',
 		'LabelImagesParentheses' => '(foto\'s)',
 		'LabelIncludeImages' => 'Inclusief foto\'s',
+		'LabelIncludeTags' => '',
 		'LabelIncludeVideos' => 'Inclusief video\'s',
 		'LabelIndexOf' => 'Index van',
 		'LabelInfo' => 'Info',
