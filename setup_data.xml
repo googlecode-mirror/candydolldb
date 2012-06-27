@@ -1510,11 +1510,11 @@ Real birthdate: 1996-03-19
 	</Model>
 	<Model firstname="VIP">
 		<Sets>
-			<Set name="4Dress01" date_pic="" date_vid="" tags="four girls, gloves, red, sofa, stairs, white"/>
-			<Set name="Alice01" date_pic="2008-02-01" date_vid="2008-02-01" tags="dress, grass, outdoor, playing cards, tree, two girls, white, zebra"/>
-			<Set name="Alice02" date_pic="" date_vid="2008-03-14" tags=""/>
-			<Set name="AliceO02" date_pic="2008-03-14" date_vid="" tags="door, dresser, fruit, goats, mirror, necklace, outdoor, playing cards, river, stairs, white, zebra"/>
-			<Set name="AliceV02" date_pic="2008-03-14" date_vid="" tags="bed, door, flowers, garden, grass, outdoor, playing cards, stairs, tea cup, tree, white, window, zebra"/>
+			<Set name="SP_4Dress01" date_pic="" date_vid="" tags="four girls, gloves, red, sofa, stairs, white"/>
+			<Set name="SP_Alice01" date_pic="2008-02-01" date_vid="2008-02-01" tags="dress, grass, outdoor, playing cards, tree, two girls, white, zebra"/>
+			<Set name="SP_Alice02" date_pic="" date_vid="2008-03-14" tags=""/>
+			<Set name="SP_AliceO02" date_pic="2008-03-14" date_vid="" tags="door, dresser, fruit, goats, mirror, necklace, outdoor, playing cards, river, stairs, white, zebra"/>
+			<Set name="SP_AliceV02" date_pic="2008-03-14" date_vid="" tags="bed, door, flowers, garden, grass, outdoor, playing cards, stairs, tea cup, tree, white, window, zebra"/>
 			<Set name="SP_Ballet01" date_pic="2008-04-25" date_vid="2008-04-25" tags=""/>
 			<Set name="SP_Bloomers01" date_pic="2008-02-15" date_vid="2008-02-15" tags=""/>
 			<Set name="SP_Catsute01" date_pic="2008-02-22" date_vid="2008-02-22" tags=""/>
