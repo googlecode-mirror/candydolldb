@@ -618,9 +618,6 @@ Real birthdate: 1996-03-19
 			<Set name="36" date_pic="2012-02-10" date_vid="2011-12-09" tags="bride, chair, gloves, green drapes, veil, white, white shoes, white stockings"/>
 			<Set name="37" date_pic="" date_vid="2012-01-27" tags=""/>
 		</Sets>
-		<Remarks>
-			Real name: Lerusya Bugorskaya
-		</Remarks>
 	</Model>
 	<Model firstname="Lena" lastname=""/>
 	<Model firstname="Lera" lastname="Cicima" birthdate="1995-01-25" tags="">
@@ -1323,9 +1320,6 @@ Real birthdate: 1996-03-19
 			<Set name="42" date_pic="" date_vid="2011-09-30" tags=""/>
 			<Set name="43" date_pic="" date_vid="2011-10-28" tags=""/>
 		</Sets>
-		<Remarks>
-			Real name: Veronika Serebryakova
-		</Remarks>
 	</Model>
 	<Model firstname="Valeriya" lastname="Levytska" birthdate="1996-05-02" tags="">
 		<Sets>
@@ -1413,7 +1407,6 @@ Real birthdate: 1996-03-19
 			<Set name="43" date_pic="" date_vid="2011-11-25" tags=""/>
 		</Sets>
 		<Remarks>
-			Real name: Viktoria Zadorozhnaya
 			Real birthdate: 1996-04-24 
 		</Remarks>
 	</Model>
@@ -1517,11 +1510,11 @@ Real birthdate: 1996-03-19
 	</Model>
 	<Model firstname="VIP">
 		<Sets>
-			<Set name="SP_4Dress01" date_pic="" date_vid="" tags=""/>
-			<Set name="SP_Alice01" date_pic="2008-02-01" date_vid="2008-02-01" tags=""/>
-			<Set name="SP_Alice02" date_pic="" date_vid="2008-03-14" tags=""/>
-			<Set name="SP_AliceO02" date_pic="2008-03-14" date_vid="" tags=""/>
-			<Set name="SP_AliceV02" date_pic="2008-03-14" date_vid="" tags=""/>
+			<Set name="4Dress01" date_pic="" date_vid="" tags="four girls, gloves, red, sofa, stairs, white"/>
+			<Set name="Alice01" date_pic="2008-02-01" date_vid="2008-02-01" tags="dress, grass, outdoor, playing cards, tree, two girls, white, zebra"/>
+			<Set name="Alice02" date_pic="" date_vid="2008-03-14" tags=""/>
+			<Set name="AliceO02" date_pic="2008-03-14" date_vid="" tags="door, dresser, fruit, goats, mirror, necklace, outdoor, playing cards, river, stairs, white, zebra"/>
+			<Set name="AliceV02" date_pic="2008-03-14" date_vid="" tags="bed, door, flowers, garden, grass, outdoor, playing cards, stairs, tea cup, tree, white, window, zebra"/>
 			<Set name="SP_Ballet01" date_pic="2008-04-25" date_vid="2008-04-25" tags=""/>
 			<Set name="SP_Bloomers01" date_pic="2008-02-15" date_vid="2008-02-15" tags=""/>
 			<Set name="SP_Catsute01" date_pic="2008-02-22" date_vid="2008-02-22" tags=""/>
