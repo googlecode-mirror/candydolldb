@@ -143,6 +143,9 @@ else if($SetID)
 		{
 			$Set = $Set[0];
 			
+			if($Set->getModel()->getFirstName() == 'VIP' && preg_match('/^[0-9]{2,3}$/i', $Set->getName()))
+			{ Image::OutputImage(); }
+			
 			$imagefileondisk = 	$Set->getModel()->GetFileFromDisk(
 				$PortraitOnly,
 				$LandscapeOnly,
