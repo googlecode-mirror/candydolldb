@@ -1519,17 +1519,23 @@ Real birthdate: 1996-03-19
 			<Set name="SP_AliceO02" date_pic="2008-03-14" date_vid="" tags="door, dresser, fruit, goats, mirror, necklace, outdoor, playing cards, river, stairs, white, zebra"/>
 			<Set name="SP_AliceV02" date_pic="2008-03-14" date_vid="" tags="bed, door, flowers, garden, grass, outdoor, playing cards, stairs, tea cup, tree, white, window, zebra"/>
 			<Set name="SP_Ballet01" date_pic="2008-04-25" date_vid="2008-04-25" tags=""/>
+			<Set name="SP_BabyDoll01" date_pic="2011-03-11" date_vid="" tags=""/>
 			<Set name="SP_Bloomers01" date_pic="2008-02-15" date_vid="2008-02-15" tags=""/>
+			<Set name="SP_BluePink01" date_pic="2012-04-18" date_vid="" tags=""/>
 			<Set name="SP_Catsute01" date_pic="2008-02-22" date_vid="2008-02-22" tags=""/>
+			<Set name="SP_Dance01" date_pic="2012-04-12" date_vid="" tags=""/>
 			<Set name="SP_Housemaid01" date_pic="2008-02-08" date_vid="2008-02-08" tags=""/>
 			<Set name="SP_Lolita01" date_pic="2008-12-19" date_vid="" tags=""/>
 			<Set name="SP_Moon01" date_pic="2008-05-02" date_vid="2008-05-02" tags=""/>
 			<Set name="SP_Moon02" date_pic="2008-05-09" date_vid="2008-05-09" tags=""/>
 			<Set name="SP_MoonY03" date_pic="" date_vid="2008-12-19" tags=""/>
 			<Set name="SP_MoonS03" date_pic="" date_vid="2008-12-19" tags=""/>
+			<Set name="SP_PolkaDot01" date_pic="2011-03-17" date_vid="" tags=""/>
 			<Set name="SP_Sailor01" date_pic="2008-03-07" date_vid="2008-03-07" tags=""/>
 			<Set name="SP_Sailor02" date_pic="2008-12-19" date_vid="" tags=""/>
 			<Set name="SP_Twister01" date_pic="" date_vid="" tags=""/>
+			<Set name="SP_Vinyl01" date_pic="2010-04-15" date_vid="" tags=""/>
+			<Set name="SP_Vinyl02" date_pic="2010-04-06" date_vid="" tags=""/>
 
 			<Set name="01" date_pic="2010-06-04" date_vid="2010-06-04" tags=""/>
 			<Set name="02" date_pic="2010-06-04" date_vid="2010-06-11" tags=""/>

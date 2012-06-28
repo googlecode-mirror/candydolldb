@@ -82,6 +82,8 @@ function XmlOutputModel($Model,$TaggedOnly)
 			}
 		}
 
+		if($Model->getFirstName() == 'VIP')
+		{ array_multisort($RegularSet);	}
 		$FinalSets = array_merge($SpecialSet,$RegularSet);
 
 		foreach ($FinalSets as $Set)
@@ -91,7 +93,10 @@ function XmlOutputModel($Model,$TaggedOnly)
 			$TagsThisSet = Tag2All::FilterTag2Alls($Tag2Alls, null, $Model->getID(), $Set->getID(), null, null);
 	
 			$xmlw->startElement('Set');
-			$xmlw->writeAttribute('name', $Set->getName());
+				if(($Model->getFirstName() == 'VIP') && !is_numeric($Set->getName()))
+				{ $xmlw->writeAttribute('name', sprintf("SP_%1\$s",$Set->getName())); }
+				else
+				{ $xmlw->writeAttribute('name', $Set->getName()); }
 			$xmlw->writeAttribute('date_pic', Date::FormatDates($PicDatesThisSet, 'Y-m-d', false, ' '));
 			$xmlw->writeAttribute('date_vid', Date::FormatDates($VidDatesThisSet, 'Y-m-d', false, ' '));
 			$xmlw->writeAttribute('tags', Tag2All::Tags2AllCSV($TagsThisSet));
