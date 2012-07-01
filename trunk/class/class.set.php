@@ -21,7 +21,7 @@ class Set
 		$this->ID = $ID;
 		$this->Name = $Name;
 	}
-	
+
 	/**
 	 * @return int
 	 */
@@ -397,6 +397,29 @@ class Set
 		}
 		
 		return $s;
+	}
+	
+	/**
+	 * @param Set $m
+	 * @param Set $n
+	 */
+	public static function CompareAsc($m, $n)
+	{
+		if($m->getName() == $n->getName()){
+			return 0;
+		}
+		
+		$mNumeric = preg_match('/^[0-9]{2,3}$/', $m->getName());
+		$nNumeric = preg_match('/^[0-9]{2,3}$/', $n->getName());
+		
+		if(($mNumeric && $nNumeric) || (!$mNumeric && !$nNumeric))
+		{
+			return strnatcasecmp($m->getName(), $n->getName());
+		}
+		else
+		{
+			return ($mNumeric ? 1 : -1);
+		}
 	}
 }
 
