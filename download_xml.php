@@ -27,9 +27,9 @@ if($ModelID && count($Models) > 0){
 	$Model = $Models[0];
 	$outfile = sprintf('CandyDollDB %1$s%2$s%3$s.xml',
 		$Model->GetFullName(),
-		(($IncludeImages && $IncludeVideos) ? ' Complete' : ($IncludeImages ? ' Images' : ($IncludeVideos ? ' Videos' : null))),
-		(($IncludeImages || $IncludeVideos) && $TaggedOnly) ? ' Tagged' : null
-		);
+		(($IncludeImages && $IncludeVideos) ? ' '.$lang->g('LabelComplete') : ($IncludeImages ? ' '.$lang->g('NavigationImages') : ($IncludeVideos ? ' '.$lang->g('NavigationVideos') : null))),
+		(($IncludeImages || $IncludeVideos) && $TaggedOnly) ? ' '.$lang->g('LabelTagged') : null
+	);
 }
 
 header('Content-Type: text/xml');
@@ -76,13 +76,15 @@ function XmlOutputModel($Model,$TaggedOnly)
 			$TagsThisSet = Tag2All::FilterTag2Alls($Tag2Alls, null, $Model->getID(), $Set->getID(), null, null);
 	
 			$xmlw->startElement('Set');
+				
 				if(($Model->getFirstName() == 'VIP') && !is_numeric($Set->getName()))
-				{ $xmlw->writeAttribute('name', sprintf("SP_%1\$s",$Set->getName())); }
+				{ $xmlw->writeAttribute('name', sprintf('SP_%1$s',$Set->getName())); }
 				else
 				{ $xmlw->writeAttribute('name', $Set->getName()); }
-			$xmlw->writeAttribute('date_pic', Date::FormatDates($PicDatesThisSet, 'Y-m-d', false, ' '));
-			$xmlw->writeAttribute('date_vid', Date::FormatDates($VidDatesThisSet, 'Y-m-d', false, ' '));
-			$xmlw->writeAttribute('tags', Tag2All::Tags2AllCSV($TagsThisSet));
+			
+				$xmlw->writeAttribute('date_pic', Date::FormatDates($PicDatesThisSet, 'Y-m-d', false, ' '));
+				$xmlw->writeAttribute('date_vid', Date::FormatDates($VidDatesThisSet, 'Y-m-d', false, ' '));
+				$xmlw->writeAttribute('tags', Tag2All::Tags2AllCSV($TagsThisSet));
 	
 			if($IncludeImages)
 			{
@@ -97,19 +99,7 @@ function XmlOutputModel($Model,$TaggedOnly)
 					foreach($ImagesThisSet as $Image)
 					{
 						$TagsThisImage = Tag2All::FilterTag2Alls($Tag2Alls, null, $Model->getID(), $Set->getID(), $Image->getID(), null);
-						if($TaggedOnly === True && $TagsThisImage)
-						{
-						$xmlw->startElement('Image');
-						$xmlw->writeAttribute('name', $Image->getFileName());
-						$xmlw->writeAttribute('extension', $Image->getFileExtension());
-						$xmlw->writeAttribute('filesize', $Image->getFileSize());
-						$xmlw->writeAttribute('height', $Image->getImageHeight());
-						$xmlw->writeAttribute('width', $Image->getImageWidth());
-						$xmlw->writeAttribute('checksum', $Image->getFileCheckSum());
-						$xmlw->writeAttribute('tags', Tag2All::Tags2AllCSV($TagsThisImage));
-						$xmlw->endElement();
-					}
-						elseif($TaggedOnly === False)
+						if(($TaggedOnly === true && $TagsThisImage) || $TaggedOnly === False)
 						{
 							$xmlw->startElement('Image');
 								$xmlw->writeAttribute('name', $Image->getFileName());
@@ -143,17 +133,7 @@ function XmlOutputModel($Model,$TaggedOnly)
 					foreach($VideosThisSet as $Video)
 					{
 						$TagsThisVideo = Tag2All::FilterTag2Alls($Tag2Alls, null, $Model->getID(), $Set->getID(), null, $Video->getID());
-						if($TaggedOnly === True && $TagsThisVideo)
-						{
-						$xmlw->startElement('Video');
-						$xmlw->writeAttribute('name', $Video->getFileName());
-						$xmlw->writeAttribute('extension', $Video->getFileExtension());
-						$xmlw->writeAttribute('filesize', $Video->getFileSize());
-						$xmlw->writeAttribute('checksum', $Video->getFileCheckSum());
-						$xmlw->writeAttribute('tags', Tag2All::Tags2AllCSV($TagsThisVideo));
-						$xmlw->endElement();
-						}
-						elseif($TaggedOnly === False)
+						if(($TaggedOnly === true && $TagsThisVideo) || $TaggedOnly === false)
 						{
 							$xmlw->startElement('Video');
 								$xmlw->writeAttribute('name', $Video->getFileName());
@@ -210,12 +190,12 @@ foreach ($Models as $Model)
 		continue;
 	}
 	
-	XmlOutputModel($Model,$TaggedOnly);
+	XmlOutputModel($Model, $TaggedOnly);
 }
 
 foreach ($SpecialModels as $Model)
 {
-	XmlOutputModel($Model,$TaggedOnly);
+	XmlOutputModel($Model, $TaggedOnly);
 }
 
 $xmlw->endElement();
