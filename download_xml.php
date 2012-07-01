@@ -65,28 +65,11 @@ function XmlOutputModel($Model,$TaggedOnly)
 		$xmlw->startElement('Sets');
 	
 		$DatesThisModel = Date::FilterDates($Dates, null, $Model->getID());
-	
-		$SpecialSet = array();
-		$RegularSet = array();
-
-		/* @var $Set Set */
-		foreach ($SetsThisModel as $Set)
-		{
-			if(!is_numeric($Set->getName()))
-			{
-				$SpecialSet[] = $Set;
-			}
-			else
-			{
-				$RegularSet[] = $Set;
-			}
-		}
 
 		if($Model->getFirstName() == 'VIP')
-		{ array_multisort($RegularSet);	}
-		$FinalSets = array_merge($SpecialSet,$RegularSet);
+		{ usort($SetsThisModel, array('Set', 'CompareASC')); }
 
-		foreach ($FinalSets as $Set)
+		foreach ($SetsThisModel as $Set)
 		{
 			$PicDatesThisSet = Date::FilterDates($DatesThisModel, null, null, $Set->getID(), DATE_KIND_IMAGE);
 			$VidDatesThisSet = Date::FilterDates($DatesThisModel, null, null, $Set->getID(), DATE_KIND_VIDEO);
