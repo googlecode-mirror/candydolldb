@@ -22,6 +22,9 @@ $Dates = Date::GetDates($WhereClause);
 
 if($Sets)
 {
+	if($Sets[0]->getModel()->getFirstName() == 'VIP')
+	{ usort($Sets, array('Set', 'CompareAsc')); }
+	
 	/* @var $Set Set */
 	foreach($Sets as $Set)
 	{
