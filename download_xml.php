@@ -56,8 +56,9 @@ function XmlOutputModel($Model,$TaggedOnly)
 	$xmlw->writeAttribute('lastname', $Model->getLastName());
 	$xmlw->writeAttribute('birthdate', $Model->getBirthdate() > 0 ? date('Y-m-d', $Model->getBirthdate()) : null);
 	
-	$TagsThisModel = Tag2All::FilterTag2Alls($Tag2Alls, null, $Model->getID(), null, null, null);
-	$xmlw->writeAttribute('tags', Tag2All::Tags2AllCSV($TagsThisModel));
+	$TagsThisModel = Tag2All::FilterTag2Alls($Tag2Alls, null, $Model->getID(), false, false, false);
+	$TagsThisModelOnly = Tag2All::FilterTag2Alls($TagsThisModel, null, $Model->getID(), null, null, null);
+	$xmlw->writeAttribute('tags', Tag2All::Tags2AllCSV($TagsThisModelOnly));
 	
 	$SetsThisModel = Set::FilterSets($Sets, $Model->getID());
 	if($SetsThisModel)
@@ -73,7 +74,7 @@ function XmlOutputModel($Model,$TaggedOnly)
 		{
 			$PicDatesThisSet = Date::FilterDates($DatesThisModel, null, null, $Set->getID(), DATE_KIND_IMAGE);
 			$VidDatesThisSet = Date::FilterDates($DatesThisModel, null, null, $Set->getID(), DATE_KIND_VIDEO);
-			$TagsThisSet = Tag2All::FilterTag2Alls($Tag2Alls, null, $Model->getID(), $Set->getID(), null, null);
+			$TagsThisSet = Tag2All::FilterTag2Alls($TagsThisModel, null, $Model->getID(), $Set->getID(), null, null);
 	
 			$xmlw->startElement('Set');
 				
@@ -98,7 +99,7 @@ function XmlOutputModel($Model,$TaggedOnly)
 					/* @var $Image Image */
 					foreach($ImagesThisSet as $Image)
 					{
-						$TagsThisImage = Tag2All::FilterTag2Alls($Tag2Alls, null, $Model->getID(), $Set->getID(), $Image->getID(), null);
+						$TagsThisImage = Tag2All::FilterTag2Alls($TagsThisModel, null, $Model->getID(), $Set->getID(), $Image->getID(), null);
 						if(($TaggedOnly === true && $TagsThisImage) || $TaggedOnly === False)
 						{
 							$xmlw->startElement('Image');
@@ -132,7 +133,7 @@ function XmlOutputModel($Model,$TaggedOnly)
 					/* @var $Video Video */
 					foreach($VideosThisSet as $Video)
 					{
-						$TagsThisVideo = Tag2All::FilterTag2Alls($Tag2Alls, null, $Model->getID(), $Set->getID(), null, $Video->getID());
+						$TagsThisVideo = Tag2All::FilterTag2Alls($TagsThisModel, null, $Model->getID(), $Set->getID(), null, $Video->getID());
 						if(($TaggedOnly === true && $TagsThisVideo) || $TaggedOnly === false)
 						{
 							$xmlw->startElement('Video');
