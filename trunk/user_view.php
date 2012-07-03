@@ -29,7 +29,7 @@ if($UserID)
 }
 else
 {
-	$User = new User(null, 'New user');
+	$User = new User(null, $lang->g('LabelNewUser'));
 }
 
 if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'UserView')
@@ -40,7 +40,6 @@ if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'UserView')
 		$User->setPassword($_POST['hidPassword']);
 		$User->setSalt($_SESSION['UserSalt']);
 	}
-
 
 	$User->setFirstName($_POST['txtFirstName']);
 	$User->setInsertion($_POST['txtInsertion']);
@@ -161,47 +160,48 @@ setInterval(function () {
   } else {
     $("#submitform").attr("disabled", "disabled");
   }
-}, 500); //Runs every 0.5s
+}, 500);
 
 //]]>
 </script>
 
-<h2><?php echo sprintf('<a href="index.php">Home</a> - <a href="user.php">Users</a> - %1$s',
-	htmlentities($User->getUserName())
+<h2><?php echo sprintf('<a href="index.php">%3$s</a> - <a href="user.php">%2$s</a> - %1$s',
+	htmlentities($User->getUserName()),
+	$lang->g('NavigationUsers'),
+	$lang->g('NavigationHome')
 ); ?></h2>
 
 <form action="<?php echo htmlentities($_SERVER['REQUEST_URI']);?>" method="post">
 <fieldset>
-<legend>Please fill in these fields:</legend>
 
 <input type="hidden" id="hidAction" name="hidAction" value="UserView" />
 <input type="hidden" id="hidPassword" name="hidPassword" value="<?php echo $User->getPassword(); ?>" />
 
-<?php if($User->getID() == $CurrentUser->getID() || $User->getUserName() == 'New user'){ ?>
+<?php if($User->getID() == $CurrentUser->getID() || $User->getUserName() == $lang->g('LabelNewUser')){ ?>
 <div class="FormRow">
-<label for="txtUserName">Username: <em>*</em></label>
+<label for="txtUserName"><?php echo $lang->g('LabelUsername');?>: <em>*</em></label>
 <input type="text" id="txtUserName" name="txtUserName" maxlength="50" value="<?php echo $User->getUserName();?>"<?php echo HTMLstuff::DisabledStr($DeleteUser); ?> />
 </div>
 
 <div class="FormRow">
-<label for="txtPassword">Password:<?php echo $UserID ? '' : ' <em>*</em>'; ?></label>
+<label for="txtPassword"><?php echo $lang->g('LabelPassword');?>:<?php echo $UserID ? '' : ' <em>*</em>'; ?></label>
 <input type="password" id="txtPassword" name="txtPassword" maxlength="100" value=""<?php echo HTMLstuff::DisabledStr($DeleteUser); ?> />
-<input type="button" id="btnGenerate" name="btnGenerate" value="Generate"<?php echo HTMLstuff::DisabledStr($DeleteUser); ?> onclick="$.get('ajax_genpass.php', function(data){$('#txtGenerated, #txtPassword, #txtRepeatPassword').val(data);});" />
+<input type="button" id="btnGenerate" name="btnGenerate" value="<?php echo $lang->g('ButtonGenerate');?>"<?php echo HTMLstuff::DisabledStr($DeleteUser); ?> onclick="$.get('ajax_genpass.php', function(data){$('#txtGenerated, #txtPassword, #txtRepeatPassword').val(data);});" />
 <input type="text" id="txtGenerated" name="txtGenerated" class="Small" readonly="readonly" maxlength="10" value=""<?php echo HTMLstuff::DisabledStr($DeleteUser); ?> />
 </div>
 
 <div class="FormRow">
-<label for="txtRepeatPassword">Repeat password:<?php echo $UserID ? '' : ' <em>*</em>'; ?></label>
+<label for="txtRepeatPassword"><?php echo $lang->g('LabelRepeatPassword');?>:<?php echo $UserID ? '' : ' <em>*</em>'; ?></label>
 <input type="password" id="txtRepeatPassword" name="txtRepeatPassword" maxlength="100" value=""<?php echo HTMLstuff::DisabledStr($DeleteUser); ?> />
 </div>
 <? } ?>
 <div class="FormRow">
-<label for="selectDateformat">Select date format:</label>
+<label for="selectDateformat"><?php echo $lang->g('LabelSelectDateFormat');?>:</label>
 <select id="selectDateformat" name="selectDateformat"<?php echo HTMLstuff::DisabledStr($DeleteUser); ?>><?php echo $DateFormatOptions ?></select>
 </div>
 
 <div class="FormRow">
-<label for="selectImageview">Select image format:</label>
+<label for="selectImageview"><?php echo $lang->g('LabelSelectImageFormat');?>:</label>
 <select id="selectImageview" name="selectImageview"<?php echo HTMLstuff::DisabledStr($DeleteUser); ?>>
 <option value="detail" <?php echo $User->getImageview() == 'detail' ? ' selected="selected"' : null ?>>Detail View [Default]</option>
 <option value="thumb" <?php echo $User->getImageview() == 'thumb' ? ' selected="selected"' : null ?>>Thumbnail View</option>
@@ -210,42 +210,42 @@ setInterval(function () {
 </div>
 
 <div class="FormRow">
-<label>Gender: </label>
+<label><?php echo $lang->g('LabelGender');?>: </label>
 <input type="radio" id="radFemale" name="radGender" value="<?php echo GENDER_FEMALE; ?>"<?php echo $User->getGender() == GENDER_FEMALE ? ' checked="checked"' : null; ?><?php echo HTMLstuff::DisabledStr($DeleteUser); ?> /> 
-<label for="radFemale" class="Radio">Female</label>
+<label for="radFemale" class="Radio"><?php echo $lang->g('LabelFemale');?></label>
 <input type="radio" id="radMale" name="radGender" value="<?php echo GENDER_MALE; ?>"<?php echo $User->getGender() == GENDER_MALE ? ' checked="checked"' : null; ?><?php echo HTMLstuff::DisabledStr($DeleteUser); ?> /> 
-<label for="radMale" class="Radio">Male</label>
+<label for="radMale" class="Radio"><?php echo $lang->g('LabelMale');?></label>
 </div>
 
 <div class="FormRow">
-<label for="txtFirstName">Firstname: <em>*</em></label>
+<label for="txtFirstName"><?php echo $lang->g('LabelFirstname');?>: <em>*</em></label>
 <input type="text" id="txtFirstName" name="txtFirstName" maxlength="100" value="<?php echo $User->getFirstName();?>"<?php echo HTMLstuff::DisabledStr($DeleteUser); ?> />
 </div>
 
 <div class="FormRow">
-<label for="txtInsertion">Insertion:</label>
+<label for="txtInsertion"><?php echo $lang->g('LabelInsertion');?>:</label>
 <input type="text" id="txtInsertion" name="txtInsertion" maxlength="20" value="<?php echo $User->getInsertion();?>"<?php echo HTMLstuff::DisabledStr($DeleteUser); ?> />
 </div>
 
 <div class="FormRow">
-<label for="txtLastName">Lastname: <em>*</em></label>
+<label for="txtLastName"><?php echo $lang->g('LabelLastname');?>: <em>*</em></label>
 <input type="text" id="txtLastName" name="txtLastName" maxlength="100" value="<?php echo $User->getLastName();?>"<?php echo HTMLstuff::DisabledStr($DeleteUser); ?> />
 </div>
 
 <div class="FormRow">
-<label for="txtEmailAddress">Email address: <em>*</em></label>
+<label for="txtEmailAddress"><?php echo $lang->g('LabelEmailAddress');?>: <em>*</em></label>
 <input type="text" id="txtEmailAddress" name="txtEmailAddress" maxlength="255" value="<?php echo $User->getEmailAddress();?>"<?php echo HTMLstuff::DisabledStr($DeleteUser); ?> />
 </div>
 
 <div class="FormRow">
-<label for="txtBirthDate">Birthdate:</label>
+<label for="txtBirthDate"><?php echo $lang->g('LabelBirthdate');?>:</label>
 <input type="text" id="txtBirthDate" name="txtBirthDate" class="DatePicker"	maxlength="10" value="<?php echo $User->getBirthDate() > 0 ? date('Y-m-d', $User->getBirthDate()) : null; ?>"<?php echo HTMLstuff::DisabledStr($DeleteUser); ?> />
 </div>
 
 <div class="FormRow">
 <label>&nbsp;</label>
-<input type="submit" id="submitform" class="FormButton" value="<?php echo $DeleteUser ? 'Delete' : 'Save'; ?>" <?php echo ($User->getID() == $CurrentUser->getID() || $User->getUserName() == 'New user') ?  'disabled="disabled"' : null ?> />
-<input type="button" class="FormButton" value="Cancel" onclick="window.location='user.php';" />
+<input type="submit" id="submitform" class="FormButton" value="<?php echo $DeleteUser ? $lang->g('ButtonDelete') : $lang->g('ButtonSave'); ?>" <?php echo ($User->getID() == $CurrentUser->getID() || $User->getUserName() == $lang->g('LabelNewUser')) ?  'disabled="disabled"' : null ?> />
+<input type="button" class="FormButton" value="<?php echo $lang->g('ButtonCancel');?>" onclick="window.location='user.php';" />
 </div>
 
 <div class="Separator"></div>
