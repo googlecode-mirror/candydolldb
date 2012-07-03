@@ -76,11 +76,14 @@ if($XmlFromFile)
 		}
 		
 		$modeltags = Tag::GetTagArray((string)$Model->attributes()->tags);
-		$Tag2AllThisModel = Tag2All::FilterTag2Alls($Tag2AllsInDB, null, $Model2Process->getID(), null, null, null);
-		Tag2All::HandleTags($modeltags, $Tag2AllThisModel, $TagsInDB, $CurrentUser, $Model2Process->getID(), null, null, null, false);
+		$Tag2AllThisModel = Tag2All::FilterTag2Alls($Tag2AllsInDB, null, $Model2Process->getID(), false, false, false);
+		$Tag2AllThisModelOnly = Tag2All::FilterTag2Alls($Tag2AllThisModel, null, $Model2Process->getID(), null, null, null);
+		Tag2All::HandleTags($modeltags, $Tag2AllThisModelOnly, $TagsInDB, $CurrentUser, $Model2Process->getID(), null, null, null, false);
 		
 		if(!$Model->Sets)
 		{ continue; }
+		
+		$DatesThisModel = Date::FilterDates($DatesInDb, null, $Model2Process->getID(), null, null, null);
 
 		foreach($Model->Sets->Set as $Set)
 		{
@@ -133,7 +136,7 @@ if($XmlFromFile)
 			}
 			
 			$settags = Tag::GetTagArray((string)$Set->attributes()->tags);
-			$Tag2AllThisSet = Tag2All::FilterTag2Alls($Tag2AllsInDB, null, $Model2Process->getID(), $Set2Process->getID(), null, null);
+			$Tag2AllThisSet = Tag2All::FilterTag2Alls($Tag2AllThisModel, null, $Model2Process->getID(), $Set2Process->getID(), null, null);
 			Tag2All::HandleTags($settags, $Tag2AllThisSet, $TagsInDB, $CurrentUser, $Model2Process->getID(), $Set2Process->getID(), null, null, false);
 			
 			$datesPic = array();
@@ -183,7 +186,7 @@ if($XmlFromFile)
 			/* @var $dateInDb Date */
 			foreach ($Set2Process->getDatesPic() as $Date)
 			{
-				$dateInDb = Date::FilterDates($DatesInDb, null, $Set2Process->getModel()->getID(), $Set2Process->getID(), DATE_KIND_IMAGE, $Date->getTimeStamp());
+				$dateInDb = Date::FilterDates($DatesThisModel, null, null, $Set2Process->getID(), DATE_KIND_IMAGE, $Date->getTimeStamp());
 				
 				if($dateInDb)
 				{
@@ -191,15 +194,13 @@ if($XmlFromFile)
 					$Date->setID($dateInDb->getID());
 				}
 				
-				if($Date->getID())
-				{ Date::UpdateDate($Date, $CurrentUser); }
-				else
+				if(!$Date->getID())
 				{ Date::InsertDate($Date, $CurrentUser); }
 			}
 			
 			foreach ($Set2Process->getDatesVid() as $Date)
 			{
-				$dateInDb = Date::FilterDates($DatesInDb, null, $Set2Process->getModel()->getID(), $Set2Process->getID(), DATE_KIND_VIDEO, $Date->getTimeStamp());
+				$dateInDb = Date::FilterDates($DatesThisModel, null, null, $Set2Process->getID(), DATE_KIND_VIDEO, $Date->getTimeStamp());
 				
 				if($dateInDb)
 				{
@@ -207,9 +208,7 @@ if($XmlFromFile)
 					$Date->setID($dateInDb->getID());
 				}
 				
-				if($Date->getID())
-				{ Date::UpdateDate($Date, $CurrentUser); }
-				else
+				if(!$Date->getID())
 				{ Date::InsertDate($Date, $CurrentUser); }
 			}
 		}
