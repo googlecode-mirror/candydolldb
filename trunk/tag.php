@@ -62,40 +62,42 @@ foreach($Tags as $t){
 	);
 }
 
-echo HTMLstuff::HtmlHeader('Manage tags', $CurrentUser);
+echo HTMLstuff::HtmlHeader($lang->g('NavigationManageTags'), $CurrentUser);
 
 ?>
 
-<h2><?php echo sprintf('<a href="index.php">Home</a> - Manage tags - %1$s',
-	htmlentities($Tag->getID() ? $Tag->getName() : 'New')
+<h2><?php echo sprintf('<a href="index.php">%3$s</a> - %2$s - %1$s',
+	htmlentities($Tag->getID() ? $Tag->getName() : $lang->g('LabelNew')),
+	$lang->g('NavigationManageTags'),
+	$lang->g('NavigationHome')
 ); ?></h2>
 
 <div style="float:right; margin: 0 0 48px 30px;">
 
 <form action="<?php echo htmlentities($_SERVER['REQUEST_URI']); ?>" method="post">
-<fieldset><legend>Please fill in these fields:</legend>
+<fieldset>
 
 <input type="hidden" id="hidAction" name="hidAction" value="TagView" />
 <input type="hidden" id="hidTagToDelete" name="hidTagToDelete" value="" />
 
 <div class="FormRow">
-<label for="txtName" style="width:60px;">Name: <em>*</em></label>
+<label for="txtName" style="width:60px;"><?php echo $lang->g('LabelName');?>: <em>*</em></label>
 <input type="text" id="txtName" name="txtName" maxlength="50" value="<?php echo $Tag->getName();?>"<?php echo HTMLstuff::DisabledStr($DeleteTag); ?> />
 </div>
 
 <div class="FormRow">
 <label style="width:60px;">&nbsp;</label>
-<input type="submit" class="FormButton" value="<?php echo $DeleteTag ? 'Delete' : 'Save'; ?>" />
-<input type="button" class="FormButton" value="Cancel" onclick="window.location='tag.php';" />
+<input type="submit" class="FormButton" value="<?php echo $DeleteTag ? $lang->g('ButtonDelete') : $lang->g('ButtonSave'); ?>" />
+<input type="button" class="FormButton" value="<?php echo $lang->g('ButtonCancel');?>" onclick="window.location='tag.php';" />
 
 <?php if($Tag->getID()) { ?>
-	<input type="checkbox" id="chkDel" title="Delete selected tag" onclick="
+	<input type="checkbox" id="chkDel" title="<?php echo $lang->g('LabelDeleteSelectedTag');?>" onclick="
 		$('#hidTagToDelete').val(<?php echo $Tag->getID(); ?>); 
 		$('#txtName, #chkDel').attr('disabled', 'disabled');
-		$('input[type=submit]').val('Delete');" />
+		$('input[type=submit]').val('<?php echo $lang->g('ButtonDelete');?>');" />
 <?php } ?>
 
-<input type="button" class="FormButton" value="Clean" title="Clear unused tags from list" onclick="window.location='tag_nuke.php';" />
+<input type="button" class="FormButton" value="<?php echo $lang->g('ButtonClean');?>" onclick="window.location='tag_nuke.php';" />
 </div>
 
 </fieldset>
@@ -107,10 +109,10 @@ echo HTMLstuff::HtmlHeader('Manage tags', $CurrentUser);
 
 <div class="Clear Separator"></div>
 
-<?php echo '<div style="text-align: center;font-weight: bold">Total # of Tags : '.$Tagcount.'</div>'; ?>
+<?php echo '<div style="text-align: center;font-weight: bold">'.$lang->g('LabelTotalTagCount').': '.$Tagcount.'</div>'; ?>
 <div class="Clear Separator"></div>
 <?php
-echo HTMLstuff::Button('tag.php', 'Create new tag');
+echo HTMLstuff::Button('tag.php', $lang->g('ButtonCreateNewTag'));
 echo HTMLstuff::Button('index.php');
 echo HTMLstuff::HtmlFooter($CurrentUser);
 ?>
