@@ -105,26 +105,26 @@ FjbMNnvUJheiwewUJfheJheuehFJDUHdywgwwgHGfgywug;
 }
 else
 {
-	echo HTMLstuff::HtmlHeader($lang->g('LabelSetup')); ?>
+	echo HTMLstuff::HtmlHeader($lang->g('LabelSetup'))?>
 
-<h2 class="Hidden"><?php echo $lang->g('LabelSetup'); ?></h2>
+<h2 class="Hidden"><?php echo $lang->g('LabelSetup')?></h2>
 
 <div class="CenterForm">
 
-<form action="<?php echo htmlentities($_SERVER['REQUEST_URI']); ?>" method="post">
+<form action="<?php echo htmlentities($_SERVER['REQUEST_URI'])?>" method="post">
 <fieldset>
 
 <input type="hidden" id="hidAction" name="hidAction" value="UpdateCandyDollDB" />
 
-<h2 class="Center"><?php echo sprintf($lang->g('LabelUpdateToVersionX'), CANDYDOLLDB_VERSION);?></h2>
+<h2 class="Center"><?php echo sprintf($lang->g('LabelUpdateToVersionX'), CANDYDOLLDB_VERSION)?></h2>
 
-<?php echo sprintf($lang->g('MessageSureUpdateToX'), CANDYDOLLDB_VERSION); ?>
+<?php echo sprintf($lang->g('MessageSureUpdateToX'), CANDYDOLLDB_VERSION)?>
 
 <div class="Separator"></div>
 
 <div class="Center">
-<input type="submit" id="btnSubmit" name="btnSubmit" value="<?php echo $lang->g('ButtonYesPleaseUpdate' );?>" />
-<input type="button" id="btnCancel" name="btnCancel" value="<?php echo $lang->g('ButtonNoThanks' );?>" onclick="return false;" />
+<input type="submit" id="btnSubmit" name="btnSubmit" value="<?php echo $lang->g('ButtonYesPleaseUpdate' )?>" />
+<input type="button" id="btnCancel" name="btnCancel" value="<?php echo $lang->g('ButtonNoThanks' )?>" onclick="return false;" />
 </div>
 
 </fieldset>

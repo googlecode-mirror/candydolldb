@@ -126,32 +126,32 @@ else if (!array_key_exists('hidAction', $_POST) && array_key_exists('Hash', $_GE
 	}
 }
 
-echo HTMLstuff::HtmlHeader($lang->g('NavigationResetYourPassword')); ?>
+echo HTMLstuff::HtmlHeader($lang->g('NavigationResetYourPassword'))?>
 
 <div class="CenterForm">
 
-<form method="post" action="<?php echo $_SERVER['REQUEST_URI']; ?>">
+<form method="post" action="<?php echo $_SERVER['REQUEST_URI']?>">
 <fieldset>
 
 <?php if(!$Hash && is_null($MailSent)) { ?>
 <input type="hidden" id="hidAction" name="hidAction" value="PasswordPassword" />
 
-<?php echo $lang->g('MessagePasswordReset');?>
+<?php echo $lang->g('MessagePasswordReset')?>
 
 <div class="FormRow">
-<label for="txtUserName"><?php echo $lang->g('LabelUsername');?>: <em>*</em></label>
-<input type="text" id="txtUserName" name="txtUserName" maxlength="50" value="<?php echo $UserName; ?>" />
+<label for="txtUserName"><?php echo $lang->g('LabelUsername')?>: <em>*</em></label>
+<input type="text" id="txtUserName" name="txtUserName" maxlength="50" value="<?php echo $UserName?>" />
 </div>
 
 <div class="FormRow">
-<label for="txtEmailAddress"><?php echo $lang->g('LabelEmailAddress');?>: <em>*</em></label>
-<input type="text" id="txtEmailAddress" name="txtEmailAddress" maxlength="254" value="<?php echo $EmailAddress; ?>" />
+<label for="txtEmailAddress"><?php echo $lang->g('LabelEmailAddress')?>: <em>*</em></label>
+<input type="text" id="txtEmailAddress" name="txtEmailAddress" maxlength="254" value="<?php echo $EmailAddress?>" />
 </div>
 
 <div class="FormRow">
 <label>&nbsp;</label>
-<input type="submit" id="btnSend" name="btnSend" value="<?php echo $lang->g('ButtonSend');?>" />
-<input type="button" id="btnCancel" name="btnCancel" value="<?php echo $lang->g('ButtonCancel');?>" onclick="window.location='login.php';" />
+<input type="submit" id="btnSend" name="btnSend" value="<?php echo $lang->g('ButtonSend')?>" />
+<input type="button" id="btnCancel" name="btnCancel" value="<?php echo $lang->g('ButtonCancel')?>" onclick="window.location='login.php';" />
 </div>
 
 <?php } ?>
@@ -160,60 +160,60 @@ echo HTMLstuff::HtmlHeader($lang->g('NavigationResetYourPassword')); ?>
 
 <input type="hidden" id="hidAction" name="hidAction" value="PasswordReset" />
 
-<?php echo $lang->g('MessagePasswordEnterRepeat');?>
+<?php echo $lang->g('MessagePasswordEnterRepeat')?>
 
 <div class="FormRow">
-<label><?php echo $lang->g('LabelUsername');?>:</label>
-<span><?php echo htmlentities($User->getUserName()); ?></span>
+<label><?php echo $lang->g('LabelUsername')?>:</label>
+<span><?php echo htmlentities($User->getUserName())?></span>
 </div>
 
 <div class="FormRow">
-<label for="txtNewPassword"><?php echo $lang->g('LabelNewPassword');?>: <em>*</em></label>
+<label for="txtNewPassword"><?php echo $lang->g('LabelNewPassword')?>: <em>*</em></label>
 <input type="password" id="txtNewPassword" name="txtNewPassword" maxlength="50" />
 </div>
 
 <div class="FormRow">
-<label for="txtRepeatPassword"><?php echo $lang->g('LabelRepeatPassword');?>: <em>*</em></label>
+<label for="txtRepeatPassword"><?php echo $lang->g('LabelRepeatPassword')?>: <em>*</em></label>
 <input type="password" id="txtRepeatPassword" name="txtRepeatPassword" maxlength="50" />
 </div>
 
 <div class="FormRow">
 <label>&nbsp;</label>
-<input type="submit" id="btnSend" name="btnSend" value="<?php echo $lang->g('ButtonReset');?>" />
-<input type="button" id="btnCancel" name="btnCancel" value="<?php echo $lang->g('ButtonCancel');?>" onclick="window.location='login.php';" />
+<input type="submit" id="btnSend" name="btnSend" value="<?php echo $lang->g('ButtonReset')?>" />
+<input type="button" id="btnCancel" name="btnCancel" value="<?php echo $lang->g('ButtonCancel')?>" onclick="window.location='login.php';" />
 </div>
 
 <?php } ?>
 
 <?php if($HashError){ ?>
 
-<?php echo $lang->g('MessagePasswordResetError');?>
+<?php echo $lang->g('MessagePasswordResetError')?>
 
 <div class="FormRow">
 <label>&nbsp;</label>
-<input type="button" id="btnCancel" name="btnCancel" value="<?php echo $lang->g('ButtonReturn');?>" onclick="window.location='login.php';" />
+<input type="button" id="btnCancel" name="btnCancel" value="<?php echo $lang->g('ButtonReturn')?>" onclick="window.location='login.php';" />
 </div>
 
 <?php } ?>
 
 <?php if(!is_null($MailSent) && $MailSent === true){ ?>
 
-<?php echo $lang->g('MessagePasswordResetSuccess');?>
+<?php echo $lang->g('MessagePasswordResetSuccess')?>
 
 <div class="FormRow">
 <label>&nbsp;</label>
-<input type="button" id="btnCancel" name="btnCancel" value="<?php echo $lang->g('ButtonReturn');?>" onclick="window.location='login.php';" />
+<input type="button" id="btnCancel" name="btnCancel" value="<?php echo $lang->g('ButtonReturn')?>" onclick="window.location='login.php';" />
 </div>
 
 <?php } ?>
 
 <?php if(!is_null($MailSent) && $MailSent === false){ ?>
 
-<?php echo $lang->g('MessagePasswordResetSendError');?>
+<?php echo $lang->g('MessagePasswordResetSendError')?>
 
 <div class="FormRow">
 <label>&nbsp;</label>
-<input type="button" id="btnCancel" name="btnCancel" value="<?php echo $lang->g('ButtonReturn');?>" onclick="window.location='login.php';" />
+<input type="button" id="btnCancel" name="btnCancel" value="<?php echo $lang->g('ButtonReturn')?>" onclick="window.location='login.php';" />
 </div>
 
 <?php } ?>

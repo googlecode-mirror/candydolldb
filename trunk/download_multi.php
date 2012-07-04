@@ -98,43 +98,43 @@ else
 echo HTMLstuff::HtmlHeader('Download', $CurrentUser);
 ?>
 
-<h2><?php echo sprintf('<a href="index.php">%1$s</a> - %2$s', $lang->g('NavigationHome'), $lang->g('NavigationMultiDownload')); ?></h2>
+<h2><?php echo sprintf('<a href="index.php">%1$s</a> - %2$s', $lang->g('NavigationHome'), $lang->g('NavigationMultiDownload'))?></h2>
 
-<form action="<?php echo htmlentities($_SERVER['REQUEST_URI']);?>" method="post">
+<form action="<?php echo htmlentities($_SERVER['REQUEST_URI'])?>" method="post">
 <fieldset>
 
 <input type="hidden" id="hidAction" name="hidAction" value="DownloadMulti" />
 
 <select id="selModels" name="selModels[]" multiple="multiple" style="width:200px;height:400px;float:left;">
-<?php echo $ModelsOptions; ?>
+<?php echo $ModelsOptions?>
 </select>
 
 <select id="selSets" name="selSets[]" multiple="multiple" style="width:250px;height:400px;float:left;margin-left:20px;">
-<?php echo ($SetsOptions ? $SetsOptions : '<option value=""></option>'); ?>
+<?php echo ($SetsOptions ? $SetsOptions : '<option value=""></option>')?>
 </select>
 
 <select id="selImages" name="selImages[]" multiple="multiple" style="width:450px;height:400px;float:left;margin-left:20px;">
-<?php echo ($ImagesOptions ? $ImagesOptions : '<option value=""></option>'); ?>
+<?php echo ($ImagesOptions ? $ImagesOptions : '<option value=""></option>')?>
 </select>
 
 <div class="Clear"></div>
 
 <ol>
-<li><?php echo $lang->g('LabelMultiDownloadStep1');?></li>
-<li><?php echo $lang->g('LabelMultiDownloadStep2');?></li>
-<li><?php echo $lang->g('LabelMultiDownloadStep3');?></li>
+<li><?php echo $lang->g('LabelMultiDownloadStep1')?></li>
+<li><?php echo $lang->g('LabelMultiDownloadStep2')?></li>
+<li><?php echo $lang->g('LabelMultiDownloadStep3')?></li>
 </ol>
 
 <div class="FormRow">
-<label style="width:auto;" for="chkSubfolders"><?php echo $lang->g('LabelMultiDownloadUseSubfolders');?></label>&nbsp;<input type="checkbox" id="chkSubfolders" name="chkSubfolders"<?php echo HTMLstuff::CheckedStr($UseSubfoldersInDownload); ?> />
+<label style="width:auto;" for="chkSubfolders"><?php echo $lang->g('LabelMultiDownloadUseSubfolders')?></label>&nbsp;<input type="checkbox" id="chkSubfolders" name="chkSubfolders"<?php echo HTMLstuff::CheckedStr($UseSubfoldersInDownload)?> />
 </div>
 
 <div class="Clear Separator"></div>
 
 <div class="FormRow">
-<input type="submit" class="FormButton" value="<?php echo $ButtonText; ?>" />
-<input type="button" class="FormButton" value="<?php echo $lang->g('ButtonReset');?>" onclick="window.location='download_multi.php';" />
-<input type="button" class="FormButton" value="<?php echo $lang->g('ButtonCancel');?>" onclick="window.location='index.php';" />
+<input type="submit" class="FormButton" value="<?php echo $ButtonText?>" />
+<input type="button" class="FormButton" value="<?php echo $lang->g('ButtonReset')?>" onclick="window.location='download_multi.php';" />
+<input type="button" class="FormButton" value="<?php echo $lang->g('ButtonCancel')?>" onclick="window.location='index.php';" />
 </div>
 
 </fieldset>

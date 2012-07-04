@@ -60,29 +60,29 @@ if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] && $_POST['hidAc
 	}
 }
 
-echo HTMLstuff::HtmlHeader($lang->g('NavigationLogIn')); ?>
+echo HTMLstuff::HtmlHeader($lang->g('NavigationLogIn'))?>
 
 <div class="CenterForm">
 
-<form method="post" action="<?php echo $_SERVER['REQUEST_URI']; ?>">
+<form method="post" action="<?php echo $_SERVER['REQUEST_URI']?>">
 <fieldset>
 
 <input type="hidden" id="hidAction" name="hidAction" value="LoginLogin" />
 
 <div class="FormRow">
-<label for="txtUserName"><?php echo $lang->g('LabelUsername');?>: <em>*</em></label>
-<input type="text" id="txtUserName" name="txtUserName" maxlength="50" value="<?php echo $UserName; ?>" />
+<label for="txtUserName"><?php echo $lang->g('LabelUsername')?>: <em>*</em></label>
+<input type="text" id="txtUserName" name="txtUserName" maxlength="50" value="<?php echo $UserName?>" />
 </div>
 
 <div class="FormRow">
-<label for="txtPassword"><?php echo $lang->g('LabelPassword');?>: <em>*</em></label>
+<label for="txtPassword"><?php echo $lang->g('LabelPassword')?>: <em>*</em></label>
 <input type="password" id="txtPassword" name="txtPassword" maxlength="255" />
 </div> 
 
 <div class="FormRow">
 <label>&nbsp;</label>
-<input type="submit" id="btnLogin" name="btnLogin" value="<?php echo $lang->g('ButtonLogin');?>" />
-<a href="password.php"><?php echo $lang->g('MessageForgotYourPassword');?></a> | <a href="#" onclick="$('#SiteInfo').slideToggle();return false;"><?php echo $lang->g('LabelInfo');?></a>
+<input type="submit" id="btnLogin" name="btnLogin" value="<?php echo $lang->g('ButtonLogin')?>" />
+<a href="password.php"><?php echo $lang->g('MessageForgotYourPassword')?></a> | <a href="#" onclick="$('#SiteInfo').slideToggle();return false;"><?php echo $lang->g('LabelInfo')?></a>
 </div>
 
 </fieldset>
@@ -99,13 +99,13 @@ $(document).ready(function(){
 
 <div id="SiteInfo">
 
-<?php echo $lang->g('MessageCDDBInfo');?>
+<?php echo $lang->g('MessageCDDBInfo')?>
 
 <cite>
 CandyDoll is the place where you can enjoy the beauty of little girls. We made collection of young and petite girls. You will definitely find these excellent photos worth to be called true masterpieces.
 </cite>
 
-<p><?php echo $lang->g('MessageEnjoy');?></p>
+<p><?php echo $lang->g('MessageEnjoy')?></p>
 
 </div>
 

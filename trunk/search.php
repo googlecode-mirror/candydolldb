@@ -296,24 +296,24 @@ echo HTMLstuff::HtmlHeader($lang->g('NavigationTagSearch'), $CurrentUser);
 
 ?>
 
-<h2><a href="index.php"><?php echo $lang->g('NavigationHome');?></a> - <?php echo $lang->g('NavigationTagSearch');?></h2>
+<h2><a href="index.php"><?php echo $lang->g('NavigationHome')?></a> - <?php echo $lang->g('NavigationTagSearch')?></h2>
 
-<form action="<?php echo htmlentities($_SERVER['REQUEST_URI']);?>" method="get" class="Search">
+<form action="<?php echo htmlentities($_SERVER['REQUEST_URI'])?>" method="get" class="Search">
 <fieldset>
 
-<label for="t"><?php echo $lang->g('LabelSearchFor');?></label>
+<label for="t"><?php echo $lang->g('LabelSearchFor')?></label>
 <select id="t" name="t">
-	<option value="MODEL" <?php echo $searchMode == "MODEL" ? ' selected="selected"' : null ?>><?php echo $lang->g('NavigationModels');?></option>
-	<option value="SET" <?php echo $searchMode == "SET" ? ' selected="selected"' : null ?>><?php echo $lang->g('NavigationSets');?></option>
-	<option value="IMAGE" <?php echo $searchMode == "IMAGE" ? ' selected="selected"' : null ?>><?php echo $lang->g('NavigationImages');?></option>
-	<option value="VIDEO" <?php echo $searchMode == "VIDEO" ? ' selected="selected"' : null ?>><?php echo $lang->g('NavigationVideos');?></option>
+	<option value="MODEL" <?php echo $searchMode == "MODEL" ? ' selected="selected"' : null ?>><?php echo $lang->g('NavigationModels')?></option>
+	<option value="SET" <?php echo $searchMode == "SET" ? ' selected="selected"' : null ?>><?php echo $lang->g('NavigationSets')?></option>
+	<option value="IMAGE" <?php echo $searchMode == "IMAGE" ? ' selected="selected"' : null ?>><?php echo $lang->g('NavigationImages')?></option>
+	<option value="VIDEO" <?php echo $searchMode == "VIDEO" ? ' selected="selected"' : null ?>><?php echo $lang->g('NavigationVideos')?></option>
 </select>
 
-<label for="q"><?php echo $lang->g('LabelTaggedWith');?></label>
-<input type="text" id="q" name="q" class="TagsBox" style="width:470px;" value="<?php echo $q; ?>" />
-<input type="submit" class="FormButton" value="<?php echo $lang->g('ButtonSearch');?>" />
-<label for="x"><?php echo $lang->g('LabelResultsPerPage');?></label>
-<input type="text" id="x" name="x" class="TagsBox" style="width:50px;" value="<?php echo $max_results; ?>" />
+<label for="q"><?php echo $lang->g('LabelTaggedWith')?></label>
+<input type="text" id="q" name="q" class="TagsBox" style="width:470px;" value="<?php echo $q?>" />
+<input type="submit" class="FormButton" value="<?php echo $lang->g('ButtonSearch')?>" />
+<label for="x"><?php echo $lang->g('LabelResultsPerPage')?></label>
+<input type="text" id="x" name="x" class="TagsBox" style="width:50px;" value="<?php echo $max_results?>" />
 
 <div class="Separator"></div>
 
@@ -347,7 +347,7 @@ echo sprintf($lang->g('LabelShowingXResults'),
 
 <div class="Clear"></div>
 
-<?php echo HTMLstuff::Button('index.php'); ?>
+<?php echo HTMLstuff::Button('index.php')?>
 
 </fieldset>
 </form>

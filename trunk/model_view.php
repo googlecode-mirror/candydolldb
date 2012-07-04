@@ -96,57 +96,57 @@ if($ModelID)
 <h2><?php echo sprintf('<a href="index.php">%2$s</a> - %1$s',
 	htmlentities($Model->GetFullName()),
 	$lang->g('NavigationHome')
-); ?></h2>
+)?></h2>
 
-<form action="<?php echo htmlentities($_SERVER['REQUEST_URI']); ?>" method="post">
+<form action="<?php echo htmlentities($_SERVER['REQUEST_URI'])?>" method="post">
 <fieldset>
 
 <input type="hidden" id="hidAction" name="hidAction" value="ModelView" />
 
 <div class="FormRow">
-<label for="txtFirstName"><?php echo $lang->g('LabelFirstname');?>: <em>*</em></label>
-<input type="text" id="txtFirstName" name="txtFirstName" maxlength="100" value="<?php echo $Model->getFirstName();?>"<?php echo HTMLstuff::DisabledStr($DeleteModel); ?> />
+<label for="txtFirstName"><?php echo $lang->g('LabelFirstname')?>: <em>*</em></label>
+<input type="text" id="txtFirstName" name="txtFirstName" maxlength="100" value="<?php echo $Model->getFirstName()?>"<?php echo HTMLstuff::DisabledStr($DeleteModel)?> />
 </div>
 
 <div class="FormRow">
-<label for="txtLastName"><?php echo $lang->g('LabelLastname');?>:</label>
-<input type="text" id="txtLastName" name="txtLastName" maxlength="100" value="<?php echo $Model->getLastName();?>"<?php echo HTMLstuff::DisabledStr($DeleteModel); ?> />
+<label for="txtLastName"><?php echo $lang->g('LabelLastname')?>:</label>
+<input type="text" id="txtLastName" name="txtLastName" maxlength="100" value="<?php echo $Model->getLastName()?>"<?php echo HTMLstuff::DisabledStr($DeleteModel)?> />
 </div>
 
 <div class="FormRow">
-<label for="txtBirthDate"><?php echo $lang->g('LabelBirthdate');?>:</label>
-<input type="text" id="txtBirthDate" name="txtBirthDate" class="DatePicker"	maxlength="10" value="<?php echo $Model->getBirthDate() > 0 ? date('Y-m-d', $Model->getBirthDate()) : null; ?>"<?php echo HTMLstuff::DisabledStr($DeleteModel); ?> />
+<label for="txtBirthDate"><?php echo $lang->g('LabelBirthdate')?>:</label>
+<input type="text" id="txtBirthDate" name="txtBirthDate" class="DatePicker"	maxlength="10" value="<?php echo $Model->getBirthDate() > 0 ? date('Y-m-d', $Model->getBirthDate()) : null?>"<?php echo HTMLstuff::DisabledStr($DeleteModel)?> />
 </div>
 
 <div class="FormRow">
-<label for="txtTags"><?php echo $lang->g('LabelTags');?> (CSV):</label>
-<input type="text" id="txtTags" name="txtTags" maxlength="200" class="TagsBox" value="<?php echo Tag2All::Tags2AllCSV($TagsThisModel); ?>"<?php echo HTMLstuff::DisabledStr($DeleteModel); ?> />
+<label for="txtTags"><?php echo $lang->g('LabelTags')?> (CSV):</label>
+<input type="text" id="txtTags" name="txtTags" maxlength="200" class="TagsBox" value="<?php echo Tag2All::Tags2AllCSV($TagsThisModel)?>"<?php echo HTMLstuff::DisabledStr($DeleteModel)?> />
 </div>
 
 <div class="FormRow">
-<label for="txtRemarks"><?php echo $lang->g('LabelRemarks');?>:</label>
-<textarea id="txtRemarks" name="txtRemarks" cols="42" rows="16" <?php echo HTMLstuff::DisabledStr($DeleteModel); ?>><?php echo $Model->getRemarks(); ?></textarea>
-</div>
-
-<div class="FormRow">
-<label>&nbsp;</label>
-<input type="submit" class="FormButton" value="<?php echo $DeleteModel ? $lang->g('ButtonDelete') : $lang->g('ButtonSave'); ?>" />
-<input type="button" class="FormButton" value="<?php echo $lang->g('ButtonCancel');?>" onclick="window.location='index.php';" />
+<label for="txtRemarks"><?php echo $lang->g('LabelRemarks')?>:</label>
+<textarea id="txtRemarks" name="txtRemarks" cols="42" rows="16" <?php echo HTMLstuff::DisabledStr($DeleteModel)?>><?php echo $Model->getRemarks()?></textarea>
 </div>
 
 <div class="FormRow">
 <label>&nbsp;</label>
-<input type="button" class="FormButton" value="<?php echo $lang->g('ButtonClearCacheImage');?>" onclick="window.location='cacheimage_delete.php?model_id=<?php echo $ModelID ?>';"<?php echo HTMLstuff::DisabledStr($DeleteModel); ?> />
-<input type="button" class="FormButton" value="<?php echo $lang->g('ButtonClearIndexCacheImage');?>" onclick="window.location='cacheimage_delete.php?index_id=<?php echo $ModelID ?>';"<?php echo HTMLstuff::DisabledStr($DeleteModel); ?> />
+<input type="submit" class="FormButton" value="<?php echo $DeleteModel ? $lang->g('ButtonDelete') : $lang->g('ButtonSave')?>" />
+<input type="button" class="FormButton" value="<?php echo $lang->g('ButtonCancel')?>" onclick="window.location='index.php';" />
+</div>
+
+<div class="FormRow">
+<label>&nbsp;</label>
+<input type="button" class="FormButton" value="<?php echo $lang->g('ButtonClearCacheImage')?>" onclick="window.location='cacheimage_delete.php?model_id=<?php echo $ModelID ?>';"<?php echo HTMLstuff::DisabledStr($DeleteModel)?> />
+<input type="button" class="FormButton" value="<?php echo $lang->g('ButtonClearIndexCacheImage')?>" onclick="window.location='cacheimage_delete.php?index_id=<?php echo $ModelID ?>';"<?php echo HTMLstuff::DisabledStr($DeleteModel)?> />
 </div>
 
 <div class="Separator"></div>
 
-<?php echo $ModelID ? HTMLstuff::Button(sprintf('set.php?model_id=%1$d', $ModelID), $lang->g('NavigationSets')) : ''; ?>
+<?php echo $ModelID ? HTMLstuff::Button(sprintf('set.php?model_id=%1$d', $ModelID), $lang->g('NavigationSets')) : ''?>
 
-<?php echo $ModelID ? HTMLstuff::Button(sprintf('download_image.php?index_id=%1$d&amp;width=500&amp;height=750', $ModelID), $lang->g('ButtonIndex'), ' rel="lightbox"') : ''; ?>
+<?php echo $ModelID ? HTMLstuff::Button(sprintf('download_image.php?index_id=%1$d&amp;width=500&amp;height=750', $ModelID), $lang->g('ButtonIndex'), ' rel="lightbox"') : ''?>
 
-<?php echo HTMLstuff::Button('index.php'); ?>
+<?php echo HTMLstuff::Button('index.php')?>
 
 </fieldset>
 </form>

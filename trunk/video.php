@@ -98,17 +98,17 @@ echo HTMLstuff::HtmlHeader(sprintf('%1$s - %3$s %2$s - %4$s',
 	$lang->g('NavigationSets'),
 	$lang->g('NavigationSet'),
 	$lang->g('NavigationVideos')
-); ?></h2>
+)?></h2>
 
 <div class="Separator"></div>
 
 <table border="0" cellpadding="4" cellspacing="0">
 	<thead>
 		<tr>
-			<th><?php echo $lang->g('LabelFilename');?></th>
-			<th style="width: 60px;"><?php echo $lang->g('LabelExtension');?></th>
-			<th style="width: 80px;"><?php echo $lang->g('LabelFilesize');?></th>
-			<th style="width: 290px;"><?php echo $lang->g('LabelChecksum');?></th>
+			<th><?php echo $lang->g('LabelFilename')?></th>
+			<th style="width: 60px;"><?php echo $lang->g('LabelExtension')?></th>
+			<th style="width: 80px;"><?php echo $lang->g('LabelFilesize')?></th>
+			<th style="width: 290px;"><?php echo $lang->g('LabelChecksum')?></th>
 			<th style="width: 22px;">&nbsp;</th>
 			<th style="width: 22px;">&nbsp;</th>
 			<th style="width: 22px;">&nbsp;</th>
@@ -116,11 +116,11 @@ echo HTMLstuff::HtmlHeader(sprintf('%1$s - %3$s %2$s - %4$s',
 	</thead>
 	<tfoot>
 		<tr>
-			<th colspan="7"><?php printf('%1$s: %2$d', $lang->g('LabelTotalVideoCount'), $VideoCount); ?></th>
+			<th colspan="7"><?php printf('%1$s: %2$d', $lang->g('LabelTotalVideoCount'), $VideoCount)?></th>
 		</tr>
 	</tfoot>
 	<tbody>
-	<?php echo $VideoRows ? $VideoRows : '<tr class="Row1"><td colspan="7">&nbsp;</td></tr>'; ?>
+	<?php echo $VideoRows ? $VideoRows : '<tr class="Row1"><td colspan="7">&nbsp;</td></tr>'?>
 	</tbody>
 </table>
 
