@@ -47,7 +47,7 @@ if($VideoID != null)
 }
 else
 {
-	$Video = new Video(null, 'New');
+	$Video = new Video(null, $lang->g('LabelNew'));
 	$Set = Set::GetSets(sprintf('set_id = %1d AND mut_deleted = -1', $SetID));
 
 	if($Set)
@@ -109,62 +109,69 @@ if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'VideoView')
 	}
 }
 
-echo HTMLstuff::HtmlHeader($Model->GetShortName(true).' - Set '.$Set->getName().' - Video', $CurrentUser);
+echo HTMLstuff::HtmlHeader(sprintf('%1$s - %2$s %3$s - %4$s',
+	$Model->GetShortName(true),
+	$lang->g('NavigationSet'),
+	$Set->getName(),
+	$lang->g('NavigationVideos')
+), $CurrentUser);
 
 ?>
 
 <h2><?php echo sprintf(
-	'<a href="index.php">Home</a> - <a href="model_view.php?model_id=%1$d">%4$s</a> - <a href="set.php?model_id=%1$d">Sets</a> -  <a href="set_view.php?model_id=%1$d&amp;set_id=%2$d">Set %5$s</a> - <a href="video.php?model_id=%1$d&amp;set_id=%2$d">Videos</a> - %6$s',
+	'<a href="index.php">%7$s</a> - <a href="model_view.php?model_id=%1$d">%4$s</a> - <a href="set.php?model_id=%1$d">%8$s</a> -  <a href="set_view.php?model_id=%1$d&amp;set_id=%2$d">%9$s %5$s</a> - <a href="video.php?model_id=%1$d&amp;set_id=%2$d">%10$s</a> - %6$s',
 	$ModelID,
 	$SetID,
 	$VideoID,
 	htmlentities($Model->GetShortName(true)),
 	htmlentities($Set->getName()),
-	htmlentities($Video->getFileName())
+	htmlentities($Video->getFileName()),
+	$lang->g('NavigationHome'),
+	$lang->g('NavigationSets'),
+	$lang->g('NavigationSet'),
+	$lang->g('NavigationVideos')
 ); ?></h2>
 
 <form action="<?php echo htmlentities($_SERVER['REQUEST_URI']);?>" method="post">
 <fieldset>
-<legend>Please fill in these fields:</legend>
 
 <input type="hidden" id="hidAction" name="hidAction" value="VideoView" />
 
 <div class="FormRow">
-<label for="txtFilename">Filename: <em>*</em></label>
+<label for="txtFilename"><?php echo $lang->g('LabelFilename');?>: <em>*</em></label>
 <input type="text" id="txtFilename" name="txtFilename" maxlength="100" value="<?php echo $Video->getFileName();?>"<?php echo HTMLstuff::DisabledStr($DeleteVideo); ?> />
 </div>
 
 <div class="FormRow">
-<label for="txtFileExtension">Extension: <em>*</em></label>
+<label for="txtFileExtension"><?php echo $lang->g('LabelExtension');?>: <em>*</em></label>
 <input type="text" id="txtFileExtension" name="txtFileExtension" maxlength="10" value="<?php echo $Video->getFileExtension();?>"<?php echo HTMLstuff::DisabledStr($DeleteVideo); ?> />
 </div>
 
 <div class="FormRow">
-<label for="txtFilesize">Filesize (bytes): <em>*</em></label>
+<label for="txtFilesize"><?php echo $lang->g('LabelFilesize');?> (bytes): <em>*</em></label>
 <input type="text" id="txtFilesize" name="txtFilesize" maxlength="10" value="<?php echo $Video->getFileSize(); ?>"<?php echo HTMLstuff::DisabledStr($DeleteVideo); ?> />
 </div>
 
 <div class="FormRow">
-<label for="txtFileChecksum">Checksum: <em>*</em></label>
+<label for="txtFileChecksum"><?php echo $lang->g('LabelChecksum');?>: <em>*</em></label>
 <input type="text" id="txtFileChecksum" name="txtFileChecksum" maxlength="32" value="<?php echo $Video->getFileCheckSum();?>"<?php echo HTMLstuff::DisabledStr($DeleteVideo); ?> />
 </div>
 
 <div class="FormRow">
-<label for="txtTags">Tags (CSV):</label>
+<label for="txtTags"><?php echo $lang->g('LabelTags');?> (CSV):</label>
 <input type="text" id="txtTags" name="txtTags" maxlength="200" class="TagsBox" value="<?php echo Tag2All::Tags2AllCSV($TagsThisVideo); ?>"<?php echo HTMLstuff::DisabledStr($DeleteVideo); ?> />
 </div>
 
 <div class="FormRow"><label>&nbsp;</label>
-<input type="submit" class="FormButton" value="<?php echo $DeleteVideo ? 'Delete' : 'Save'; ?>" />
-<input type="button" class="FormButton" value="Cancel" onclick="window.location='<?php echo htmlentities($ReturnURL); ?>';" />
-<input type="button" class="FormButton" value="Clear cacheimage" onclick="window.location='cacheimage_delete.php?video_id=<?php echo $VideoID ?>';"<?php echo HTMLstuff::DisabledStr($DeleteVideo); ?> />
+<input type="submit" class="FormButton" value="<?php echo $DeleteVideo ? $lang->g('ButtonDelete') : $lang->g('ButtonSave'); ?>" />
+<input type="button" class="FormButton" value="<?php echo $lang->g('ButtonCancel');?>" onclick="window.location='<?php echo htmlentities($ReturnURL); ?>';" />
+<input type="button" class="FormButton" value="<?php echo $lang->g('ButtonClearCacheImage');?>" onclick="window.location='cacheimage_delete.php?video_id=<?php echo $VideoID ?>';"<?php echo HTMLstuff::DisabledStr($DeleteVideo); ?> />
 </div>
 
 <div class="Separator"></div>
 
-<?php echo $VideoID ? HTMLstuff::Button(sprintf('download_image.php?video_id=%1$d&amp;width=800&amp;height=600', $VideoID), 'Thumbnails', ' rel="lightbox"') : ''; ?>
-
-<?php echo HTMLstuff::Button('index.php', 'Home'); ?>
+<?php echo $VideoID ? HTMLstuff::Button(sprintf('download_image.php?video_id=%1$d&amp;width=800&amp;height=600', $VideoID), $lang->g('LabelThumbnails'), ' rel="lightbox"') : ''; ?>
+<?php echo HTMLstuff::Button(); ?>
 
 </fieldset>
 </form>
