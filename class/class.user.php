@@ -16,6 +16,7 @@ class User
 	private $LastLogin = -1;
 	private $PreLastLogin = -1;
 	private $Rights = 0;
+	private $Language = 'en';
 	private $DateDisplayoptions = 0;
 	private $Imageview = 'detail';
 
@@ -294,7 +295,18 @@ class User
 	public function setRights($Rights)
 	{ $this->Rights = $Rights; }
 
-
+	/**
+	 * Gets the User's language
+	 * @return string
+	 */
+	public function getLanguage()
+	{ return $this->Language; }
+	
+	/**
+	 * @param string $Language
+	 */
+	public function setLanguage($Language)
+	{ $this->Language = $Language; }
 
 
 
@@ -332,7 +344,8 @@ class User
 							case 'user_lastname'		: $UserObject->setLastName($ColumnValue);			break;
 							case 'user_email'			: $UserObject->setEmailAddress($ColumnValue);		break;
 							case 'user_datedisplayopts'	: $UserObject->setDateDisplayOptions($ColumnValue);	break;
-							case 'user_imageview'	: $UserObject->setImageview($ColumnValue);	break;
+							case 'user_imageview'		: $UserObject->setImageview($ColumnValue);			break;
+							case 'user_language'		: $UserObject->setLanguage($ColumnValue);			break;
 							case 'user_gender'			: $UserObject->setGender($ColumnValue);				break;
 							case 'user_birthdate'		: $UserObject->setBirthDate($ColumnValue);			break;
 							case 'user_lastactive'		: $UserObject->setLastActive($ColumnValue);			break;
@@ -373,12 +386,13 @@ class User
 		    mysql_real_escape_string($User->getEmailAddress()),
 		    $User->getDateDisplayOptions(),
 		    $User->getImageview(),
+		    $User->getLanguage(),
 		    $User->getGender(),
 		    $User->getBirthDate(),
 		    $CurrentUser->getID(),
 		    time()
 		),
-		'user_username, user_password, user_salt, user_firstname, user_insertion, user_lastname, user_email, user_datedisplayopts, user_imageview,  user_gender, user_birthdate, mut_id, mut_date'
+		'user_username, user_password, user_salt, user_firstname, user_insertion, user_lastname, user_email, user_datedisplayopts, user_imageview, user_language,  user_gender, user_birthdate, mut_id, mut_date'
 	    );
 	}
 	
@@ -404,6 +418,7 @@ class User
 				'user_email' => mysql_real_escape_string($User->getEmailAddress()),
 				'user_datedisplayopts' => $User->getDateDisplayOptions(),
 				'user_imageview' => $User->getImageview(),
+				'user_language' => $User->getLanguage(),
 				'user_gender' => $User->getGender(),
 				'user_birthdate' => $User->getBirthDate(),
 				'user_lastactive' => $User->getLastActive(),

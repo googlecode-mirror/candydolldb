@@ -65,6 +65,7 @@ INSERT INTO `User` (
   `user_email`,
   `user_datedisplayopts`,
   `user_imageview`,
+  `user_language`,
   `mut_id`,
   `mut_date`,
   `mut_deleted`
@@ -77,6 +78,7 @@ INSERT INTO `User` (
 	'%6\$s',
 	0,
 	'detail',
+	'en',
 	1,
 	UNIX_TIMESTAMP(),
 	-1
@@ -178,6 +180,7 @@ CREATE TABLE IF NOT EXISTS `User` (
   `user_datedisplayopts` int NOT NULL DEFAULT '0',
   `user_gender` tinyint(4) NOT NULL DEFAULT '0',
   `user_imageview` varchar(20) NOT NULL DEFAULT 'detail',
+  `user_language` varchar(20) NOT NULL DEFAULT 'en',
   `user_birthdate` bigint(20) NOT NULL DEFAULT '-1',
   `user_lastactive` bigint(20) NOT NULL DEFAULT '-1',
   `user_lastlogin` bigint(20) NOT NULL DEFAULT '-1',
