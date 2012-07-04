@@ -26,6 +26,16 @@ class HTMLstuff
 		
 		<script type=\"text/javascript\" src=\"js/jquery.min.js\"></script>
 		<script type=\"text/javascript\" src=\"js/jquery.ba-outside-events.js\"></script>
+		<script type=\"text/javascript\">
+			//<![CDATA[
+				var ColorBoxI18N = {
+					current: '%6\$s',
+					previous: '%7\$s',
+					next: '%8\$s',
+					close: '%9\$s'
+				};
+			//]]>
+		</script>
 		<script type=\"text/javascript\" src=\"js/candydolldb.js\"></script>
 
 		<title>CandyDoll DB v%1\$s%2\$s</title>
@@ -47,7 +57,11 @@ class HTMLstuff
 			$Title ? ' :: '.htmlentities($Title) : null,
 			Error::GenerateErrorList(),
 			(isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off' ? 'https' : 'http'),
-			"en-US" // should be $lang-dependent, or even better: $CurrentUser-dependent 
+			($CurrentUser != null ? $CurrentUser->getLanguage() : 'en'),
+			$lang->g('LabelColorBoxCurrent'),
+			$lang->g('LabelColorBoxPrevious'),
+			$lang->g('LabelColorBoxNext'),
+			$lang->g('LabelColorBoxClose')
 		);
 
 		if($CurrentUser != null) {
