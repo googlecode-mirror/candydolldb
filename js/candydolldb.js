@@ -15,7 +15,11 @@ function AddDefaultColorBox(){
 	$("a[rel^='lightbox']").colorbox({
 		photo: true,
 		transition: 'fade',
-		speed: 200
+		speed: 200,
+		current: ColorBoxI18N.current,
+		previous: ColorBoxI18N.previous,
+		next: ColorBoxI18N.next,
+		close: ColorBoxI18N.close
 	});
 }
 
@@ -27,7 +31,11 @@ function OpenSlideColorBox(){
 		speed: 200,
 		slideshow: true,
 		slideshowSpeed: 2890,
-		onClosed: AddDefaultColorBox
+		onClosed: AddDefaultColorBox,
+		current: ColorBoxI18N.current,
+		previous: ColorBoxI18N.previous,
+		next: ColorBoxI18N.next,
+		close: ColorBoxI18N.close
 	}).eq(0).click();
 }
 
