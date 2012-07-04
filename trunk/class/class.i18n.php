@@ -40,7 +40,7 @@ class i18n
 	
 	/**
 	 * Sets the preferred languages of this i18n instance
-	 * @param string $langs
+	 * @param array(string) $langs
 	 */
 	public function setLanguages($langs)
 	{

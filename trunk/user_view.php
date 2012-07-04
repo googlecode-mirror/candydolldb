@@ -144,7 +144,7 @@ foreach (i18n::$SupportedLanguages as $l){
 		$l,
 		$User->getLanguage() == $l ? ' selected="selected"' : null,
 		$lang->g('LabelLanguage_'.$l),
-		$l == 'en' ? ' [Default]' : null
+		$l == 'en' ? $lang->g('LabelSuffixDefault') : null
 	);
 }
 
@@ -155,7 +155,7 @@ foreach($DateStyleArray as $index => $format)
 		$index,
 		$User->getDateDisplayOptions() == $index ? ' selected="selected"' : null,
 		date($format),
-		$index == 0 ? ' [Default]' : null
+		$index == 0 ? $lang->g('LabelSuffixDefault') : null
 	);
 }
 
@@ -221,8 +221,8 @@ setInterval(function () {
 <div class="FormRow">
 <label for="selectImageview"><?php echo $lang->g('LabelSelectImageFormat');?>:</label>
 <select id="selectImageview" name="selectImageview"<?php echo HTMLstuff::DisabledStr($DeleteUser); ?>>
-<option value="detail" <?php echo $User->getImageview() == 'detail' ? ' selected="selected"' : null ?>>Detail View [Default]</option>
-<option value="thumb" <?php echo $User->getImageview() == 'thumb' ? ' selected="selected"' : null ?>>Thumbnail View</option>
+<option value="detail" <?php echo $User->getImageview() == 'detail' ? ' selected="selected"' : null ?>><?php echo $lang->g('LabelViewModeDetail').$lang->g('LabelSuffixDefault')?></option>
+<option value="thumb" <?php echo $User->getImageview() == 'thumb' ? ' selected="selected"' : null ?>><?php echo $lang->g('LabelViewModeThumbnail')?></option>
 
 </select>
 </div>

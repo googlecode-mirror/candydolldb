@@ -8,6 +8,8 @@ class Authentication
 	 */
 	public static function Authenticate()
 	{
+		global $lang;
+		
 		if(array_key_exists('CurrentUser', $_SESSION))
 		{
 			/* @var $User User */
@@ -25,6 +27,8 @@ class Authentication
 				$User = $Users[0];
 				$User->setLastActive(time());
 				User::UpdateUser($User, $User);
+				
+				$lang->setLanguages(array($User->getLanguage()));
 				
 				return $User;
 			}
