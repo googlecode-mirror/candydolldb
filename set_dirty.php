@@ -126,38 +126,38 @@ echo HTMLstuff::HtmlHeader('Dirty sets', $CurrentUser);
 
 ?>
 
-<form action="<?php echo htmlentities($_SERVER['REQUEST_URI']); ?>" method="post" class="FilterForm" style="text-align:center">
+<form action="<?php echo htmlentities($_SERVER['REQUEST_URI'])?>" method="post" class="FilterForm" style="text-align:center">
 <fieldset>
 
 <input type="hidden" id="hidAction" name="hidAction" value="DirtySetFilter" />
 
-<label for="txtSearchModel"><?php echo $lang->g('LabelModel');?></label>
-<input type="text" id="txtSearchModel" name="txtSearchModel" maxlength="50" style="width:130px;" value="<?php echo $SearchModel; ?>" />
+<label for="txtSearchModel"><?php echo $lang->g('LabelModel')?></label>
+<input type="text" id="txtSearchModel" name="txtSearchModel" maxlength="50" style="width:130px;" value="<?php echo $SearchModel?>" />
 
-<label for="txtSearchDate"><?php echo $lang->g('LabelDate');?></label>
-<input type="text" id="txtSearchDate" name="txtSearchDate" class="DatePicker" maxlength="10" style="width:100px;" value="<?php echo $SearchDate; ?>" />
+<label for="txtSearchDate"><?php echo $lang->g('LabelDate')?></label>
+<input type="text" id="txtSearchDate" name="txtSearchDate" class="DatePicker" maxlength="10" style="width:100px;" value="<?php echo $SearchDate?>" />
 <br />
 <label for="chkFilterSPECIAL">NO-SPECIALS</label>
-<input type="checkbox" id="chkFilterSPECIAL" name="chkFilterSPECIAL"<?php echo HTMLstuff::CheckedStr($FilterSPECIAL); ?> />
+<input type="checkbox" id="chkFilterSPECIAL" name="chkFilterSPECIAL"<?php echo HTMLstuff::CheckedStr($FilterSPECIAL)?> />
 <label for="chkFilterPIC">NO-PICS</label>
-<input type="checkbox" id="chkFilterPIC" name="chkFilterPIC"<?php echo HTMLstuff::CheckedStr($FilterPIC); ?> />
+<input type="checkbox" id="chkFilterPIC" name="chkFilterPIC"<?php echo HTMLstuff::CheckedStr($FilterPIC)?> />
 <label for="chkFilterVID">NO-VIDS</label>
-<input type="checkbox" id="chkFilterVID" name="chkFilterVID"<?php echo HTMLstuff::CheckedStr($FilterVID); ?> />
+<input type="checkbox" id="chkFilterVID" name="chkFilterVID"<?php echo HTMLstuff::CheckedStr($FilterVID)?> />
 
-<input type="submit" id="btnSearch" name="btnSearch" value="<?php echo $lang->g('ButtonSearch');?>" />
+<input type="submit" id="btnSearch" name="btnSearch" value="<?php echo $lang->g('ButtonSearch')?>" />
 
 </fieldset>
 </form>
 
-<h2><?php echo sprintf('<a href="index.php">%1$s</a> - %2$s', $lang->g('NavigationHome'), $lang->g('NavigationDirtySets')); ?></h2>
+<h2><?php echo sprintf('<a href="index.php">%1$s</a> - %2$s', $lang->g('NavigationHome'), $lang->g('NavigationDirtySets'))?></h2>
 
 <table border="0" cellpadding="4" cellspacing="0">
 	<thead>
 		<tr>
-			<th><?php echo $lang->g('NavigationModel');?></th>
-			<th style="width: 50px;"><?php echo $lang->g('LabelPrefix');?></th>
-			<th style="width: 80px;"><?php echo $lang->g('NavigationSet');?></th>
-			<th style="width: 230px;"><?php echo $lang->g('LabelDates');?></th>
+			<th><?php echo $lang->g('NavigationModel')?></th>
+			<th style="width: 50px;"><?php echo $lang->g('LabelPrefix')?></th>
+			<th style="width: 80px;"><?php echo $lang->g('NavigationSet')?></th>
+			<th style="width: 230px;"><?php echo $lang->g('LabelDates')?></th>
 			<th style="width: 40px;" class="Center">#PIC</th>
 			<th style="width: 22px;" class="Center">&nbsp;</th>
 			<th style="width: 40px;" class="Center">#VID</th>
@@ -168,11 +168,11 @@ echo HTMLstuff::HtmlHeader('Dirty sets', $CurrentUser);
 	</thead>
 	<tfoot>
 		<tr>
-			<th colspan="10"><?php echo $lang->g('LabelTotalSetCount');?>: <?php printf("%1\$d (%2\$d %4\$s, %3\$d %5\$s)", $SetCount, $ImageCount, $VideoCount, strtolower($lang->g('NavigationImages')), strtolower($lang->g('NavigationVideos'))); ?></th>
+			<th colspan="10"><?php echo $lang->g('LabelTotalSetCount')?>: <?php printf("%1\$d (%2\$d %4\$s, %3\$d %5\$s)", $SetCount, $ImageCount, $VideoCount, strtolower($lang->g('NavigationImages')), strtolower($lang->g('NavigationVideos')))?></th>
 		</tr>
 	</tfoot>
 	<tbody>
-	<?php echo $SetRows ? $SetRows : '<tr class="Row1"><td colspan="10">&nbsp;</td></tr>'; ?>
+	<?php echo $SetRows ? $SetRows : '<tr class="Row1"><td colspan="10">&nbsp;</td></tr>'?>
 	</tbody>
 </table>
 

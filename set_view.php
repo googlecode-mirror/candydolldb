@@ -184,31 +184,31 @@ if($SetID)
 	$lang->g('NavigationHome'),
 	$lang->g('NavigationSets'),
 	$lang->g('NavigationSet')
-); ?></h2>
+)?></h2>
 
-<form action="<?php echo htmlentities($_SERVER['REQUEST_URI']);?>" method="post">
+<form action="<?php echo htmlentities($_SERVER['REQUEST_URI'])?>" method="post">
 <fieldset>
 
 <input type="hidden" id="hidAction" name="hidAction" value="SetView" />
 
 <div class="FormRow">
-<label for="txtPrefix"><?php echo $lang->g('LabelPrefix');?>:</label>
-<input type="text" id="txtPrefix" name="txtPrefix" maxlength="100" value="<?php echo $Set->getPrefix();?>"<?php echo HTMLstuff::DisabledStr($DeleteSet); ?> />
+<label for="txtPrefix"><?php echo $lang->g('LabelPrefix')?>:</label>
+<input type="text" id="txtPrefix" name="txtPrefix" maxlength="100" value="<?php echo $Set->getPrefix()?>"<?php echo HTMLstuff::DisabledStr($DeleteSet)?> />
 </div>
 
 <div class="FormRow">
-<label for="txtName"><?php echo $lang->g('LabelName');?>: <em>*</em></label>
-<input type="text" id="txtName" name="txtName" maxlength="100" value="<?php echo $Set->getName();?>"<?php echo HTMLstuff::DisabledStr($DeleteSet); ?> />
+<label for="txtName"><?php echo $lang->g('LabelName')?>: <em>*</em></label>
+<input type="text" id="txtName" name="txtName" maxlength="100" value="<?php echo $Set->getName()?>"<?php echo HTMLstuff::DisabledStr($DeleteSet)?> />
 </div>
 
 <div class="FormRow">
-<label><?php echo $lang->g('LabelContains');?>: </label>
-<input type="radio" id="radImages" name="radContains" value="<?php echo SET_CONTENT_IMAGE; ?>"<?php echo ($Set->getContainsWhat() & SET_CONTENT_IMAGE) > 0 ? ' checked="checked"' : null; ?><?php echo HTMLstuff::DisabledStr($DeleteSet); ?> /> 
-<label for="radImages" class="Radio"><?php echo $lang->g('NavigationImages');?></label>
-<input type="radio" id="radVideos" name="radContains" value="<?php echo SET_CONTENT_VIDEO; ?>"<?php echo ($Set->getContainsWhat() & SET_CONTENT_VIDEO) > 0 ? ' checked="checked"' : null; ?><?php echo HTMLstuff::DisabledStr($DeleteSet); ?> /> 
-<label for="radVideos" class="Radio"><?php echo $lang->g('NavigationVideos');?></label>
-<input type="radio" id="radBoth" name="radContains" value="<?php echo (SET_CONTENT_IMAGE + SET_CONTENT_VIDEO); ?>"<?php echo (($Set->getContainsWhat() & SET_CONTENT_IMAGE) > 0 && ($Set->getContainsWhat() & SET_CONTENT_VIDEO) > 0) ? ' checked="checked"' : null; ?><?php echo HTMLstuff::DisabledStr($DeleteSet); ?> /> 
-<label for="radBoth" class="Radio"><?php echo $lang->g('LabelBoth');?></label>
+<label><?php echo $lang->g('LabelContains')?>: </label>
+<input type="radio" id="radImages" name="radContains" value="<?php echo SET_CONTENT_IMAGE?>"<?php echo ($Set->getContainsWhat() & SET_CONTENT_IMAGE) > 0 ? ' checked="checked"' : null?><?php echo HTMLstuff::DisabledStr($DeleteSet)?> /> 
+<label for="radImages" class="Radio"><?php echo $lang->g('NavigationImages')?></label>
+<input type="radio" id="radVideos" name="radContains" value="<?php echo SET_CONTENT_VIDEO?>"<?php echo ($Set->getContainsWhat() & SET_CONTENT_VIDEO) > 0 ? ' checked="checked"' : null?><?php echo HTMLstuff::DisabledStr($DeleteSet)?> /> 
+<label for="radVideos" class="Radio"><?php echo $lang->g('NavigationVideos')?></label>
+<input type="radio" id="radBoth" name="radContains" value="<?php echo (SET_CONTENT_IMAGE + SET_CONTENT_VIDEO)?>"<?php echo (($Set->getContainsWhat() & SET_CONTENT_IMAGE) > 0 && ($Set->getContainsWhat() & SET_CONTENT_VIDEO) > 0) ? ' checked="checked"' : null?><?php echo HTMLstuff::DisabledStr($DeleteSet)?> /> 
+<label for="radBoth" class="Radio"><?php echo $lang->g('LabelBoth')?></label>
 </div>
 
 <?php
@@ -248,15 +248,15 @@ foreach ($DatesThisSet as $Date)
 ?>
 
 <div class="FormRow">
-<label for="txtTags"><?php echo $lang->g('LabelTags');?> (CSV):</label>
-<input type="text" id="txtTags" name="txtTags" maxlength="200" class="TagsBox" value="<?php echo Tag2All::Tags2AllCSV($TagsThisSet); ?>"<?php echo HTMLstuff::DisabledStr($DeleteSet); ?> />
+<label for="txtTags"><?php echo $lang->g('LabelTags')?> (CSV):</label>
+<input type="text" id="txtTags" name="txtTags" maxlength="200" class="TagsBox" value="<?php echo Tag2All::Tags2AllCSV($TagsThisSet)?>"<?php echo HTMLstuff::DisabledStr($DeleteSet)?> />
 </div>
 
 <div class="FormRow">
 <label>&nbsp;</label>
-<input type="submit" class="FormButton" value="<?php echo $DeleteSet ? $lang->g('ButtonDelete') : $lang->g('ButtonSave'); ?>" />
-<input type="button" class="FormButton" value="<?php echo $lang->g('ButtonCancel');?>" onclick="window.location='<?php echo $ReturnURL; ?>';" />
-<input type="button" class="FormButton" value="<?php echo $lang->g('ButtonClearCacheImage');?>" onclick="window.location='cacheimage_delete.php?set_id=<?php echo $SetID ?>';"<?php echo HTMLstuff::DisabledStr($DeleteSet); ?> />
+<input type="submit" class="FormButton" value="<?php echo $DeleteSet ? $lang->g('ButtonDelete') : $lang->g('ButtonSave')?>" />
+<input type="button" class="FormButton" value="<?php echo $lang->g('ButtonCancel')?>" onclick="window.location='<?php echo $ReturnURL?>';" />
+<input type="button" class="FormButton" value="<?php echo $lang->g('ButtonClearCacheImage')?>" onclick="window.location='cacheimage_delete.php?set_id=<?php echo $SetID ?>';"<?php echo HTMLstuff::DisabledStr($DeleteSet)?> />
 </div>
 
 <div class="Separator"></div>
@@ -269,9 +269,9 @@ foreach ($DatesThisSet as $Date)
 	{ echo HTMLstuff::Button(sprintf('video.php?model_id=%1$d&amp;set_id=%2$d', $ModelID, $SetID), $lang->g('NavigationVideos')); }
 ?>
 
-<?php echo HTMLstuff::Button(sprintf('set.php?model_id=%1$d', $ModelID), $lang->g('NavigationSets')); ?>
+<?php echo HTMLstuff::Button(sprintf('set.php?model_id=%1$d', $ModelID), $lang->g('NavigationSets'))?>
 
-<?php echo HTMLstuff::Button('index.php'); ?>
+<?php echo HTMLstuff::Button('index.php')?>
 
 </fieldset>
 </form>

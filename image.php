@@ -161,7 +161,7 @@ echo HTMLstuff::HtmlHeader(sprintf('%1$s - %2$s %3$s - %4$s',
 	$lang->g('NavigationSets'),
 	$lang->g('NavigationSet'),
 	$lang->g('NavigationImages')
-); ?></h2>
+)?></h2>
 
 <?php
 switch($CurrentUser->getImageview())
@@ -171,7 +171,7 @@ case 'thumb':
 	<div class="Clear"></div>
 	<?php echo $ImageRows ?>
 	<div class="Clear"></div>
-	<div style="font-weight:bold;text-align:center"><?php echo $lang->g('LabelTotalImageCount');?>: <?php printf('%1$d', $ImageCount); ?></div>
+	<div style="font-weight:bold;text-align:center"><?php echo $lang->g('LabelTotalImageCount')?>: <?php printf('%1$d', $ImageCount)?></div>
 <?
 break;
 
@@ -180,24 +180,24 @@ case 'detail':
 <table border="0" cellpadding="4" cellspacing="0">
 	<thead>
 		<tr>
-			<th><?php echo $lang->g('LabelFilename');?></th>
-			<th class="Center" style="width: 60px;"><?php echo $lang->g('LabelExtension');?></th>
-			<th class="Center" style="width: 80px;"><?php echo $lang->g('LabelFilesize');?></th>
-			<th class="Center" style="width: 65px;"><?php echo $lang->g('LabelWidth');?></th>
-			<th class="Center" style="width: 65px;"><?php echo $lang->g('LabelHeight');?></th>
-			<th class="Center" style="width: 160px;"><?php echo $lang->g('LabelChecksum');?></th>
+			<th><?php echo $lang->g('LabelFilename')?></th>
+			<th class="Center" style="width: 60px;"><?php echo $lang->g('LabelExtension')?></th>
+			<th class="Center" style="width: 80px;"><?php echo $lang->g('LabelFilesize')?></th>
+			<th class="Center" style="width: 65px;"><?php echo $lang->g('LabelWidth')?></th>
+			<th class="Center" style="width: 65px;"><?php echo $lang->g('LabelHeight')?></th>
+			<th class="Center" style="width: 160px;"><?php echo $lang->g('LabelChecksum')?></th>
 			<th style="width: 22px;">&nbsp;</th>
-			<th style="width: 22px;"><a href="#" title="<?php echo $lang->g('LabelViewSlideshow');?>" onclick="OpenSlideColorBox();"><img src="images/button_view.png" alt="View slideshow" width="16" height="16" /></a></th>
+			<th style="width: 22px;"><a href="#" title="<?php echo $lang->g('LabelViewSlideshow')?>" onclick="OpenSlideColorBox();"><img src="images/button_view.png" alt="View slideshow" width="16" height="16" /></a></th>
 			<th style="width: 22px;">&nbsp;</th>
 		</tr>
 	</thead>
 	<tfoot>
 		<tr>
-			<th colspan="9"><?php echo $lang->g('LabelTotalImageCount');?>: <?php printf('%1$d', $ImageCount); ?></th>
+			<th colspan="9"><?php echo $lang->g('LabelTotalImageCount')?>: <?php printf('%1$d', $ImageCount)?></th>
 		</tr>
 	</tfoot>
 	<tbody>
-	<?php echo $ImageRows ? $ImageRows : '<tr class="Row1"><td colspan="9">&nbsp;</td></tr>'; ?>
+	<?php echo $ImageRows ? $ImageRows : '<tr class="Row1"><td colspan="9">&nbsp;</td></tr>'?>
 	</tbody>
 </table>
 <?php

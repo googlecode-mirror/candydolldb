@@ -161,35 +161,35 @@ echo HTMLstuff::HtmlHeader($lang->g('NavigationHome'), $CurrentUser);
 
 ?>
 
-<form action="<?php echo htmlentities($_SERVER['REQUEST_URI']); ?>" method="post" class="FilterForm">
+<form action="<?php echo htmlentities($_SERVER['REQUEST_URI'])?>" method="post" class="FilterForm">
 <fieldset>
 
 <input type="hidden" id="hidAction" name="hidAction" value="ModelFilter" />
 
-<label for="txtSearchModel"><?php echo $lang->g('LabelModel');?></label>
-<input type="text" id="txtSearchModel" name="txtSearchModel" maxlength="50" value="<?php echo $SearchModel; ?>" />
+<label for="txtSearchModel"><?php echo $lang->g('LabelModel')?></label>
+<input type="text" id="txtSearchModel" name="txtSearchModel" maxlength="50" value="<?php echo $SearchModel?>" />
 
 <label for="chkDirty"><?php echo $lang->g('LabelDirty')?></label>
-<input type="checkbox" id="chkDirty" name="chkDirty"<?php echo HTMLstuff::CheckedStr($SearchDirty); ?> />
+<input type="checkbox" id="chkDirty" name="chkDirty"<?php echo HTMLstuff::CheckedStr($SearchDirty)?> />
 
-<label for="chkClean"><?php echo $lang->g('LabelClean');?></label>
-<input type="checkbox" id="chkClean" name="chkClean"<?php echo HTMLstuff::CheckedStr($SearchClean); ?> />
+<label for="chkClean"><?php echo $lang->g('LabelClean')?></label>
+<input type="checkbox" id="chkClean" name="chkClean"<?php echo HTMLstuff::CheckedStr($SearchClean)?> />
 
-<input type="submit" id="btnSearch" name="btnSearch" value="<?php echo $lang->g('ButtonSearch');?>" />
+<input type="submit" id="btnSearch" name="btnSearch" value="<?php echo $lang->g('ButtonSearch')?>" />
 
-<input type="button" id="btnSlideshow" name="btnSlideshow" value="<?php echo $lang->g('ButtonIndexSlideshow');?>" onclick="OpenSlideColorBox();" />
+<input type="button" id="btnSlideshow" name="btnSlideshow" value="<?php echo $lang->g('ButtonIndexSlideshow')?>" onclick="OpenSlideColorBox();" />
 
 </fieldset>
 </form>
 
-<h2><?php echo $lang->g('NavigationHome');?></h2>
+<h2><?php echo $lang->g('NavigationHome')?></h2>
 
 <?php
 
 echo "<div class=\"Clear\"></div>".$ModelRows."<div class=\"Clear\"></div>";
 ?>
 
-<div style="font-weight:bold;text-align:center"><?php echo $lang->g('LabelTotalModelCount');?>: <?php printf('%1$d', $ModelCount); ?> | <?php echo $lang->g('LabelTotalSetCount');?>: <?php printf('%1$d', $SetCount); ?></div>
+<div style="font-weight:bold;text-align:center"><?php echo $lang->g('LabelTotalModelCount')?>: <?php printf('%1$d', $ModelCount)?> | <?php echo $lang->g('LabelTotalSetCount')?>: <?php printf('%1$d', $SetCount)?></div>
 
 <?php
 echo HTMLstuff::HtmlFooter($CurrentUser);

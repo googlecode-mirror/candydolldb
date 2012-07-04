@@ -96,61 +96,61 @@ echo HTMLstuff::HtmlHeader($lang->g('NavigationAdminPanel'), $CurrentUser);
 //]]>
 </script>
 
-<h2><?php echo sprintf('<a href="index.php">%1$s</a> - %2$s', $lang->g('NavigationHome'), $lang->g('NavigationAdminPanel')); ?></h2>
+<h2><?php echo sprintf('<a href="index.php">%1$s</a> - %2$s', $lang->g('NavigationHome'), $lang->g('NavigationAdminPanel'))?></h2>
 
-<form action="<?php echo htmlentities($_SERVER['REQUEST_URI']); ?>" method="post">
+<form action="<?php echo htmlentities($_SERVER['REQUEST_URI'])?>" method="post">
 <fieldset>
 
 <div class="FormRow WideForm">
-<label><?php echo $lang->g('LabelCleanCacheFolder'); ?></label>
-<input type="button" id="btnCleanCache" name="btnCleanCache" value="<?php echo $lang->g('ButtonClean'); ?>" onclick="window.location='cacheimage_nuke.php';" />
-<?php echo $CacheInSync; ?>
+<label><?php echo $lang->g('LabelCleanCacheFolder')?></label>
+<input type="button" id="btnCleanCache" name="btnCleanCache" value="<?php echo $lang->g('ButtonClean')?>" onclick="window.location='cacheimage_nuke.php';" />
+<?php echo $CacheInSync?>
 </div>
 
 <hr />
 
 <div class="FormRow WideForm">
-<label><?php echo $lang->g('LabelDownloadXML'); ?></label>
-<input type="button" id="btnDownloadExport" name="btnDownloadExport" value="<?php echo $lang->g('ButtonDownload'); ?>" onclick="RedirToXML();" />
+<label><?php echo $lang->g('LabelDownloadXML')?></label>
+<input type="button" id="btnDownloadExport" name="btnDownloadExport" value="<?php echo $lang->g('ButtonDownload')?>" onclick="RedirToXML();" />
 <br />
-<label for="selModelXml" style="float:none;width:auto;"><?php echo $lang->g('LabelModel');?>: </label>
+<label for="selModelXml" style="float:none;width:auto;"><?php echo $lang->g('LabelModel')?>: </label>
 <select id="selModelXml" name="selModel">
-	<option value=""><?php echo $lang->g('LabelAllModels');?></option>
-	<?php echo $ModelsOptions; ?>
+	<option value=""><?php echo $lang->g('LabelAllModels')?></option>
+	<?php echo $ModelsOptions?>
 </select>
-<label for="chkXMLIncludePic" style="float:none;width:auto;"><input type="checkbox" id="chkXMLIncludePic" name="chkXMLIncludePic" />&nbsp;<?php echo $lang->g('LabelIncludeImages');?></label>
-<label for="chkXMLIncludeVid" style="float:none;width:auto;"><input type="checkbox" id="chkXMLIncludeVid" name="chkXMLIncludeVid" />&nbsp;<?php echo $lang->g('LabelIncludeVideos');?></label>
-<label for="chkXMLIncludeTag" style="float:none;width:auto;"><input type="checkbox" id="chkXMLIncludeTag" name="chkXMLIncludeTag" />&nbsp;<?php echo $lang->g('LabelIncludeTags');?></label>
+<label for="chkXMLIncludePic" style="float:none;width:auto;"><input type="checkbox" id="chkXMLIncludePic" name="chkXMLIncludePic" />&nbsp;<?php echo $lang->g('LabelIncludeImages')?></label>
+<label for="chkXMLIncludeVid" style="float:none;width:auto;"><input type="checkbox" id="chkXMLIncludeVid" name="chkXMLIncludeVid" />&nbsp;<?php echo $lang->g('LabelIncludeVideos')?></label>
+<label for="chkXMLIncludeTag" style="float:none;width:auto;"><input type="checkbox" id="chkXMLIncludeTag" name="chkXMLIncludeTag" />&nbsp;<?php echo $lang->g('LabelIncludeTags')?></label>
 </div>
 
 <hr />
 
 <div class="FormRow">
-<label for="selModel"><?php echo $lang->g('LabelModel');?>: </label>
+<label for="selModel"><?php echo $lang->g('LabelModel')?>: </label>
 <select id="selModel" name="selModel">
 	<option value=""></option>
-	<?php echo $ModelsOptions; ?>
+	<?php echo $ModelsOptions?>
 </select>
 </div>
 
 <div class="FormRow">
-<label for="txtIndexWidth"><?php echo $lang->g('LabelWidth');?>: </label>
+<label for="txtIndexWidth"><?php echo $lang->g('LabelWidth')?>: </label>
 <input type="text" id="txtIndexWidth" name="txtIndexWidth" value="1200" />
 </div>
 
 <div class="FormRow">
-<label for="txtIndexHeight"><?php echo $lang->g('LabelHeight');?>: </label>
+<label for="txtIndexHeight"><?php echo $lang->g('LabelHeight')?>: </label>
 <input type="text" id="txtIndexHeight" name="txtIndexHeight" value="1800" />
 </div>
 
 <div class="FormRow WideForm">
-<label><?php echo $lang->g('LabelDownloadIndex');?></label>
-<input type="button" id="btnDownloadIndex" name="btnDownloadIndex" value="<?php echo $lang->g('ButtonDownload');?>" onclick="RedirToIndex();" />
+<label><?php echo $lang->g('LabelDownloadIndex')?></label>
+<input type="button" id="btnDownloadIndex" name="btnDownloadIndex" value="<?php echo $lang->g('ButtonDownload')?>" onclick="RedirToIndex();" />
 </div>
 
 <hr />
 
-<?php echo HTMLstuff::Button('index.php'); ?>
+<?php echo HTMLstuff::Button('index.php')?>
 </fieldset>
 </form>
 

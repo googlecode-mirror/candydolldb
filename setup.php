@@ -479,134 +479,134 @@ else
 	$SmtpAuth = true;
 }
 
-echo HTMLstuff::HtmlHeader($lang->g('LabelSetup')); ?>
+echo HTMLstuff::HtmlHeader($lang->g('LabelSetup'))?>
 
-<h2 class="Hidden"><?php echo $lang->g('LabelSetup');?></h2>
+<h2 class="Hidden"><?php echo $lang->g('LabelSetup')?></h2>
 
 <div class="CenterForm">
 
-<form action="<?php echo htmlentities($_SERVER['REQUEST_URI']); ?>" method="post">
+<form action="<?php echo htmlentities($_SERVER['REQUEST_URI'])?>" method="post">
 <fieldset>
 
 <input type="hidden" id="hidAction" name="hidAction" value="SetupCDDB" />
 
-<h3><?php echo $lang->g('LabelDatabase');?></h3>
+<h3><?php echo $lang->g('LabelDatabase')?></h3>
 
 <div class="FormRow">
-<label for="txtDBHostName"><?php echo $lang->g('LabelHostname');?>: <em>*</em></label>
-<input type="text" id="txtDBHostName" name="txtDBHostName" maxlength="100" value="<?php echo $DBHostName;?>" />
+<label for="txtDBHostName"><?php echo $lang->g('LabelHostname')?>: <em>*</em></label>
+<input type="text" id="txtDBHostName" name="txtDBHostName" maxlength="100" value="<?php echo $DBHostName?>" />
 </div>
 
 <div class="FormRow">
-<label for="txtDBUserName"><?php echo $lang->g('LabelUsername');?>: <em>*</em></label>
-<input type="text" id="txtDBUserName" name="txtDBUserName" maxlength="100" value="<?php echo $DBUserName;?>" />
+<label for="txtDBUserName"><?php echo $lang->g('LabelUsername')?>: <em>*</em></label>
+<input type="text" id="txtDBUserName" name="txtDBUserName" maxlength="100" value="<?php echo $DBUserName?>" />
 </div>
 
 <div class="FormRow">
-<label for="txtDBPassword"><?php echo $lang->g('LabelPassword');?>: <em>*</em></label>
-<input type="text" id="txtDBPassword" name="txtDBPassword" maxlength="100" value="<?php echo $DBPassword;?>" />
+<label for="txtDBPassword"><?php echo $lang->g('LabelPassword')?>: <em>*</em></label>
+<input type="text" id="txtDBPassword" name="txtDBPassword" maxlength="100" value="<?php echo $DBPassword?>" />
 </div>
 
 <div class="FormRow">
-<label for="txtDBName"><?php echo $lang->g('LabelDatabaseName');?>: <em>*</em></label>
-<input type="text" id="txtDBName" name="txtDBName" maxlength="100" value="<?php echo $DBName;?>" />
+<label for="txtDBName"><?php echo $lang->g('LabelDatabaseName')?>: <em>*</em></label>
+<input type="text" id="txtDBName" name="txtDBName" maxlength="100" value="<?php echo $DBName?>" />
 </div>
 
-<h3>Candydoll <?php echo $lang->g('LabelCollection');?></h3>
+<h3>Candydoll <?php echo $lang->g('LabelCollection')?></h3>
 
 <div class="FormRow">
-<label for="txtCandyImagePath"><?php echo $lang->g('LabelPathImages');?>:</label>
-<input type="text" id="txtCandyImagePath" name="txtCandyImagePath" maxlength="255" value="<?php echo $CandyImagePath;?>" />
-</div>
-
-<div class="FormRow">
-<label for="txtCandyVideoPath"><?php echo $lang->g('LabelPathVideos');?>:</label>
-<input type="text" id="txtCandyVideoPath" name="txtCandyVideoPath" maxlength="255" value="<?php echo $CandyVideoPath;?>" />
+<label for="txtCandyImagePath"><?php echo $lang->g('LabelPathImages')?>:</label>
+<input type="text" id="txtCandyImagePath" name="txtCandyImagePath" maxlength="255" value="<?php echo $CandyImagePath?>" />
 </div>
 
 <div class="FormRow">
-<label for="txtCandyVideoThumbPath"><?php echo $lang->g('LabelThumbnails');?>:</label>
-<input type="text" id="txtCandyVideoThumbPath" name="txtCandyVideoThumbPath" maxlength="255" value="<?php echo $CandyVideoThumbPath;?>" />
-</div>
-
-<h3><?php echo $lang->g('LabelSystem');?></h3>
-
-<div class="FormRow">
-<label for="txtUserName"><?php echo $lang->g('LabelUsername');?>: <em>*</em></label>
-<input type="text" id="txtUserName" name="txtUserName" maxlength="100" value="<?php echo $UserName;?>" />
+<label for="txtCandyVideoPath"><?php echo $lang->g('LabelPathVideos')?>:</label>
+<input type="text" id="txtCandyVideoPath" name="txtCandyVideoPath" maxlength="255" value="<?php echo $CandyVideoPath?>" />
 </div>
 
 <div class="FormRow">
-<label for="txtPassword"><?php echo $lang->g('LabelPassword');?>: <em>*</em></label>
-<input type="text" id="txtPassword" name="txtPassword" maxlength="100" value="<?php echo $Password;?>" />
+<label for="txtCandyVideoThumbPath"><?php echo $lang->g('LabelThumbnails')?>:</label>
+<input type="text" id="txtCandyVideoThumbPath" name="txtCandyVideoThumbPath" maxlength="255" value="<?php echo $CandyVideoThumbPath?>" />
+</div>
+
+<h3><?php echo $lang->g('LabelSystem')?></h3>
+
+<div class="FormRow">
+<label for="txtUserName"><?php echo $lang->g('LabelUsername')?>: <em>*</em></label>
+<input type="text" id="txtUserName" name="txtUserName" maxlength="100" value="<?php echo $UserName?>" />
 </div>
 
 <div class="FormRow">
-<label for="txtFirstName"><?php echo $lang->g('LabelFirstname');?>: <em>*</em></label>
-<input type="text" id="txtFirstName" name="txtFirstName" maxlength="100" value="<?php echo $UserFirstName;?>" />
+<label for="txtPassword"><?php echo $lang->g('LabelPassword')?>: <em>*</em></label>
+<input type="text" id="txtPassword" name="txtPassword" maxlength="100" value="<?php echo $Password?>" />
 </div>
 
 <div class="FormRow">
-<label for="txtLastName"><?php echo $lang->g('LabelLastname');?>: <em>*</em></label>
-<input type="text" id="txtLastName" name="txtLastName" maxlength="100" value="<?php echo $UserLastName;?>" />
+<label for="txtFirstName"><?php echo $lang->g('LabelFirstname')?>: <em>*</em></label>
+<input type="text" id="txtFirstName" name="txtFirstName" maxlength="100" value="<?php echo $UserFirstName?>" />
 </div>
 
 <div class="FormRow">
-<label for="txtEmail"><?php echo $lang->g('LabelEmailAddress');?>: <em>*</em></label>
-<input type="text" id="txtEmail" name="txtEmail" maxlength="255" value="<?php echo $UserEmail;?>" />
+<label for="txtLastName"><?php echo $lang->g('LabelLastname')?>: <em>*</em></label>
+<input type="text" id="txtLastName" name="txtLastName" maxlength="100" value="<?php echo $UserLastName?>" />
+</div>
+
+<div class="FormRow">
+<label for="txtEmail"><?php echo $lang->g('LabelEmailAddress')?>: <em>*</em></label>
+<input type="text" id="txtEmail" name="txtEmail" maxlength="255" value="<?php echo $UserEmail?>" />
 </div>
 
 <div class="Separator"></div>
 
 <div class="FormRow">
-<label for="chkUseMailServer"><?php echo $lang->g('LabelUseMailServer');?>:</label>
-<input type="checkbox" id="chkUseMailServer" name="chkUseMailServer"<?php echo $UseMailServer ? ' checked="checked"' : null; ?> onclick="$('#MailSettings').toggleClass('Hidden');" />
+<label for="chkUseMailServer"><?php echo $lang->g('LabelUseMailServer')?>:</label>
+<input type="checkbox" id="chkUseMailServer" name="chkUseMailServer"<?php echo $UseMailServer ? ' checked="checked"' : null?> onclick="$('#MailSettings').toggleClass('Hidden');" />
 </div>
 
 <div id="MailSettings" class="Hidden">
 
-<h3><?php echo $lang->g('LabelMailServer');?></h3>
+<h3><?php echo $lang->g('LabelMailServer')?></h3>
 
 <div class="FormRow">
-<label for="txtSmtpFromAddress"><?php echo $lang->g('LabelSenderAddress');?>: <em>*</em></label>
-<input type="text" id="txtSmtpFromAddress" name="txtSmtpFromAddress" maxlength="100" value="<?php echo $SmtpFromAddress;?>" />
+<label for="txtSmtpFromAddress"><?php echo $lang->g('LabelSenderAddress')?>: <em>*</em></label>
+<input type="text" id="txtSmtpFromAddress" name="txtSmtpFromAddress" maxlength="100" value="<?php echo $SmtpFromAddress?>" />
 </div>
 
 <div class="FormRow">
-<label for="txtSmtpFromName"><?php echo $lang->g('LabelSenderName');?>: <em>*</em></label>
-<input type="text" id="txtSmtpFromName" name="txtSmtpFromName" maxlength="100" value="<?php echo $SmtpFromName;?>" />
+<label for="txtSmtpFromName"><?php echo $lang->g('LabelSenderName')?>: <em>*</em></label>
+<input type="text" id="txtSmtpFromName" name="txtSmtpFromName" maxlength="100" value="<?php echo $SmtpFromName?>" />
 </div>
 
 <div class="FormRow">
-<label for="txtSmtpHostname"><?php echo $lang->g('LabelHostname');?>: <em>*</em></label>
-<input type="text" id="txtSmtpHostname" name="txtSmtpHostname" maxlength="100" value="<?php echo $SmtpHostname;?>" />
+<label for="txtSmtpHostname"><?php echo $lang->g('LabelHostname')?>: <em>*</em></label>
+<input type="text" id="txtSmtpHostname" name="txtSmtpHostname" maxlength="100" value="<?php echo $SmtpHostname?>" />
 </div>
 
 <div class="FormRow">
-<label for="txtSmtpUsername"><?php echo $lang->g('LabelUsername');?>: <em>*</em></label>
-<input type="text" id="txtSmtpUsername" name="txtSmtpUsername" maxlength="100" value="<?php echo $SmtpUsername;?>" />
+<label for="txtSmtpUsername"><?php echo $lang->g('LabelUsername')?>: <em>*</em></label>
+<input type="text" id="txtSmtpUsername" name="txtSmtpUsername" maxlength="100" value="<?php echo $SmtpUsername?>" />
 </div>
 
 <div class="FormRow">
-<label for="txtSmtpPassword"><?php echo $lang->g('LabelPassword');?>: <em>*</em></label>
-<input type="text" id="txtSmtpPassword" name="txtSmtpPassword" maxlength="100" value="<?php echo $SmtpPassword;?>" />
+<label for="txtSmtpPassword"><?php echo $lang->g('LabelPassword')?>: <em>*</em></label>
+<input type="text" id="txtSmtpPassword" name="txtSmtpPassword" maxlength="100" value="<?php echo $SmtpPassword?>" />
 </div>
 
 <div class="FormRow">
-<label for="txtSmtpPassword"><?php echo $lang->g('LabelPort');?>: <em>*</em></label>
-<input type="text" id="txtSmtpPort" name="txtSmtpPort" maxlength="5" value="<?php echo $SmtpPort;?>" />
+<label for="txtSmtpPassword"><?php echo $lang->g('LabelPort')?>: <em>*</em></label>
+<input type="text" id="txtSmtpPort" name="txtSmtpPort" maxlength="5" value="<?php echo $SmtpPort?>" />
 </div>
 
 <div class="FormRow">
-<label for="chkSmtpAuth"><?php echo $lang->g('LabelSMTPAuth');?>: <em>*</em></label>
-<input type="checkbox" id="chkSmtpAuth" name="chkSmtpAuth"<?php echo $SmtpAuth ? ' checked="checked"' : null; ?> />
+<label for="chkSmtpAuth"><?php echo $lang->g('LabelSMTPAuth')?>: <em>*</em></label>
+<input type="checkbox" id="chkSmtpAuth" name="chkSmtpAuth"<?php echo $SmtpAuth ? ' checked="checked"' : null?> />
 </div>
 
 </div>
 
 <div class="Separator"></div>
 
-<input type="submit" id="btnSubmit" name="btnSubmit" value="<?php echo $lang->g('ButtonSetup');?>" />
+<input type="submit" id="btnSubmit" name="btnSubmit" value="<?php echo $lang->g('ButtonSetup')?>" />
 
 </fieldset>
 </form>

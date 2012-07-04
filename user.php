@@ -48,27 +48,27 @@ echo HTMLstuff::HtmlHeader($lang->g('NavigationUsers'), $CurrentUser);
 <h2><?php echo sprintf('<a href="index.php">%2$s</a> - %1$s',
 	$lang->g('NavigationUsers'),
 	$lang->g('NavigationHome')
-); ?></h2>
+)?></h2>
 
 <table border="0" cellpadding="4" cellspacing="0">
 	<thead>
 		<tr>
-			<th style="width: 160px;"><?php echo $lang->g('LabelUsername');?></th>
-			<th><?php echo $lang->g('LabelFullName');?></th>
-			<th style="width: 70px;"><?php echo $lang->g('LabelGender');?></th>
-			<th style="width: 120px;"><?php echo $lang->g('LabelBirthdate');?></th>
-			<th style="width: 120px;"><?php echo $lang->g('LabelLastActive');?></th>
-			<th style="width: 120px;"><?php echo $lang->g('LabelLastLogin');?></th>
+			<th style="width: 160px;"><?php echo $lang->g('LabelUsername')?></th>
+			<th><?php echo $lang->g('LabelFullName')?></th>
+			<th style="width: 70px;"><?php echo $lang->g('LabelGender')?></th>
+			<th style="width: 120px;"><?php echo $lang->g('LabelBirthdate')?></th>
+			<th style="width: 120px;"><?php echo $lang->g('LabelLastActive')?></th>
+			<th style="width: 120px;"><?php echo $lang->g('LabelLastLogin')?></th>
 			<th style="width: 22px;">&nbsp;</th>
 		</tr>
 	</thead>
 	<tfoot>
 		<tr>
-			<th colspan="7"><?php echo sprintf("%1\$s: %2\$d", $lang->g('LabelTotalUserCount'), $UserCount); ?></th>
+			<th colspan="7"><?php echo sprintf("%1\$s: %2\$d", $lang->g('LabelTotalUserCount'), $UserCount)?></th>
 		</tr>
 	</tfoot>
 	<tbody>
-	<?php echo $UserRows ? $UserRows : '<tr class="Row1"><td colspan="7">&nbsp;</td></tr>'; ?>
+	<?php echo $UserRows ? $UserRows : '<tr class="Row1"><td colspan="7">&nbsp;</td></tr>'?>
 	</tbody>
 </table>
 

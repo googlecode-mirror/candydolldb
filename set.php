@@ -141,7 +141,7 @@ echo HTMLstuff::HtmlHeader(sprintf('%1$s - %2$s',
 	htmlentities($Model->GetShortName(true)),
 	$lang->g('NavigationHome'),
 	$lang->g('NavigationSets')
-); ?></h2>
+)?></h2>
 
 <div class="Separator"></div>
 
