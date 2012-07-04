@@ -11,31 +11,14 @@ include('class/class.i18n.de.php');
 
 $lang = new i18n();
 
-if(array_key_exists('HTTP_ACCEPT_LANGUAGE', $_SERVER))
-{
-	$preferredLangs = array();
-	$p = preg_match_all('/([^,;]+)/i', $_SERVER['HTTP_ACCEPT_LANGUAGE'], $preferredLangs);
-	
-	if($p > 0)
-	{
-		$preferredLangs = array_filter($preferredLangs[0], function($var){
-			return (preg_match('/^[a-z]{2}/i', $var));
-		});
-		
-		$lang->setLanguages($preferredLangs);
-	}
-}
-
-
 if(isset($argv) && $argc > 0)
 {
-	// On the commandline, include using absolute path
-	if(file_exists(sprintf('%1$s/config.php', dirname($_SERVER['PHP_SELF']))))
-	{ require_once(sprintf('%1$s/config.php', dirname($_SERVER['PHP_SELF']))); }
+	$configPath = sprintf('%1$s/config.php', dirname($_SERVER['PHP_SELF']));
+	if(file_exists($configPath))
+	{ require_once($configPath); }
 }
 else
 {
-	// During a HTTP-request, include using relative path
 	if(file_exists('config.php'))
 	{ require_once('config.php'); }
 }
