@@ -36,6 +36,13 @@ if(array_key_exists('hidAction', $_POST) && isset($_POST['hidAction']) && $_POST
 
 	if($NoError && !$Exists)
 	{ $NoError = $db->ExecuteQueries("ALTER TABLE `User` ADD `user_imageview` varchar(20) NOT NULL DEFAULT 'detail' AFTER `user_datedisplayopts`"); }
+	
+	/* user_language column */
+	$q = mysql_query("SHOW COLUMNS FROM `User` LIKE 'user_language'");
+	$Exists = mysql_fetch_assoc($q);
+
+	if($NoError && !$Exists)
+	{ $NoError = $db->ExecuteQueries("ALTER TABLE `User` ADD `user_language` varchar(20) NOT NULL DEFAULT 'en' AFTER `user_imageview`"); }
 
 	$UpdateDBSQL = <<<FjbMNnvUJheiwewUJfheJheuehFJDUHdywgwwgHGfgywug
 SET AUTOCOMMIT=0;
