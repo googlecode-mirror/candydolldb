@@ -8,8 +8,9 @@ $DeleteUser = (array_key_exists('cmd', $_GET) && $_GET['cmd'] && ($_GET['cmd'] =
 
 $_SESSION['UserSalt'] = null;
 $PasswordError = false;
-$DateFormatOptions = null; 
-
+$LanguageOptions = null;
+$DateFormatOptions = null;
+ 
 
 /* @var $User User */
 if($UserID)
@@ -45,6 +46,7 @@ if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'UserView')
 	$User->setInsertion($_POST['txtInsertion']);
 	$User->setLastName($_POST['txtLastName']);
 	$User->setEmailAddress($_POST['txtEmailAddress']);
+	$User->setLanguage($_POST['selectLanguage']);
 	$User->setDateDisplayOptions($_POST['selectDateformat']);
 	$User->setImageview($_POST['selectImageview']);
 
@@ -136,6 +138,16 @@ if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'UserView')
 	}
 }
 
+foreach (i18n::$SupportedLanguages as $l){
+	$LanguageOptions .= sprintf("
+		<option value=\"%1\$s\"%2\$s>%3\$s%4\$s</option>",
+		$l,
+		$User->getLanguage() == $l ? ' selected="selected"' : null,
+		$lang->g('LabelLanguage_'.$l),
+		$l == 'en' ? ' [Default]' : null
+	);
+}
+
 foreach($DateStyleArray as $index => $format)
 {
 	$DateFormatOptions .= sprintf("
@@ -195,6 +207,12 @@ setInterval(function () {
 <input type="password" id="txtRepeatPassword" name="txtRepeatPassword" maxlength="100" value=""<?php echo HTMLstuff::DisabledStr($DeleteUser); ?> />
 </div>
 <? } ?>
+
+<div class="FormRow">
+<label for="selectLanguage"><?php echo $lang->g('LabelLanguage');?>:</label>
+<select id="selectLanguage" name="selectLanguage"<?php echo HTMLstuff::DisabledStr($DeleteUser); ?>><?php echo $LanguageOptions ?></select>
+</div>
+
 <div class="FormRow">
 <label for="selectDateformat"><?php echo $lang->g('LabelSelectDateFormat');?>:</label>
 <select id="selectDateformat" name="selectDateformat"<?php echo HTMLstuff::DisabledStr($DeleteUser); ?>><?php echo $DateFormatOptions ?></select>

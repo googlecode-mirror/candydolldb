@@ -11,7 +11,7 @@ class i18n
 	 * Array containing ISO-codes of supported languages
 	 * @var array(string)
 	 */
-	private static $supportedLanguages = array('en', 'nl', 'de');
+	public static $SupportedLanguages = array('en', 'nl');
 
 	/**
 	 * Checks if the supplied language is supported
@@ -20,7 +20,7 @@ class i18n
 	private static function isSupported($lang)
 	{
 		$lang = strtolower((string)$lang);
-		return in_array($lang, self::$supportedLanguages);
+		return in_array($lang, self::$SupportedLanguages);
 	}
 	
 	/**
@@ -52,7 +52,7 @@ class i18n
 	 */
 	public function i18n()
 	{
-		$this->preferredLanguages = self::$supportedLanguages; 
+		$this->preferredLanguages = self::$SupportedLanguages; 
 	}
 	
 	public function g($key)
