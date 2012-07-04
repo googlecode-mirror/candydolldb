@@ -6,8 +6,7 @@
 <wiki:toc max_depth="2" />
 
 ==v1.7==
- 
- * switchable GUI-language (issue 24)
+
  * all sets tagged
 
 ==v1.8==
