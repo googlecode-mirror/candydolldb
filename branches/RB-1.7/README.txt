@@ -13,8 +13,14 @@ DATE & VERSION:
 
 NEWS:
 -----
-Do you want to help in developing CandyDollDB, too? Do you need support? 
-Don't hesitate to ask and please contact me (see CONTACT). 
+It took some time, but it was well worth the wait. This update brings
+multi-lingual readiness including a Dutch translation.
+
+Tagging and tag-based search capabilities have been added, with all
+known sets tagged to the best of our knowledge.
+
+Would you like to translate CandyDollDB into your own language? Do you
+want to help in tagging CD's sets? Feel free to contact me (see CONTACT). 
 
 
 
@@ -46,6 +52,7 @@ instructions.
 HISTORY:
 --------
 2012-07-06 1.7
+		Added multi-lingual support including Dutch translation;
 		Added user-specific dateformats;
 		Added user-specific choice between table- and thumbnail views;
 		Added the most recent model- and set updates;
@@ -54,9 +61,12 @@ HISTORY:
 		Added autosuggest, import and export for tags;
 		Added paging for search- and dirty set-pages;
 		Added commandline error-output;
+		Added option to export only tagged images/videos;
+		Extended information for each model on index;
 		Included an 'offline' copy of jQuery;
 		Fixed minor GUI-issues, lots of code clean-up;
 		Fixed the skewed portrait-only thumbnail-bug;
+		Implemented natural sorting for sets;
 
 2012-02-26 1.6
 		Added support for a custom databasename;
