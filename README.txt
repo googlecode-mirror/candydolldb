@@ -7,7 +7,7 @@ enjoying your CandyDollTV-collection.
 
 DATE & VERSION:
 ---------------
-2012-07-06, v1.7
+2012-07-08, v1.7
 
 
 
@@ -16,8 +16,8 @@ NEWS:
 It took some time, but it was well worth the wait. This update brings
 multi-lingual readiness including a Dutch translation.
 
-Tagging and tag-based search capabilities have been added, with all
-known sets tagged to the best of our knowledge.
+Tagging, tags and tag-based search capabilities have been added, with
+all known sets tagged to the best of our knowledge.
 
 Would you like to translate CandyDollDB into your own language? Do you
 want to help in tagging CD's sets? Feel free to contact me (see CONTACT). 
@@ -51,7 +51,7 @@ instructions.
 
 HISTORY:
 --------
-2012-07-06 1.7
+2012-07-08 1.7
 		Added multi-lingual support including Dutch translation;
 		Added user-specific dateformats;
 		Added user-specific choice between table- and thumbnail views;
