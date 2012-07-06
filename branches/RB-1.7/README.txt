@@ -20,7 +20,7 @@ Tagging, tags and tag-based search capabilities have been added, with
 all known sets tagged to the best of our knowledge.
 
 Would you like to translate CandyDollDB into your own language? Do you
-want to help in tagging CD's sets? Feel free to contact me (see CONTACT). 
+want to help in tagging CD's sets? Feel free to contact me (see CONTACT).
 
 
 
@@ -35,19 +35,33 @@ Computer running
 
 FRESH INSTALL:
 --------------
- * Extract the downloaded archive into a directory which is accessible 
+ * Extract the downloaded archive into a directory which is accessible
 through your web server.
- * Make sure the user running the web server has read-write access to 
+ * Make sure the user running the web server has read-write access to
 the CandyDollDB root- and cache directories.
- * Make sure the user running the web server has read-access to your 
+ * Make sure the user running the web server has read-access to your
 CandyDoll-collection.
- * Using your browser, navigate to setup.php and follow the on screen 
+ * Using your browser, navigate to setup.php and follow the on screen
 instructions.
  * NOTE: Any previous CandyDollDB-database will be dropped.
  * After setup is complete, log in and click Features -> Process XML.
  * Import your images and videos per model, per set or on the commandline.
- 
-  
+
+
+
+UPDATE FROM v1.3, v1.4, v1.5 or v1.6:
+-------------------------------------
+ * Extract the downloaded archive into the directory in which you
+ installed CandyDollDB, overwriting all files in the process.
+ * Look for the following line in your config.php. If it does not
+ already exist, add it before the closing ?> tag:
+
+ 	define('DBNAME', 'candydolldb');
+
+ * In your browser, navigate to setup_v1x_to_v17.php and click 'yes'.
+ * After the update is complete, log in and click Features -> Process XML.
+
+
 
 HISTORY:
 --------
@@ -82,9 +96,9 @@ HISTORY:
 		Tweaked the set import to decrease number of dirty sets;
 		Tweaked timeout setting for lengthy operations;
 		Updated the PHPMailer class;
-		Centralized the handling of querystring variables; 
+		Centralized the handling of querystring variables;
 		Changed the inner workings of the random-image grabber;
-		Minor cosmetic surgery, bugfixes and code clean up; 
+		Minor cosmetic surgery, bugfixes and code clean up;
 
 2012-01-28 1.5
 		Added a new lay-out and design (Vika is such a beauty, isn't she?);
@@ -99,7 +113,7 @@ HISTORY:
 		Fixed the centering of erroroverlay issue;
 		Fixed a low-memory issue when downloading large zipfiles;
 		Fixed some other minor bugs;
-		Removed the alternate style directives (see config.php and setup.php); 		
+		Removed the alternate style directives (see config.php and setup.php);
 
 2012-01-04 1.4
 		Added support for a blank database password - thanks to Kasimi;
@@ -108,12 +122,12 @@ HISTORY:
 		Added support for requests through HTTPS without unsafe content warnings;
 		Added a more elaborate caching mechanism, for models, indexes, sets,
 		 videos and images;
-		Added thumbnailed set overview instead of a simple table; 
+		Added thumbnailed set overview instead of a simple table;
 		Added a multi-download form for custom-built zip downloads;
 		Added XML-export functionality for models and sets;
 		Added a very big list of model birthdates - thanks to CandyGirl;
 		Added a very big list of releasedates - thanks to Archive.org;
-		Fixed a potential security hole: exit after header(location); 
+		Fixed a potential security hole: exit after header(location);
 		Tons of code clean-up and minor cosmetic surgery;
 
 2011-09-25 1.3
@@ -140,7 +154,7 @@ HISTORY:
 		Added a few LightBoxes where appropriate;
 		Database renamed, setupscript rewritten;
 		Updated list of release-dates (as of 2011-07-15);
-		Lots of code clean-up and minor cosmetic surgery; 
+		Lots of code clean-up and minor cosmetic surgery;
 
 2011-07-04 1.0
 		First public release.
