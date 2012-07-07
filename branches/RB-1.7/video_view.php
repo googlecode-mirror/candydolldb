@@ -174,7 +174,7 @@ echo HTMLstuff::HtmlHeader(sprintf('%1$s - %2$s %3$s - %4$s',
 
 <div class="FormRow">
 <label for="txtTags"><?php echo $lang->g('LabelTags')?> (CSV):</label>
-<input type="text" id="txtTags" name="txtTags" maxlength="200" class="TagsBox" value="<?php echo Tag2All::Tags2AllCSV($TagsThisVideo)?>"<?php echo HTMLstuff::DisabledStr($DeleteVideo)?> />
+<input type="text" id="txtTags" name="txtTags" maxlength="400" class="TagsBox" value="<?php echo Tag2All::Tags2AllCSV($TagsThisVideo)?>"<?php echo HTMLstuff::DisabledStr($DeleteVideo)?> />
 </div>
 
 <div class="FormRow"><label>&nbsp;</label>

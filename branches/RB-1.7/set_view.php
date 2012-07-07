@@ -264,7 +264,7 @@ foreach ($DatesThisSet as $Date)
 
 <div class="FormRow">
 <label for="txtTags"><?php echo $lang->g('LabelTags')?> (CSV):</label>
-<input type="text" id="txtTags" name="txtTags" maxlength="200" class="TagsBox" value="<?php echo Tag2All::Tags2AllCSV($TagsThisSet)?>"<?php echo HTMLstuff::DisabledStr($DeleteSet)?> />
+<input type="text" id="txtTags" name="txtTags" maxlength="400" class="TagsBox" value="<?php echo Tag2All::Tags2AllCSV($TagsThisSet)?>"<?php echo HTMLstuff::DisabledStr($DeleteSet)?> />
 </div>
 
 <div class="FormRow">
