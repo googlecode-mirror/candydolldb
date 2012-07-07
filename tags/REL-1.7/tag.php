@@ -1,0 +1,133 @@
+<?php
+/*	This file is part of CandyDollDB.
+
+CandyDollDB is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+CandyDollDB is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with CandyDollDB.  If not, see <http://www.gnu.org/licenses/>.
+*/
+
+include('cd.php');
+$CurrentUser = Authentication::Authenticate();
+
+$TagID = Utils::SafeIntFromQS('tag_id');
+$DeleteTag = (array_key_exists('hidTagToDelete', $_POST) && $TagID && $_POST['hidTagToDelete'] == $TagID);
+
+$Tags = Tag::GetTags();
+$Tag = Tag::FilterTags($Tags, $TagID);
+$Tag = $TagID && $Tag ? $Tag[0] : new Tag();
+
+$Tagcount = 0;
+$TagList = null;
+
+if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'TagView')
+{
+	$Tag->setName($_POST['txtName']);	
+	
+	if($Tag->getID())
+	{
+		if($DeleteTag)
+		{
+			if(Tag::DeleteTag($Tag, $CurrentUser))
+			{
+				$wc = sprintf('tag_id = %1d', $Tag->getID());
+				$t2as = Tag2All::GetTag2Alls($wc);
+				
+				foreach($t2as as $t2a){
+					Tag2All::Delete($t2a, $CurrentUser);
+				}
+				
+				header('location:'.$_SERVER['PHP_SELF']);
+				exit;
+			}
+		}
+		else
+		{
+			if(Tag::UpdateTag($Tag, $CurrentUser))
+			{
+				header('location:'.$_SERVER['PHP_SELF']);
+				exit;
+			}
+		}
+	}
+	else
+	{
+		if(Tag::InsertTag($Tag, $CurrentUser))
+		{
+			header('location:'.$_SERVER['PHP_SELF']);
+			exit;
+		}
+	}
+}
+
+foreach($Tags as $t){
+	$Tagcount++;
+	$TagList .= sprintf('<a class="TagSelect" href="tag.php?tag_id=%1$d">%2$s%3$s</a>',
+		$t->getID(),
+		htmlentities($t->getName()),
+		$t->getID() == $Tag->getID() ? ' <span>*</span>' : null
+	);
+}
+
+echo HTMLstuff::HtmlHeader($lang->g('NavigationManageTags'), $CurrentUser);
+
+?>
+
+<h2><?php echo sprintf('<a href="index.php">%3$s</a> - %2$s - %1$s',
+	htmlentities($Tag->getID() ? $Tag->getName() : $lang->g('LabelNew')),
+	$lang->g('NavigationManageTags'),
+	$lang->g('NavigationHome')
+)?></h2>
+
+<div style="float:right; margin: 0 0 48px 30px;">
+
+<form action="<?php echo htmlentities($_SERVER['REQUEST_URI'])?>" method="post">
+<fieldset>
+
+<input type="hidden" id="hidAction" name="hidAction" value="TagView" />
+<input type="hidden" id="hidTagToDelete" name="hidTagToDelete" value="" />
+
+<div class="FormRow">
+<label for="txtName" style="width:60px;"><?php echo $lang->g('LabelName')?>: <em>*</em></label>
+<input type="text" id="txtName" name="txtName" maxlength="50" value="<?php echo $Tag->getName()?>"<?php echo HTMLstuff::DisabledStr($DeleteTag)?> />
+</div>
+
+<div class="FormRow">
+<label style="width:60px;">&nbsp;</label>
+<input type="submit" class="FormButton" value="<?php echo $DeleteTag ? $lang->g('ButtonDelete') : $lang->g('ButtonSave')?>" />
+<input type="button" class="FormButton" value="<?php echo $lang->g('ButtonCancel')?>" onclick="window.location='tag.php';" />
+
+<?php if($Tag->getID()) { ?>
+	<input type="checkbox" id="chkDel" title="<?php echo $lang->g('LabelDeleteSelectedTag')?>" onclick="
+		$('#hidTagToDelete').val(<?php echo $Tag->getID()?>); 
+		$('#txtName, #chkDel').attr('disabled', 'disabled');
+		$('input[type=submit]').val('<?php echo $lang->g('ButtonDelete')?>');" />
+<?php } ?>
+
+<input type="button" class="FormButton" value="<?php echo $lang->g('ButtonClean')?>" onclick="window.location='tag_nuke.php';" />
+</div>
+
+</fieldset>
+</form>
+
+</div>
+
+<?php echo $TagList?>
+
+<div class="Clear Separator"></div>
+
+<?php echo '<div style="text-align: center;font-weight: bold">'.$lang->g('LabelTotalTagCount').': '.$Tagcount.'</div>'?>
+<div class="Clear Separator"></div>
+<?php
+echo HTMLstuff::Button('tag.php', $lang->g('ButtonCreateNewTag'));
+echo HTMLstuff::Button('index.php');
+echo HTMLstuff::HtmlFooter($CurrentUser);
+?>
