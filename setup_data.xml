@@ -5,8 +5,8 @@
 			<Set name="01" date_pic="2012-04-06" date_vid="2012-02-24" tags="bare feet, blue, chair, earrings, pigtails, red drapes, skipping rope, swimsuit"/>
 			<Set name="02" date_pic="2012-04-27" date_vid="2012-03-02" tags="bare feet, braids, hair buns, red drapes, ribbon, white"/>
 			<Set name="03" date_pic="2012-05-11" date_vid="2012-05-04" tags="bare feet, bikini, cat ears, chair, earrings, pink drapes"/>
-			<Set name="04" date_pic="2012-06-29" date_vid="2012-05-18" tags=""/>
-			<Set name="05" date_pic="2012-07-06" date_vid="2012-06-15" tags=""/>
+			<Set name="04" date_pic="2012-06-29" date_vid="2012-05-18" tags="black shoes, black socks, chair, earrings, hair ties, red drapes, sailor"/>
+			<Set name="05" date_pic="2012-07-06" date_vid="2012-06-15" tags="balls, bare feet, bikini, earrings, hair bow, leg warmers, red drapes, skipping rope"/>
 		</Sets>
 	</Model>
 	<Model firstname="Adriana" lastname="E" birthdate="1999-11-17" tags="">
@@ -110,7 +110,7 @@
 			<Set name="18" date_pic="2010-11-26" date_vid="2010-11-26" tags="white, white socks, wood floor"/>
 		</Sets>
 		<Remarks>
-Real birthdate: 1996-03-19
+			Real birthdate: 1996-03-19
 		</Remarks>
 	</Model>
 	<Model firstname="Anastasia" lastname="Kocyuruba" birthdate="1995-08-24" tags="">
@@ -229,7 +229,7 @@ Real birthdate: 1996-03-19
 		<Sets>
 			<Set name="01" date_pic="2012-06-01" date_vid="2012-05-25" tags="black shorts, blue shoes, chair, pigtails, red drapes, ringer t-shirt, white, white socks"/>
 			<Set name="02" date_pic="2012-06-08" date_vid="2012-06-15" tags="bare feet, bikini, chair, red drapes, white"/>
-			<Set name="03" date_pic="2012-06-29" date_vid="2012-06-22" tags=""/>
+			<Set name="03" date_pic="2012-06-29" date_vid="2012-06-22" tags="balls, bare feet, blue carpet, chair, hair ties, pigtails, red drapes, skipping rope, swimsuit"/>
 		</Sets>
 	</Model>
 	<Model firstname="Biyanka" lastname="S" birthdate="1997-07-05" tags="">
@@ -276,7 +276,7 @@ Real birthdate: 1996-03-19
 		<Sets>
 			<Set name="01" date_pic="2012-05-25" date_vid="2012-06-01" tags="bare feet, blue, chair, earrings, gold drapes, hair flower, swimsuit"/>
 			<Set name="02" date_pic="2012-06-15" date_vid="2012-06-22" tags="chair, diadem, earrings, gold drapes, white, white shoes"/>
-			<Set name="03" date_pic="2012-07-06" date_vid="2012-06-29" tags=""/>
+			<Set name="03" date_pic="2012-07-06" date_vid="2012-06-29" tags="blue carpet, chair, cosplay, costume, earrings, pink, slippers, yellow drapes"/>
 		</Sets>
 	</Model>
 	<Model firstname="Diana" lastname="M" birthdate="" tags="">
@@ -423,7 +423,7 @@ Real birthdate: 1996-03-19
 			<Set name="08" date_pic="2012-05-18" date_vid="2012-05-25" tags="bare feet, pink, ribbon, seamless background, swimsuit, yellow"/>
 			<Set name="09" date_pic="2012-06-01" date_vid="2012-06-15" tags="beachball, black, black socks, cat ears, collar, tail, tiger"/>
 			<Set name="10" date_pic="2012-06-08" date_vid="2012-06-22" tags="bare feet, blue drapes, earrings, orange, pigtails, polkadot, white shoes"/>
-			<Set name="11" date_pic="2012-06-29" date_vid="2012-07-06" tags=""/>
+			<Set name="11" date_pic="2012-06-29" date_vid="2012-07-06" tags="backpack, chair, hair ties, jean shorts, jean top, pigtails, red drapes, red shoes, white socks"/>
 		</Sets>
 	</Model>
 	<Model firstname="Inna" lastname="Lyublinskaya" birthdate="1997-01-06" tags="">
@@ -480,7 +480,7 @@ Real birthdate: 1996-03-19
 	<Model firstname="Isabella" lastname="B" birthdate="" tags="">
 		<Sets>
 			<Set name="01" date_pic="2012-06-22" date_vid="" tags="blue carpet, blue drapes, chair, swimsuit"/>
-			<Set name="02" date_pic="2012-07-06" date_vid="" tags=""/>
+			<Set name="02" date_pic="2012-07-06" date_vid="" tags="black bodysuit, blue carpet, chair, hair barrette, hair buns, red drapes, slippers"/>
 		</Sets>
 	</Model>
 	<Model firstname="Jasmin" lastname="P" birthdate="1996-07-05" tags="">
@@ -544,7 +544,7 @@ Real birthdate: 1996-03-19
 	</Model>
 	<Model firstname="Khloe" lastname="R" birthdate="" tags="">
 		<Sets>
-			<Set name="01" date_pic="2012-06-29" date_vid="2012-05-18" tags=""/>
+			<Set name="01" date_pic="2012-06-29" date_vid="2012-05-18" tags="blue carpet, blue drapes, bunny ears, chair, gloves, pigtails, pink skirt, pink top, sneakers, white socks"/>
 			<Set name="02" date_pic="" date_vid="2012-06-08" tags=""/>
 			<Set name="03" date_pic="" date_vid="2012-06-22" tags=""/>
 		</Sets>
@@ -707,7 +707,7 @@ Real birthdate: 1996-03-19
 			<Set name="11" date_pic="2010-12-10" date_vid="2010-12-10" tags="bikini, chair, dress, wood floor"/>
 			<Set name="12" date_pic="2010-12-31" date_vid="2010-12-31" tags="black latex, chair, riding cane, wood floor"/>
 			<Set name="13" date_pic="2011-06-03" date_vid="2011-02-11" tags="ballet, carpet"/>
-			<Set name="14" date_pic="2011-06-10" date_vid="2011-03-18" tags="balls, carpet, bloomers, pigtails"/>
+			<Set name="14" date_pic="2011-06-10" date_vid="2011-03-18" tags="balls, bloomers, carpet, pigtails"/>
 			<Set name="15" date_pic="" date_vid="2011-05-06" tags=""/>
 			<Set name="16" date_pic="" date_vid="2011-05-27" tags=""/>
 			<Set name="17" date_pic="" date_vid="2011-06-03" tags=""/>
@@ -762,7 +762,7 @@ Real birthdate: 1996-03-19
 	<Model firstname="Maryam" lastname="K" birthdate="" tags="">
 		<Sets>
 			<Set name="01" date_pic="2012-06-01" date_vid="2012-05-18" tags="cat ears, curls, pink, seamless background, white, white shoes"/>
-			<Set name="02" date_pic="2012-07-06" date_vid="" tags=""/>
+			<Set name="02" date_pic="2012-07-06" date_vid="" tags="bloomers, blue carpet, blue shoes, chair, hair barrette, hair ties, ponytail, red drapes, ringer t-shirt, skipping rope, striped socks"/>
 		</Sets>
 	</Model>
 	<Model firstname="Masha" lastname="M" birthdate="2001-09-27" tags="">
@@ -791,7 +791,7 @@ Real birthdate: 1996-03-19
 			<Set name="01" date_pic="2008-08-01" date_vid="2008-08-01" tags="dress, sofa, thigh highs"/>
 			<Set name="02" date_pic="2008-08-29" date_vid="2008-08-29" tags="flowers, outdoor, schoolgirl"/>
 			<Set name="03" date_pic="2008-09-19" date_vid="2008-09-19" tags="costume, flowers, garden, outdoor"/>
-			<Set name="04" date_pic="2008-10-03" date_vid="2008-10-03" tags="balls, door, bloomers"/>
+			<Set name="04" date_pic="2008-10-03" date_vid="2008-10-03" tags="balls, bloomers, door"/>
 			<Set name="05" date_pic="2008-10-17" date_vid="2008-10-17" tags="bath, bathtub, swimsuit"/>
 			<Set name="06" date_pic="2008-10-24" date_vid="2008-10-24" tags="ballet, door, stairs"/>
 			<Set name="07" date_pic="2008-10-31" date_vid="2008-10-31" tags="pink, sofa"/>
@@ -1027,7 +1027,7 @@ Real birthdate: 1996-03-19
 	<Model firstname="Rita" lastname="K" birthdate="1997-07-30" tags="">
 		<Sets>
 			<Set name="01" date_pic="2009-02-20" date_vid="2009-02-20" tags="black socks, briefcase, earrings, hair barrette, outdoor, plaid, schoolgirl, shoes, stairs"/>
-			<Set name="02" date_pic="2009-02-27" date_vid="2009-02-27" tags="braids, earrings, bloomers, pigtails, sneakers, wood floor"/>
+			<Set name="02" date_pic="2009-02-27" date_vid="2009-02-27" tags="bloomers, braids, earrings, pigtails, sneakers, wood floor"/>
 			<Set name="03" date_pic="2009-05-08" date_vid="2009-05-08" tags="bikini, earrings, gloves, see-through shirt, sofa, white stockings"/>
 			<Set name="04" date_pic="2009-05-29" date_vid="2009-05-29" tags="balls, hair barrette, hair buns, rope, slippers, sofa, swimsuit, wood floor"/>
 			<Set name="05" date_pic="2009-07-03" date_vid="2009-07-03" tags="blue socks, chair, earrings, gym shorts, pigtails, sailor, table, window"/>
@@ -1046,7 +1046,7 @@ Real birthdate: 1996-03-19
 			<Set name="04" date_pic="2012-04-13" date_vid="2012-04-27" tags="chair, earrings, leotard, pigtails, red drapes, slippers"/>
 			<Set name="05" date_pic="2012-05-11" date_vid="2012-05-04" tags="brown shoes, chair, earrings, hair buns, pantyhose, schoolgirl, yellow drapes"/>
 			<Set name="06" date_pic="2012-05-25" date_vid="2012-05-11" tags="balls, earrings, hair ties, red drapes, ribbon stick, skipping rope, swimsuit"/>
-			<Set name="07" date_pic="2012-06-08" date_vid="2012-06-01" tags="balls, chair, earrings, bloomers, hair buns, hair covers, red drapes, short socks, skipping rope, white shoes"/>
+			<Set name="07" date_pic="2012-06-08" date_vid="2012-06-01" tags="balls, bloomers, chair, earrings, hair buns, hair covers, red drapes, short socks, skipping rope, white shoes"/>
 			<Set name="08" date_pic="" date_vid="2012-06-29" tags=""/>
 			<Set name="09" date_pic="" date_vid="2012-07-06" tags=""/>
 		</Sets>
@@ -1058,7 +1058,7 @@ Real birthdate: 1996-03-19
 			<Set name="03" date_pic="2010-08-13" date_vid="2010-08-13" tags="blue drapes, bodysuit, bracelet, bunny ears, magic wand, pigtails, slippers, sofa, white socks, window, wood floor"/>
 			<Set name="04" date_pic="2010-09-03" date_vid="2010-09-03" tags="chair, fireplace, fishnet, gloves, hair ties, heels, pigtails, sofa, table, window, yellow latex"/>
 			<Set name="05" date_pic="2010-10-08" date_vid="2010-10-08" tags="chairs, gloves, green latex, green stockings, marble tile"/>
-			<Set name="06" date_pic="2010-10-22" date_vid="2010-10-22" tags="braid, dresser, bloomers, ponytail, red shoes, white socks, wood floor"/>
+			<Set name="06" date_pic="2010-10-22" date_vid="2010-10-22" tags="bloomers, braid, dresser, ponytail, red shoes, white socks, wood floor"/>
 			<Set name="07" date_pic="2010-12-10" date_vid="2010-12-10" tags="bow, cosplay, costume, fruit, hat, marble tile, sneakers, yellow stockings"/>
 			<Set name="08" date_pic="2010-12-17" date_vid="2010-12-17" tags="bikini, hair bow, wood floor, yellow drapes"/>
 			<Set name="09" date_pic="2011-01-21" date_vid="2011-01-28" tags="dresser, hair buns, hair ties, leg warmers, slippers, tutu, window, windowsill"/>
@@ -1100,7 +1100,7 @@ Real birthdate: 1996-03-19
 			<Set name="07" date_pic="2008-05-02" date_vid="2008-05-02" tags="black stockings, dress, dresser, earrings, flowers, hair covers, heels, necklace, ring, rose, vase"/>
 			<Set name="08" date_pic="2008-05-16" date_vid="2008-05-16" tags="black shoes, earrings, hair barrette, radiator, ring, schoolgirl, white stockings, window, windowsill"/>
 			<Set name="09" date_pic="2008-05-23" date_vid="2008-05-23" tags=""/>
-			<Set name="10" date_pic="2008-06-13" date_vid="2008-06-13" tags="baton, earrings, bloomers, hair ties, pigtails, red carpet, red shoes, ring, skipping rope, white socks, window"/>
+			<Set name="10" date_pic="2008-06-13" date_vid="2008-06-13" tags="baton, bloomers, earrings, hair ties, pigtails, red carpet, red shoes, ring, skipping rope, white socks, window"/>
 			<Set name="11" date_pic="2008-06-27" date_vid="2008-06-27" tags="balls, earrings, hair bow, necklace, ponytail, ring, sneakers, table, tennis racket, white skirt, white socks"/>
 			<Set name="12" date_pic="2008-07-11" date_vid="2008-07-11" tags="backpack, black shoes, chair, earrings, hair ties, hat, lace socks, outdoor, pigtails, radiator, red carpet, ring, schoolgirl, window, windowsill"/>
 			<Set name="13" date_pic="2008-08-15" date_vid="2008-08-15" tags="balls, earrings, long t-shirt, necklace, ring, scrunchie, sneakers, white socks"/>
@@ -1123,39 +1123,39 @@ Real birthdate: 1996-03-19
 	</Model>
 	<Model firstname="Sharlotta" lastname="S" birthdate="1998-08-14" tags="">
 		<Sets>
-			<Set name="01" date_pic="2009-08-14" date_vid="2009-08-14" tags=""/>
-			<Set name="02" date_pic="2009-08-21" date_vid="2009-08-21" tags=""/>
-			<Set name="03" date_pic="2009-09-04" date_vid="2009-09-04" tags=""/>
-			<Set name="04" date_pic="2009-09-11" date_vid="2009-09-11" tags=""/>
-			<Set name="05" date_pic="2009-09-18" date_vid="2009-09-18" tags=""/>
-			<Set name="06" date_pic="2009-09-25" date_vid="2009-09-25" tags=""/>
-			<Set name="07" date_pic="2009-10-09" date_vid="2009-10-09" tags=""/>
-			<Set name="08" date_pic="2009-10-16" date_vid="2009-10-16" tags=""/>
-			<Set name="09" date_pic="2009-10-23" date_vid="2009-10-23" tags=""/>
-			<Set name="10" date_pic="2009-10-30" date_vid="2009-10-30" tags=""/>
-			<Set name="11" date_pic="2009-11-06" date_vid="2009-11-06" tags=""/>
-			<Set name="12" date_pic="2009-11-13" date_vid="2009-11-13" tags=""/>
-			<Set name="13" date_pic="2009-11-27" date_vid="2009-11-27" tags=""/>
-			<Set name="14" date_pic="2009-12-04" date_vid="2009-12-04" tags=""/>
-			<Set name="15" date_pic="2009-12-18" date_vid="2009-12-18" tags=""/>
-			<Set name="16" date_pic="2009-12-25" date_vid="2009-12-25" tags=""/>
-			<Set name="17" date_pic="2010-01-01" date_vid="2010-01-01" tags=""/>
-			<Set name="18" date_pic="2010-01-08" date_vid="2010-01-08" tags=""/>
-			<Set name="19" date_pic="2010-03-05" date_vid="2010-03-05" tags=""/>
-			<Set name="20" date_pic="2010-03-26" date_vid="2010-03-26" tags=""/>
-			<Set name="21" date_pic="2010-04-02" date_vid="2010-04-02" tags=""/>
-			<Set name="22" date_pic="2010-04-09" date_vid="2010-04-09" tags=""/>
-			<Set name="23" date_pic="2010-04-23" date_vid="2010-04-23" tags=""/>
-			<Set name="24" date_pic="2010-05-07" date_vid="2010-05-07" tags=""/>
-			<Set name="25" date_pic="2010-06-04" date_vid="2010-06-04" tags=""/>
-			<Set name="26" date_pic="2010-07-16" date_vid="2010-07-16" tags=""/>
-			<Set name="27" date_pic="2010-08-27" date_vid="2010-08-27" tags=""/>
-			<Set name="28" date_pic="2010-10-15" date_vid="2010-10-15" tags=""/>
-			<Set name="29" date_pic="2010-12-03" date_vid="2010-12-03" tags=""/>
-			<Set name="30" date_pic="2011-09-09" date_vid="2011-09-30" tags=""/>
-			<Set name="31" date_pic="2011-09-16" date_vid="2011-10-14" tags=""/>
-			<Set name="32" date_pic="2011-10-07" date_vid="2011-11-25" tags=""/>
-			<Set name="33" date_pic="2011-11-04" date_vid="2011-12-09" tags=""/>
+			<Set name="01" date_pic="2009-08-14" date_vid="2009-08-14" tags="fence, garden, hair band, heels, lace socks, outdoor, stairs, white dress"/>
+			<Set name="02" date_pic="2009-08-21" date_vid="2009-08-21" tags="ballet, earrings, hair ribbon, railing, slippers, stairs, wood floor"/>
+			<Set name="03" date_pic="2009-09-04" date_vid="2009-09-04" tags="bare feet, boy shorts, bracelet, earrings, hair buns, sofa, window"/>
+			<Set name="04" date_pic="2009-09-11" date_vid="2009-09-11" tags="earrings, hair barrette, slippers, swimsuit, tile"/>
+			<Set name="05" date_pic="2009-09-18" date_vid="2009-09-18" tags="cupboard, earrings, leg warmers, mirror, slippers, tiara, tile, tutu"/>
+			<Set name="06" date_pic="2009-09-25" date_vid="2009-09-25" tags="door, earrings, gym shorts, hair ties, outdoor, pigtails, ringer t-shirt, tile, white shoes, white socks"/>
+			<Set name="07" date_pic="2009-10-09" date_vid="2009-10-09" tags="bath, bathtub, earrings, hair ties, mirror, ponytail, shower, swimsuit, tile, wet"/>
+			<Set name="08" date_pic="2009-10-16" date_vid="2009-10-16" tags="black boots, chair, earrings, latex, table, tile, window, zebra"/>
+			<Set name="09" date_pic="2009-10-23" date_vid="2009-10-23" tags="bracelet, earrings, hair ties, heels, pigtails, pink, pink top, short shirt, sofa, striped, white socks"/>
+			<Set name="10" date_pic="2009-10-30" date_vid="2009-10-30" tags="bare feet, bikini, bubbles, earrings, ponytail, sofa, window, wood floor"/>
+			<Set name="11" date_pic="2009-11-06" date_vid="2009-11-06" tags="door, earrings, gloves, hair band, heels, lace stockings, see-through shirt, see-through skirt, stairs, tile"/>
+			<Set name="12" date_pic="2009-11-13" date_vid="2009-11-13" tags="balls, bed, blue bodysuit, earrings, hair flower, slippers, window, wood floor"/>
+			<Set name="13" date_pic="2009-11-27" date_vid="2009-11-27" tags="bed, black latex, black stockings, chair, earrings, gloves, heels, window, wood floor"/>
+			<Set name="14" date_pic="2009-12-04" date_vid="2009-12-04" tags="bed, earrings, hair ties, heels, white skirt, white stockings, wood floor"/>
+			<Set name="15" date_pic="2009-12-18" date_vid="2009-12-18" tags="backpack, black shoes, black socks, bow, chairs, recorder, see-through skirt, table, tile, white top, window"/>
+			<Set name="16" date_pic="2009-12-25" date_vid="2009-12-25" tags="chair, earrings, hair ties, pigtails, radiator, sneakers, swimsuit, window, windowsill, wood floor"/>
+			<Set name="17" date_pic="2010-01-01" date_vid="2010-01-01" tags="gloves, gold stockings, heels, latex, mirror, stairs, tile"/>
+			<Set name="18" date_pic="2010-01-08" date_vid="2010-01-08" tags="chair, cupboard, fireplace, fishnet, hair ties, heels, maid, mirror, tile, window"/>
+			<Set name="19" date_pic="2010-03-05" date_vid="2010-03-05" tags="bikini, bracelet, heels, lamp, ponytail, sofa, table, window"/>
+			<Set name="20" date_pic="2010-03-26" date_vid="2010-03-26" tags="bodysuit, bracelet, fishnet, hat, heels, ponytail, sofa, striped, window"/>
+			<Set name="21" date_pic="2010-04-02" date_vid="2010-04-02" tags="chair, cupboard, hair ties, plait, slippers, tile, tutu, window"/>
+			<Set name="22" date_pic="2010-04-09" date_vid="2010-04-09" tags="bed, boy shorts, door, hair ties, heart, pigtails, sneakers, tile, white stockings, window"/>
+			<Set name="23" date_pic="2010-04-23" date_vid="2010-04-23" tags="glass door, hair buns, hair flower, slippers, sofa, window, windowsill, wood floor, yellow bodysuit"/>
+			<Set name="24" date_pic="2010-05-07" date_vid="2010-05-07" tags="bikini, flowers, hair ties, heels, radiator, railing, vase, window, wood floor"/>
+			<Set name="25" date_pic="2010-06-04" date_vid="2010-06-04" tags="black stockings, door, heels, radiator, window, wood floor, yellow latex"/>
+			<Set name="26" date_pic="2010-07-16" date_vid="2010-07-16" tags="black shoes, briefcase, schoolgirl, sofa, tile, white socks"/>
+			<Set name="27" date_pic="2010-08-27" date_vid="2010-08-27" tags="earrings, green drapes, pigtails, scrunchie, slippers, swimsuit, wood floor"/>
+			<Set name="28" date_pic="2010-10-15" date_vid="2010-10-15" tags="black latex, black stockings, chairs, earrings, gloves, heels, riding cane, tile"/>
+			<Set name="29" date_pic="2010-12-03" date_vid="2010-12-03" tags="earrings, fishnet, gloves, heels, ponytail, red latex, sofa, wood floor"/>
+			<Set name="30" date_pic="2011-09-09" date_vid="2011-09-30" tags="cherries, gloves, green drapes, heels, maid, white stockings, wood floor"/>
+			<Set name="31" date_pic="2011-09-16" date_vid="2011-10-14" tags="chair, earrings, hair flower, leg warmers, red drapes, slippers, swimsuit, wood floor"/>
+			<Set name="32" date_pic="2011-10-07" date_vid="2011-11-25" tags="bikini, chair, curls, earrings, fishnet, gloves, hat, heels, red drapes, wood floor"/>
+			<Set name="33" date_pic="2011-11-04" date_vid="2011-12-09" tags="balls, bloomers, earrings, green drapes, green shoes, hair ties, pigtails, stool, white socks, white t-shirt, wood floor"/>
 		</Sets>
 	</Model>
 	<Model firstname="Silviya" lastname="R" birthdate="1995-07-03" tags="">
@@ -1173,7 +1173,7 @@ Real birthdate: 1996-03-19
 			<Set name="02" date_pic="2009-05-08" date_vid="2009-05-08" tags="ballet, earrings, hair buns, slippers, sofa, tiara, tile, white leggings"/>
 			<Set name="03" date_pic="2009-05-22" date_vid="2009-05-22" tags="bikini, choker, door, earrings, window, windowsill"/>
 			<Set name="04" date_pic="2009-07-10" date_vid="2009-07-10" tags="bed, dress, earrings, hair bow, red stockings, window"/>
-			<Set name="05" date_pic="2009-07-24" date_vid="2009-07-24" tags="earrings, bloomers, hair ties, ponytail, skipping rope, sneakers, white socks, wood floor"/>
+			<Set name="05" date_pic="2009-07-24" date_vid="2009-07-24" tags="bloomers, earrings, hair ties, ponytail, skipping rope, sneakers, white socks, wood floor"/>
 			<Set name="06" date_pic="2010-01-22" date_vid="2010-01-22" tags="bracelet, hair barrette, radiator, sofa, swimsuit, window, windowsill"/>
 			<Set name="07" date_pic="2010-02-05" date_vid="2010-02-05" tags="bare feet, bikini, chair, earrings, hair flower, radiator, window, windowsill"/>
 			<Set name="08" date_pic="2010-03-12" date_vid="2010-03-12" tags="backpack, earrings, hair ties, pigtails, plant, radiator, sneakers, stairs, swimsuit, white socks, window, windowsill"/>
@@ -1193,34 +1193,34 @@ Real birthdate: 1996-03-19
 	</Model>
 	<Model firstname="Sonya" lastname="M" birthdate="1997-05-03" tags="">
 		<Sets>
-			<Set name="01" date_pic="2009-03-27" date_vid="2009-03-27" tags=""/>
-			<Set name="02" date_pic="2009-04-03" date_vid="2009-04-03" tags=""/>
-			<Set name="03" date_pic="2009-05-01" date_vid="2009-05-01" tags=""/>
-			<Set name="04" date_pic="2009-06-05" date_vid="2009-06-05" tags=""/>
-			<Set name="05" date_pic="2009-07-10" date_vid="2009-07-10" tags=""/>
-			<Set name="06" date_pic="2009-12-25" date_vid="2009-12-25" tags=""/>
-			<Set name="07" date_pic="2010-01-08" date_vid="2010-01-08" tags=""/>
-			<Set name="08" date_pic="2010-02-05" date_vid="2010-02-05" tags=""/>
-			<Set name="09" date_pic="2010-02-12" date_vid="2010-02-12" tags=""/>
-			<Set name="10" date_pic="2010-02-19" date_vid="2010-02-19" tags=""/>
-			<Set name="11" date_pic="2010-02-26" date_vid="2010-02-26" tags=""/>
-			<Set name="12" date_pic="2010-03-12" date_vid="2010-03-12" tags=""/>
-			<Set name="13" date_pic="2010-03-19" date_vid="2010-03-19" tags=""/>
-			<Set name="14" date_pic="2010-04-09" date_vid="2010-04-09" tags=""/>
-			<Set name="15" date_pic="2010-04-16" date_vid="2010-04-16" tags=""/>
-			<Set name="16" date_pic="2010-04-23" date_vid="2010-04-23" tags=""/>
-			<Set name="17" date_pic="2010-04-30" date_vid="2010-04-30" tags=""/>
-			<Set name="18" date_pic="2010-05-14" date_vid="2010-05-14" tags=""/>
-			<Set name="19" date_pic="2010-05-21" date_vid="2010-05-21" tags=""/>
-			<Set name="20" date_pic="2010-05-28" date_vid="2010-05-28" tags=""/>
-			<Set name="21" date_pic="2010-06-25" date_vid="2010-06-25" tags=""/>
-			<Set name="22" date_pic="2010-07-02" date_vid="2010-07-02" tags=""/>
-			<Set name="23" date_pic="2010-09-03" date_vid="2010-09-03" tags=""/>
-			<Set name="24" date_pic="2010-09-10" date_vid="2010-09-10" tags=""/>
-			<Set name="25" date_pic="2010-09-24" date_vid="2010-09-24" tags=""/>
-			<Set name="26" date_pic="2010-10-29" date_vid="2010-10-29" tags=""/>
-			<Set name="27" date_pic="2011-10-14" date_vid="2011-09-02" tags=""/>
-			<Set name="28" date_pic="2011-11-04" date_vid="2011-10-21" tags=""/>
+			<Set name="01" date_pic="2009-03-27" date_vid="2009-03-27" tags="backpack, black shoes, door, flowers, garden, hair ties, mirror, outdoor, pigtails, schoolgirl, white socks"/>
+			<Set name="02" date_pic="2009-04-03" date_vid="2009-04-03" tags="bare feet, bikini, earrings, hair buns, hair ties, sofa, tiles, window, windowsill"/>
+			<Set name="03" date_pic="2009-05-01" date_vid="2009-05-01" tags="chair, earrings, hair bow, leg warmers, leotard, plait, slippers, sofa, tile, window"/>
+			<Set name="04" date_pic="2009-06-05" date_vid="2009-06-05" tags="black socks, bloomers, earrings, green drapes, hair ties, pigtails, sofa, white t-shirt, window, wood floor, yellow shoes"/>
+			<Set name="05" date_pic="2009-07-10" date_vid="2009-07-10" tags="bare feet, chair, earrings, hair ties, swimsuit, window, wood floor"/>
+			<Set name="06" date_pic="2009-12-25" date_vid="2009-12-25" tags="bare feet, chair, earrings, hair ties, pigtails, radiator, swimsuit, window, windowsill"/>
+			<Set name="07" date_pic="2010-01-08" date_vid="2010-01-08" tags="black boots, earrings, leopard, leopard lingerie, marble tile, stairs, window"/>
+			<Set name="08" date_pic="2010-02-05" date_vid="2010-02-05" tags="balls, bikini, cupboard, earrings, fireplace, hair buns, hair flower, leg warmers, mirror, sneakers, tile"/>
+			<Set name="09" date_pic="2010-02-12" date_vid="2010-02-12" tags="black latex, black stockings, earrings, heels, lamp, riding cane, sofa, table, tile"/>
+			<Set name="10" date_pic="2010-02-19" date_vid="2010-02-19" tags="bed, earrings, hair band, leg warmers, pink shorts, pink top, radiator, slippers, window"/>
+			<Set name="11" date_pic="2010-02-26" date_vid="2010-02-26" tags="blue latex, cupboard, earrings, fireplace, flowers, gloves, ponytail, sofa, table, tile, white boots"/>
+			<Set name="12" date_pic="2010-03-12" date_vid="2010-03-12" tags="blue negligee, door, earrings, hair band, heels, marble tile, mirror, radiator, see-through, stairs, white stockings"/>
+			<Set name="13" date_pic="2010-03-19" date_vid="2010-03-19" tags="black bodysuit, cat ears, cat tail, earrings, magic wand, mask, slippers, sofa, window, windowsill"/>
+			<Set name="14" date_pic="2010-04-09" date_vid="2010-04-09" tags="earrings, gloves, heels, latex, leopard, leopard stockings, pigtails, riding cane, sofa, table, tile, window"/>
+			<Set name="15" date_pic="2010-04-16" date_vid="2010-04-16" tags="earrings, leg warmers, pigtails, red shoes, sofa, swimsuit, white socks, window, windowsill, wood floor"/>
+			<Set name="16" date_pic="2010-04-23" date_vid="2010-04-23" tags="black shoes, earrings, fireplace, flowers, garden, hair band, hair bow, outdoor, plaid, tile, white stockings, window"/>
+			<Set name="17" date_pic="2010-04-30" date_vid="2010-04-30" tags="balls, bare feet, bed, bikini, earrings, hair bow, pigtails, railing, window, wood floor"/>
+			<Set name="18" date_pic="2010-05-14" date_vid="2010-05-14" tags="braids, earrings, green bodysuit, hair ties, slippers, sofa, window, windowsill"/>
+			<Set name="19" date_pic="2010-05-21" date_vid="2010-05-21" tags="door, earrings, gloves, hair ties, heels, marbles, mirror, pigtails, red latex, red stockings, riding cane, stairs"/>
+			<Set name="20" date_pic="2010-05-28" date_vid="2010-05-28" tags="bed, bikini, blue, earrings, hair bow, heels, radiator, window"/>
+			<Set name="21" date_pic="2010-06-25" date_vid="2010-06-25" tags="bangs, bare feet, bed, blue, braids, earrings, hair barrette, swimsuit"/>
+			<Set name="22" date_pic="2010-07-02" date_vid="2010-07-02" tags="chair, choker, gloves, green latex, green stockings, heels, marble tile, riding cane, table"/>
+			<Set name="23" date_pic="2010-09-03" date_vid="2010-09-03" tags="earrings, gloves, gold stockings, heels, latex, sofa, wood floor"/>
+			<Set name="24" date_pic="2010-09-10" date_vid="2010-09-10" tags="door, earrings, green shorts, green top, hair barrette, hair buns, hair flower, heels, radiator, stairs, window, windowsill"/>
+			<Set name="25" date_pic="2010-09-24" date_vid="2010-09-24" tags="bare feet, chair, earrings, hair ties, ponytail, swimsuit, wood floor"/>
+			<Set name="26" date_pic="2010-10-29" date_vid="2010-10-29" tags="barstool, dresser, earrings, gloves, heels, riding cane, silver latex, silver stockings, wood floor"/>
+			<Set name="27" date_pic="2011-10-14" date_vid="2011-09-02" tags="bikini, chair, choker, earrings, fishnet, gloves, green drapes, hair buns, hair ties, heels, see-through dress, wood floor"/>
+			<Set name="28" date_pic="2011-11-04" date_vid="2011-10-21" tags="purple bodysuit, purple leggings, red drapes, slippers, stool, tiara, wood floor"/>
 		</Sets>
 	</Model>
 	<Model firstname="Sundi" lastname="Z" birthdate="" tags="">
@@ -1239,13 +1239,13 @@ Real birthdate: 1996-03-19
 			<Set name="06" date_pic="2008-03-21" date_vid="2008-03-21" tags="briefcase, chair, earrings, hair barrette, outdoor, radiator, red shoes, schoolgirl, white socks, window"/>
 			<Set name="07" date_pic="2008-06-20" date_vid="2008-06-20" tags="earrings, fan, hair bow, hair buns, heels, mask, oriental dress, pantyhose, red carpet"/>
 			<Set name="08" date_pic="2008-07-25" date_vid="2008-07-25" tags="cosplay, costume, gauntlets, outdoor, rooftop, sword, white boots"/>
-			<Set name="09" date_pic="2009-01-30" date_vid="2009-01-30" tags="earrings, bloomers, hair ties, red shoes, ringer t-shirt, table, white socks, window"/>
+			<Set name="09" date_pic="2009-01-30" date_vid="2009-01-30" tags="bloomers, earrings, hair ties, red shoes, ringer t-shirt, table, white socks, window"/>
 		</Sets>
 	</Model>
 	<Model firstname="Syuzanna" lastname="R" birthdate="1995-07-03" tags="">
 		<Sets>
 			<Set name="01" date_pic="2009-08-14" date_vid="2009-08-14" tags="bed, earrings, hair ties, pink drapes, swimsuit, window, wood floor"/>
-			<Set name="02" date_pic="2009-10-02" date_vid="2009-10-02" tags="earrings, bloomers, hair ribbon, hoodie, leg warmers, outdoor, sneakers"/>
+			<Set name="02" date_pic="2009-10-02" date_vid="2009-10-02" tags="bloomers, earrings, hair ribbon, hoodie, leg warmers, outdoor, sneakers"/>
 			<Set name="03" date_pic="2009-10-30" date_vid="2009-10-30" tags="bikini, chair, earrings, hair ties, heels, outdoor"/>
 			<Set name="04" date_pic="2009-11-13" date_vid="2009-11-13" tags="door, earrings, hair ribbon, leg warmers, leotard, slippers, stairs, window"/>
 			<Set name="05" date_pic="2009-12-18" date_vid="2009-12-18" tags="earrings, hair barrette, heels, sofa, swimsuit, table, window"/>
@@ -1256,7 +1256,7 @@ Real birthdate: 1996-03-19
 			<Set name="01" date_pic="2011-03-25" date_vid="2011-10-14" tags="bracelet, earrings, gloves, hair barrette, hair flower, necklace, pillows, swimsuit, white stockings"/>
 			<Set name="02" date_pic="2011-04-01" date_vid="2011-10-21" tags="blue dress, earrings, hair ties, heels, necklace, pigtails, white stockings"/>
 			<Set name="03" date_pic="2011-09-02" date_vid="2012-01-13" tags="bikini, blue carpet, chair, earrings, green drapes, sandels"/>
-			<Set name="04" date_pic="2011-09-23" date_vid="" tags="chair, earrings, bloomers, hair ribbon, ponytail, red carpet, red drapes, slippers, toy"/>
+			<Set name="04" date_pic="2011-09-23" date_vid="" tags="bloomers, chair, earrings, hair ribbon, ponytail, red carpet, red drapes, slippers, toy"/>
 			<Set name="05" date_pic="2012-02-17" date_vid="" tags="braids, earrings, hair ribbon, pigtails, red drapes, slippers, sofa, swimsuit"/>
 		</Sets>
 	</Model>
@@ -1283,47 +1283,47 @@ Real birthdate: 1996-03-19
 	</Model>
 	<Model firstname="Valensiya" lastname="S" birthdate="2000-10-30" tags="">
 		<Sets>
-			<Set name="01" date_pic="2010-01-15" date_vid="2010-01-15" tags=""/>
-			<Set name="02" date_pic="2010-01-29" date_vid="2010-01-29" tags=""/>
-			<Set name="03" date_pic="2010-04-09" date_vid="2010-04-09" tags=""/>
-			<Set name="04" date_pic="2010-05-14" date_vid="2010-05-14" tags=""/>
-			<Set name="05" date_pic="2010-06-11" date_vid="2010-06-11" tags=""/>
-			<Set name="06" date_pic="2010-06-18" date_vid="2010-06-18" tags=""/>
-			<Set name="07" date_pic="2010-07-09" date_vid="2010-07-09" tags=""/>
-			<Set name="08" date_pic="2010-07-16" date_vid="2010-07-16" tags=""/>
-			<Set name="09" date_pic="2010-07-23" date_vid="2010-07-23" tags=""/>
-			<Set name="10" date_pic="2010-07-30" date_vid="2010-07-30" tags=""/>
-			<Set name="11" date_pic="2010-08-06" date_vid="2010-08-06" tags=""/>
-			<Set name="12" date_pic="2010-08-13" date_vid="2010-08-13" tags=""/>
-			<Set name="13" date_pic="2010-08-27" date_vid="2010-08-27" tags=""/>
-			<Set name="14" date_pic="2010-09-03" date_vid="2010-09-03" tags=""/>
-			<Set name="15" date_pic="2010-10-08" date_vid="2010-10-08" tags=""/>
-			<Set name="16" date_pic="2010-10-15" date_vid="2010-10-15" tags=""/>
-			<Set name="17" date_pic="2010-10-22" date_vid="2010-10-22" tags=""/>
-			<Set name="18" date_pic="2010-10-29" date_vid="2010-10-29" tags=""/>
-			<Set name="19" date_pic="2010-11-05" date_vid="2010-11-05" tags=""/>
-			<Set name="20" date_pic="2010-11-12" date_vid="2010-11-12" tags=""/>
-			<Set name="21" date_pic="2010-11-19" date_vid="2010-11-19" tags=""/>
-			<Set name="22" date_pic="2010-11-26" date_vid="2010-11-26" tags=""/>
-			<Set name="23" date_pic="2010-12-03" date_vid="2010-12-03" tags=""/>
-			<Set name="24" date_pic="2010-12-10" date_vid="2010-12-10" tags=""/>
-			<Set name="25" date_pic="2010-12-24" date_vid="2010-12-24" tags=""/>
-			<Set name="26" date_pic="2011-01-07" date_vid="2011-01-07" tags=""/>
-			<Set name="27" date_pic="2011-01-28" date_vid="2011-01-14" tags=""/>
-			<Set name="28" date_pic="2011-02-04" date_vid="2011-01-21" tags=""/>
-			<Set name="29" date_pic="2011-02-11" date_vid="2011-02-18" tags=""/>
-			<Set name="30" date_pic="2011-02-18" date_vid="2011-02-25" tags=""/>
-			<Set name="31" date_pic="2011-02-25" date_vid="2011-04-01" tags=""/>
-			<Set name="32" date_pic="2011-03-04" date_vid="2011-04-08" tags=""/>
-			<Set name="33" date_pic="2011-03-11" date_vid="2011-04-15" tags=""/>
-			<Set name="34" date_pic="2011-03-25" date_vid="2011-04-22" tags=""/>
-			<Set name="35" date_pic="2011-05-27" date_vid="2011-04-29" tags=""/>
-			<Set name="36" date_pic="2011-06-10" date_vid="2011-05-06" tags=""/>
-			<Set name="37" date_pic="2011-08-05" date_vid="2011-05-20" tags=""/>
-			<Set name="38" date_pic="2011-08-26" date_vid="2011-06-24" tags=""/>
-			<Set name="39" date_pic="2011-09-02" date_vid="2011-07-15" tags=""/>
-			<Set name="40" date_pic="2011-09-09" date_vid="2011-08-12" tags=""/>
-			<Set name="41" date_pic="2011-11-25" date_vid="2011-09-16" tags=""/>
+			<Set name="01" date_pic="2010-01-15" date_vid="2010-01-15" tags="hair ties, lace socks, pigtails, plaid, tile, white shoes, window"/>
+			<Set name="02" date_pic="2010-01-29" date_vid="2010-01-29" tags="bare feet, earrings, hair ties, pigtails, sofa, swimsuit, window, windowsill"/>
+			<Set name="03" date_pic="2010-04-09" date_vid="2010-04-09" tags="bed, earrings, hair ties, heels, pillows, ponytail, radiator, swimsuit, window, windowsill, wood floor"/>
+			<Set name="04" date_pic="2010-05-14" date_vid="2010-05-14" tags="braid, cupboard, earrings, hair buns, mirror, tiara, tile, tutu"/>
+			<Set name="05" date_pic="2010-06-11" date_vid="2010-06-11" tags="black latex, choker, gloves, heels, lamp, pink stockings, riding cane, sofa, table, tile, window"/>
+			<Set name="06" date_pic="2010-06-18" date_vid="2010-06-18" tags="earrings, green bodysuit, hair barrette, hair buns, plait, sofa"/>
+			<Set name="07" date_pic="2010-07-09" date_vid="2010-07-09" tags="black latex, cane, chair, choker, earrings, fishnet, gloves, heels, marble tile"/>
+			<Set name="08" date_pic="2010-07-16" date_vid="2010-07-16" tags="bare feet, bikini, bubbles, dresser, earrings, hair flower, wood floor"/>
+			<Set name="09" date_pic="2010-07-23" date_vid="2010-07-23" tags="black shoes, hair bow, magic wand, marble tile, outdoor, pink dress, stairs, striped stockings, window, windowsill"/>
+			<Set name="10" date_pic="2010-07-30" date_vid="2010-07-30" tags="bare feet, earrings, hair bow, swimsuit, wood floor"/>
+			<Set name="11" date_pic="2010-08-06" date_vid="2010-08-06" tags="bow, braid, earrings, gloves, hair buns, heels, magic wand, necklace, red dress, stairs, tiara, white stockings, window, windowsill"/>
+			<Set name="12" date_pic="2010-08-13" date_vid="2010-08-13" tags="chairs, earrings, hair ribbon, leg warmers, marble tile, slippers, stuffed animal"/>
+			<Set name="13" date_pic="2010-08-27" date_vid="2010-08-27" tags="bare feet, bikini, braids, earrings, pigtails, sofa, wood floor"/>
+			<Set name="14" date_pic="2010-09-03" date_vid="2010-09-03" tags="braids, earrings, hair ties, heels, pigtails, sofa, sun dress, tile, white stockings"/>
+			<Set name="15" date_pic="2010-10-08" date_vid="2010-10-08" tags="bare feet, duster, earrings, fireplace, gloves, heels, red fishnet, red latex, sofa, tile"/>
+			<Set name="16" date_pic="2010-10-15" date_vid="2010-10-15" tags="earrings, gloves, hair ties, hat, pigtails, slippers, sofa, white leggings, wood floor, yellow bodysuit"/>
+			<Set name="17" date_pic="2010-10-22" date_vid="2010-10-22" tags="dresser, earrings, gloves, hair band, white dress, white shoes, white stockings, wood floor"/>
+			<Set name="18" date_pic="2010-10-29" date_vid="2010-10-29" tags="devil horns, magic wand, pink bodysuit, slippers, sofa, striped socks, wood floor"/>
+			<Set name="19" date_pic="2010-11-05" date_vid="2010-11-05" tags="chairs, earrings, flower shirt, gloves, hair ties, heels, pigtails, red skirt, table, white fishnet"/>
+			<Set name="20" date_pic="2010-11-12" date_vid="2010-11-12" tags="bare feet, bed, bikini, earrings, hair ties, pillows, ponytail"/>
+			<Set name="21" date_pic="2010-11-19" date_vid="2010-11-19" tags="black fishnet, chair, earrings, hair bow, heels, sofa, sun dress, window, wood floor"/>
+			<Set name="22" date_pic="2010-11-26" date_vid="2010-11-26" tags="door, earrings, hair band, marble tile, slippers, stairs, tutu"/>
+			<Set name="23" date_pic="2010-12-03" date_vid="2010-12-03" tags="braids, hair buns, hair ties, heels, sun dress, white stockings, wood floor"/>
+			<Set name="24" date_pic="2010-12-10" date_vid="2010-12-10" tags="bare feet, bed, earrings, hair ties, pigtails, pillows, swimsuit"/>
+			<Set name="25" date_pic="2010-12-24" date_vid="2010-12-24" tags="bloomers, briefcase, earrings, hair bow, ponytail, red shoes, sailor, sofa, white socks, wood floor"/>
+			<Set name="26" date_pic="2011-01-07" date_vid="2011-01-07" tags="angel wings, costume, earrings, hair bow, magic wand, pigtails, white dress, white shoes, white stockings"/>
+			<Set name="27" date_pic="2011-01-28" date_vid="2011-01-14" tags="black shorts, cosplay, costume, earrings, hair band, leg covers, sailor, sneakers"/>
+			<Set name="28" date_pic="2011-02-04" date_vid="2011-01-21" tags="earrings, hair buns, hair ties, leg warmers, peach bodysuit, slippers"/>
+			<Set name="29" date_pic="2011-02-11" date_vid="2011-02-18" tags="earrings, flowers, hair barrette, hair bow, polkadot, ponytail, railing, sneakers, stairs, vase, white socks, wood floor"/>
+			<Set name="30" date_pic="2011-02-18" date_vid="2011-02-25" tags="barstool, black bodysuit, cat ears, cat tail, earrings, gloves, pigtails, purple drapes, slippers"/>
+			<Set name="31" date_pic="2011-02-25" date_vid="2011-04-01" tags="cardigan, colored socks, hair ties, ponytail, purple bodysuit, red carpet, window"/>
+			<Set name="32" date_pic="2011-03-04" date_vid="2011-04-08" tags="balls, bare feet, bed, blue shorts, earrings, hair barrette, halter top, pigtails"/>
+			<Set name="33" date_pic="2011-03-11" date_vid="2011-04-15" tags="earrings, hair ties, ponytail, purple drapes, red carpet, slippers, swimsuit, window, windowsill"/>
+			<Set name="34" date_pic="2011-03-25" date_vid="2011-04-22" tags="bikini, black stockings, costume, duster, earrings, garters, gloves, hair ties, hat, heels, maid, pigtails, purple drapes"/>
+			<Set name="35" date_pic="2011-05-27" date_vid="2011-04-29" tags="black background, braids, earrings, hair barrette, leg warmers, peach bodysuit, pigtails, slippers"/>
+			<Set name="36" date_pic="2011-06-10" date_vid="2011-05-06" tags="bare feet, earrings, hair flower, pigtails, red carpet, swimsuit, yellow drapes"/>
+			<Set name="37" date_pic="2011-08-05" date_vid="2011-05-20" tags="bare feet, earrings, hair barrette, heels, necklace, red carpet, red drapes, sun dress, white stockings"/>
+			<Set name="38" date_pic="2011-08-26" date_vid="2011-06-24" tags="bikini, black negligee, black stockings, bracelet, hair buns, hair ties, heels, necklace, red drapes"/>
+			<Set name="39" date_pic="2011-09-02" date_vid="2011-07-15" tags="black bodysuit, braid, chair, earrings, hair ties, ponytail, red carpet, slippers, white leggings"/>
+			<Set name="40" date_pic="2011-09-09" date_vid="2011-08-12" tags="balls, bloomers, earrings, gray carpet, hair ties, pigtails, purple drapes, ringer t-shirt, stool, white shoes, white socks"/>
+			<Set name="41" date_pic="2011-11-25" date_vid="2011-09-16" tags="chair, earrings, gray carpet, hair bow, heels, purple floor cover, red drapes"/>
 			<Set name="42" date_pic="" date_vid="2011-09-30" tags=""/>
 			<Set name="43" date_pic="" date_vid="2011-10-28" tags=""/>
 		</Sets>
@@ -1332,7 +1332,7 @@ Real birthdate: 1996-03-19
 		<Sets>
 			<Set name="01" date_pic="2008-01-25" date_vid="2008-01-25" tags="earrings, flowers, hair ties, leg warmers, lollipop, outdoor, pillows, plant, slippers, tutu"/>
 			<Set name="02" date_pic="2008-02-08" date_vid="2008-02-08" tags="earrings, hair ties, pigtails, swimsuit, window, windowsill"/>
-			<Set name="03" date_pic="2008-03-14" date_vid="2008-03-14" tags="bed, black socks, earrings, bloomers, hair ties, pigtails, white shoes, window"/>
+			<Set name="03" date_pic="2008-03-14" date_vid="2008-03-14" tags="bed, black socks, bloomers, earrings, hair ties, pigtails, white shoes, window"/>
 			<Set name="04" date_pic="2008-04-18" date_vid="2008-04-18" tags="chair, countertop, earrings, hair barrette, pants, plate, t-shirt, tea cup, window"/>
 			<Set name="05" date_pic="2008-05-09" date_vid="2008-05-09" tags="hair ties, pigtails, swimsuit, table, tiara, window"/>
 			<Set name="06" date_pic="2008-05-30" date_vid="2008-05-30" tags="braids, earrings, green shorts, hula hoop, plait, sandels, window, yellow socks"/>
@@ -1395,7 +1395,7 @@ Real birthdate: 1996-03-19
 			<Set name="24" date_pic="2009-11-20" date_vid="2009-11-20" tags="door, heels, stairs, unikini"/>
 			<Set name="25" date_pic="2009-12-18" date_vid="2009-12-18" tags="gloves, hotpants"/>
 			<Set name="26" date_pic="2010-01-15" date_vid="2010-01-15" tags="balcony, ballet, window"/>
-			<Set name="27" date_pic="2010-02-26" date_vid="2010-02-26" tags="balcony, bed, door, bloomers, window"/>
+			<Set name="27" date_pic="2010-02-26" date_vid="2010-02-26" tags="balcony, bed, bloomers, door, window"/>
 			<Set name="28" date_pic="2010-03-26" date_vid="2010-03-26" tags="sofa, swimsuit, window"/>
 			<Set name="29" date_pic="2010-04-02" date_vid="2010-04-02" tags="bikini, hair flower, mirror, table, wood floor"/>
 			<Set name="30" date_pic="2010-05-14" date_vid="2010-05-14" tags="bath, chair, maid, table, window"/>
