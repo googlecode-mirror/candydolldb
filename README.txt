@@ -7,7 +7,7 @@ enjoying your CandyDollTV-collection.
 
 DATE & VERSION:
 ---------------
-2012-07-08, v1.7
+2012-07-07, v1.7
 
 
 
@@ -27,6 +27,7 @@ want to help in tagging CD's sets? Feel free to contact me (see CONTACT).
 SYSTEM REQUIREMENTS:
 --------------------
 Computer running
+ * Webserver (Apache, IIS, lighttpd...)
  * PHP 5.3
  * MySQL 5.1
  * SMTP-mail server (optional)
@@ -65,7 +66,7 @@ UPDATE FROM v1.3, v1.4, v1.5 or v1.6:
 
 HISTORY:
 --------
-2012-07-08 1.7
+2012-07-07 1.7
 		Added multi-lingual support including Dutch translation;
 		Added user-specific dateformats;
 		Added user-specific choice between table- and thumbnail views;
