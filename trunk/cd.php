@@ -44,7 +44,7 @@ if(!defined('DBHOSTNAME') || strlen(DBHOSTNAME) == 0 ||
 	{ define('DBNAME', 'candydolldb'); }
 }
 
-define('CANDYDOLLDB_VERSION', '1.7');
+define('CANDYDOLLDB_VERSION', '1.8');
 
 define('GENDER_UNKNOWN', 0);
 define('GENDER_FEMALE', 1);
