@@ -135,7 +135,7 @@ if($ModelID)
 
 <div class="FormRow">
 <label for="txtTags"><?php echo $lang->g('LabelTags')?> (CSV):</label>
-<input type="text" id="txtTags" name="txtTags" maxlength="200" class="TagsBox" value="<?php echo Tag2All::Tags2AllCSV($TagsThisModel)?>"<?php echo HTMLstuff::DisabledStr($DeleteModel)?> />
+<input type="text" id="txtTags" name="txtTags" maxlength="400" class="TagsBox" value="<?php echo Tag2All::Tags2AllCSV($TagsThisModel)?>"<?php echo HTMLstuff::DisabledStr($DeleteModel)?> />
 </div>
 
 <div class="FormRow">
