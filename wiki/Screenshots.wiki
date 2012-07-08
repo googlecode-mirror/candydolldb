@@ -5,19 +5,17 @@
 
 <wiki:toc max_depth="2" />
 
-So far, screenshots are taken with Chromium 15 and Firefox 8 on Ubuntu Oneiric. Feel free to submit your own.
-
 == Index page == 
 
-[http://fwiep.nl/download/e4eb54e3-f127-4f95-a5a3-4c2ad975985f.jpg http://fwiep.nl/download/e4eb54e3-f127-4f95-a5a3-4c2ad975985fs.jpg]
+[http://fwiep.nl/download/58998ca8-67e3-47de-a8bb-2ecf14ff3f4e.jpg http://fwiep.nl/download/58998ca8-67e3-47de-a8bb-2ecf14ff3f4es.jpg]
 
 == Set details == 
 
-[http://fwiep.nl/download/10e40236-e6cf-4fae-9c5d-42ec59a1958a.jpg http://fwiep.nl/download/10e40236-e6cf-4fae-9c5d-42ec59a1958as.jpg]
+[http://fwiep.nl/download/b61fcaea-97aa-47a1-a033-ca8a4b98230c.jpg http://fwiep.nl/download/b61fcaea-97aa-47a1-a033-ca8a4b98230cs.jpg]
 
 == Set overview == 
 
-[http://fwiep.nl/download/559c0085-20a2-4953-832c-86334ba8d68f.jpg http://fwiep.nl/download/559c0085-20a2-4953-832c-86334ba8d68fs.jpg]
+[http://fwiep.nl/download/1b9c36c8-b174-42fb-bd2d-4eebe17539a7.jpg http://fwiep.nl/download/1b9c36c8-b174-42fb-bd2d-4eebe17539a7s.jpg]
 
 == Model form == 
 
@@ -26,6 +24,14 @@ So far, screenshots are taken with Chromium 15 and Firefox 8 on Ubuntu Oneiric. 
 == Batch video-import == 
 
 [http://fwiep.nl/download/2f09e963-5cb7-49b4-aa14-65975a969a5e.jpg http://fwiep.nl/download/2f09e963-5cb7-49b4-aa14-65975a969a5es.jpg]
+
+== Image overview (thumbnails) == 
+
+[http://fwiep.nl/download/d8568390-d507-4c34-9c4b-660ab4527dc0.jpg http://fwiep.nl/download/d8568390-d507-4c34-9c4b-660ab4527dc0s.jpg]
+
+== Image overview (table) == 
+
+[http://fwiep.nl/download/d977d228-768a-4a06-8a3f-4fb08f1b164b.jpg http://fwiep.nl/download/d977d228-768a-4a06-8a3f-4fb08f1b164bs.jpg]
 
 == Automatic index generator == 
 
