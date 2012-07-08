@@ -5,10 +5,6 @@
 
 <wiki:toc max_depth="2" />
 
-==v1.7==
-
- * all sets tagged
-
 ==v1.8==
 
  * set-prefixes removed
