@@ -15,6 +15,7 @@
 ==later==
 
  * Allow import / export of CSV formatted files
+ * Custom error logging (on-disk, email?)
  * all models tagged
  * allow importing of XML's to accommodate the importing of image and video tags
  * switchable themes (header, footer, screen- and font colors)
