@@ -3,6 +3,7 @@
 include('cd.php');
 ini_set('max_execution_time', '3600');
 $CurrentUser = Authentication::Authenticate();
+HTMLstuff::RefererRegister($_SERVER['REQUEST_URI']);
 
 $Models = null;
 $ModelsOptions = null;

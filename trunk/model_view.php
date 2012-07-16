@@ -2,6 +2,7 @@
 
 include('cd.php');
 $CurrentUser = Authentication::Authenticate();
+HTMLstuff::RefererRegister($_SERVER['REQUEST_URI']);
 
 $ModelID = Utils::SafeIntFromQS('model_id');
 $DeleteModel = (array_key_exists('cmd', $_GET) && $_GET['cmd'] && ($_GET['cmd'] == COMMAND_DELETE));

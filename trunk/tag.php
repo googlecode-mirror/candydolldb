@@ -2,6 +2,7 @@
 
 include('cd.php');
 $CurrentUser = Authentication::Authenticate();
+HTMLstuff::RefererRegister($_SERVER['REQUEST_URI']);
 
 $TagID = Utils::SafeIntFromQS('tag_id');
 $DeleteTag = (array_key_exists('hidTagToDelete', $_POST) && $TagID && $_POST['hidTagToDelete'] == $TagID);
