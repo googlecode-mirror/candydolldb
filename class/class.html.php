@@ -314,6 +314,11 @@ GYtguefggefegfgefgegfgfuguf;
 		return $InBool ? ' checked="checked"' : '';
 	}
 	
+	public static function RefererRegister($RedirURL = null)
+	{
+		$_SESSION['CallerURL'] = $RedirURL;
+	}
+	
 	public static function RefererRedirect($RedirURL = 'index.php')
 	{
 		global $argv, $argc;
@@ -324,9 +329,9 @@ GYtguefggefegfgefgegfgfuguf;
 		}
 		else 
 		{
-			if(array_key_exists('HTTP_REFERER', $_SERVER))
+			if(array_key_exists('CallerURL', $_SESSION) && !is_null($_SESSION['CallerURL']))
 			{
-				header('location:'.$_SERVER['HTTP_REFERER']);
+				header('location:'.$_SESSION['CallerURL']);
 				exit;
 			}
 			else

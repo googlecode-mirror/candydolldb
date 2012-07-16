@@ -2,6 +2,7 @@
 
 include('cd.php');
 $CurrentUser = Authentication::Authenticate();
+HTMLstuff::RefererRegister($_SERVER['REQUEST_URI']);
 
 
 $ModelID = Utils::SafeIntFromQS('model_id');

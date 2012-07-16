@@ -57,7 +57,9 @@ if(!is_null($WhereClause))
 if(!is_null($CacheImage))
 {
 	foreach($CacheImage as $CI)
-	{ CacheImage::DeleteImage($CI, $CurrentUser); }
+	{
+		CacheImage::DeleteImage($CI, $CurrentUser);
+	}
 }
 
 HTMLstuff::RefererRedirect();
