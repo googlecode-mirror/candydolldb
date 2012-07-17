@@ -38,8 +38,8 @@ class LabelsEN extends Labels
 		'ErrorUploadErrorPHPExtension' => 'A PHP extension stopped the file upload.',
 		'ErrorUploadErrorUnknown' => 'Unknown upload error.',
 		'ErrorUploadErrorWriteToDisk' => 'Failed to write file to disk.',
-		'ErrorXMLErrorNotValidXML' => 'The uploaded XML was not valid XML.',
-		'ErrorXMLErrorNotValidSchema' => 'The uploaded XML failed to validate as CandyDollDB-XML.',
+		'ErrorXMLErrorNotValidXML' => 'The uploaded file was not valid XML.',
+		'ErrorXMLErrorNotValidSchema' => 'The uploaded file failed to validate as CandyDollDB-XML.',
 		'ErrorXMLErrorUnknown' => 'Unknown XML error.',
 		
 		'CLIFinished' => 'Finished.',

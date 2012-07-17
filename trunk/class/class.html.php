@@ -72,7 +72,7 @@ class HTMLstuff
 			<li><a href=\"#\">%3\$s</a>
 		
 				<ul>
-				<li><a href=\"setup_data.php\">%4\$s</a></li>
+				<li><a href=\"import_xml.php\">%4\$s</a></li>
 				<li><a href=\"model_view.php\">%5\$s</a></li>
 				<li><a href=\"tag.php\">%6\$s</a></li>
 				<li><a href=\"admin_panel.php\">%7\$s</a></li>
@@ -101,7 +101,7 @@ class HTMLstuff
 			$CurrentUser->getID(),
 			$lang->g('NavigationHome'),
 			$lang->g('NavigationFeatures'),
-			$lang->g('NavigationProcessXML'),
+			$lang->g('NavigationImportXML'),
 			$lang->g('NavigationNewModel'),
 			$lang->g('NavigationManageTags'),
 			$lang->g('NavigationAdminPanel'),
