@@ -51,6 +51,7 @@ class LabelsDE extends Labels
 		'NavigationHome' => '',
 		'NavigationImage' => '',
 		'NavigationImages' => '',
+		'NavigationImportXML' => '',
 		'NavigationLogIn' => 'Anmelden',
 		'NavigationLogOut' => 'Abmelden',
 		'NavigationManageTags' => '',
@@ -202,6 +203,7 @@ class LabelsDE extends Labels
 		'LabelViewVideos' => '',
 		'LabelViewSlideshow' => '',
 		'LabelWidth' => 'Breite',
+		'LabelXMLFile' => 'XML-Datei',
 		'LabelXtoYofZ' => '%1$d bis %2$d von %3$d',
 		
 		'ButtonCancel' => 'Abbrechen',
@@ -214,6 +216,7 @@ class LabelsDE extends Labels
 		'ButtonGenerate' => 'Generieren',
 		'ButtonImportImages' => '',
 		'ButtonImportVideos' => '',
+		'ButtonImportXML' => 'XML-Datei importieren',
 		'ButtonIndex' => '',
 		'ButtonIndexSlideshow' => '',
 		'ButtonLogin' => 'Anmelden',
