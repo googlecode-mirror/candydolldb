@@ -5,21 +5,24 @@ ini_set('max_execution_time', '3600');
 $CurrentUser = Authentication::Authenticate();
 $ModelID = Utils::SafeIntFromQS('model_id');
 
+
+$fileToProcess = 'setup_data.xml';
 $Tag2AllsInDB = Tag2All::GetTag2Alls();
 $TagsInDB = Tag::GetTags();
 
 
+if(array_key_exists('file', $_GET) && isset($_GET['file']))
+{ $fileToProcess = $_GET['file']; }
+
 if(isset($argv) && $argc > 0)
 {
-	// On the commandline, use absolute path
-	if(file_exists(sprintf('%1$s/setup_data.xml', dirname($_SERVER['PHP_SELF']))))
-	{ $XmlFromFile = new SimpleXMLElement(file_get_contents(sprintf('%1$s/setup_data.xml', dirname($_SERVER['PHP_SELF'])))); }
+	if(file_exists(sprintf('%1$s/%2$s', dirname($_SERVER['PHP_SELF']), $fileToProcess)))
+	{ $XmlFromFile = new SimpleXMLElement(file_get_contents(sprintf('%1$s/%2$s', dirname($_SERVER['PHP_SELF']), $fileToProcess))); }
 }
 else
 {
-	// During a HTTP-request, use relative path
-	if(file_exists('setup_data.xml'))
-	{ $XmlFromFile = new SimpleXMLElement(file_get_contents('setup_data.xml')); }
+	if(file_exists($fileToProcess))
+	{ $XmlFromFile = new SimpleXMLElement(file_get_contents($fileToProcess)); }
 }
 
 if($XmlFromFile)
@@ -212,6 +215,10 @@ if($XmlFromFile)
 				{ Date::InsertDate($Date, $CurrentUser); }
 			}
 		}
+	}
+	
+	if($fileToProcess != 'setup_data.xml'){
+		unlink(realpath($fileToProcess));
 	}
 	
 	if(isset($argv) && $argc > 0)

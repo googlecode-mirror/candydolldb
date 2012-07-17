@@ -3,7 +3,7 @@
 include('cd.php');
 ini_set('max_execution_time', '3600');
 $CurrentUser = Authentication::Authenticate();
-
+HTMLstuff::RefererRegister($_SERVER['REQUEST_URI']);
 
 if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'UploadXML')
 {
@@ -16,7 +16,11 @@ if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'UploadXML')
 		{
 			if(@$d->schemaValidate(realpath('./candydolldb.xsd')) === true)
 			{
-				die('jow!');
+				$tempFilename = sprintf('cache/%1$s.xml', Utils::GUID());
+				$d->saveHTMLFile($tempFilename);
+				
+				header('location:setup_data.php?file='.urlencode($tempFilename));
+				exit;
 			}
 			else
 			{
@@ -53,16 +57,41 @@ echo HTMLstuff::HtmlHeader($lang->g('NavigationImportXML'), $CurrentUser); ?>
 <form action="<?php echo htmlentities($_SERVER['REQUEST_URI'])?>" method="post" enctype="multipart/form-data">
 <fieldset>
 
+<script type="text/javascript">
+//<![CDATA[
+
+	$(document).ready(function(){
+		$('#fileXML').change(function(){
+			$('#radUp').attr('checked', 'checked');
+		});
+	});
+           
+	function HandleXMLImport(){
+		if($('#radIn').is(':checked')){
+			window.location = 'setup_data.php';
+			return false;
+		}
+		return true;
+	}
+           
+//]]>
+</script>
+
 <input type="hidden" id="hidAction" name="hidAction" value="UploadXML" />
 
 <div class="FormRow">
-<label for="fileXML"><?php echo $lang->g('LabelXMLFile')?>: <em>*</em></label>
-<input type="file" id="fileXML" name="fileXML" />
+<label><?php echo $lang->g('LabelXMLFile')?>: <em>*</em></label>
+<input type="radio" name="inOrUp" value="IN" id="radIn" />&nbsp;&nbsp;&nbsp;<label class="Radio" for="radIn">setup_data.xml</label>
 </div>
 
 <div class="FormRow">
 <label>&nbsp;</label>
-<input type="submit" class="FormButton" value="<?php echo $lang->g('ButtonImportXML')?>" />
+<input type="radio" name="inOrUp" value="UP" id="radUp" />&nbsp;&nbsp;&nbsp;<input type="file" id="fileXML" name="fileXML" />
+</div>
+
+<div class="FormRow">
+<label>&nbsp;</label>
+<input type="submit" class="FormButton" value="<?php echo $lang->g('ButtonImportXML')?>" onclick="return HandleXMLImport();" />
 <input type="button" class="FormButton" value="<?php echo $lang->g('ButtonCancel')?>" onclick="window.location='index.php';" />
 </div>
 
