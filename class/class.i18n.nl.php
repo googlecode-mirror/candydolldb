@@ -51,6 +51,7 @@ class LabelsNL extends Labels
 		'NavigationHome' => 'Home',
 		'NavigationImage' => 'Foto',
 		'NavigationImages' => 'Foto\'s',
+		'NavigationImportXML' => 'XML importeren',
 		'NavigationLogIn' => 'Aanmelden',
 		'NavigationLogOut' => 'Afmelden',
 		'NavigationManageTags' => 'Tags beheren',
@@ -201,6 +202,7 @@ class LabelsNL extends Labels
 		'LabelViewVideos' => 'Video\'s bekijken',
 		'LabelViewSlideshow' => 'Diashow bekijken',
 		'LabelWidth' => 'Breedte',
+		'LabelXMLFile' => 'XML-bestand',
 		'LabelXtoYofZ' => '%1$d t/m %2$d van %3$d',
 		
 		'ButtonCancel' => 'Annuleren',
@@ -213,6 +215,7 @@ class LabelsNL extends Labels
 		'ButtonGenerate' => 'Genereren',
 		'ButtonImportImages' => 'Foto\'s importeren',
 		'ButtonImportVideos' => 'Video\'s importeren',
+		'ButtonImportXML' => 'XML importeren',
 		'ButtonIndex' => 'Index',
 		'ButtonIndexSlideshow' => 'Index diashow',
 		'ButtonLogin' => 'Aanmelden',

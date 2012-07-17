@@ -51,6 +51,7 @@ class LabelsEN extends Labels
 		'NavigationHome' => 'Home',
 		'NavigationImage' => 'Image',
 		'NavigationImages' => 'Images',
+		'NavigationImportXML' => 'Import XML',
 		'NavigationLogIn' => 'Login',
 		'NavigationLogOut' => 'Logout',
 		'NavigationManageTags' => 'Manage tags',
@@ -201,6 +202,7 @@ class LabelsEN extends Labels
 		'LabelViewVideo' => 'View video',
 		'LabelViewVideos' => 'View videos',
 		'LabelWidth' => 'Width',
+		'LabelXMLFile' => 'XML-file',
 		'LabelXtoYofZ' => '%1$d to %2$d of %3$d',
 
 		'ButtonCancel' => 'Cancel',
@@ -213,6 +215,7 @@ class LabelsEN extends Labels
 		'ButtonGenerate' => 'Generate',
 		'ButtonImportImages' => 'Import images',
 		'ButtonImportVideos' => 'Import videos',
+		'ButtonImportXML' => 'Import XML',
 		'ButtonIndex' => 'Index',
 		'ButtonIndexSlideshow' => 'Index slideshow',
 		'ButtonLogin' => 'Login',
