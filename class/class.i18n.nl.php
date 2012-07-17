@@ -38,6 +38,9 @@ class LabelsNL extends Labels
 		'ErrorUploadErrorPHPExtension' => 'Een geïnstalleerde PHP extensie heeft het uploaden gestopt.',
 		'ErrorUploadErrorUnknown' => 'Onbekende upload-fout.',
 		'ErrorUploadErrorWriteToDisk' => 'Het bestand kon niet worden weggeschreven.',
+		'ErrorXMLErrorNotValidXML' => 'Het geüploade bestand is geen valide XML.',
+		'ErrorXMLErrorNotValidSchema' => 'Het geüploade bestand is geen valide CandyDollDB-XML.',
+		'ErrorXMLErrorUnknown' => 'Onbekende XML-fout.',
 		
 		'CLIFinished' => 'Finished.',
 		'FooterBy' => 'door',

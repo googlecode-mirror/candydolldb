@@ -38,6 +38,9 @@ class LabelsDE extends Labels
 		'ErrorUploadErrorPHPExtension' => '',
 		'ErrorUploadErrorUnknown' => '',
 		'ErrorUploadErrorWriteToDisk' => '',
+		'ErrorXMLErrorNotValidXML' => '',
+		'ErrorXMLErrorNotValidSchema' => '',
+		'ErrorXMLErrorUnknown' => 'Unbekannter XML-Fehler.',
 		
 		'CLIFinished' => 'Fertig.',
 		'FooterBy' => '',

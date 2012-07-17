@@ -75,6 +75,8 @@ define('LOGIN_ERR_PASSWORDINCORRECT', 33365);
 define('SQL_ERR_NOSUCHTABLE', 33366);
 define('SYNTAX_ERR_EMAILADDRESS', 33367);
 define('REQUIRED_FIELD_MISSING', 33368);
+define('XML_ERR_XML_VALID', 33369);
+define('XML_ERR_SCHEMA_VALID', 33370);
 
 $SplitRegex = "/;+(?=([^'|^\\\']*['|\\\'][^'|^\\\']*['|\\\'])*[^'|^\\\']*[^'|^\\\']$)/";
 $CSVRegex = '/\s*(?<!\\\),\s*/';

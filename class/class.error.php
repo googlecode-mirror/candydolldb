@@ -241,4 +241,34 @@ class UploadError extends Error
 	}
 }
 
+class XMLerror extends Error
+{
+	public function XMLerror()
+	{
+		parent::Error();
+	}
+
+	/**
+	 * Translates the numeric XML-error into a human readable string
+	 * @param int $InError
+	 * @return string
+	 */
+	public static function TranslateXMLError($InError)
+	{
+		$OutMessage = null;
+		global $lang;
+
+		switch($InError)
+		{
+			case XML_ERR_XML_VALID:
+				$OutMessage = $lang->g('ErrorXMLErrorNotValidXML'); break;
+			case XML_ERR_SCHEMA_VALID:
+				$OutMessage = $lang->g('ErrorXMLErrorNotValidSchema'); break;
+			default:
+				$OutMessage = $lang->g('ErrorXMLErrorUnknown'); break;
+		}
+		return $OutMessage;
+	}
+}
+
 ?>
