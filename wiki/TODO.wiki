@@ -10,7 +10,6 @@
  * set-prefixes removed
  * naming-conventions documented
  * user-rights, permissions implemented
- * alternative for HTTP_REFERER because of IE (issue 7)
 
 ==later==
 
