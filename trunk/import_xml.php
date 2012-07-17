@@ -7,23 +7,40 @@ $CurrentUser = Authentication::Authenticate();
 
 if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'UploadXML')
 {
-	if($_FILES['fileXML']['error'] === UPLOAD_ERR_OK)
+	$f = $_FILES['fileXML'];
+	if($f['error'] === UPLOAD_ERR_OK)
 	{
-		//$d = new DOMDocument();
-		//$d->load('setup_data.xml');
-		/*var_dump(
-			$d->schemaValidate('candydolldb.xsd')
-		);*/
+		$d = new DOMDocument();
+
+		if(@$d->load(realpath($f['tmp_name'])) === true)
+		{
+			if(@$d->schemaValidate(realpath('./candydolldb.xsd')) === true)
+			{
+				die('jow!');
+			}
+			else
+			{
+				$e = new UploadError();
+				$e->setErrorNumber(XML_ERR_SCHEMA_VALID);
+				$e->setErrorMessage(XMLError::TranslateXMLError(XML_ERR_SCHEMA_VALID));
+				Error::AddError($e);
+			}
+		}
+		else
+		{
+			$e = new UploadError();
+			$e->setErrorNumber(XML_ERR_XML_VALID);
+			$e->setErrorMessage(XMLError::TranslateXMLError(XML_ERR_XML_VALID));
+			Error::AddError($e);
+		}
 	}
 	else
 	{
 		$e = new UploadError();
-		$e->setErrorNumber($_FILES['fileXML']['error']);
-		$e->setErrorMessage(UploadError::TranslateUploadError($_FILES['fileXML']['error']));
+		$e->setErrorNumber($f['error']);
+		$e->setErrorMessage(UploadError::TranslateUploadError($f['error']));
 		Error::AddError($e);
 	}
-	
-	//
 }
 
 echo HTMLstuff::HtmlHeader($lang->g('NavigationImportXML'), $CurrentUser); ?>
