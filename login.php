@@ -21,7 +21,7 @@ if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] && $_POST['hidAc
 	{
 		/* @var $User User */
 		$User = $Users[0];
-		if($User->checkperm($User->getRights(),LOGIN))
+		if($User->hasPermission(LOGIN))
 		{
 			if(Utils::HashString($Password, $User->getSalt()) == $User->getPassword())
 			{
