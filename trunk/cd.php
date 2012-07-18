@@ -3,6 +3,22 @@
 error_reporting(E_ALL);
 ini_set('display_errors', '1');
 date_default_timezone_set(@date_default_timezone_get());
+$UserRightsArray = array(
+	1 => "LOGIN",
+	2 => "IMPORT",
+	4 => "EXPORT_XML",
+	8 => "ADD",
+	16 => "EDIT",
+	32 => "DELETE",
+	64 => "PROCESS_XML"
+);
+define('LOGIN',1);
+define('IMPORT',2);
+define('EXPORT_XML',4);
+define('ADD',8);
+define('EDIT',16);
+define('DELETE',32);
+define('PROCESS_XML',64);
 
 
 include('class/class.i18n.php');
@@ -77,6 +93,7 @@ define('SYNTAX_ERR_EMAILADDRESS', 33367);
 define('REQUIRED_FIELD_MISSING', 33368);
 define('XML_ERR_XML_VALID', 33369);
 define('XML_ERR_SCHEMA_VALID', 33370);
+define('RIGHTS_ERR_USERNOTALLOWED', 33371);
 
 $SplitRegex = "/;+(?=([^'|^\\\']*['|\\\'][^'|^\\\']*['|\\\'])*[^'|^\\\']*[^'|^\\\']$)/";
 $CSVRegex = '/\s*(?<!\\\),\s*/';

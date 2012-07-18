@@ -41,6 +41,7 @@ class LabelsEN extends Labels
 		'ErrorXMLErrorNotValidXML' => 'The uploaded file was not valid XML.',
 		'ErrorXMLErrorNotValidSchema' => 'The uploaded file failed to validate as CandyDollDB-XML.',
 		'ErrorXMLErrorUnknown' => 'Unknown XML error.',
+		'ErrorUserActionNotAllowed' => 'Requested User action not allowed.',
 		
 		'CLIFinished' => 'Finished.',
 		'FooterBy' => 'by',
@@ -147,6 +148,7 @@ class LabelsEN extends Labels
 		'LabelNewPassword' => 'New password',
 		'LabelNewUser' => 'New user',
 		'LabelNewVideo' => 'New video',
+		'LabelNotAllowed' => 'User action not allowed',
 		'LabelOrphanFiles0' => 'No orphan files',
 		'LabelOrphanFiles1' => '1 orphan file',
 		'LabelOrphanFilesX' => '%1$d orphan files',

@@ -296,6 +296,17 @@ class User
 	{ $this->Rights = $Rights; }
 
 	/**
+	 * Gets Array of User Rights
+	 * @return array
+	 */
+
+	public function getUserRights()
+	{
+		global $UserRightsArray;
+		return $UserRightsArray[$this->Rights];
+	}
+
+	/**
 	 * Gets the User's language
 	 * @return string
 	 */
@@ -344,6 +355,7 @@ class User
 							case 'user_lastname'		: $UserObject->setLastName($ColumnValue);			break;
 							case 'user_email'			: $UserObject->setEmailAddress($ColumnValue);		break;
 							case 'user_datedisplayopts'	: $UserObject->setDateDisplayOptions($ColumnValue);	break;
+							case 'user_rights'	: $UserObject->setRights($ColumnValue);	break;
 							case 'user_imageview'		: $UserObject->setImageview($ColumnValue);			break;
 							case 'user_language'		: $UserObject->setLanguage($ColumnValue);			break;
 							case 'user_gender'			: $UserObject->setGender($ColumnValue);				break;
@@ -385,6 +397,7 @@ class User
 		    mysql_real_escape_string($User->getLastName()),
 		    mysql_real_escape_string($User->getEmailAddress()),
 		    $User->getDateDisplayOptions(),
+		    $User->getRights(),
 		    $User->getImageview(),
 		    $User->getLanguage(),
 		    $User->getGender(),
@@ -392,7 +405,7 @@ class User
 		    $CurrentUser->getID(),
 		    time()
 		),
-		'user_username, user_password, user_salt, user_firstname, user_insertion, user_lastname, user_email, user_datedisplayopts, user_imageview, user_language,  user_gender, user_birthdate, mut_id, mut_date'
+		'user_username, user_password, user_salt, user_firstname, user_insertion, user_lastname, user_email, user_datedisplayopts, user_rights, user_imageview, user_language,  user_gender, user_birthdate, mut_id, mut_date'
 	    );
 	}
 	
@@ -423,6 +436,7 @@ class User
 				'user_birthdate' => $User->getBirthDate(),
 				'user_lastactive' => $User->getLastActive(),
 				'user_lastlogin' => $User->getLastLogin(),
+				'user_rights' => $User->getRights(),
 				'user_prelastlogin' => $User->getPreLastLogin(),
 				'mut_id' => $CurrentUser->getID(),
 				'mut_date' => time()),
@@ -450,6 +464,22 @@ class User
 			array('user_id', $User->getID())
 		);
 	}
+
+	/**
+	 * Checks user permission against requested object.
+	 *
+	 * @parem $Rights
+	 * @parem $Permission
+	 * @return bool
+	 */
+
+ 	public static function checkperm($UserRights, $Permission)
+ 	{
+ 		$HasRights = false;
+ 		if($UserRights & $Permission)
+ 		{ $HasRights = true; }
+ 		return $HasRights;
+ 	}
 }
 
 ?>

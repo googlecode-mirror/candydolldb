@@ -11,7 +11,7 @@ $_SESSION['UserSalt'] = null;
 $PasswordError = false;
 $LanguageOptions = null;
 $DateFormatOptions = null;
- 
+$Showrights = null;
 
 /* @var $User User */
 if($UserID)
@@ -50,6 +50,15 @@ if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'UserView')
 	$User->setLanguage($_POST['selectLanguage']);
 	$User->setDateDisplayOptions($_POST['selectDateformat']);
 	$User->setImageview($_POST['selectImageview']);
+
+	if(array_key_exists('btnUserRights', $_POST))
+	{
+		foreach($_POST['btnUserRights'] as $rights)
+		{
+			$getrights += $rights;
+		}
+		$User->setRights($getrights);
+	}
 
 	if(array_key_exists('radGender', $_POST))
 	{
@@ -261,6 +270,20 @@ setInterval(function () {
 <input type="text" id="txtBirthDate" name="txtBirthDate" class="DatePicker"	maxlength="10" value="<?php echo $User->getBirthDate() > 0 ? date('Y-m-d', $User->getBirthDate()) : null?>"<?php echo HTMLstuff::DisabledStr($DeleteUser)?> />
 </div>
 
+<div class="FormRow">
+<label for="txtUserRights">User Rights:</label>
+<table border="0" style="width: 50%"><?php
+$counter = 0;
+foreach($UserRightsArray as $index => $label)
+{
+	$counter++;
+	$Showrights .= sprintf("<td width=\"1%%\"><input type=\"checkbox\" id=\"btn%2\$s\"  name=\"btnUserRights[]\" value=\"%3\$s\" %1\$s/>%2\$s</td>",$User->checkperm($User->getRights(),$index) ? " checked=\"checked\"" : null,$label,$index);
+	if($counter % 4 == 0)
+	{ $Showrights .= "</td></tr><tr>"; }
+}
+$Showrights .= "</tr></table>";
+echo $Showrights;?>
+</td></tr></table></div>
 <div class="FormRow">
 <label>&nbsp;</label>
 <input type="submit" id="submitform" class="FormButton" value="<?php echo $DeleteUser ? $lang->g('ButtonDelete') : $lang->g('ButtonSave')?>" <?php echo ($User->getID() == $CurrentUser->getID() || $User->getUserName() == $lang->g('LabelNewUser')) ?  'disabled="disabled"' : null ?> />

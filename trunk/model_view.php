@@ -5,7 +5,8 @@ $CurrentUser = Authentication::Authenticate();
 HTMLstuff::RefererRegister($_SERVER['REQUEST_URI']);
 
 $ModelID = Utils::SafeIntFromQS('model_id');
-$DeleteModel = (array_key_exists('cmd', $_GET) && $_GET['cmd'] && ($_GET['cmd'] == COMMAND_DELETE));
+$DeleteModel = $CurrentUser->checkperm($CurrentUser->getRights(),DELETE) ? (array_key_exists('cmd', $_GET) && $_GET['cmd'] && ($_GET['cmd'] == COMMAND_DELETE)) : null;
+$EditModel = $CurrentUser->checkperm($CurrentUser->getRights(),EDIT);
 
 $TagsThisModel = Tag2All::GetTag2Alls(sprintf('model_id = %1$d AND set_id is null AND image_id is null AND video_id is null', $ModelID));
 $TagsInDB = Tag::GetTags();
@@ -106,32 +107,32 @@ if($ModelID)
 
 <div class="FormRow">
 <label for="txtFirstName"><?php echo $lang->g('LabelFirstname')?>: <em>*</em></label>
-<input type="text" id="txtFirstName" name="txtFirstName" maxlength="100" value="<?php echo $Model->getFirstName()?>"<?php echo HTMLstuff::DisabledStr($DeleteModel)?> />
+<input type="text" id="txtFirstName" name="txtFirstName" maxlength="100" value="<?php echo $Model->getFirstName()?>"<?php echo HTMLstuff::DisabledStr($DeleteModel || !$EditModel)?> />
 </div>
 
 <div class="FormRow">
 <label for="txtLastName"><?php echo $lang->g('LabelLastname')?>:</label>
-<input type="text" id="txtLastName" name="txtLastName" maxlength="100" value="<?php echo $Model->getLastName()?>"<?php echo HTMLstuff::DisabledStr($DeleteModel)?> />
+<input type="text" id="txtLastName" name="txtLastName" maxlength="100" value="<?php echo $Model->getLastName()?>"<?php echo HTMLstuff::DisabledStr($DeleteModel || !$EditModel)?> />
 </div>
 
 <div class="FormRow">
 <label for="txtBirthDate"><?php echo $lang->g('LabelBirthdate')?>:</label>
-<input type="text" id="txtBirthDate" name="txtBirthDate" class="DatePicker"	maxlength="10" value="<?php echo $Model->getBirthDate() > 0 ? date('Y-m-d', $Model->getBirthDate()) : null?>"<?php echo HTMLstuff::DisabledStr($DeleteModel)?> />
+<input type="text" id="txtBirthDate" name="txtBirthDate" class="DatePicker"	maxlength="10" value="<?php echo $Model->getBirthDate() > 0 ? date('Y-m-d', $Model->getBirthDate()) : null?>"<?php echo HTMLstuff::DisabledStr($DeleteModel || !$EditModel)?> />
 </div>
 
 <div class="FormRow">
 <label for="txtTags"><?php echo $lang->g('LabelTags')?> (CSV):</label>
-<input type="text" id="txtTags" name="txtTags" maxlength="400" class="TagsBox" value="<?php echo Tag2All::Tags2AllCSV($TagsThisModel)?>"<?php echo HTMLstuff::DisabledStr($DeleteModel)?> />
+<input type="text" id="txtTags" name="txtTags" maxlength="400" class="TagsBox" value="<?php echo Tag2All::Tags2AllCSV($TagsThisModel)?>"<?php echo HTMLstuff::DisabledStr($DeleteModel || !$EditModel)?> />
 </div>
 
 <div class="FormRow">
 <label for="txtRemarks"><?php echo $lang->g('LabelRemarks')?>:</label>
-<textarea id="txtRemarks" name="txtRemarks" cols="42" rows="16" <?php echo HTMLstuff::DisabledStr($DeleteModel)?>><?php echo $Model->getRemarks()?></textarea>
+<textarea id="txtRemarks" name="txtRemarks" cols="42" rows="16" <?php echo HTMLstuff::DisabledStr($DeleteModel || !$EditModel)?>><?php echo $Model->getRemarks()?></textarea>
 </div>
 
 <div class="FormRow">
 <label>&nbsp;</label>
-<input type="submit" class="FormButton" value="<?php echo $DeleteModel ? $lang->g('ButtonDelete') : $lang->g('ButtonSave')?>" />
+<input type="submit"<?php echo HTMLstuff::DisabledStr(!$EditModel)?> class="FormButton" value="<?php echo $DeleteModel ? $lang->g('ButtonDelete') : $lang->g('ButtonSave')?>" />
 <input type="button" class="FormButton" value="<?php echo $lang->g('ButtonCancel')?>" onclick="window.location='index.php';" />
 </div>
 

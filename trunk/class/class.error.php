@@ -108,6 +108,8 @@ class Error
 		{
 			case REQUIRED_FIELD_MISSING:
 				$OutMessage = $lang->g('ErrorNotAllRequiredData'); break;
+			case RIGHTS_ERR_USERNOTALLOWED:
+				$OutMessage = $lang->g('ErrorUserActionNotAllowed'); break;
 			default:
 				$OutMessage = $lang->g('ErrorUnknownError'); break;
 		}

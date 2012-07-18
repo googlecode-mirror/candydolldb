@@ -41,6 +41,7 @@ class LabelsDE extends Labels
 		'ErrorXMLErrorNotValidXML' => '',
 		'ErrorXMLErrorNotValidSchema' => '',
 		'ErrorXMLErrorUnknown' => 'Unbekannter XML-Fehler.',
+		'ErrorUserActionNotAllowed' => '',
 		
 		'CLIFinished' => 'Fertig.',
 		'FooterBy' => '',
@@ -148,6 +149,7 @@ class LabelsDE extends Labels
 		'LabelNewPassword' => 'Neues Kennwort',
 		'LabelNewUser' => 'Neuer Benutzer',
 		'LabelNewVideo' => 'Neues Video',
+		'LabelNotAllowed' => '',
 		'LabelOrphanFiles0' => '',
 		'LabelOrphanFiles1' => '',
 		'LabelOrphanFilesX' => '',
