@@ -135,6 +135,9 @@ for($i = 0; $i < count($Models); $i++)
 		}
 	}
 	
+	$infoSuccess = new Info($lang->g('MessageImagesImported'));
+	Info::AddInfo($infoSuccess);
+	
 	if(isset($argv) && $argc > 0)
 	{ $bi->Finish(); }
 }

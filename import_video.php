@@ -113,6 +113,9 @@ for($i = 0; $i < count($Models); $i++)
 		}
 	}
 	
+	$infoSuccess = new Info($lang->g('MessageVideosImported'));
+	Info::AddInfo($infoSuccess);
+	
 	if(isset($argv) && $argc > 0)
 	{ $bi->Finish(); }
 }

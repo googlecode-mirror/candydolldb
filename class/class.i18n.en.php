@@ -252,6 +252,8 @@ class LabelsEN extends Labels
 		'MessagePasswordResetSuccess' => '<p>An e-mail containing a hyperlink has been sent to your e-mailaddress. Use it ito reset your account\'s password.</p>',
 		'MessagePasswordResetSendError' => '<p>An error occurred while sending your e-mail. Please contact the system\'s administrator.</p>',
 		'MessageSureUpdateToX' => '<p>Are you sure you want to update the application to v%1$s?</p>',
+		'MessageImagesImported' => 'The pictures have been imported successfully.',
+		'MessageVideosImported' => 'The videos have been imported successfully.',
 		'MessageXMLImported' => 'The XML data has been imported successfully.'
 	);
 }
