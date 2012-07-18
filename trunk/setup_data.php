@@ -221,6 +221,9 @@ if($XmlFromFile)
 		unlink(realpath($fileToProcess));
 	}
 	
+	$infoSuccess = new Info($lang->g('MessageXMLImported'));
+	Info::AddInfo($infoSuccess);
+	
 	if(isset($argv) && $argc > 0)
 	{ $bi->Finish(); }
 }
