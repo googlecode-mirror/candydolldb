@@ -41,7 +41,7 @@ class LabelsNL extends Labels
 		'ErrorXMLErrorNotValidXML' => 'Het geüploade bestand is geen valide XML.',
 		'ErrorXMLErrorNotValidSchema' => 'Het geüploade bestand is geen valide CandyDollDB-XML.',
 		'ErrorXMLErrorUnknown' => 'Onbekende XML-fout.',
-		'ErrorUserActionNotAllowed' => '',
+		'ErrorUserActionNotAllowed' => 'De uit te voeren actie is niet toegestaan.',
 		
 		'CLIFinished' => 'Finished.',
 		'FooterBy' => 'door',
@@ -148,7 +148,7 @@ class LabelsNL extends Labels
 		'LabelNewPassword' => 'Nieuw wachtwoord',
 		'LabelNewUser' => 'Nieuwe gebruiker',
 		'LabelNewVideo' => 'Nieuwe video',
-		'LabelNotAllowed' => '',
+		'LabelNotAllowed' => 'Niet toegestaan',
 		'LabelOrphanFiles0' => 'Geen loze bestanden',
 		'LabelOrphanFiles1' => '1 loos bestand',
 		'LabelOrphanFilesX' => '%1$d loze bestanden',

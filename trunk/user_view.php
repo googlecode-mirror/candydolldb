@@ -277,7 +277,7 @@ $counter = 0;
 foreach($UserRightsArray as $index => $label)
 {
 	$counter++;
-	$Showrights .= sprintf("<td width=\"1%%\"><input type=\"checkbox\" id=\"btn%2\$s\"  name=\"btnUserRights[]\" value=\"%3\$s\" %1\$s/>%2\$s</td>",$User->checkperm($User->getRights(),$index) ? " checked=\"checked\"" : null,$label,$index);
+	$Showrights .= sprintf("<td width=\"1%%\"><input type=\"checkbox\" id=\"btn%2\$s\"  name=\"btnUserRights[]\" value=\"%3\$s\" %1\$s/>%2\$s</td>",$User->hasPermission($index) ? " checked=\"checked\"" : null,$label,$index);
 	if($counter % 4 == 0)
 	{ $Showrights .= "</td></tr><tr>"; }
 }

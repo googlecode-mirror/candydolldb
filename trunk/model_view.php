@@ -5,8 +5,8 @@ $CurrentUser = Authentication::Authenticate();
 HTMLstuff::RefererRegister($_SERVER['REQUEST_URI']);
 
 $ModelID = Utils::SafeIntFromQS('model_id');
-$DeleteModel = $CurrentUser->checkperm($CurrentUser->getRights(),DELETE) ? (array_key_exists('cmd', $_GET) && $_GET['cmd'] && ($_GET['cmd'] == COMMAND_DELETE)) : null;
-$EditModel = $CurrentUser->checkperm($CurrentUser->getRights(),EDIT);
+$DeleteModel = $CurrentUser->hasPermission(DELETE) ? (array_key_exists('cmd', $_GET) && $_GET['cmd'] && ($_GET['cmd'] == COMMAND_DELETE)) : null;
+$EditModel = $CurrentUser->hasPermission(EDIT);
 
 $TagsThisModel = Tag2All::GetTag2Alls(sprintf('model_id = %1$d AND set_id is null AND image_id is null AND video_id is null', $ModelID));
 $TagsInDB = Tag::GetTags();

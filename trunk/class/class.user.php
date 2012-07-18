@@ -319,7 +319,13 @@ class User
 	public function setLanguage($Language)
 	{ $this->Language = $Language; }
 
-
+	/**
+	 * Checks this user's rights for the given permission
+	 * @param int $permission
+	 */
+	public function hasPermission($permission)
+	{ return self::CheckPermission($this->Rights, $permission); }
+	
 
 	/**
 	 * Gets an array of Users from the database, or NULL on failure. The array can be empty.
@@ -355,7 +361,7 @@ class User
 							case 'user_lastname'		: $UserObject->setLastName($ColumnValue);			break;
 							case 'user_email'			: $UserObject->setEmailAddress($ColumnValue);		break;
 							case 'user_datedisplayopts'	: $UserObject->setDateDisplayOptions($ColumnValue);	break;
-							case 'user_rights'	: $UserObject->setRights($ColumnValue);	break;
+							case 'user_rights'			: $UserObject->setRights($ColumnValue);				break;
 							case 'user_imageview'		: $UserObject->setImageview($ColumnValue);			break;
 							case 'user_language'		: $UserObject->setLanguage($ColumnValue);			break;
 							case 'user_gender'			: $UserObject->setGender($ColumnValue);				break;
@@ -466,19 +472,15 @@ class User
 	}
 
 	/**
-	 * Checks user permission against requested object.
+	 * Checks permission against given collection of rights.
 	 *
-	 * @parem $Rights
-	 * @parem $Permission
+	 * @param $Rights
+	 * @param $Permission
 	 * @return bool
 	 */
-
- 	public static function checkperm($UserRights, $Permission)
+ 	public static function CheckPermission($Rights, $Permission)
  	{
- 		$HasRights = false;
- 		if($UserRights & $Permission)
- 		{ $HasRights = true; }
- 		return $HasRights;
+ 		return (($Rights & $Permission) > 0);
  	}
 }
 
