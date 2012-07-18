@@ -45,6 +45,7 @@ class HTMLstuff
 		
 		<h1 class=\"Hidden\">CandyDollDB v%1\$s%2\$s</h1>
 		%3\$s
+		%10\$s
 		
 		<div id=\"Wrapper\">
 		<div id=\"Header\">
@@ -61,7 +62,8 @@ class HTMLstuff
 			$lang->g('LabelColorBoxCurrent'),
 			$lang->g('LabelColorBoxPrevious'),
 			$lang->g('LabelColorBoxNext'),
-			$lang->g('LabelColorBoxClose')
+			$lang->g('LabelColorBoxClose'),
+			Info::GenerateInfoList()
 		);
 
 		if($CurrentUser != null) {

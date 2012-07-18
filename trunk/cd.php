@@ -3,6 +3,7 @@
 error_reporting(E_ALL);
 ini_set('display_errors', '1');
 date_default_timezone_set(@date_default_timezone_get());
+
 $UserRightsArray = array(
 	1 => "LOGIN",
 	2 => "IMPORT",
@@ -108,6 +109,7 @@ $DateStyleArray = array(
 
 include('class/class.global.php');
 include('class/class.error.php');
+include('class/class.info.php');
 include('class/class.html.php');
 include('class/class.db.php');
 
@@ -115,6 +117,9 @@ include('class/class.db.php');
 
 if(!array_key_exists('Errors', $_SESSION))
 { $_SESSION['Errors'] = serialize(array()); }
+
+if(!array_key_exists('Infos', $_SESSION))
+{ $_SESSION['Infos'] = serialize(array()); }
 
 if(defined('DBHOSTNAME') &&
    defined('DBUSERNAME') &&

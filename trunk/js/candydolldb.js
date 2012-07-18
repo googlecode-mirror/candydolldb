@@ -40,7 +40,7 @@ function OpenSlideColorBox(){
 }
 
 function CloseOverlay(){
-	$('.ErrorList, #ErrorContainer').fadeOut(300);
+	$('.ErrorList, #ErrorContainer, .InfoList, #InfoContainer').fadeOut(300);
 	$(document).unbind('keydown');
 	return true;
 }
@@ -139,7 +139,7 @@ $(function(){
 	AddDefaultColorBox();
 	AddTagAutoSuggest();
 	
-	$('#ErrorContainer').fadeTo(400, 0.65).click(CloseOverlay).each(function(){
+	$('#ErrorContainer, #InfoContainer').fadeTo(400, 0.65).click(CloseOverlay).each(function(){
 		if($(this).is(':visible')){
 			$(document).bind('keydown', function(e){
 				if(e.which == 13 || e.which == 27 || e.which == 32){
@@ -150,7 +150,7 @@ $(function(){
 		}
 	});
 
-	$('.ErrorList').fadeIn(400).click(CloseOverlay);
+	$('.ErrorList, .InfoList').fadeIn(400).click(CloseOverlay);
 
 	$('html').css('overflowY', 'scroll');
 	$('a[rel^=external]').attr('target', 'new');

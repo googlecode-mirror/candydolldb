@@ -304,8 +304,9 @@ a.Button:focus, a.Button:hover{
 	text-decoration: none;
 }
 
-/* Errorlist */
-div#ErrorContainer{
+/* Errorlist, Infolist */
+div#ErrorContainer,
+div#InfoContainer{
 	background-color: #000000;
 	display: none;
 	height: 100%;
@@ -315,7 +316,8 @@ div#ErrorContainer{
 	width: 100%;
 	z-index: 4;
 }
-div.ErrorList{
+div.ErrorList,
+div.InfoList{
 	display: none;
 	left: 0;
 	height:100%;
@@ -324,12 +326,10 @@ div.ErrorList{
 	width:100%;
 	z-index:5;
 }
-div.ErrorList div{
-	background-color: #7b000e;
-	background-image: url('images/error_gradient.png');
+div.ErrorList div,
+div.InfoList div{
 	background-position: top left;
 	background-repeat: repeat-x;
-	border: solid 4px #8f2323;
 	color: #dedede;
 	cursor: pointer;
 	font-size: 12pt;
@@ -338,13 +338,29 @@ div.ErrorList div{
 	padding: 20px;
 	width: 520px;
 }
-div.ErrorList div ul{
-	background-image: url('images/error.png');
+div.ErrorList div{
+	background-color: #7b000e;
+	background-image: url('images/error_gradient.png');
+	border: solid 4px #8f2323;
+}
+div.InfoList div{
+	background-color: #204a87;
+	background-image: url('images/info_gradient.png');
+	border: solid 4px #15386b;
+}
+div.ErrorList div ul,
+div.InfoList div ul{
 	background-repeat: no-repeat;
 	list-style-type: none;
 	margin: 0;
 	min-height: 120px;
 	padding: 0 0 0 130px;
+}
+div.ErrorList div ul{
+	background-image: url('images/error.png');
+}
+div.InfoList div ul{
+	background-image: url('images/info.png');
 }
 
 
