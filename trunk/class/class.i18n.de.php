@@ -253,6 +253,8 @@ class LabelsDE extends Labels
 		'MessagePasswordResetSuccess' => '',
 		'MessagePasswordResetSendError' => '',
 		'MessageSureUpdateToX' => 'v%1$s',
+		'MessageImagesImported' => '',
+		'MessageVideosImported' => '',
 		'MessageXMLImported' => ''
 	);
 }

@@ -252,6 +252,8 @@ class LabelsNL extends Labels
 		'MessagePasswordResetSuccess' => '<p>Er is een e-mail verstuurd met een hyperlink waarmee u het wachtwoord van uw account kunt herstellen.</p>',
 		'MessagePasswordResetSendError' => '<p>Er is een fout opgetreden tijdens het versturen van uw e-mail. Neem contact op met de systeembeheerder.</p>',
 		'MessageSureUpdateToX' => '<p>Weet u zeker dat u de applicatie wilt bijwerken naar v%1$s?</p>',
+		'MessageImagesImported' => 'De foto\'s zijn succesvol geïmporteerd.',
+		'MessageVideosImported' => 'De video\'s zijn succesvol geïmporteerd.',
 		'MessageXMLImported' => 'Het XML bestand is succesvol geïmporteerd.'
 	);
 }
