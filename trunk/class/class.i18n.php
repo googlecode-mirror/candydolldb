@@ -70,17 +70,17 @@ class i18n
 					
 					case 'en':
 						if(LabelsEN::LabelExists($key))
-						{ return LabelsEN::$Labels[$key]; }
+						{ return utf8_decode(LabelsEN::$Labels[$key]); }
 						break;
 						
 					case 'nl':
 						if(LabelsNL::LabelExists($key))
-						{ return LabelsNL::$Labels[$key]; }
+						{ return utf8_decode(LabelsNL::$Labels[$key]); }
 						break;
 							
 					case 'de':
 						if(LabelsDE::LabelExists($key))
-						{ return LabelsDE::$Labels[$key]; }
+						{ return utf8_decode(LabelsDE::$Labels[$key]); }
 						break;
 				}
 			}
