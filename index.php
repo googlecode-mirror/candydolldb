@@ -100,7 +100,7 @@ if($Models)
 			
 			<div class=\"ThumbImageWrapper\">
 			<a href=\"set.php?model_id=%2\$d\">
-			<img src=\"download_image.php?model_id=%2\$d&amp;portrait_only=true&amp;width=150&amp;height=225\" width=\"150\" height=\"225\" alt=\"%1\$s\" title=\"%1\$s\" />
+			<img src=\"download_image.php?model_id=%2\$d&amp;portrait_only=true&amp;width=150&amp;height=225&amp;set_type=%25\$d\" width=\"150\" height=\"225\" alt=\"%1\$s\" title=\"%1\$s\" />
 			</a>
 			</div>
 			
@@ -116,12 +116,12 @@ if($Models)
 			</div>
 			
 			<div class=\"ThumbButtonWrapper\">
-			<a href=\"model_view.php?model_id=%2\$d\"><img src=\"images/button_edit.png\" width=\"16\" height=\"16\" title=\"%15\$s\" alt=\"%15\$s\"/></a>
-			<a href=\"import_image.php?model_id=%2\$d\"><img src=\"images/button_upload.png\" width=\"16\" height=\"16\" alt=\"%16\$s\" title=\"%16\$s\" /></a>
-			<a href=\"import_video.php?model_id=%2\$d\"><img src=\"images/button_upload.png\" width=\"16\" height=\"16\" alt=\"%17\$s\" title=\"%17\$s\" /></a>
+			%29\$s
+			%27\$s
+			%28\$s
 			<a href=\"download_zip.php?model_id=%2\$d\"><img src=\"images/button_download.png\" width=\"16\" height=\"16\" alt=\"%18\$s\" title=\"%18\$s\" /></a>
 			<a href=\"download_image.php?index_id=%2\$d&amp;width=500&amp;height=750\" rel=\"lightbox-index\" title=\"%19\$s %1\$s\"><img src=\"images/button_view.png\" width=\"16\" height=\"16\" alt=\"%19\$s %1\$s\" /></a>
-			<a href=\"model_view.php?model_id=%2\$d&amp;cmd=%3\$s\" title=\"%20\$s\"><img src=\"images/button_delete.png\" width=\"16\" height=\"16\" alt=\"%20\$s\" /></a>
+			%26\$s
 			</div>
 			
 			</div>
@@ -142,16 +142,21 @@ if($Models)
 			$lang->g('LabelBirthdateShort'),
 			$lang->g('LabelPicSets'),
 			$lang->g('LabelVidSets'),
-			$lang->g('LabelEditModel'),
-			$lang->g('ButtonImportImages'),
-			$lang->g('ButtonImportVideos'),
+        		null,
+        		null,
+        		null,
 			$lang->g('LabelDownloadImages'),
 			$lang->g('LabelIndexOf'),
-			$lang->g('LabelDeleteModel'),
+        		null,
 			$datestartshow,
 			$dateendshow,
 			$lang->g('LabelStartDate'),
-			$lang->g('LabelLastUpdated')
+        		$lang->g('LabelLastUpdated'),
+        		null,
+        		$CurrentUser->checkperm($CurrentUser->getRights(),DELETE) ? sprintf("<a href=\"model_view.php?model_id=%1\$d&amp;cmd=%2\$s\" title=\"%3\$s\"><img src=\"images/button_delete.png\" width=\"16\" height=\"16\" alt=\"%3\$s\" /></a>",$Model->getID(),COMMAND_DELETE,$lang->g('LabelDeleteModel')) : sprintf("<a href=\"#\" title=\"%1\$s\"><img src=\"images/button_delete_invalid.png\" width=\"16\" height=\"16\" alt=\"%1\$s\" /></a>",$lang->g('LabelNotAllowed')),
+        		$CurrentUser->checkperm($CurrentUser->getRights(),IMPORT) ? sprintf("<a href=\"import_image.php?model_id=%1\$d\"><img src=\"images/button_upload.png\" width=\"16\" height=\"16\" alt=\"%2\$s\" title=\"%2\$s\" /></a>",$Model->getID(),$lang->g('ButtonImportImages')) : sprintf("<a href=\"#\"><img src=\"images/button_upload_invalid.png\" width=\"16\" height=\"16\" alt=\"%1\$s\" title=\"%1\$s\" /></a>",$lang->g('LabelNotAllowed')),
+        		$CurrentUser->checkperm($CurrentUser->getRights(),IMPORT) ? sprintf("<a href=\"import_video.php?model_id=%1\$d\"><img src=\"images/button_upload.png\" width=\"16\" height=\"16\" alt=\"%2\$s\" title=\"%2\$s\" /></a>",$Model->getID(),$lang->g('ButtonImportVideos')) : sprintf("<a href=\"#\"><img src=\"images/button_upload_invalid.png\" width=\"16\" height=\"16\" alt=\"%1\$s\" title=\"%1\$s\" /></a>",$lang->g('LabelNotAllowed')),
+        		$CurrentUser->checkperm($CurrentUser->getRights(),EDIT) ? sprintf("<a href=\"model_view.php?model_id=%1\$d\"><img src=\"images/button_edit.png\" width=\"16\" height=\"16\" title=\"%2\$s\" alt=\"%2\$s\"/></a>",$Model->getID(),$lang->g('LabelEditModel')) : sprintf("<a href=\"#\"><img src=\"images/button_edit.png\" width=\"16\" height=\"16\" title=\"%1\$s\" alt=\"%1\$s\"/></a>",$lang->g('LabelNotAllowed'))
 		);
 		
 	}

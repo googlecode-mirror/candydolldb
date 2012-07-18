@@ -21,35 +21,44 @@ if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] && $_POST['hidAc
 	{
 		/* @var $User User */
 		$User = $Users[0];
-
-		if(Utils::HashString($Password, $User->getSalt()) == $User->getPassword())
+		if($User->checkperm($User->getRights(),LOGIN))
 		{
-			$User->setPreLastLogin($User->getLastLogin());
-			$User->setLastLogin(time());
-			
-			// By resetting the user's Salt and Password-hash upon login,
-			// existing reset-URLs and concurrent loginsessions become invalid.
-			$User->setSalt(Utils::GenerateGarbage(20));
-			$User->setPassword(Utils::HashString($Password, $User->getSalt()));
-			
-			User::UpdateUser($User, $User);
-			
-			$_SESSION['CurrentUser'] = serialize($User);
-			
-			if(isset($ReturnURL))
-			{ header('location:'.urldecode($ReturnURL)); }
+			if(Utils::HashString($Password, $User->getSalt()) == $User->getPassword())
+			{
+				$User->setPreLastLogin($User->getLastLogin());
+				$User->setLastLogin(time());
+
+				// By resetting the user's Salt and Password-hash upon login,
+				// existing reset-URLs and concurrent loginsessions become invalid.
+				$User->setSalt(Utils::GenerateGarbage(20));
+				$User->setPassword(Utils::HashString($Password, $User->getSalt()));
+
+				User::UpdateUser($User, $User);
+
+				$_SESSION['CurrentUser'] = serialize($User);
+
+				if(isset($ReturnURL))
+				{ header('location:'.urldecode($ReturnURL)); }
+				else
+				{ header('location:index.php'); }
+
+				exit;
+			}
 			else
-			{ header('location:index.php'); }
-			
-			exit;
+			{
+				$LoginError = new LoginError();
+				$LoginError->setErrorNumber(LOGIN_ERR_PASSWORDINCORRECT);
+				$LoginError->setErrorMessage(LoginError::TranslateLoginError(LOGIN_ERR_PASSWORDINCORRECT));
+				Error::AddError($LoginError);
+			}
 		}
 		else
 		{
-			$LoginError = new LoginError();
-			$LoginError->setErrorNumber(LOGIN_ERR_PASSWORDINCORRECT);
-			$LoginError->setErrorMessage(LoginError::TranslateLoginError(LOGIN_ERR_PASSWORDINCORRECT));
-			Error::AddError($LoginError);
-		}	
+		$LoginError = new Error();
+		$LoginError->setErrorNumber(RIGHTS_ERR_USERNOTALLOWED);
+		$LoginError->setErrorMessage(Error::TranslateError(RIGHTS_ERR_USERNOTALLOWED));
+		Error::AddError($LoginError);
+		}
 	}
 	else
 	{
