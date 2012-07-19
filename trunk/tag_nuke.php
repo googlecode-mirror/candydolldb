@@ -5,18 +5,19 @@ ini_set('max_execution_time', '3600');
 $CurrentUser = Authentication::Authenticate();
 
 $Tags = Tag::GetTags();
-$Tag2Alls = Tag2All::GetTag2Alls();
 
 /* @var $t Tag */
-/* @var $t2a Tag2All */
 foreach($Tags as $t)
 {
-	$t2a = Tag2All::FilterTag2Alls($Tag2Alls, $t->getID(), FALSE, FALSE, FALSE, FALSE);
+	$t2as = Tag2All::GetTag2Alls(sprintf('tag_id = %1$d', $t->getID()));
 	
-	if(!$t2a){
+	if(!$t2as){
 		Tag::DeleteTag($t, $CurrentUser);
 	}
 }
+
+$infoSuccess = new Info($lang->g('MessageTagsCleaned'));
+Info::AddInfo($infoSuccess);
 
 HTMLstuff::RefererRedirect();
 
