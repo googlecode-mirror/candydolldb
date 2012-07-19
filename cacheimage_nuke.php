@@ -42,6 +42,9 @@ foreach($CacheImages as $CacheImage)
 	{ CacheImage::DeleteImage($CacheImage, $CurrentUser); }
 }
 
+$infoSuccess = new Info($lang->g('MessageCacheImagesCleaned'));
+Info::AddInfo($infoSuccess);
+
 HTMLstuff::RefererRedirect();
 
 ?>
