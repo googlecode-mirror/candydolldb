@@ -253,6 +253,7 @@ class LabelsNL extends Labels
 		'MessagePasswordResetSendError' => '<p>Er is een fout opgetreden tijdens het versturen van uw e-mail. Neem contact op met de systeembeheerder.</p>',
 		'MessageSureUpdateToX' => '<p>Weet u zeker dat u de applicatie wilt bijwerken naar v%1$s?</p>',
 		'MessageCacheImagesCleaned' => 'Zowel de cache-map als -tabel zijn opgeruimd.',
+		'MessageTagsCleaned' => 'De verzameling Tags is opgeruimd.',
 		'MessageImagesImported' => 'De foto\'s zijn succesvol geïmporteerd.',
 		'MessageVideosImported' => 'De video\'s zijn succesvol geïmporteerd.',
 		'MessageXMLImported' => 'Het XML bestand is succesvol geïmporteerd.'
