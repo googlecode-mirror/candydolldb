@@ -152,7 +152,7 @@ echo HTMLstuff::HtmlHeader('Dirty sets', $CurrentUser);
 
 <h2><?php echo sprintf('<a href="index.php">%1$s</a> - %2$s', $lang->g('NavigationHome'), $lang->g('NavigationDirtySets'))?></h2>
 
-<table border="0" cellpadding="4" cellspacing="0">
+<table>
 	<thead>
 		<tr>
 			<th><?php echo $lang->g('NavigationModel')?></th>

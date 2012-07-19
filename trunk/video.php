@@ -103,7 +103,7 @@ echo HTMLstuff::HtmlHeader(sprintf('%1$s - %3$s %2$s - %4$s',
 
 <div class="Separator"></div>
 
-<table border="0" cellpadding="4" cellspacing="0">
+<table>
 	<thead>
 		<tr>
 			<th><?php echo $lang->g('LabelFilename')?></th>

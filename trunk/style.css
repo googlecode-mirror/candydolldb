@@ -67,7 +67,13 @@ a.TagSelect span{
 }
 
 table{
+	border-collapse:separate;
+	border-spacing: 0;
 	width: 100%;
+}
+table th,
+table td{
+	padding: 4px;
 }
 table thead tr{
 	background-color: #dedede;
