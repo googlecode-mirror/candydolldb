@@ -51,7 +51,7 @@ echo HTMLstuff::HtmlHeader($lang->g('NavigationUsers'), $CurrentUser);
 	$lang->g('NavigationHome')
 )?></h2>
 
-<table border="0" cellpadding="4" cellspacing="0">
+<table>
 	<thead>
 		<tr>
 			<th style="width: 160px;"><?php echo $lang->g('LabelUsername')?></th>

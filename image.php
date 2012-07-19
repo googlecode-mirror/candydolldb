@@ -177,7 +177,7 @@ break;
 
 case 'detail':
 ?>
-<table border="0" cellpadding="4" cellspacing="0">
+<table>
 	<thead>
 		<tr>
 			<th><?php echo $lang->g('LabelFilename')?></th>
