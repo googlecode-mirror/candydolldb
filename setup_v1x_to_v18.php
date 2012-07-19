@@ -44,14 +44,25 @@ if(array_key_exists('hidAction', $_POST) && isset($_POST['hidAction']) && $_POST
 	if($NoError && !$Exists)
 	{ $NoError = $db->ExecuteQueries("ALTER TABLE `User` ADD `user_language` varchar(20) NOT NULL DEFAULT 'en' AFTER `user_imageview`"); }
 
-	/* Rename all cached images on disk including prefix */
+	/* Rename all cached images on disk to include prefix */
 	$CacheImagesInDB = CacheImage::GetCacheImages();
 	
 	/* @var $ci CacheImage */
 	foreach ($CacheImagesInDB as $ci)
 	{
-		if(file_exists($ci->getFilenameOnDisk()))
+		if(file_exists($ci->getFilenameOnDisk(true)))
 		{ rename($ci->getFilenameOnDisk(true), $ci->getFilenameOnDisk(false)); }
+	}
+	
+	/* Give the admin-user full rights */
+	$admUser = User::GetUsers(sprintf('user_id = %1$d', CMDLINE_USERID));
+	
+	/* @var $admUser User */
+	if($admUser)
+	{
+		$admUser = $admUser[0];
+		$admUser->setRights(255); // Should probably be calculated instead of hard-coded
+		User::UpdateUser($admUser, $admUser);
 	}
 
 	$UpdateDBSQL = <<<FjbMNnvUJheiwewUJfheJheuehFJDUHdywgwwgHGfgywug
@@ -92,6 +103,31 @@ CREATE TABLE IF NOT EXISTS `Tag2All` (
   CONSTRAINT `Tag2All_ibfk_4` FOREIGN KEY (`image_id`) REFERENCES `Image` (`image_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `Tag2All_ibfk_5` FOREIGN KEY (`video_id`) REFERENCES `Video` (`video_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+DROP TABLE IF EXISTS `CacheImage`;
+CREATE TABLE IF NOT EXISTS `CacheImage` (
+  `cache_id` varchar(36) NOT NULL,
+  `model_id` bigint(20) DEFAULT NULL,
+  `index_id` bigint(20) DEFAULT NULL,
+  `set_id` bigint(20) DEFAULT NULL,
+  `image_id` bigint(20) DEFAULT NULL,
+  `video_id` bigint(20) DEFAULT NULL,
+  `cache_imagewidth` int(11) NOT NULL DEFAULT '0',
+  `cache_imageheight` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`cache_id`),
+  KEY `model_id` (`model_id`),
+  KEY `index_id` (`index_id`),
+  KEY `set_id` (`set_id`),
+  KEY `image_id` (`image_id`),
+  KEY `video_id` (`video_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+ALTER TABLE `CacheImage`
+  ADD CONSTRAINT `CacheImage_ibfk_1` FOREIGN KEY (`model_id`) REFERENCES `Model` (`model_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `CacheImage_ibfk_2` FOREIGN KEY (`index_id`) REFERENCES `Model` (`model_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `CacheImage_ibfk_3` FOREIGN KEY (`set_id`)   REFERENCES `Set`   (`set_id`)   ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `CacheImage_ibfk_4` FOREIGN KEY (`image_id`) REFERENCES `Image` (`image_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `CacheImage_ibfk_5` FOREIGN KEY (`video_id`) REFERENCES `Video` (`video_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 DROP VIEW IF EXISTS `vw_Tag2All`;
 CREATE ALGORITHM=UNDEFINED VIEW `vw_Tag2All` AS	select `Tag2All`.`tag_id` AS `tag_id`, `Tag`.`tag_name` AS `tag_name`, `Tag2All`.`model_id` AS `model_id`, `Tag2All`.`set_id` AS `set_id`, `Tag2All`.`image_id` AS `image_id`, `Tag2All`.`video_id` AS `video_id` from `Tag2All` join `Tag` on `Tag`.`tag_id` = `Tag2All`.`tag_id`;
