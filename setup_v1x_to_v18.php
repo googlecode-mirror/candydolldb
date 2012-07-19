@@ -44,6 +44,16 @@ if(array_key_exists('hidAction', $_POST) && isset($_POST['hidAction']) && $_POST
 	if($NoError && !$Exists)
 	{ $NoError = $db->ExecuteQueries("ALTER TABLE `User` ADD `user_language` varchar(20) NOT NULL DEFAULT 'en' AFTER `user_imageview`"); }
 
+	/* Rename all cached images on disk including prefix */
+	$CacheImagesInDB = CacheImage::GetCacheImages();
+	
+	/* @var $ci CacheImage */
+	foreach ($CacheImagesInDB as $ci)
+	{
+		if(file_exists($ci->getFilenameOnDisk()))
+		{ rename($ci->getFilenameOnDisk(true), $ci->getFilenameOnDisk(false)); }
+	}
+
 	$UpdateDBSQL = <<<FjbMNnvUJheiwewUJfheJheuehFJDUHdywgwwgHGfgywug
 SET AUTOCOMMIT=0;
 START TRANSACTION;

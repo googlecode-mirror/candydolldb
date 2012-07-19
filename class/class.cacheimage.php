@@ -126,13 +126,41 @@ class CacheImage
 	{ $this->ImageHeight = $ImageHeight; }
 
 	/**
+	 * The on-disk filename of this CacheImage, in- or excluding the Kind-prefix
+	 * @param bool $omitPrefix
 	 * @return string
 	 */
-	public function getFilenameOnDisk()
+	public function getFilenameOnDisk($omitPrefix = false)
 	{
 		global $argv, $argc;
 		$pathPrefix = (isset($argv) && $argc > 0) ? dirname($_SERVER['PHP_SELF']).'/' : '';
-		return sprintf($pathPrefix.'cache/%1$s.jpg', $this->getID());
+		
+		return 	sprintf(
+			$pathPrefix.'cache/%1$s%2$s.jpg',
+			$omitPrefix ? '' : self::getFilenamePrefix(),
+			$this->getID()
+		);
+	}
+	
+	/**
+	 * Translates this CacheImage's Kind to a string prefix, used for storage on-disk.
+	 * @return string
+	 */
+	private function getFilenamePrefix()
+	{
+		$s = null;
+		switch ($this->Kind)
+		{
+			case CACHEIMAGE_KIND_MODEL: 	$s = 'M-'; break;
+			case CACHEIMAGE_KIND_INDEX: 	$s = 'X-'; break;
+			case CACHEIMAGE_KIND_SET:		$s = 'S-'; break;
+			case CACHEIMAGE_KIND_IMAGE: 	$s = 'I-'; break;
+			case CACHEIMAGE_KIND_VIDEO: 	$s = 'V-'; break;
+			
+			default:
+			case CACHEIMAGE_KIND_UNKNOWN: $s = ''; break;
+		}
+		return $s;
 	}
 	
 	public static function GetCacheImages($WhereClause = null, $OrderClause = null, $LimitClause = null)
