@@ -34,7 +34,7 @@ class Info
 		
 		if(isset($argv) && $argc > 0)
 		{
-			fwrite(STDOUT, $InInfo->getInfoMessage()."\n");
+			fwrite(STDOUT, html_entity_decode($InInfo->getInfoMessage(), ENT_COMPAT, 'UTF-8')."\n");
 		}
 		else 
 		{
@@ -63,7 +63,7 @@ class Info
 		 	while(($Info = array_pop($inInfos)) !== null)
 			{
 				$infoList .= sprintf("\n<li>%1\$s<br /><br /></li>",
-					htmlentities($Info->getInfoMessage())
+					$Info->getInfoMessage()
 				);
 				$infoCount++;
 			}

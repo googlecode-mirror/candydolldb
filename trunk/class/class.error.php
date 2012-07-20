@@ -50,7 +50,7 @@ class Error
 		
 		if(isset($argv) && $argc > 0)
 		{
-			fwrite(STDERR, $InError->getErrorMessage()."\n");
+			fwrite(STDERR, html_entity_decode($InError->getErrorMessage(), ENT_COMPAT, 'UTF-8')."\n");
 		}
 		else 
 		{
@@ -79,7 +79,7 @@ class Error
 		 	while(($Error = array_pop($inErrors)) !== null)
 			{
 				$errorList .= sprintf("\n<li>%1\$s<br /><br /></li>",
-					htmlentities($Error->getErrorMessage())
+					$Error->getErrorMessage()
 				);
 				$errorCount++;
 			}

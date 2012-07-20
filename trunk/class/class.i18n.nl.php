@@ -32,14 +32,14 @@ class LabelsNL extends Labels
 		'ErrorUploadErrorMaxFilesize' => 'Het bestand is groter dan toegestaan in MAX_FILE_SIZE.',
 		'ErrorUploadErrorMaxFilesizeIni' => 'Het bestand is groter dan toegestaan in php.ini.',
 		'ErrorUploadErrorMissingTempFolder' => 'De tijdelijke map voor het opslaan ontbreekt.',
-		'ErrorUploadErrorNoFile' => 'Geen bestand geüpload.',
+		'ErrorUploadErrorNoFile' => 'Geen bestand ge&uuml;pload.',
 		'ErrorUploadErrorOK' => 'Er is geen fout opgetreden tijdens het uploaden.',
 		'ErrorUploadErrorPartialUpload' => 'Het bestand is niet volledig opgeslagen.',
-		'ErrorUploadErrorPHPExtension' => 'Een geïnstalleerde PHP extensie heeft het uploaden gestopt.',
+		'ErrorUploadErrorPHPExtension' => 'Een ge&iuml;nstalleerde PHP extensie heeft het uploaden gestopt.',
 		'ErrorUploadErrorUnknown' => 'Onbekende upload-fout.',
 		'ErrorUploadErrorWriteToDisk' => 'Het bestand kon niet worden weggeschreven.',
-		'ErrorXMLErrorNotValidXML' => 'Het geüploade bestand is geen valide XML.',
-		'ErrorXMLErrorNotValidSchema' => 'Het geüploade bestand is geen valide CandyDollDB-XML.',
+		'ErrorXMLErrorNotValidXML' => 'Het ge&uuml;ploade bestand is geen valide XML.',
+		'ErrorXMLErrorNotValidSchema' => 'Het ge&uuml;ploade bestand is geen valide CandyDollDB-XML.',
 		'ErrorXMLErrorUnknown' => 'Onbekende XML-fout.',
 		'ErrorUserActionNotAllowed' => 'De uit te voeren actie is niet toegestaan.',
 		
@@ -139,9 +139,9 @@ class LabelsNL extends Labels
 		'LabelMissingFiles1' => '1 ontbrekend bestand',
 		'LabelMissingFilesX' => '%1$d ontbrekende bestanden',
 		'LabelModel' => 'Model',
-		'LabelMultiDownloadStep1' => 'Selecteer één of meer modellen, klik volgende.',
-		'LabelMultiDownloadStep2' => 'Selecteer één of meer van de getoonde sets, klik volgende.',
-		'LabelMultiDownloadStep3' => 'Selecteer één of meer van de getoonde foto\'s, klik Download.',
+		'LabelMultiDownloadStep1' => 'Selecteer &eacute;&eacute;n of meer modellen, klik volgende.',
+		'LabelMultiDownloadStep2' => 'Selecteer &eacute;&eacute;n of meer van de getoonde sets, klik volgende.',
+		'LabelMultiDownloadStep3' => 'Selecteer &eacute;&eacute;n of meer van de getoonde foto\'s, klik Download.',
 		'LabelMultiDownloadUseSubfolders' => 'Submappen in download',
 		'LabelName' => 'Naam',
 		'LabelNew' => 'Nieuw',
@@ -254,9 +254,9 @@ class LabelsNL extends Labels
 		'MessageSureUpdateToX' => '<p>Weet u zeker dat u de applicatie wilt bijwerken naar v%1$s?</p>',
 		'MessageCacheImagesCleaned' => 'Zowel de cache-map als -tabel zijn opgeruimd.',
 		'MessageTagsCleaned' => 'De verzameling Tags is opgeruimd.',
-		'MessageImagesImported' => 'De foto\'s zijn succesvol geïmporteerd.',
-		'MessageVideosImported' => 'De video\'s zijn succesvol geïmporteerd.',
-		'MessageXMLImported' => 'Het XML bestand is succesvol geïmporteerd.'
+		'MessageImagesImported' => 'De foto\'s zijn succesvol ge&iuml;mporteerd.',
+		'MessageVideosImported' => 'De video\'s zijn succesvol ge&iuml;mporteerd.',
+		'MessageXMLImported' => 'Het XML bestand is succesvol ge&iuml;mporteerd.'
 	);
 }
 
