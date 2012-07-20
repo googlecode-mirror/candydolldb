@@ -7,13 +7,6 @@ $FileToFind = '';
 
 $CacheFolder = null;
 $CacheImages = CacheImage::GetCacheImages();
-$CacheImagesToFilter = array();
-
-$CacheImagesModel = CacheImage::FilterCacheImages($CacheImages, CACHEIMAGE_KIND_MODEL, null, null, null, null, null, null);
-$CacheImagesIndex = CacheImage::FilterCacheImages($CacheImages, CACHEIMAGE_KIND_INDEX, null, null, null, null, null, null);
-$CacheImagesSet = CacheImage::FilterCacheImages($CacheImages, CACHEIMAGE_KIND_SET, null, null, null, null, null, null);
-$CacheImagesImage = CacheImage::FilterCacheImages($CacheImages, CACHEIMAGE_KIND_IMAGE, null, null, null, null, null, null);
-$CacheImagesVideo = CacheImage::FilterCacheImages($CacheImages, CACHEIMAGE_KIND_VIDEO, null, null, null, null, null, null);
 
 
 if(isset($argv) && $argc > 0)
@@ -34,34 +27,17 @@ foreach($it as $file)
 	$idToFind = $file->getBasename('.jpg');
 	$matches = array();
 
-	if(preg_match_all('/(?<Prefix>[MXSIV]-)?[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/i', $idToFind, $matches) > 0)
+	if(preg_match_all('/^(?<Prefix>[MXSIV]-)?[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i', $idToFind, $matches) > 0)
 	{ 
-		$CacheImagesToFilter = $CacheImages;
-		
-		switch($matches['Prefix']){
-			case 'M-': $CacheImagesToFilter = $CacheImagesModel; break;
-			case 'X-': $CacheImagesToFilter = $CacheImagesIndex; break;
-			case 'S-': $CacheImagesToFilter = $CacheImagesSet; break;
-			case 'I-': $CacheImagesToFilter = $CacheImagesImage; break;
-			case 'V-': $CacheImagesToFilter = $CacheImagesVideo; break;
-		}
-
-		$CacheImageInDB = CacheImage::FilterCacheImages(
-			$CacheImagesToFilter,
-			null,
-			null,
-			null,
-			null,
-			null,
-			null,
-			str_ireplace($matches['Prefix'], '', $idToFind)
-		);
+		$where = sprintf("cache_id = '%1\$s'", str_ireplace($matches['Prefix'], '', $idToFind));
+		$CacheImageInDB = CacheImage::GetCacheImages($where);
 	
 		if(!$CacheImageInDB)
 		{ unlink($file->getRealPath()); }
 	}
 }
 
+/* @var $CacheImage CacheImage */
 foreach($CacheImages as $CacheImage)
 {
 	$FileToFind = $CacheImage->getFilenameOnDisk();
