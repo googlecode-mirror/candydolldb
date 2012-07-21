@@ -66,6 +66,7 @@ INSERT INTO `User` (
   `user_datedisplayopts`,
   `user_imageview`,
   `user_language`,
+  `user_rights`,
   `mut_id`,
   `mut_date`,
   `mut_deleted`
@@ -79,6 +80,7 @@ INSERT INTO `User` (
 	0,
 	'detail',
 	'en',
+	1073741823,
 	1,
 	UNIX_TIMESTAMP(),
 	-1

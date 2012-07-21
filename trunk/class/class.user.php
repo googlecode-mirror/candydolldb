@@ -290,21 +290,11 @@ class User
 	{ return $this->Rights; }
 	
 	/**
-	 * @param int $Rights
+	 * @param long $Rights
 	 */
 	public function setRights($Rights)
 	{ $this->Rights = $Rights; }
 
-	/**
-	 * Gets Array of User Rights
-	 * @return array
-	 */
-
-	public function getUserRights()
-	{
-		global $UserRightsArray;
-		return $UserRightsArray[$this->Rights];
-	}
 
 	/**
 	 * Gets the User's language

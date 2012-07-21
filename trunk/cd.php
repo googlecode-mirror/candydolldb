@@ -4,24 +4,6 @@ error_reporting(E_ALL);
 ini_set('display_errors', '1');
 date_default_timezone_set(@date_default_timezone_get());
 
-$UserRightsArray = array(
-	1 => "LOGIN",
-	2 => "IMPORT",
-	4 => "EXPORT_XML",
-	8 => "ADD",
-	16 => "EDIT",
-	32 => "DELETE",
-	64 => "PROCESS_XML"
-);
-define('LOGIN',1);
-define('IMPORT',2);
-define('EXPORT_XML',4);
-define('ADD',8);
-define('EDIT',16);
-define('DELETE',32);
-define('PROCESS_XML',64);
-
-
 include('class/class.i18n.php');
 include('class/class.i18n.en.php');
 include('class/class.i18n.nl.php');
@@ -62,6 +44,37 @@ if(!defined('DBHOSTNAME') || strlen(DBHOSTNAME) == 0 ||
 }
 
 define('CANDYDOLLDB_VERSION', '1.8');
+
+define('RIGHT_ACCOUNT_LOGIN',	1);
+define('RIGHT_ACCOUNT_EDIT',	8388608);
+define('RIGHT_ACCOUNT_PASSWORD',16777216);
+define('RIGHT_IMPORT_XML',		2);
+define('RIGHT_EXPORT_XML',		4);
+define('RIGHT_MODEL_ADD',		8);
+define('RIGHT_MODEL_EDIT',		16);
+define('RIGHT_MODEL_DELETE',	32);
+define('RIGHT_SET_ADD',			64);
+define('RIGHT_SET_EDIT',		128);
+define('RIGHT_SET_DELETE',		256);
+define('RIGHT_IMAGE_ADD',		512);
+define('RIGHT_IMAGE_EDIT',		1024);
+define('RIGHT_IMAGE_DELETE',	2048);
+define('RIGHT_VIDEO_ADD',		4096);
+define('RIGHT_VIDEO_EDIT',		8192);
+define('RIGHT_VIDEO_DELETE',	16384);
+define('RIGHT_TAG_ADD',			32768);
+define('RIGHT_TAG_EDIT',		65536);
+define('RIGHT_TAG_DELETE',		131072);
+define('RIGHT_USER_ADD',		262144);
+define('RIGHT_USER_EDIT',		524288);
+define('RIGHT_USER_DELETE',		1048576);
+define('RIGHT_USER_RIGHTS',		536870912);
+define('RIGHT_EXPORT_ZIP',		2097152);
+define('RIGHT_EXPORT_ZIP_MULTI',4194304);
+define('RIGHT_EXPORT_INDEX',	33554432);
+define('RIGHT_SEARCH_TAG',		67108864);
+define('RIGHT_SEARCH_DIRTY',	134217728);
+define('RIGHT_CACHE_CLEANUP',	268435456);
 
 define('GENDER_UNKNOWN', 0);
 define('GENDER_FEMALE', 1);
