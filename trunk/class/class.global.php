@@ -1,5 +1,26 @@
 <?php
 
+class Rights
+{
+	public static function getDefinedRights()
+	{
+		$c = get_defined_constants();
+	
+		foreach ($c as $k => $v){
+			if(stripos($k, 'RIGHT_') !== 0){
+				unset($c[$k]);
+			}
+		}
+	
+		uasort($c, function($a, $b){
+			return $a == $b ? 0 :
+			$a < $b ? -1 : 1;
+		});
+	
+		return $c;
+	}
+}
+
 class Authentication
 {
 	/**

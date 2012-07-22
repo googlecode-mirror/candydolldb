@@ -272,7 +272,7 @@ setInterval(function () {
 
 <div class="FormRow">
 <label>User Rights:</label>
-<span>TODO</span>
+<span><?php echo var_dump(Rights::getDefinedRights())?></span>
 </div>
 
 <div class="FormRow">
