@@ -257,6 +257,19 @@ form.FilterForm input[type=text]{
 form.FilterForm input[type=submit]{
 	line-height: 16px;
 }
+form .CheckBoxMadness{
+	margin-left: 150px;
+}
+form .CheckBoxMadness ul{
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+form .CheckBoxMadness label{
+	display: block;
+	float: left;
+	width: 180px;
+}
 
 .PhotoContainer{
 	clear: right;

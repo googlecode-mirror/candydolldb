@@ -11,7 +11,8 @@ $_SESSION['UserSalt'] = null;
 $PasswordError = false;
 $LanguageOptions = null;
 $DateFormatOptions = null;
-$Showrights = null;
+$RightsCheckboxes = null;
+
 
 /* @var $User User */
 if($UserID)
@@ -51,11 +52,13 @@ if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'UserView')
 	$User->setDateDisplayOptions($_POST['selectDateformat']);
 	$User->setImageview($_POST['selectImageview']);
 
-	if($CurrentUser->hasPermission(RIGHT_USER_RIGHTS) && array_key_exists('btnUserRights', $_POST))
+	if($CurrentUser->hasPermission(RIGHT_USER_RIGHTS))
 	{
-		foreach($_POST['btnUserRights'] as $rights)
+		$getrights = 0;
+		foreach(Rights::getDefinedRights() as $k => $v)
 		{
-			$getrights += $rights;
+			if(array_key_exists('chk'.$k, $_POST))
+			{ $getrights += $v; }
 		}
 		$User->setRights($getrights);
 	}
@@ -152,7 +155,7 @@ foreach (i18n::$SupportedLanguages as $l){
 	$LanguageOptions .= sprintf("
 		<option value=\"%1\$s\"%2\$s>%3\$s%4\$s</option>",
 		$l,
-		$User->getLanguage() == $l ? ' selected="selected"' : null,
+		HTMLstuff::SelectedStr($User->getLanguage() == $l),
 		$lang->g('LabelLanguage_'.$l),
 		$l == 'en' ? $lang->g('LabelSuffixDefault') : null
 	);
@@ -163,9 +166,22 @@ foreach($DateStyleArray as $index => $format)
 	$DateFormatOptions .= sprintf("
 		<option value=\"%1\$d\"%2\$s>%3\$s%4\$s</option>",
 		$index,
-		$User->getDateDisplayOptions() == $index ? ' selected="selected"' : null,
+		HTMLstuff::SelectedStr($User->getDateDisplayOptions() == $index),
 		date($format),
 		$index == 0 ? $lang->g('LabelSuffixDefault') : null
+	);
+}
+
+foreach(Rights::getDefinedRights() as $k => $v)
+{
+	$RightsCheckboxes .= sprintf("<li>
+		<label for=\"chk%1\$s\" class=\"Radio\">
+			<input type=\"checkbox\" id=\"chk%1\$s\" name=\"chk%1\$s\"%3\$s />
+			&nbsp;%2\$s
+		</label></li>",
+		$k,
+		$lang->g('Label'.$k),
+		HTMLstuff::CheckedStr($User->hasPermission($v))
 	);
 }
 
@@ -271,11 +287,13 @@ setInterval(function () {
 </div>
 
 <div class="FormRow">
-<label>User Rights:</label>
-<span><?php echo var_dump(Rights::getDefinedRights())?></span>
+<label><?php echo $lang->g('LabelUserRights')?>:</label>
+	<div class="CheckBoxMadness">
+	<ul><?php echo $RightsCheckboxes?></ul>
+	</div>
 </div>
 
-<div class="FormRow">
+<div class="FormRow Clear">
 <label>&nbsp;</label>
 <input type="submit" id="submitform" class="FormButton" value="<?php echo $DeleteUser ? $lang->g('ButtonDelete') : $lang->g('ButtonSave')?>" <?php echo ($User->getID() == $CurrentUser->getID() || $User->getUserName() == $lang->g('LabelNewUser')) ?  'disabled="disabled"' : null ?> />
 <input type="button" class="FormButton" value="<?php echo $lang->g('ButtonCancel')?>" onclick="window.location='user.php';" />
