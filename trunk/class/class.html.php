@@ -316,6 +316,11 @@ GYtguefggefegfgefgegfgfuguf;
 		return $InBool ? ' checked="checked"' : '';
 	}
 	
+	public static function SelectedStr($InBool)
+	{
+		return $InBool ? ' selected="selected"' : '';
+	}
+	
 	public static function RefererRegister($RedirURL = null)
 	{
 		$_SESSION['CallerURL'] = $RedirURL;
