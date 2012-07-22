@@ -146,19 +146,19 @@ class BusyIndicator
 	{
 		$toWrite = sprintf('%1$s %2$s %3$6.2f%%',
 			$this->stringPrefix,
-			substr(BusyIndicator::$chars, $this->currentCharIndex, 1),
+			substr(self::$chars, $this->currentCharIndex, 1),
 			$this->CalcValue() * 100
 		);
 
 		echo $toWrite;
-		echo BusyIndicator::SweepItClean($toWrite);
+		echo self::SweepItClean($toWrite);
 		
 		$this->currentCharIndex++;
 		
-		if($this->currentCharIndex > strlen(BusyIndicator::$chars) - 1)
+		if($this->currentCharIndex > strlen(self::$chars) - 1)
 		{ $this->currentCharIndex = 0; }
 	
-		$this->currentValue = $this->currentValue + $step;
+		$this->currentValue += $step;
 	}
 	
 	/**
@@ -179,8 +179,8 @@ class BusyIndicator
 class Utils
 {
 	/**
-	 * Returns a human readable string of a filesize, e.g. 2,43 MB.
-	 * @param int $SizeInBytes
+	 * Returns a human readable string of a filesize, e.g. 2,43 MiB.
+	 * @param long $SizeInBytes
 	 * @return string
 	 */
 	public static function ReadableFilesize($SizeInBytes)
@@ -188,16 +188,28 @@ class Utils
 		$OutString = sprintf('%1$d B', $SizeInBytes);
 		
 		if($SizeInBytes >= 1024)
-		{ $OutString = sprintf('%1$.0f KB', $SizeInBytes / 1024);  }
+		{ $OutString = sprintf('%1$.0f KiB', $SizeInBytes / 1024); }
 		
-		if($SizeInBytes >= 1024 * 1024)
-		{ $OutString = sprintf('%1$.2f MB', $SizeInBytes / 1024 / 1024);  }
+		if($SizeInBytes >= pow(1024, 2))
+		{ $OutString = sprintf('%1$.2f MiB', $SizeInBytes / pow(1024, 2)); }
 		
-		if($SizeInBytes >= 1024 * 1024 * 1024)
-		{ $OutString = sprintf('%1$.2f GB', $SizeInBytes / 1024 / 1024 / 1024);  }
+		if($SizeInBytes >= pow(1024, 3))
+		{ $OutString = sprintf('%1$.2f GiB', $SizeInBytes / pow(1024, 3)); }
 		
-		if($SizeInBytes >= 1024 * 1024 * 1024 * 1024)
-		{ $OutString = sprintf('%1$.2f TB', $SizeInBytes / 1024 / 1024 / 1024 / 1024);  }
+		if($SizeInBytes >= pow(1024, 4))
+		{ $OutString = sprintf('%1$.2f TiB', $SizeInBytes / pow(1024, 4)); }
+		
+		if($SizeInBytes >= pow(1024, 5))
+		{ $OutString = sprintf('%1$.2f PiB', $SizeInBytes / pow(1024, 5)); }
+		
+		if($SizeInBytes >= pow(1024, 6))
+		{ $OutString = sprintf('%1$.2f EiB', $SizeInBytes / pow(1024, 6)); }
+		
+		if($SizeInBytes >= pow(1024, 7))
+		{ $OutString = sprintf('%1$.2f ZiB', $SizeInBytes / pow(1024, 7)); }
+		
+		if($SizeInBytes >= pow(1024, 8))
+		{ $OutString = sprintf('%1$.2f YiB', $SizeInBytes / pow(1024, 8)); }
 		
 		return $OutString;
 	}
@@ -250,7 +262,7 @@ class Utils
 	/**
 	 * Validates the given string to be a valid emailaddress.
 	 * @param string $InAddress
-	 * @return boolean
+	 * @return bool
 	 */
 	public static function ValidateEmail($InAddress)
 	{
