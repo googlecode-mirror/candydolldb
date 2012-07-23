@@ -61,7 +61,7 @@ if(array_key_exists('hidAction', $_POST) && isset($_POST['hidAction']) && $_POST
 	if($admUser)
 	{
 		$admUser = $admUser[0];
-		$admUser->setRights(1073741823); // Should probably be calculated instead of hard-coded
+		$admUser->setRights(Rights::getTotalRights());
 		User::UpdateUser($admUser, $admUser);
 	}
 

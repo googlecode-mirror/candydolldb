@@ -98,7 +98,9 @@ echo HTMLstuff::HtmlHeader($lang->g('NavigationManageTags'), $CurrentUser);
 		$('input[type=submit]').val('<?php echo $lang->g('ButtonDelete')?>');" />
 <?php } ?>
 
-<input type="button" class="FormButton" value="<?php echo $lang->g('ButtonClean')?>" onclick="window.location='tag_nuke.php';" />
+<input type="button" class="FormButton" value="<?php echo $lang->g('ButtonClean')?>"
+	<?php echo $CurrentUser->hasPermission(RIGHT_TAG_CLEANUP) ? " onclick=\"window.location='tag_nuke.php';\"" : HTMLstuff::DisabledStr(true) ?>
+/>
 </div>
 
 </fieldset>

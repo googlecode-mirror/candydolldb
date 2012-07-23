@@ -80,7 +80,7 @@ INSERT INTO `User` (
 	0,
 	'detail',
 	'en',
-	1073741823,
+	%7\$d,
 	1,
 	UNIX_TIMESTAMP(),
 	-1
@@ -402,7 +402,8 @@ if(array_key_exists('hidAction', $_POST) && isset($_POST['hidAction']) && $_POST
 						mysql_escape_string($UserSalt),
 						mysql_escape_string($UserFirstName),
 						mysql_escape_string($UserLastName),
-						mysql_escape_string($UserEmail)
+						mysql_escape_string($UserEmail),
+						Rights::getTotalRights()
 						)) !== false)
 				{
 					$NewUserID = mysql_fetch_array(mysql_query('SELECT LAST_INSERT_ID() AS `LastID`;'));
