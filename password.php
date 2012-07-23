@@ -38,17 +38,14 @@ if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] && $_POST['hidAc
 
 		if(!$MailSent)
 		{
-			$MailError = new Error();
-			$MailError->setErrorMessage($ml->ErrorInfo);
-			Error::AddError($MailError);
+			$e = new Error(null, $ml->ErrorInfo);
+			Error::AddError($e);
 		}
 	}
 	else
 	{
-		$LoginError = new LoginError();
-		$LoginError->setErrorNumber(LOGIN_ERR_USERNAMEANDMAILADDRESNOTFOUND);
-		$LoginError->setErrorMessage(LoginError::TranslateLoginError(LOGIN_ERR_USERNAMEANDMAILADDRESNOTFOUND));
-		Error::AddError($LoginError);
+		$e = new LoginError(LOGIN_ERR_USERNAMEANDMAILADDRESNOTFOUND);
+		Error::AddError($e);
 	}
 }
 else if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] && $_POST['hidAction'] == 'PasswordReset' && array_key_exists('Hash', $_GET) && preg_match('/^[0-9a-f]{128}$/i', $_GET['Hash']))
@@ -82,17 +79,13 @@ else if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] && $_POST['
 		{
 			if(!$_POST['txtNewPassword'] && !$_POST['txtRepeatPassword'])
 			{
-				$LoginError = new LoginError();
-				$LoginError->setErrorNumber(REQUIRED_FIELD_MISSING);
-				$LoginError->setErrorMessage(Error::TranslateError(REQUIRED_FIELD_MISSING));
-				Error::AddError($LoginError);
+				$e = new Error(REQUIRED_FIELD_MISSING);
+				Error::AddError($e);
 			}
 			else
 			{
-				$LoginError = new LoginError();
-				$LoginError->setErrorNumber(LOGIN_ERR_PASSWORDSNOTIDENTICAL);
-				$LoginError->setErrorMessage(LoginError::TranslateLoginError(LOGIN_ERR_PASSWORDSNOTIDENTICAL));
-				Error::AddError($LoginError);
+				$e = new LoginError(LOGIN_ERR_PASSWORDSNOTIDENTICAL);
+				Error::AddError($e);
 			}
 		}
 	}
@@ -118,10 +111,8 @@ else if (!array_key_exists('hidAction', $_POST) && array_key_exists('Hash', $_GE
 	}
 	else
 	{
-		$LoginError = new LoginError();
-		$LoginError->setErrorNumber(LOGIN_ERR_RESETCODENOTFOUND);
-		$LoginError->setErrorMessage(LoginError::TranslateLoginError(LOGIN_ERR_RESETCODENOTFOUND));
-		Error::AddError($LoginError);
+		$e = new LoginError(LOGIN_ERR_RESETCODENOTFOUND);
+		Error::AddError($e);
 		$HashError = true;
 	}
 }

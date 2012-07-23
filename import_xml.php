@@ -24,25 +24,19 @@ if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'UploadXML')
 			}
 			else
 			{
-				$e = new UploadError();
-				$e->setErrorNumber(XML_ERR_SCHEMA_VALID);
-				$e->setErrorMessage(XMLError::TranslateXMLError(XML_ERR_SCHEMA_VALID));
+				$e = new XMLerror(XML_ERR_SCHEMA_VALID);
 				Error::AddError($e);
 			}
 		}
 		else
 		{
-			$e = new UploadError();
-			$e->setErrorNumber(XML_ERR_XML_VALID);
-			$e->setErrorMessage(XMLError::TranslateXMLError(XML_ERR_XML_VALID));
+			$e = new XMLerror(XML_ERR_XML_VALID);
 			Error::AddError($e);
 		}
 	}
 	else
 	{
-		$e = new UploadError();
-		$e->setErrorNumber($f['error']);
-		$e->setErrorMessage(UploadError::TranslateUploadError($f['error']));
+		$e = new UploadError($f['error']);
 		Error::AddError($e);
 	}
 }
