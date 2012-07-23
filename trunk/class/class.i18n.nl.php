@@ -242,6 +242,7 @@ class LabelsNL extends Labels
 		'LabelRIGHT_SEARCH_DIRTY' => 'Zoeken (incomplete sets)',
 		'LabelRIGHT_CACHE_CLEANUP' => 'Cache opruimen',
 		'LabelRIGHT_TAG_CLEANUP' => 'Tags opruimen',
+		'LabelRIGHT_CACHE_DELETE' => 'Cache-bestand verwijderen',
 		
 		'ButtonCancel' => 'Annuleren',
 		'ButtonClean' => 'Opruimen',

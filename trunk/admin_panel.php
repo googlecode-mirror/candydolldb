@@ -104,7 +104,9 @@ echo HTMLstuff::HtmlHeader($lang->g('NavigationAdminPanel'), $CurrentUser);
 
 <div class="FormRow WideForm">
 <label><?php echo $lang->g('LabelCleanCacheFolder')?></label>
-<input type="button" id="btnCleanCache" name="btnCleanCache" value="<?php echo $lang->g('ButtonClean')?>" onclick="window.location='cacheimage_nuke.php';" />
+	<input type="button" id="btnCleanCache" name="btnCleanCache" value="<?php echo $lang->g('ButtonClean')?>"
+	<?php echo $CurrentUser->hasPermission(RIGHT_CACHE_CLEANUP) ? "onclick=\"window.location='cacheimage_nuke.php';\"" : HtmlStuff::DisabledStr(true) ?>
+	/>
 <?php echo $CacheInSync?>
 </div>
 
@@ -112,23 +114,25 @@ echo HTMLstuff::HtmlHeader($lang->g('NavigationAdminPanel'), $CurrentUser);
 
 <div class="FormRow WideForm">
 <label><?php echo $lang->g('LabelDownloadXML')?></label>
-<input type="button" id="btnDownloadExport" name="btnDownloadExport" value="<?php echo $lang->g('ButtonDownload')?>" onclick="RedirToXML();" />
+<input type="button" id="btnDownloadExport" name="btnDownloadExport" value="<?php echo $lang->g('ButtonDownload')?>"
+	<?php echo $CurrentUser->hasPermission(RIGHT_EXPORT_XML) ? "onclick=\"RedirToXML();\"" : HTMLstuff::DisabledStr(true) ?>
+/>
 <br />
 <label for="selModelXml" style="float:none;width:auto;"><?php echo $lang->g('LabelModel')?>: </label>
-<select id="selModelXml" name="selModel">
+<select id="selModelXml" name="selModelXml"<?php echo $CurrentUser->hasPermission(RIGHT_EXPORT_XML) ? null : HTMLstuff::DisabledStr(true)?>>
 	<option value=""><?php echo $lang->g('LabelAllModels')?></option>
 	<?php echo $ModelsOptions?>
 </select>
-<label for="chkXMLIncludePic" style="float:none;width:auto;"><input type="checkbox" id="chkXMLIncludePic" name="chkXMLIncludePic" />&nbsp;<?php echo $lang->g('LabelIncludeImages')?></label>
-<label for="chkXMLIncludeVid" style="float:none;width:auto;"><input type="checkbox" id="chkXMLIncludeVid" name="chkXMLIncludeVid" />&nbsp;<?php echo $lang->g('LabelIncludeVideos')?></label>
-<label for="chkXMLIncludeTag" style="float:none;width:auto;"><input type="checkbox" id="chkXMLIncludeTag" name="chkXMLIncludeTag" />&nbsp;<?php echo $lang->g('LabelIncludeTags')?></label>
+<label for="chkXMLIncludePic" style="float:none;width:auto;"><input type="checkbox" id="chkXMLIncludePic" name="chkXMLIncludePic"<?php echo $CurrentUser->hasPermission(RIGHT_EXPORT_XML) ? null : HTMLstuff::DisabledStr(true)?> />&nbsp;<?php echo $lang->g('LabelIncludeImages')?></label>
+<label for="chkXMLIncludeVid" style="float:none;width:auto;"><input type="checkbox" id="chkXMLIncludeVid" name="chkXMLIncludeVid"<?php echo $CurrentUser->hasPermission(RIGHT_EXPORT_XML) ? null : HTMLstuff::DisabledStr(true)?> />&nbsp;<?php echo $lang->g('LabelIncludeVideos')?></label>
+<label for="chkXMLIncludeTag" style="float:none;width:auto;"><input type="checkbox" id="chkXMLIncludeTag" name="chkXMLIncludeTag"<?php echo $CurrentUser->hasPermission(RIGHT_EXPORT_XML) ? null : HTMLstuff::DisabledStr(true)?> />&nbsp;<?php echo $lang->g('LabelIncludeTags')?></label>
 </div>
 
 <hr />
 
 <div class="FormRow">
 <label for="selModel"><?php echo $lang->g('LabelModel')?>: </label>
-<select id="selModel" name="selModel">
+<select id="selModel" name="selModel"<?php echo $CurrentUser->hasPermission(RIGHT_EXPORT_INDEX) ? null : HTMLstuff::DisabledStr(true)?>>
 	<option value=""></option>
 	<?php echo $ModelsOptions?>
 </select>
@@ -136,17 +140,18 @@ echo HTMLstuff::HtmlHeader($lang->g('NavigationAdminPanel'), $CurrentUser);
 
 <div class="FormRow">
 <label for="txtIndexWidth"><?php echo $lang->g('LabelWidth')?>: </label>
-<input type="text" id="txtIndexWidth" name="txtIndexWidth" value="1200" />
+<input type="text" id="txtIndexWidth" name="txtIndexWidth" value="1200"<?php echo $CurrentUser->hasPermission(RIGHT_EXPORT_INDEX) ? null : HTMLstuff::DisabledStr(true)?> />
 </div>
 
 <div class="FormRow">
 <label for="txtIndexHeight"><?php echo $lang->g('LabelHeight')?>: </label>
-<input type="text" id="txtIndexHeight" name="txtIndexHeight" value="1800" />
+<input type="text" id="txtIndexHeight" name="txtIndexHeight" value="1800"<?php echo $CurrentUser->hasPermission(RIGHT_EXPORT_INDEX) ? null : HTMLstuff::DisabledStr(true)?> />
 </div>
 
 <div class="FormRow WideForm">
 <label><?php echo $lang->g('LabelDownloadIndex')?></label>
-<input type="button" id="btnDownloadIndex" name="btnDownloadIndex" value="<?php echo $lang->g('ButtonDownload')?>" onclick="RedirToIndex();" />
+<input type="button" id="btnDownloadIndex" name="btnDownloadIndex" value="<?php echo $lang->g('ButtonDownload')?>"
+	<?php echo $CurrentUser->hasPermission(RIGHT_EXPORT_INDEX) ? "onclick=\"RedirToIndex();\"" : HTMLstuff::DisabledStr(true)?> />
 </div>
 
 <hr />
