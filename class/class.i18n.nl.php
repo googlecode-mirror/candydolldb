@@ -241,6 +241,7 @@ class LabelsNL extends Labels
 		'LabelRIGHT_SEARCH_TAG' => 'Zoeken (tags)',
 		'LabelRIGHT_SEARCH_DIRTY' => 'Zoeken (incomplete sets)',
 		'LabelRIGHT_CACHE_CLEANUP' => 'Cache opruimen',
+		'LabelRIGHT_TAG_CLEANUP' => 'Tags opruimen',
 		
 		'ButtonCancel' => 'Annuleren',
 		'ButtonClean' => 'Opruimen',
