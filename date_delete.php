@@ -3,11 +3,19 @@
 include('cd.php');
 $CurrentUser = Authentication::Authenticate();
 
-$DateID = Utils::SafeIntFromQS('date_id');
-
-if(isset($DateID))
+if($CurrentUser->hasPermission(RIGHT_SET_ADD) || $CurrentUser->hasPermission(RIGHT_SET_EDIT))
 {
-	Date::DeleteDate(new Date($DateID), $CurrentUser);
+	$DateID = Utils::SafeIntFromQS('date_id');
+	
+	if(isset($DateID))
+	{
+		Date::DeleteDate(new Date($DateID), $CurrentUser);
+	}
+}
+else
+{
+	$e = new Error(RIGHTS_ERR_USERNOTALLOWED);
+	Error::AddError($e);
 }
 
 HTMLstuff::RefererRedirect();

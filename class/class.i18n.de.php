@@ -242,6 +242,7 @@ class LabelsDE extends Labels
 		'LabelRIGHT_SEARCH_DIRTY' => '',
 		'LabelRIGHT_CACHE_CLEANUP' => '',
 		'LabelRIGHT_TAG_CLEANUP' => '',
+		'LabelRIGHT_CACHE_DELETE' => '',
 		
 		'ButtonCancel' => 'Abbrechen',
 		'ButtonClean' => '',
