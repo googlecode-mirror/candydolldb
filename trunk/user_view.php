@@ -82,7 +82,7 @@ if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'UserView')
 	else
 	{ $User->setGender(GENDER_UNKNOWN); }
 
-	if($_POST['txtPassword'])
+	if(array_key_exists('txtPassword', $_POST) && $_POST['txtPassword'])
 	{
 		if($_POST['txtRepeatPassword'] && $_POST['txtRepeatPassword'] == $_POST['txtPassword'])
 		{
@@ -136,18 +136,14 @@ if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'UserView')
 		}
 		else
 		{
-			$EmailError = new SyntaxError();
-			$EmailError->setErrorNumber(SYNTAX_ERR_EMAILADDRESS);
-			$EmailError->setErrorMessage(SyntaxError::TranslateSyntaxError(SYNTAX_ERR_EMAILADDRESS));
-			Error::AddError($EmailError);
+			$e = new SyntaxError(SYNTAX_ERR_EMAILADDRESS);
+			Error::AddError($e);
 		}
 	}
 	else
 	{
-		$LoginError = new LoginError();
-		$LoginError->setErrorNumber(LOGIN_ERR_PASSWORDSNOTIDENTICAL);
-		$LoginError->setErrorMessage(LoginError::TranslateLoginError(LOGIN_ERR_PASSWORDSNOTIDENTICAL));
-		Error::AddError($LoginError);
+		$e = new LoginError(LOGIN_ERR_PASSWORDSNOTIDENTICAL);
+		Error::AddError($e);
 	}
 }
 

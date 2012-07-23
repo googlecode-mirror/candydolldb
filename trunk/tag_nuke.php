@@ -23,9 +23,7 @@ if($CurrentUser->hasPermission(RIGHT_TAG_CLEANUP))
 }
 else
 {
-	$e = new Error();
-	$e->setErrorNumber(RIGHTS_ERR_USERNOTALLOWED);
-	$e->setErrorMessage(Error::TranslateError(RIGHTS_ERR_USERNOTALLOWED));
+	$e = new Error(RIGHTS_ERR_USERNOTALLOWED);
 	Error::AddError($e);
 }
 

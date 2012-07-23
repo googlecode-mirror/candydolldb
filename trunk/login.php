@@ -46,26 +46,20 @@ if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] && $_POST['hidAc
 			}
 			else
 			{
-				$LoginError = new LoginError();
-				$LoginError->setErrorNumber(LOGIN_ERR_PASSWORDINCORRECT);
-				$LoginError->setErrorMessage(LoginError::TranslateLoginError(LOGIN_ERR_PASSWORDINCORRECT));
-				Error::AddError($LoginError);
+				$e = new LoginError(LOGIN_ERR_PASSWORDINCORRECT);
+				Error::AddError($e);
 			}
 		}
 		else
 		{
-		$LoginError = new Error();
-		$LoginError->setErrorNumber(RIGHTS_ERR_USERNOTALLOWED);
-		$LoginError->setErrorMessage(Error::TranslateError(RIGHTS_ERR_USERNOTALLOWED));
-		Error::AddError($LoginError);
+			$e = new Error(RIGHTS_ERR_USERNOTALLOWED);
+			Error::AddError($e);
 		}
 	}
 	else
 	{
-		$LoginError = new LoginError();
-		$LoginError->setErrorNumber(LOGIN_ERR_USERNAMENOTFOUND);
-		$LoginError->setErrorMessage(LoginError::TranslateLoginError(LOGIN_ERR_USERNAMENOTFOUND));
-		Error::AddError($LoginError);
+		$e = new LoginError(LOGIN_ERR_USERNAMENOTFOUND);
+		Error::AddError($e);
 	}
 }
 

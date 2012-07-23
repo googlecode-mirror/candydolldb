@@ -11,11 +11,14 @@ class Error
 	{ return $this->ErrorNumber; }
 	
 	/**
-	 * Sets this Error's number.
+	 * Sets this Error's number and translates it to a corresponding message.
 	 * @param int $InErrorNumber
 	 */
 	public function setErrorNumber($InErrorNumber)
-	{ $this->ErrorNumber = $InErrorNumber; }
+	{
+		$this->ErrorNumber = $InErrorNumber;
+		$this->ErrorMessage = static::TranslateError($InErrorNumber);
+	}
 	
 	private $ErrorMessage;
 	
@@ -32,16 +35,14 @@ class Error
 	public function setErrorMessage($InErrorMessage)
 	{ $this->ErrorMessage = $InErrorMessage; }
 	
-
 	public function Error($ErrorNumber = null, $ErrorMessage = null)
 	{
 		$this->ErrorNumber = $ErrorNumber;
-		$this->ErrorMessage = $ErrorMessage;
+		$this->ErrorMessage = ($ErrorMessage ? $ErrorMessage : static::TranslateError($ErrorNumber));
 	}
 	
-	
 	/**
-	 * Adds an error to the 'global' Error-array, or outputs it to STERR.
+	 * Adds an error to the $_SESSION error-array, or outputs it to STERR.
 	 * @param Error $InError
 	 */
 	public static function AddError($InError)
@@ -95,7 +96,7 @@ class Error
 	}
 	
 	/**
-	 * Translates the numeric generic error into a human readable string
+	 * Translates the numeric error into a human readable string
 	 * @param int $InError
 	 * @return string
 	 */
@@ -119,15 +120,15 @@ class Error
 
 class LoginError extends Error
 {
-	public function LoginError()
-	{ parent::Error(); }
+	public function LoginError($number = null, $message = null)
+	{ parent::Error($number, $message); }
 	
 	/**
-	 * Translates the numeric login-error into a human readable string
+	 * Translates the numeric error into a human readable string
 	 * @param int $InError
 	 * @return string
 	 */
-	public static function TranslateLoginError($InError)
+	public static function TranslateError($InError)
 	{
 		global $lang;
 		$OutMessage = null;
@@ -153,15 +154,15 @@ class LoginError extends Error
 
 class SQLerror extends Error
 {
-	public function SQLerror()
-	{ parent::Error(); }
+	public function SQLerror($number = null, $message = null)
+	{ parent::Error($number, $message); }
 	
 	/**
-	 * Translates the numeric SQL-error into a human readable string
+	 * Translates the numeric error into a human readable string
 	 * @param int $InError
 	 * @return string
 	 */
-	public static function TranslateSQLError($InError)
+	public static function TranslateError($InError)
 	{
 		$OutMessage = null;
 		global $lang;
@@ -179,15 +180,15 @@ class SQLerror extends Error
 
 class SyntaxError extends Error
 {
-	public function SyntaxError()
-	{ parent::Error(); }
+	public function SyntaxError($number = null, $message = null)
+	{ parent::Error($number, $message); }
 	
 	/**
-	 * Translates the numeric Syntax-error into a human readable string
+	 * Translates the numeric error into a human readable string
 	 * @param int $InError
 	 * @return string
 	 */
-	public static function TranslateSyntaxError($InError)
+	public static function TranslateError($InError)
 	{
 		$OutMessage = null;
 		global $lang;
@@ -205,15 +206,15 @@ class SyntaxError extends Error
 
 class UploadError extends Error
 {
-	public function UploadError()
-	{ parent::Error(); }
+	public function UploadError($number = null, $message = null)
+	{ parent::Error($number, $message); }
 	
 	/**
-	 * Translates the numeric upload-error ($_FILES['upload']['error']) into a human readable string
+	 * Translates the numeric error ($_FILES['upload']['error']) into a human readable string
 	 * @param int $InError
 	 * @return string
 	 */
-	public static function TranslateUploadError($InError)
+	public static function TranslateError($InError)
 	{
 		$OutMessage = null;
 		global $lang;
@@ -245,17 +246,15 @@ class UploadError extends Error
 
 class XMLerror extends Error
 {
-	public function XMLerror()
-	{
-		parent::Error();
-	}
+	public function XMLerror($number = null, $message = null)
+	{ parent::Error($number, $message); }
 
 	/**
-	 * Translates the numeric XML-error into a human readable string
+	 * Translates the numeric error into a human readable string
 	 * @param int $InError
 	 * @return string
 	 */
-	public static function TranslateXMLError($InError)
+	public static function TranslateError($InError)
 	{
 		$OutMessage = null;
 		global $lang;
