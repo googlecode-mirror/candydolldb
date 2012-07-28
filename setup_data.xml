@@ -533,7 +533,7 @@
 			<Set name="08" date_pic="2008-08-15" date_vid="2008-08-15" tags="black shoes, black stockings, earrings, jewelry, pink, skirt, sofa, t-shirt"/>
 		</Sets>
 	</Model>
-	<Model firstname="Katie" lastname="M" birthdate="1999-04-03" tags="">
+	<Model firstname="Katie" lastname="M" birthdate="2001-12-18" tags="">
 		<Sets>
 			<Set name="01" date_pic="2012-02-10" date_vid="2011-12-30" tags="bare feet, beachball, earrings, red, red drapes"/>
 			<Set name="02" date_pic="2012-02-17" date_vid="2012-03-02" tags="bare feet, beachball, bracelet, earrings, white drapes"/>
@@ -553,6 +553,9 @@
 			<Set name="16" date_pic="2012-07-13" date_vid="2012-07-20" tags="bare feet, bikini, earrings, green, pigtails, red drapes, skipping rope"/>
 			<Set name="17" date_pic="2012-07-27" date_vid="" tags=""/>
 		</Sets>
+		<Remarks>
+			Previous birthdate: 1999-04-03
+		</Remarks>
 	</Model>
 	<Model firstname="Khloe" lastname="R" birthdate="" tags="">
 		<Sets>
@@ -574,7 +577,7 @@
 			<Set name="09" date_pic="" date_vid="2012-02-17" tags=""/>
 		</Sets>
 	</Model>
-	<Model firstname="Kleo" lastname="M" birthdate="" tags="">
+	<Model firstname="Kleo" lastname="M" birthdate="1999-08-16" tags="">
 		<Sets>
 			<Set name="01" date_pic="2012-03-30" date_vid="2012-04-13" tags="black shoes, chair, gold, red drapes, yellow socks"/>
 			<Set name="02" date_pic="2012-04-20" date_vid="2012-04-27" tags="basketball, blue shorts, chair, red drapes, skipping rope, t-shirt, white"/>
@@ -1058,7 +1061,7 @@
 			<Set name="10" date_pic="2010-05-28" date_vid="2010-05-28" tags="bikini, hat, mirror, ponytail, scarf, stairs, tile, white boots"/>
 		</Sets>
 	</Model>
-	<Model firstname="Sabina" lastname="C" birthdate="" tags="">
+	<Model firstname="Sabina" lastname="C" birthdate="2001-06-25" tags="">
 		<Sets>
 			<Set name="01" date_pic="2012-03-16" date_vid="2012-03-23" tags="bare feet, blue background, earrings, swimsuit"/>
 			<Set name="02" date_pic="2012-03-23" date_vid="2012-03-30" tags="bare feet, dress, earrings, pink background"/>
