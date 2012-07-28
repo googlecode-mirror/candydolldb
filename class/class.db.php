@@ -156,10 +156,8 @@ class DB
 		}
 		else
 		{
-			$SQLError = new SQLerror();
-			$SQLError->setErrorNumber(mysql_errno());
-			$SQLError->setErrorMessage(mysql_error());
-			Error::AddError($SQLError);
+			$e = new SQLerror(mysql_errno(), mysql_error());
+			Error::AddError($e);
 			return false;
 		}
 	}
@@ -192,10 +190,8 @@ class DB
 		}
 		else
 		{
-			$SQLError = new SQLerror();
-			$SQLError->setErrorNumber(SQL_ERR_NOSUCHTABLE);
-			$SQLError->setErrorMessage(SQLerror::TranslateSQLError(SQL_ERR_NOSUCHTABLE));
-			Error::AddError($SQLError);
+			$e = new SQLerror(SQL_ERR_NOSUCHTABLE);
+			Error::AddError($e);
 			return false;
 		}
 	}
@@ -239,19 +235,15 @@ class DB
 			{ return true; }
 			else
 			{
-				$SQLError = new SQLerror();
-				$SQLError->setErrorNumber(mysql_errno());
-				$SQLError->setErrorMessage(mysql_error());
-				Error::AddError($SQLError);
+				$e = new SQLerror(mysql_errno(), mysql_error());
+				Error::AddError($e);
 				return false;
 			}
 		}
 		else
 		{
-			$SQLError = new SQLerror();
-			$SQLError->setErrorNumber(SQL_ERR_NOSUCHTABLE);
-			$SQLError->setErrorMessage(SQLerror::TranslateSQLError(SQL_ERR_NOSUCHTABLE));
-			Error::AddError($SQLError);
+			$e = new SQLerror(SQL_ERR_NOSUCHTABLE);
+			Error::AddError($e);
 			return false;
 		}
 	}
@@ -273,19 +265,15 @@ class DB
 			{ return true; }
 			else
 			{
-				$SQLError = new SQLerror();
-				$SQLError->setErrorNumber(mysql_errno());
-				$SQLError->setErrorMessage(mysql_error());
-				Error::AddError($SQLError);
+				$e = new SQLerror(mysql_errno(), mysql_error());
+				Error::AddError($e);
 				return false;
 			}
 		}
 		else
 		{
-			$SQLError = new SQLerror();
-			$SQLError->setErrorNumber(SQL_ERR_NOSUCHTABLE);
-			$SQLError->setErrorMessage(SQLerror::TranslateSQLError(SQL_ERR_NOSUCHTABLE));
-			Error::AddError($SQLError);
+			$e = new SQLerror(SQL_ERR_NOSUCHTABLE);
+			Error::AddError($e);
 			return false;
 		}
 	}
@@ -339,19 +327,15 @@ class DB
 			{ return true; }
 			else
 			{
-				$SQLError = new SQLerror();
-				$SQLError->setErrorNumber(mysql_errno());
-				$SQLError->setErrorMessage(mysql_error());
-				Error::AddError($SQLError);
+				$e = new SQLerror(mysql_errno(), mysql_error());
+				Error::AddError($e);
 				return false;
 			}
 		}
 		else
 		{
-			$SQLError = new SQLerror();
-			$SQLError->setErrorNumber(SQL_ERR_NOSUCHTABLE);
-			$SQLError->setErrorMessage(SQLerror::TranslateSQLError(SQL_ERR_NOSUCHTABLE));
-			Error::AddError($SQLError);
+			$e = new SQLerror(SQL_ERR_NOSUCHTABLE);
+			Error::AddError($e);
 			return false;
 		}
 	}
