@@ -166,12 +166,13 @@ class Model
 			/* Work-around for returning at least ONE image when none fit the specified aspect ratio */
 			$whereClause = sprintf('model_id = %1$d AND mut_deleted = -1', $this->getID());
 			
-			if($SetID){
+			if($SetID)
+			{
 				$whereClause .= sprintf(' AND set_id = %1$d', $SetID);
+				$Images = Image::GetImages($whereClause, $orderClause, $limitClause);
 			}
 		}
 		
-		$Images = Image::GetImages($whereClause, $orderClause, $limitClause);
 		if($Images)
 		{
 			$Image = $Images[0];
