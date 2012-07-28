@@ -127,6 +127,7 @@ include('class/class.error.php');
 include('class/class.info.php');
 include('class/class.html.php');
 include('class/class.db.php');
+include('class/class.dbi.php');
 
 @session_start();
 
@@ -143,6 +144,9 @@ if(defined('DBHOSTNAME') &&
 	$db = new DB(DBHOSTNAME, DBUSERNAME, DBPASSWORD);
 	$db->Connect();
 	$db->setDatabaseName(DBNAME);
+	
+	$dbi = new DBi(DBHOSTNAME, DBUSERNAME, DBPASSWORD, DBNAME);
+	$dbi->query("SET GLOBAL sql_mode = 'STRICT_ALL_TABLES';");
 }
 
 include('class/class.user.php');

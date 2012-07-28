@@ -33,20 +33,24 @@ class Model
 			$this->getFirstName(),
 			$this->getLastName() ? ' '.$this->getLastName() : null);
 	}
-	
-	
+
 	/**
 	 * Instantiates a new Model object.
-	 * 
-	 * @param int $ID
-	 * @param string $FirstName
-	 * @param string $LastName
+	 * @param long $model_id
+	 * @param string $model_firstname
+	 * @param string $model_lastname
+	 * @param long $model_birthdate
+	 * @param string $model_remarks
+	 * @param int $model_setcount
 	 */
-	public function Model($ID = null, $FirstName = null, $LastName = null)
+	public function Model($model_id = null, $model_firstname = null, $model_lastname = null, $model_birthdate = null, $model_remarks = null, $model_setcount = null)
 	{
-		$this->ID = $ID;
-		$this->FirstName = $FirstName;
-		$this->LastName = $LastName;
+		$this->ID = $model_id;
+		$this->FirstName = $model_firstname;
+		$this->LastName = $model_lastname;
+		$this->BirthDate = $model_birthdate;
+		$this->Remarks = $model_remarks;
+		$this->SetCount = $model_setcount;
 	}
 	
 	/**
@@ -186,8 +190,7 @@ class Model
 
 	
 	/**
-	 * Gets an array of Models from the database, or NULL on failure. The array can be empty.
-	 * 
+	 * Gets an array of Models from the database, or NULL on failure.
 	 * @param string $WhereClause
 	 * @param string $OrderClause
 	 * @param string $LimitClause
@@ -195,24 +198,49 @@ class Model
 	 */
 	public static function GetModels($WhereClause = 'mut_deleted = -1', $OrderClause = 'model_firstname ASC, model_lastname ASC', $LimitClause = null)
 	{
-		global $db;
+		global $dbi;
 		$WhereClause = is_null($WhereClause) ? 'mut_deleted = -1' : $WhereClause;
 		$OrderClause = is_null($OrderClause) ? 'model_firstname ASC, model_lastname ASC' : $OrderClause; 
 		
-		if($db->Select('vw_Model', '*', $WhereClause, $OrderClause, $LimitClause))
+		$q = sprintf("
+				SELECT
+					`model_id`,`model_firstname`,`model_lastname`,`model_birthdate`,`model_remarks`,`mut_deleted`,`model_setcount`
+				FROM
+					`vw_Model`
+				WHERE
+					%1\$s
+				ORDER BY
+					%2\$s
+				%3\$s",
+			$WhereClause,
+			$OrderClause,
+			$LimitClause ? ' LIMIT '.$LimitClause : null
+		);
+		
+		if($stmt = $dbi->prepare($q))
 		{
 			$OutArray = array();
-			if($db->getResult())
+			$stmt->bind_result($model_id, $model_firstname, $model_lastname, $model_birthdate, $model_remarks, $mut_deleted, $model_setcount);
+			
+			if(!$stmt->execute())
 			{
-				foreach($db->getResult() as $ModelItem)
-				{
-					$OutArray[] = self::ProcessDBitem($ModelItem);
-				}
+				$e = new SQLerror($dbi->errno, $dbi->error);
+				Error::AddError($e);
+				return $OutArray;
+			}
+			
+			while($stmt->fetch())
+			{
+				$o = new Model($model_id, $model_firstname, $model_lastname, $model_birthdate, $model_remarks, $model_setcount);
+				$OutArray[] = $o;
 			}
 			return $OutArray;
 		}
 		else
-		{ return null; }
+		{
+			$e = new SQLerror($dbi->errno, $dbi->error);
+			Error::AddError($e);
+		}
 	}
 	
 	/**
