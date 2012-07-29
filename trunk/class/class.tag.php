@@ -286,5 +286,4 @@ class TagSearchParameters extends SearchParameters
 	{ return $this->paramtypes; }
 }
 
-
 ?>

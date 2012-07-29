@@ -9,7 +9,13 @@ $SetID = Utils::SafeIntFromQS('set_id');
 $ImageID = Utils::SafeIntFromQS('image_id');
 
 $TagsInDB = Tag::GetTags();
-$TagsThisImage = Tag2All::GetTag2Alls(sprintf('model_id = %1$d AND set_id = %2$d AND image_id = %3$d AND video_id is null', $ModelID, $SetID, $ImageID));
+$TagsThisImage = Tag2All::GetTag2Alls(new Tag2AllSearchParameters(
+	null, null, null,
+	$ModelID, null,
+	$SetID, null,
+	$ImageID, null,
+	null, null,
+	false, false, false, true));
 
 if(!isset($ModelID))
 {

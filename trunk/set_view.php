@@ -7,8 +7,14 @@ HTMLstuff::RefererRegister($_SERVER['REQUEST_URI']);
 $ModelID = Utils::SafeIntFromQS('model_id');
 $SetID = Utils::SafeIntFromQS('set_id');
 
-$TagsThisSet = Tag2All::GetTag2Alls(sprintf('model_id = %1$d AND set_id = %2$d AND image_id is null AND video_id is null', $ModelID, $SetID));
 $TagsInDB = Tag::GetTags();
+$TagsThisSet = Tag2All::GetTag2Alls(new Tag2AllSearchParameters(
+	null, null, null,
+	$ModelID, null,
+	$SetID, null,
+	null, null,
+	null, null,
+	false, false, true, true));
 
 if(!isset($ModelID))
 {
