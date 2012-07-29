@@ -5,6 +5,12 @@ class Tag
 	private $ID;
 	private $Name;
 	
+	public function __construct($tag_id = null, $tag_name = null)
+	{
+		$this->ID = $tag_id;
+		$this->Name = $tag_name;	
+	}
+	
 	/**
 	* Get the Tag's ID.
 	* @return int
@@ -48,44 +54,75 @@ class Tag
 	
 
 	/**
-	* Gets an array of Tags from the database, or NULL on failure. The array can be empty.
-	* @param string $WhereClause
+	* Gets an array of Tags from the database, or NULL on failure.
+	* @param TagSearchParameters $SearchParameters
 	* @param string $OrderClause
 	* @param string $LimitClause
 	* @return array(Tag) | NULL
 	*/
-	public static function GetTags($WhereClause = 'mut_deleted = -1', $OrderClause = 'tag_name ASC', $LimitClause = null)
+	public static function GetTags($SearchParameters = null, $OrderClause = 'tag_name ASC', $LimitClause = null)
 	{
-		global $db;
-		$WhereClause = is_null($WhereClause) ? 'mut_deleted = -1' : $WhereClause;
-		$OrderClause = is_null($OrderClause) ? 'tag_name ASC' : $OrderClause;
-	
-		if($db->Select('Tag', '*', $WhereClause, $OrderClause, $LimitClause))
+		global $dbi;
+		$SearchParameters = $SearchParameters ? $SearchParameters : new TagSearchParameters();
+		$OrderClause = empty($OrderClause) ? 'tag_name ASC' : $OrderClause;
+		
+		$q = sprintf("
+			SELECT
+				`tag_id`, `tag_name`
+			FROM
+				`Tag`
+			WHERE
+				mut_deleted = -1
+				%1\$s
+			ORDER BY
+				%2\$s
+			%3\$s",
+			$SearchParameters->getWhere(),
+			$OrderClause,
+			$LimitClause ? ' LIMIT '.$LimitClause : null
+		);
+		
+		if(!($stmt = $dbi->prepare($q)))
+		{
+			$e = new SQLerror($dbi->errno, $dbi->error);
+			Error::AddError($e);
+			return null;
+		}
+		
+		if($SearchParameters->getValues())
+		{
+			$bind_names[] = $SearchParameters->getParamTypes();
+			$params = $SearchParameters->getValues();
+		
+			for ($i=0; $i<count($params);$i++)
+			{
+				$bind_name = 'bind' . $i;
+				$$bind_name = $params[$i];
+				$bind_names[] = &$$bind_name;
+			}
+			call_user_func_array(array($stmt, 'bind_param'), $bind_names);
+		}
+		
+		if($stmt->execute())
 		{
 			$OutArray = array();
-				
-			if($db->getResult())
+			$stmt->bind_result($tag_id, $tag_name);
+		
+			while($stmt->fetch())
 			{
-				foreach($db->getResult() as $TagItem)
-				{
-					$TagObject = new Tag();
-						
-					foreach($TagItem as $ColumnKey => $ColumnValue)
-					{
-						switch($ColumnKey)
-						{
-							case 'tag_id'	: $TagObject->setID($ColumnValue);		break;
-							case 'tag_name'	: $TagObject->setName($ColumnValue);	break;
-						}
-					}
-						
-					$OutArray[] = $TagObject;
-				}
+				$o = new self($tag_id, $tag_name);
+				$OutArray[] = $o;
 			}
+		
+			$stmt->close();
 			return $OutArray;
 		}
 		else
-		{ return null; }
+		{
+			$e = new SQLerror($dbi->errno, $dbi->error);
+			Error::AddError($e);
+			return null;
+		}
 	}
 	
 	/**
@@ -204,5 +241,50 @@ class Tag
 		);
 	}
 }
+
+class TagSearchParameters extends SearchParameters
+{
+	private $paramtypes = '';
+	private $values = array();
+	private $where = '';
+
+	public function __construct($SingleID = null, $MultipleIDs = null, $Name = null)
+	{
+		parent::__construct();
+
+		if($SingleID)
+		{
+			$this->paramtypes .= "i";
+			$this->values[] = $SingleID;
+			$this->where .= " AND tag_id = ?";
+		}
+
+		if($MultipleIDs)
+		{
+			$this->paramtypes .= str_repeat('i', count($MultipleIDs));
+			$this->values = array_merge($this->values, $MultipleIDs);
+			$this->where .= sprintf(" AND tag_id IN ( %1s ) ",
+					implode(', ', array_fill(0, count($MultipleIDs), '?'))
+			);
+		}
+
+		if($Name)
+		{
+			$this->paramtypes .= 's';
+			$this->values[] = '%'.$Name.'%';
+			$this->where .= " AND tag_name LIKE ?";
+		}
+	}
+
+	public function getWhere()
+	{ return $this->where; }
+
+	public function getValues()
+	{ return $this->values; }
+
+	public function getParamTypes()
+	{ return $this->paramtypes; }
+}
+
 
 ?>
