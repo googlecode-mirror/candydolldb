@@ -196,7 +196,7 @@ else if($VideoID)
 	}
 	else
 	{
-		$Video = Video::GetVideos(sprintf('video_id = %1$d AND mut_deleted = -1', $VideoID));
+		$Video = Video::GetVideos(new VideoSearchParameters($VideoID));
 		
 		if($Video)
 		{

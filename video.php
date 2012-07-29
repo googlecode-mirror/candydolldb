@@ -27,8 +27,7 @@ $Set = null;
 $VideoRows = '';
 $VideoCount = 0;
 
-$WhereClause = sprintf('model_id = %1$d AND set_id = %2$d AND mut_deleted = -1', $ModelID, $SetID);
-$Videos = Video::GetVideos($WhereClause);
+$Videos = Video::GetVideos(new VideoSearchParameters(null, null, $SetID, null, $ModelID));
 
 if($Videos)
 {

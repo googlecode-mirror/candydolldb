@@ -11,15 +11,7 @@ $SetID = Utils::SafeIntFromQS('set_id');
 
 $Models = Model::GetModels(new ModelSearchParameters($ModelID));
 $Sets = Set::GetSets(new SetSearchParameters($SetID));
-
-$Videos = Video::GetVideos(
-	sprintf(
-		'model_id = IFNULL(%1$s, model_id) AND set_id = IFNULL(%2$s, set_id) AND mut_deleted = -1',
-		$ModelID ? (string)$ModelID : 'NULL',
-		$SetID ? (string)$SetID : 'NULL'
-	)
-);
-
+$Videos = Video::GetVideos(new VideoSearchParameters(null, null, $SetID, null, $ModelID));
 $CacheImages = CacheImage::GetCacheImages();
 
 

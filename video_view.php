@@ -32,8 +32,7 @@ $ReturnURL = sprintf('video.php?model_id=%1$d&set_id=%2$d', $ModelID, $SetID);
 /* @var $Model Model */
 if($VideoID != null)
 {
-	$WhereClause = sprintf('model_id = %1$d AND set_id = %2$d AND video_id = %3$d AND mut_deleted = -1', $ModelID, $SetID, $VideoID);
-	$Videos = Video::GetVideos($WhereClause);
+	$Videos = Video::GetVideos(new VideoSearchParameters($VideoID, null, $SetID, null, $ModelID));
 
 	if($Videos)
 	{ $Video = $Videos[0]; }
@@ -63,7 +62,6 @@ else
 		exit;
 	}
 }
-
 
 if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'VideoView')
 {
