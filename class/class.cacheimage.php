@@ -12,7 +12,7 @@ class CacheImage
 	private $ImageWidth = 0;
 	private $ImageHeight = 0;
 	
-	public function CacheImage()
+	public function __construct()
 	{
 		$this->ID = Utils::GUID();
 	}
@@ -175,7 +175,7 @@ class CacheImage
 			{
 				foreach($db->getResult() as $CacheImageItem)
 				{
-					$CacheImageObject = new CacheImage();
+					$CacheImageObject = new self();
 						
 					foreach($CacheImageItem as $ColumnKey => $ColumnValue)
 					{
@@ -313,6 +313,144 @@ class CacheImage
 		}
 		return $OutArray;
 	}
+}
+
+class CacheImageSearchParameters extends SearchParameters
+{
+	private $paramtypes = '';
+	private $values = array();
+	private $where = '';
+
+	public function __construct(
+		$SingleID = null, $MultipleIDs = null,
+		$SingleIndexID = null, $MultipleIndexIDs = null,
+		$SingleModelID = null, $MultipleModelIDs = null,
+		$SingleSetID = null, $MultipleSetIDs = null,
+		$SingleImageID = null, $MultipleImageIDs = null,
+		$SingleVideoID = null, $MultipleVideoIDs = null,
+		$CacheImageWidth = null, $CacheImageHeight = null)
+	{
+		parent::__construct();
+
+		if($SingleID)
+		{
+			$this->paramtypes .= "s";
+			$this->values[] = $SingleID;
+			$this->where .= " AND cache_id = ?";
+		}
+
+		if($MultipleIDs)
+		{
+			$this->paramtypes .= str_repeat('s', count($MultipleIDs));
+			$this->values = array_merge($this->values, $MultipleIDs);
+			$this->where .= sprintf(" AND cache_id IN ( %1s ) ",
+				implode(', ', array_fill(0, count($MultipleIDs), '?'))
+			);
+		}
+
+		if($SingleIndexID)
+		{
+			$this->paramtypes .= "i";
+			$this->values[] = $SingleIndexID;
+			$this->where .= " AND index_id = ?";
+		}
+
+		if($MultipleIndexIDs)
+		{
+			$this->paramtypes .= str_repeat('i', count($MultipleIndexIDs));
+			$this->values = array_merge($this->values, $MultipleIndexIDs);
+			$this->where .= sprintf(" AND index_id IN ( %1s ) ",
+				implode(', ', array_fill(0, count($MultipleIndexIDs), '?'))
+			);
+		}
+
+		if($SingleModelID)
+		{
+			$this->paramtypes .= "i";
+			$this->values[] = $SingleModelID;
+			$this->where .= " AND model_id = ?";
+		}
+
+		if($MultipleModelIDs)
+		{
+			$this->paramtypes .= str_repeat('i', count($MultipleModelIDs));
+			$this->values = array_merge($this->values, $MultipleModelIDs);
+			$this->where .= sprintf(" AND model_id IN ( %1s ) ",
+				implode(', ', array_fill(0, count($MultipleModelIDs), '?'))
+			);
+		}
+
+		if($SingleSetID)
+		{
+			$this->paramtypes .= "i";
+			$this->values[] = $SingleSetID;
+			$this->where .= " AND set_id = ?";
+		}
+
+		if($MultipleSetIDs)
+		{
+			$this->paramtypes .= str_repeat('i', count($MultipleSetIDs));
+			$this->values = array_merge($this->values, $MultipleSetIDs);
+			$this->where .= sprintf(" AND set_id IN ( %1s ) ",
+				implode(', ', array_fill(0, count($MultipleSetIDs), '?'))
+			);
+		}
+		
+		if($SingleImageID)
+		{
+			$this->paramtypes .= "i";
+			$this->values[] = $SingleImageID;
+			$this->where .= " AND image_id = ?";
+		}
+		
+		if($MultipleImageIDs)
+		{
+			$this->paramtypes .= str_repeat('i', count($MultipleImageIDs));
+			$this->values = array_merge($this->values, $MultipleImageIDs);
+			$this->where .= sprintf(" AND image_id IN ( %1s ) ",
+				implode(', ', array_fill(0, count($MultipleImageIDs), '?'))
+			);
+		}
+		
+		if($SingleVideoID)
+		{
+			$this->paramtypes .= "i";
+			$this->values[] = $SingleVideoID;
+			$this->where .= " AND video_id = ?";
+		}
+		
+		if($MultipleVideoIDs)
+		{
+			$this->paramtypes .= str_repeat('i', count($MultipleVideoIDs));
+			$this->values = array_merge($this->values, $MultipleVideoIDs);
+			$this->where .= sprintf(" AND video_id IN ( %1s ) ",
+				implode(', ', array_fill(0, count($MultipleVideoIDs), '?'))
+			);
+		}
+		
+		if($CacheImageWidth)
+		{
+			$this->paramtypes .= "i";
+			$this->values[] = $CacheImageWidth;
+			$this->where .= " AND cache_imagewidth = ?";
+		}
+		
+		if($CacheImageHeight)
+		{
+			$this->paramtypes .= "i";
+			$this->values[] = $CacheImageHeight;
+			$this->where .= " AND cache_imageheight = ?";
+		}
+	}
+
+	public function getWhere()
+	{ return $this->where; }
+
+	public function getValues()
+	{ return $this->values; }
+
+	public function getParamTypes()
+	{ return $this->paramtypes; }
 }
 
 ?>
