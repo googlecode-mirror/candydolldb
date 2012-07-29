@@ -7,6 +7,17 @@ class Tag2All
 	private $SetID;
 	private $ImageID;
 	private $VideoID;
+	
+	public function __construct($tag_id = null, $tag_name = null, $model_id = null, $set_id = null, $image_id = null, $video_id = null)
+	{
+		$t = new Tag($tag_id, $tag_name);
+		$this->Tag = $t;
+		
+		$this->ModelID = $model_id;
+		$this->SetID = $set_id;
+		$this->ImageID = $image_id;
+		$this->VideoID = $video_id;
+	}
 
 	/**
 	 * Get the Tag2All's Tag.
@@ -122,50 +133,72 @@ class Tag2All
 	}
 
 	/**
-	 * Gets Tag2All records from the database
-	 * @param string $WhereClause
+	 * Gets Tag2All records from the database or NULL on failure.
+	 * @param Tag2AllSearchParameters $SearchParameters
 	 * @param string $OrderClause
 	 * @return array(Tag2All) | NULL
 	 */
-	public static function GetTag2Alls($WhereClause = null, $OrderClause = 'tag_name ASC')
+	public static function GetTag2Alls($SearchParameters = null, $OrderClause = 'tag_name ASC')
 	{
-		global $db;
-		$OrderClause = is_null($OrderClause) ? 'tag_name ASC' : $OrderClause;
-
-		if($db->Select('vw_Tag2All', '*', $WhereClause, $OrderClause, null))
+		global $dbi;
+		$SearchParameters = $SearchParameters ? $SearchParameters : new Tag2AllSearchParameters();
+		$OrderClause = empty($OrderClause) ? 'tag_name ASC' : $OrderClause;
+		
+		$q = sprintf("
+			SELECT
+				`tag_id`, `tag_name`, `model_id`, `set_id`, `image_id`, `video_id`
+			FROM
+				`vw_Tag2All`
+			WHERE
+				1 = 1
+				%1\$s
+			ORDER BY
+				%2\$s",
+			$SearchParameters->getWhere(),
+			$OrderClause
+		);
+		
+		if(!($stmt = $dbi->prepare($q)))
+		{
+			$e = new SQLerror($dbi->errno, $dbi->error);
+			Error::AddError($e);
+			return null;
+		}
+		
+		if($SearchParameters->getValues())
+		{
+			$bind_names[] = $SearchParameters->getParamTypes();
+			$params = $SearchParameters->getValues();
+		
+			for ($i=0; $i<count($params);$i++)
+			{
+				$bind_name = 'bind' . $i;
+				$$bind_name = $params[$i];
+				$bind_names[] = &$$bind_name;
+			}
+			call_user_func_array(array($stmt, 'bind_param'), $bind_names);
+		}
+		
+		if($stmt->execute())
 		{
 			$OutArray = array();
-
-			if($db->getResult())
+			$stmt->bind_result($tag_id, $tag_name, $model_id, $set_id, $image_id, $video_id);
+			
+			while($stmt->fetch())
 			{
-				foreach($db->getResult() as $Tag2AllItem)
-				{
-					$Tag2AllObject = new Tag2All();
-					$TagObject = new Tag();
-
-					foreach($Tag2AllItem as $ColumnKey => $ColumnValue)
-					{
-						switch($ColumnKey)
-						{
-							case 'tag_id'	: $TagObject->setID($ColumnValue);		break;
-							case 'tag_name'	: $TagObject->setName($ColumnValue);	break;
-								
-							case 'model_id'	: $Tag2AllObject->setModelID($ColumnValue);	break;
-							case 'set_id'	: $Tag2AllObject->setSetID($ColumnValue);	break;
-							case 'image_id'	: $Tag2AllObject->setImageID($ColumnValue);	break;
-							case 'video_id'	: $Tag2AllObject->setVideoID($ColumnValue);	break;
-						}
-					}
-						
-					$Tag2AllObject->setTag($TagObject);
-
-					$OutArray[] = $Tag2AllObject;
-				}
+				$o = new self($tag_id, $tag_name, $model_id, $set_id, $image_id, $video_id);
+				$OutArray[] = $o;
 			}
+			
+			$stmt->close();
 			return $OutArray;
 		}
 		else
-		{ return null; }
+		{
+			$e = new SQLerror($dbi->errno, $dbi->error);
+			Error::AddError($e);
+			return null;
+		}
 	}
 
 	/**
@@ -295,6 +328,140 @@ class Tag2All
 			{ Tag2All::Insert($t2a, $CurrentUser); }
 		}
 	}
+}
+
+class Tag2AllSearchParameters extends SearchParameters
+{
+	private $paramtypes = '';
+	private $values = array();
+	private $where = '';
+
+	public function __construct(
+		$SingleTagID = null, $MultipleTagIDs = null, $TagName = null,
+		$SingleModelID = null, $MultipleModelIDs = null,
+		$SingleSetID = null, $MultipleSetIDs = null,
+		$SingleImageID = null, $MultipleImageIDs = null,
+		$SingleVideoID = null, $MultipleVideoIDs = null,
+		$ModelIdIsNull = false, $SetIdIsNull = false, $ImageIdIsNull = false, $VideoIdIsNull = false)
+	{
+		parent::__construct();
+
+		if($SingleTagID)
+		{
+			$this->paramtypes .= "i";
+			$this->values[] = $SingleTagID;
+			$this->where .= " AND tag_id = ?";
+		}
+
+		if($MultipleTagIDs)
+		{
+			$this->paramtypes .= str_repeat('i', count($MultipleTagIDs));
+			$this->values = array_merge($this->values, $MultipleTagIDs);
+			$this->where .= sprintf(" AND tag_id IN ( %1s ) ",
+					implode(', ', array_fill(0, count($MultipleTagIDs), '?'))
+			);
+		}
+
+		if($TagName)
+		{
+			$this->paramtypes .= 's';
+			$this->values[] = '%'.$TagName.'%';
+			$this->where .= " AND tag_name LIKE ?";
+		}
+		
+		if($SingleModelID)
+		{
+			$this->paramtypes .= "i";
+			$this->values[] = $SingleModelID;
+			$this->where .= " AND model_id = ?";
+		}
+		
+		if($MultipleModelIDs)
+		{
+			$this->paramtypes .= str_repeat('i', count($MultipleModelIDs));
+			$this->values = array_merge($this->values, $MultipleModelIDs);
+			$this->where .= sprintf(" AND model_id IN ( %1s ) ",
+					implode(', ', array_fill(0, count($MultipleModelIDs), '?'))
+			);
+		}
+		
+		if($SingleSetID)
+		{
+			$this->paramtypes .= "i";
+			$this->values[] = $SingleSetID;
+			$this->where .= " AND set_id = ?";
+		}
+		
+		if($MultipleSetIDs)
+		{
+			$this->paramtypes .= str_repeat('i', count($MultipleSetIDs));
+			$this->values = array_merge($this->values, $MultipleSetIDs);
+			$this->where .= sprintf(" AND set_id IN ( %1s ) ",
+					implode(', ', array_fill(0, count($MultipleSetIDs), '?'))
+			);
+		}
+		
+		if($SingleImageID)
+		{
+			$this->paramtypes .= "i";
+			$this->values[] = $SingleImageID;
+			$this->where .= " AND image_id = ?";
+		}
+		
+		if($MultipleImageIDs)
+		{
+			$this->paramtypes .= str_repeat('i', count($MultipleImageIDs));
+			$this->values = array_merge($this->values, $MultipleImageIDs);
+			$this->where .= sprintf(" AND image_id IN ( %1s ) ",
+					implode(', ', array_fill(0, count($MultipleImageIDs), '?'))
+			);
+		}
+		
+		if($SingleVideoID)
+		{
+			$this->paramtypes .= "i";
+			$this->values[] = $SingleVideoID;
+			$this->where .= " AND video_id = ?";
+		}
+		
+		if($MultipleVideoIDs)
+		{
+			$this->paramtypes .= str_repeat('i', count($MultipleVideoIDs));
+			$this->values = array_merge($this->values, $MultipleVideoIDs);
+			$this->where .= sprintf(" AND video_id IN ( %1s ) ",
+					implode(', ', array_fill(0, count($MultipleVideoIDs), '?'))
+			);
+		}
+		
+		if($ModelIdIsNull)
+		{
+			$this->where .= " AND model_id IS NULL";
+		}
+		
+		if($SetIdIsNull)
+		{
+			$this->where .= " AND set_id IS NULL";
+		}
+		
+		if($ImageIdIsNull)
+		{
+			$this->where .= " AND image_id IS NULL";
+		}
+		
+		if($VideoIdIsNull)
+		{
+			$this->where .= " AND video_id IS NULL";
+		}
+	}
+
+	public function getWhere()
+	{ return $this->where; }
+
+	public function getValues()
+	{ return $this->values; }
+
+	public function getParamTypes()
+	{ return $this->paramtypes; }
 }
 
 ?>

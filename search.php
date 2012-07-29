@@ -49,8 +49,7 @@ foreach($filteredTags as $t){
 }
 
 /* Fetch Tag2Alls if tags were entered, default to no results when $q is empty. */
-$whereClause = $filteredTagIDs ? sprintf('tag_id IN ( %1$s )', join(', ', $filteredTagIDs)) : '1 = 0';
-$Tag2Alls = Tag2All::GetTag2Alls($whereClause);
+$Tag2Alls = $filteredTagIDs ? Tag2All::GetTag2Alls(new Tag2AllSearchParameters(null, $filteredTagIDs)) : array();
 
 
 /* Model-filtering */

@@ -8,8 +8,14 @@ $ModelID = Utils::SafeIntFromQS('model_id');
 $DeleteModel = $CurrentUser->hasPermission(RIGHT_MODEL_DELETE) ? (array_key_exists('cmd', $_GET) && $_GET['cmd'] && ($_GET['cmd'] == COMMAND_DELETE)) : null;
 $EditModel = $CurrentUser->hasPermission(RIGHT_USER_EDIT);
 
-$TagsThisModel = Tag2All::GetTag2Alls(sprintf('model_id = %1$d AND set_id is null AND image_id is null AND video_id is null', $ModelID));
 $TagsInDB = Tag::GetTags();
+$TagsThisModel = Tag2All::GetTag2Alls(new Tag2AllSearchParameters(
+	null, null, null,
+	$ModelID, null,
+	null, null,
+	null, null,
+	null, null,
+	false, true, true, true));
 
 if($ModelID)
 {
