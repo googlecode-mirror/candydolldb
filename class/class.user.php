@@ -6,19 +6,23 @@ class User
  	private $UserName;
  	private $Password;
  	private $Salt;
-	private $FirstName;
+	
+ 	private $FirstName;
 	private $Insertion;
 	private $LastName;
 	private $EmailAddress;
+	
 	private $Gender = GENDER_UNKNOWN;
 	private $BirthDate = -1;
+	
+	private $DateDisplayoptions = 0;
+	private $Imageview = 'detail';
+	private $Language = 'en';
+	private $Rights = 0;
+	
 	private $LastActive = -1;
 	private $LastLogin = -1;
 	private $PreLastLogin = -1;
-	private $Rights = 0;
-	private $Language = 'en';
-	private $DateDisplayoptions = 0;
-	private $Imageview = 'detail';
 
 	/**
 	 * Returns a concatenation of the User's firstname, optional insertion and lastname.
@@ -62,18 +66,52 @@ class User
 	}
 	
 	/**
-	 * Instantiates a new User object.
-	 * @param int $ID
-	 * @param string $UserName
-	 * @param string $FirstName
-	 * @param string $LastName
+	 * @param int $user_id
+	 * @param string $user_username
+	 * @param string $user_password
+	 * @param string $user_salt
+	 * @param string $user_firstname
+	 * @param string $user_insertion
+	 * @param string $user_lastname
+	 * @param string $user_email
+	 * @param int $user_gender
+	 * @param int $user_birthdate
+	 * @param int $user_datedisplayopts
+	 * @param string $user_imageview
+	 * @param string $user_language
+	 * @param int $user_rights
+	 * @param int $user_lastactive
+	 * @param int $user_lastlogin
+	 * @param int $user_prelastlogin
 	 */
-	public function User($ID = null, $UserName = null, $FirstName = null, $LastName = null)
+	public function __construct(
+		$user_id = null, $user_username = null, $user_password = null, $user_salt = null,
+		$user_firstname = null, $user_insertion = null, $user_lastname = null, $user_email = null,
+		$user_gender = GENDER_UNKNOWN, $user_birthdate = -1,
+		$user_datedisplayopts = 0, $user_imageview = 'detail', $user_language = 'en', $user_rights = 0,
+		$user_lastactive = -1, $user_lastlogin = -1, $user_prelastlogin = -1)
 	{
-		$this->ID = $ID;
-		$this->UserName = $UserName;
-		$this->FirstName = $FirstName;
-		$this->LastName = $LastName;
+		$this->ID = $user_id;
+		$this->UserName = $user_username;
+		$this->Password = $user_password;
+		$this->Salt = $user_salt;
+		
+		$this->FirstName = $user_firstname;
+		$this->Insertion = $user_insertion;
+		$this->LastName = $user_lastname;
+		$this->EmailAddress = $user_email;
+		
+		$this->Gender = $user_gender;
+		$this->BirthDate = $user_birthdate;
+		
+		$this->DateDisplayoptions = $user_datedisplayopts;
+		$this->Imageview = $user_imageview;
+		$this->Language = $user_language;
+		$this->Rights = $user_rights;
+		
+		$this->LastActive = $user_lastactive;
+		$this->LastLogin = $user_lastlogin;
+		$this->PreLastLogin = $user_prelastlogin;
 	}
 	
 	/**
@@ -295,7 +333,6 @@ class User
 	public function setRights($Rights)
 	{ $this->Rights = $Rights; }
 
-
 	/**
 	 * Gets the User's language
 	 * @return string
@@ -316,60 +353,91 @@ class User
 	public function hasPermission($permission)
 	{ return self::CheckPermission($this->Rights, $permission); }
 	
-
 	/**
-	 * Gets an array of Users from the database, or NULL on failure. The array can be empty.
-	 * @param string $WhereClause
+	 * Gets an array of Users from the database, or NULL on failure.
+	 * @param UserSearchParameters $SearchParameters
 	 * @param string $OrderClause
 	 * @param string $LimitClause
 	 * @return array(User) | NULL
 	 */
-	public static function GetUsers($WhereClause = 'mut_deleted = -1', $OrderClause = 'user_lastname ASC, user_firstname ASC', $LimitClause = null)
+	public static function GetUsers($SearchParameters = null, $OrderClause = 'user_lastname ASC, user_firstname ASC', $LimitClause = null)
 	{
-		global $db;
+		global $dbi;
+		$SearchParameters = $SearchParameters ? $SearchParameters : new UserSearchParameters();
+		$OrderClause = empty($OrderClause) ? 'user_lastname ASC, user_firstname ASC' : $OrderClause;
 		
-		if($db->Select('User', '*', $WhereClause, $OrderClause, $LimitClause))
+		$q = sprintf("
+			SELECT
+				`user_id`, `user_username`, `user_password`, `user_salt`,
+				`user_firstname`, `user_insertion`, `user_lastname`, `user_email`,
+				`user_gender`, `user_birthdate`,
+				`user_datedisplayopts`, `user_imageview`, `user_language`, `user_rights`,
+				`user_lastactive`, `user_lastlogin`, `user_prelastlogin`
+			FROM
+				`User`
+			WHERE
+				mut_deleted = -1
+				%1\$s
+			ORDER BY
+				%2\$s
+			%3\$s",
+			$SearchParameters->getWhere(),
+			$OrderClause,
+			$LimitClause ? ' LIMIT '.$LimitClause : null
+		);
+		
+		if(!($stmt = $dbi->prepare($q)))
+		{
+			$e = new SQLerror($dbi->errno, $dbi->error);
+			Error::AddError($e);
+			return null;
+		}
+		
+		if($SearchParameters->getValues())
+		{
+			$bind_names[] = $SearchParameters->getParamTypes();
+			$params = $SearchParameters->getValues();
+		
+			for ($i=0; $i<count($params);$i++)
+			{
+				$bind_name = 'bind' . $i;
+				$$bind_name = $params[$i];
+				$bind_names[] = &$$bind_name;
+			}
+			call_user_func_array(array($stmt, 'bind_param'), $bind_names);
+		}
+		
+		if($stmt->execute())
 		{
 			$OutArray = array();
+			$stmt->bind_result(
+				$user_id, $user_username, $user_password, $user_salt,
+				$user_firstname, $user_insertion, $user_lastname, $user_email,
+				$user_gender, $user_birthdate,
+				$user_datedisplayopts, $user_imageview, $user_language, $user_rights,
+				$user_lastactive, $user_lastlogin, $user_prelastlogin);
 			
-			if($db->getResult())
+			while($stmt->fetch())
 			{
-				foreach($db->getResult() as $UserItem)
-				{
-					$UserObject = new User();
-					
-					foreach($UserItem as $ColumnKey => $ColumnValue)
-					{
-						switch($ColumnKey)
-						{
-							case 'user_id'				: $UserObject->setID($ColumnValue);					break;
-							case 'user_username'		: $UserObject->setUserName($ColumnValue);			break;
-							case 'user_password'		: $UserObject->setPassword($ColumnValue);			break;
-							case 'user_salt'			: $UserObject->setSalt($ColumnValue);				break;
-							case 'user_firstname'		: $UserObject->setFirstName($ColumnValue);			break;
-							case 'user_insertion'		: $UserObject->setInsertion($ColumnValue);			break;
-							case 'user_lastname'		: $UserObject->setLastName($ColumnValue);			break;
-							case 'user_email'			: $UserObject->setEmailAddress($ColumnValue);		break;
-							case 'user_datedisplayopts'	: $UserObject->setDateDisplayOptions($ColumnValue);	break;
-							case 'user_rights'			: $UserObject->setRights($ColumnValue);				break;
-							case 'user_imageview'		: $UserObject->setImageview($ColumnValue);			break;
-							case 'user_language'		: $UserObject->setLanguage($ColumnValue);			break;
-							case 'user_gender'			: $UserObject->setGender($ColumnValue);				break;
-							case 'user_birthdate'		: $UserObject->setBirthDate($ColumnValue);			break;
-							case 'user_lastactive'		: $UserObject->setLastActive($ColumnValue);			break;
-							case 'user_lastlogin'		: $UserObject->setLastLogin($ColumnValue);			break;
-							case 'user_prelastlogin'	: $UserObject->setPreLastLogin($ColumnValue);		break;
-							case 'user_rights'			: $UserObject->setRights($ColumnValue);				break;
-						}
-					}
-					
-					$OutArray[] = $UserObject;
-				}
+				$o = new self(
+					$user_id, $user_username, $user_password, $user_salt,
+					$user_firstname, $user_insertion, $user_lastname, $user_email,
+					$user_gender, $user_birthdate,
+					$user_datedisplayopts, $user_imageview, $user_language, $user_rights,
+					$user_lastactive, $user_lastlogin, $user_prelastlogin);
+				
+				$OutArray[] = $o;
 			}
+			
+			$stmt->close();
 			return $OutArray;
 		}
 		else
-		{ return null; }
+		{
+			$e = new SQLerror($dbi->errno, $dbi->error);
+			Error::AddError($e);
+			return null;
+		}
 	}
 	
 	/**
@@ -472,6 +540,64 @@ class User
  	{
  		return (($Rights & $Permission) > 0);
  	}
+}
+
+class UserSearchParameters extends SearchParameters
+{
+	private $paramtypes = '';
+	private $values = array();
+	private $where = '';
+
+	public function __construct($SingleID = null, $MultipleIDs = null, $UserName = null, $Password = null, $Email = null)
+	{
+		parent::__construct();
+
+		if($SingleID)
+		{
+			$this->paramtypes .= "i";
+			$this->values[] = $SingleID;
+			$this->where .= " AND user_id = ?";
+		}
+
+		if($MultipleIDs)
+		{
+			$this->paramtypes .= str_repeat('i', count($MultipleIDs));
+			$this->values = array_merge($this->values, $MultipleIDs);
+			$this->where .= sprintf(" AND user_id IN ( %1s ) ",
+				implode(', ', array_fill(0, count($MultipleIDs), '?'))
+			);
+		}
+
+		if($UserName)
+		{
+			$this->paramtypes .= 's';
+			$this->values[] = $UserName;
+			$this->where .= " AND user_username = ?";
+		}
+
+		if($Password)
+		{
+			$this->paramtypes .= 's';
+			$this->values[] = $Password;
+			$this->where .= " AND user_password = ?";
+		}
+
+		if($Email)
+		{
+			$this->paramtypes .= 's';
+			$this->values[] = $Email;
+			$this->where .= " AND user_email = ?";
+		}
+	}
+
+	public function getWhere()
+	{ return $this->where; }
+
+	public function getValues()
+	{ return $this->values; }
+
+	public function getParamTypes()
+	{ return $this->paramtypes; }
 }
 
 ?>

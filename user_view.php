@@ -17,8 +17,7 @@ $RightsCheckboxes = null;
 /* @var $User User */
 if($UserID)
 {
-	$WhereClause = sprintf('user_id = %1$d AND mut_deleted = -1', $UserID);
-	$Users = User::GetUsers($WhereClause);
+	$Users = User::GetUsers(new UserSearchParameters($UserID));
 
 	if($Users)
 	{ $User = $Users[0]; }

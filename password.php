@@ -13,12 +13,7 @@ if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] && $_POST['hidAc
 	$UserName = $_POST['txtUserName'];
 	$EmailAddress = $_POST['txtEmailAddress'];
 
-	$WhereClause = sprintf("user_username = '%1\$s' AND user_email = '%2\$s' AND mut_deleted = -1",
-		mysql_real_escape_string($UserName),
-		mysql_real_escape_string($EmailAddress)
-	);
-
-	$Users = User::GetUsers($WhereClause);
+	$Users = User::GetUsers(new UserSearchParameters(null, null, $UserName, null, $EmailAddress));
 	if($Users)
 	{
 		/* @var $User User */
@@ -52,11 +47,7 @@ else if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] && $_POST['
 {
 	$Hash = $_GET['Hash'];
 
-	$WhereClause = sprintf("user_password = '%1\$s' AND mut_deleted = -1",
-		mysql_real_escape_string($Hash)
-	);
-
-	$Users = User::GetUsers($WhereClause);
+	$Users = User::GetUsers(new UserSearchParameters(null, null, null, $Hash));
 	if($Users)
 	{
 		/* @var $User User */
@@ -99,11 +90,7 @@ else if (!array_key_exists('hidAction', $_POST) && array_key_exists('Hash', $_GE
 {
 	$Hash = $_GET['Hash'];
 
-	$WhereClause = sprintf("user_password = '%1\$s' AND mut_deleted = -1",
-		mysql_real_escape_string($Hash)
-	);
-
-	$Users = User::GetUsers($WhereClause);
+	$Users = User::GetUsers(new UserSearchParameters(null, null, null, $Hash));
 	if($Users)
 	{
 		/* @var $User User */

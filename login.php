@@ -12,11 +12,7 @@ if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] && $_POST['hidAc
 	$Password = $_POST['txtPassword'];
 	$ReturnURL = array_key_exists('url', $_GET) && isset($_GET['url']) ? $_GET['url'] : null;
 	
-	$WhereClause = sprintf("user_username = '%1\$s' AND mut_deleted = -1",
-		mysql_real_escape_string($UserName)
-	);
-	
-	$Users = User::GetUsers($WhereClause);
+	$Users = User::GetUsers(new UserSearchParameters(null, null, $UserName));
 	if($Users)
 	{
 		/* @var $User User */
