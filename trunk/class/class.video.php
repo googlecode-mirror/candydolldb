@@ -14,11 +14,24 @@ class Video
 	 * @param string $FileName
 	 * @param string $FileExtension
 	 */
-	public function Video($ID = null, $FileName = null, $FileExtension = null)
+	public function __construct(
+		$video_id = null, $video_filename = null, $video_fileextension = null, $video_filesize = null, $video_filechecksum = null,
+		$set_id = null, $set_prefix = null, $set_name = null, $set_containswhat = null,
+		$model_id = null, $model_firstname = null, $model_lastname = null)
 	{
-		$this->ID = $ID;
-		$this->FileName = $FileName;
-		$this->FileExtension = $FileExtension;
+		$this->ID = $video_id;
+		$this->FileName = $video_filename;
+		$this->FileExtension = $video_fileextension;
+		$this->FileSize = $video_filesize;
+		$this->FileCheckSum = $video_filechecksum;
+		
+		/* @var $m Model */
+		/* @var $s Set */
+		$m = new Model($model_id, $model_firstname, $model_lastname);
+		$s = new Set($set_id, $set_prefix, $set_name, $set_containswhat);
+		
+		$s->setModel($m);
+		$this->Set = $s;
 	}
 	
 	/**
@@ -95,59 +108,84 @@ class Video
 
 	
 	/**
-	 * @param string $WhereClause
+	 * Gets an array of Videos from the database, or NULL on failure.
+	 * @param VideoSearchParameters $SearchParameters
 	 * @param string $OrderClause
 	 * @param string $LimitClause
 	 * @return Array(Video) | NULL
 	 */
-	public static function GetVideos($WhereClause = 'mut_deleted = -1', $OrderClause = 'model_firstname ASC, model_lastname ASC, set_prefix ASC, set_name ASC, video_filename ASC', $LimitClause = null)
+	public static function GetVideos($SearchParameters = null, $OrderClause = 'model_firstname ASC, model_lastname ASC, set_prefix ASC, set_name ASC, video_filename ASC', $LimitClause = null)
 	{
-		global $db;
-		$WhereClause = is_null($WhereClause) ? 'mut_deleted = -1' : $WhereClause;
-		$OrderClause = is_null($OrderClause) ? 'model_firstname ASC, model_lastname ASC, set_prefix ASC, set_name ASC, video_filename ASC' : $OrderClause;
+		global $dbi;
+		$SearchParameters = $SearchParameters ? $SearchParameters : new VideoSearchParameters();
+		$OrderClause = empty($OrderClause) ? 'model_firstname ASC, model_lastname ASC, set_prefix ASC, set_name ASC, video_filename ASC' : $OrderClause;
 		
-		if($db->Select('vw_Video', '*', $WhereClause, $OrderClause, $LimitClause))
+		$q = sprintf("
+			SELECT
+				`video_id`, `video_filename`, `video_fileextension`, `video_filesize`, `video_filechecksum`, 
+				`set_id`, `set_prefix`, `set_name`, `set_containswhat`,
+				`model_id`, `model_firstname`, `model_lastname`
+			FROM
+				`vw_Video`
+			WHERE
+				mut_deleted = -1
+				%1\$s
+			ORDER BY
+				%2\$s
+			%3\$s",
+			$SearchParameters->getWhere(),
+			$OrderClause,
+			$LimitClause ? ' LIMIT '.$LimitClause : null
+		);
+		
+		if(!($stmt = $dbi->prepare($q)))
+		{
+			$e = new SQLerror($dbi->errno, $dbi->error);
+			Error::AddError($e);
+			return null;
+		}
+		
+		if($SearchParameters->getValues())
+		{
+			$bind_names[] = $SearchParameters->getParamTypes();
+			$params = $SearchParameters->getValues();
+		
+			for ($i=0; $i<count($params);$i++)
+			{
+				$bind_name = 'bind' . $i;
+				$$bind_name = $params[$i];
+				$bind_names[] = &$$bind_name;
+			}
+			call_user_func_array(array($stmt, 'bind_param'), $bind_names);
+		}
+		
+		if($stmt->execute())
 		{
 			$OutArray = array();
-			if($db->getResult())
+			$stmt->bind_result(
+				$video_id, $video_filename, $video_fileextension, $video_filesize, $video_filechecksum, 
+				$set_id, $set_prefix, $set_name, $set_containswhat,
+				$model_id, $model_firstname, $model_lastname);
+		
+			while($stmt->fetch())
 			{
-				foreach($db->getResult() as $VideoItem)
-				{
-					$VideoObject = new Video();
-					$SetObject = new Set();
-					$ModelObject = new Model();
-					
-					foreach($VideoItem as $ColumnKey => $ColumnValue)
-					{
-						switch($ColumnKey)
-						{
-							case 'video_id'				: $VideoObject->setID($ColumnValue); 			break;
-							case 'video_filename'		: $VideoObject->setFileName($ColumnValue); 		break;
-							case 'video_fileextension'	: $VideoObject->setFileExtension($ColumnValue); break;
-							case 'video_filesize'		: $VideoObject->setFileSize($ColumnValue); 		break;
-							case 'video_filechecksum'	: $VideoObject->setFileCheckSum($ColumnValue); 	break;
-							
-							case 'set_id'			: $SetObject->setID($ColumnValue);				break;
-							case 'set_prefix'		: $SetObject->setPrefix($ColumnValue);			break;
-							case 'set_name'			: $SetObject->setName($ColumnValue);			break;
-							case 'set_containswhat'	: $SetObject->setContainsWhat($ColumnValue);	break;
-							
-							case 'model_id'			: $ModelObject->setID($ColumnValue);			break;
-							case 'model_firstname'	: $ModelObject->setFirstName($ColumnValue);		break;
-							case 'model_lastname'	: $ModelObject->setLastName($ColumnValue);		break;
-						}
-					}
-					
-					$SetObject->setModel($ModelObject);
-					$VideoObject->setSet($SetObject);
-					
-					$OutArray[] = $VideoObject;
-				}
+				$o = new Video(
+					$video_id, $video_filename, $video_fileextension, $video_filesize, $video_filechecksum,
+					$set_id, $set_prefix, $set_name, $set_containswhat,
+					$model_id, $model_firstname, $model_lastname);
+		
+				$OutArray[] = $o;
 			}
+		
+			$stmt->close();
 			return $OutArray;
 		}
 		else
-		{ return null; }
+		{
+			$e = new SQLerror($dbi->errno, $dbi->error);
+			Error::AddError($e);
+			return null;
+		}
 	}
 	
 	/**
@@ -264,4 +302,117 @@ class Video
 		return $OutArray;
 	}
 }
+
+class VideoSearchParameters extends SearchParameters
+{
+	private $paramtypes = '';
+	private $values = array();
+	private $where = '';
+
+	public function __construct(
+			$SingleID = null, $MultipleIDs = null,
+			$SingleSetID = null, $MultipleSetIDs = null,
+			$SingleModelID = null, $MultipleModelIDs = null,
+			$OrAllMultipleIDs = false)
+	{
+		parent::__construct();
+
+		if($SingleID)
+		{
+			$this->paramtypes .= "i";
+			$this->values[] = $SingleID;
+			$this->where .= " AND video_id = ?";
+		}
+
+		if($MultipleIDs && !$OrAllMultipleIDs)
+		{
+			$this->paramtypes .= str_repeat('i', count($MultipleIDs));
+			$this->values = array_merge($this->values, $MultipleIDs);
+			$this->where .= sprintf(" AND video_id IN ( %1s ) ",
+					implode(', ', array_fill(0, count($MultipleIDs), '?'))
+			);
+		}
+
+		if($SingleSetID)
+		{
+			$this->paramtypes .= "i";
+			$this->values[] = $SingleSetID;
+			$this->where .= " AND set_id = ?";
+		}
+
+		if($MultipleSetIDs && !$OrAllMultipleIDs)
+		{
+			$this->paramtypes .= str_repeat('i', count($MultipleSetIDs));
+			$this->values = array_merge($this->values, $MultipleSetIDs);
+			$this->where .= sprintf(" AND set_id IN ( %1s ) ",
+					implode(', ', array_fill(0, count($MultipleSetIDs), '?'))
+			);
+		}
+
+		if($SingleModelID)
+		{
+			$this->paramtypes .= "i";
+			$this->values[] = $SingleModelID;
+			$this->where .= " AND model_id = ?";
+		}
+
+		if($MultipleModelIDs && !$OrAllMultipleIDs)
+		{
+			$this->paramtypes .= str_repeat('i', count($MultipleModelIDs));
+			$this->values = array_merge($this->values, $MultipleModelIDs);
+			$this->where .= sprintf(" AND model_id IN ( %1s ) ",
+					implode(', ', array_fill(0, count($MultipleModelIDs), '?'))
+			);
+		}
+
+		if($OrAllMultipleIDs)
+		{
+			$pieces = array();
+
+			if($MultipleIDs)
+			{
+				$this->paramtypes .= str_repeat('i', count($MultipleIDs));
+				$this->values = array_merge($this->values, $MultipleIDs);
+				$pieces[] = sprintf("video_id IN ( %1s )",
+						implode(', ', array_fill(0, count($MultipleIDs), '?'))
+				);
+			}
+
+			if($MultipleSetIDs)
+			{
+				$this->paramtypes .= str_repeat('i', count($MultipleSetIDs));
+				$this->values = array_merge($this->values, $MultipleSetIDs);
+				$pieces[] = sprintf("set_id IN ( %1s )",
+						implode(', ', array_fill(0, count($MultipleSetIDs), '?'))
+				);
+			}
+
+			if($MultipleModelIDs)
+			{
+				$this->paramtypes .= str_repeat('i', count($MultipleModelIDs));
+				$this->values = array_merge($this->values, $MultipleModelIDs);
+				$pieces[] = sprintf("model_id IN ( %1s )",
+						implode(', ', array_fill(0, count($MultipleModelIDs), '?'))
+				);
+			}
+
+			if($pieces)
+			{
+				$this->where .= " AND (";
+				$this->where .= implode(' OR ', $pieces);
+				$this->where .= ")";
+			}
+		}
+	}
+
+	public function getWhere()
+	{ return $this->where; }
+
+	public function getValues()
+	{ return $this->values; }
+
+	public function getParamTypes()
+	{ return $this->paramtypes; }
+}
+
 ?>

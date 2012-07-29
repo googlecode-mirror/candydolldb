@@ -117,8 +117,7 @@ function XmlOutputModel($Model,$TaggedOnly)
 				
 			if($IncludeVideos)
 			{
-				$where = sprintf('model_id = %1$d AND set_id = %2$d AND mut_deleted = -1', $Model->getID(), $Set->getID());
-				$VideosThisSet = Video::GetVideos($where);
+				$VideosThisSet = Video::GetVideos(new VideoSearchParameters(null, null, $Set->getID(), null, $Model->getID()));
 	
 				if($VideosThisSet)
 				{

@@ -16,7 +16,7 @@ $VideoID = Utils::SafeIntFromQS('video_id');
 /* @var $Model Model */
 if($VideoID)
 {
-	$Video = Video::GetVideos(sprintf('video_id = %1$d AND mut_deleted = -1', $VideoID));
+	$Video = Video::GetVideos(new VideoSearchParameters($VideoID));
 
 	if($Video)
 	{
@@ -58,7 +58,7 @@ if($VideoID)
 }
 else if($SetID)
 {
-	$Videos = Video::GetVideos(sprintf('set_id = %1$d AND mut_deleted = -1', $SetID));
+	$Videos = Video::GetVideos(new VideoSearchParameters(null, null, $SetID));
 	if($Videos)
 	{
 		$MainVideo = $Videos[0];
