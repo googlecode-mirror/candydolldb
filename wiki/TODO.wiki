@@ -14,6 +14,7 @@
 
 ==later==
 
+ * Utilize the info about image-video set discrepancies
  * Allow import / export of CSV formatted files
  * Optimize cacheperformance by adding cache-expiration
  * Custom error logging (on-disk, email?)
