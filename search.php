@@ -143,10 +143,11 @@ switch ($searchMode)
 
 	case 'IMAGE':
 		if(!$SetIDsToShow || !$ModelIDsToShow){ break; }
-		$where = $ImageIDsToShow ? sprintf('(image_id in ( %1$s ) OR set_id in ( %2$s )) AND mut_deleted = -1',	join(', ', $ImageIDsToShow), join(', ', $SetIDsToShow)) : null;
-		$where = $where ? $where : sprintf('set_id in ( %1$s ) AND mut_deleted = -1',	join(', ', $SetIDsToShow));
-		$ToShow = Image::GetImages($where, null, sprintf("%1\$d, %2\$d", $from, $max_results));
-		$Total = count(Image::GetImages($where));
+		$isp = new ImageSearchParameters(null, $ImageIDsToShow, null, $SetIDsToShow, null, null, true);
+		//$where = $ImageIDsToShow ? sprintf('(image_id in ( %1$s ) OR set_id in ( %2$s )) AND mut_deleted = -1',	join(', ', $ImageIDsToShow), join(', ', $SetIDsToShow)) : null;
+		//$where = $where ? $where : sprintf('set_id in ( %1$s ) AND mut_deleted = -1',	join(', ', $SetIDsToShow));
+		$ToShow = Image::GetImages($isp, null, sprintf("%1\$d, %2\$d", $from, $max_results));
+		$Total = count(Image::GetImages($isp));
 		break;
 
 	case 'VIDEO':

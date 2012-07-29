@@ -27,8 +27,7 @@ $Set = null;
 $ImageRows = '';
 $ImageCount = 0;
 
-$WhereClause = sprintf('model_id = %1$d AND set_id = %2$d AND mut_deleted = -1', $ModelID, $SetID);
-$Images = Image::GetImages($WhereClause);
+$Images = Image::GetImages(new ImageSearchParameters(null, null, $SetID, null, $ModelID));
 
 if($Images)
 {
@@ -86,7 +85,7 @@ if($Images)
 				$lang->g('LabelEditModel'),
 				$lang->g('LabelDownloadImage'),
 				$lang->g('LabelDeleteImage')
-				);
+			);
 			break;
 
 			case 'detail':
@@ -119,7 +118,7 @@ if($Images)
 				$lang->g('LabelDownloadImage'),
 				$lang->g('LabelViewImage'),
 				$lang->g('LabelDeleteImage')
-				);
+			);
 			break;
 		}
 	}

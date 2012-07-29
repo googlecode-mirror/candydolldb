@@ -149,32 +149,18 @@ class Model
 		$folderPath = sprintf('%1$s/%2$s%3$s', CANDYIMAGEPATH, $this->GetFullName(), ($FullSetName ? '/'.$FullSetName : null)); 
 		if(!file_exists($folderPath)){ return null; }
 		
-		$whereClause = sprintf('model_id = %1$d AND mut_deleted = -1', $this->getID());
-		
-		if($PortraitOnly){
-			$whereClause .= ' AND image_height > image_width';
-		}
-		if($LandscapeOnly){
-			$whereClause .= ' AND image_width > image_height';
-		}
-		if($SetID){
-			$whereClause .= sprintf(' AND set_id = %1$d', $SetID);
-		}
-		
 		$orderClause = sprintf('RAND()');
 		$limitClause = sprintf('1');
 		
-		$Images = Image::GetImages($whereClause, $orderClause, $limitClause);
+		$Images = Image::GetImages(
+			new ImageSearchParameters(null, null, $SetID, null, $this->getID(), null, false, $PortraitOnly, $LandscapeOnly),
+			$orderClause,
+			$limitClause);
+		
 		if(!$Images)
 		{
 			/* Work-around for returning at least ONE image when none fit the specified aspect ratio */
-			$whereClause = sprintf('model_id = %1$d AND mut_deleted = -1', $this->getID());
-			
-			if($SetID)
-			{
-				$whereClause .= sprintf(' AND set_id = %1$d', $SetID);
-				$Images = Image::GetImages($whereClause, $orderClause, $limitClause);
-			}
+			$Images = Image::GetImages(new ImageSearchParameters(null, null, $SetID, null, $this->getID()), $orderClause, $limitClause);
 		}
 		
 		if($Images)

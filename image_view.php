@@ -31,13 +31,15 @@ $ReturnURL = sprintf('image.php?model_id=%1$d&set_id=%2$d', $ModelID, $SetID);
 /* @var $Model Model */
 if($ImageID != null)
 {
-	$WhereClause = sprintf('model_id = %1$d AND set_id = %2$d AND image_id = %3$d AND mut_deleted = -1', $ModelID, $SetID, $ImageID);
-	$Images = Image::GetImages($WhereClause);
+	$Images = Image::GetImages(new ImageSearchParameters($ImageID, null, $SetID, null, $ModelID));
 
 	if($Images)
 	{ $Image = $Images[0]; }
 	else
-	{ header('location:set.php?model_id='.$ModelID); }
+	{
+		header('location:set.php?model_id='.$ModelID);
+		exit;
+	}
 
 	$Set = $Image->getSet();
 	$Model = $Set->getModel();

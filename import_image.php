@@ -14,15 +14,7 @@ $CacheImage = null;
 
 $Models = Model::GetModels(new ModelSearchParameters($ModelID));
 $Sets = Set::GetSets(new SetSearchParameters($SetID));
-
-$Images = Image::GetImages(
-	sprintf(
-		'model_id = IFNULL(%1$s, model_id) AND set_id = IFNULL(%2$s, set_id) AND mut_deleted = -1',
-		$ModelID ? (string)$ModelID : 'NULL',
-		$SetID ? (string)$SetID : 'NULL'
-	)
-);
-
+$Images = Image::GetImages(new ImageSearchParameters(null, null, $SetID, null, $ModelID));
 $CacheImages = CacheImage::GetCacheImages();
 
 
