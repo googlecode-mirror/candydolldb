@@ -33,7 +33,7 @@ if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'DownloadMult
 	
 	if($SelectedModelIDs)
 	{
-		$Sets = Set::GetSets(sprintf('mut_deleted = -1 AND model_id IN ( %1$s )', join(',', $SelectedModelIDs)));
+		$Sets = Set::GetSets(new SetSearchParameters(null, null, null, $SelectedModelIDs));
 		$SelectedSetIDs = array_key_exists('selSets', $_POST) ? Utils::SafeInts($_POST['selSets']) : array();
 		
 		/* @var $Set Set */

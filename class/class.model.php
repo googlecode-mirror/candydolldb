@@ -36,10 +36,10 @@ class Model
 
 	/**
 	 * Instantiates a new Model object.
-	 * @param long $model_id
+	 * @param int $model_id
 	 * @param string $model_firstname
 	 * @param string $model_lastname
-	 * @param long $model_birthdate
+	 * @param int $model_birthdate
 	 * @param string $model_remarks
 	 * @param int $model_setcount
 	 */
@@ -394,6 +394,10 @@ class Model
 
 class ModelSearchParameters extends SearchParameters
 {
+	private $paramtypes = '';
+	private $values = array();
+	private $where = '';
+	
 	public function __construct($SingleID = null, $MultipleIDs = null, $FirstName = null, $LastName = null, $FullName = null)
 	{
 		parent::__construct();
@@ -435,6 +439,15 @@ class ModelSearchParameters extends SearchParameters
 			$this->where .= " AND CONCAT_WS(' ', model_firstname, model_lastname) LIKE ?";
 		}
 	}
+	
+	public function getWhere()
+	{ return $this->where; }
+	
+	public function getValues()
+	{ return $this->values; }
+	
+	public function getParamTypes()
+	{ return $this->paramtypes; }
 }
 
 ?>

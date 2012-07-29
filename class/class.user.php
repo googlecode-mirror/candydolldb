@@ -290,7 +290,7 @@ class User
 	{ return $this->Rights; }
 	
 	/**
-	 * @param long $Rights
+	 * @param int $Rights
 	 */
 	public function setRights($Rights)
 	{ $this->Rights = $Rights; }

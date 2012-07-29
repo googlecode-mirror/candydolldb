@@ -138,7 +138,7 @@ else if($SetID)
 	}
 	else
 	{
-		$Set = Set::GetSets(sprintf('set_id = %1$d AND mut_deleted = -1', $SetID));
+		$Set = Set::GetSets(new SetSearchParameters($SetID));
 		if($Set)
 		{
 			$Set = $Set[0];
