@@ -44,7 +44,7 @@ $WhereClause = sprintf(
 	mysql_real_escape_string($SearchModel)
 );
 
-$Sets = Set::GetSets($WhereClause);
+$Sets = Set::GetSets(new SetSearchParameters(null, null, $ModelID, null, $SearchModel));
 $Dates = Date::GetDates($WhereClause);
 
 if($Sets)

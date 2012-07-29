@@ -13,13 +13,28 @@ class Set
 	private $AmountVidsInDB = 0;
 	
 	/**
-	 * @param int $ID
-	 * @param string $Name
+	 * @param int $set_id
+	 * @param string $set_prefix
+	 * @param string $set_name
+	 * @param int $set_containswhat
+	 * @param int $model_id
+	 * @param string $model_firstname
+	 * @param string $model_lastname
+	 * @param int $set_amount_pics_in_db
+	 * @param int $set_amount_vids_in_db
 	 */
-	public function Set($ID = null, $Name = null)
+	public function __construct($set_id = null, $set_prefix = null, $set_name = null, $set_containswhat = null, $model_id = null, $model_firstname = null, $model_lastname = null, $set_amount_pics_in_db = null, $set_amount_vids_in_db = null)
 	{
-		$this->ID = $ID;
-		$this->Name = $Name;
+		$this->ID = $set_id;
+		$this->Prefix = $set_prefix;
+		$this->Name = $set_name;
+		$this->ContainsWhat = $set_containswhat;
+		
+		$m = new Model($model_id, $model_firstname, $model_lastname);
+		$this->Model = $m;
+		
+		$this->AmountPicsInDB = $set_amount_pics_in_db;
+		$this->AmountVidsInDB = $set_amount_vids_in_db;
 	}
 
 	/**
@@ -74,47 +89,25 @@ class Set
 	 * @return array(Date)
 	 */
 	public function getDatesPic()
-	{
-		return $this->DatesPic;
-	}
-	
-	/**
-	 * @return Date
-	 */
-	public function getDatePic()
-	{
-		return $this->DatesPic ? $this->DatesPic[0]->getTimeStamp() : -1;
-	}
+	{ return $this->DatesPic; }
 
 	/**
 	 * @param array(Date) $DatesPic
 	 */
 	public function setDatesPic($DatesPic)
-	{
-		$this->DatesPic = $DatesPic;
-	}
+	{ $this->DatesPic = $DatesPic; }
 	
 	/**
 	 * @return array(Date)
 	 */
 	public function getDatesVid()
-	{
-		return $this->DatesVid;
-	}
-	
-	/**
-	 * @return Date
-	 */
-	public function getDateVid()
-	{ return $this->DatesVid ? $this->DatesVid[0]->getTimeStamp() : -1; }
+	{ return $this->DatesVid; }
 	
 	/**
 	 * @param array(Date) $DatesVid
 	 */
 	public function setDatesVid($DatesVid)
-	{
-		$this->DatesVid = $DatesVid;
-	}
+	{ $this->DatesVid = $DatesVid; }
 	
 	/**
 	 * @return int
@@ -184,58 +177,75 @@ class Set
 	
 	
 	/**
-	 * @param string $WhereClause
+	 * Gets an array of Sets from the database, or NULL on failure.
+	 * @param SetSearchParameters $SearchParameters
 	 * @param string $OrderClause
 	 * @param string $LimitClause 
 	 * @return Array(Set) | NULL
 	 */
-	public static function GetSets($WhereClause = 'mut_deleted = -1', $OrderClause = 'model_firstname ASC, model_lastname ASC, set_prefix ASC, set_name ASC', $LimitClause = null)
+	public static function GetSets($SearchParameters = null, $OrderClause = 'model_firstname ASC, model_lastname ASC, set_prefix ASC, set_name ASC', $LimitClause = null)
 	{
-		global $db;
-		$WhereClause = is_null($WhereClause) ? 'mut_deleted = -1' : $WhereClause;
-		$OrderClause = is_null($OrderClause) ? 'model_firstname ASC, model_lastname ASC, set_prefix ASC, set_name ASC' : $OrderClause;
+		global $dbi;
+		$SearchParameters = $SearchParameters ? $SearchParameters : new SetSearchParameters();
+		$OrderClause = empty($OrderClause) ? 'model_firstname ASC, model_lastname ASC, set_prefix ASC, set_name ASC' : $OrderClause;
 		
-		if($db->Select('vw_Set', '*', $WhereClause, $OrderClause, $LimitClause))
+		$q = sprintf("
+			SELECT
+				`set_id`,`set_prefix`,`set_name`,`set_containswhat`,`model_id`,`model_firstname`,`model_lastname`,`set_amount_pics_in_db`,`set_amount_vids_in_db`
+			FROM
+				`vw_Set`
+			WHERE
+				mut_deleted = -1
+				%1\$s
+			ORDER BY
+				%2\$s
+			%3\$s",
+			$SearchParameters->getWhere(),
+			$OrderClause,
+			$LimitClause ? ' LIMIT '.$LimitClause : null
+		);
+		
+		if(!($stmt = $dbi->prepare($q)))
+		{
+			$e = new SQLerror($dbi->errno, $dbi->error);
+			Error::AddError($e);
+			return null;
+		}
+		
+		if($SearchParameters->getValues())
+		{
+			$bind_names[] = $SearchParameters->getParamTypes();
+			$params = $SearchParameters->getValues();
+		
+			for ($i=0; $i<count($params);$i++)
+			{
+				$bind_name = 'bind' . $i;
+				$$bind_name = $params[$i];
+				$bind_names[] = &$$bind_name;
+			}
+			call_user_func_array(array($stmt, 'bind_param'), $bind_names);
+		}
+		
+		if($stmt->execute())
 		{
 			$OutArray = array();
-			
-			if($db->getResult())
+			$stmt->bind_result($set_id, $set_prefix, $set_name, $set_containswhat, $model_id, $model_firstname, $model_lastname, $set_amount_pics_in_db, $set_amount_vids_in_db);
+		
+			while($stmt->fetch())
 			{
-				foreach($db->getResult() as $SetItem)
-				{
-					/*
-					 * @var Set $SetObject
-					 * @var Model $ModelObject 
-					 */
-					$SetObject = new Set();
-					$ModelObject = new Model();
-					
-					foreach($SetItem as $ColumnKey => $ColumnValue)
-					{
-						switch($ColumnKey)
-						{
-							case 'set_id'				: $SetObject->setID($ColumnValue);				break;
-							case 'set_prefix'			: $SetObject->setPrefix($ColumnValue);			break;
-							case 'set_name'				: $SetObject->setName($ColumnValue);			break;
-							case 'set_containswhat'		: $SetObject->setContainsWhat($ColumnValue);	break;
-							case 'set_amount_pics_in_db': $SetObject->setAmountPicsInDB($ColumnValue);	break;
-							case 'set_amount_vids_in_db': $SetObject->setAmountVidsInDB($ColumnValue);	break;
-							
-							case 'model_id'			: $ModelObject->setID($ColumnValue);		break;
-							case 'model_firstname'	: $ModelObject->setFirstName($ColumnValue);	break;
-							case 'model_lastname'	: $ModelObject->setLastName($ColumnValue);	break;
-						}
-					}
-					
-					$SetObject->setModel($ModelObject);
-					
-					$OutArray[] = $SetObject;
-				}
+				$o = new Set($set_id, $set_prefix, $set_name, $set_containswhat, $model_id, $model_firstname, $model_lastname, $set_amount_pics_in_db, $set_amount_vids_in_db);
+				$OutArray[] = $o;
 			}
+			
+			$stmt->close();
 			return $OutArray;
 		}
 		else
-		{ return null; }
+		{
+			$e = new SQLerror($dbi->errno, $dbi->error);
+			Error::AddError($e);
+			return null;
+		}
 	}
 	
 	/**
@@ -421,6 +431,66 @@ class Set
 			return ($mNumeric ? 1 : -1);
 		}
 	}
+}
+
+class SetSearchParameters extends SearchParameters
+{
+	private $paramtypes = '';
+	private $values = array();
+	private $where = '';
+	
+	public function __construct($SingleID = null, $MultipleIDs = null, $SingleModelID = null, $MultipleModelIDs = null, $ModelFullName = null)
+	{
+		parent::__construct();
+
+		if($SingleID)
+		{
+			$this->paramtypes .= "i";
+			$this->values[] = $SingleID;
+			$this->where .= " AND set_id = ?";
+		}
+
+		if($MultipleIDs)
+		{
+			$this->paramtypes .= str_repeat('i', count($MultipleIDs));
+			$this->values = array_merge($this->values, $MultipleIDs);
+			$this->where .= sprintf(" AND set_id IN ( %1s ) ",
+					implode(', ', array_fill(0, count($MultipleIDs), '?'))
+			);
+		}
+		
+		if($SingleModelID)
+		{
+			$this->paramtypes .= "i";
+			$this->values[] = $SingleModelID;
+			$this->where .= " AND model_id = ?";
+		}
+		
+		if($MultipleModelIDs)
+		{
+			$this->paramtypes .= str_repeat('i', count($MultipleModelIDs));
+			$this->values = array_merge($this->values, $MultipleModelIDs);
+			$this->where .= sprintf(" AND model_id IN ( %1s ) ",
+					implode(', ', array_fill(0, count($MultipleModelIDs), '?'))
+			);
+		}
+
+		if($ModelFullName)
+		{
+			$this->paramtypes .= 's';
+			$this->values[] = '%'.$ModelFullName.'%';
+			$this->where .= " AND CONCAT_WS(' ', model_firstname, model_lastname) LIKE ?";
+		}
+	}
+	
+	public function getWhere()
+	{ return $this->where; }
+	
+	public function getValues()
+	{ return $this->values; }
+	
+	public function getParamTypes()
+	{ return $this->paramtypes; }
 }
 
 ?>

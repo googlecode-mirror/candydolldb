@@ -26,7 +26,7 @@ class Rights
 	
 	/**
 	 * Calculates the sum of all defined right-constants.
-	 * @return long
+	 * @return int
 	 */
 	public static function getTotalRights()
 	{
@@ -195,7 +195,7 @@ class Utils
 {
 	/**
 	 * Returns a human readable string of a filesize, e.g. 2,43 MiB.
-	 * @param long $SizeInBytes
+	 * @param int $SizeInBytes
 	 * @return string
 	 */
 	public static function ReadableFilesize($SizeInBytes)

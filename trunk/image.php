@@ -127,7 +127,7 @@ if($Images)
 
 if(!$Set)
 {
-	$Set = Set::GetSets(sprintf('model_id = %1$d AND set_id = %2$d', $ModelID, $SetID));
+	$Set = Set::GetSets(new SetSearchParameters($SetID, null, $ModelID));
 	if($Set)
 	{
 		$Set = $Set[0];

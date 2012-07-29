@@ -136,9 +136,9 @@ switch ($searchMode)
 
 	case 'SET':
 		if(!$SetIDsToShow || !$ModelIDsToShow){ break; }
-		$where = sprintf('set_id in ( %1$s ) AND mut_deleted = -1',	join(', ', $SetIDsToShow));
-		$ToShow = Set::GetSets($where, null, sprintf("%1\$d, %2\$d", $from, $max_results));
-		$Total = count(Set::GetSets($where));
+		$ssp = new SetSearchParameters(null, $SetIDsToShow);
+		$ToShow = Set::GetSets($ssp, null, sprintf("%1\$d, %2\$d", $from, $max_results));
+		$Total = count(Set::GetSets($ssp));
 		break;
 
 	case 'IMAGE':

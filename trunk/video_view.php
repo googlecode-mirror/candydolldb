@@ -49,7 +49,7 @@ if($VideoID != null)
 else
 {
 	$Video = new Video(null, $lang->g('LabelNew'));
-	$Set = Set::GetSets(sprintf('set_id = %1d AND mut_deleted = -1', $SetID));
+	$Set = Set::GetSets(new SetSearchParameters($SetID));
 
 	if($Set)
 	{

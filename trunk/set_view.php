@@ -26,8 +26,7 @@ $DatesThisSet = array();
 /* @var $Model Model */
 if($SetID != null)
 {
-	$WhereClause = sprintf('model_id = %1$d AND set_id = %2$d AND mut_deleted = -1', $ModelID, $SetID);
-	$Sets = Set::GetSets($WhereClause);
+	$Sets = Set::GetSets(new SetSearchParameters($SetID, null, $ModelID));
 
 	if($Sets)
 	{ $Set = $Sets[0]; }

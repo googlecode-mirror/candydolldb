@@ -11,10 +11,7 @@ $IncludeVideos = Utils::SafeBoolFromQS('includevideos');
 $TaggedOnly = Utils::SafeBoolFromQS('taggedonly');
 
 $Models = Model::GetModels(new ModelSearchParameters($ModelID));
-
-$Sets = Set::GetSets(
-	$ModelID ? sprintf('model_id = %1$d AND mut_deleted = -1', $ModelID) : null
-);
+$Sets = Set::GetSets(new SetSearchParameters(null, null, $ModelID));
 
 $Dates = Date::GetDates();
 $Tag2Alls = Tag2All::GetTag2Alls();

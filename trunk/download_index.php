@@ -32,7 +32,7 @@ if($CurrentUser->hasPermission(RIGHT_EXPORT_INDEX))
 	
 	
 	$Images = Image::GetImages(sprintf('model_id = %1$d AND mut_deleted = -1', $ModelID));
-	$Sets = Set::GetSets(sprintf('model_id = %1$d AND mut_deleted = -1', $ModelID));
+	$Sets = Set::GetSets(new SetSearchParameters(null, null, $ModelID));
 	
 	
 	if($Sets && !in_array($Sets[0]->getModel()->getFullName(), array('VIP', 'Promotions', 'Interviews')))
