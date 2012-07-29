@@ -38,14 +38,8 @@ else
 	$FilterVID = array_key_exists('chkFilterVID', $_SESSION) ? (bool)$_SESSION['chkFilterVID'] : false;
 }
 
-$WhereClause = sprintf(
-	"model_id = IFNULL(%1\$s, model_id) AND CONCAT_WS(' ', model_firstname, model_lastname) LIKE '%%%2\$s%%' AND mut_deleted = -1",
-	($ModelID ? $ModelID : 'NULL'),
-	mysql_real_escape_string($SearchModel)
-);
-
 $Sets = Set::GetSets(new SetSearchParameters(null, null, $ModelID, null, $SearchModel));
-$Dates = Date::GetDates($WhereClause);
+$Dates = Date::GetDates(new DateSearchParameters(null, null, null, null, $ModelID, null, null, $SearchModel));
 
 if($Sets)
 {

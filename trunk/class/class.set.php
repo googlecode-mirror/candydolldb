@@ -249,6 +249,7 @@ class Set
 	}
 	
 	/**
+	 * Inserts supplied Set into the database.
 	 * @param Set $Set
 	 * @param User $CurrentUser
 	 * @return bool
@@ -274,7 +275,6 @@ class Set
 	
 	/**
 	 * Updates the databaserecord of supplied Set.
-	 * 
 	 * @param Set $Set
 	 * @param User $CurrentUser
 	 * @return bool
@@ -303,7 +303,6 @@ class Set
 	
 	/**
 	 * Removes the specified Set from the database.
-	 * 
 	 * @param Set $Set
 	 * @param User $CurrentUser
 	 * @return bool

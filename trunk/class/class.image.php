@@ -261,7 +261,7 @@ class Image
 		
 			while($stmt->fetch())
 			{
-				$o = new Image(
+				$o = new self(
 					$image_id, $image_filename, $image_fileextension, $image_filesize, $image_filechecksum, $image_width, $image_height,
 					$set_id, $set_prefix, $set_name, $set_containswhat,
 					$model_id, $model_firstname, $model_lastname);

@@ -11,7 +11,6 @@ class Model
 	
 	/**
 	 * Returns a concatenation of the Model's firstname and the first character of the Model's lastname.
-	 * 
 	 * @return string
 	 */
 	public function GetShortName($WithSpace = false)
@@ -24,7 +23,6 @@ class Model
 
 	/**
 	 * Returns a concatenation of the Model's first- and lastname.
-	 * 
 	 * @return string
 	 */
 	public function GetFullName()
@@ -43,7 +41,7 @@ class Model
 	 * @param string $model_remarks
 	 * @param int $model_setcount
 	 */
-	public function Model($model_id = null, $model_firstname = null, $model_lastname = null, $model_birthdate = null, $model_remarks = null, $model_setcount = null)
+	public function __construct($model_id = null, $model_firstname = null, $model_lastname = null, $model_birthdate = null, $model_remarks = null, $model_setcount = null)
 	{
 		$this->ID = $model_id;
 		$this->FirstName = $model_firstname;
@@ -55,7 +53,6 @@ class Model
 	
 	/**
 	 * Get the Model's ID.
-	 * 
 	 * @return int
 	 */
 	public function getID()
@@ -69,7 +66,6 @@ class Model
 	
 	/**
 	 * Gets the Model's firstname.
-	 * 
 	 * @return string 
 	 */
 	public function getFirstName()
@@ -83,7 +79,6 @@ class Model
 	
 	/**
 	 * Gets the Model's lastname.
-	 * 
 	 * @return string 
 	 */
 	public function getLastName()
@@ -97,7 +92,6 @@ class Model
 	
 	/**
 	 * Gets the Model's bithdate, represented as a UNIX timstamp.
-	 * 
 	 * @return int 
 	 */
 	public function getBirthDate()
@@ -111,7 +105,6 @@ class Model
 
 	/**
 	 * Gets the Model's remarks.
-	 * 
 	 * @return string
 	 */
 	public function getRemarks()
@@ -128,7 +121,6 @@ class Model
 	
 	/**
 	 * Gets the Model's set count, defaults to 0.
-	 * 
 	 * @return int 
 	 */
 	public function getSetCount()
@@ -173,7 +165,6 @@ class Model
 			return null;
 		}
 	}
-
 	
 	/**
 	 * Gets an array of Models from the database, or NULL on failure.
@@ -274,7 +265,6 @@ class Model
 	
 	/**
 	 * Inserts the given model into the database.
-	 *
 	 * @param Model $Model
 	 * @param User $CurrentUser
 	 * @return bool
@@ -301,7 +291,6 @@ class Model
 	
 	/**
 	 * Updates the databaserecord of supplied Model.
-	 * 
 	 * @param Model $Model
 	 * @param User $CurrentUser
 	 * @return bool
@@ -329,7 +318,6 @@ class Model
 	
 	/**
 	 * Removes the specified Model from the database.
-	 * 
 	 * @param Model $Model
 	 * @param User $CurrentUser
 	 * @return bool

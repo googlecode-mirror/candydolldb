@@ -29,7 +29,6 @@ else
 $Models = Model::GetModels(new ModelSearchParameters(null, null, null, null, $SearchModel));
 $Sets = Set::GetSets();
 
-
 if($Models)
 {
 	/* @var $Model Model */
@@ -37,12 +36,11 @@ if($Models)
 	{
 		$SetPicCount = 0;
 		$SetVidCount = 0;
-		
 		$DirtySetCount = 0;
 		$DirtySetPicCount = 0;
 		$DirtySetVidCount = 0;
-		$WhereDateClause = sprintf('model_id = %1$d AND mut_deleted = -1', $Model->getID());
-		$Dates = Date::GetDates($WhereDateClause, "date_timestamp ASC");
+
+		$Dates = Date::GetDates(new DateSearchParameters(null, null, null, null, $Model->getID()));
 		if($Dates)
 		{
 			$datestart = $Dates[0];
