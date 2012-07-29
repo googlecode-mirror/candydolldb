@@ -43,9 +43,7 @@ if($SetID != null)
 	}
 	
 	$Model = $Set->getModel();
-	$DatesThisSet = Date::GetDates(
-		sprintf('set_id = %1$d AND mut_deleted = -1', $Set->getID())
-	);
+	$DatesThisSet = Date::GetDates(new DateSearchParameters(null, null, $Set->getID()));
 }
 else
 {
@@ -62,8 +60,9 @@ else
 	$Set->setModel($Model);
 }
 
-$DatesThisSet[] = new Date(null, $Set);
-
+$DatesThisSet[] = new Date(null, DATE_KIND_UNKNOWN, -1,
+	$Set->getID(), $Set->getPrefix(), $Set->getName(), $Set->getContainsWhat(),
+	$Model->getID(), $Model->getFirstName(), $Model->getLastName());
 
 if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'SetView')
 {

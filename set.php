@@ -16,10 +16,8 @@ $Model = null;
 $SetRows = '';
 $SetCount = 0;
 
-$WhereClause = sprintf('model_id = %1$d AND mut_deleted = -1', $ModelID);
 $Sets = Set::GetSets(new SetSearchParameters(null, null,  $ModelID));
-$Dates = Date::GetDates($WhereClause);
-
+$Dates = Date::GetDates(new DateSearchParameters(null, null, null, null, $ModelID));
 
 if($Sets)
 {

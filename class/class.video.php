@@ -190,7 +190,6 @@ class Video
 	
 	/**
 	 * Inserts the given video into the database.
-	 *
 	 * @param Video $Video
 	 * @param User $CurrentUser
 	 * @return bool
@@ -218,7 +217,6 @@ class Video
 	
 	/**
 	 * Updates the databaserecord of supplied Video.
-	 * 
 	 * @param Video $Video
 	 * @param User $CurrentUser
 	 * @return bool

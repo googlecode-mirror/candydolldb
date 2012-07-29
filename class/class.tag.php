@@ -223,7 +223,6 @@ class Tag
 	
 	/**
 	* Removes the specified Tag from the database.
-	*
 	* @param Tag $Tag
 	* @param User $CurrentUser
 	* @return bool

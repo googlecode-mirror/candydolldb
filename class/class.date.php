@@ -7,20 +7,34 @@ class Date
 	private $DateKind = DATE_KIND_UNKNOWN;
 	private $TimeStamp = -1;
 	
-	
 	/**
-	 * @param int $ID
-	 * @param Set $Set
-	 * @param int $DateKind
-	 * @param int $TimeStamp
-	 
+	 * @param int $date_id
+	 * @param int $date_kind
+	 * @param int $date_timestamp
+	 * @param int $set_id
+	 * @param string $set_prefix
+	 * @param string $set_name
+	 * @param int $set_containswhat
+	 * @param int $model_id
+	 * @param string $model_firstname
+	 * @param string $model_lastname
 	 */
-	public function Date($ID = null, $Set = null, $DateKind = DATE_KIND_UNKNOWN, $TimeStamp = -1)
+	public function __construct(
+		$date_id = null, $date_kind = DATE_KIND_UNKNOWN, $date_timestamp = -1,
+		$set_id = null, $set_prefix = null, $set_name = null, $set_containswhat = SET_CONTENT_NONE,
+		$model_id = null, $model_firstname = null, $model_lastname = null)
 	{
-		$this->ID = $ID;
-		$this->Set = $Set;
-		$this->DateKind = $DateKind;
-		$this->TimeStamp = $TimeStamp;
+		$this->ID = $date_id;
+		$this->DateKind = $date_kind;
+		$this->TimeStamp = $date_timestamp;
+		
+		/* @var $m Model */
+		/* @var $s Set */
+		$m = new Model($model_id, $model_firstname, $model_lastname);
+		$s = new Set($set_id, $set_prefix, $set_name, $set_containswhat);
+		
+		$s->setModel($m);
+		$this->Set = $s;
 	}
 	
 	/**
@@ -73,56 +87,84 @@ class Date
 	
 	
 	/**
-	 * @param string $WhereClause
+	 * Gets an array of Dates from the database, or NULL on failure.
+	 * @param DateSearchParameters $SearchParameters
 	 * @param string $OrderClause
 	 * @param string $LimitClause
 	 * @return Array(Date) | NULL
 	 */
-	public static function GetDates($WhereClause = 'mut_deleted = -1', $OrderClause = '', $LimitClause = null)
+	public static function GetDates($SearchParameters = null, $OrderClause = null, $LimitClause = null)
 	{
-		global $db;
-			
-		if($db->Select('vw_Date', '*', $WhereClause, $OrderClause, $LimitClause))
+		global $dbi;
+		$SearchParameters = $SearchParameters ? $SearchParameters : new DateSearchParameters();
+		$OrderClause = empty($OrderClause) ? 'model_firstname ASC, model_lastname ASC, set_prefix ASC, set_name ASC, date_timestamp ASC' : $OrderClause;
+		
+		$q = sprintf("
+			SELECT
+				`date_id`, `date_kind`, `date_timestamp`,
+				`set_id`, `set_prefix`, `set_name`, `set_containswhat`,
+				`model_id`, `model_firstname`, `model_lastname`
+			FROM
+				`vw_Date`
+			WHERE
+				mut_deleted = -1
+				%1\$s
+			ORDER BY
+				%2\$s
+			%3\$s",
+			$SearchParameters->getWhere(),
+			$OrderClause,
+			$LimitClause ? ' LIMIT '.$LimitClause : null
+		);
+		
+		if(!($stmt = $dbi->prepare($q)))
+		{
+			$e = new SQLerror($dbi->errno, $dbi->error);
+			Error::AddError($e);
+			return null;
+		}
+		
+		if($SearchParameters->getValues())
+		{
+			$bind_names[] = $SearchParameters->getParamTypes();
+			$params = $SearchParameters->getValues();
+		
+			for ($i=0; $i<count($params);$i++)
+			{
+				$bind_name = 'bind' . $i;
+				$$bind_name = $params[$i];
+				$bind_names[] = &$$bind_name;
+			}
+			call_user_func_array(array($stmt, 'bind_param'), $bind_names);
+		}
+		
+		if($stmt->execute())
 		{
 			$OutArray = array();
+			$stmt->bind_result(
+					$date_id, $date_kind, $date_timestamp,
+					$set_id, $set_prefix, $set_name, $set_containswhat,
+					$model_id, $model_firstname, $model_lastname);
 			
-			if($db->getResult())
+			while($stmt->fetch())
 			{
-				foreach($db->getResult() as $DateItem)
-				{
-					$DateObject = new Date();
-					$SetObject = new Set();
-					$ModelObject = new Model();
-					
-					foreach($DateItem as $ColumnKey => $ColumnValue)
-					{
-						switch($ColumnKey)
-						{
-							case 'date_id'				: $DateObject->setID($ColumnValue); 		break;
-							case 'date_kind'			: $DateObject->setDateKind($ColumnValue); 	break;
-							case 'date_timestamp'		: $DateObject->setTimeStamp($ColumnValue);	break;
-							
-							case 'set_id'			: $SetObject->setID($ColumnValue);				break;
-							case 'set_prefix'		: $SetObject->setPrefix($ColumnValue);			break;
-							case 'set_name'			: $SetObject->setName($ColumnValue);			break;
-							case 'set_containswhat'	: $SetObject->setContainsWhat($ColumnValue);	break;
-							
-							case 'model_id'			: $ModelObject->setID($ColumnValue);			break;
-							case 'model_firstname'	: $ModelObject->setFirstName($ColumnValue);		break;
-							case 'model_lastname'	: $ModelObject->setLastName($ColumnValue);		break;
-						}
-					}
-					
-					$SetObject->setModel($ModelObject);
-					$DateObject->setSet($SetObject);
-					
-					$OutArray[] = $DateObject;
-				}
+				$o = new self(
+					$date_id, $date_kind, $date_timestamp,
+					$set_id, $set_prefix, $set_name, $set_containswhat,
+					$model_id, $model_firstname, $model_lastname);
+				
+				$OutArray[] = $o;
 			}
+			
+			$stmt->close();
 			return $OutArray;
 		}
 		else
-		{ return null; }
+		{
+			$e = new SQLerror($dbi->errno, $dbi->error);
+			Error::AddError($e);
+			return null;
+		}		
 	}
 	
 	/**
@@ -268,7 +310,7 @@ class Date
 				if($timestamp !== false)
 				{
 					/* @var $Date Date */
-					$Date = new Date();
+					$Date = new self();
 	
 					$Date->setSet($Set);
 					$Date->setDateKind($DateKind);
@@ -280,6 +322,93 @@ class Date
 		}
 		return $OutArray;
 	}
+}
+
+class DateSearchParameters extends SearchParameters
+{
+	private $paramtypes = '';
+	private $values = array();
+	private $where = '';
+
+	public function __construct(
+		$SingleID = null, $MultipleIDs = null,
+		$SingleSetID = null, $MultipleSetIDs = null,
+		$SingleModelID = null, $MultipleModelIDs = null,
+		$DateKind = null, $FullName = null)
+	{
+		parent::__construct();
+
+		if($SingleID)
+		{
+			$this->paramtypes .= "i";
+			$this->values[] = $SingleID;
+			$this->where .= " AND date_id = ?";
+		}
+
+		if($MultipleIDs)
+		{
+			$this->paramtypes .= str_repeat('i', count($MultipleIDs));
+			$this->values = array_merge($this->values, $MultipleIDs);
+			$this->where .= sprintf(" AND date_id IN ( %1s ) ",
+					implode(', ', array_fill(0, count($MultipleIDs), '?'))
+			);
+		}
+
+		if($SingleSetID)
+		{
+			$this->paramtypes .= "i";
+			$this->values[] = $SingleSetID;
+			$this->where .= " AND set_id = ?";
+		}
+
+		if($MultipleSetIDs)
+		{
+			$this->paramtypes .= str_repeat('i', count($MultipleSetIDs));
+			$this->values = array_merge($this->values, $MultipleSetIDs);
+			$this->where .= sprintf(" AND set_id IN ( %1s ) ",
+					implode(', ', array_fill(0, count($MultipleSetIDs), '?'))
+			);
+		}
+
+		if($SingleModelID)
+		{
+			$this->paramtypes .= "i";
+			$this->values[] = $SingleModelID;
+			$this->where .= " AND model_id = ?";
+		}
+
+		if($MultipleModelIDs)
+		{
+			$this->paramtypes .= str_repeat('i', count($MultipleModelIDs));
+			$this->values = array_merge($this->values, $MultipleModelIDs);
+			$this->where .= sprintf(" AND model_id IN ( %1s ) ",
+					implode(', ', array_fill(0, count($MultipleModelIDs), '?'))
+			);
+		}
+		
+		if($DateKind)
+		{
+			$this->paramtypes .= "i";
+			$this->values[] = $DateKind;
+			$this->where .= " AND date_kind = ?";
+		}
+		
+		if($FullName)
+		{
+			$this->paramtypes .= 's';
+			$this->values[] = '%'.$FullName.'%';
+			$this->where .= " AND CONCAT_WS(' ', model_firstname, model_lastname) LIKE ?";
+		}
+	}
+
+	public function getWhere()
+	{ return $this->where; }
+
+	public function getValues()
+	{ return $this->values; }
+
+	public function getParamTypes()
+	{ return $this->paramtypes; }
 }
 
 ?>
