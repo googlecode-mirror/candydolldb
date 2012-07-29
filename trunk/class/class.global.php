@@ -50,13 +50,7 @@ class Authentication
 		{
 			/* @var $User User */
 			$User = unserialize($_SESSION['CurrentUser']);
-			
-			$WhereClause = sprintf("user_id = %1\$d AND user_password = '%2\$s' AND mut_deleted = -1",
-				$User->getID(),
-				mysql_real_escape_string($User->getPassword())
-			);
-			
-			$Users = User::GetUsers($WhereClause);
+			$Users = User::GetUsers(new UserSearchParameters($User->getID(), null, null, $User->getPassword()));
 			
 			if($Users)
 			{
@@ -88,7 +82,7 @@ class Authentication
 				}
 
 				/* Authenticate on the commandline as Default User */
-				$Users = User::GetUsers(sprintf('user_id = %1$d', CMDLINE_USERID));	
+				$Users = User::GetUsers(new UserSearchParameters(CMDLINE_USERID));	
 				if($Users)
 				{
 					$User = $Users[0];

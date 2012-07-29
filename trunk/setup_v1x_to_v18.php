@@ -55,7 +55,7 @@ if(array_key_exists('hidAction', $_POST) && isset($_POST['hidAction']) && $_POST
 	}
 	
 	/* Give the admin-user full rights */
-	$admUser = User::GetUsers(sprintf('user_id = %1$d', CMDLINE_USERID));
+	$admUser = User::GetUsers(new UserSearchParameters(CMDLINE_USERID));
 	
 	/* @var $admUser User */
 	if($admUser)
