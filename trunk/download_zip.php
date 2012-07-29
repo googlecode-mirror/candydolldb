@@ -36,7 +36,7 @@ if($resource === true)
 
 	if($ImageID)
 	{
-		$Image = Image::GetImages(sprintf('image_id = %1$d AND mut_deleted = -1', $ImageID));
+		$Image = Image::GetImages(new ImageSearchParameters($ImageID));
 
 		if($Image)
 		{
@@ -60,7 +60,7 @@ if($resource === true)
 	}
 	else if($SetID)
 	{
-		$Images = Image::GetImages(sprintf('set_id = %1$d AND mut_deleted = -1', $SetID));
+		$Images = Image::GetImages(new ImageSearchParameters(null, null, $SetID));
 		if($Images)
 		{
 			$MainImage = $Images[0];
@@ -97,7 +97,7 @@ if($resource === true)
 	else if($ModelID)
 	{
 		$Sets = Set::GetSets(new SetSearchParameters(null, null, $ModelID));
-		$Images = Image::GetImages(sprintf('model_id = %1$d AND mut_deleted = -1', $ModelID));
+		$Images = Image::GetImages(new ImageSearchParameters(null, null, null, null, $ModelID));
 
 		if($Sets && $Images)
 		{
@@ -130,7 +130,7 @@ if($resource === true)
 	}
 	else if($ImageIDs)
 	{
-		$Images = Image::GetImages(sprintf('mut_deleted = -1 AND image_id IN ( %1$s )', join(',', $ImageIDs)));
+		$Images = Image::GetImages(new ImageSearchParameters(null, $ImageIDs));
 		
 		foreach($Images as $Image)
 		{

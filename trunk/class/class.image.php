@@ -11,19 +11,30 @@ class Image
 	private $ImageWidth = 0;
 	private $ImageHeight = 0;
 	
-	/**
-	 * @param int $ID
-	 * @param string $FileName
-	 * @param string $FileExtension
-	 */
-	public function Image($ID = null, $FileName = null, $FileExtension = null)
+	public function __construct(
+		$image_id = null, $image_filename = null, $image_fileextension = null, $image_filesize = null, $image_filechecksum = null, $image_width = null, $image_height = null,
+		$set_id = null, $set_prefix = null, $set_name = null, $set_containswhat = null,
+		$model_id = null, $model_firstname = null, $model_lastname = null)
 	{
-		$this->ID = $ID;
-		$this->FileName = $FileName;
-		$this->FileExtension = $FileExtension;
+		$this->ID = $image_id;
+		$this->FileName = $image_filename;
+		$this->FileExtension = $image_fileextension;
+		$this->FileSize = $image_filesize;
+		$this->FileCheckSum = $image_filechecksum;
+		$this->ImageWidth = $image_width;
+		$this->ImageHeight = $image_height;
+		
+		/* @var $m Model */
+		/* @var $s Set */
+		$m = new Model($model_id, $model_firstname, $model_lastname);
+		$s = new Set($set_id, $set_prefix, $set_name, $set_containswhat);
+		
+		$s->setModel($m);
+		$this->Set = $s;
 	}
 	
-	/**	 * @return int
+	/**
+	 * @return int
 	 */
 	public function getID()
 	{ return $this->ID; }
@@ -189,62 +200,84 @@ class Image
 	
 	
 	/**
-	 * @param string $WhereClause
+	 * Gets an array of Images from the database, or NULL on failure.
+	 * @param ImageSearchParameters $SearchParameters
 	 * @param string $OrderClause
 	 * @param string $LimitClause
 	 * @return Array(Image) | NULL
 	 */
-	public static function GetImages($WhereClause = 'mut_deleted = -1', $OrderClause = 'model_firstname ASC, model_lastname ASC, set_prefix ASC, set_name ASC, image_filename ASC', $LimitClause = null)
+	public static function GetImages($SearchParameters = null, $OrderClause = 'model_firstname ASC, model_lastname ASC, set_prefix ASC, set_name ASC, image_filename ASC', $LimitClause = null)
 	{
-		global $db;
-		$WhereClause = is_null($WhereClause) ? 'mut_deleted = -1' : $WhereClause;
-		$OrderClause = is_null($OrderClause) ? 'model_firstname ASC, model_lastname ASC, set_prefix ASC, set_name ASC, image_filename ASC' : $OrderClause; 
-			
-		if($db->Select('vw_Image', '*', $WhereClause, $OrderClause, $LimitClause))
+		global $dbi;
+		$SearchParameters = $SearchParameters ? $SearchParameters : new ImageSearchParameters();		
+		$OrderClause = empty($OrderClause) ? 'model_firstname ASC, model_lastname ASC, set_prefix ASC, set_name ASC, image_filename ASC' : $OrderClause;
+
+		$q = sprintf("
+			SELECT
+				`image_id`, `image_filename`, `image_fileextension`, `image_filesize`, `image_filechecksum`, `image_width`, `image_height`,
+				`set_id`, `set_prefix`, `set_name`, `set_containswhat`,
+				`model_id`, `model_firstname`, `model_lastname`
+			FROM
+				`vw_Image`
+			WHERE
+				mut_deleted = -1
+				%1\$s
+			ORDER BY
+				%2\$s
+			%3\$s",
+			$SearchParameters->getWhere(),
+			$OrderClause,
+			$LimitClause ? ' LIMIT '.$LimitClause : null
+		);
+		
+		if(!($stmt = $dbi->prepare($q)))
+		{
+			$e = new SQLerror($dbi->errno, $dbi->error);
+			Error::AddError($e);
+			return null;
+		}
+		
+		if($SearchParameters->getValues())
+		{
+			$bind_names[] = $SearchParameters->getParamTypes();
+			$params = $SearchParameters->getValues();
+		
+			for ($i=0; $i<count($params);$i++)
+			{
+				$bind_name = 'bind' . $i;
+				$$bind_name = $params[$i];
+				$bind_names[] = &$$bind_name;
+			}
+			call_user_func_array(array($stmt, 'bind_param'), $bind_names);
+		}
+		
+		if($stmt->execute())
 		{
 			$OutArray = array();
-			
-			if($db->getResult())
+			$stmt->bind_result(
+					$image_id, $image_filename, $image_fileextension, $image_filesize, $image_filechecksum, $image_width, $image_height,
+					$set_id, $set_prefix, $set_name, $set_containswhat,
+					$model_id, $model_firstname, $model_lastname);
+		
+			while($stmt->fetch())
 			{
-				foreach($db->getResult() as $ImageItem)
-				{
-					$ImageObject = new Image();
-					$SetObject = new Set();
-					$ModelObject = new Model();
-					
-					foreach($ImageItem as $ColumnKey => $ColumnValue)
-					{
-						switch($ColumnKey)
-						{
-							case 'image_id'				: $ImageObject->setID($ColumnValue); 			break;
-							case 'image_filename'		: $ImageObject->setFileName($ColumnValue); 		break;
-							case 'image_fileextension'	: $ImageObject->setFileExtension($ColumnValue); break;
-							case 'image_filesize'		: $ImageObject->setFileSize($ColumnValue); 		break;
-							case 'image_filechecksum'	: $ImageObject->setFileCheckSum($ColumnValue); 	break;
-							case 'image_width'			: $ImageObject->setImageWidth($ColumnValue); 	break;
-							case 'image_height'			: $ImageObject->setImageHeight($ColumnValue); 	break;
-							
-							case 'set_id'			: $SetObject->setID($ColumnValue);				break;
-							case 'set_prefix'		: $SetObject->setPrefix($ColumnValue);			break;
-							case 'set_name'			: $SetObject->setName($ColumnValue);			break;
-							case 'set_containswhat'	: $SetObject->setContainsWhat($ColumnValue);	break;
-							
-							case 'model_id'			: $ModelObject->setID($ColumnValue);			break;
-							case 'model_firstname'	: $ModelObject->setFirstName($ColumnValue);		break;
-							case 'model_lastname'	: $ModelObject->setLastName($ColumnValue);		break;
-						}
-					}
-					
-					$SetObject->setModel($ModelObject);
-					$ImageObject->setSet($SetObject);
-					
-					$OutArray[] = $ImageObject;
-				}
+				$o = new Image(
+					$image_id, $image_filename, $image_fileextension, $image_filesize, $image_filechecksum, $image_width, $image_height,
+					$set_id, $set_prefix, $set_name, $set_containswhat,
+					$model_id, $model_firstname, $model_lastname);
+				
+				$OutArray[] = $o;
 			}
+			
+			$stmt->close();
 			return $OutArray;
 		}
 		else
-		{ return null; }
+		{
+			$e = new SQLerror($dbi->errno, $dbi->error);
+			Error::AddError($e);
+			return null;
+		}
 	}
 	
 	/**
@@ -415,6 +448,128 @@ class Image
 		
 		exit;
 	}
+}
+
+class ImageSearchParameters extends SearchParameters
+{
+	private $paramtypes = '';
+	private $values = array();
+	private $where = '';
+
+	public function __construct(
+		$SingleID = null, $MultipleIDs = null,
+		$SingleSetID = null, $MultipleSetIDs = null,
+		$SingleModelID = null, $MultipleModelIDs = null,
+		$OrAllMultipleIDs = false, $PortraitOnly = false, $LandscapeOnly = false)
+	{
+		parent::__construct();
+
+		if($SingleID)
+		{
+			$this->paramtypes .= "i";
+			$this->values[] = $SingleID;
+			$this->where .= " AND image_id = ?";
+		}
+
+		if($MultipleIDs && !$OrAllMultipleIDs)
+		{
+			$this->paramtypes .= str_repeat('i', count($MultipleIDs));
+			$this->values = array_merge($this->values, $MultipleIDs);
+			$this->where .= sprintf(" AND image_id IN ( %1s ) ",
+					implode(', ', array_fill(0, count($MultipleIDs), '?'))
+			);
+		}
+		
+		if($SingleSetID)
+		{
+			$this->paramtypes .= "i";
+			$this->values[] = $SingleSetID;
+			$this->where .= " AND set_id = ?";
+		}
+		
+		if($MultipleSetIDs && !$OrAllMultipleIDs)
+		{
+			$this->paramtypes .= str_repeat('i', count($MultipleSetIDs));
+			$this->values = array_merge($this->values, $MultipleSetIDs);
+			$this->where .= sprintf(" AND set_id IN ( %1s ) ",
+					implode(', ', array_fill(0, count($MultipleSetIDs), '?'))
+			);
+		}
+
+		if($SingleModelID)
+		{
+			$this->paramtypes .= "i";
+			$this->values[] = $SingleModelID;
+			$this->where .= " AND model_id = ?";
+		}
+
+		if($MultipleModelIDs && !$OrAllMultipleIDs)
+		{
+			$this->paramtypes .= str_repeat('i', count($MultipleModelIDs));
+			$this->values = array_merge($this->values, $MultipleModelIDs);
+			$this->where .= sprintf(" AND model_id IN ( %1s ) ",
+					implode(', ', array_fill(0, count($MultipleModelIDs), '?'))
+			);
+		}
+		
+		if($OrAllMultipleIDs)
+		{
+			$pieces = array();
+			
+			if($MultipleIDs)
+			{
+				$this->paramtypes .= str_repeat('i', count($MultipleIDs));
+				$this->values = array_merge($this->values, $MultipleIDs);
+				$pieces[] = sprintf("image_id IN ( %1s )",
+						implode(', ', array_fill(0, count($MultipleIDs), '?'))
+				);
+			}
+			
+			if($MultipleSetIDs)
+			{
+				$this->paramtypes .= str_repeat('i', count($MultipleSetIDs));
+				$this->values = array_merge($this->values, $MultipleSetIDs);
+				$pieces[] = sprintf("set_id IN ( %1s )",
+						implode(', ', array_fill(0, count($MultipleSetIDs), '?'))
+				);
+			}
+			
+			if($MultipleModelIDs)
+			{
+				$this->paramtypes .= str_repeat('i', count($MultipleModelIDs));
+				$this->values = array_merge($this->values, $MultipleModelIDs);
+				$pieces[] = sprintf("model_id IN ( %1s )",
+						implode(', ', array_fill(0, count($MultipleModelIDs), '?'))
+				);
+			}
+			
+			if($pieces)
+			{
+				$this->where .= " AND (";
+				$this->where .= implode(' OR ', $pieces);
+				$this->where .= ")";
+			}
+		}
+
+		if($PortraitOnly)
+		{
+			$this->where .= " AND image_height > image_width";
+		}
+		
+		if($LandscapeOnly)
+		{
+			$this->where .= " AND image_width > image_height";
+		}
+	}
+
+	public function getWhere()
+	{ return $this->where; }
+
+	public function getValues()
+	{ return $this->values; }
+
+	public function getParamTypes()
+	{ return $this->paramtypes; }
 }
 
 ?>

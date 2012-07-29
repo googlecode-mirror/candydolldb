@@ -260,7 +260,7 @@ else if($ImageID)
 	}
 	else
 	{
-		$Image = Image::GetImages(sprintf('image_id = %1$d AND mut_deleted = -1', $ImageID));
+		$Image = Image::GetImages(new ImageSearchParameters($ImageID));
 	        
 		if($Image)
 		{

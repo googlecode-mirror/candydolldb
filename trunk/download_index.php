@@ -30,8 +30,7 @@ if($CurrentUser->hasPermission(RIGHT_EXPORT_INDEX))
 	$pathPrefix = (isset($argv) && $argc > 0) ? dirname($_SERVER['PHP_SELF']).'/' : '';
 	$indexImage = null;  
 	
-	
-	$Images = Image::GetImages(sprintf('model_id = %1$d AND mut_deleted = -1', $ModelID));
+	$Images = Image::GetImages(new ImageSearchParameters(null, null, null, null, $ModelID));
 	$Sets = Set::GetSets(new SetSearchParameters(null, null, $ModelID));
 	
 	

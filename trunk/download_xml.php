@@ -84,8 +84,7 @@ function XmlOutputModel($Model,$TaggedOnly)
 	
 			if($IncludeImages)
 			{
-				$where = sprintf('model_id = %1$d AND set_id = %2$d AND mut_deleted = -1', $Model->getID(), $Set->getID());
-				$ImagesThisSet = Image::GetImages($where);
+				$ImagesThisSet = Image::GetImages(new ImageSearchParameters(null, null, $Set->getID(), null, $Model->getID()));
 	
 				if($ImagesThisSet)
 				{
