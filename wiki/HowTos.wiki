@@ -60,3 +60,15 @@ $ xmllint --noout --schema /path/to/candydolldb-schema.xsd /path/to/xml-file.xml
 }}}
 
 This will either report success or failure.
+
+== Recreate all model-, index- and set-cacheimages ==
+
+When you want to refill your cache folder after, for example, deleting it by mistake, you can use GNU wget to do the trick almost automatically.
+
+ # Hack the Authentication class (class.global.php) to always return a valid user.
+ # Then call the following shell-command, where ./cddb/ is the folder where all files will be stored and http://localhost/candydolldb/ the URL of your CandyDollDB.
+{{{
+$ wget -erobots=off --mirror --page-requisites --accept *download_image.php*,*set.php* --reject *import* --directory-prefix=./cddb/ http://localhost/candydolldb/
+}}}
+ # Remove the folder where wget stored the files.
+ # Unhack the Authentication class.
