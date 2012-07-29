@@ -9,12 +9,7 @@ $ModelID = Utils::SafeIntFromQS('model_id');
 $SetID = Utils::SafeIntFromQS('set_id');
 
 
-$Models = Model::GetModels(
-	sprintf(
-		'model_id = IFNULL(%1$s, model_id) AND mut_deleted = -1',
-		$ModelID ? (string)$ModelID : 'NULL'
-	)
-);
+$Models = Model::GetModels(new ModelSearchParameters($ModelID));
 
 $Sets = Set::GetSets(
 	sprintf(

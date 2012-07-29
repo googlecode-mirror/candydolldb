@@ -130,9 +130,8 @@ switch ($searchMode)
 {
 	case 'MODEL':
 		if(!$ModelIDsToShow){ break; }
-		$where = sprintf('model_id in ( %1$s ) AND mut_deleted = -1', join(', ', $ModelIDsToShow));
-		$ToShow = Model::GetModels($where, null, sprintf("%1\$d, %2\$d", $from, $max_results));
-		$Total = count(Model::GetModels($where));
+		$ToShow = Model::GetModels(new ModelSearchParameters(null, $ModelIDsToShow), null, sprintf("%1\$d, %2\$d", $from, $max_results));
+		$Total = count(Model::GetModels(new ModelSearchParameters(null, $ModelIDsToShow)));
 		break;
 
 	case 'SET':

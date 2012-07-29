@@ -191,55 +191,73 @@ class Model
 	
 	/**
 	 * Gets an array of Models from the database, or NULL on failure.
-	 * @param string $WhereClause
+	 * @param ModelSearchParameters $SearchParameters
 	 * @param string $OrderClause
 	 * @param string $LimitClause
-	 * @return array(Model) | NULL
+	 * @return array(Model)
 	 */
-	public static function GetModels($WhereClause = 'mut_deleted = -1', $OrderClause = 'model_firstname ASC, model_lastname ASC', $LimitClause = null)
+	public static function GetModels($SearchParameters = null, $OrderClause = 'model_firstname ASC, model_lastname ASC', $LimitClause = null)
 	{
 		global $dbi;
-		$WhereClause = is_null($WhereClause) ? 'mut_deleted = -1' : $WhereClause;
-		$OrderClause = is_null($OrderClause) ? 'model_firstname ASC, model_lastname ASC' : $OrderClause; 
+		$SearchParameters = $SearchParameters ? $SearchParameters : new ModelSearchParameters();
+		$OrderClause = empty($OrderClause) ? 'model_firstname ASC, model_lastname ASC' : $OrderClause; 
 		
 		$q = sprintf("
 				SELECT
-					`model_id`,`model_firstname`,`model_lastname`,`model_birthdate`,`model_remarks`,`mut_deleted`,`model_setcount`
+					`model_id`,`model_firstname`,`model_lastname`,`model_birthdate`,`model_remarks`,`model_setcount`
 				FROM
 					`vw_Model`
 				WHERE
+					mut_deleted = -1	
 					%1\$s
 				ORDER BY
 					%2\$s
 				%3\$s",
-			$WhereClause,
+			$SearchParameters->getWhere(),
 			$OrderClause,
 			$LimitClause ? ' LIMIT '.$LimitClause : null
 		);
 		
-		if($stmt = $dbi->prepare($q))
+		if(!($stmt = $dbi->prepare($q)))
+		{
+			$e = new SQLerror($dbi->errno, $dbi->error);
+			Error::AddError($e);
+			return null;
+		}
+		
+		if($SearchParameters->getValues())
+		{
+			$bind_names[] = $SearchParameters->getParamTypes();
+			$params = $SearchParameters->getValues();
+			
+			for ($i=0; $i<count($params);$i++)
+			{
+				$bind_name = 'bind' . $i;
+				$$bind_name = $params[$i];
+				$bind_names[] = &$$bind_name;
+			}
+			call_user_func_array(array($stmt, 'bind_param'), $bind_names);
+		}
+				
+		if($stmt->execute())
 		{
 			$OutArray = array();
-			$stmt->bind_result($model_id, $model_firstname, $model_lastname, $model_birthdate, $model_remarks, $mut_deleted, $model_setcount);
-			
-			if(!$stmt->execute())
-			{
-				$e = new SQLerror($dbi->errno, $dbi->error);
-				Error::AddError($e);
-				return $OutArray;
-			}
+			$stmt->bind_result($model_id, $model_firstname, $model_lastname, $model_birthdate, $model_remarks, $model_setcount);
 			
 			while($stmt->fetch())
 			{
 				$o = new Model($model_id, $model_firstname, $model_lastname, $model_birthdate, $model_remarks, $model_setcount);
 				$OutArray[] = $o;
 			}
+			
+			$stmt->close();
 			return $OutArray;
 		}
 		else
 		{
 			$e = new SQLerror($dbi->errno, $dbi->error);
 			Error::AddError($e);
+			return null;
 		}
 	}
 	
@@ -371,6 +389,51 @@ class Model
 			}
 		}
 		return $OutArray;
+	}
+}
+
+class ModelSearchParameters extends SearchParameters
+{
+	public function __construct($SingleID = null, $MultipleIDs = null, $FirstName = null, $LastName = null, $FullName = null)
+	{
+		parent::__construct();
+		
+		if($SingleID)
+		{
+			$this->paramtypes .= "i";
+			$this->values[] = $SingleID;
+			$this->where .= " AND model_id = ?";
+		}
+		
+		if($MultipleIDs)
+		{
+			$this->paramtypes .= str_repeat('i', count($MultipleIDs));
+			$this->values = array_merge($this->values, $MultipleIDs);
+			$this->where .= sprintf(" AND model_id IN ( %1s ) ",
+				implode(', ', array_fill(0, count($MultipleIDs), '?'))
+			);
+		}
+		
+		if($FirstName)
+		{
+			$this->paramtypes .= 's';
+			$this->values[] = '%'.$FirstName.'%';
+			$this->where .= " AND model_firstname LIKE ?";
+		}
+		
+		if($LastName)
+		{
+			$this->paramtypes .= 's';
+			$this->values[] = '%'.$LastName.'%';
+			$this->where .= " AND model_lastname LIKE ?";
+		}
+		
+		if($FullName)
+		{
+			$this->paramtypes .= 's';
+			$this->values[] = '%'.$FullName.'%';
+			$this->where .= " AND CONCAT_WS(' ', model_firstname, model_lastname) LIKE ?";
+		}
 	}
 }
 

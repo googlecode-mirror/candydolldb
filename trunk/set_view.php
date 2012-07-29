@@ -45,7 +45,7 @@ if($SetID != null)
 else
 {
 	$Set = new Set(null, $lang->g('New'));
-	$Model = Model::GetModels(sprintf('model_id = %1$d AND mut_deleted = -1', $ModelID));
+	$Model = Model::GetModels(new ModelSearchParameters($ModelID));
 	
 	if($Model) { $Model = $Model[0]; }
 	else

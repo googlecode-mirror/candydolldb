@@ -10,9 +10,7 @@ $IncludeImages = Utils::SafeBoolFromQS('includeimages');
 $IncludeVideos = Utils::SafeBoolFromQS('includevideos');
 $TaggedOnly = Utils::SafeBoolFromQS('taggedonly');
 
-$Models = Model::GetModels(
-	$ModelID ? sprintf('model_id = %1$d AND mut_deleted = -1', $ModelID) : null
-);
+$Models = Model::GetModels(new ModelSearchParameters($ModelID));
 
 $Sets = Set::GetSets(
 	$ModelID ? sprintf('model_id = %1$d AND mut_deleted = -1', $ModelID) : null

@@ -158,7 +158,6 @@ include('class/class.set.php');
 include('class/class.video.php');
 include('class/class.tag.php');
 include('class/class.tag2all.php');
-include('class/class.search.php');
 
 $EmailPages = array('password.php');
 if(in_array(basename($_SERVER['PHP_SELF']), $EmailPages))
