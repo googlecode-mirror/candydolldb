@@ -13,8 +13,7 @@ $TagsInDB = Tag::GetTags();
 
 if($ModelID)
 {
-	$WhereClause = sprintf('model_id = %1$d AND mut_deleted = -1', $ModelID);
-	$Models = Model::GetModels($WhereClause);
+	$Models = Model::GetModels(new ModelSearchParameters($ModelID));
 
 	if($Models)
 	{ $Model = $Models[0]; }

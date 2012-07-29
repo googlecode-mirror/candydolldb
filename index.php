@@ -26,12 +26,7 @@ else
 	$SearchClean = array_key_exists('chkClean', $_SESSION) ? (bool)$_SESSION['chkClean'] : true; 
 }
 
-$WhereClause = sprintf(
-	"CONCAT_WS(' ', model_firstname, model_lastname) LIKE '%%%1\$s%%' AND mut_deleted = -1",
-	mysql_real_escape_string($SearchModel)
-);
-
-$Models = Model::GetModels($WhereClause);
+$Models = Model::GetModels(new ModelSearchParameters(null, null, null, null, $SearchModel));
 $Sets = Set::GetSets();
 
 

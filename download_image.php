@@ -36,7 +36,7 @@ if($ModelIndexID)
 	if($CacheImage)
 	{
 		$CacheImage = $CacheImage[0];
-		$Model = Model::GetModels(sprintf('model_id = %1$d AND mut_deleted = -1', $ModelIndexID));
+		$Model = Model::GetModels(new ModelSearchParameters($ModelIndexID));
 		$Model = $Model[0];
 		
 		Image::OutputImage(
@@ -81,7 +81,7 @@ else if($ModelID)
 	}
 	else
 	{
-		$Model = Model::GetModels(sprintf('model_id = %1$d AND mut_deleted = -1', $ModelID));
+		$Model = Model::GetModels(new ModelSearchParameters($ModelID));
 		if($Model)
 		{
 			$Model = $Model[0];
