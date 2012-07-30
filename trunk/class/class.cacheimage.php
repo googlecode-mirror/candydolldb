@@ -262,22 +262,49 @@ class CacheImage
 	*/
 	public static function InsertCacheImage($CacheImage, $CurrentUser)
 	{
-		global $db;
-		 
-		return $db->Insert(
-			'CacheImage',
-			array(
-				$CacheImage->getID(),
-				$CacheImage->getModelID(),
-				$CacheImage->getModelIndexID(),
-				$CacheImage->getSetID(),
-				$CacheImage->getImageID(),
-				$CacheImage->getVideoID(),
-				$CacheImage->getImageWidth(),
-				$CacheImage->getImageHeight()
-			),
-			'cache_id, model_id, index_id, set_id, image_id, video_id, cache_imagewidth, cache_imageheight'
+		global $dbi;
+		
+		$q = sprintf("
+			INSERT INTO	`CacheImage` (
+				`cache_id`,
+				`model_id`,
+				`index_id`,
+				`set_id`,
+				`image_id`,
+				`video_id`,
+				`cache_imagewidth`,
+				`cache_imageheight`
+			) VALUES (
+				?, ?, ?, ?, ?, ?, ?, ?
+			)
+		");
+		
+		if(!($stmt = $dbi->prepare($q)))
+		{
+			$e = new SQLerror($dbi->errno, $dbi->error);
+			Error::AddError($e);
+			return false;
+		}
+		
+		$stmt->bind_param('siiiiiii',
+			$CacheImage->getID(),
+			$CacheImage->getModelID(),
+			$CacheImage->getModelIndexID(),
+			$CacheImage->getSetID(),
+			$CacheImage->getImageID(),
+			$CacheImage->getVideoID(),
+			$CacheImage->getImageWidth(),
+			$CacheImage->getImageHeight()
 		);
+		
+		if(!$stmt->execute())
+		{
+			$e = new SQLerror($dbi->errno, $dbi->error);
+			Error::AddError($e);
+			return false;
+		}
+
+		return true;
 	}
 	
 	/**
@@ -288,17 +315,32 @@ class CacheImage
 	*/
 	public static function DeleteImage($CacheImage, $CurrentUser)
 	{
-		global $db;
-	
-		return $db->Delete(
-			'CacheImage',
-			sprintf(
-				"cache_id = '%1\$s'",
-				mysql_escape_string(
-					$CacheImage->getID()
-				)
-			)
-		);
+		global $dbi;
+		
+		$q = sprintf("
+			DELETE FROM
+				`CacheImage`
+			WHERE
+				`cache_id` = ?
+		");
+		
+		if(!($stmt = $dbi->prepare($q)))
+		{
+			$e = new SQLerror($dbi->errno, $dbi->error);
+			Error::AddError($e);
+			return false;
+		}
+		
+		$stmt->bind_param('s', $CacheImage->getID());
+		
+		if(!$stmt->execute())
+		{
+			$e = new SQLerror($dbi->errno, $dbi->error);
+			Error::AddError($e);
+			return false;
+		}
+		
+		return true;
 	}
 	
 	/**
@@ -312,12 +354,11 @@ class CacheImage
 		$outBool = true;
 		
 		if(is_array($CacheImages)){
-			foreach($CacheImages as $CacheImage){
-				
+			foreach($CacheImages as $CacheImage)
+			{
 				$outBool = CacheImage::DeleteImage($CacheImage, $CurrentUser);
-				if(!$outBool)
-				{ break; }
 				
+				if(!$outBool) { break; }
 			}
 		}
 		return $outBool;
