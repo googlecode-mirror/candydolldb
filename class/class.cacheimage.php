@@ -3,18 +3,35 @@
 class CacheImage
 {
 	private $ID;
-	private $ModelID;
 	private $ModelIndexID;
+	private $ModelID;
 	private $SetID;
 	private $ImageID;
 	private $VideoID;
-	private $Kind = CACHEIMAGE_KIND_UNKNOWN;
 	private $ImageWidth = 0;
 	private $ImageHeight = 0;
+	private $Kind = CACHEIMAGE_KIND_UNKNOWN;
 	
-	public function __construct()
+	public function __construct(
+		$cache_id = null, $index_id = null, $model_id = null, $set_id = null, $image_id = null, $video_id = null, $cache_imagewidth = 0, $cache_imageheight = 0)
 	{
 		$this->ID = Utils::GUID();
+		
+		$this->ModelIndexID = $index_id;
+		$this->ModelID = $model_id;
+		$this->SetID = $set_id;
+		$this->ImageID = $image_id;
+		$this->VideoID = $video_id;
+		$this->ImageWidth = $cache_imagewidth;
+		$this->ImageHeight = $cache_imageheight;
+		
+		$this->Kind =
+			$index_id ? CACHEIMAGE_KIND_INDEX :
+			$model_id ? CACHEIMAGE_KIND_MODEL :
+			$set_id ? CACHEIMAGE_KIND_SET :
+			$image_id ? CACHEIMAGE_KIND_IMAGE :
+			$video_id ? CACHEIMAGE_KIND_VIDEO :
+			CACHEIMAGE_KIND_UNKNOWN;
 	}
 	
 	/**
@@ -163,64 +180,77 @@ class CacheImage
 		return $s;
 	}
 	
-	public static function GetCacheImages($WhereClause = null, $OrderClause = null, $LimitClause = null)
+	/**
+	 * Gets an array of CacheImages from the database, or NULL on failure.
+	 * @param $SearchParameters $SearchParameters
+	 * @param string $OrderClause
+	 * @param string $LimitClause
+	 */
+	public static function GetCacheImages($SearchParameters = null, $OrderClause = null, $LimitClause = null)
 	{
-		global $db;
-			
-		if($db->Select('CacheImage', '*', $WhereClause, $OrderClause, $LimitClause))
+		global $dbi;
+		$SearchParameters = $SearchParameters ? $SearchParameters : new CacheImageSearchParameters();
+		$OrderClause = empty($OrderClause) ? 'index_id ASC, model_id ASC, set_id ASC, image_id ASC, video_id ASC' : $OrderClause;
+		
+		$q = sprintf("
+			SELECT
+				`cache_id`, `index_id`, `model_id`, `set_id`, `image_id`, `video_id`, `cache_imagewidth`, `cache_imageheight`
+			FROM
+				`CacheImage`
+			WHERE
+				1 = 1
+				%1\$s
+			ORDER BY
+				%2\$s
+			%3\$s",
+			$SearchParameters->getWhere(),
+			$OrderClause,
+			$LimitClause ? ' LIMIT '.$LimitClause : null
+		);
+		
+		if(!($stmt = $dbi->prepare($q)))
+		{
+			$e = new SQLerror($dbi->errno, $dbi->error);
+			Error::AddError($e);
+			return null;
+		}
+		
+		if($SearchParameters->getValues())
+		{
+			$bind_names[] = $SearchParameters->getParamTypes();
+			$params = $SearchParameters->getValues();
+		
+			for ($i=0; $i<count($params);$i++)
+			{
+				$bind_name = 'bind' . $i;
+				$$bind_name = $params[$i];
+				$bind_names[] = &$$bind_name;
+			}
+			call_user_func_array(array($stmt, 'bind_param'), $bind_names);
+		}
+		
+		if($stmt->execute())
 		{
 			$OutArray = array();
-				
-			if($db->getResult())
+			$stmt->bind_result($cache_id, $index_id, $model_id, $set_id, $image_id, $video_id, $cache_imagewidth, $cache_imageheight);
+		
+			while($stmt->fetch())
 			{
-				foreach($db->getResult() as $CacheImageItem)
-				{
-					$CacheImageObject = new self();
-						
-					foreach($CacheImageItem as $ColumnKey => $ColumnValue)
-					{
-						switch($ColumnKey)
-						{
-							case 'cache_id'				: $CacheImageObject->setID($ColumnValue);			break;
-							
-							case 'image_id'				: $CacheImageObject->setImageID($ColumnValue); 		break;
-							case 'video_id'				: $CacheImageObject->setVideoID($ColumnValue); 		break;
-							case 'set_id'				: $CacheImageObject->setSetID($ColumnValue);		break;
-							case 'index_id'				: $CacheImageObject->setModelIndexID($ColumnValue);	break;
-							case 'model_id'				: $CacheImageObject->setModelID($ColumnValue);		break;
-							
-							case 'cache_imagewidth'		: $CacheImageObject->setImageWidth($ColumnValue);	break;
-							case 'cache_imageheight'	: $CacheImageObject->setImageHeight($ColumnValue);	break;
-						}
-					}
-					
-					if($CacheImageObject->getModelID()){
-						$CacheImageObject->setKind(CACHEIMAGE_KIND_MODEL);
-					}
-					
-					if($CacheImageObject->getModelIndexID()){
-						$CacheImageObject->setKind(CACHEIMAGE_KIND_INDEX);
-					}
-					
-					if($CacheImageObject->getSetID()){
-						$CacheImageObject->setKind(CACHEIMAGE_KIND_SET);
-					}
-					
-					if($CacheImageObject->getImageID()){
-						$CacheImageObject->setKind(CACHEIMAGE_KIND_IMAGE);
-					}
-					
-					if($CacheImageObject->getVideoID()){
-						$CacheImageObject->setKind(CACHEIMAGE_KIND_VIDEO);
-					}
-					
-					$OutArray[] = $CacheImageObject;
-				}
+				$o = new self(
+					$cache_id, $index_id, $model_id, $set_id, $image_id, $video_id, $cache_imagewidth, $cache_imageheight);
+			
+				$OutArray[] = $o;
 			}
+			
+			$stmt->close();
 			return $OutArray;
 		}
 		else
-		{ return null; }
+		{
+			$e = new SQLerror($dbi->errno, $dbi->error);
+			Error::AddError($e);
+			return null;
+		}
 	}
 	
 	/**
