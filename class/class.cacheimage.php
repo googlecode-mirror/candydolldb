@@ -26,12 +26,13 @@ class CacheImage
 		$this->ImageHeight = $cache_imageheight;
 		
 		$this->Kind =
-			$index_id ? CACHEIMAGE_KIND_INDEX :
-			$model_id ? CACHEIMAGE_KIND_MODEL :
-			$set_id ? CACHEIMAGE_KIND_SET :
-			$image_id ? CACHEIMAGE_KIND_IMAGE :
-			$video_id ? CACHEIMAGE_KIND_VIDEO :
-			CACHEIMAGE_KIND_UNKNOWN;
+			($index_id ? CACHEIMAGE_KIND_INDEX :
+			($model_id ? CACHEIMAGE_KIND_MODEL :
+			($set_id ? CACHEIMAGE_KIND_SET :
+			($image_id ? CACHEIMAGE_KIND_IMAGE :
+			($video_id ? CACHEIMAGE_KIND_VIDEO :
+			(CACHEIMAGE_KIND_UNKNOWN
+		))))));
 	}
 	
 	/**
