@@ -29,8 +29,11 @@ if($CurrentUser->hasPermission(RIGHT_CACHE_CLEANUP))
 	
 		if(preg_match_all('/^(?<Prefix>[MXSIV]-)?[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i', $idToFind, $matches) > 0)
 		{ 
-			$where = sprintf("cache_id = '%1\$s'", str_ireplace($matches['Prefix'], '', $idToFind));
-			$CacheImageInDB = CacheImage::GetCacheImages($where);
+			$CacheImageInDB = CacheImage::GetCacheImages(
+				new CacheImageSearchParameters(
+					str_ireplace($matches['Prefix'], '', $idToFind)
+				)
+			);
 		
 			if(!$CacheImageInDB)
 			{ unlink($file->getRealPath()); }

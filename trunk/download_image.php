@@ -25,13 +25,15 @@ $CacheImage = null;
 
 if($ModelIndexID)
 {
-	$CacheImage = CacheImage::GetCacheImages(
-		sprintf('index_id = %1$d AND cache_imagewidth = %2$d AND cache_imageheight = %3$d',
-			$ModelIndexID,
-			$Width,
-			$Height
-		)
-	);
+	$CacheImage = CacheImage::GetCacheImages(new CacheImageSearchParameters(
+		null, null,
+		$ModelIndexID, null,
+		null, null,
+		null, null,
+		null, null,
+		null, null,
+		$Width, $Height
+	));
 	
 	if($CacheImage)
 	{
@@ -61,17 +63,20 @@ if($ModelIndexID)
 }
 else if($ModelID)
 {
-	$CacheImage = CacheImage::GetCacheImages(
-		sprintf('model_id = %1$d AND cache_imagewidth = %2$d AND cache_imageheight = %3$d',
-			$ModelID,
-			$Width,
-			$Height
-		)
-	);
+	$CacheImage = CacheImage::GetCacheImages(new CacheImageSearchParameters(
+		null, null,
+		null, null,
+		$ModelID, null,
+		null, null,
+		null, null,
+		null, null,
+		$Width, $Height
+	));
 	
 	if($CacheImage)
 	{
 		$CacheImage = $CacheImage[0];
+		
 		Image::OutputImage(
 			$CacheImage->getFilenameOnDisk(),
 			$CacheImage->getImageWidth(),
@@ -119,12 +124,15 @@ else if($ModelID)
 }
 else if($SetID)
 {
-	$CacheImage = CacheImage::GetCacheImages(
-		sprintf('set_id = %1$d AND cache_imagewidth = %2$d AND cache_imageheight = %3$d',
-		$SetID,
-		$Width,
-		$Height)
-	);
+	$CacheImage = CacheImage::GetCacheImages(new CacheImageSearchParameters(
+		null, null,
+		null, null,
+		null, null,
+		$SetID, null,
+		null, null,
+		null, null,
+		$Width, $Height
+	));
 	
 	if($CacheImage)
 	{
@@ -176,13 +184,15 @@ else if($SetID)
 }
 else if($VideoID)
 {
-	$CacheImage = CacheImage::GetCacheImages(
-		sprintf('video_id = %1$d AND cache_imagewidth = %2$d AND cache_imageheight = %3$d',
-			$VideoID,
-			$Width,
-			$Height
-		)
-	);
+	$CacheImage = CacheImage::GetCacheImages(new CacheImageSearchParameters(
+		null, null,
+		null, null,
+		null, null,
+		null, null,
+		null, null,
+		$VideoID, null,
+		$Width, $Height
+	));
 	
 	if($CacheImage)
 	{
@@ -240,13 +250,15 @@ else if($VideoID)
 }
 else if($ImageID)
 {                                                                                            
-	$CacheImage = CacheImage::GetCacheImages(
-		sprintf('image_id = %1$d AND cache_imagewidth = %2$d AND cache_imageheight = %3$d',
-			$ImageID,
-			$Width,
-			$Height
-		)
-	);
+	$CacheImage = CacheImage::GetCacheImages(new CacheImageSearchParameters(
+		null, null,
+		null, null,
+		null, null,
+		null, null,
+		$ImageID, null,
+		null, null,
+		$Width, $Height
+	));
 	
 	if($CacheImage)
 	{

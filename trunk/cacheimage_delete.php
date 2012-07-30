@@ -12,48 +12,26 @@ if($CurrentUser->hasPermission(RIGHT_CACHE_DELETE))
 	$ModelID = Utils::SafeIntFromQS('model_id');
 	$Width = Utils::SafeIntFromQS('width');
 	$Height = Utils::SafeIntFromQS('height');;
-	$WhereClause = null;
 	
 	/* @var $CacheImage CacheImage */
 	$CacheImage = null;
+
+	$cisp = new CacheImageSearchParameters(
+		null, null,
+		$ModelIndexID, null,
+		$ModelID, null,
+		$SetID, null,
+		$ImageID, null,
+		$VideoID, null,
+		$Width, $Height
+	);
 	
-	if(isset($ImageID))
+	if($cisp->getValues())
 	{
-		$WhereClause = sprintf('image_id = %1$d', $ImageID);
-	}
-	else if(isset($VideoID))
-	{
-		$WhereClause = sprintf('video_id = %1$d', $VideoID);
-	}
-	else if(isset($SetID))
-	{
-		$WhereClause = sprintf('set_id = %1$d', $SetID);
-	}
-	else if(isset($ModelIndexID))
-	{
-		$WhereClause = sprintf('index_id = %1$d', $ModelIndexID);
-	}
-	else if(isset($ModelID))
-	{
-		$WhereClause = sprintf('model_id = %1$d', $ModelID);
-	}
+		$CacheImage = CacheImage::GetCacheImages($cisp);
+	}	
 	
-	if(!is_null($WhereClause) && isset($Width))
-	{
-		$WhereClause .= sprintf(' AND cache_imagewidth = %1$d', $Width);
-	}
-	
-	if(!is_null($WhereClause) && isset($Height))
-	{
-		$WhereClause .= sprintf(' AND cache_imageheight = %1$d', $Height);
-	}
-	
-	if(!is_null($WhereClause))
-	{
-		$CacheImage = CacheImage::GetCacheImages($WhereClause);
-	}
-	
-	if(!is_null($CacheImage))
+	if($CacheImage)
 	{
 		foreach($CacheImage as $CI)
 		{

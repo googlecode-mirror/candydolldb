@@ -134,7 +134,7 @@ if($XmlFromFile)
 				$setid = $db->GetLatestID();
 				if($setid) { $Set2Process->setID($setid); }
 				
-				$CacheImages = CacheImage::GetCacheImages(sprintf('index_id = %1$d', $Model2Process->getID()));
+				$CacheImages = CacheImage::GetCacheImages(new CacheImageSearchParameters(null, null, $Model2Process->getID()));
 				CacheImage::DeleteImages($CacheImages, $CurrentUser);
 			}
 			
