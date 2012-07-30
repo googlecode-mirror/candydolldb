@@ -15,8 +15,8 @@ class CacheImage
 	public function __construct(
 		$cache_id = null, $index_id = null, $model_id = null, $set_id = null, $image_id = null, $video_id = null, $cache_imagewidth = 0, $cache_imageheight = 0)
 	{
-		$this->ID = Utils::GUID();
-		
+		$this->ID = $cache_id ? $cache_id : Utils::GUID();
+
 		$this->ModelIndexID = $index_id;
 		$this->ModelID = $model_id;
 		$this->SetID = $set_id;
