@@ -15,7 +15,7 @@ if(array_key_exists('image_ids', $_GET) && isset($_GET['image_ids']))
 { $ImageIDs = Utils::SafeInts(explode(',', $_GET['image_ids'])); }
 
 
-$tmpFile = sprintf('%1$s/%2$s.zip', sys_get_temp_dir(), Utils::GUID());
+$tmpFile = sprintf('%1$s/%2$s.zip', sys_get_temp_dir(), Utils::UUID());
 $finalFile = 'CandyDollDB.zip';
 $zip = new ZipArchive();
 

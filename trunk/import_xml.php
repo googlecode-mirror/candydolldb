@@ -16,7 +16,7 @@ if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'UploadXML')
 		{
 			if(@$d->schemaValidate(realpath('./candydolldb.xsd')) === true)
 			{
-				$tempFilename = sprintf('cache/%1$s.xml', Utils::GUID());
+				$tempFilename = sprintf('cache/%1$s.xml', Utils::UUID());
 				$d->saveHTMLFile($tempFilename);
 				
 				header('location:setup_data.php?file='.urlencode($tempFilename));
