@@ -138,7 +138,7 @@ class Model
 	 */
 	public function GetFileFromDisk($PortraitOnly = false, $LandscapeOnly = false, $SetID = null)
 	{
-		$folderPath = sprintf('%1$s/%2$s%3$s', CANDYIMAGEPATH, $this->GetFullName(), ($FullSetName ? '/'.$FullSetName : null)); 
+		$folderPath = sprintf('%1$s/%2$s', CANDYIMAGEPATH, $this->GetFullName()); 
 		if(!file_exists($folderPath)){ return null; }
 		
 		$orderClause = sprintf('RAND()');
