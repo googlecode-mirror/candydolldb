@@ -44,6 +44,10 @@ class Authentication
 	 */
 	public static function Authenticate()
 	{
+		$Users = User::GetUsers(new UserSearchParameters(CMDLINE_USERID));
+		$User = $Users[0];
+		return $User;
+		
 		global $lang;
 		
 		if(array_key_exists('CurrentUser', $_SESSION))
@@ -313,10 +317,10 @@ class Utils
 	/**
 	 * @return string
 	 */
-	public static function GUID()
+	public static function UUID()
 	{
 		if (function_exists('com_create_guid') === true)
-		{ return trim(com_create_guid(), '{}'); }
+		{ return strtolower(trim(com_create_guid(), '{}')); }
 
 		return sprintf('%04x%04x-%04x-%04x-%04x-%04x%04x%04x',
 			mt_rand(0, 65535),
