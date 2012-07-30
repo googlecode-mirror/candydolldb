@@ -44,10 +44,6 @@ class Authentication
 	 */
 	public static function Authenticate()
 	{
-		$Users = User::GetUsers(new UserSearchParameters(CMDLINE_USERID));
-		$User = $Users[0];
-		return $User;
-		
 		global $lang;
 		
 		if(array_key_exists('CurrentUser', $_SESSION))
