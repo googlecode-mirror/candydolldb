@@ -255,14 +255,30 @@ class CacheImage
 	}
 	
 	/**
-	* Inserts the given cacheimage into the database.
-	* @param CacheImage $CacheImage
+	 * Inserts the given cacheimage into the database.
+	 * @param CacheImage $CacheImage
+	 * @param User $CurrentUser
+	 * @return bool
+	 */
+	public static function InsertCacheImage($CacheImage, $CurrentUser)
+	{
+		return self::InsertCacheImages(array($CacheImage), $CurrentUser);
+	}
+	
+	/**
+	* Inserts the given cacheimages into the database.
+	* @param array(CacheImage) $CacheImages
 	* @param User $CurrentUser
 	* @return bool
 	*/
-	public static function InsertCacheImage($CacheImage, $CurrentUser)
+	public static function InsertCacheImages($CacheImages, $CurrentUser)
 	{
 		global $dbi;
+		$outBool = true;
+		$cache_id = $model_id = $index_id = $set_id = $image_id = $video_id = $cache_imagewidth = $cache_imageheight = null;
+		
+		if(!is_array($CacheImages))
+		{ return false; }
 		
 		$q = sprintf("
 			INSERT INTO	`CacheImage` (
@@ -287,24 +303,37 @@ class CacheImage
 		}
 		
 		$stmt->bind_param('siiiiiii',
-			$CacheImage->getID(),
-			$CacheImage->getModelID(),
-			$CacheImage->getModelIndexID(),
-			$CacheImage->getSetID(),
-			$CacheImage->getImageID(),
-			$CacheImage->getVideoID(),
-			$CacheImage->getImageWidth(),
-			$CacheImage->getImageHeight()
+			$cache_id,
+			$model_id,
+			$index_id,
+			$set_id,
+			$image_id,
+			$video_id,
+			$cache_imagewidth,
+			$cache_imageheight
 		);
 		
-		if(!$stmt->execute())
+		foreach($CacheImages as $CacheImage)
 		{
-			$e = new SQLerror($dbi->errno, $dbi->error);
-			Error::AddError($e);
-			return false;
+			$cache_id = $CacheImage->getID();
+			$model_id = $CacheImage->getModelID();
+			$index_id = $CacheImage->getModelIndexID();
+			$set_id = $CacheImage->getSetID();
+			$image_id = $CacheImage->getImageID();
+			$video_id = $CacheImage->getVideoID();
+			$cache_imagewidth = $CacheImage->getImageWidth();
+			$cache_imageheight = $CacheImage->getImageHeight();
+		
+			$outBool = $stmt->execute(); 
+			if(!$outBool)
+			{
+				$e = new SQLerror($dbi->errno, $dbi->error);
+				Error::AddError($e);
+			}
 		}
-
-		return true;
+		
+		$stmt->close();
+		return $outBool;
 	}
 	
 	/**
@@ -330,6 +359,9 @@ class CacheImage
 		$outBool = true;
 		$id = null;
 		
+		if(!is_array($CacheImages))
+		{ return false; }
+		
 		$q = sprintf("
 			DELETE FROM
 				`CacheImage`
@@ -346,18 +378,15 @@ class CacheImage
 		
 		$stmt->bind_param('s', $id);
 		
-		if(is_array($CacheImages))
+		foreach($CacheImages as $CacheImage)
 		{
-			foreach($CacheImages as $CacheImage)
+			$id = $CacheImage->getID();
+			$outBool = $stmt->execute();
+			
+			if(!$outBool)
 			{
-				$id = $CacheImage->getID();
-				$outBool = $stmt->execute();
-				
-				if(!$outBool)
-				{
-					$e = new SQLerror($dbi->errno, $dbi->error);
-					Error::AddError($e);
-				}
+				$e = new SQLerror($dbi->errno, $dbi->error);
+				Error::AddError($e);
 			}
 		}
 		
