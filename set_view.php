@@ -125,9 +125,9 @@ if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'SetView')
 		if($Date->getID())
 		{
 			if($Date->getTimeStamp() == -1)
-			{ Date::DeleteDate($Date, $CurrentUser); }
+			{ Date::Delete($Date, $CurrentUser); }
 			else
-			{ Date::UpdateDate($Date, $CurrentUser); }
+			{ Date::Update($Date, $CurrentUser); }
 		}
 		else if($Date->getTimeStamp() > 0)
 		{
@@ -140,9 +140,9 @@ if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'SetView')
 		if($Date->getID())
 		{
 			if($Date->getTimeStamp() == -1)
-			{ Date::DeleteDate($Date, $CurrentUser); }
+			{ Date::Delete($Date, $CurrentUser); }
 			else
-			{ Date::UpdateDate($Date, $CurrentUser); }
+			{ Date::Update($Date, $CurrentUser); }
 		}
 		else if($Date->getTimeStamp() > 0)
 		{
