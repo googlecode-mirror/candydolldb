@@ -165,19 +165,7 @@ class Tag2All
 			return null;
 		}
 		
-		if($SearchParameters->getValues())
-		{
-			$bind_names[] = $SearchParameters->getParamTypes();
-			$params = $SearchParameters->getValues();
-		
-			for ($i=0; $i<count($params);$i++)
-			{
-				$bind_name = 'bind' . $i;
-				$$bind_name = $params[$i];
-				$bind_names[] = &$$bind_name;
-			}
-			call_user_func_array(array($stmt, 'bind_param'), $bind_names);
-		}
+		DBi::BindParamsToSelect($SearchParameters, $stmt);
 		
 		if($stmt->execute())
 		{
