@@ -10,7 +10,7 @@
 			<Set name="06" date_pic="" date_vid="2012-07-13" tags=""/>
 		</Sets>
 	</Model>
-	<Model firstname="Adriana" lastname="E" birthdate="1999-11-17" tags="">
+	<!-- <Model firstname="Adriana" lastname="E" birthdate="1999-11-17" tags="">
 		<Sets>
 			<Set name="01" date_pic="2011-04-29" date_vid="" tags="black, boots, pvc, red drapes, rose"/>
 			<Set name="02" date_pic="2011-05-13" date_vid="" tags="braids, earrings, swimsuit, yellow drapes"/>
@@ -1495,7 +1495,7 @@
 			<Set name="20" date_pic="2012-03-02" date_vid="2012-01-20" tags="gloves, heels, pink, stockings, stool, weird"/>
 			<Set name="21" date_pic="" date_vid="2012-03-09" tags=""/>
 		</Sets>
-	</Model>
+	</Model> -->
 	<Model firstname="Yuliya" lastname="Semenishyna" birthdate="1997-11-21" tags="">
 		<Sets>
 			<Set name="01" date_pic="2008-01-25" date_vid="2008-01-25" tags="ballet, rose, sofa, tiara"/>
@@ -1520,7 +1520,7 @@
 			<Set name="05" date_pic="2008-08-08" date_vid="2008-08-08" tags="red, sofa, white"/>
 		</Sets>
 	</Model>
-	<Model firstname="Ziliya" lastname="K" birthdate="1999-05-15" tags="">
+	<!-- <Model firstname="Ziliya" lastname="K" birthdate="1999-05-15" tags="">
 		<Sets>
 			<Set name="01" date_pic="2011-09-23" date_vid="2011-10-21" tags="bikini, chair, plaid, sandels"/>
 			<Set name="02" date_pic="2011-10-07" date_vid="2011-11-04" tags="blue, pigtails, stool, swimsuit"/>
@@ -1734,5 +1734,5 @@
 			<Set name="YuliyaS01" date_vid="2008-08-01" tags=""/>
 			<Set name="YuliyaZ01" date_vid="2008-08-22" tags=""/>
 		</Sets>
-	</Model>
+	</Model> -->
 </Models>

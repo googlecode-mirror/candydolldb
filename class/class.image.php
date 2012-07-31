@@ -12,8 +12,8 @@ class Image
 	private $ImageHeight = 0;
 	
 	public function __construct(
-		$image_id = null, $image_filename = null, $image_fileextension = null, $image_filesize = null, $image_filechecksum = null, $image_width = null, $image_height = null,
-		$set_id = null, $set_prefix = null, $set_name = null, $set_containswhat = null,
+		$image_id = null, $image_filename = null, $image_fileextension = null, $image_filesize = 0, $image_filechecksum = null, $image_width = 0, $image_height = 0,
+		$set_id = null, $set_prefix = null, $set_name = null, $set_containswhat = SET_CONTENT_NONE,
 		$model_id = null, $model_firstname = null, $model_lastname = null)
 	{
 		$this->ID = $image_id;
