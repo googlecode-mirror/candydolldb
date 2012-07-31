@@ -198,7 +198,7 @@ if($XmlFromFile)
 				}
 				
 				if(!$Date->getID())
-				{ Date::InsertDate($Date, $CurrentUser); }
+				{ Date::Insert($Date, $CurrentUser); }
 			}
 			
 			foreach ($Set2Process->getDatesVid() as $Date)
@@ -212,7 +212,7 @@ if($XmlFromFile)
 				}
 				
 				if(!$Date->getID())
-				{ Date::InsertDate($Date, $CurrentUser); }
+				{ Date::Insert($Date, $CurrentUser); }
 			}
 		}
 	}

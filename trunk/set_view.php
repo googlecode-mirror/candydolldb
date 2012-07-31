@@ -131,7 +131,7 @@ if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'SetView')
 		}
 		else if($Date->getTimeStamp() > 0)
 		{
-			Date::InsertDate($Date, $CurrentUser);
+			Date::Insert($Date, $CurrentUser);
 		}
 	}
 	
@@ -146,7 +146,7 @@ if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'SetView')
 		}
 		else if($Date->getTimeStamp() > 0)
 		{
-			Date::InsertDate($Date, $CurrentUser);
+			Date::Insert($Date, $CurrentUser);
 		}
 	}
 

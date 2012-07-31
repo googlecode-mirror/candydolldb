@@ -56,6 +56,12 @@ class Date
 	{ return $this->Set; }
 	
 	/**
+	 * @return int
+	 */
+	public function getSetID()
+	{ return $this->Set ? $this->Set->getID() : null; }
+	
+	/**
 	 * @param Set $Set
 	 */
 	public function setSet($Set)
@@ -161,26 +167,76 @@ class Date
 	 * @param User $CurrentUser
 	 * @return bool
 	 */
-	public static function InsertDate($Date, $CurrentUser)
+	public static function Insert($Date, $CurrentUser)
 	{
-	    global $db;
-	    
-	    return $db->Insert(
-		'Date',
-		array(
-		    $Date->getSet()->getID(),
-		    $Date->getDateKind(),
-		    $Date->getTimeStamp(),
-		    $CurrentUser->getID(),
-		    time()
-		),
-		'set_id, date_kind, date_timestamp, mut_id, mut_date'
-	    );
+		return self::InsertMulti(array($Date), $CurrentUser);
+	}
+	
+	/**
+	 * Inserts the given dates into the database.
+	 * @param array(Date) $Date
+	 * @param User $CurrentUser
+	 * @return bool
+	 */
+	public static function InsertMulti($Dates, $CurrentUser)
+	{
+		global $dbi;
+		
+		$outBool = true;
+		$set_id = $date_kind = $date_timestamp = null;
+		$mut_id = $CurrentUser->getID();
+		$mut_date = time();
+		
+		if(!is_array($Dates))
+		{ return false; }
+		
+		$q = sprintf("
+			INSERT INTO	`Date` (
+				`set_id`,
+				`date_kind`,
+				`date_timestamp`,
+				`mut_id`,
+				`mut_date`
+			) VALUES (
+				?, ?, ?, ?, ?
+			)
+		");
+		
+		if(!($stmt = $dbi->prepare($q)))
+		{
+			$e = new SQLerror($dbi->errno, $dbi->error);
+			Error::AddError($e);
+			return false;
+		}
+		
+		$stmt->bind_param('iiiii',
+			$set_id,
+			$date_kind,
+			$date_timestamp,
+			$mut_id,
+			$mut_date
+		);
+		
+		foreach($Dates as $Date)
+		{
+			$set_id = $Date->getSetID();
+			$date_kind = $Date->getDateKind();
+			$date_timestamp = $Date->getTimeStamp();
+		
+			$outBool = $stmt->execute(); 
+			if(!$outBool)
+			{
+				$e = new SQLerror($dbi->errno, $dbi->error);
+				Error::AddError($e);
+			}
+		}
+		
+		$stmt->close();
+		return $outBool;
 	}
 	
 	/**
 	 * Updates the databaserecord of supplied Date.
-	 * 
 	 * @param Date $Date
 	 * @param User $CurrentUser 
 	 * @return bool
@@ -205,7 +261,6 @@ class Date
 	
 	/**
 	 * Removes the specified Date from the database.
-	 * 
 	 * @param Date $Date
 	 * @param User $CurrentUser
 	 * @return bool
