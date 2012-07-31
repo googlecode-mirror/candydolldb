@@ -502,7 +502,8 @@ if($CurrentUser->hasPermission(RIGHT_EXPORT_INDEX))
 	$CacheImage->setKind(CACHEIMAGE_KIND_INDEX);
 	$CacheImage->setImageWidth($finalWidth);
 	$CacheImage->setImageHeight($finalHeight);
-	CacheImage::InsertCacheImage($CacheImage, $CurrentUser);
+	CacheImage::Insert($CacheImage, $CurrentUser);
+	
 	imagejpeg($indexImage, $CacheImage->getFilenameOnDisk());
 	
 	header('Content-Type: image/jpeg');

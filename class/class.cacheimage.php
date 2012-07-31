@@ -248,9 +248,9 @@ class CacheImage
 	 * @param User $CurrentUser
 	 * @return bool
 	 */
-	public static function InsertCacheImage($CacheImage, $CurrentUser)
+	public static function Insert($CacheImage, $CurrentUser)
 	{
-		return self::InsertCacheImages(array($CacheImage), $CurrentUser);
+		return self::InsertMulti(array($CacheImage), $CurrentUser);
 	}
 	
 	/**
@@ -259,7 +259,7 @@ class CacheImage
 	* @param User $CurrentUser
 	* @return bool
 	*/
-	public static function InsertCacheImages($CacheImages, $CurrentUser)
+	public static function InsertMulti($CacheImages, $CurrentUser)
 	{
 		global $dbi;
 		$outBool = true;

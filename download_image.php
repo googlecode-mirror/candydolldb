@@ -105,7 +105,7 @@ else if($ModelID)
 				$CacheImage->setImageWidth($Width);
 				$CacheImage->setImageHeight($Height);
 					
-				CacheImage::InsertCacheImage($CacheImage, $CurrentUser);
+				CacheImage::Insert($CacheImage, $CurrentUser);
 			}
 			
 			Image::OutputImage(
@@ -169,7 +169,7 @@ else if($SetID)
 				$CacheImage->setImageWidth($Width);
 				$CacheImage->setImageHeight($Height);
 				
-				CacheImage::InsertCacheImage($CacheImage, $CurrentUser);
+				CacheImage::Insert($CacheImage, $CurrentUser);
 			}
 
 			Image::OutputImage(
@@ -227,7 +227,7 @@ else if($VideoID)
 				$CacheImage->setImageWidth($Width);
 				$CacheImage->setImageHeight($Height);
 					
-				CacheImage::InsertCacheImage($CacheImage, $CurrentUser);
+				CacheImage::Insert($CacheImage, $CurrentUser);
 				
 				Image::OutputImage(
 					$filename,
@@ -289,7 +289,7 @@ else if($ImageID)
 				$CacheImage->setImageWidth($Width);
 				$CacheImage->setImageHeight($Height);
 					
-				CacheImage::InsertCacheImage($CacheImage, $CurrentUser);
+				CacheImage::Insert($CacheImage, $CurrentUser);
 				
 				Image::OutputImage(
 					$Image->getFilenameOnDisk(),
