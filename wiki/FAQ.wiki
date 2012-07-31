@@ -35,6 +35,14 @@ Remove or edit the bookmark/history entry if you don't want to do this every tim
 
 ----
 
+== Sometimes the page will redirect me to a page I was previously at! What's wrong? ==
+
+Since the pages use a custom referrer, sometimes if you have more than 1 window / tab open showing CDDB pages and click a link in 1 of the windows / tabs. Then go to the other window / tab and click another link, it will use the referrer link that you clicked in the 1st window / tab and load that in the 2nd window /tab once the script is done running
+
+To resolve this, refresh the page before clicking on any new links to make sure the referrer gets updated.
+
+----
+
 == Why is there no 'Remember me' option in the login form? ==
 
 Because the login uses PHP's Session and not Cookies.
