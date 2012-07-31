@@ -9,7 +9,7 @@ if($CurrentUser->hasPermission(RIGHT_SET_ADD) || $CurrentUser->hasPermission(RIG
 	
 	if(isset($DateID))
 	{
-		Date::DeleteDate(new Date($DateID), $CurrentUser);
+		Date::Delete(new Date($DateID), $CurrentUser);
 	}
 }
 else

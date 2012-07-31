@@ -28,12 +28,9 @@ class Date
 		$this->DateKind = $date_kind;
 		$this->TimeStamp = $date_timestamp;
 		
-		/* @var $m Model */
 		/* @var $s Set */
-		$m = new Model($model_id, $model_firstname, $model_lastname);
-		$s = new Set($set_id, $set_prefix, $set_name, $set_containswhat);
+		$s = new Set($set_id, $set_prefix, $set_name, $set_containswhat, $model_id, $model_firstname, $model_lastname);
 		
-		$s->setModel($m);
 		$this->Set = $s;
 	}
 	
@@ -238,45 +235,138 @@ class Date
 	/**
 	 * Updates the databaserecord of supplied Date.
 	 * @param Date $Date
+	 * @param User $CurrentUser
+	 * @return bool
+	 */
+	public static function Update($Date, $CurrentUser)
+	{
+		return self::UpdateMulti(array($Date), $CurrentUser);
+	}
+	
+	/**
+	 * Updates the databaserecords of supplied Dates.
+	 * @param array(Date) $Date
 	 * @param User $CurrentUser 
 	 * @return bool
 	 */
-	public static function UpdateDate($Date, $CurrentUser)
+	public static function UpdateMulti($Dates, $CurrentUser)
 	{
-		global $db;
+		global $dbi;
+		$outBool = true;
+
+		$id = $set_id = $date_kind = $date_timestamp = null;
+		$mut_id = $CurrentUser->getID();
+		$mut_date = time();
 		
-		return $db->Update(
-			'Date',
-			array(
-				'set_id' => $Date->getSet()->getID(),
-				'date_kind' => $Date->getDateKind(),
-				'date_timestamp' => $Date->getTimeStamp(),
-				'mut_id' => $CurrentUser->getID(),
-				'mut_date' => time()
-			),
-			array(
-				'date_id', $Date->getID())
-		);
+		if(!is_array($Dates))
+		{ return false; }
+		
+		$q = sprintf("
+			UPDATE
+				`Date`
+			SET
+				`set_id` = ?,
+				`date_kind` = ?,
+				`date_timestamp` = ?,
+				`mut_id` = ?,
+				`mut_date` = ?
+			WHERE
+				`date_id` = ?
+		");
+		
+		if(!($stmt = $dbi->prepare($q)))
+		{
+			$e = new SQLerror($dbi->errno, $dbi->error);
+			Error::AddError($e);
+			return false;
+		}
+		
+		$stmt->bind_param('iiiiii', $set_id, $date_kind, $date_timestamp, $mut_id, $mut_date, $id);
+		
+		/* @var $Date Date */
+		foreach($Dates as $Date)
+		{
+			$set_id = $Date->getSetID();
+			$date_kind = $Date->getDateKind();
+			$date_timestamp = $Date->getTimeStamp();
+			$id = $Date->getID();
+			
+			$outBool = $stmt->execute();
+		
+			if(!$outBool)
+			{
+				$e = new SQLerror($dbi->errno, $dbi->error);
+				Error::AddError($e);
+			}
+		}
+		
+		$stmt->close();
+		return $outBool;
 	}
 	
 	/**
 	 * Removes the specified Date from the database.
-	 * @param Date $Date
+	 * @param Date $Dates
 	 * @param User $CurrentUser
 	 * @return bool
 	 */
-	public static function DeleteDate($Date, $CurrentUser)
+	public static function Delete($Date, $CurrentUser)
 	{
-		global $db;
+		return self::DeleteMulti(array($Date), $CurrentUser);
+	}
+	
+	/**
+	 * Removes the specified Dates from the database.
+	 * @param array(Date) $Dates
+	 * @param User $CurrentUser
+	 * @return bool
+	 */
+	public static function DeleteMulti($Dates, $CurrentUser)
+	{
+		global $dbi;
 		
-		return $db->Update(
-			'Date',
-			array(
-				'mut_id' => $CurrentUser->getID(),
-				'mut_deleted' => time()),
-			array(
-				'date_id', $Date->getID())
-		);
+		$outBool = true;
+		$id = null;
+		$mut_id = $CurrentUser->getID();
+		$mut_deleted = time();
+		
+		if(!is_array($Dates))
+		{ return false; }
+		
+		$q = sprintf("
+			UPDATE 
+				`Date`
+			SET
+				`mut_id` = ?,
+				`mut_deleted` = ?
+			WHERE
+				`date_id` = ?
+		");
+		
+		if(!($stmt = $dbi->prepare($q)))
+		{
+			$e = new SQLerror($dbi->errno, $dbi->error);
+			Error::AddError($e);
+			return false;
+		}
+		
+		$stmt->bind_param('iii', $mut_id, $mut_deleted, $id);
+		
+		/* @var $Date Date */
+		foreach($Dates as $Date)
+		{
+			$id = $Date->getID();
+			$outBool = $stmt->execute();
+		
+			if(!$outBool)
+			{
+				$e = new SQLerror($dbi->errno, $dbi->error);
+				Error::AddError($e);
+			}
+		}
+		
+		$stmt->close();
+		return $outBool;
 	}
 	
 	/**
