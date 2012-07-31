@@ -315,7 +315,20 @@ class CacheImage
 	*/
 	public static function DeleteImage($CacheImage, $CurrentUser)
 	{
+		return self::DeleteImages(array($CacheImage), $CurrentUser);
+	}
+	
+	/**
+	* Removes multiple CacheImages from the database.
+	* @param array(CacheImage) $CacheImages
+	* @param User $CurrentUser
+	* @return bool
+	*/
+	public static function DeleteImages($CacheImages, $CurrentUser)
+	{
 		global $dbi;
+		$outBool = true;
+		$id = null;
 		
 		$q = sprintf("
 			DELETE FROM
@@ -331,36 +344,24 @@ class CacheImage
 			return false;
 		}
 		
-		$stmt->bind_param('s', $CacheImage->getID());
+		$stmt->bind_param('s', $id);
 		
-		if(!$stmt->execute())
+		if(is_array($CacheImages))
 		{
-			$e = new SQLerror($dbi->errno, $dbi->error);
-			Error::AddError($e);
-			return false;
-		}
-		
-		return true;
-	}
-	
-	/**
-	* Removes multiple CacheImages from the database.
-	* @param array(CacheImage) $CacheImages
-	* @param User $CurrentUser
-	* @return bool
-	*/
-	public static function DeleteImages($CacheImages, $CurrentUser)
-	{
-		$outBool = true;
-		
-		if(is_array($CacheImages)){
 			foreach($CacheImages as $CacheImage)
 			{
-				$outBool = CacheImage::DeleteImage($CacheImage, $CurrentUser);
+				$id = $CacheImage->getID();
+				$outBool = $stmt->execute();
 				
-				if(!$outBool) { break; }
+				if(!$outBool)
+				{
+					$e = new SQLerror($dbi->errno, $dbi->error);
+					Error::AddError($e);
+				}
 			}
 		}
+		
+		$stmt->close();
 		return $outBool;
 	}
 	
