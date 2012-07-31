@@ -72,11 +72,10 @@ define('RIGHT_USER_RIGHTS',		pow(2, 23));
 define('RIGHT_EXPORT_ZIP',		pow(2, 24));
 define('RIGHT_EXPORT_ZIP_MULTI',pow(2, 25));
 define('RIGHT_EXPORT_INDEX',	pow(2, 26));
-define('RIGHT_SEARCH_TAG',		pow(2, 27));
-define('RIGHT_SEARCH_DIRTY',	pow(2, 28));
-define('RIGHT_CACHE_CLEANUP',	pow(2, 29));
-define('RIGHT_TAG_CLEANUP',		pow(2, 30));
-define('RIGHT_CACHE_DELETE',	pow(2, 31));
+define('RIGHT_SEARCH',			pow(2, 27));
+define('RIGHT_CACHE_CLEANUP',	pow(2, 28));
+define('RIGHT_TAG_CLEANUP',		pow(2, 29));
+define('RIGHT_CACHE_DELETE',	pow(2, 30));
 
 define('GENDER_UNKNOWN', 0);
 define('GENDER_FEMALE', 1);
