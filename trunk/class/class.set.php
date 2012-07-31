@@ -23,7 +23,10 @@ class Set
 	 * @param int $set_amount_pics_in_db
 	 * @param int $set_amount_vids_in_db
 	 */
-	public function __construct($set_id = null, $set_prefix = null, $set_name = null, $set_containswhat = null, $model_id = null, $model_firstname = null, $model_lastname = null, $set_amount_pics_in_db = null, $set_amount_vids_in_db = null)
+	public function __construct(
+		$set_id = null, $set_prefix = null, $set_name = null, $set_containswhat = SET_CONTENT_NONE,
+		$model_id = null, $model_firstname = null, $model_lastname = null,
+		$set_amount_pics_in_db = 0, $set_amount_vids_in_db = 0)
 	{
 		$this->ID = $set_id;
 		$this->Prefix = $set_prefix;

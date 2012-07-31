@@ -25,6 +25,55 @@ class User
 	private $PreLastLogin = -1;
 
 	/**
+	 * @param int $user_id
+	 * @param string $user_username
+	 * @param string $user_password
+	 * @param string $user_salt
+	 * @param string $user_firstname
+	 * @param string $user_insertion
+	 * @param string $user_lastname
+	 * @param string $user_email
+	 * @param int $user_gender
+	 * @param int $user_birthdate
+	 * @param int $user_datedisplayopts
+	 * @param string $user_imageview
+	 * @param string $user_language
+	 * @param int $user_rights
+	 * @param int $user_lastactive
+	 * @param int $user_lastlogin
+	 * @param int $user_prelastlogin
+	 */
+	public function __construct(
+		$user_id = null, $user_username = null, $user_password = null, $user_salt = null,
+		$user_firstname = null, $user_insertion = null, $user_lastname = null, $user_email = null,
+		$user_gender = GENDER_UNKNOWN, $user_birthdate = -1,
+		$user_datedisplayopts = 0, $user_imageview = 'detail', $user_language = 'en', $user_rights = 0,
+		$user_lastactive = -1, $user_lastlogin = -1, $user_prelastlogin = -1)
+	{
+		$this->ID = $user_id;
+		$this->UserName = $user_username;
+		$this->Password = $user_password;
+		$this->Salt = $user_salt;
+	
+		$this->FirstName = $user_firstname;
+		$this->Insertion = $user_insertion;
+		$this->LastName = $user_lastname;
+		$this->EmailAddress = $user_email;
+	
+		$this->Gender = $user_gender;
+		$this->BirthDate = $user_birthdate;
+	
+		$this->DateDisplayoptions = $user_datedisplayopts;
+		$this->Imageview = $user_imageview;
+		$this->Language = $user_language;
+		$this->Rights = $user_rights;
+	
+		$this->LastActive = $user_lastactive;
+		$this->LastLogin = $user_lastlogin;
+		$this->PreLastLogin = $user_prelastlogin;
+	}
+	
+	/**
 	 * Returns a concatenation of the User's firstname, optional insertion and lastname.
 	 * @return string
 	 */
@@ -64,56 +113,7 @@ class User
 			case GENDER_MALE: return $lang->g('LabelTitleMr'); break;
 		}
 	}
-	
-	/**
-	 * @param int $user_id
-	 * @param string $user_username
-	 * @param string $user_password
-	 * @param string $user_salt
-	 * @param string $user_firstname
-	 * @param string $user_insertion
-	 * @param string $user_lastname
-	 * @param string $user_email
-	 * @param int $user_gender
-	 * @param int $user_birthdate
-	 * @param int $user_datedisplayopts
-	 * @param string $user_imageview
-	 * @param string $user_language
-	 * @param int $user_rights
-	 * @param int $user_lastactive
-	 * @param int $user_lastlogin
-	 * @param int $user_prelastlogin
-	 */
-	public function __construct(
-		$user_id = null, $user_username = null, $user_password = null, $user_salt = null,
-		$user_firstname = null, $user_insertion = null, $user_lastname = null, $user_email = null,
-		$user_gender = GENDER_UNKNOWN, $user_birthdate = -1,
-		$user_datedisplayopts = 0, $user_imageview = 'detail', $user_language = 'en', $user_rights = 0,
-		$user_lastactive = -1, $user_lastlogin = -1, $user_prelastlogin = -1)
-	{
-		$this->ID = $user_id;
-		$this->UserName = $user_username;
-		$this->Password = $user_password;
-		$this->Salt = $user_salt;
-		
-		$this->FirstName = $user_firstname;
-		$this->Insertion = $user_insertion;
-		$this->LastName = $user_lastname;
-		$this->EmailAddress = $user_email;
-		
-		$this->Gender = $user_gender;
-		$this->BirthDate = $user_birthdate;
-		
-		$this->DateDisplayoptions = $user_datedisplayopts;
-		$this->Imageview = $user_imageview;
-		$this->Language = $user_language;
-		$this->Rights = $user_rights;
-		
-		$this->LastActive = $user_lastactive;
-		$this->LastLogin = $user_lastlogin;
-		$this->PreLastLogin = $user_prelastlogin;
-	}
-	
+
 	/**
 	 * Get the User's ID.
 	 * @return int
@@ -165,7 +165,6 @@ class User
 	 */
 	public function setSalt($Salt)
 	{ $this->Salt = $Salt; }
-	
 	
 	/**
 	 * Gets the User's firstname.

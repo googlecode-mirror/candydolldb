@@ -8,6 +8,24 @@ class Model
 	private $BirthDate = -1;
 	private $Remarks;
 	private $SetCount = 0;
+
+	/**
+	 * @param int $model_id
+	 * @param string $model_firstname
+	 * @param string $model_lastname
+	 * @param int $model_birthdate
+	 * @param string $model_remarks
+	 * @param int $model_setcount
+	 */
+	public function __construct($model_id = null, $model_firstname = null, $model_lastname = null, $model_birthdate = -1, $model_remarks = null, $model_setcount = 0)
+	{
+		$this->ID = $model_id;
+		$this->FirstName = $model_firstname;
+		$this->LastName = $model_lastname;
+		$this->BirthDate = $model_birthdate;
+		$this->Remarks = $model_remarks;
+		$this->SetCount = $model_setcount;
+	}
 	
 	/**
 	 * Returns a concatenation of the Model's firstname and the first character of the Model's lastname.
@@ -30,25 +48,6 @@ class Model
 		return sprintf('%1$s%2$s',
 			$this->getFirstName(),
 			$this->getLastName() ? ' '.$this->getLastName() : null);
-	}
-
-	/**
-	 * Instantiates a new Model object.
-	 * @param int $model_id
-	 * @param string $model_firstname
-	 * @param string $model_lastname
-	 * @param int $model_birthdate
-	 * @param string $model_remarks
-	 * @param int $model_setcount
-	 */
-	public function __construct($model_id = null, $model_firstname = null, $model_lastname = null, $model_birthdate = null, $model_remarks = null, $model_setcount = null)
-	{
-		$this->ID = $model_id;
-		$this->FirstName = $model_firstname;
-		$this->LastName = $model_lastname;
-		$this->BirthDate = $model_birthdate;
-		$this->Remarks = $model_remarks;
-		$this->SetCount = $model_setcount;
 	}
 	
 	/**

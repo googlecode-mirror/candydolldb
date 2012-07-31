@@ -6,7 +6,7 @@ class Video
 	private $Set;
 	private $FileName;
 	private $FileExtension;
-	private $FileSize;
+	private $FileSize = 0;
 	private $FileCheckSum;
 	
 	/**
@@ -15,8 +15,8 @@ class Video
 	 * @param string $FileExtension
 	 */
 	public function __construct(
-		$video_id = null, $video_filename = null, $video_fileextension = null, $video_filesize = null, $video_filechecksum = null,
-		$set_id = null, $set_prefix = null, $set_name = null, $set_containswhat = null,
+		$video_id = null, $video_filename = null, $video_fileextension = null, $video_filesize = 0, $video_filechecksum = null,
+		$set_id = null, $set_prefix = null, $set_name = null, $set_containswhat = SET_CONTENT_NONE,
 		$model_id = null, $model_firstname = null, $model_lastname = null)
 	{
 		$this->ID = $video_id;
