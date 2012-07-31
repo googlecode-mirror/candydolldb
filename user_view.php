@@ -171,12 +171,13 @@ foreach(Rights::getDefinedRights() as $k => $v)
 {
 	$RightsCheckboxes .= sprintf("<li>
 		<label for=\"chk%1\$s\" class=\"Radio\">
-			<input type=\"checkbox\" id=\"chk%1\$s\" name=\"chk%1\$s\"%3\$s />
+			<input type=\"checkbox\" id=\"chk%1\$s\" name=\"chk%1\$s\"%3\$s%4\$s />
 			&nbsp;%2\$s
 		</label></li>",
 		$k,
 		$lang->g('Label'.$k),
-		HTMLstuff::CheckedStr($User->hasPermission($v))
+		HTMLstuff::CheckedStr($User->hasPermission($v)),
+		HTMLstuff::DisabledStr($DeleteUser)
 	);
 }
 
