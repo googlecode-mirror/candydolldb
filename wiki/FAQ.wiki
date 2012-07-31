@@ -49,6 +49,6 @@ Because the login uses PHP's Session and not Cookies.
 
 ----
 
-== What exectly is the 'Thumbnail'-setting during the application's setup? ==
+== What exactly is the 'Thumbnail'-setting during the application's setup? ==
 
 It is a folder inside your CandyDoll-collection where thumbnails of all video's are located. CandyDollDB shows these images on video-related pages.
