@@ -86,7 +86,7 @@ if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'ImageView')
 	{
 		if($DeleteImage)
 		{
-			if(Image::DeleteImage($Image, $CurrentUser))
+			if(Image::Delete($Image, $CurrentUser))
 			{
 				header('location:'.$ReturnURL);
 				exit;
@@ -94,7 +94,7 @@ if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'ImageView')
 		}
 		else
 		{
-			if(Image::UpdateImage($Image, $CurrentUser))
+			if(Image::Update($Image, $CurrentUser))
 			{
 				Tag2All::HandleTags($tags, $TagsThisImage, $TagsInDB, $CurrentUser, $ModelID, $SetID, $Image->getID(), null, true);
 				header('location:'.$ReturnURL);
@@ -104,7 +104,7 @@ if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'ImageView')
 	}
 	else
 	{
-		if(Image::InsertImage($Image, $CurrentUser))
+		if(Image::Insert($Image, $CurrentUser))
 		{
 			$imageid = $db->GetLatestID();
 			if($imageid) {

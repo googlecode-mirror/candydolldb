@@ -109,9 +109,9 @@ for($i = 0; $i < count($Models); $i++)
 				$ImageInDB->setImageHeight($info[1]);
 					
 				if(!$ImageInDB->getID())
-				{ Image::InsertImage($ImageInDB, $CurrentUser); }
+				{ Image::Insert($ImageInDB, $CurrentUser); }
 				else
-				{ Image::UpdateImage($ImageInDB, $CurrentUser); }
+				{ Image::Update($ImageInDB, $CurrentUser); }
 			}
 		}
 	}
