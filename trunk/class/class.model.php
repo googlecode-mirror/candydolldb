@@ -292,7 +292,11 @@ class Model
 			$model_remarks = $Model->getRemarks();
 			
 			$outBool = $stmt->execute();
-			if(!$outBool)
+			if($outBool)
+			{
+				$Model->setID($dbi->insert_id);
+			}
+			else
 			{
 				$e = new SQLerror($dbi->errno, $dbi->error);
 				Error::AddError($e);

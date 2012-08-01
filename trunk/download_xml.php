@@ -55,7 +55,7 @@ function XmlOutputModel($Model,$TaggedOnly)
 	$TagsThisModelOnly = Tag2All::FilterTag2Alls($TagsThisModel, null, $Model->getID(), null, null, null);
 	$xmlw->writeAttribute('tags', Tag2All::Tags2AllCSV($TagsThisModelOnly));
 	
-	$SetsThisModel = Set::FilterSets($Sets, $Model->getID());
+	$SetsThisModel = Set::Filter($Sets, $Model->getID());
 	if($SetsThisModel)
 	{
 		$xmlw->startElement('Sets');

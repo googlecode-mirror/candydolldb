@@ -55,7 +55,7 @@ if($Models)
 		}
 		
 		/* @var $Set Set */
-		foreach(Set::FilterSets($Sets, $Model->getID()) as $Set)
+		foreach(Set::Filter($Sets, $Model->getID()) as $Set)
 		{
 			$SetCount++;
 			if($Set->getSetIsDirty())
