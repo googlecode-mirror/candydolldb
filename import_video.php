@@ -58,7 +58,7 @@ for($i = 0; $i < count($Models); $i++)
 			
 			if(isset($matches) && count($matches) > 0)
 			{
-				$Set = Set::FilterSets($Sets, $Model->getID(), null, ($matches['Name'].$matches['Number']), $matches['Prefix']);
+				$Set = Set::Filter($Sets, $Model->getID(), null, ($matches['Name'].$matches['Number']), $matches['Prefix']);
 
 				if(!$Set)
 				{ continue; }

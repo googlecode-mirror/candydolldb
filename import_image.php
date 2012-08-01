@@ -68,7 +68,7 @@ for($i = 0; $i < count($Models); $i++)
 			
 			if($imagenamematch)
 			{
-				$Set = Set::FilterSets($Sets, $Model->getID(), null, ($matches['ModelName'].$matches['SetNumber']), $matches['Prefix']);
+				$Set = Set::Filter($Sets, $Model->getID(), null, ($matches['ModelName'].$matches['SetNumber']), $matches['Prefix']);
 
 				if($Set)
 				{ $Set = $Set[0]; }

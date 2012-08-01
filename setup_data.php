@@ -73,8 +73,7 @@ if($XmlFromFile)
 		}
 		else
 		{
-			if(Model::Insert($Model2Process, $CurrentUser))
-			{ $Model2Process->setID($dbi->insert_id); }
+			Model::Insert($Model2Process, $CurrentUser);
 		}
 		
 		$modeltags = Tag::GetTagArray((string)$Model->attributes()->tags);
@@ -89,7 +88,7 @@ if($XmlFromFile)
 
 		foreach($Model->Sets->Set as $Set)
 		{
-			$SetInDb = Set::FilterSets(
+			$SetInDb = Set::Filter(
 				$SetsInDb,
 				$Model2Process->getID(),
 				null,
@@ -125,12 +124,11 @@ if($XmlFromFile)
 			
 			if($Set2Process->getID())
 			{
-				Set::UpdateSet($Set2Process, $CurrentUser);
+				Set::Update($Set2Process, $CurrentUser);
 			}
 			else
 			{
-				if(Set::Insert($Set2Process, $CurrentUser))
-				{ $Set2Process->setID($dbi->insert_id); }
+				Set::Insert($Set2Process, $CurrentUser);
 				
 				$CacheImages = CacheImage::GetCacheImages(new CacheImageSearchParameters(null, null, $Model2Process->getID()));
 				CacheImage::DeleteMulti($CacheImages, $CurrentUser);
@@ -180,7 +178,7 @@ if($XmlFromFile)
 			}
 
 			// Update the Set's CONTAINS_WHAT
-			Set::UpdateSet($Set2Process, $CurrentUser);
+			Set::Update($Set2Process, $CurrentUser);
 			
 			
 			/* @var $Date Date */

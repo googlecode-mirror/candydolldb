@@ -184,7 +184,6 @@ class Set
 		return ($this->getSetIsDirtyPic() || $this->getSetIsDirtyVid());
 	}
 	
-	
 	/**
 	 * Gets an array of Sets from the database, or NULL on failure.
 	 * @param SetSearchParameters $SearchParameters
@@ -304,7 +303,6 @@ class Set
 			$mut_date
 		);
 	
-		/* @var $Set Set */
 		foreach($Sets as $Set)
 		{
 			$model_id = $Set->getModelID();
@@ -313,7 +311,11 @@ class Set
 			$set_containswhat = $Set->getContainsWhat();
 			
 			$outBool = $stmt->execute();
-			if(!$outBool)
+			if($outBool)
+			{
+				$Set->setID($dbi->insert_id);
+			}
+			else
 			{
 				$e = new SQLerror($dbi->errno, $dbi->error);
 				Error::AddError($e);
@@ -330,27 +332,78 @@ class Set
 	 * @param User $CurrentUser
 	 * @return bool
 	 */
-	public static function UpdateSet($Set, $CurrentUser)
+	public static function Update($Set, $CurrentUser)
 	{
-		global $db;
-		
-		$result = $db->Update(
-			'Set',
-			array(
-				'model_id' => $Set->getModel()->getID(),
-				'set_prefix' => mysql_real_escape_string($Set->getPrefix()),
-				'set_name' => mysql_real_escape_string($Set->getName()),
-				'set_containswhat' => $Set->getContainsWhat(),
-				'mut_id' => $CurrentUser->getID(),
-				'mut_date' => time()
-			),
-			array(
-				'set_id', $Set->getID())
-		);
-		
-		return $result;
+		return self::UpdateMulti(array($Set), $CurrentUser);
 	}
 	
+	/**
+	 * Updates the databaserecords of supplied Sets.
+	 * @param array(Set) $Sets
+	 * @param User $CurrentUser
+	 * @return bool
+	 */
+	public static function UpdateMulti($Sets, $CurrentUser)
+	{
+		global $dbi;
+		
+		$outBool = true;
+		$id = $model_id = $set_prefix = $set_name = null;
+		$set_containswhat = SET_CONTENT_NONE;
+		$mut_id = $CurrentUser->getID();
+		$mut_date = time();
+		
+		if(!is_array($Sets))
+		{ return false; }
+		
+		$q = sprintf("
+			UPDATE `Set` SET
+				`model_id` = ?,
+				`set_prefix` = ?,
+				`set_name` = ?,
+				`set_containswhat` = ?,
+				`mut_id` = ?,
+				`mut_date` = ?
+			WHERE
+				`set_id` = ?
+		");
+		
+		if(!($stmt = $dbi->prepare($q)))
+		{
+			$e = new SQLerror($dbi->errno, $dbi->error);
+			Error::AddError($e);
+			return false;
+		}
+		
+		$stmt->bind_param('issiiii',
+			$model_id,
+			$set_prefix,
+			$set_name,
+			$set_containswhat,
+			$mut_id,
+			$mut_date,
+			$id
+		);
+		
+		foreach($Sets as $Set)
+		{
+			$model_id = $Set->getModelID();
+			$set_prefix = $Set->getPrefix();
+			$set_name = $Set->getName();
+			$set_containswhat = $Set->getContainsWhat();
+			$id = $Set->getID();
+			
+			$outBool = $stmt->execute();
+			if(!$outBool)
+			{
+				$e = new SQLerror($dbi->errno, $dbi->error);
+				Error::AddError($e);
+			}
+		}
+		
+		$stmt->close();
+		return $outBool;
+	}
 	
 	/**
 	 * Removes the specified Set from the database.
@@ -358,19 +411,64 @@ class Set
 	 * @param User $CurrentUser
 	 * @return bool
 	 */
-	public static function DeleteSet($Set, $CurrentUser)
+	public static function Delete($Set, $CurrentUser)
 	{
-		global $db;
-		
-		return $db->Update(
-			'Set',
-			array(
-				'mut_id' => $CurrentUser->getID(),
-				'mut_deleted' => time()
-			),
-			array(
-				'set_id', $Set->getID())
+		return self::DeleteMulti(array($Set), $CurrentUser);
+	}
+	
+	/**
+	 * Removes the specified Sets from the database.
+	 * @param array(Set) $Sets
+	 * @param User $CurrentUser
+	 * @return bool
+	 */
+	public static function DeleteMulti($Sets, $CurrentUser)
+	{
+		global $dbi;
+	
+		$outBool = true;
+		$id = null;
+		$mut_id = $CurrentUser->getID();
+		$mut_deleted = time();
+	
+		if(!is_array($Sets))
+		{ return false; }
+	
+		$q = sprintf("
+			UPDATE `Set` SET
+				`mut_id` = ?,
+				`mut_deleted` = ?
+			WHERE
+				`set_id` = ?
+		");
+	
+		if(!($stmt = $dbi->prepare($q)))
+		{
+			$e = new SQLerror($dbi->errno, $dbi->error);
+			Error::AddError($e);
+			return false;
+		}
+	
+		$stmt->bind_param('iii',
+			$mut_id,
+			$mut_deleted,
+			$id
 		);
+	
+		foreach($Sets as $Set)
+		{
+			$id = $Set->getID();
+			$outBool = $stmt->execute();
+
+			if(!$outBool)
+			{
+				$e = new SQLerror($dbi->errno, $dbi->error);
+				Error::AddError($e);
+			}
+		}
+	
+		$stmt->close();
+		return $outBool;
 	}
 	
 	/**
@@ -382,7 +480,7 @@ class Set
 	 * @param string $Prefix
 	 * @return array(Set)
 	 */
-	public static function FilterSets($SetArray, $ModelID = null, $SetID = null, $Name = null, $Prefix = null)
+	public static function Filter($SetArray, $ModelID = null, $SetID = null, $Name = null, $Prefix = null)
 	{
 		$OutArray = array();
 

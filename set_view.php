@@ -78,7 +78,7 @@ if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'SetView')
 	{
 		if($DeleteSet)
 		{
-			if(Set::DeleteSet($Set, $CurrentUser))
+			if(Set::Delete($Set, $CurrentUser))
 			{
 				$CacheImages = CacheImage::GetCacheImages(new CacheImageSearchParameters(null, null, $Model->getID()));
 				CacheImage::DeleteMulti($CacheImages, $CurrentUser);
@@ -89,7 +89,7 @@ if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'SetView')
 		}
 		else
 		{
-			$NoErrorDuringPostback = Set::UpdateSet($Set, $CurrentUser);
+			$NoErrorDuringPostback = Set::Update($Set, $CurrentUser);
 			
 			if($NoErrorDuringPostback){
 				Tag2All::HandleTags($tags, $TagsThisSet, $TagsInDB, $CurrentUser, $ModelID, $Set->getID(), null, null);
