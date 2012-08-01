@@ -29,11 +29,11 @@ for($i = 0; $i < count($Models); $i++)
 {
 	$Model = $Models[$i];
 	
-	$CacheImage = CacheImage::FilterCacheImages($CacheImages, null, $Model->getID());
-	CacheImage::DeleteImages($CacheImage, $CurrentUser);
+	$CacheImage = CacheImage::Filter($CacheImages, null, $Model->getID());
+	CacheImage::DeleteMulti($CacheImage, $CurrentUser);
 	
-	$CacheImage = CacheImage::FilterCacheImages($CacheImages, null, null, $Model->getID());
-	CacheImage::DeleteImages($CacheImage, $CurrentUser);
+	$CacheImage = CacheImage::Filter($CacheImages, null, null, $Model->getID());
+	CacheImage::DeleteMulti($CacheImage, $CurrentUser);
 
 	$ImageFolder = sprintf('%1$s/%2$s',
 		CANDYIMAGEPATH,
@@ -75,8 +75,8 @@ for($i = 0; $i < count($Models); $i++)
 				else
 				{ continue; }
 				
-				$CacheImage = CacheImage::FilterCacheImages($CacheImages, null, null, null, $Set->getID());
-				CacheImage::DeleteImages($CacheImage, $CurrentUser);
+				$CacheImage = CacheImage::Filter($CacheImages, null, null, null, $Set->getID());
+				CacheImage::DeleteMulti($CacheImage, $CurrentUser);
 
 				/* @var $ImageInDB Image */
 				$ImagesInDB = Image::FilterImages(
@@ -90,8 +90,8 @@ for($i = 0; $i < count($Models); $i++)
 				{
 					$ImageInDB = $ImagesInDB[0];
 					
-					$CacheImage = CacheImage::FilterCacheImages($CacheImages, null, null, null, null, $ImageInDB->getID());
-					CacheImage::DeleteImages($CacheImage, $CurrentUser);
+					$CacheImage = CacheImage::Filter($CacheImages, null, null, null, null, $ImageInDB->getID());
+					CacheImage::DeleteMulti($CacheImage, $CurrentUser);
 				}
 				else
 				{

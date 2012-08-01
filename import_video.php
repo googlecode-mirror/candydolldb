@@ -72,8 +72,8 @@ for($i = 0; $i < count($Models); $i++)
 				{
 					$VideoInDB = $VideosInDB[0];
 					
-					$CacheImage = CacheImage::FilterCacheImages($CacheImages, null, null, null, null, null, $VideoInDB->getID());
-					CacheImage::DeleteImages($CacheImage, $CurrentUser);
+					$cis = CacheImage::Filter($CacheImages, null, null, null, null, null, $VideoInDB->getID());
+					CacheImage::DeleteMulti($cis, $CurrentUser);
 				}
 				else
 				{

@@ -45,7 +45,7 @@ if($CurrentUser->hasPermission(RIGHT_CACHE_CLEANUP))
 	{
 		$FileToFind = $CacheImage->getFilenameOnDisk();
 		if(!file_exists($FileToFind))
-		{ CacheImage::DeleteImage($CacheImage, $CurrentUser); }
+		{ CacheImage::Delete($CacheImage, $CurrentUser); }
 	}
 	
 	$infoSuccess = new Info($lang->g('MessageCacheImagesCleaned'));
