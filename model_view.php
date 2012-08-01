@@ -49,7 +49,7 @@ if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'ModelView')
 	{
 		if($DeleteModel)
 		{
-		    if(Model::DeleteModel($Model, $CurrentUser))
+		    if(Model::Delete($Model, $CurrentUser))
 		    {
 		    	header('location:index.php');
 		    	exit;
@@ -57,7 +57,7 @@ if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'ModelView')
 		}
 		else
 		{
-		    if(Model::UpdateModel($Model, $CurrentUser))
+		    if(Model::Update($Model, $CurrentUser))
 		    {
 		    	Tag2All::HandleTags($tags, $TagsThisModel, $TagsInDB, $CurrentUser, $Model->getID(), null, null, null);
 		    	header('location:index.php');
@@ -67,7 +67,7 @@ if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'ModelView')
 	}
 	else
 	{
-		if(Model::InsertModel($Model, $CurrentUser))
+		if(Model::Insert($Model, $CurrentUser))
 		{
 			$modelid = $db->GetLatestID();
 			if($modelid) {

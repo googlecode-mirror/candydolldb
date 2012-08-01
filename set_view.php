@@ -98,7 +98,7 @@ if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'SetView')
 	}
 	else
 	{
-		if(($NoErrorDuringPostback = Set::InsertSet($Set, $CurrentUser)))
+		if(($NoErrorDuringPostback = Set::Insert($Set, $CurrentUser)))
 		{
 			$CacheImages = CacheImage::GetCacheImages(new CacheImageSearchParameters(null, null, $Model->getID()));
 			CacheImage::DeleteMulti($CacheImages, $CurrentUser);

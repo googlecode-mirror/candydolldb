@@ -39,7 +39,7 @@ if($XmlFromFile)
 		if(isset($argv) && $argc > 0)
 		{ $bi->Next(); }
 		
-		$ModelInDb = Model::FilterModels(
+		$ModelInDb = Model::Filter(
 			$ModelsInDb,
 			null,
 			(string)$Model->attributes()->firstname,
@@ -69,13 +69,12 @@ if($XmlFromFile)
 
 		if($Model2Process->getID())
 		{
-			Model::UpdateModel($Model2Process, $CurrentUser);
+			Model::Update($Model2Process, $CurrentUser);
 		}
 		else
 		{
-			Model::InsertModel($Model2Process, $CurrentUser);
-			$modelid = $db->GetLatestID();
-			if($modelid) { $Model2Process->setID($modelid); }
+			if(Model::Insert($Model2Process, $CurrentUser))
+			{ $Model2Process->setID($dbi->insert_id); }
 		}
 		
 		$modeltags = Tag::GetTagArray((string)$Model->attributes()->tags);
@@ -130,9 +129,8 @@ if($XmlFromFile)
 			}
 			else
 			{
-				Set::InsertSet($Set2Process, $CurrentUser);
-				$setid = $db->GetLatestID();
-				if($setid) { $Set2Process->setID($setid); }
+				if(Set::Insert($Set2Process, $CurrentUser))
+				{ $Set2Process->setID($dbi->insert_id); }
 				
 				$CacheImages = CacheImage::GetCacheImages(new CacheImageSearchParameters(null, null, $Model2Process->getID()));
 				CacheImage::DeleteMulti($CacheImages, $CurrentUser);
