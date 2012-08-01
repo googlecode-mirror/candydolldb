@@ -226,54 +226,81 @@ class Model
 	}
 	
 	/**
-	 * Process a DB->result() datarow into a Model object.
-	 * @param array $ModelItem
-	 * @return Model
-	 */
-	public static function ProcessDBitem($ModelItem)
-	{
-		$ModelObject = new Model();
-			
-		foreach($ModelItem as $ColumnKey => $ColumnValue)
-		{
-			switch($ColumnKey)
-			{
-				case 'model_id'			: $ModelObject->setID($ColumnValue);		break;
-				case 'model_firstname'	: $ModelObject->setFirstName($ColumnValue);	break;
-				case 'model_lastname'	: $ModelObject->setLastName($ColumnValue);	break;
-				case 'model_birthdate'	: $ModelObject->setBirthDate($ColumnValue);	break;
-				case 'model_remarks'	: $ModelObject->setRemarks($ColumnValue);	break;
-				case 'model_setcount'	: $ModelObject->setSetCount($ColumnValue);	break;
-			}
-		}
-		
-		return $ModelObject;
-	}
-	
-	/**
 	 * Inserts the given model into the database.
 	 * @param Model $Model
 	 * @param User $CurrentUser
 	 * @return bool
 	 */
-	public static function InsertModel($Model, $CurrentUser)
+	public static function Insert($Model, $CurrentUser)
 	{
-	    global $db;
-	    
-	    $result = $db->Insert(
-			'Model',
-			array(
-				mysql_real_escape_string($Model->getFirstName()),
-				mysql_real_escape_string($Model->getLastName()),
-				$Model->getBirthDate(),
-				mysql_real_escape_string($Model->getRemarks()),
-				$CurrentUser->getID(),
-				time()
-			),
-			'model_firstname, model_lastname, model_birthdate, model_remarks, mut_id, mut_date'
-	    );
-	    
-	    return $result;
+		return self::InsertMulti(array($Model), $CurrentUser);
+	}
+	
+	/**
+	 * Inserts the given models into the database.
+	 * @param array(Model) $Models
+	 * @param User $CurrentUser
+	 * @return bool
+	 */
+	public static function InsertMulti($Models, $CurrentUser)
+	{
+		global $dbi;
+	
+		$outBool = true;
+		$model_firstname = $model_lastname =  $model_remarks = null;
+		$model_birthdate = -1;
+		$mut_id = $CurrentUser->getID();
+		$mut_date = time();
+	
+		if(!is_array($Models))
+		{ return false; }
+	
+		$q = sprintf("
+			INSERT INTO	`Model` (
+				`model_firstname`,
+				`model_lastname`,
+				`model_birthdate`,
+				`model_remarks`, 
+				`mut_id`,
+				`mut_date`
+			) VALUES (
+				?, ?, ?, ?, ?, ?
+			)
+		");
+	
+		if(!($stmt = $dbi->prepare($q)))
+		{
+			$e = new SQLerror($dbi->errno, $dbi->error);
+			Error::AddError($e);
+			return false;
+		}
+	
+		$stmt->bind_param('ssisii',
+			$model_firstname,
+			$model_lastname,
+			$model_birthdate,
+			$model_remarks,
+			$mut_id,
+			$mut_date
+		);
+	
+		foreach($Models as $Model)
+		{
+			$model_firstname = $Model->getFirstName();
+			$model_lastname = $Model->getLastName();
+			$model_birthdate = $Model->getBirthDate();
+			$model_remarks = $Model->getRemarks();
+			
+			$outBool = $stmt->execute();
+			if(!$outBool)
+			{
+				$e = new SQLerror($dbi->errno, $dbi->error);
+				Error::AddError($e);
+			}
+		}
+	
+		$stmt->close();
+		return $outBool;
 	}
 	
 	/**
@@ -282,26 +309,78 @@ class Model
 	 * @param User $CurrentUser
 	 * @return bool
 	 */
-	public static function UpdateModel($Model, $CurrentUser)
+	public static function Update($Model, $CurrentUser)
 	{
-		global $db;
-		
-		$result = $db->Update(
-			'Model',
-			array(
-				'model_firstname' => mysql_real_escape_string($Model->getFirstName()),
-				'model_lastname' => mysql_real_escape_string($Model->getLastName()),
-				'model_birthdate' => $Model->getBirthDate(),
-				'model_remarks' => mysql_real_escape_string($Model->getRemarks()),
-				'mut_id' => $CurrentUser->getID(),
-				'mut_date' => time()
-			),
-			array('model_id', $Model->getID())
-		);
-		
-		return $result;
+		return self::UpdateMulti(array($Model), $CurrentUser);
 	}
 	
+	/**
+	 * Updates the databaserecords of supplied Models.
+	 * @param array(Model) $Models
+	 * @param User $CurrentUser
+	 * @return bool
+	 */
+	public static function UpdateMulti($Models, $CurrentUser)
+	{
+		global $dbi;
+	
+		$outBool = true;
+		$id = $model_firstname = $model_lastname =  $model_remarks = null;
+		$model_birthdate = -1;
+		$mut_id = $CurrentUser->getID();
+		$mut_date = time();
+	
+		if(!is_array($Models))
+		{ return false; }
+	
+		$q = sprintf("
+			UPDATE `Model` SET
+				`model_firstname` = ?,
+				`model_lastname` = ?,
+				`model_birthdate` = ?,
+				`model_remarks` = ?,
+				`mut_id` = ?,
+				`mut_date` = ?
+			WHERE
+				`model_id` = ?
+		");
+	
+		if(!($stmt = $dbi->prepare($q)))
+		{
+			$e = new SQLerror($dbi->errno, $dbi->error);
+			Error::AddError($e);
+			return false;
+		}
+	
+		$stmt->bind_param('ssisiii',
+			$model_firstname,
+			$model_lastname,
+			$model_birthdate,
+			$model_remarks,
+			$mut_id,
+			$mut_date,
+			$id
+		);
+	
+		foreach($Models as $Model)
+		{
+			$model_firstname = $Model->getFirstName();
+			$model_lastname = $Model->getLastName();
+			$model_birthdate = $Model->getBirthDate();
+			$model_remarks = $Model->getRemarks();
+			$id = $Model->getID();
+			
+			$outBool = $stmt->execute();
+			if(!$outBool)
+			{
+				$e = new SQLerror($dbi->errno, $dbi->error);
+				Error::AddError($e);
+			}
+		}
+	
+		$stmt->close();
+		return $outBool;
+	}
 	
 	/**
 	 * Removes the specified Model from the database.
@@ -309,18 +388,64 @@ class Model
 	 * @param User $CurrentUser
 	 * @return bool
 	 */
-	public static function DeleteModel($Model, $CurrentUser)
+	public static function Delete($Model, $CurrentUser)
 	{
-		global $db;
-		
-		return $db->Update(
-			'Model',
-			array(
-				'mut_id' => $CurrentUser->getID(),
-				'mut_deleted' => time()
-			),
-			array('model_id', $Model->getID())
+		return self::DeleteMulti(array($Model), $CurrentUser);
+	}
+	
+	/**
+	 * Removes the specified Models from the database.
+	 * @param array(Model) $Model
+	 * @param User $CurrentUser
+	 * @return bool
+	 */
+	public static function DeleteMulti($Models, $CurrentUser)
+	{
+		global $dbi;
+	
+		$outBool = true;
+		$id = null;
+		$mut_id = $CurrentUser->getID();
+		$mut_deleted = time();
+	
+		if(!is_array($Models))
+		{ return false; }
+	
+		$q = sprintf("
+			UPDATE `Model` SET
+				`mut_id` = ?,
+				`mut_deleted` = ?
+			WHERE
+				`model_id` = ?
+		");
+	
+		if(!($stmt = $dbi->prepare($q)))
+		{
+			$e = new SQLerror($dbi->errno, $dbi->error);
+			Error::AddError($e);
+			return false;
+		}
+	
+		$stmt->bind_param('iii',
+			$mut_id,
+			$mut_deleted,
+			$id
 		);
+	
+		foreach($Models as $Model)
+		{
+			$id = $Model->getID();
+			$outBool = $stmt->execute();
+
+			if(!$outBool)
+			{
+				$e = new SQLerror($dbi->errno, $dbi->error);
+				Error::AddError($e);
+			}
+		}
+	
+		$stmt->close();
+		return $outBool;
 	}
 
 	/**
@@ -331,7 +456,7 @@ class Model
 	 * @param string $LastName
 	 * @return array(Model)
 	 */
-	public static function FilterModels($ModelArray, $ModelID = null, $FirstName = null, $LastName = null)
+	public static function Filter($ModelArray, $ModelID = null, $FirstName = null, $LastName = null)
 	{
 		$OutArray = array();
 		$ModelID = empty($ModelID) ? FALSE : $ModelID;

@@ -59,6 +59,12 @@ class Set
 	{ return $this->Model; }
 	
 	/**
+	 * @return int 
+	 */
+	public function getModelID()
+	{ return $this->Model ? $this->Model->getID() : null; }
+	
+	/**
 	 * @param int $Model
 	 */
 	public function setModel($Model)
@@ -245,23 +251,77 @@ class Set
 	 * @param User $CurrentUser
 	 * @return bool
 	 */
-	public static function InsertSet($Set, $CurrentUser)
+	public static function Insert($Set, $CurrentUser)
 	{
-		global $db;
-		
-		$result = $db->Insert(
-			'Set',
-			array(
-				$Set->getModel()->getID(),
-				mysql_real_escape_string($Set->getPrefix()),
-				mysql_real_escape_string($Set->getName()),
-				$Set->getContainsWhat(),
-				$CurrentUser->getID(),
-				time()),
-			'model_id, set_prefix, set_name, set_containswhat, mut_id, mut_date'
+		return self::InsertMulti(array($Set), $CurrentUser);
+	}
+	
+	/**
+	 * Inserts supplied Sets into the database.
+	 * @param array(Set) $Sets
+	 * @param User $CurrentUser
+	 * @return bool
+	 */
+	public static function InsertMulti($Sets, $CurrentUser)
+	{
+		global $dbi;
+	
+		$outBool = true;
+		$model_id = $set_prefix = $set_name = null;
+		$set_containswhat = SET_CONTENT_NONE;
+		$mut_id = $CurrentUser->getID();
+		$mut_date = time();
+	
+		if(!is_array($Sets))
+		{ return false; }
+	
+		$q = sprintf("
+			INSERT INTO	`Set` (
+				`model_id`,
+				`set_prefix`,
+				`set_name`,
+				`set_containswhat`, 
+				`mut_id`,
+				`mut_date`
+			) VALUES (
+				?, ?, ?, ?, ?, ?
+			)
+		");
+	
+		if(!($stmt = $dbi->prepare($q)))
+		{
+			$e = new SQLerror($dbi->errno, $dbi->error);
+			Error::AddError($e);
+			return false;
+		}
+	
+		$stmt->bind_param('issiii',
+			$model_id,
+			$set_prefix,
+			$set_name,
+			$set_containswhat,
+			$mut_id,
+			$mut_date
 		);
-		
-		return $result;
+	
+		/* @var $Set Set */
+		foreach($Sets as $Set)
+		{
+			$model_id = $Set->getModelID();
+			$set_prefix = $Set->getPrefix();
+			$set_name = $Set->getName();
+			$set_containswhat = $Set->getContainsWhat();
+			
+			$outBool = $stmt->execute();
+			if(!$outBool)
+			{
+				$e = new SQLerror($dbi->errno, $dbi->error);
+				Error::AddError($e);
+			}
+		}
+	
+		$stmt->close();
+		return $outBool;
 	}
 	
 	/**
