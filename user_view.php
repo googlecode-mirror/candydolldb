@@ -109,6 +109,7 @@ if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'UserView')
 				{
 				    if(User::DeleteUser($User, $CurrentUser))
 				    {
+				    	session_regenerate_id(true);
 				    	header('location:user.php');
 				    	exit;
 				    }
@@ -119,6 +120,8 @@ if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'UserView')
 				    {
 				    	if($User->getID() == $CurrentUser->getID())
 				    	{ $_SESSION['CurrentUser'] = serialize($User); }
+				    	
+				    	session_regenerate_id(true);
 				    	header('location:user.php');
 				    	exit;
 				    }
@@ -128,6 +131,7 @@ if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'UserView')
 			{
 				if(User::InsertUser($User, $CurrentUser))
 				{
+					session_regenerate_id(true);
 					header('location:user.php');
 					exit;
 				}

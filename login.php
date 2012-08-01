@@ -32,6 +32,7 @@ if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] && $_POST['hidAc
 				User::UpdateUser($User, $User);
 
 				$_SESSION['CurrentUser'] = serialize($User);
+				session_regenerate_id(true);
 
 				if(isset($ReturnURL))
 				{ header('location:'.urldecode($ReturnURL)); }
