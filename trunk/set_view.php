@@ -81,7 +81,7 @@ if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'SetView')
 			if(Set::DeleteSet($Set, $CurrentUser))
 			{
 				$CacheImages = CacheImage::GetCacheImages(new CacheImageSearchParameters(null, null, $Model->getID()));
-				CacheImage::DeleteImages($CacheImages, $CurrentUser);
+				CacheImage::DeleteMulti($CacheImages, $CurrentUser);
 				
 				header('location:'.$ReturnURL);
 				exit;
@@ -101,7 +101,7 @@ if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'SetView')
 		if(($NoErrorDuringPostback = Set::InsertSet($Set, $CurrentUser)))
 		{
 			$CacheImages = CacheImage::GetCacheImages(new CacheImageSearchParameters(null, null, $Model->getID()));
-			CacheImage::DeleteImages($CacheImages, $CurrentUser);
+			CacheImage::DeleteMulti($CacheImages, $CurrentUser);
 			
 			$setid = $db->GetLatestID();
 			if($setid) { $Set->setID($setid); }

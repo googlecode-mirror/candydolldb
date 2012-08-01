@@ -135,7 +135,7 @@ if($XmlFromFile)
 				if($setid) { $Set2Process->setID($setid); }
 				
 				$CacheImages = CacheImage::GetCacheImages(new CacheImageSearchParameters(null, null, $Model2Process->getID()));
-				CacheImage::DeleteImages($CacheImages, $CurrentUser);
+				CacheImage::DeleteMulti($CacheImages, $CurrentUser);
 			}
 			
 			$settags = Tag::GetTagArray((string)$Set->attributes()->tags);

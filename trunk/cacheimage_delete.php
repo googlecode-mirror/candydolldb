@@ -13,8 +13,7 @@ if($CurrentUser->hasPermission(RIGHT_CACHE_DELETE))
 	$Width = Utils::SafeIntFromQS('width');
 	$Height = Utils::SafeIntFromQS('height');;
 	
-	/* @var $CacheImage CacheImage */
-	$CacheImage = null;
+	$CacheImages = null;
 
 	$cisp = new CacheImageSearchParameters(
 		null, null,
@@ -28,15 +27,12 @@ if($CurrentUser->hasPermission(RIGHT_CACHE_DELETE))
 	
 	if($cisp->getValues())
 	{
-		$CacheImage = CacheImage::GetCacheImages($cisp);
+		$CacheImages = CacheImage::GetCacheImages($cisp);
 	}	
 	
-	if($CacheImage)
+	if($CacheImages)
 	{
-		foreach($CacheImage as $CI)
-		{
-			CacheImage::DeleteImage($CI, $CurrentUser);
-		}
+		CacheImage::DeleteMulti($CacheImages, $CurrentUser);
 	}
 }
 else

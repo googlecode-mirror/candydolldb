@@ -330,9 +330,9 @@ class CacheImage
 	* @param User $CurrentUser
 	* @return bool
 	*/
-	public static function DeleteImage($CacheImage, $CurrentUser)
+	public static function Delete($CacheImage, $CurrentUser)
 	{
-		return self::DeleteImages(array($CacheImage), $CurrentUser);
+		return self::DeleteMulti(array($CacheImage), $CurrentUser);
 	}
 	
 	/**
@@ -341,7 +341,7 @@ class CacheImage
 	* @param User $CurrentUser
 	* @return bool
 	*/
-	public static function DeleteImages($CacheImages, $CurrentUser)
+	public static function DeleteMulti($CacheImages, $CurrentUser)
 	{
 		global $dbi;
 		$outBool = true;
@@ -382,7 +382,7 @@ class CacheImage
 		return $outBool;
 	}
 	
-	public static function FilterCacheImages($CacheImageArray, $CacheImageKind = null, $ModelID = null, $ModelIndexID = null, $SetID = null, $ImageID = null, $VideoID = null, $CacheImageID = null)
+	public static function Filter($CacheImageArray, $CacheImageKind = null, $ModelID = null, $ModelIndexID = null, $SetID = null, $ImageID = null, $VideoID = null, $CacheImageID = null)
 	{
 		$OutArray = array();
 			
