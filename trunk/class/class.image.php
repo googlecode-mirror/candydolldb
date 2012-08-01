@@ -24,12 +24,11 @@ class Image
 		$this->ImageWidth = $image_width;
 		$this->ImageHeight = $image_height;
 		
-		/* @var $m Model */
 		/* @var $s Set */
-		$m = new Model($model_id, $model_firstname, $model_lastname);
-		$s = new Set($set_id, $set_prefix, $set_name, $set_containswhat);
+		$s = new Set(
+			$set_id, $set_prefix, $set_name, $set_containswhat,
+			$model_id, $model_firstname, $model_lastname);
 		
-		$s->setModel($m);
 		$this->Set = $s;
 	}
 	
@@ -50,6 +49,12 @@ class Image
 	 */
 	public function getSet()
 	{ return $this->Set; }
+	
+	/**
+	 * @return int
+	 */
+	public function getSetID()
+	{ return $this->Set ? $this->Set->getID() : null; }
 	
 	/**
 	 * @param Set $Set
@@ -274,79 +279,237 @@ class Image
 	 * @param User $CurrentUser
 	 * @return bool
 	 */
-	public static function InsertImage($Image, $CurrentUser)
+	public static function Insert($Image, $CurrentUser)
 	{
-	    global $db;
-	    
-	    $result = $db->Insert(
-			'Image',
-			array(
-			    $Image->getSet()->getID(),
-				mysql_real_escape_string($Image->getFileName()),
-			    mysql_real_escape_string($Image->getFileExtension()),
-			    $Image->getFileSize(),
-			    mysql_real_escape_string($Image->getFileCheckSum()),
-			    $Image->getImageWidth(),
-			    $Image->getImageHeight(),
-			    $CurrentUser->getID(),
-			    time()
-			),
-			'set_id, image_filename, image_fileextension, image_filesize, image_filechecksum, image_width, image_height, mut_id, mut_date'
-	    );
-	    
-	    return $result;
+		return self::InsertMulti(array($Image), $CurrentUser);
+	}
+	
+	/**
+	 * Inserts the given images into the database.
+	 * @param array(Image) $Images
+	 * @param User $CurrentUser
+	 * @return bool
+	 */
+	public static function InsertMulti($Images, $CurrentUser)
+	{
+		global $dbi;
+	
+		$outBool = true;
+		$set_id = $image_filename = $image_fileextension = $image_filesize = $image_filechecksum = $image_width = $image_height = null;
+		$mut_id = $CurrentUser->getID();
+		$mut_date = time();
+	
+		if(!is_array($Images))
+		{ return false; }
+	
+		$q = sprintf("
+			INSERT INTO	`Image` (
+				`set_id`,
+				`image_filename`,
+				`image_fileextension`,
+				`image_filesize`,
+				`image_filechecksum`,
+				`image_width`,
+				`image_height`, 
+				`mut_id`,
+				`mut_date`
+			) VALUES (
+				?, ?, ?, ?, ?, ?, ?, ?, ?
+			)
+		");
+	
+		if(!($stmt = $dbi->prepare($q)))
+		{
+			$e = new SQLerror($dbi->errno, $dbi->error);
+			Error::AddError($e);
+			return false;
+		}
+	
+		$stmt->bind_param('issisiiii',
+			$set_id,
+			$image_filename,
+			$image_fileextension,
+			$image_filesize,
+			$image_filechecksum,
+			$image_width,
+			$image_height,
+			$mut_id,
+			$mut_date
+		);
+	
+		foreach($Images as $Image)
+		{
+			$set_id = $Image->getSetID();
+			$image_filename = $Image->getFileName();
+			$image_fileextension = $Image->getFileExtension();
+			$image_filesize = $Image->getFileSize();
+			$image_filechecksum = $Image->getFileCheckSum();
+			$image_width = $Image->getImageWidth();
+			$image_height = $Image->getImageHeight();
+	
+			$outBool = $stmt->execute();
+			if(!$outBool)
+			{
+				$e = new SQLerror($dbi->errno, $dbi->error);
+				Error::AddError($e);
+			}
+		}
+	
+		$stmt->close();
+		return $outBool;
 	}
 	
 	/**
 	 * Updates the databaserecord of supplied Image.
-	 * 
 	 * @param Image $Image
 	 * @param User $CurrentUser 
 	 * @return bool
 	 */
-	public static function UpdateImage($Image, $CurrentUser)
+	public static function Update($Image, $CurrentUser)
 	{
-		global $db;
+		return self::UpdateMulti(array($Image), $CurrentUser);
+	}
+	
+	/**
+	 * Updates the databaserecord of supplied Images.
+	 * @param array(Image) $Images
+	 * @param User $CurrentUser
+	 * @return bool
+	 */
+	public static function UpdateMulti($Images, $CurrentUser)
+	{
+		global $dbi;
 		
-		$result = $db->Update(
-			'Image',
-			array(
-				'set_id' => $Image->getSet()->getID(),
-				'image_filename' => mysql_real_escape_string($Image->getFileName()),
-				'image_fileextension' => mysql_real_escape_string($Image->getFileExtension()),
-				'image_filesize' => $Image->getFileSize(),
-				'image_filechecksum' => mysql_real_escape_string($Image->getFileCheckSum()),
-				'image_width' => $Image->getImageWidth(),
-				'image_height' => $Image->getImageHeight(),
-				'mut_id' => $CurrentUser->getID(),
-				'mut_date' => time()
-			),
-			array(
-				'image_id', $Image->getID())
+		$outBool = true;
+		$id = $set_id = $image_filename = $image_fileextension = $image_filesize = $image_filechecksum = $image_width = $image_height = null;
+		$mut_id = $CurrentUser->getID();
+		$mut_date = time();
+		
+		if(!is_array($Images))
+		{ return false; }
+		
+		$q = sprintf("
+			UPDATE `Image` SET
+				`set_id` = ?,
+				`image_filename` = ?,
+				`image_fileextension` = ?,
+				`image_filesize` = ?,
+				`image_filechecksum` = ?,
+				`image_width` = ?,
+				`image_height` = ?,
+				`mut_id` = ?,
+				`mut_date` = ?
+			WHERE
+				`image_id` = ?
+		");
+		
+		if(!($stmt = $dbi->prepare($q)))
+		{
+			$e = new SQLerror($dbi->errno, $dbi->error);
+			Error::AddError($e);
+			return false;
+		}
+		
+		$stmt->bind_param('issisiiiii',
+				$set_id,
+				$image_filename,
+				$image_fileextension,
+				$image_filesize,
+				$image_filechecksum,
+				$image_width,
+				$image_height,
+				$mut_id,
+				$mut_date,
+				$id
 		);
 		
-		return $result;
+		foreach($Images as $Image)
+		{
+			$set_id = $Image->getSetID();
+			$image_filename = $Image->getFileName();
+			$image_fileextension = $Image->getFileExtension();
+			$image_filesize = $Image->getFileSize();
+			$image_filechecksum = $Image->getFileCheckSum();
+			$image_width = $Image->getImageWidth();
+			$image_height = $Image->getImageHeight();
+			$id = $Image->getID();
+		
+			$outBool = $stmt->execute();
+			if(!$outBool)
+			{
+				$e = new SQLerror($dbi->errno, $dbi->error);
+				Error::AddError($e);
+			}
+		}
+		
+		$stmt->close();
+		return $outBool;
 	}
 	
 	/**
 	 * Removes the specified Image from the database.
-	 * 
 	 * @param Image $Image
 	 * @param User $CurrentUser
 	 * @return bool
 	 */
-	public static function DeleteImage($Image, $CurrentUser)
+	public static function Delete($Image, $CurrentUser)
 	{
-		global $db;
-		
-		return $db->Update(
-			'Image',
-			array(
-				'mut_id' => $CurrentUser->getID(),
-				'mut_deleted' => time()),
-			array(
-				'image_id', $Image->getID())
+		return self::DeleteMulti(array($Image), $CurrentUser);
+	}
+	
+	/**
+	 * Removes the specified Images from the database.
+	 * @param array(Image) $Images
+	 * @param User $CurrentUser
+	 * @return bool
+	 */
+	public static function DeleteMulti($Images, $CurrentUser)
+	{
+		global $dbi;
+	
+		$outBool = true;
+		$id = null;
+		$mut_id = $CurrentUser->getID();
+		$mut_deleted = time();
+	
+		if(!is_array($Images))
+		{ return false; }
+	
+		$q = sprintf("
+			UPDATE `Image` SET
+				`mut_id` = ?,
+				`mut_deleted` = ?
+			WHERE
+				`image_id` = ?
+		");
+	
+		if(!($stmt = $dbi->prepare($q)))
+		{
+			$e = new SQLerror($dbi->errno, $dbi->error);
+			Error::AddError($e);
+			return false;
+		}
+	
+		$stmt->bind_param('iii',
+			$mut_id,
+			$mut_deleted,
+			$id
 		);
+	
+		foreach($Images as $Image)
+		{
+			$id = $Image->getID();
+			$outBool = $stmt->execute();
+
+			if(!$outBool)
+			{
+				$e = new SQLerror($dbi->errno, $dbi->error);
+				Error::AddError($e);
+			}
+		}
+	
+		$stmt->close();
+		return $outBool;
 	}
 	
 	/**
