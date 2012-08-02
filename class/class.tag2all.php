@@ -27,6 +27,12 @@ class Tag2All
 	{ return $this->Tag; }
 	
 	/**
+	 * @return int
+	 */
+	public function getTagID()
+	{ return $this->Tag ? $this->Tag->getID() : null; }
+	
+	/**
 	 * @param Tag $Tag
 	 */
 	public function setTag($Tag)
@@ -86,27 +92,77 @@ class Tag2All
 	
 	
 	/**
-	 * Inserts the given Tag2All into the database
+	 * Inserts the given Tag2All into the database.
 	 * @param Tag2All $Tag2All
 	 * @param User $CurrentUser
+	 * @return bool
 	 */
 	public static function Insert($Tag2All, $CurrentUser)
 	{
-		global $db;
-		 
-		$result = $db->Insert(
-			'Tag2All',
-			array(
-				$Tag2All->getTag()->getID(),
-				$Tag2All->getModelID(),
-				$Tag2All->getSetID(),
-				$Tag2All->getImageID(),
-				$Tag2All->getVideoID()
-			),
-			'tag_id, model_id, set_id, image_id, video_id'
+		return self::InsertMulti(array($Tag2All), $CurrentUser);
+	}
+	
+	/**
+	 * Inserts the given Tag2Alls into the database.
+	 * @param array(Tag2All) $Tag2Alls
+	 * @param User $CurrentUser
+	 * @return bool
+	 */
+	public static function InsertMulti($Tag2Alls, $CurrentUser)
+	{
+		global $dbi;
+		
+		$outBool = true;
+		$tag_id = $model_id = $set_id = $image_id = $video_id = null;
+		
+		if(!is_array($Tag2Alls))
+		{ return false; }
+		
+		$q = sprintf("
+			INSERT INTO	`Tag2All` (
+				`tag_id`,
+				`model_id`,
+				`set_id`,
+				`image_id`,
+				`video_id`
+			) VALUES (
+				?, ?, ?, ?, ?
+			)
+		");
+		
+		if(!($stmt = $dbi->prepare($q)))
+		{
+			$e = new SQLerror($dbi->errno, $dbi->error);
+			Error::AddError($e);
+			return false;
+		}
+		
+		$stmt->bind_param('iiiii',
+			$tag_id,
+			$model_id,
+			$set_id,
+			$image_id,
+			$video_id
 		);
-		 
-		return $result;
+		
+		foreach($Tag2Alls as $t2a)
+		{
+			$tag_id = $t2a->getTagID();
+			$model_id = $t2a->getModelID();
+			$set_id = $t2a->getSetID();
+			$image_id = $t2a->getImageID();
+			$video_id = $t2a->getVideoID();
+			
+			$outBool = $stmt->execute();
+			if(!$outBool)
+			{
+				$e = new SQLerror($dbi->errno, $dbi->error);
+				Error::AddError($e);
+			}
+		}
+		
+		$stmt->close();
+		return $outBool;
 	}
 	
 	/**
@@ -130,6 +186,16 @@ class Tag2All
 		);
 			
 		return $result;
+	}
+	
+	/**
+	 * Deletes the given Tag2Alls from the database.
+	 * @param array(Tag2All) $Tag2All
+	 * @param User $CurrentUser
+	 */
+	public static function DeleteMulti($Tag2All, $CurrentUser)
+	{
+		
 	}
 
 	/**
@@ -199,7 +265,7 @@ class Tag2All
 	 * @param int $VideoID
 	 * @return array
 	 */
-	public static function FilterTag2Alls($Tag2AllArray, $TagID = null, $ModelID = null, $SetID = null, $ImageID = null, $VideoID = null)
+	public static function Filter($Tag2AllArray, $TagID = null, $ModelID = null, $SetID = null, $ImageID = null, $VideoID = null)
 	{
 		$OutArray = array();
 
@@ -259,38 +325,30 @@ class Tag2All
 	
 		foreach(array_unique($newTags) as $string)
 		{
-			$tInDB = Tag::FilterTags($TagsInDB, null, $string);
+			$tInDB = Tag::Filter($TagsInDB, null, $string);
 	
 			if(!$tInDB)
 			{
 				$tNew = new Tag();
 				$tNew->setName(trim($string));
 	
-				Tag::Insert($tNew, $CurrentUser);
-				$tagid = $db->GetLatestID();
-				if($tagid) {
-					$tNew->setID($tagid);
-				}
-	
-				$TagsInDB[] = $tNew;
+				if(Tag::Insert($tNew, $CurrentUser))
+				{ $TagsInDB[] = $tNew; }
 			}
 		}
 	
 		if($DeleteOldTag2Alls)
 		{
-			foreach($Tag2AllsThisItem as $tti)
-			{
-				Tag2All::Delete($tti, $CurrentUser);
-			}
+			self::DeleteMulti($DeleteOldTag2Alls, $CurrentUser);
 		}
 	
 		foreach(array_unique($newTags) as $string)
 		{
-			$tInDB = Tag::FilterTags($TagsInDB, null, $string);
+			$tInDB = Tag::Filter($TagsInDB, null, $string);
 			
 			if(!$DeleteOldTag2Alls)
 			{
-				$ttits = Tag2All::FilterTag2Alls($Tag2AllsThisItem, $tInDB[0]->getID(), $ModelID, $SetID, $ImageID, $VideoID);
+				$ttits = self::Filter($Tag2AllsThisItem, $tInDB[0]->getID(), $ModelID, $SetID, $ImageID, $VideoID);
 				
 				if($ttits)
 				{ continue; }

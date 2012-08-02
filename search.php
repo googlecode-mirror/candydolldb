@@ -41,7 +41,7 @@ $_SESSION['t'] = $searchMode;
 
 
 /* Core search-processing */
-$filteredTags = Tag::FilterTagsByCSV($Tags, $q);
+$filteredTags = Tag::FilterByCSV($Tags, $q);
 $filteredTagIDs = array();
 
 foreach($filteredTags as $t){
@@ -63,7 +63,7 @@ foreach(array_unique($AllModelIDs) as $modelid)
 {
 	foreach ($filteredTagIDs as $ftid)
 	{
-		if(count(Tag2All::FilterTag2Alls($Tag2Alls, $ftid, $modelid, FALSE, FALSE, FALSE)) == 0)
+		if(count(Tag2All::Filter($Tag2Alls, $ftid, $modelid, FALSE, FALSE, FALSE)) == 0)
 		{ continue 2; }
 	}
 	if(!is_null($modelid))
@@ -81,7 +81,7 @@ foreach(array_unique($AllSetIDs) as $setid)
 {
 	foreach ($filteredTagIDs as $ftid)
 	{
-		if(count(Tag2All::FilterTag2Alls($Tag2Alls, $ftid, FALSE, $setid, FALSE, FALSE)) == 0)
+		if(count(Tag2All::Filter($Tag2Alls, $ftid, FALSE, $setid, FALSE, FALSE)) == 0)
 		{ continue 2; }
 	}
 	if(!is_null($setid))
@@ -100,7 +100,7 @@ foreach(array_unique($AllImageIDs) as $imageid)
 {
 	foreach ($filteredTagIDs as $ftid)
 	{
-		if(count(Tag2All::FilterTag2Alls($Tag2Alls, $ftid, FALSE, FALSE, $imageid, FALSE)) == 0)
+		if(count(Tag2All::Filter($Tag2Alls, $ftid, FALSE, FALSE, $imageid, FALSE)) == 0)
 		{ continue 2; }
 	}
 	if(!is_null($imageid))
@@ -118,7 +118,7 @@ foreach(array_unique($AllVideoIDs) as $videoid)
 {
 	foreach ($filteredTagIDs as $ftid)
 	{
-		if(count(Tag2All::FilterTag2Alls($Tag2Alls, $ftid, FALSE, FALSE, FALSE, $videoid)) == 0)
+		if(count(Tag2All::Filter($Tag2Alls, $ftid, FALSE, FALSE, FALSE, $videoid)) == 0)
 		{ continue 2; }
 	}
 	if(!is_null($videoid))

@@ -77,8 +77,8 @@ if($XmlFromFile)
 		}
 		
 		$modeltags = Tag::GetTagArray((string)$Model->attributes()->tags);
-		$Tag2AllThisModel = Tag2All::FilterTag2Alls($Tag2AllsInDB, null, $Model2Process->getID(), false, false, false);
-		$Tag2AllThisModelOnly = Tag2All::FilterTag2Alls($Tag2AllThisModel, null, $Model2Process->getID(), null, null, null);
+		$Tag2AllThisModel = Tag2All::Filter($Tag2AllsInDB, null, $Model2Process->getID(), false, false, false);
+		$Tag2AllThisModelOnly = Tag2All::Filter($Tag2AllThisModel, null, $Model2Process->getID(), null, null, null);
 		Tag2All::HandleTags($modeltags, $Tag2AllThisModelOnly, $TagsInDB, $CurrentUser, $Model2Process->getID(), null, null, null, false);
 		
 		if(!$Model->Sets)
@@ -135,7 +135,7 @@ if($XmlFromFile)
 			}
 			
 			$settags = Tag::GetTagArray((string)$Set->attributes()->tags);
-			$Tag2AllThisSet = Tag2All::FilterTag2Alls($Tag2AllThisModel, null, $Model2Process->getID(), $Set2Process->getID(), null, null);
+			$Tag2AllThisSet = Tag2All::Filter($Tag2AllThisModel, null, $Model2Process->getID(), $Set2Process->getID(), null, null);
 			Tag2All::HandleTags($settags, $Tag2AllThisSet, $TagsInDB, $CurrentUser, $Model2Process->getID(), $Set2Process->getID(), null, null, false);
 			
 			$datesPic = array();

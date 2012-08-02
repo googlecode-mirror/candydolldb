@@ -117,7 +117,7 @@ class Tag
 	 * @param int $TagID
 	 * @param string $TagName
 	 */
-	public static function FilterTags($Tags, $TagID = null, $TagName = null)
+	public static function Filter($Tags, $TagID = null, $TagName = null)
 	{
 		$OutArray = array();
 		
@@ -140,7 +140,7 @@ class Tag
 	* @param array(Tag) $Tags
 	* @param string $input
 	*/
-	public static function FilterTagsByCSV($Tags, $input)
+	public static function FilterByCSV($Tags, $input)
 	{
 		global $CSVRegex;
 		$OutArray = array();
