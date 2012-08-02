@@ -22,7 +22,7 @@ if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'TagView')
 	{
 		if($DeleteTag)
 		{
-			if(Tag::DeleteTag($Tag, $CurrentUser))
+			if(Tag::Delete($Tag, $CurrentUser))
 			{
 				$t2as = Tag2All::GetTag2Alls(new Tag2AllSearchParameters($Tag->getID()));
 				
@@ -36,7 +36,7 @@ if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'TagView')
 		}
 		else
 		{
-			if(Tag::UpdateTag($Tag, $CurrentUser))
+			if(Tag::Update($Tag, $CurrentUser))
 			{
 				header('location:'.$_SERVER['PHP_SELF']);
 				exit;
@@ -45,7 +45,7 @@ if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'TagView')
 	}
 	else
 	{
-		if(Tag::InsertTag($Tag, $CurrentUser))
+		if(Tag::Insert($Tag, $CurrentUser))
 		{
 			header('location:'.$_SERVER['PHP_SELF']);
 			exit;

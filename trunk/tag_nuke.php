@@ -14,7 +14,7 @@ if($CurrentUser->hasPermission(RIGHT_TAG_CLEANUP))
 		$t2as = Tag2All::GetTag2Alls(new Tag2AllSearchParameters($t->getID()));
 		
 		if(!$t2as){
-			Tag::DeleteTag($t, $CurrentUser);
+			Tag::Delete($t, $CurrentUser);
 		}
 	}
 	
