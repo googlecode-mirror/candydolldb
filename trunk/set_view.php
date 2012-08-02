@@ -10,8 +10,8 @@ $SetID = Utils::SafeIntFromQS('set_id');
 $TagsInDB = Tag::GetTags();
 $TagsThisSet = Tag2All::GetTag2Alls(new Tag2AllSearchParameters(
 	null, null, null,
-	$ModelID, null,
-	$SetID, null,
+	($ModelID ? $ModelID : -1), null,
+	($SetID ? $SetID : -1), null,
 	null, null,
 	null, null,
 	false, false, true, true));

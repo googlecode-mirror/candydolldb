@@ -66,7 +66,7 @@ for($i = 0; $i < count($Models); $i++)
 				{ $Set = $Set[0]; }
 			
 				/* @var $VideoInDB Video */
-				$VideosInDB = Video::FilterVideos($Videos, $ModelID, $Set->getID(), $matches['Name'].$matches['Number'].$matches['Suffix']);
+				$VideosInDB = Video::Filter($Videos, $ModelID, $Set->getID(), $matches['Name'].$matches['Number'].$matches['Suffix']);
 
 				if($VideosInDB)
 				{
@@ -87,9 +87,9 @@ for($i = 0; $i < count($Models); $i++)
 				$VideoInDB->setFileCheckSum(md5_file($FileInfo->getRealPath()));
 					
 				if(!$VideoInDB->getID())
-				{ Video::InsertVideo($VideoInDB, $CurrentUser); }
+				{ Video::Insert($VideoInDB, $CurrentUser); }
 				else
-				{ Video::UpdateVideo($VideoInDB, $CurrentUser); }
+				{ Video::Update($VideoInDB, $CurrentUser); }
 			}
 		}
 	}

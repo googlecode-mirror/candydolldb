@@ -11,9 +11,9 @@ $ImageID = Utils::SafeIntFromQS('image_id');
 $TagsInDB = Tag::GetTags();
 $TagsThisImage = Tag2All::GetTag2Alls(new Tag2AllSearchParameters(
 	null, null, null,
-	$ModelID, null,
-	$SetID, null,
-	$ImageID, null,
+	($ModelID ? $ModelID : -1), null,
+	($SetID ? $SetID : -1), null,
+	($ImageID ? $ImageID : -1), null,
 	null, null,
 	false, false, false, true));
 
