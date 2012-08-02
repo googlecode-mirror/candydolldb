@@ -221,7 +221,11 @@ class Date
 			$date_timestamp = $Date->getTimeStamp();
 		
 			$outBool = $stmt->execute(); 
-			if(!$outBool)
+			if($outBool)
+			{
+				$Date->setID($dbi->insert_id);
+			}
+			else
 			{
 				$e = new SQLerror($dbi->errno, $dbi->error);
 				Error::AddError($e);
@@ -283,7 +287,6 @@ class Date
 		
 		$stmt->bind_param('iiiiii', $set_id, $date_kind, $date_timestamp, $mut_id, $mut_date, $id);
 		
-		/* @var $Date Date */
 		foreach($Dates as $Date)
 		{
 			$set_id = $Date->getSetID();
@@ -292,7 +295,6 @@ class Date
 			$id = $Date->getID();
 			
 			$outBool = $stmt->execute();
-		
 			if(!$outBool)
 			{
 				$e = new SQLerror($dbi->errno, $dbi->error);
@@ -352,7 +354,6 @@ class Date
 		
 		$stmt->bind_param('iii', $mut_id, $mut_deleted, $id);
 		
-		/* @var $Date Date */
 		foreach($Dates as $Date)
 		{
 			$id = $Date->getID();

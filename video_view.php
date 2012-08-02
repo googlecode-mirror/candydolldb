@@ -11,12 +11,12 @@ $VideoID = Utils::SafeIntFromQS('video_id');
 $TagsInDB = Tag::GetTags();
 $TagsThisVideo = Tag2All::GetTag2Alls(new Tag2AllSearchParameters(
 	null, null, null,
-	$ModelID, null,
-	$SetID, null,
+	($ModelID ? $ModelID : -1), null,
+	($SetID ? $SetID : -1), null,
 	null, null,
-	$VideoID, null,
+	($VideoID ? $VideoID : -1), null,
 	false, false, true, false));
-
+	
 if(!isset($ModelID))
 {
 	header('location:index.php');
@@ -82,7 +82,7 @@ if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'VideoView')
 	{
 		if($DeleteVideo)
 		{
-			if(Video::DeleteVideo($Video, $CurrentUser))
+			if(Video::Delete($Video, $CurrentUser))
 			{
 				header('location:'.$ReturnURL);
 				exit;
@@ -90,7 +90,7 @@ if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'VideoView')
 		}
 		else
 		{
-			if(Video::UpdateVideo($Video, $CurrentUser))
+			if(Video::Update($Video, $CurrentUser))
 			{
 				Tag2All::HandleTags($tags, $TagsThisVideo, $TagsInDB, $CurrentUser, $ModelID, $SetID, null, $Video->getID(), null);
 				header('location:'.$ReturnURL);
@@ -100,7 +100,7 @@ if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'VideoView')
 	}
 	else
 	{
-		if(Video::InsertVideo($Video, $CurrentUser))
+		if(Video::Insert($Video, $CurrentUser))
 		{
 			$videoid = $db->GetLatestID();
 			if($videoid) {

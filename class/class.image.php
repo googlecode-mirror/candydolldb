@@ -348,7 +348,11 @@ class Image
 			$image_height = $Image->getImageHeight();
 	
 			$outBool = $stmt->execute();
-			if(!$outBool)
+			if($outBool)
+			{
+				$Image->setID($dbi->insert_id);
+			}
+			else
 			{
 				$e = new SQLerror($dbi->errno, $dbi->error);
 				Error::AddError($e);

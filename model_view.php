@@ -11,7 +11,7 @@ $EditModel = $CurrentUser->hasPermission(RIGHT_USER_EDIT);
 $TagsInDB = Tag::GetTags();
 $TagsThisModel = Tag2All::GetTag2Alls(new Tag2AllSearchParameters(
 	null, null, null,
-	$ModelID, null,
+	($ModelID ? $ModelID : -1), null,
 	null, null,
 	null, null,
 	null, null,

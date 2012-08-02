@@ -10,9 +10,18 @@ class Video
 	private $FileCheckSum;
 	
 	/**
-	 * @param int $ID
-	 * @param string $FileName
-	 * @param string $FileExtension
+	 * @param int $video_id
+	 * @param string $video_filename
+	 * @param string $video_fileextension
+	 * @param int $video_filesize
+	 * @param string $video_filechecksum
+	 * @param int $set_id
+	 * @param string $set_prefix
+	 * @param string$set_name
+	 * @param int $set_containswhat
+	 * @param int $model_id
+	 * @param string $model_firstname
+	 * @param string $model_lastname
 	 */
 	public function __construct(
 		$video_id = null, $video_filename = null, $video_fileextension = null, $video_filesize = 0, $video_filechecksum = null,
@@ -25,12 +34,10 @@ class Video
 		$this->FileSize = $video_filesize;
 		$this->FileCheckSum = $video_filechecksum;
 		
-		/* @var $m Model */
 		/* @var $s Set */
-		$m = new Model($model_id, $model_firstname, $model_lastname);
-		$s = new Set($set_id, $set_prefix, $set_name, $set_containswhat);
+		$s = new Set($set_id, $set_prefix, $set_name, $set_containswhat,
+			$model_id, $model_firstname, $model_lastname);
 		
-		$s->setModel($m);
 		$this->Set = $s;
 	}
 	
@@ -51,6 +58,12 @@ class Video
 	 */
 	public function getSet()
 	{ return $this->Set; }
+	
+	/**
+	 * @return int
+	 */
+	public function getSetID()
+	{ return $this->Set ? $this->Set->getID() : null; }
 	
 	/**
 	 * @param Set $Set
@@ -105,7 +118,6 @@ class Video
 	 */
 	public function setFileCheckSum($FileCheckSum)
 	{ $this->FileCheckSum = $FileCheckSum; }
-
 	
 	/**
 	 * Gets an array of Videos from the database, or NULL on failure.
@@ -182,25 +194,83 @@ class Video
 	 * @param User $CurrentUser
 	 * @return bool
 	 */
-	public static function InsertVideo($Video, $CurrentUser)
+	public static function Insert($Video, $CurrentUser)
 	{
-	    global $db;
-	    
-	    $result = $db->Insert(
-			'Video',
-			array(
-			    $Video->getSet()->getID(),
-				mysql_real_escape_string($Video->getFileName()),
-			    mysql_real_escape_string($Video->getFileExtension()),
-			    $Video->getFileSize(),
-			    mysql_real_escape_string($Video->getFileCheckSum()),
-			    $CurrentUser->getID(),
-			    time()
-			),
-			'set_id, video_filename, video_fileextension, video_filesize, video_filechecksum, mut_id, mut_date'
-	    );
-	    
-	    return $result;
+	    return self::InsertMulti(array($Video), $CurrentUser);
+	}
+	
+	/**
+	 * Inserts the given videos into the database.
+	 * @param array(Video) $Videos
+	 * @param User $CurrentUser
+	 * @return bool
+	 */
+	public static function InsertMulti($Videos, $CurrentUser)
+	{
+		global $dbi;
+	
+		$outBool = true;
+		$set_id = $video_filename = $video_fileextension = $video_filechecksum = null;
+		$video_filesize = 0;
+		$mut_id = $CurrentUser->getID();
+		$mut_date = time();
+	
+		if(!is_array($Videos))
+		{ return false; }
+	
+		$q = sprintf("
+			INSERT INTO	`Video` (
+				`set_id`,
+				`video_filename`,
+				`video_fileextension`,
+				`video_filesize`,
+				`video_filechecksum`,
+				`mut_id`,
+				`mut_date`
+			) VALUES (
+				?, ?, ?, ?, ?, ?, ?
+			)
+		");
+	
+		if(!($stmt = $dbi->prepare($q)))
+		{
+			$e = new SQLerror($dbi->errno, $dbi->error);
+			Error::AddError($e);
+			return false;
+		}
+	
+		$stmt->bind_param('issisii',
+			$set_id,
+			$video_filename,
+			$video_fileextension,
+			$video_filesize,
+			$video_filechecksum,
+			$mut_id,
+			$mut_date
+		);
+
+		foreach($Videos as $Video)
+		{
+			$set_id = $Video->getSetID();
+			$video_filename = $Video->getFileName();
+			$video_fileextension = $Video->getFileExtension();
+			$video_filesize = $Video->getFileSize();
+			$video_filechecksum = $Video->getFileCheckSum();
+	
+			$outBool = $stmt->execute();
+			if($outBool)
+			{
+				$Video->setID($dbi->insert_id);
+			}
+			else
+			{
+				$e = new SQLerror($dbi->errno, $dbi->error);
+				Error::AddError($e);
+			}
+		}
+	
+		$stmt->close();
+		return $outBool;
 	}
 	
 	/**
@@ -209,26 +279,80 @@ class Video
 	 * @param User $CurrentUser
 	 * @return bool
 	 */
-	public static function UpdateVideo($Video, $CurrentUser)
+	public static function Update($Video, $CurrentUser)
 	{
-		global $db;
-		
-		$result = $db->Update(
-			'Video',
-			array(
-				'set_id' => $Video->getSet()->getID(),
-				'video_filename' => mysql_real_escape_string($Video->getFileName()),
-				'video_fileextension' => mysql_real_escape_string($Video->getFileExtension()),
-				'video_filesize' => $Video->getFileSize(),
-				'video_filechecksum' => mysql_real_escape_string($Video->getFileCheckSum()),
-				'mut_id' => $CurrentUser->getID(),
-				'mut_date' => time()
-			),
-			array(
-				'video_id', $Video->getID())
+		return self::UpdateMulti(array($Video), $CurrentUser);
+	}
+	
+	/**
+	 * Updates the databaserecords of supplied Videos.
+	 * @param array(Video) $Videos
+	 * @param User $CurrentUser
+	 * @return bool
+	 */
+	public static function UpdateMulti($Videos, $CurrentUser)
+	{
+		global $dbi;
+		$outBool = true;
+
+		$id = $set_id = $video_filename = $video_fileextension = $video_filechecksum = null;
+		$video_filesize = 0;
+		$mut_id = $CurrentUser->getID();
+		$mut_date = time();
+	
+		if(!is_array($Videos))
+		{ return false; }
+	
+		$q = sprintf("
+			UPDATE `Video` SET
+				`set_id` = ?,
+				`video_filename` = ?,
+				`video_fileextension` = ?,
+				`video_filesize` = ?,
+				`video_filechecksum` = ?,
+				`mut_id` = ?,
+				`mut_date` = ?
+			WHERE
+				`video_id` = ?
+		");
+	
+		if(!($stmt = $dbi->prepare($q)))
+		{
+			$e = new SQLerror($dbi->errno, $dbi->error);
+			Error::AddError($e);
+			return false;
+		}
+	
+		$stmt->bind_param('issisiii',
+			$set_id,
+			$video_filename,
+			$video_fileextension,
+			$video_filesize,
+			$video_filechecksum,
+			$mut_id,
+			$mut_date,
+			$id
 		);
-		
-		return $result;
+
+		foreach($Videos as $Video)
+		{
+			$set_id = $Video->getSetID();
+			$video_filename = $Video->getFileName();
+			$video_fileextension = $Video->getFileExtension();
+			$video_filesize = $Video->getFileSize();
+			$video_filechecksum = $Video->getFileCheckSum();
+			$id = $Video->getID();
+	
+			$outBool = $stmt->execute();
+			if(!$outBool)
+			{
+				$e = new SQLerror($dbi->errno, $dbi->error);
+				Error::AddError($e);
+			}
+		}
+	
+		$stmt->close();
+		return $outBool;
 	}
 	
 	/**
@@ -237,19 +361,64 @@ class Video
 	 * @param User $CurrentUser
 	 * @return bool
 	 */
-	public static function DeleteVideo($Video, $CurrentUser)
+	public static function Delete($Video, $CurrentUser)
 	{
-		global $db;
-		
-		return $db->Update(
-			'Video',
-			array(
-				'mut_id' => $CurrentUser->getID(),
-				'mut_deleted' => time()
-			),
-			array(
-				'video_id', $Video->getID())
+		return self::DeleteMulti(array($Video), $CurrentUser);
+	}
+	
+	/**
+	 * Removes the specified Videos from the database.
+	 * @param array(Video) $Videos
+	 * @param User $CurrentUser
+	 * @return bool
+	 */
+	public static function DeleteMulti($Videos, $CurrentUser)
+	{
+		global $dbi;
+	
+		$outBool = true;
+		$id = null;
+		$mut_id = $CurrentUser->getID();
+		$mut_deleted = time();
+	
+		if(!is_array($Videos))
+		{ return false; }
+	
+		$q = sprintf("
+			UPDATE `Video` SET
+				`mut_id` = ?,
+				`mut_deleted` = ?
+			WHERE
+				`video_id` = ?
+		");
+	
+		if(!($stmt = $dbi->prepare($q)))
+		{
+			$e = new SQLerror($dbi->errno, $dbi->error);
+			Error::AddError($e);
+			return false;
+		}
+	
+		$stmt->bind_param('iii',
+			$mut_id,
+			$mut_deleted,
+			$id
 		);
+	
+		foreach($Videos as $Video)
+		{
+			$id = $Video->getID();
+			$outBool = $stmt->execute();
+
+			if(!$outBool)
+			{
+				$e = new SQLerror($dbi->errno, $dbi->error);
+				Error::AddError($e);
+			}
+		}
+	
+		$stmt->close();
+		return $outBool;
 	}
 	
 	/**
@@ -260,7 +429,7 @@ class Video
 	 * @param string $Filename
 	 * @return array(Video)
 	 */
-	public static function FilterVideos($VideoArray, $ModelID = null, $SetID = null, $Filename = null)
+	public static function Filter($VideoArray, $ModelID = null, $SetID = null, $Filename = null)
 	{
 		$OutArray = array();
 			
