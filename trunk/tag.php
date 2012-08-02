@@ -8,7 +8,7 @@ $TagID = Utils::SafeIntFromQS('tag_id');
 $DeleteTag = (array_key_exists('hidTagToDelete', $_POST) && $TagID && $_POST['hidTagToDelete'] == $TagID);
 
 $Tags = Tag::GetTags();
-$Tag = Tag::FilterTags($Tags, $TagID);
+$Tag = Tag::Filter($Tags, $TagID);
 $Tag = $TagID && $Tag ? $Tag[0] : new Tag();
 
 $Tagcount = 0;
