@@ -37,7 +37,6 @@ class Tag
 	public function setName($Name)
 	{ $this->Name = $Name; }
 	
-	
 	/**
 	* Returns a sorted string array of all comma separated pieces in the input
 	* @param string $tagString
@@ -51,7 +50,6 @@ class Tag
 		sort($s);
 		return $s;
 	}
-	
 
 	/**
 	* Gets an array of Tags from the database, or NULL on failure.
@@ -170,23 +168,72 @@ class Tag
 	* Inserts the given tag into the database.
 	* @param Tag $Tag
 	* @param User $CurrentUser
-	* @param bool $AddIgnore, for ignoring duplicate key violations
 	* @return bool
 	*/
-	public static function InsertTag($Tag, $CurrentUser, $AddIgnore = false)
+	public static function Insert($Tag, $CurrentUser)
 	{
-		global $db;
-		 
-		return $db->Insert(
-			'Tag',
-			array(
-				mysql_real_escape_string($Tag->getName()),
-				$CurrentUser->getID(),
-				time()
-			),
-			'tag_name, mut_id, mut_date',
-			$AddIgnore
+		return self::InsertMulti(array($Tag), $CurrentUser);
+	}
+	
+	/**
+	 * Inserts the given tags into the database.
+	 * @param array(Tag) $Tags
+	 * @param User $CurrentUser
+	 * @return bool
+	 */
+	public static function InsertMulti($Tags, $CurrentUser)
+	{
+		global $dbi;
+	
+		$outBool = true;
+		$tag_name = null;
+		$mut_id = $CurrentUser->getID();
+		$mut_date = time();
+	
+		if(!is_array($Tags))
+		{ return false; }
+	
+		$q = sprintf("
+			INSERT INTO	`Tag` (
+				`tag_name`,
+				`mut_id`,
+				`mut_date`
+			) VALUES (
+				?, ?, ?
+			)
+		");
+	
+		if(!($stmt = $dbi->prepare($q)))
+		{
+			$e = new SQLerror($dbi->errno, $dbi->error);
+			Error::AddError($e);
+			return false;
+		}
+	
+		$stmt->bind_param('sii',
+			$tag_name,
+			$mut_id,
+			$mut_date
 		);
+	
+		foreach($Tags as $Tag)
+		{
+			$tag_name = $Tag->getName();
+			$outBool = $stmt->execute();
+
+			if($outBool)
+			{
+				$Tag->setID($dbi->insert_id);
+			}
+			else
+			{
+				$e = new SQLerror($dbi->errno, $dbi->error);
+				Error::AddError($e);
+			}
+		}
+	
+		$stmt->close();
+		return $outBool;
 	}
 	
 	/**
@@ -195,18 +242,67 @@ class Tag
 	* @param User $CurrentUser
 	* @return bool
 	*/
-	public static function UpdateTag($Tag, $CurrentUser)
+	public static function Update($Tag, $CurrentUser)
 	{
-		global $db;
+		return self::UpdateMulti(array($Tag), $CurrentUser);
+	}
 	
-		return $db->Update(
-				'Tag',
-			array(
-				'tag_name' => mysql_real_escape_string($Tag->getName()),
-				'mut_id' => $CurrentUser->getID(),
-				'mut_date' => time()),
-			array('tag_id', $Tag->getID())
+	/**
+	 * Updates the databaserecords of supplied Tags.
+	 * @param array(Tag) $Tags
+	 * @param User $CurrentUser
+	 * @return bool
+	 */
+	public static function UpdateMulti($Tags, $CurrentUser)
+	{
+		global $dbi;
+	
+		$outBool = true;
+		$tag_name = $id = null;
+		$mut_id = $CurrentUser->getID();
+		$mut_date = time();
+	
+		if(!is_array($Tags))
+		{ return false; }
+	
+		$q = sprintf("
+			UPDATE `Tag` SET
+				`tag_name` = ?,
+				`mut_id` = ?,
+				`mut_date` = ?
+			WHERE
+				`tag_id` = ?
+		");
+		
+		if(!($stmt = $dbi->prepare($q)))
+		{
+			$e = new SQLerror($dbi->errno, $dbi->error);
+			Error::AddError($e);
+			return false;
+		}
+	
+		$stmt->bind_param('siii',
+			$tag_name,
+			$mut_id,
+			$mut_date,
+			$id
 		);
+	
+		foreach($Tags as $Tag)
+		{
+			$tag_name = $Tag->getName();
+			$id = $Tag->getID();
+			
+			$outBool = $stmt->execute();
+			if(!$outBool)
+			{
+				$e = new SQLerror($dbi->errno, $dbi->error);
+				Error::AddError($e);
+			}
+		}
+	
+		$stmt->close();
+		return $outBool;
 	}
 	
 	/**
@@ -215,17 +311,64 @@ class Tag
 	* @param User $CurrentUser
 	* @return bool
 	*/
-	public static function DeleteTag($Tag, $CurrentUser)
+	public static function Delete($Tag, $CurrentUser)
 	{
-		global $db;
+		return self::DeleteMulti(array($Tag), $CurrentUser);
+	}
 	
-		return $db->Update(
-				'Tag',
-			array(
-				'mut_id' => $CurrentUser->getID(),
-				'mut_deleted' => time()),
-			array('tag_id', $Tag->getID())
+	/**
+	 * Removes the specified Tags from the database.
+	 * @param array(Tag) $Tags
+	 * @param User $CurrentUser
+	 * @return bool
+	 */
+	public static function DeleteMulti($Tags, $CurrentUser)
+	{
+		global $dbi;
+	
+		$outBool = true;
+		$id = null;
+		$mut_id = $CurrentUser->getID();
+		$mut_deleted = time();
+	
+		if(!is_array($Tags))
+		{ return false; }
+	
+		$q = sprintf("
+			UPDATE `Tag` SET
+				`mut_id` = ?,
+				`mut_deleted` = ?
+			WHERE
+				`tag_id` = ?
+		");
+	
+		if(!($stmt = $dbi->prepare($q)))
+		{
+			$e = new SQLerror($dbi->errno, $dbi->error);
+			Error::AddError($e);
+			return false;
+		}
+	
+		$stmt->bind_param('iii',
+			$mut_id,
+			$mut_deleted,
+			$id
 		);
+	
+		foreach($Tags as $Tag)
+		{
+			$id = $Tag->getID();
+			$outBool = $stmt->execute();
+
+			if(!$outBool)
+			{
+				$e = new SQLerror($dbi->errno, $dbi->error);
+				Error::AddError($e);
+			}
+		}
+	
+		$stmt->close();
+		return $outBool;
 	}
 }
 

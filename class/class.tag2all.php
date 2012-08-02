@@ -266,7 +266,7 @@ class Tag2All
 				$tNew = new Tag();
 				$tNew->setName(trim($string));
 	
-				Tag::InsertTag($tNew, $CurrentUser);
+				Tag::Insert($tNew, $CurrentUser);
 				$tagid = $db->GetLatestID();
 				if($tagid) {
 					$tNew->setID($tagid);
