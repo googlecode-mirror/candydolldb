@@ -69,18 +69,11 @@ if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'ModelView')
 	{
 		if(Model::Insert($Model, $CurrentUser))
 		{
-			$modelid = $db->GetLatestID();
-			if($modelid) {
-				$Model->setID($modelid);
-			}
-			
 			Tag2All::HandleTags($tags, $TagsThisModel, $TagsInDB, $CurrentUser, $Model->getID(), null, null, null);
 			header('location:index.php');
 		    exit;
 		}
 	}
-	
-	
 }
 
 echo HTMLstuff::HtmlHeader($Model->GetFullName(), $CurrentUser);

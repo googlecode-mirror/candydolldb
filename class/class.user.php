@@ -549,31 +549,7 @@ class User
 	 */
 	public static function Update($User, $CurrentUser)
 	{
-		global $db;
-		
-		return $db->Update(
-			'User',
-			array(
-				'user_username' => mysql_real_escape_string($User->getUserName()),
-				'user_password' => mysql_real_escape_string($User->getPassword()),
-				'user_salt' => mysql_real_escape_string($User->getSalt()),
-				'user_firstname' => mysql_real_escape_string($User->getFirstName()),
-				'user_insertion' => mysql_real_escape_string($User->getInsertion()),
-				'user_lastname' => mysql_real_escape_string($User->getLastName()),
-				'user_email' => mysql_real_escape_string($User->getEmailAddress()),
-				'user_datedisplayopts' => $User->getDateDisplayOptions(),
-				'user_imageview' => $User->getImageview(),
-				'user_language' => $User->getLanguage(),
-				'user_gender' => $User->getGender(),
-				'user_birthdate' => $User->getBirthDate(),
-				'user_lastactive' => $User->getLastActive(),
-				'user_lastlogin' => $User->getLastLogin(),
-				'user_rights' => $User->getRights(),
-				'user_prelastlogin' => $User->getPreLastLogin(),
-				'mut_id' => $CurrentUser->getID(),
-				'mut_date' => time()),
-			array('user_id', $User->getID())
-		);
+		return self::UpdateMulti(array($User), $CurrentUser);
 	}
 	
 	/**
