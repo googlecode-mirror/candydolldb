@@ -60,7 +60,7 @@ else if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] && $_POST['
 
 			$User->setPreLastLogin($User->getLastLogin());
 			$User->setLastLogin(time());
-			User::UpdateUser($User, $User);
+			User::Update($User, $User);
 				
 			$_SESSION['CurrentUser'] = serialize($User);
 			header('location:index.php');

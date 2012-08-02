@@ -348,6 +348,7 @@ class User
 	/**
 	 * Checks this user's rights for the given permission
 	 * @param int $permission
+	 * @return bool
 	 */
 	public function hasPermission($permission)
 	{ return self::CheckPermission($this->Rights, $permission); }
@@ -433,31 +434,111 @@ class User
 	 * @param User $CurrentUser
 	 * @return bool
 	 */
-	public static function InsertUser($User, $CurrentUser)
+	public static function Insert($User, $CurrentUser)
 	{
-	    global $db;
-	    
-	    return $db->Insert(
-		'User',
-		array(
-		    mysql_real_escape_string($User->getUserName()),
-		    mysql_real_escape_string($User->getPassword()),
-		    mysql_real_escape_string($User->getSalt()),
-			mysql_real_escape_string($User->getFirstName()),
-			mysql_real_escape_string($User->getInsertion()),
-		    mysql_real_escape_string($User->getLastName()),
-		    mysql_real_escape_string($User->getEmailAddress()),
-		    $User->getDateDisplayOptions(),
-		    $User->getRights(),
-		    $User->getImageview(),
-		    $User->getLanguage(),
-		    $User->getGender(),
-		    $User->getBirthDate(),
-		    $CurrentUser->getID(),
-		    time()
-		),
-		'user_username, user_password, user_salt, user_firstname, user_insertion, user_lastname, user_email, user_datedisplayopts, user_rights, user_imageview, user_language,  user_gender, user_birthdate, mut_id, mut_date'
-	    );
+	    return self::InsertMulti(array($User), $CurrentUser);
+	}
+	
+	/**
+	 * Inserts the given users into the database.
+	 * @param array(User) $Users
+	 * @param User $CurrentUser
+	 * @return bool
+	 */
+	public static function InsertMulti($Users, $CurrentUser)
+	{
+		global $dbi;
+		$outBool = true;
+
+		$user_username = $user_password = $user_salt = $user_firstname = $user_insertion = $user_lastname = $user_email = null;
+		$user_datedisplayopts = $user_rights = 0;
+		$user_imageview = 'detail';
+		$user_language = 'en';
+		$user_gender = GENDER_UNKNOWN;
+		$user_birthdate = -1;
+		$mut_id = $CurrentUser->getID();
+		$mut_date = time();
+	
+		if(!is_array($Users))
+		{ return false; }
+	
+		$q = sprintf("
+			INSERT INTO	`User` (
+				`user_username`,
+				`user_password`,
+				`user_salt`,
+				`user_firstname`,
+				`user_insertion`,
+				`user_lastname`,
+				`user_email`,
+				`user_datedisplayopts`,
+				`user_rights`,
+				`user_imageview`,
+				`user_language`,
+				`user_gender`,
+				`user_birthdate`,
+				`mut_id`,
+				`mut_date`
+			) VALUES (
+				?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
+			)
+		");
+	
+		if(!($stmt = $dbi->prepare($q)))
+		{
+			$e = new SQLerror($dbi->errno, $dbi->error);
+			Error::AddError($e);
+			return false;
+		}
+	
+		$stmt->bind_param('sssssssiissiiii',
+			$user_username,
+			$user_password,
+			$user_salt,
+			$user_firstname,
+			$user_insertion,
+			$user_lastname,
+			$user_email,
+			$user_datedisplayopts,
+			$user_rights,
+			$user_imageview,
+			$user_language,
+			$user_gender,
+			$user_birthdate,
+			$mut_id,
+			$mut_date
+		);
+	
+		foreach($Users as $User)
+		{
+			$user_username = $User->getUserName();
+			$user_password = $User->getPassword();
+			$user_salt = $User->getSalt();
+			$user_firstname = $User->getFirstName();
+			$user_insertion = $User->getInsertion();
+			$user_lastname = $User->getLastName();
+			$user_email = $User->getEmailAddress();
+			$user_datedisplayopts = $User->getDateDisplayOptions();
+			$user_rights = $User->getRights();
+			$user_imageview = $User->getImageview();
+			$user_language = $User->getLanguage();
+			$user_gender = $User->getGender();
+			$user_birthdate = $User->getBirthDate();
+			
+			$outBool = $stmt->execute();
+			if($outBool)
+			{
+				$User->setID($dbi->insert_id);
+			}
+			else
+			{
+				$e = new SQLerror($dbi->errno, $dbi->error);
+				Error::AddError($e);
+			}
+		}
+	
+		$stmt->close();
+		return $outBool;
 	}
 	
 	/**
@@ -466,7 +547,7 @@ class User
 	 * @param User $CurrentUser
 	 * @return bool
 	 */
-	public static function UpdateUser($User, $CurrentUser)
+	public static function Update($User, $CurrentUser)
 	{
 		global $db;
 		
@@ -495,32 +576,175 @@ class User
 		);
 	}
 	
+	/**
+	 * Updates the databaserecords of supplied Users.
+	 * @param array(User) $Users
+	 * @param User $CurrentUser
+	 * @return bool
+	 */
+	public static function UpdateMulti($Users, $CurrentUser)
+	{
+		global $dbi;
+		$outBool = true;
+
+		$id = $user_username = $user_password = $user_salt = $user_firstname = $user_insertion = $user_lastname = $user_email = null;
+		$user_datedisplayopts = $user_rights = 0;
+		$user_imageview = 'detail';
+		$user_language = 'en';
+		$user_gender = GENDER_UNKNOWN;
+		$user_birthdate = -1;
+		$mut_id = $CurrentUser->getID();
+		$mut_date = time();
+	
+		if(!is_array($Users))
+		{ return false; }
+	
+		$q = sprintf("
+			UPDATE `User` SET
+				`user_username` = ?,
+				`user_password` = ?,
+				`user_salt` = ?,
+				`user_firstname` = ?,
+				`user_insertion` = ?,
+				`user_lastname` = ?,
+				`user_email` = ?,
+				`user_datedisplayopts` = ?,
+				`user_rights` = ?,
+				`user_imageview` = ?,
+				`user_language` = ?,
+				`user_gender` = ?,
+				`user_birthdate` = ?,
+				`mut_id` = ?,
+				`mut_date` = ?
+			WHERE
+				`user_id` = ?
+		");
+	
+		if(!($stmt = $dbi->prepare($q)))
+		{
+			$e = new SQLerror($dbi->errno, $dbi->error);
+			Error::AddError($e);
+			return false;
+		}
+	
+		$stmt->bind_param('sssssssiissiiiii',
+			$user_username,
+			$user_password,
+			$user_salt,
+			$user_firstname,
+			$user_insertion,
+			$user_lastname,
+			$user_email,
+			$user_datedisplayopts,
+			$user_rights,
+			$user_imageview,
+			$user_language,
+			$user_gender,
+			$user_birthdate,
+			$mut_id,
+			$mut_date,
+			$id
+		);
+	
+		foreach($Users as $User)
+		{
+			$user_username = $User->getUserName();
+			$user_password = $User->getPassword();
+			$user_salt = $User->getSalt();
+			$user_firstname = $User->getFirstName();
+			$user_insertion = $User->getInsertion();
+			$user_lastname = $User->getLastName();
+			$user_email = $User->getEmailAddress();
+			$user_datedisplayopts = $User->getDateDisplayOptions();
+			$user_rights = $User->getRights();
+			$user_imageview = $User->getImageview();
+			$user_language = $User->getLanguage();
+			$user_gender = $User->getGender();
+			$user_birthdate = $User->getBirthDate();
+			$id = $User->getID();
+			
+			$outBool = $stmt->execute();
+			if(!$outBool)
+			{
+				$e = new SQLerror($dbi->errno, $dbi->error);
+				Error::AddError($e);
+			}
+		}
+	
+		$stmt->close();
+		return $outBool;
+	}
 	
 	/**
 	 * Removes the specified User from the database.
-	 * 
 	 * @param User $User
 	 * @param User $CurrentUser
 	 * @return bool
 	 */
-	public static function DeleteUser($User, $CurrentUser)
+	public static function Delete($User, $CurrentUser)
 	{
-		global $db;
-		
-		return $db->Update(
-			'User',
-			array(
-				'mut_id' => $CurrentUser->getID(),
-				'mut_deleted' => time()),
-			array('user_id', $User->getID())
+		return self::DeleteMulti(array($User), $CurrentUser);
+	}
+	
+	/**
+	 * Removes the specified Users from the database.
+	 * @param array(User) $Users
+	 * @param User $CurrentUser
+	 * @return bool
+	 */
+	public static function DeleteMulti($Users, $CurrentUser)
+	{
+		global $dbi;
+		$outBool = true;
+
+		$id = null;
+		$mut_id = $CurrentUser->getID();
+		$mut_deleted = time();
+	
+		if(!is_array($Users))
+		{ return false; }
+	
+		$q = sprintf("
+			UPDATE `User` SET
+				`mut_id` = ?,
+				`mut_deleted` = ?
+			WHERE
+				`user_id` = ?
+		");
+	
+		if(!($stmt = $dbi->prepare($q)))
+		{
+			$e = new SQLerror($dbi->errno, $dbi->error);
+			Error::AddError($e);
+			return false;
+		}
+	
+		$stmt->bind_param('iii',
+			$mut_id,
+			$mut_deleted,
+			$id
 		);
+	
+		foreach($Users as $User)
+		{
+			$id = $User->getID();
+			$outBool = $stmt->execute();
+
+			if(!$outBool)
+			{
+				$e = new SQLerror($dbi->errno, $dbi->error);
+				Error::AddError($e);
+			}
+		}
+	
+		$stmt->close();
+		return $outBool;
 	}
 
 	/**
 	 * Checks permission against given collection of rights.
-	 *
-	 * @param $Rights
-	 * @param $Permission
+	 * @param int $Rights
+	 * @param int $Permission
 	 * @return bool
 	 */
  	public static function CheckPermission($Rights, $Permission)
