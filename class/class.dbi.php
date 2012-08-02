@@ -23,6 +23,28 @@ class DBi extends mysqli
 			call_user_func_array(array($stmt, 'bind_param'), $bind_names);
 		}
 	}
+	
+	/**
+	 * Bind the given Tag2All-values to the given DELETE-statement.
+	 * @param Tag2All $Tag2All
+	 * @param mysqli_stkmt $stmt
+	 */
+	public static function BindParamsToDeleteT2A(&$Tag2All, &$stmt)
+	{
+		if($Tag2All->getDeleteBindValues())
+		{
+			$bind_names[] = $Tag2All->getDeleteBindPattern();
+			$params = $Tag2All->getDeleteBindValues();
+			
+			for ($i=0; $i<count($params);$i++)
+			{
+				$bind_name = 'bind' . $i;
+				$$bind_name = $params[$i];
+				$bind_names[] = &$$bind_name;
+			}
+			call_user_func_array(array($stmt, 'bind_param'), $bind_names);
+		}
+	}
 }
 
 class SearchParameters

@@ -92,6 +92,36 @@ class Tag2All
 	
 	
 	/**
+	 * Gets a parameter-pattern suitable for use in DELETE
+	 * @return string
+	 */
+	public function getDeleteBindPattern()
+	{
+		return sprintf('i%1$s%2$s%3$s%4$s',
+			$this->getModelID() ? 'i' : null,
+			$this->getSetID() ? 'i' : null,
+			$this->getImageID() ? 'i' : null,
+			$this->getVideoID() ?  'i' : null
+		);
+	}
+	
+	/**
+	 * Gets an array of values suitable for use in DELETE.
+	 * @return array
+	 */
+	public function getDeleteBindValues()
+	{
+		$o = array($this->getTagID());
+		
+		if($this->getModelID()) { $o[] = $this->getModelID(); }
+		if($this->getSetID()) { $o[] = $this->getSetID(); }
+		if($this->getImageID()) { $o[] = $this->getImageID(); }
+		if($this->getVideoID()) { $o[] = $this->getVideoID(); }
+
+		return $o;
+	}
+	
+	/**
 	 * Inserts the given Tag2All into the database.
 	 * @param Tag2All $Tag2All
 	 * @param User $CurrentUser
@@ -172,30 +202,59 @@ class Tag2All
 	*/
 	public static function Delete($Tag2All, $CurrentUser)
 	{
-		global $db;
-			
-		$result = $db->Delete(
-			'Tag2All',
-			sprintf('tag_id = %1$d%2$s%3$s%4$s%5$s',
-				$Tag2All->getTag()->getID(),
-				$Tag2All->getModelID() ? ' AND model_id = '.$Tag2All->getModelID() : ' AND model_id is null',
-				$Tag2All->getSetID()   ? ' AND set_id = '  .$Tag2All->getSetID()   : ' AND set_id is null',
-				$Tag2All->getImageID() ? ' AND image_id = '.$Tag2All->getImageID() : ' AND image_id is null',
-				$Tag2All->getVideoID() ? ' AND video_id = '.$Tag2All->getVideoID() : ' AND video_id is null'
-			)
-		);
-			
-		return $result;
+		return self::DeleteMulti(array($Tag2All), $CurrentUser);
 	}
 	
 	/**
 	 * Deletes the given Tag2Alls from the database.
-	 * @param array(Tag2All) $Tag2All
+	 * @param array(Tag2All) $Tag2Alls
 	 * @param User $CurrentUser
 	 */
-	public static function DeleteMulti($Tag2All, $CurrentUser)
+	public static function DeleteMulti($Tag2Alls, $CurrentUser)
 	{
+		global $dbi;
+		$outBool = true;
 		
+		if(!is_array($Tag2Alls))
+		{ return false; }
+		
+		foreach($Tag2Alls as $t2a)
+		{
+			$q = sprintf("
+				DELETE FROM
+					`Tag2All`
+				WHERE
+					`tag_id` = ?
+					AND `model_id` %1\$s
+					AND `set_id` %2\$s
+					AND `image_id` %3\$s
+					AND `video_id` %4\$s ",
+				
+				$t2a->getModelID() ? '= ?' : 'IS NULL',
+				$t2a->getSetID() ? '= ?' : 'IS NULL',
+				$t2a->getImageID() ? '= ?' : 'IS NULL',
+				$t2a->getVideoID() ? '= ?' : 'IS NULL'
+			);
+		
+			if(!($stmt = $dbi->prepare($q)))
+			{
+				$e = new SQLerror($dbi->errno, $dbi->error);
+				Error::AddError($e);
+				return false;
+			}
+			
+			DBi::BindParamsToDeleteT2A($t2a, $stmt);			
+			
+			$outBool = $stmt->execute();
+			if(!$outBool)
+			{
+				$e = new SQLerror($dbi->errno, $dbi->error);
+				Error::AddError($e);
+			}
+			
+			$stmt->close();
+		}
+		return $outBool;
 	}
 
 	/**
@@ -269,17 +328,17 @@ class Tag2All
 	{
 		$OutArray = array();
 
-		/* @var $Tag2All Tag2All */
-		foreach($Tag2AllArray as $Tag2All)
+		/* @var $t2a Tag2All */
+		foreach($Tag2AllArray as $t2a)
 		{
 			if(
-				(is_null($TagID) || $Tag2All->getTag()->getID() === $TagID)	&&
-				($ModelID === FALSE || $Tag2All->getModelID() === $ModelID)	&&
-				($SetID === FALSE || $Tag2All->getSetID()   === $SetID)		&&
-				($ImageID === FALSE || $Tag2All->getImageID() === $ImageID)	&&
-				($VideoID === FALSE || $Tag2All->getVideoID() === $VideoID)
+				(is_null($TagID) || $t2a->getTag()->getID() === $TagID)	&&
+				($ModelID === FALSE || $t2a->getModelID() === $ModelID)	&&
+				($SetID === FALSE || $t2a->getSetID()   === $SetID)		&&
+				($ImageID === FALSE || $t2a->getImageID() === $ImageID)	&&
+				($VideoID === FALSE || $t2a->getVideoID() === $VideoID)
 			){
-				$OutArray[] = $Tag2All;
+				$OutArray[] = $t2a;
 			}
 		}
 		return $OutArray;
@@ -339,7 +398,7 @@ class Tag2All
 	
 		if($DeleteOldTag2Alls)
 		{
-			self::DeleteMulti($DeleteOldTag2Alls, $CurrentUser);
+			self::DeleteMulti($Tag2AllsThisItem, $CurrentUser);
 		}
 	
 		foreach(array_unique($newTags) as $string)
