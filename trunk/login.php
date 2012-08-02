@@ -5,7 +5,6 @@ $UserName = null;
 $Password = null;
 $ReturnURL = null;
 
-
 if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] && $_POST['hidAction'] == 'LoginLogin')
 {
 	$UserName = $_POST['txtUserName'];

@@ -106,11 +106,6 @@ if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'ImageView')
 	{
 		if(Image::Insert($Image, $CurrentUser))
 		{
-			$imageid = $db->GetLatestID();
-			if($imageid) {
-				$Image->setID($imageid);
-			}
-			
 			Tag2All::HandleTags($tags, $TagsThisImage, $TagsInDB, $CurrentUser, $ModelID, $SetID, $Image->getID(), null, true);
 			header('location:'.$ReturnURL);
 			exit;

@@ -17,53 +17,28 @@ along with CandyDollDB.  If not, see <http://www.gnu.org/licenses/>.
 
 require('cd.php');
 
-$q = null;
 $Exists = false;
 $NoError = true;
 
 if(array_key_exists('hidAction', $_POST) && isset($_POST['hidAction']) && $_POST['hidAction'] == 'UpdateCandyDollDB')
 {
 	/* user_datedisplayoptions column */
-	$q = mysql_query("SHOW COLUMNS FROM `User` LIKE 'user_datedisplayopts'");
-	$Exists = mysql_fetch_assoc($q);
+	$Exists = $dbi->ColumnExists('User', 'user_datedisplayopts');
 
 	if($NoError && !$Exists)
-	{ $NoError = $db->ExecuteQueries("ALTER TABLE `User` ADD `user_datedisplayopts` int NOT NULL DEFAULT 0 AFTER `user_email`"); }
+	{ $NoError = $dbi->ExecuteMulti("ALTER TABLE `User` ADD `user_datedisplayopts` int NOT NULL DEFAULT 0 AFTER `user_email`;"); }
 
 	/* user_imageview column */
-	$q = mysql_query("SHOW COLUMNS FROM `User` LIKE 'user_imageview'");
-	$Exists = mysql_fetch_assoc($q);
+	$Exists = $dbi->ColumnExists('User', 'user_imageview');
 
 	if($NoError && !$Exists)
-	{ $NoError = $db->ExecuteQueries("ALTER TABLE `User` ADD `user_imageview` varchar(20) NOT NULL DEFAULT 'detail' AFTER `user_datedisplayopts`"); }
+	{ $NoError = $dbi->ExecuteMulti("ALTER TABLE `User` ADD `user_imageview` varchar(20) NOT NULL DEFAULT 'detail' AFTER `user_datedisplayopts`;"); }
 	
 	/* user_language column */
-	$q = mysql_query("SHOW COLUMNS FROM `User` LIKE 'user_language'");
-	$Exists = mysql_fetch_assoc($q);
+	$Exists = $dbi->ColumnExists('User', 'user_language');
 
 	if($NoError && !$Exists)
-	{ $NoError = $db->ExecuteQueries("ALTER TABLE `User` ADD `user_language` varchar(20) NOT NULL DEFAULT 'en' AFTER `user_imageview`"); }
-
-	/* Rename all cached images on disk to include prefix */
-	$CacheImagesInDB = CacheImage::GetCacheImages();
-	
-	/* @var $ci CacheImage */
-	foreach ($CacheImagesInDB as $ci)
-	{
-		if(file_exists($ci->getFilenameOnDisk(true)))
-		{ rename($ci->getFilenameOnDisk(true), $ci->getFilenameOnDisk(false)); }
-	}
-	
-	/* Give the admin-user full rights */
-	$admUser = User::GetUsers(new UserSearchParameters(CMDLINE_USERID));
-	
-	/* @var $admUser User */
-	if($admUser)
-	{
-		$admUser = $admUser[0];
-		$admUser->setRights(Rights::getTotalRights());
-		User::Update($admUser, $admUser);
-	}
+	{ $NoError = $dbi->ExecuteMulti("ALTER TABLE `User` ADD `user_language` varchar(20) NOT NULL DEFAULT 'en' AFTER `user_imageview`;"); }
 
 	$UpdateDBSQL = <<<FjbMNnvUJheiwewUJfheJheuehFJDUHdywgwwgHGfgywug
 SET AUTOCOMMIT=0;
@@ -137,8 +112,29 @@ SET AUTOCOMMIT=1;
 
 FjbMNnvUJheiwewUJfheJheuehFJDUHdywgwwgHGfgywug;
 
-	if($NoError && $db->ExecuteQueries($UpdateDBSQL))
+	if($NoError && $dbi->ExecuteMulti($UpdateDBSQL))
 	{
+		/* Rename all cached images on disk to include prefix */
+		$CacheImagesInDB = CacheImage::GetCacheImages();
+		
+		/* @var $ci CacheImage */
+		foreach ($CacheImagesInDB as $ci)
+		{
+			if(file_exists($ci->getFilenameOnDisk(true)))
+			{ rename($ci->getFilenameOnDisk(true), $ci->getFilenameOnDisk(false)); }
+		}
+		
+		/* Give the admin-user full rights */
+		$admUser = User::GetUsers(new UserSearchParameters(CMDLINE_USERID));
+		
+		/* @var $admUser User */
+		if($admUser)
+		{
+			$admUser = $admUser[0];
+			$admUser->setRights(Rights::getTotalRights());
+			User::Update($admUser, $admUser);
+		}
+		
 		die($lang->g('MessageDataseUpdated'));
 	}
 	else

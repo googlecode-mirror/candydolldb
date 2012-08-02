@@ -102,11 +102,6 @@ if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'VideoView')
 	{
 		if(Video::Insert($Video, $CurrentUser))
 		{
-			$videoid = $db->GetLatestID();
-			if($videoid) {
-				$Video->setID($videoid);
-			}
-			
 			Tag2All::HandleTags($tags, $TagsThisVideo, $TagsInDB, $CurrentUser, $ModelID, $SetID, null, $Video->getID());
 			header('location:'.$ReturnURL);
 			exit;

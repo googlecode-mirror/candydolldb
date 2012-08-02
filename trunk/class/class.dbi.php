@@ -3,6 +3,49 @@
 class DBi extends mysqli
 {
 	/**
+	 * Exexutes the supplied queries.
+ 	 * @param string $q
+ 	 * @return bool
+	 */
+	public function ExecuteMulti($q)
+	{
+		$this->autocommit(false);
+		if($this->multi_query($q))
+		{
+			do
+			{ ; }
+			while($this->next_result());
+			
+			return true;
+		}
+		
+		$e = new Error($this->errno, $this->error);
+		Error::AddError($e);
+		return false;
+	}
+	
+	/**
+	 * Returns whether the specified column exists.
+	 * @param string $TableName
+	 * @param string $ColumnName
+	 * @return bool
+	 */
+	public function ColumnExists($TableName, $ColumnName)
+	{
+		$q = sprintf("SHOW COLUMNS FROM `%1\$s` LIKE '%2\$s';",
+			$this->escape_string($TableName),
+			$this->escape_string($ColumnName));
+
+		/* @var $r mysqli_result */
+		if($r = $this->query($q))
+		{
+			return $r->fetch_assoc() ? true : false;
+		}
+		
+		return false;
+	}
+	
+	/**
 	 * Bind the given SearchParameter values to the given SELECT-statement. 
 	 * @param SearchParameters $SearchParameters
 	 * @param mysqli_stmt $stmt 

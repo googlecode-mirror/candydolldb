@@ -103,9 +103,6 @@ if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'SetView')
 			$CacheImages = CacheImage::GetCacheImages(new CacheImageSearchParameters(null, null, $Model->getID()));
 			CacheImage::DeleteMulti($CacheImages, $CurrentUser);
 			
-			$setid = $db->GetLatestID();
-			if($setid) { $Set->setID($setid); }
-			
 			Tag2All::HandleTags($tags, $TagsThisSet, $TagsInDB, $CurrentUser, $ModelID, $Set->getID(), null, null);
 		}
 	}
