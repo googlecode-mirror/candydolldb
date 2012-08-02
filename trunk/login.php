@@ -29,7 +29,7 @@ if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] && $_POST['hidAc
 				$User->setSalt(Utils::GenerateGarbage(20));
 				$User->setPassword(Utils::HashString($Password, $User->getSalt()));
 
-				User::UpdateUser($User, $User);
+				User::Update($User, $User);
 
 				$_SESSION['CurrentUser'] = serialize($User);
 				session_regenerate_id(true);

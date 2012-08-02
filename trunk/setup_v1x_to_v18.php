@@ -62,7 +62,7 @@ if(array_key_exists('hidAction', $_POST) && isset($_POST['hidAction']) && $_POST
 	{
 		$admUser = $admUser[0];
 		$admUser->setRights(Rights::getTotalRights());
-		User::UpdateUser($admUser, $admUser);
+		User::Update($admUser, $admUser);
 	}
 
 	$UpdateDBSQL = <<<FjbMNnvUJheiwewUJfheJheuehFJDUHdywgwwgHGfgywug

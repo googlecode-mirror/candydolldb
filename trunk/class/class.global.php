@@ -56,7 +56,7 @@ class Authentication
 			{
 				$User = $Users[0];
 				$User->setLastActive(time());
-				User::UpdateUser($User, $User);
+				User::Update($User, $User);
 				
 				$lang->setLanguages(array($User->getLanguage()));
 				
