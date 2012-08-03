@@ -135,7 +135,14 @@ FjbMNnvUJheiwewUJfheJheuehFJDUHdywgwwgHGfgywug;
 			User::Update($admUser, $admUser);
 		}
 		
-		die($lang->g('MessageDataseUpdated'));
+		if(is_dir('cache') || mkdir('cache', 0700, true))
+		{
+			die($lang->g('MessageDataseUpdated'));
+		}
+		else
+		{
+			die(sprintf($lang->g('ErrorSetupCreatingCacheDir'), BackToThisPage($lang->g('LabelTryAgain'))));
+		}
 	}
 	else
 	{

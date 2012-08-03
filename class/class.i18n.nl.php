@@ -21,6 +21,7 @@ class LabelsNL extends Labels
 		'ErrorPleaseUseWebInterfaceForSetup' => 'Maak alstublieft gebruik van de web-interface om deze applicatie in te richten.',
 		'ErrorUpdateTryAgain' => 'Er is een fout opgetreden tijdens het bijwerken, probeer het alstublieft <a href="%1$s">opnieuw</a>.',
 		'ErrorSetupConnectDatabase' => 'Kon geen verbinding maken met de database-server, %1$s van database-gegevens.',
+		'ErrorSetupCreatingCacheDir' => 'Kon de cache-map niet vinden of aanmaken, %1$s.',
 		'ErrorSetupCreatingUser' => 'Er is een fout opgetreden tijdens het aanmaken van de gebruiker (\'%2$s\'), %1$s.',
 		'ErrorSetupWritingConfig' => 'Kon de instellingen niet wegschrijven. Controleer de bestandspermissies en %1$s.',
 		'ErrorSetupAlreadyComplete' => 'De applicatie is al ingericht. Verwijder \'config.php\' en %1$s.',
