@@ -413,10 +413,10 @@ if(array_key_exists('hidAction', $_POST) && isset($_POST['hidAction']) && $_POST
 					{ die(sprintf($lang->g('ErrorSetupWritingConfig'), BackToThisPage($lang->g('LabelTryAgain')))); }
 				}
 				else
-				{ die(sprintf($lang->g('ErrorSetupCreatingUser'), BackToThisPage($lang->g('LabelTryAgain')), mysql_error())); }
+				{ die(sprintf($lang->g('ErrorSetupCreatingUser'), BackToThisPage($lang->g('LabelTryAgain')), $dbi->error)); }
 			}
 			else
-			{ die(sprintf($lang->g('ErrorSetupCreatingUser'), BackToThisPage($lang->g('LabelTryAgain')), mysql_error())); }
+			{ die(sprintf($lang->g('ErrorSetupCreatingUser'), BackToThisPage($lang->g('LabelTryAgain')), $dbi->error)); }
 		}
 		else
 		{ die(sprintf($lang->g('ErrorSetupConnectDatabase'), BackToThisPage($lang->g('LabelReEnter')))); }

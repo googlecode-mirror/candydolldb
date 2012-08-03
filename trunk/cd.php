@@ -110,7 +110,6 @@ define('XML_ERR_XML_VALID', 33369);
 define('XML_ERR_SCHEMA_VALID', 33370);
 define('RIGHTS_ERR_USERNOTALLOWED', 33371);
 
-$SplitRegex = "/;+(?=([^'|^\\\']*['|\\\'][^'|^\\\']*['|\\\'])*[^'|^\\\']*[^'|^\\\']$)/";
 $CSVRegex = '/\s*(?<!\\\),\s*/';
 $DateStyleArray = array(
 	"d-m-Y",	// 14-04-2012
@@ -125,7 +124,6 @@ include('class/class.global.php');
 include('class/class.error.php');
 include('class/class.info.php');
 include('class/class.html.php');
-include('class/class.db.php');
 include('class/class.dbi.php');
 
 @session_start();
@@ -140,10 +138,6 @@ if(defined('DBHOSTNAME') &&
    defined('DBUSERNAME') &&
    defined('DBPASSWORD'))
 {
-	$db = new DB(DBHOSTNAME, DBUSERNAME, DBPASSWORD);
-	$db->Connect();
-	$db->setDatabaseName(DBNAME);
-	
 	$dbi = new DBi(DBHOSTNAME, DBUSERNAME, DBPASSWORD, DBNAME);
 	$dbi->query("SET GLOBAL sql_mode = 'STRICT_ALL_TABLES';");
 }
