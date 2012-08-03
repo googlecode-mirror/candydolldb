@@ -30,8 +30,8 @@ if($CurrentUser->hasPermission(RIGHT_EXPORT_INDEX))
 	$pathPrefix = (isset($argv) && $argc > 0) ? dirname($_SERVER['PHP_SELF']).'/' : '';
 	$indexImage = null;  
 	
-	$Images = Image::GetImages(new ImageSearchParameters(null, null, null, null, $ModelID));
-	$Sets = Set::GetSets(new SetSearchParameters(null, null, $ModelID));
+	$Images = Image::GetImages(new ImageSearchParameters(FALSE, FALSE, FALSE, FALSE, $ModelID));
+	$Sets = Set::GetSets(new SetSearchParameters(FALSE, FALSE, $ModelID));
 	
 	
 	if($Sets && !in_array($Sets[0]->getModel()->getFullName(), array('VIP', 'Promotions', 'Interviews')))

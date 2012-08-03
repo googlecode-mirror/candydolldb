@@ -135,7 +135,7 @@ class Model
 	 * Returns a random image-filename of the current model.
 	 * @return string|NULL
 	 */
-	public function GetFileFromDisk($PortraitOnly = false, $LandscapeOnly = false, $SetID = null)
+	public function GetFileFromDisk($PortraitOnly = FALSE, $LandscapeOnly = FALSE, $SetID = FALSE)
 	{
 		$folderPath = sprintf('%1$s/%2$s', CANDYIMAGEPATH, $this->GetFullName()); 
 		if(!file_exists($folderPath)){ return null; }
@@ -144,14 +144,17 @@ class Model
 		$limitClause = sprintf('1');
 		
 		$Images = Image::GetImages(
-			new ImageSearchParameters(null, null, $SetID, null, $this->getID(), null, false, $PortraitOnly, $LandscapeOnly),
+			new ImageSearchParameters(FALSE, FALSE, $SetID, FALSE, $this->getID(), FALSE, FALSE, $PortraitOnly, $LandscapeOnly),
 			$orderClause,
 			$limitClause);
 		
 		if(!$Images)
 		{
 			/* Work-around for returning at least ONE image when none fit the specified aspect ratio */
-			$Images = Image::GetImages(new ImageSearchParameters(null, null, $SetID, null, $this->getID()), $orderClause, $limitClause);
+			$Images = Image::GetImages(
+				new ImageSearchParameters(FALSE, FALSE, $SetID, FALSE, $this->getID()),
+				$orderClause,
+				$limitClause);
 		}
 		
 		if($Images)
@@ -488,18 +491,25 @@ class ModelSearchParameters extends SearchParameters
 	private $values = array();
 	private $where = '';
 	
-	public function __construct($SingleID = null, $MultipleIDs = null, $FirstName = null, $LastName = null, $FullName = null)
+	/**
+	 * @param int $SingleID
+	 * @param array(int) $MultipleIDs
+	 * @param string $FirstName
+	 * @param string $LastName
+	 * @param string $FullName
+	 */
+	public function __construct($SingleID = FALSE, $MultipleIDs = FALSE, $FirstName = FALSE, $LastName = FALSE, $FullName = FALSE)
 	{
 		parent::__construct();
 		
-		if($SingleID)
+		if($SingleID !== FALSE)
 		{
 			$this->paramtypes .= "i";
 			$this->values[] = $SingleID;
 			$this->where .= " AND model_id = ?";
 		}
 		
-		if($MultipleIDs)
+		if(is_array($MultipleIDs) && count($MultipleIDs) > 0)
 		{
 			$this->paramtypes .= str_repeat('i', count($MultipleIDs));
 			$this->values = array_merge($this->values, $MultipleIDs);
@@ -508,21 +518,21 @@ class ModelSearchParameters extends SearchParameters
 			);
 		}
 		
-		if($FirstName)
+		if($FirstName !== FALSE)
 		{
 			$this->paramtypes .= 's';
 			$this->values[] = '%'.$FirstName.'%';
 			$this->where .= " AND model_firstname LIKE ?";
 		}
 		
-		if($LastName)
+		if($LastName !== FALSE)
 		{
 			$this->paramtypes .= 's';
 			$this->values[] = '%'.$LastName.'%';
 			$this->where .= " AND model_lastname LIKE ?";
 		}
 		
-		if($FullName)
+		if($FullName !== FALSE)
 		{
 			$this->paramtypes .= 's';
 			$this->values[] = '%'.$FullName.'%';

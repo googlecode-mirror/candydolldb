@@ -611,22 +611,33 @@ class ImageSearchParameters extends SearchParameters
 	private $values = array();
 	private $where = '';
 
+	/**
+	 * @param int $SingleID
+	 * @param array(int) $MultipleIDs
+	 * @param int $SingleSetID
+	 * @param array(int) $MultipleSetIDs
+	 * @param int $SingleModelID
+	 * @param array(int) $MultipleModelIDs
+	 * @param bool $OrAllMultipleIDs
+	 * @param bool $PortraitOnly
+	 * @param bool $LandscapeOnly
+	 */
 	public function __construct(
-		$SingleID = null, $MultipleIDs = null,
-		$SingleSetID = null, $MultipleSetIDs = null,
-		$SingleModelID = null, $MultipleModelIDs = null,
-		$OrAllMultipleIDs = false, $PortraitOnly = false, $LandscapeOnly = false)
+		$SingleID = FALSE, $MultipleIDs = FALSE,
+		$SingleSetID = FALSE, $MultipleSetIDs = FALSE,
+		$SingleModelID = FALSE, $MultipleModelIDs = FALSE,
+		$OrAllMultipleIDs = FALSE, $PortraitOnly = FALSE, $LandscapeOnly = FALSE)
 	{
 		parent::__construct();
 
-		if($SingleID)
+		if($SingleID !== FALSE)
 		{
 			$this->paramtypes .= "i";
 			$this->values[] = $SingleID;
 			$this->where .= " AND image_id = ?";
 		}
 
-		if($MultipleIDs && !$OrAllMultipleIDs)
+		if(is_array($MultipleIDs) && count($MultipleIDs) > 0 && !$OrAllMultipleIDs)
 		{
 			$this->paramtypes .= str_repeat('i', count($MultipleIDs));
 			$this->values = array_merge($this->values, $MultipleIDs);
@@ -635,14 +646,14 @@ class ImageSearchParameters extends SearchParameters
 			);
 		}
 		
-		if($SingleSetID)
+		if($SingleSetID !== FALSE)
 		{
 			$this->paramtypes .= "i";
 			$this->values[] = $SingleSetID;
 			$this->where .= " AND set_id = ?";
 		}
 		
-		if($MultipleSetIDs && !$OrAllMultipleIDs)
+		if(is_array($MultipleSetIDs) && count($MultipleSetIDs) > 0 && !$OrAllMultipleIDs)
 		{
 			$this->paramtypes .= str_repeat('i', count($MultipleSetIDs));
 			$this->values = array_merge($this->values, $MultipleSetIDs);
@@ -651,14 +662,14 @@ class ImageSearchParameters extends SearchParameters
 			);
 		}
 
-		if($SingleModelID)
+		if($SingleModelID !== FALSE)
 		{
 			$this->paramtypes .= "i";
 			$this->values[] = $SingleModelID;
 			$this->where .= " AND model_id = ?";
 		}
 
-		if($MultipleModelIDs && !$OrAllMultipleIDs)
+		if(is_array($MultipleModelIDs) && count($MultipleModelIDs) > 0 && !$OrAllMultipleIDs)
 		{
 			$this->paramtypes .= str_repeat('i', count($MultipleModelIDs));
 			$this->values = array_merge($this->values, $MultipleModelIDs);
@@ -671,7 +682,7 @@ class ImageSearchParameters extends SearchParameters
 		{
 			$pieces = array();
 			
-			if($MultipleIDs)
+			if(is_array($MultipleIDs) && count($MultipleIDs) > 0)
 			{
 				$this->paramtypes .= str_repeat('i', count($MultipleIDs));
 				$this->values = array_merge($this->values, $MultipleIDs);
@@ -680,7 +691,7 @@ class ImageSearchParameters extends SearchParameters
 				);
 			}
 			
-			if($MultipleSetIDs)
+			if(is_array($MultipleSetIDs) && count($MultipleSetIDs) > 0)
 			{
 				$this->paramtypes .= str_repeat('i', count($MultipleSetIDs));
 				$this->values = array_merge($this->values, $MultipleSetIDs);
@@ -689,7 +700,7 @@ class ImageSearchParameters extends SearchParameters
 				);
 			}
 			
-			if($MultipleModelIDs)
+			if(is_array($MultipleModelIDs) && count($MultipleModelIDs) > 0)
 			{
 				$this->paramtypes .= str_repeat('i', count($MultipleModelIDs));
 				$this->values = array_merge($this->values, $MultipleModelIDs);

@@ -49,7 +49,7 @@ foreach($filteredTags as $t){
 }
 
 /* Fetch Tag2Alls if tags were entered, default to no results when $q is empty. */
-$Tag2Alls = $filteredTagIDs ? Tag2All::GetTag2Alls(new Tag2AllSearchParameters(null, $filteredTagIDs)) : array();
+$Tag2Alls = $filteredTagIDs ? Tag2All::GetTag2Alls(new Tag2AllSearchParameters(FALSE, $filteredTagIDs)) : array();
 
 
 /* Model-filtering */
@@ -129,29 +129,27 @@ switch ($searchMode)
 {
 	case 'MODEL':
 		if(!$ModelIDsToShow){ break; }
-		$ToShow = Model::GetModels(new ModelSearchParameters(null, $ModelIDsToShow), null, sprintf("%1\$d, %2\$d", $from, $max_results));
-		$Total = count(Model::GetModels(new ModelSearchParameters(null, $ModelIDsToShow)));
+		$ToShow = Model::GetModels(new ModelSearchParameters(FALSE, $ModelIDsToShow), null, sprintf("%1\$d, %2\$d", $from, $max_results));
+		$Total = count(Model::GetModels(new ModelSearchParameters(FALSE, $ModelIDsToShow)));
 		break;
 
 	case 'SET':
 		if(!$SetIDsToShow || !$ModelIDsToShow){ break; }
-		$ssp = new SetSearchParameters(null, $SetIDsToShow);
+		$ssp = new SetSearchParameters(FALSE, $SetIDsToShow);
 		$ToShow = Set::GetSets($ssp, null, sprintf("%1\$d, %2\$d", $from, $max_results));
 		$Total = count(Set::GetSets($ssp));
 		break;
 
 	case 'IMAGE':
 		if(!$SetIDsToShow || !$ModelIDsToShow){ break; }
-		$isp = new ImageSearchParameters(null, $ImageIDsToShow, null, $SetIDsToShow, null, null, true);
+		$isp = new ImageSearchParameters(FALSE, $ImageIDsToShow, FALSE, $SetIDsToShow, FALSE, FALSE, TRUE);
 		$ToShow = Image::GetImages($isp, null, sprintf("%1\$d, %2\$d", $from, $max_results));
 		$Total = count(Image::GetImages($isp));
 		break;
 
 	case 'VIDEO':
 		if(!$SetIDsToShow || !$ModelIDsToShow){ break; }
-		//$where = $VideoIDsToShow ? sprintf('(video_id in ( %1$s ) OR set_id in ( %2$s )) AND mut_deleted = -1',	join(', ', $VideoIDsToShow), join(', ', $SetIDsToShow)) : null;
-		//$where = $where ? $where : sprintf('set_id in ( %1$s ) AND mut_deleted = -1',	join(', ', $SetIDsToShow));
-		$vsp = new VideoSearchParameters(null, $VideoIDsToShow, null, $SetIDsToShow, null, null, true);
+		$vsp = new VideoSearchParameters(FALSE, $VideoIDsToShow, FALSE, $SetIDsToShow, FALSE, FALSE, TRUE);
 		$ToShow = Video::GetVideos($vsp, null, sprintf("%1\$d, %2\$d", $from, $max_results));
 		$Total = count(Video::GetVideos($vsp));
 		break;

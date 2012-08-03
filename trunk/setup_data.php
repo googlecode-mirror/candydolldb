@@ -130,7 +130,7 @@ if($XmlFromFile)
 			{
 				Set::Insert($Set2Process, $CurrentUser);
 				
-				$CacheImages = CacheImage::GetCacheImages(new CacheImageSearchParameters(null, null, $Model2Process->getID()));
+				$CacheImages = CacheImage::GetCacheImages(new CacheImageSearchParameters(FALSE, FALSE, $Model2Process->getID()));
 				CacheImage::DeleteMulti($CacheImages, $CurrentUser);
 			}
 			

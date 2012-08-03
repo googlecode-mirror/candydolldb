@@ -25,10 +25,7 @@ if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'TagView')
 			if(Tag::Delete($Tag, $CurrentUser))
 			{
 				$t2as = Tag2All::GetTag2Alls(new Tag2AllSearchParameters($Tag->getID()));
-				
-				foreach($t2as as $t2a){
-					Tag2All::Delete($t2a, $CurrentUser);
-				}
+				Tag2All::DeleteMulti($t2as, $CurrentUser);
 				
 				header('location:'.$_SERVER['PHP_SELF']);
 				exit;

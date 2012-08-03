@@ -27,7 +27,7 @@ $Set = null;
 $VideoRows = '';
 $VideoCount = 0;
 
-$Videos = Video::GetVideos(new VideoSearchParameters(null, null, $SetID, null, $ModelID));
+$Videos = Video::GetVideos(new VideoSearchParameters(FALSE, FALSE, $SetID, FALSE, $ModelID));
 
 if($Videos)
 {
@@ -67,7 +67,7 @@ if($Videos)
 
 if(!$Set)
 {
-	$Set = Set::GetSets(new SetSearchParameters($SetID, null, $ModelID));
+	$Set = Set::GetSets(new SetSearchParameters($SetID, FALSE, $ModelID));
 	if($Set)
 	{
 		$Set = $Set[0];

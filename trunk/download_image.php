@@ -26,12 +26,12 @@ $CacheImage = null;
 if($ModelIndexID)
 {
 	$CacheImage = CacheImage::GetCacheImages(new CacheImageSearchParameters(
-		null, null,
-		$ModelIndexID, null,
-		null, null,
-		null, null,
-		null, null,
-		null, null,
+		FALSE, FALSE,
+		$ModelIndexID, FALSE,
+		FALSE, FALSE,
+		FALSE, FALSE,
+		FALSE, FALSE,
+		FALSE, FALSE,
 		$Width, $Height
 	));
 	
@@ -64,12 +64,12 @@ if($ModelIndexID)
 else if($ModelID)
 {
 	$CacheImage = CacheImage::GetCacheImages(new CacheImageSearchParameters(
-		null, null,
-		null, null,
-		$ModelID, null,
-		null, null,
-		null, null,
-		null, null,
+		FALSE, FALSE,
+		FALSE, FALSE,
+		$ModelID, FALSE,
+		FALSE, FALSE,
+		FALSE, FALSE,
+		FALSE, FALSE,
 		$Width, $Height
 	));
 	
@@ -125,12 +125,12 @@ else if($ModelID)
 else if($SetID)
 {
 	$CacheImage = CacheImage::GetCacheImages(new CacheImageSearchParameters(
-		null, null,
-		null, null,
-		null, null,
-		$SetID, null,
-		null, null,
-		null, null,
+		FALSE, FALSE,
+		FALSE, FALSE,
+		FALSE, FALSE,
+		$SetID, FALSE,
+		FALSE, FALSE,
+		FALSE, FALSE,
 		$Width, $Height
 	));
 	
@@ -185,12 +185,12 @@ else if($SetID)
 else if($VideoID)
 {
 	$CacheImage = CacheImage::GetCacheImages(new CacheImageSearchParameters(
-		null, null,
-		null, null,
-		null, null,
-		null, null,
-		null, null,
-		$VideoID, null,
+		FALSE, FALSE,
+		FALSE, FALSE,
+		FALSE, FALSE,
+		FALSE, FALSE,
+		FALSE, FALSE,
+		$VideoID, FALSE,
 		$Width, $Height
 	));
 	
@@ -251,12 +251,12 @@ else if($VideoID)
 else if($ImageID)
 {                                                                                            
 	$CacheImage = CacheImage::GetCacheImages(new CacheImageSearchParameters(
-		null, null,
-		null, null,
-		null, null,
-		null, null,
-		$ImageID, null,
-		null, null,
+		FALSE, FALSE,
+		FALSE, FALSE,
+		FALSE, FALSE,
+		FALSE, FALSE,
+		$ImageID, FALSE,
+		FALSE, FALSE,
 		$Width, $Height
 	));
 	

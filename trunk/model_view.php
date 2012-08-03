@@ -10,12 +10,12 @@ $EditModel = $CurrentUser->hasPermission(RIGHT_USER_EDIT);
 
 $TagsInDB = Tag::GetTags();
 $TagsThisModel = Tag2All::GetTag2Alls(new Tag2AllSearchParameters(
-	null, null, null,
-	($ModelID ? $ModelID : -1), null,
-	null, null,
-	null, null,
-	null, null,
-	false, true, true, true));
+	FALSE, FALSE, FALSE,
+	$ModelID, FALSE,
+	FALSE, FALSE,
+	FALSE, FALSE,
+	FALSE, FALSE,
+	FALSE, TRUE, TRUE, TRUE));
 
 if($ModelID)
 {

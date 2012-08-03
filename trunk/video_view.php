@@ -10,12 +10,12 @@ $VideoID = Utils::SafeIntFromQS('video_id');
 
 $TagsInDB = Tag::GetTags();
 $TagsThisVideo = Tag2All::GetTag2Alls(new Tag2AllSearchParameters(
-	null, null, null,
-	($ModelID ? $ModelID : -1), null,
-	($SetID ? $SetID : -1), null,
-	null, null,
-	($VideoID ? $VideoID : -1), null,
-	false, false, true, false));
+	FALSE, FALSE, FALSE,
+	$ModelID, FALSE,
+	$SetID, FALSE,
+	FALSE, FALSE,
+	$VideoID, FALSE,
+	FALSE, FALSE, TRUE, FALSE));
 	
 if(!isset($ModelID))
 {
@@ -38,7 +38,7 @@ $ReturnURL = sprintf('video.php?model_id=%1$d&set_id=%2$d', $ModelID, $SetID);
 /* @var $Model Model */
 if($VideoID != null)
 {
-	$Videos = Video::GetVideos(new VideoSearchParameters($VideoID, null, $SetID, null, $ModelID));
+	$Videos = Video::GetVideos(new VideoSearchParameters($VideoID, FALSE, $SetID, FALSE, $ModelID));
 
 	if($Videos)
 	{ $Video = $Videos[0]; }

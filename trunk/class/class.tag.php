@@ -378,18 +378,23 @@ class TagSearchParameters extends SearchParameters
 	private $values = array();
 	private $where = '';
 
-	public function __construct($SingleID = null, $MultipleIDs = null, $Name = null)
+	/**
+	 * @param int $SingleID
+	 * @param array(int) $MultipleIDs
+	 * @param string $Name
+	 */
+	public function __construct($SingleID = FALSE, $MultipleIDs = FALSE, $Name = FALSE)
 	{
 		parent::__construct();
 
-		if($SingleID)
+		if($SingleID !== FALSE)
 		{
 			$this->paramtypes .= "i";
 			$this->values[] = $SingleID;
 			$this->where .= " AND tag_id = ?";
 		}
 
-		if($MultipleIDs)
+		if(is_array($MultipleIDs) && count($MultipleIDs) > 0)
 		{
 			$this->paramtypes .= str_repeat('i', count($MultipleIDs));
 			$this->values = array_merge($this->values, $MultipleIDs);
@@ -398,7 +403,7 @@ class TagSearchParameters extends SearchParameters
 			);
 		}
 
-		if($Name)
+		if($Name !== FALSE)
 		{
 			$this->paramtypes .= 's';
 			$this->values[] = '%'.$Name.'%';

@@ -52,8 +52,8 @@ class Authentication
 			$User = unserialize($_SESSION['CurrentUser']);
 			$Users = User::GetUsers(new UserSearchParameters(
 				$User->getID(),
-				null,
-				null,
+				FALSE,
+				FALSE,
 				$User->getPassword()
 			));
 			
