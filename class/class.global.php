@@ -50,7 +50,12 @@ class Authentication
 		{
 			/* @var $User User */
 			$User = unserialize($_SESSION['CurrentUser']);
-			$Users = User::GetUsers(new UserSearchParameters($User->getID(), null, null, $User->getPassword()));
+			$Users = User::GetUsers(new UserSearchParameters(
+				$User->getID(),
+				null,
+				null,
+				$User->getPassword()
+			));
 			
 			if($Users)
 			{

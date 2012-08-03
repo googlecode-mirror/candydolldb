@@ -13,7 +13,14 @@ if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] && $_POST['hidAc
 	$UserName = $_POST['txtUserName'];
 	$EmailAddress = $_POST['txtEmailAddress'];
 
-	$Users = User::GetUsers(new UserSearchParameters(null, null, $UserName, null, $EmailAddress));
+	$Users = User::GetUsers(new UserSearchParameters(
+		null,
+		null,
+		($UserName ? $UserName : Utils::UUID()),
+		null,
+		($EmailAddress ? $EmailAddress : Utils::UUID())
+	));
+	
 	if($Users)
 	{
 		/* @var $User User */
@@ -47,7 +54,13 @@ else if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] && $_POST['
 {
 	$Hash = $_GET['Hash'];
 
-	$Users = User::GetUsers(new UserSearchParameters(null, null, null, $Hash));
+	$Users = User::GetUsers(new UserSearchParameters(
+		null,
+		null,
+		null,
+		($Hash ? $Hash : Utils::UUID())
+	));
+	
 	if($Users)
 	{
 		/* @var $User User */
@@ -90,7 +103,13 @@ else if (!array_key_exists('hidAction', $_POST) && array_key_exists('Hash', $_GE
 {
 	$Hash = $_GET['Hash'];
 
-	$Users = User::GetUsers(new UserSearchParameters(null, null, null, $Hash));
+	$Users = User::GetUsers(new UserSearchParameters(
+		null,
+		null,
+		null,
+		$Hash ? $Hash : Utils::UUID()
+	));
+	
 	if($Users)
 	{
 		/* @var $User User */
