@@ -587,18 +587,26 @@ class SetSearchParameters extends SearchParameters
 	private $values = array();
 	private $where = '';
 	
-	public function __construct($SingleID = null, $MultipleIDs = null, $SingleModelID = null, $MultipleModelIDs = null, $ModelFullName = null)
+	/**
+	 * @param int $SingleID
+	 * @param array(int) $MultipleIDs
+	 * @param int $SingleModelID
+	 * @param array(int) $MultipleModelIDs
+	 * @param string $ModelFullName
+	 */
+	public function __construct(
+		$SingleID = FALSE, $MultipleIDs = FALSE, $SingleModelID = FALSE, $MultipleModelIDs = FALSE, $ModelFullName = FALSE)
 	{
 		parent::__construct();
 
-		if($SingleID)
+		if($SingleID !== FALSE)
 		{
 			$this->paramtypes .= "i";
 			$this->values[] = $SingleID;
 			$this->where .= " AND set_id = ?";
 		}
 
-		if($MultipleIDs)
+		if(is_array($MultipleIDs) && count($MultipleIDs) > 0)
 		{
 			$this->paramtypes .= str_repeat('i', count($MultipleIDs));
 			$this->values = array_merge($this->values, $MultipleIDs);
@@ -607,14 +615,14 @@ class SetSearchParameters extends SearchParameters
 			);
 		}
 		
-		if($SingleModelID)
+		if($SingleModelID !== FALSE)
 		{
 			$this->paramtypes .= "i";
 			$this->values[] = $SingleModelID;
 			$this->where .= " AND model_id = ?";
 		}
 		
-		if($MultipleModelIDs)
+		if(is_array($MultipleModelIDs) && count($MultipleModelIDs) > 0)
 		{
 			$this->paramtypes .= str_repeat('i', count($MultipleModelIDs));
 			$this->values = array_merge($this->values, $MultipleModelIDs);
@@ -623,7 +631,7 @@ class SetSearchParameters extends SearchParameters
 			);
 		}
 
-		if($ModelFullName)
+		if($ModelFullName !== FALSE)
 		{
 			$this->paramtypes .= 's';
 			$this->values[] = '%'.$ModelFullName.'%';

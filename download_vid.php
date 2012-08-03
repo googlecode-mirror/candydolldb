@@ -58,7 +58,7 @@ if($VideoID)
 }
 else if($SetID)
 {
-	$Videos = Video::GetVideos(new VideoSearchParameters(null, null, $SetID));
+	$Videos = Video::GetVideos(new VideoSearchParameters(FALSE, FALSE, $SetID));
 	if($Videos)
 	{
 		$MainVideo = $Videos[0];

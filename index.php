@@ -26,7 +26,7 @@ else
 	$SearchClean = array_key_exists('chkClean', $_SESSION) ? (bool)$_SESSION['chkClean'] : true; 
 }
 
-$Models = Model::GetModels(new ModelSearchParameters(null, null, null, null, $SearchModel));
+$Models = Model::GetModels(new ModelSearchParameters(FALSE, FALSE, FALSE, FALSE, $SearchModel));
 $Sets = Set::GetSets();
 
 if($Models)
@@ -40,7 +40,7 @@ if($Models)
 		$DirtySetPicCount = 0;
 		$DirtySetVidCount = 0;
 
-		$Dates = Date::GetDates(new DateSearchParameters(null, null, null, null, $Model->getID()));
+		$Dates = Date::GetDates(new DateSearchParameters(FALSE, FALSE, FALSE, FALSE, $Model->getID()));
 		if($Dates)
 		{
 			$datestart = $Dates[0];

@@ -441,100 +441,117 @@ class Tag2AllSearchParameters extends SearchParameters
 	private $values = array();
 	private $where = '';
 
+	/**
+	 * @param int $SingleTagID
+	 * @param array(int) $MultipleTagIDs
+	 * @param string $TagName
+	 * @param int $SingleModelID
+	 * @param array(int) $MultipleModelIDs
+	 * @param int $SingleSetID
+	 * @param array(int) $MultipleSetIDs
+	 * @param int $SingleImageID
+	 * @param array(int) $MultipleImageIDs
+	 * @param int $SingleVideoID
+	 * @param array(int) $MultipleVideoIDs
+	 * @param bool $ModelIdIsNull
+	 * @param bool $SetIdIsNull
+	 * @param bool $ImageIdIsNull
+	 * @param bool $VideoIdIsNull
+	 */
 	public function __construct(
-		$SingleTagID = null, $MultipleTagIDs = null, $TagName = null,
-		$SingleModelID = null, $MultipleModelIDs = null,
-		$SingleSetID = null, $MultipleSetIDs = null,
-		$SingleImageID = null, $MultipleImageIDs = null,
-		$SingleVideoID = null, $MultipleVideoIDs = null,
-		$ModelIdIsNull = false, $SetIdIsNull = false, $ImageIdIsNull = false, $VideoIdIsNull = false)
+		$SingleTagID = FALSE, $MultipleTagIDs = FALSE, $TagName = FALSE,
+		$SingleModelID = FALSE, $MultipleModelIDs = FALSE,
+		$SingleSetID = FALSE, $MultipleSetIDs = FALSE,
+		$SingleImageID = FALSE, $MultipleImageIDs = FALSE,
+		$SingleVideoID = FALSE, $MultipleVideoIDs = FALSE,
+		$ModelIdIsNull = FALSE, $SetIdIsNull = FALSE, $ImageIdIsNull = FALSE, $VideoIdIsNull = FALSE)
 	{
 		parent::__construct();
 
-		if($SingleTagID)
+		if($SingleTagID !== FALSE)
 		{
 			$this->paramtypes .= "i";
 			$this->values[] = $SingleTagID;
 			$this->where .= " AND tag_id = ?";
 		}
 
-		if($MultipleTagIDs)
+		if(is_array($MultipleTagIDs) && count($MultipleTagIDs) > 0)
 		{
 			$this->paramtypes .= str_repeat('i', count($MultipleTagIDs));
 			$this->values = array_merge($this->values, $MultipleTagIDs);
 			$this->where .= sprintf(" AND tag_id IN ( %1s ) ",
-					implode(', ', array_fill(0, count($MultipleTagIDs), '?'))
+				implode(', ', array_fill(0, count($MultipleTagIDs), '?'))
 			);
 		}
 
-		if($TagName)
+		if($TagName !== FALSE)
 		{
 			$this->paramtypes .= 's';
 			$this->values[] = '%'.$TagName.'%';
 			$this->where .= " AND tag_name LIKE ?";
 		}
 		
-		if($SingleModelID)
+		if($SingleModelID !== FALSE)
 		{
 			$this->paramtypes .= "i";
 			$this->values[] = $SingleModelID;
 			$this->where .= " AND model_id = ?";
 		}
 		
-		if($MultipleModelIDs)
+		if(is_array($MultipleModelIDs) && count($MultipleModelIDs) > 0)
 		{
 			$this->paramtypes .= str_repeat('i', count($MultipleModelIDs));
 			$this->values = array_merge($this->values, $MultipleModelIDs);
 			$this->where .= sprintf(" AND model_id IN ( %1s ) ",
-					implode(', ', array_fill(0, count($MultipleModelIDs), '?'))
+				implode(', ', array_fill(0, count($MultipleModelIDs), '?'))
 			);
 		}
 		
-		if($SingleSetID)
+		if($SingleSetID !== FALSE)
 		{
 			$this->paramtypes .= "i";
 			$this->values[] = $SingleSetID;
 			$this->where .= " AND set_id = ?";
 		}
 		
-		if($MultipleSetIDs)
+		if(is_array($MultipleSetIDs) && count($MultipleSetIDs) > 0)
 		{
 			$this->paramtypes .= str_repeat('i', count($MultipleSetIDs));
 			$this->values = array_merge($this->values, $MultipleSetIDs);
 			$this->where .= sprintf(" AND set_id IN ( %1s ) ",
-					implode(', ', array_fill(0, count($MultipleSetIDs), '?'))
+				implode(', ', array_fill(0, count($MultipleSetIDs), '?'))
 			);
 		}
 		
-		if($SingleImageID)
+		if($SingleImageID !== FALSE)
 		{
 			$this->paramtypes .= "i";
 			$this->values[] = $SingleImageID;
 			$this->where .= " AND image_id = ?";
 		}
 		
-		if($MultipleImageIDs)
+		if(is_array($MultipleImageIDs) && count($MultipleImageIDs) > 0)
 		{
 			$this->paramtypes .= str_repeat('i', count($MultipleImageIDs));
 			$this->values = array_merge($this->values, $MultipleImageIDs);
 			$this->where .= sprintf(" AND image_id IN ( %1s ) ",
-					implode(', ', array_fill(0, count($MultipleImageIDs), '?'))
+				implode(', ', array_fill(0, count($MultipleImageIDs), '?'))
 			);
 		}
 		
-		if($SingleVideoID)
+		if($SingleVideoID !== FALSE)
 		{
 			$this->paramtypes .= "i";
 			$this->values[] = $SingleVideoID;
 			$this->where .= " AND video_id = ?";
 		}
 		
-		if($MultipleVideoIDs)
+		if(is_array($MultipleVideoIDs) && count($MultipleVideoIDs) > 0)
 		{
 			$this->paramtypes .= str_repeat('i', count($MultipleVideoIDs));
 			$this->values = array_merge($this->values, $MultipleVideoIDs);
 			$this->where .= sprintf(" AND video_id IN ( %1s ) ",
-					implode(', ', array_fill(0, count($MultipleVideoIDs), '?'))
+				implode(', ', array_fill(0, count($MultipleVideoIDs), '?'))
 			);
 		}
 		

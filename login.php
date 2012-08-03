@@ -11,7 +11,7 @@ if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] && $_POST['hidAc
 	$Password = $_POST['txtPassword'];
 	$ReturnURL = array_key_exists('url', $_GET) && isset($_GET['url']) ? $_GET['url'] : null;
 	
-	$Users = User::GetUsers(new UserSearchParameters(null, null, $UserName));
+	$Users = User::GetUsers(new UserSearchParameters(FALSE, FALSE, $UserName));
 	if($Users)
 	{
 		/* @var $User User */

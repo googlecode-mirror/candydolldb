@@ -16,8 +16,8 @@ $Model = null;
 $SetRows = '';
 $SetCount = 0;
 
-$Sets = Set::GetSets(new SetSearchParameters(null, null,  $ModelID));
-$Dates = Date::GetDates(new DateSearchParameters(null, null, null, null, $ModelID));
+$Sets = Set::GetSets(new SetSearchParameters(FALSE, FALSE,  $ModelID));
+$Dates = Date::GetDates(new DateSearchParameters(FALSE, FALSE, FALSE, FALSE, $ModelID));
 
 if($Sets)
 {

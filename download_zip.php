@@ -60,7 +60,7 @@ if($resource === true)
 	}
 	else if($SetID)
 	{
-		$Images = Image::GetImages(new ImageSearchParameters(null, null, $SetID));
+		$Images = Image::GetImages(new ImageSearchParameters(FALSE, FALSE, $SetID));
 		if($Images)
 		{
 			$MainImage = $Images[0];
@@ -96,8 +96,8 @@ if($resource === true)
 	}
 	else if($ModelID)
 	{
-		$Sets = Set::GetSets(new SetSearchParameters(null, null, $ModelID));
-		$Images = Image::GetImages(new ImageSearchParameters(null, null, null, null, $ModelID));
+		$Sets = Set::GetSets(new SetSearchParameters(FALSE, FALSE, $ModelID));
+		$Images = Image::GetImages(new ImageSearchParameters(FALSE, FALSE, FALSE, FALSE, $ModelID));
 
 		if($Sets && $Images)
 		{
@@ -130,7 +130,7 @@ if($resource === true)
 	}
 	else if($ImageIDs)
 	{
-		$Images = Image::GetImages(new ImageSearchParameters(null, $ImageIDs));
+		$Images = Image::GetImages(new ImageSearchParameters(FALSE, $ImageIDs));
 		
 		foreach($Images as $Image)
 		{

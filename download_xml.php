@@ -11,7 +11,7 @@ $IncludeVideos = Utils::SafeBoolFromQS('includevideos');
 $TaggedOnly = Utils::SafeBoolFromQS('taggedonly');
 
 $Models = Model::GetModels(new ModelSearchParameters($ModelID));
-$Sets = Set::GetSets(new SetSearchParameters(null, null, $ModelID));
+$Sets = Set::GetSets(new SetSearchParameters(FALSE, FALSE, $ModelID));
 
 $Dates = Date::GetDates();
 $Tag2Alls = Tag2All::GetTag2Alls();
@@ -84,7 +84,7 @@ function XmlOutputModel($Model,$TaggedOnly)
 	
 			if($IncludeImages)
 			{
-				$ImagesThisSet = Image::GetImages(new ImageSearchParameters(null, null, $Set->getID(), null, $Model->getID()));
+				$ImagesThisSet = Image::GetImages(new ImageSearchParameters(FALSE, FALSE, $Set->getID(), FALSE, $Model->getID()));
 	
 				if($ImagesThisSet)
 				{
@@ -117,7 +117,7 @@ function XmlOutputModel($Model,$TaggedOnly)
 				
 			if($IncludeVideos)
 			{
-				$VideosThisSet = Video::GetVideos(new VideoSearchParameters(null, null, $Set->getID(), null, $Model->getID()));
+				$VideosThisSet = Video::GetVideos(new VideoSearchParameters(FALSE, FALSE, $Set->getID(), FALSE, $Model->getID()));
 	
 				if($VideosThisSet)
 				{

@@ -38,8 +38,8 @@ else
 	$FilterVID = array_key_exists('chkFilterVID', $_SESSION) ? (bool)$_SESSION['chkFilterVID'] : false;
 }
 
-$Sets = Set::GetSets(new SetSearchParameters(null, null, $ModelID, null, $SearchModel));
-$Dates = Date::GetDates(new DateSearchParameters(null, null, null, null, $ModelID, null, null, $SearchModel));
+$Sets = Set::GetSets(new SetSearchParameters(FALSE, FALSE, $ModelID, FALSE, $SearchModel));
+$Dates = Date::GetDates(new DateSearchParameters(FALSE, FALSE, FALSE, FALSE, $ModelID, FALSE, FALSE, $SearchModel));
 
 if($Sets)
 {

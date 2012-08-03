@@ -27,7 +27,7 @@ $Set = null;
 $ImageRows = '';
 $ImageCount = 0;
 
-$Images = Image::GetImages(new ImageSearchParameters(null, null, $SetID, null, $ModelID));
+$Images = Image::GetImages(new ImageSearchParameters(FALSE, FALSE, $SetID, FALSE, $ModelID));
 
 if($Images)
 {
@@ -126,7 +126,7 @@ if($Images)
 
 if(!$Set)
 {
-	$Set = Set::GetSets(new SetSearchParameters($SetID, null, $ModelID));
+	$Set = Set::GetSets(new SetSearchParameters($SetID, FALSE, $ModelID));
 	if($Set)
 	{
 		$Set = $Set[0];

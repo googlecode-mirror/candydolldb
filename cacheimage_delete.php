@@ -16,12 +16,12 @@ if($CurrentUser->hasPermission(RIGHT_CACHE_DELETE))
 	$CacheImages = null;
 
 	$cisp = new CacheImageSearchParameters(
-		null, null,
-		$ModelIndexID, null,
-		$ModelID, null,
-		$SetID, null,
-		$ImageID, null,
-		$VideoID, null,
+		FALSE, FALSE,
+		$ModelIndexID ? $ModelIndexID : FALSE, FALSE,
+		$ModelID ? $ModelID : FALSE, FALSE,
+		$SetID ? $SetID : FALSE, FALSE,
+		$ImageID ? $ImageID : FALSE, FALSE,
+		$VideoID ? $VideoID : FALSE, FALSE,
 		$Width, $Height
 	);
 	

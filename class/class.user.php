@@ -735,18 +735,18 @@ class UserSearchParameters extends SearchParameters
 	private $values = array();
 	private $where = '';
 
-	public function __construct($SingleID = null, $MultipleIDs = null, $UserName = null, $Password = null, $Email = null)
+	public function __construct($SingleID = FALSE, $MultipleIDs = FALSE, $UserName = FALSE, $Password = FALSE, $Email = FALSE)
 	{
 		parent::__construct();
 
-		if($SingleID)
+		if($SingleID !== FALSE)
 		{
 			$this->paramtypes .= "i";
 			$this->values[] = $SingleID;
 			$this->where .= " AND user_id = ?";
 		}
 
-		if($MultipleIDs)
+		if(is_array($MultipleIDs) && count($MultipleIDs) > 0)
 		{
 			$this->paramtypes .= str_repeat('i', count($MultipleIDs));
 			$this->values = array_merge($this->values, $MultipleIDs);
@@ -755,21 +755,21 @@ class UserSearchParameters extends SearchParameters
 			);
 		}
 
-		if($UserName)
+		if($UserName !== FALSE)
 		{
 			$this->paramtypes .= 's';
 			$this->values[] = $UserName;
 			$this->where .= " AND user_username = ?";
 		}
 
-		if($Password)
+		if($Password !== FALSE)
 		{
 			$this->paramtypes .= 's';
 			$this->values[] = $Password;
 			$this->where .= " AND user_password = ?";
 		}
 
-		if($Email)
+		if($Email !== FALSE)
 		{
 			$this->paramtypes .= 's';
 			$this->values[] = $Email;

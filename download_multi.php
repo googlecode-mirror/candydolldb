@@ -33,7 +33,7 @@ if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'DownloadMult
 	
 	if($SelectedModelIDs)
 	{
-		$Sets = Set::GetSets(new SetSearchParameters(null, null, null, $SelectedModelIDs));
+		$Sets = Set::GetSets(new SetSearchParameters(FALSE, FALSE, FALSE, $SelectedModelIDs));
 		$SelectedSetIDs = array_key_exists('selSets', $_POST) ? Utils::SafeInts($_POST['selSets']) : array();
 		
 		/* @var $Set Set */
@@ -50,7 +50,7 @@ if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'DownloadMult
 		
 		if($SelectedSetIDs)
 		{
-			$Images = Image::GetImages(new ImageSearchParameters(null, null, null, $SelectedSetIDs));
+			$Images = Image::GetImages(new ImageSearchParameters(FALSE, FALSE, FALSE, $SelectedSetIDs));
 			$SelectedImageIDs = array_key_exists('selImages', $_POST) ? Utils::SafeInts($_POST['selImages']) : array();
 			 
 			$ButtonText = $lang->g('ButtonDownload');

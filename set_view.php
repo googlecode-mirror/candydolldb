@@ -9,12 +9,12 @@ $SetID = Utils::SafeIntFromQS('set_id');
 
 $TagsInDB = Tag::GetTags();
 $TagsThisSet = Tag2All::GetTag2Alls(new Tag2AllSearchParameters(
-	null, null, null,
-	($ModelID ? $ModelID : -1), null,
-	($SetID ? $SetID : -1), null,
-	null, null,
-	null, null,
-	false, false, true, true));
+	FALSE, FALSE, FALSE,
+	$ModelID, FALSE,
+	$SetID, FALSE,
+	FALSE, FALSE,
+	FALSE, FALSE,
+	FALSE, FALSE, TRUE, TRUE));
 
 if(!isset($ModelID))
 {
@@ -32,7 +32,7 @@ $DatesThisSet = array();
 /* @var $Model Model */
 if($SetID != null)
 {
-	$Sets = Set::GetSets(new SetSearchParameters($SetID, null, $ModelID));
+	$Sets = Set::GetSets(new SetSearchParameters($SetID, FALSE, $ModelID));
 
 	if($Sets)
 	{ $Set = $Sets[0]; }
@@ -43,7 +43,7 @@ if($SetID != null)
 	}
 	
 	$Model = $Set->getModel();
-	$DatesThisSet = Date::GetDates(new DateSearchParameters(null, null, $Set->getID()));
+	$DatesThisSet = Date::GetDates(new DateSearchParameters(FALSE, FALSE, $Set->getID()));
 }
 else
 {
@@ -80,7 +80,7 @@ if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'SetView')
 		{
 			if(Set::Delete($Set, $CurrentUser))
 			{
-				$CacheImages = CacheImage::GetCacheImages(new CacheImageSearchParameters(null, null, $Model->getID()));
+				$CacheImages = CacheImage::GetCacheImages(new CacheImageSearchParameters(FALSE, FALSE, $Model->getID()));
 				CacheImage::DeleteMulti($CacheImages, $CurrentUser);
 				
 				header('location:'.$ReturnURL);
@@ -100,7 +100,7 @@ if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'SetView')
 	{
 		if(($NoErrorDuringPostback = Set::Insert($Set, $CurrentUser)))
 		{
-			$CacheImages = CacheImage::GetCacheImages(new CacheImageSearchParameters(null, null, $Model->getID()));
+			$CacheImages = CacheImage::GetCacheImages(new CacheImageSearchParameters(FALSE, FALSE, $Model->getID()));
 			CacheImage::DeleteMulti($CacheImages, $CurrentUser);
 			
 			Tag2All::HandleTags($tags, $TagsThisSet, $TagsInDB, $CurrentUser, $ModelID, $Set->getID(), null, null);
