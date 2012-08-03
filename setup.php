@@ -5,22 +5,6 @@ require_once('cd.php');
 function BackToThisPage($Text)
 { return sprintf('<a href="%2$s">%1$s</a>', $Text, $_SERVER['REQUEST_URI']); }
 
-function ExecuteQueries($SQL)
-{
-	global $SplitRegex;
-	$queries = preg_split($SplitRegex, $SQL);
-
-	$OutBool = true;
-	foreach($queries as $q)
-	{
-		if(strlen(trim($q)) == 0) { continue; }
-		$OutBool = @mysql_query($q);
-		if($OutBool === false) { break; }
-	}
-	return $OutBool;
-}
-
-
 if(file_exists('config.php'))
 {
 	die(sprintf(
@@ -28,7 +12,6 @@ if(file_exists('config.php'))
 		BackToThisPage($lang->g('LabelRevisitThisPage')
 	)));
 }
-
 
 $DBHostName = null;
 $DBUserName = null;
@@ -53,7 +36,6 @@ $SmtpUsername = null;
 $SmtpPassword = null;
 $SmtpPort = 0;
 $SmtpAuth = false;
-
 
 $InsertUserSQL = <<<FjbMNnvUJheiwewUJfheJheuehFJDUHdywgwwgHGfgywug
 INSERT INTO `User` (
@@ -87,9 +69,7 @@ INSERT INTO `User` (
 );
 FjbMNnvUJheiwewUJfheJheuehFJDUHdywgwwgHGfgywug;
 
-
 $CreateDBSQL = <<<FjbMNnvUJheiwewUJfheJheuehFJDUHdywgwwgHGfgywug
-SET AUTOCOMMIT=0;
 START TRANSACTION;
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -385,29 +365,25 @@ if(array_key_exists('hidAction', $_POST) && isset($_POST['hidAction']) && $_POST
 
 	if(isset($DBHostName) && isset($DBUserName) && isset($DBPassword))
 	{
-		if(@mysql_pconnect($DBHostName, $DBUserName, $DBPassword) !== false)
+		/* @var $dbi DBi */
+		if(($dbi = new DBi($DBHostName, $DBUserName, $DBPassword, $DBName)))
 		{
-			if(ExecuteQueries(sprintf(
-				$CreateDBSQL,
-				mysql_real_escape_string($DBName)
-			)) !== false)
+			if($dbi->ExecuteMulti(sprintf($CreateDBSQL, $dbi->real_escape_string($DBName))))
 			{
 				$UserSalt = Utils::GenerateGarbage(20);
 
-				@mysql_select_db($DBName);
-				if(@mysql_query(sprintf(
-						$InsertUserSQL,
-						mysql_escape_string($UserName),
-						mysql_escape_string(Utils::HashString($Password, $UserSalt)),
-						mysql_escape_string($UserSalt),
-						mysql_escape_string($UserFirstName),
-						mysql_escape_string($UserLastName),
-						mysql_escape_string($UserEmail),
-						Rights::getTotalRights()
-						)) !== false)
+				if($dbi->query(sprintf(
+					$InsertUserSQL,
+					$dbi->real_escape_string($UserName),
+					$dbi->real_escape_string(Utils::HashString($Password, $UserSalt)),
+					$dbi->real_escape_string($UserSalt),
+					$dbi->real_escape_string($UserFirstName),
+					$dbi->real_escape_string($UserLastName),
+					$dbi->real_escape_string($UserEmail),
+					Rights::getTotalRights()
+				)))
 				{
-					$NewUserID = mysql_fetch_array(mysql_query('SELECT LAST_INSERT_ID() AS `LastID`;'));
-					$NewUserID = intval($NewUserID['LastID']);
+					$NewUserID = $dbi->insert_id;
 
 					$NewConfig = sprintf($ConfigTemplate,
 						str_ireplace('\\', '\\\\', $CandyImagePath),
