@@ -21,6 +21,7 @@ class LabelsEN extends Labels
 		'ErrorPleaseUseWebInterfaceForSetup' => 'Please use the webinterface for setting up this application.',
 		'ErrorUpdateTryAgain' => 'Something went wrong while updating, please <a href="%1$s">try again</a>.',
 		'ErrorSetupConnectDatabase' => 'Could not connect to the database-server, please %1$s the database-settings.',
+		'ErrorSetupCreatingCacheDir' => 'Could not find or create the cache-directory, please %1$s.',
 		'ErrorSetupCreatingUser' => 'Something went wrong while creating the user (\'%2$s\'), please %1$s.',
 		'ErrorSetupWritingConfig' => 'Something went wrong while writing the new config. Please check file permissions and %1$s.',
 		'ErrorSetupAlreadyComplete' => 'Setup already complete, please remove \'config.php\' from your installation directory and %1$s.',

@@ -407,7 +407,12 @@ if(array_key_exists('hidAction', $_POST) && isset($_POST['hidAction']) && $_POST
 
 					if(@file_put_contents('config.php', $NewConfig, LOCK_EX) !== false)
 					{
-						die($lang->g('MessageAllDoneConfigWritten'));
+						if(is_dir('cache') || mkdir('cache', 0700, true))
+						{ 
+							die($lang->g('MessageAllDoneConfigWritten'));
+						}
+						else
+						{ die(sprintf($lang->g('ErrorSetupCreatingCacheDir'), BackToThisPage($lang->g('LabelTryAgain')))); }
 					}
 					else
 					{ die(sprintf($lang->g('ErrorSetupWritingConfig'), BackToThisPage($lang->g('LabelTryAgain')))); }
