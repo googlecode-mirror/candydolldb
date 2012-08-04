@@ -10,9 +10,12 @@ $IncludeImages = Utils::SafeBoolFromQS('includeimages');
 $IncludeVideos = Utils::SafeBoolFromQS('includevideos');
 $TaggedOnly = Utils::SafeBoolFromQS('taggedonly');
 
-$Models = Model::GetModels(new ModelSearchParameters($ModelID));
-$Sets = Set::GetSets(new SetSearchParameters(FALSE, FALSE, $ModelID));
-
+$Models = Model::GetModels(new ModelSearchParameters(
+	is_null($ModelID) ? FALSE : $ModelID));
+$Sets = Set::GetSets(new SetSearchParameters(
+	FALSE,
+	FALSE,
+	is_null($ModelID) ? FALSE : $ModelID));
 $Dates = Date::GetDates();
 $Tag2Alls = Tag2All::GetTag2Alls();
 

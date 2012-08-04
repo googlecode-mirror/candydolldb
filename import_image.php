@@ -12,9 +12,16 @@ $CacheImages = array();
 $CacheImage = null;
 
 
-$Models = Model::GetModels(new ModelSearchParameters($ModelID));
-$Sets = Set::GetSets(new SetSearchParameters($SetID));
-$Images = Image::GetImages(new ImageSearchParameters(FALSE, FALSE, $SetID, FALSE, $ModelID));
+$Models = Model::GetModels(new ModelSearchParameters(
+	is_null($ModelID) ? FALSE : $ModelID));
+$Sets = Set::GetSets(new SetSearchParameters(
+	is_null($SetID) ? FALSE : $SetID));
+$Images = Image::GetImages(new ImageSearchParameters(
+	FALSE,
+	FALSE,
+	is_null($SetID) ? FALSE : $SetID,
+	FALSE,
+	is_null($ModelID) ? FALSE : $ModelID));
 $CacheImages = CacheImage::GetCacheImages();
 
 

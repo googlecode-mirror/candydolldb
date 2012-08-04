@@ -11,9 +11,9 @@ $ImageID = Utils::SafeIntFromQS('image_id');
 $TagsInDB = Tag::GetTags();
 $TagsThisImage = Tag2All::GetTag2Alls(new Tag2AllSearchParameters(
 	FALSE, FALSE, FALSE,
-	$ModelID, FALSE,
-	$SetID, FALSE,
-	$ImageID, FALSE,
+	is_null($ModelID) ? FALSE : $ModelID, FALSE,
+	is_null($SetID) ? FALSE : $SetID, FALSE,
+	is_null($ImageID) ? FALSE : $ImageID, FALSE,
 	FALSE, FALSE,
 	FALSE, FALSE, FALSE, TRUE));
 
@@ -37,7 +37,12 @@ $ReturnURL = sprintf('image.php?model_id=%1$d&set_id=%2$d', $ModelID, $SetID);
 /* @var $Model Model */
 if($ImageID != null)
 {
-	$Images = Image::GetImages(new ImageSearchParameters($ImageID, FALSE, $SetID, FALSE, $ModelID));
+	$Images = Image::GetImages(new ImageSearchParameters(
+		$ImageID,
+		FALSE,
+		is_null($SetID) ? FALSE : $SetID,
+		FALSE,
+		is_null($ModelID) ? FALSE : $ModelID));
 
 	if($Images)
 	{ $Image = $Images[0]; }
