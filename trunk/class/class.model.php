@@ -144,7 +144,16 @@ class Model
 		$limitClause = sprintf('1');
 		
 		$Images = Image::GetImages(
-			new ImageSearchParameters(FALSE, FALSE, $SetID, FALSE, $this->getID(), FALSE, FALSE, $PortraitOnly, $LandscapeOnly),
+			new ImageSearchParameters(
+				FALSE,
+				FALSE,
+				is_null($SetID) ? FALSE : $SetID,
+				FALSE,
+				$this->getID(),
+				FALSE,
+				FALSE,
+				$PortraitOnly,
+				$LandscapeOnly),
 			$orderClause,
 			$limitClause);
 		
@@ -152,7 +161,12 @@ class Model
 		{
 			/* Work-around for returning at least ONE image when none fit the specified aspect ratio */
 			$Images = Image::GetImages(
-				new ImageSearchParameters(FALSE, FALSE, $SetID, FALSE, $this->getID()),
+				new ImageSearchParameters(
+					FALSE,
+					FALSE,
+					is_null($SetID) ? FALSE : $SetID,
+					FALSE,
+					$this->getID()),
 				$orderClause,
 				$limitClause);
 		}

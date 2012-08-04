@@ -9,9 +9,16 @@ $ModelID = Utils::SafeIntFromQS('model_id');
 $SetID = Utils::SafeIntFromQS('set_id');
 
 
-$Models = Model::GetModels(new ModelSearchParameters($ModelID));
-$Sets = Set::GetSets(new SetSearchParameters($SetID));
-$Videos = Video::GetVideos(new VideoSearchParameters(FALSE, FALSE, $SetID, FALSE, $ModelID));
+$Models = Model::GetModels(new ModelSearchParameters(
+	is_null($ModelID) ? FALSE : $ModelID));
+$Sets = Set::GetSets(new SetSearchParameters(
+	is_null($SetID) ? FALSE : $SetID));
+$Videos = Video::GetVideos(new VideoSearchParameters(
+		FALSE,
+		FALSE,
+		(is_null($SetID) ? FALSE : $SetID),
+		FALSE,
+		is_null($ModelID) ? FALSE : $ModelID));
 $CacheImages = CacheImage::GetCacheImages();
 
 
