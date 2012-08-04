@@ -8,6 +8,7 @@ class Video
 	private $FileExtension;
 	private $FileSize = 0;
 	private $FileCheckSum;
+	private $FileCRC32;
 	
 	/**
 	 * @param int $video_id
@@ -15,6 +16,7 @@ class Video
 	 * @param string $video_fileextension
 	 * @param int $video_filesize
 	 * @param string $video_filechecksum
+	 * @param string $video_filecrc32
 	 * @param int $set_id
 	 * @param string $set_prefix
 	 * @param string$set_name
@@ -24,7 +26,7 @@ class Video
 	 * @param string $model_lastname
 	 */
 	public function __construct(
-		$video_id = NULL, $video_filename = NULL, $video_fileextension = NULL, $video_filesize = 0, $video_filechecksum = NULL,
+		$video_id = NULL, $video_filename = NULL, $video_fileextension = NULL, $video_filesize = 0, $video_filechecksum = NULL, $video_filecrc32 = NULL,
 		$set_id = NULL, $set_prefix = NULL, $set_name = NULL, $set_containswhat = SET_CONTENT_NONE,
 		$model_id = NULL, $model_firstname = NULL, $model_lastname = NULL)
 	{
@@ -33,6 +35,7 @@ class Video
 		$this->FileExtension = $video_fileextension;
 		$this->FileSize = $video_filesize;
 		$this->FileCheckSum = $video_filechecksum;
+		$this->FileCRC32 = $video_filecrc32;
 		
 		/* @var $s Set */
 		$s = new Set($set_id, $set_prefix, $set_name, $set_containswhat,
@@ -122,14 +125,14 @@ class Video
 	/**
 	 * @return string
 	 */
-	public function getFileCRC()
-	{ return $this->FileCRC; }
+	public function getFileCRC32()
+	{ return $this->FileCRC32; }
 	
 	/**
-	 * @param string $FileCRC
+	 * @param string $FileCRC32
 	 */
-	public function setFileCRC($FileCRC)
-	{ $this->FileCRC = $FileCRC; }
+	public function setFileCRC32($FileCRC32)
+	{ $this->FileCRC32 = $FileCRC32; }
 	
 	/**
 	 * Calculates the crc32 polynomial of the given Video's file on disk
@@ -171,7 +174,7 @@ class Video
 		
 		$q = sprintf("
 			SELECT
-				`video_id`, `video_filename`, `video_fileextension`, `video_filesize`, `video_filechecksum`, 
+				`video_id`, `video_filename`, `video_fileextension`, `video_filesize`, `video_filechecksum`, `video_filecrc32`, 
 				`set_id`, `set_prefix`, `set_name`, `set_containswhat`,
 				`model_id`, `model_firstname`, `model_lastname`
 			FROM
@@ -200,14 +203,14 @@ class Video
 		{
 			$OutArray = array();
 			$stmt->bind_result(
-				$video_id, $video_filename, $video_fileextension, $video_filesize, $video_filechecksum, 
+				$video_id, $video_filename, $video_fileextension, $video_filesize, $video_filechecksum, $video_filecrc32, 
 				$set_id, $set_prefix, $set_name, $set_containswhat,
 				$model_id, $model_firstname, $model_lastname);
 		
 			while($stmt->fetch())
 			{
-				$o = new Video(
-					$video_id, $video_filename, $video_fileextension, $video_filesize, $video_filechecksum,
+				$o = new self(
+					$video_id, $video_filename, $video_fileextension, $video_filesize, $video_filechecksum, $video_filecrc32,
 					$set_id, $set_prefix, $set_name, $set_containswhat,
 					$model_id, $model_firstname, $model_lastname);
 		
@@ -247,8 +250,6 @@ class Video
 		global $dbi;
 	
 		$outBool = TRUE;
-		$set_id = $video_filename = $video_fileextension = $video_filechecksum = NULL;
-		$video_filesize = 0;
 		$mut_id = $CurrentUser->getID();
 		$mut_date = time();
 	
@@ -262,10 +263,11 @@ class Video
 				`video_fileextension`,
 				`video_filesize`,
 				`video_filechecksum`,
+				`video_filecrc32`,
 				`mut_id`,
 				`mut_date`
 			) VALUES (
-				?, ?, ?, ?, ?, ?, ?
+				?, ?, ?, ?, ?, ?, ?, ?
 			)
 		");
 	
@@ -276,12 +278,13 @@ class Video
 			return FALSE;
 		}
 	
-		$stmt->bind_param('issisii',
+		$stmt->bind_param('ississii',
 			$set_id,
 			$video_filename,
 			$video_fileextension,
 			$video_filesize,
 			$video_filechecksum,
+			$video_filecrc32,
 			$mut_id,
 			$mut_date
 		);
@@ -293,6 +296,7 @@ class Video
 			$video_fileextension = $Video->getFileExtension();
 			$video_filesize = $Video->getFileSize();
 			$video_filechecksum = $Video->getFileCheckSum();
+			$video_filecrc32 = $Video->getFileCRC32();
 	
 			$outBool = $stmt->execute();
 			if($outBool)
@@ -332,8 +336,6 @@ class Video
 		global $dbi;
 		$outBool = TRUE;
 
-		$id = $set_id = $video_filename = $video_fileextension = $video_filechecksum = NULL;
-		$video_filesize = 0;
 		$mut_id = $CurrentUser->getID();
 		$mut_date = time();
 	
@@ -347,6 +349,7 @@ class Video
 				`video_fileextension` = ?,
 				`video_filesize` = ?,
 				`video_filechecksum` = ?,
+				`video_filecrc32` = ?,
 				`mut_id` = ?,
 				`mut_date` = ?
 			WHERE
@@ -360,12 +363,13 @@ class Video
 			return FALSE;
 		}
 	
-		$stmt->bind_param('issisiii',
+		$stmt->bind_param('ississiii',
 			$set_id,
 			$video_filename,
 			$video_fileextension,
 			$video_filesize,
 			$video_filechecksum,
+			$video_filecrc32,
 			$mut_id,
 			$mut_date,
 			$id
@@ -378,6 +382,7 @@ class Video
 			$video_fileextension = $Video->getFileExtension();
 			$video_filesize = $Video->getFileSize();
 			$video_filechecksum = $Video->getFileCheckSum();
+			$video_filecrc32 = $Video->getFileCRC32();
 			$id = $Video->getID();
 	
 			$outBool = $stmt->execute();

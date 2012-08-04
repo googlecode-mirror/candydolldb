@@ -8,12 +8,12 @@ class Image
 	private $FileExtension;
 	private $FileSize = 0;
 	private $FileCheckSum;
-	private $FileCRC;
+	private $FileCRC32;
 	private $ImageWidth = 0;
 	private $ImageHeight = 0;
 	
 	public function __construct(
-		$image_id = NULL, $image_filename = NULL, $image_fileextension = NULL, $image_filesize = 0, $image_filechecksum = NULL, $image_width = 0, $image_height = 0,
+		$image_id = NULL, $image_filename = NULL, $image_fileextension = NULL, $image_filesize = 0, $image_filechecksum = NULL, $image_filecrc32 = NULL, $image_width = 0, $image_height = 0,
 		$set_id = NULL, $set_prefix = NULL, $set_name = NULL, $set_containswhat = SET_CONTENT_NONE,
 		$model_id = NULL, $model_firstname = NULL, $model_lastname = NULL)
 	{
@@ -22,6 +22,7 @@ class Image
 		$this->FileExtension = $image_fileextension;
 		$this->FileSize = $image_filesize;
 		$this->FileCheckSum = $image_filechecksum;
+		$this->FileCRC32 = $image_filecrc32; 
 		$this->ImageWidth = $image_width;
 		$this->ImageHeight = $image_height;
 		
@@ -138,14 +139,14 @@ class Image
 	/**
 	 * @return string
 	 */
-	public function getFileCRC()
-	{ return $this->FileCRC; }
+	public function getFileCRC32()
+	{ return $this->FileCRC32; }
 	
 	/**
-	 * @param string $FileCRC
+	 * @param string $FileCRC32
 	 */
-	public function setFileCRC($FileCRC)
-	{ $this->FileCRC = $FileCRC; }
+	public function setFileCRC32($FileCRC32)
+	{ $this->FileCRC32 = $FileCRC32; }
 	
 	/**
 	 * @return string
@@ -243,7 +244,7 @@ class Image
 
 		$q = sprintf("
 			SELECT
-				`image_id`, `image_filename`, `image_fileextension`, `image_filesize`, `image_filechecksum`, `image_width`, `image_height`,
+				`image_id`, `image_filename`, `image_fileextension`, `image_filesize`, `image_filechecksum`, `image_filecrc32`, `image_width`, `image_height`,
 				`set_id`, `set_prefix`, `set_name`, `set_containswhat`,
 				`model_id`, `model_firstname`, `model_lastname`
 			FROM
@@ -272,14 +273,14 @@ class Image
 		{
 			$OutArray = array();
 			$stmt->bind_result(
-					$image_id, $image_filename, $image_fileextension, $image_filesize, $image_filechecksum, $image_width, $image_height,
+					$image_id, $image_filename, $image_fileextension, $image_filesize, $image_filechecksum, $image_filecrc32, $image_width, $image_height,
 					$set_id, $set_prefix, $set_name, $set_containswhat,
 					$model_id, $model_firstname, $model_lastname);
 		
 			while($stmt->fetch())
 			{
 				$o = new self(
-					$image_id, $image_filename, $image_fileextension, $image_filesize, $image_filechecksum, $image_width, $image_height,
+					$image_id, $image_filename, $image_fileextension, $image_filesize, $image_filechecksum, $image_filecrc32, $image_width, $image_height,
 					$set_id, $set_prefix, $set_name, $set_containswhat,
 					$model_id, $model_firstname, $model_lastname);
 				
@@ -319,7 +320,6 @@ class Image
 		global $dbi;
 	
 		$outBool = TRUE;
-		$set_id = $image_filename = $image_fileextension = $image_filesize = $image_filechecksum = $image_width = $image_height = NULL;
 		$mut_id = $CurrentUser->getID();
 		$mut_date = time();
 	
@@ -333,12 +333,13 @@ class Image
 				`image_fileextension`,
 				`image_filesize`,
 				`image_filechecksum`,
+				`image_filecrc32`,
 				`image_width`,
 				`image_height`, 
 				`mut_id`,
 				`mut_date`
 			) VALUES (
-				?, ?, ?, ?, ?, ?, ?, ?, ?
+				?, ?, ?, ?, ?, ?, ?, ?, ?, ?
 			)
 		");
 	
@@ -349,18 +350,20 @@ class Image
 			return FALSE;
 		}
 	
-		$stmt->bind_param('issisiiii',
+		$stmt->bind_param('ississiiii',
 			$set_id,
 			$image_filename,
 			$image_fileextension,
 			$image_filesize,
 			$image_filechecksum,
+			$image_filecrc32,
 			$image_width,
 			$image_height,
 			$mut_id,
 			$mut_date
 		);
 	
+		/* @var $Image Image */
 		foreach($Images as $Image)
 		{
 			$set_id = $Image->getSetID();
@@ -368,6 +371,7 @@ class Image
 			$image_fileextension = $Image->getFileExtension();
 			$image_filesize = $Image->getFileSize();
 			$image_filechecksum = $Image->getFileCheckSum();
+			$image_filecrc32 = $Image->getFileCRC32();
 			$image_width = $Image->getImageWidth();
 			$image_height = $Image->getImageHeight();
 	
@@ -409,7 +413,6 @@ class Image
 		global $dbi;
 		
 		$outBool = TRUE;
-		$id = $set_id = $image_filename = $image_fileextension = $image_filesize = $image_filechecksum = $image_width = $image_height = NULL;
 		$mut_id = $CurrentUser->getID();
 		$mut_date = time();
 		
@@ -423,6 +426,7 @@ class Image
 				`image_fileextension` = ?,
 				`image_filesize` = ?,
 				`image_filechecksum` = ?,
+				`image_filecrc32` = ?,
 				`image_width` = ?,
 				`image_height` = ?,
 				`mut_id` = ?,
@@ -438,12 +442,13 @@ class Image
 			return FALSE;
 		}
 		
-		$stmt->bind_param('issisiiiii',
+		$stmt->bind_param('ississiiiii',
 				$set_id,
 				$image_filename,
 				$image_fileextension,
 				$image_filesize,
 				$image_filechecksum,
+				$image_filecrc32,
 				$image_width,
 				$image_height,
 				$mut_id,
@@ -458,6 +463,7 @@ class Image
 			$image_fileextension = $Image->getFileExtension();
 			$image_filesize = $Image->getFileSize();
 			$image_filechecksum = $Image->getFileCheckSum();
+			$image_filecrc32 = $Image->getFileCRC32();
 			$image_width = $Image->getImageWidth();
 			$image_height = $Image->getImageHeight();
 			$id = $Image->getID();
