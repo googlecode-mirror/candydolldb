@@ -20,9 +20,9 @@ class Date
 	 * @param string $model_lastname
 	 */
 	public function __construct(
-		$date_id = null, $date_kind = DATE_KIND_UNKNOWN, $date_timestamp = -1,
-		$set_id = null, $set_prefix = null, $set_name = null, $set_containswhat = SET_CONTENT_NONE,
-		$model_id = null, $model_firstname = null, $model_lastname = null)
+		$date_id = NULL, $date_kind = DATE_KIND_UNKNOWN, $date_timestamp = -1,
+		$set_id = NULL, $set_prefix = NULL, $set_name = NULL, $set_containswhat = SET_CONTENT_NONE,
+		$model_id = NULL, $model_firstname = NULL, $model_lastname = NULL)
 	{
 		$this->ID = $date_id;
 		$this->DateKind = $date_kind;
@@ -56,7 +56,7 @@ class Date
 	 * @return int
 	 */
 	public function getSetID()
-	{ return $this->Set ? $this->Set->getID() : null; }
+	{ return $this->Set ? $this->Set->getID() : NULL; }
 	
 	/**
 	 * @param Set $Set
@@ -96,7 +96,7 @@ class Date
 	 * @param string $LimitClause
 	 * @return Array(Date) | NULL
 	 */
-	public static function GetDates($SearchParameters = null, $OrderClause = null, $LimitClause = null)
+	public static function GetDates($SearchParameters = NULL, $OrderClause = NULL, $LimitClause = NULL)
 	{
 		global $dbi;
 		$SearchParameters = $SearchParameters ? $SearchParameters : new DateSearchParameters();
@@ -117,14 +117,14 @@ class Date
 			%3\$s",
 			$SearchParameters->getWhere(),
 			$OrderClause,
-			$LimitClause ? ' LIMIT '.$LimitClause : null
+			$LimitClause ? ' LIMIT '.$LimitClause : NULL
 		);
 		
 		if(!($stmt = $dbi->prepare($q)))
 		{
 			$e = new SQLerror($dbi->errno, $dbi->error);
 			Error::AddError($e);
-			return null;
+			return NULL;
 		}
 		
 		DBi::BindParamsToSelect($SearchParameters, $stmt);		
@@ -154,7 +154,7 @@ class Date
 		{
 			$e = new SQLerror($dbi->errno, $dbi->error);
 			Error::AddError($e);
-			return null;
+			return NULL;
 		}		
 	}
 	
@@ -179,13 +179,13 @@ class Date
 	{
 		global $dbi;
 		
-		$outBool = true;
-		$set_id = $date_kind = $date_timestamp = null;
+		$outBool = TRUE;
+		$set_id = $date_kind = $date_timestamp = NULL;
 		$mut_id = $CurrentUser->getID();
 		$mut_date = time();
 		
 		if(!is_array($Dates))
-		{ return false; }
+		{ return FALSE; }
 		
 		$q = sprintf("
 			INSERT INTO	`Date` (
@@ -203,7 +203,7 @@ class Date
 		{
 			$e = new SQLerror($dbi->errno, $dbi->error);
 			Error::AddError($e);
-			return false;
+			return FALSE;
 		}
 		
 		$stmt->bind_param('iiiii',
@@ -256,14 +256,14 @@ class Date
 	public static function UpdateMulti($Dates, $CurrentUser)
 	{
 		global $dbi;
-		$outBool = true;
+		$outBool = TRUE;
 
-		$id = $set_id = $date_kind = $date_timestamp = null;
+		$id = $set_id = $date_kind = $date_timestamp = NULL;
 		$mut_id = $CurrentUser->getID();
 		$mut_date = time();
 		
 		if(!is_array($Dates))
-		{ return false; }
+		{ return FALSE; }
 		
 		$q = sprintf("
 			UPDATE
@@ -282,7 +282,7 @@ class Date
 		{
 			$e = new SQLerror($dbi->errno, $dbi->error);
 			Error::AddError($e);
-			return false;
+			return FALSE;
 		}
 		
 		$stmt->bind_param('iiiiii', $set_id, $date_kind, $date_timestamp, $mut_id, $mut_date, $id);
@@ -327,13 +327,13 @@ class Date
 	{
 		global $dbi;
 		
-		$outBool = true;
-		$id = null;
+		$outBool = TRUE;
+		$id = NULL;
 		$mut_id = $CurrentUser->getID();
 		$mut_deleted = time();
 		
 		if(!is_array($Dates))
-		{ return false; }
+		{ return FALSE; }
 		
 		$q = sprintf("
 			UPDATE 
@@ -349,7 +349,7 @@ class Date
 		{
 			$e = new SQLerror($dbi->errno, $dbi->error);
 			Error::AddError($e);
-			return false;
+			return FALSE;
 		}
 		
 		$stmt->bind_param('iii', $mut_id, $mut_deleted, $id);
@@ -380,7 +380,7 @@ class Date
 	 * @param int $TimeStamp
 	 * @return array(Date)
 	 */
-	public static function FilterDates($DateArray, $DateID = null, $ModelID = null, $SetID = null, $Kind = null, $TimeStamp = null)
+	public static function FilterDates($DateArray, $DateID = NULL, $ModelID = NULL, $SetID = NULL, $Kind = NULL, $TimeStamp = NULL)
 	{
 		$OutArray = array();
 			
@@ -408,9 +408,9 @@ class Date
 	 * @param string $Glue
 	 * @return string
 	 */
-	public static function FormatDates($InArray, $DateFormat, $PrefixType = false, $Glue = ', ')
+	public static function FormatDates($InArray, $DateFormat, $PrefixType = FALSE, $Glue = ', ')
 	{
-		$OutString = null;
+		$OutString = NULL;
 		if(is_array($InArray) && count($InArray) > 0)
 		{
 			/* @var $Date Date */
@@ -418,7 +418,7 @@ class Date
 			{
 				if($Date->getTimeStamp() > 0)
 				{
-					$OutString .= $PrefixType ? ($Date->getDateKind() == DATE_KIND_VIDEO ? 'V-' : 'P-') : null; 
+					$OutString .= $PrefixType ? ($Date->getDateKind() == DATE_KIND_VIDEO ? 'V-' : 'P-') : NULL; 
 					$OutString .= date($DateFormat, $Date->getTimeStamp()).$Glue;
 				}
 			}
@@ -433,7 +433,7 @@ class Date
 	* @param Set $Set
 	* @return array(Date)
 	*/
-	public static function ParseDates($InArray, $DateKind = DATE_KIND_UNKNOWN, $Set = null)
+	public static function ParseDates($InArray, $DateKind = DATE_KIND_UNKNOWN, $Set = NULL)
 	{
 		$OutArray = array();
 		if(is_array($InArray) && count($InArray) > 0)
@@ -441,7 +441,7 @@ class Date
 			for ($i = 0; $i < count($InArray); $i++)
 			{
 				$timestamp = strtotime($InArray[$i]);
-				if($timestamp !== false)
+				if($timestamp !== FALSE)
 				{
 					/* @var $Date Date */
 					$Date = new self();

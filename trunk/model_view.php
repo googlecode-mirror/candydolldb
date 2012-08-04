@@ -5,7 +5,7 @@ $CurrentUser = Authentication::Authenticate();
 HTMLstuff::RefererRegister($_SERVER['REQUEST_URI']);
 
 $ModelID = Utils::SafeIntFromQS('model_id');
-$DeleteModel = $CurrentUser->hasPermission(RIGHT_MODEL_DELETE) ? (array_key_exists('cmd', $_GET) && $_GET['cmd'] && ($_GET['cmd'] == COMMAND_DELETE)) : null;
+$DeleteModel = $CurrentUser->hasPermission(RIGHT_MODEL_DELETE) ? (array_key_exists('cmd', $_GET) && $_GET['cmd'] && ($_GET['cmd'] == COMMAND_DELETE)) : NULL;
 $EditModel = $CurrentUser->hasPermission(RIGHT_USER_EDIT);
 
 $TagsInDB = Tag::GetTags();
@@ -28,7 +28,7 @@ if($ModelID)
 }
 else
 {
-	$Model = new Model(null, $lang->g('NavigationNewModel'));
+	$Model = new Model(NULL, $lang->g('NavigationNewModel'));
 }
 
 if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'ModelView')
@@ -36,7 +36,7 @@ if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'ModelView')
 	$Model->setFirstName($_POST['txtFirstName']);
 	$Model->setLastName($_POST['txtLastName']);
 
-	if($_POST['txtBirthDate'] && $_POST['txtBirthDate'] != 'YYYY-MM-DD' && strtotime($_POST['txtBirthDate']) !== false)
+	if($_POST['txtBirthDate'] && $_POST['txtBirthDate'] != 'YYYY-MM-DD' && strtotime($_POST['txtBirthDate']) !== FALSE)
 	{ $Model->setBirthDate(strtotime($_POST['txtBirthDate'])); }
 	else
 	{ $Model->setBirthDate(-1); }
@@ -59,7 +59,7 @@ if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'ModelView')
 		{
 		    if(Model::Update($Model, $CurrentUser))
 		    {
-		    	Tag2All::HandleTags($tags, $TagsThisModel, $TagsInDB, $CurrentUser, $Model->getID(), null, null, null);
+		    	Tag2All::HandleTags($tags, $TagsThisModel, $TagsInDB, $CurrentUser, $Model->getID(), NULL, NULL, NULL);
 		    	header('location:index.php');
 		    	exit;
 		    }
@@ -69,7 +69,7 @@ if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'ModelView')
 	{
 		if(Model::Insert($Model, $CurrentUser))
 		{
-			Tag2All::HandleTags($tags, $TagsThisModel, $TagsInDB, $CurrentUser, $Model->getID(), null, null, null);
+			Tag2All::HandleTags($tags, $TagsThisModel, $TagsInDB, $CurrentUser, $Model->getID(), NULL, NULL, NULL);
 			header('location:index.php');
 		    exit;
 		}
@@ -115,7 +115,7 @@ if($ModelID)
 
 <div class="FormRow">
 <label for="txtBirthDate"><?php echo $lang->g('LabelBirthdate')?>:</label>
-<input type="text" id="txtBirthDate" name="txtBirthDate" class="DatePicker"	maxlength="10" value="<?php echo $Model->getBirthDate() > 0 ? date('Y-m-d', $Model->getBirthDate()) : null?>"<?php echo HTMLstuff::DisabledStr($DeleteModel || !$EditModel)?> />
+<input type="text" id="txtBirthDate" name="txtBirthDate" class="DatePicker"	maxlength="10" value="<?php echo $Model->getBirthDate() > 0 ? date('Y-m-d', $Model->getBirthDate()) : NULL?>"<?php echo HTMLstuff::DisabledStr($DeleteModel || !$EditModel)?> />
 </div>
 
 <div class="FormRow">

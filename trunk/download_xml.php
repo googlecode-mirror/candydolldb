@@ -25,8 +25,8 @@ if($ModelID && count($Models) > 0){
 	$Model = $Models[0];
 	$outfile = sprintf('CandyDollDB %1$s%2$s%3$s.xml',
 		$Model->GetFullName(),
-		(($IncludeImages && $IncludeVideos) ? ' '.$lang->g('LabelComplete') : ($IncludeImages ? ' '.$lang->g('NavigationImages') : ($IncludeVideos ? ' '.$lang->g('NavigationVideos') : null))),
-		(($IncludeImages || $IncludeVideos) && $TaggedOnly) ? ' '.$lang->g('LabelTagged') : null
+		(($IncludeImages && $IncludeVideos) ? ' '.$lang->g('LabelComplete') : ($IncludeImages ? ' '.$lang->g('NavigationImages') : ($IncludeVideos ? ' '.$lang->g('NavigationVideos') : NULL))),
+		(($IncludeImages || $IncludeVideos) && $TaggedOnly) ? ' '.$lang->g('LabelTagged') : NULL
 	);
 }
 
@@ -35,14 +35,14 @@ header(sprintf('Content-Disposition: attachment; filename="%1$s"', $outfile));
 
 $xmlw = new XMLWriter();
 $xmlw->openUri('php://output');
-$xmlw->setIndent(true);
+$xmlw->setIndent(TRUE);
 $xmlw->setIndentString("\t");
 $xmlw->startDocument('1.0', 'UTF-8');
 
 $xmlw->startElement('Models');
-$xmlw->writeAttributeNs('xmlns', 'xsi', null, 'http://www.w3.org/2001/XMLSchema-instance');
-$xmlw->writeAttributeNs('xsi', 'noNamespaceSchemaLocation', null, 'candydolldb.xsd');
-$xmlw->writeAttribute('xmlns', null);
+$xmlw->writeAttributeNs('xmlns', 'xsi', NULL, 'http://www.w3.org/2001/XMLSchema-instance');
+$xmlw->writeAttributeNs('xsi', 'noNamespaceSchemaLocation', NULL, 'candydolldb.xsd');
+$xmlw->writeAttribute('xmlns', NULL);
 
 
 function XmlOutputModel($Model,$TaggedOnly)
@@ -52,10 +52,10 @@ function XmlOutputModel($Model,$TaggedOnly)
 	$xmlw->startElement('Model');
 	$xmlw->writeAttribute('firstname', $Model->getFirstName());
 	$xmlw->writeAttribute('lastname', $Model->getLastName());
-	$xmlw->writeAttribute('birthdate', $Model->getBirthdate() > 0 ? date('Y-m-d', $Model->getBirthdate()) : null);
+	$xmlw->writeAttribute('birthdate', $Model->getBirthdate() > 0 ? date('Y-m-d', $Model->getBirthdate()) : NULL);
 	
-	$TagsThisModel = Tag2All::Filter($Tag2Alls, null, $Model->getID(), false, false, false);
-	$TagsThisModelOnly = Tag2All::Filter($TagsThisModel, null, $Model->getID(), null, null, null);
+	$TagsThisModel = Tag2All::Filter($Tag2Alls, NULL, $Model->getID(), FALSE, FALSE, FALSE);
+	$TagsThisModelOnly = Tag2All::Filter($TagsThisModel, NULL, $Model->getID(), NULL, NULL, NULL);
 	$xmlw->writeAttribute('tags', Tag2All::Tags2AllCSV($TagsThisModelOnly));
 	
 	$SetsThisModel = Set::Filter($Sets, $Model->getID());
@@ -63,16 +63,16 @@ function XmlOutputModel($Model,$TaggedOnly)
 	{
 		$xmlw->startElement('Sets');
 	
-		$DatesThisModel = Date::FilterDates($Dates, null, $Model->getID());
+		$DatesThisModel = Date::FilterDates($Dates, NULL, $Model->getID());
 
 		if($Model->getFirstName() == 'VIP')
 		{ usort($SetsThisModel, array('Set', 'CompareASC')); }
 
 		foreach ($SetsThisModel as $Set)
 		{
-			$PicDatesThisSet = Date::FilterDates($DatesThisModel, null, null, $Set->getID(), DATE_KIND_IMAGE);
-			$VidDatesThisSet = Date::FilterDates($DatesThisModel, null, null, $Set->getID(), DATE_KIND_VIDEO);
-			$TagsThisSet = Tag2All::Filter($TagsThisModel, null, $Model->getID(), $Set->getID(), null, null);
+			$PicDatesThisSet = Date::FilterDates($DatesThisModel, NULL, NULL, $Set->getID(), DATE_KIND_IMAGE);
+			$VidDatesThisSet = Date::FilterDates($DatesThisModel, NULL, NULL, $Set->getID(), DATE_KIND_VIDEO);
+			$TagsThisSet = Tag2All::Filter($TagsThisModel, NULL, $Model->getID(), $Set->getID(), NULL, NULL);
 	
 			$xmlw->startElement('Set');
 				
@@ -81,8 +81,8 @@ function XmlOutputModel($Model,$TaggedOnly)
 				else
 				{ $xmlw->writeAttribute('name', $Set->getName()); }
 			
-				$xmlw->writeAttribute('date_pic', Date::FormatDates($PicDatesThisSet, 'Y-m-d', false, ' '));
-				$xmlw->writeAttribute('date_vid', Date::FormatDates($VidDatesThisSet, 'Y-m-d', false, ' '));
+				$xmlw->writeAttribute('date_pic', Date::FormatDates($PicDatesThisSet, 'Y-m-d', FALSE, ' '));
+				$xmlw->writeAttribute('date_vid', Date::FormatDates($VidDatesThisSet, 'Y-m-d', FALSE, ' '));
 				$xmlw->writeAttribute('tags', Tag2All::Tags2AllCSV($TagsThisSet));
 	
 			if($IncludeImages)
@@ -96,8 +96,8 @@ function XmlOutputModel($Model,$TaggedOnly)
 					/* @var $Image Image */
 					foreach($ImagesThisSet as $Image)
 					{
-						$TagsThisImage = Tag2All::Filter($TagsThisModel, null, $Model->getID(), $Set->getID(), $Image->getID(), null);
-						if(($TaggedOnly === true && $TagsThisImage) || $TaggedOnly === False)
+						$TagsThisImage = Tag2All::Filter($TagsThisModel, NULL, $Model->getID(), $Set->getID(), $Image->getID(), NULL);
+						if(($TaggedOnly === TRUE && $TagsThisImage) || $TaggedOnly === FALSE)
 						{
 							$xmlw->startElement('Image');
 								$xmlw->writeAttribute('name', $Image->getFileName());
@@ -129,8 +129,8 @@ function XmlOutputModel($Model,$TaggedOnly)
 					/* @var $Video Video */
 					foreach($VideosThisSet as $Video)
 					{
-						$TagsThisVideo = Tag2All::Filter($TagsThisModel, null, $Model->getID(), $Set->getID(), null, $Video->getID());
-						if(($TaggedOnly === true && $TagsThisVideo) || $TaggedOnly === false)
+						$TagsThisVideo = Tag2All::Filter($TagsThisModel, NULL, $Model->getID(), $Set->getID(), NULL, $Video->getID());
+						if(($TaggedOnly === TRUE && $TagsThisVideo) || $TaggedOnly === FALSE)
 						{
 							$xmlw->startElement('Video');
 								$xmlw->writeAttribute('name', $Video->getFileName());

@@ -13,7 +13,7 @@ if($CurrentUser->hasPermission(RIGHT_CACHE_DELETE))
 	$Width = Utils::SafeIntFromQS('width');
 	$Height = Utils::SafeIntFromQS('height');;
 	
-	$CacheImages = null;
+	$CacheImages = NULL;
 
 	$cisp = new CacheImageSearchParameters(
 		FALSE, FALSE,

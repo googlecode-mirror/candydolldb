@@ -15,7 +15,7 @@ $PromptDownload = Utils::SafeBoolFromQS('download');
 $PortraitOnly = Utils::SafeBoolFromQS('portrait_only');
 $LandscapeOnly = Utils::SafeBoolFromQS('landscape_only');
 
-$CacheImage = null;
+$CacheImage = NULL;
 
 /* @var $CacheImage CacheImage */
 /* @var $Video Video */
@@ -45,9 +45,9 @@ if($ModelIndexID)
 			$CacheImage->getFilenameOnDisk(),
 			$CacheImage->getImageWidth(),
 			$CacheImage->getImageHeight(),
-			true,
-			null,
-			$PromptDownload ? sprintf('%1$s.jpg', $Model->GetFullName()) : null
+			TRUE,
+			NULL,
+			$PromptDownload ? sprintf('%1$s.jpg', $Model->GetFullName()) : NULL
 		);
 	}
 	else
@@ -81,7 +81,7 @@ else if($ModelID)
 			$CacheImage->getFilenameOnDisk(),
 			$CacheImage->getImageWidth(),
 			$CacheImage->getImageHeight(),
-			true
+			TRUE
 		);
 	}
 	else
@@ -112,8 +112,8 @@ else if($ModelID)
 				$imagefileondisk,			
 				$Width,
 				$Height,
-				true,
-				($imagefileondisk ? $CacheImage->getFilenameOnDisk() : null)
+				TRUE,
+				($imagefileondisk ? $CacheImage->getFilenameOnDisk() : NULL)
 			);
 		}
 		else
@@ -141,7 +141,7 @@ else if($SetID)
 			$CacheImage->getFilenameOnDisk(),
 			$CacheImage->getImageWidth(),
 			$CacheImage->getImageHeight(),
-			true
+			TRUE
 		);
 	}
 	else
@@ -176,8 +176,8 @@ else if($SetID)
 				$imagefileondisk,
 				$Width,
 				$Height,
-				true,
-				($imagefileondisk ? $CacheImage->getFilenameOnDisk() : null)
+				TRUE,
+				($imagefileondisk ? $CacheImage->getFilenameOnDisk() : NULL)
 			);
 		}
 	}
@@ -201,7 +201,7 @@ else if($VideoID)
 			$CacheImage->getFilenameOnDisk(),
 			$CacheImage->getImageWidth(),
 			$CacheImage->getImageHeight(),
-			true
+			TRUE
 		);
 	}
 	else
@@ -233,7 +233,7 @@ else if($VideoID)
 					$filename,
 					800,
 					600,
-					true,
+					TRUE,
 					$CacheImage->getFilenameOnDisk()
 				);
 			}
@@ -267,7 +267,7 @@ else if($ImageID)
 			$CacheImage->getFilenameOnDisk(),
 			$CacheImage->getImageWidth(),
 			$CacheImage->getImageHeight(),
-			true
+			TRUE
 		);
 	}
 	else
@@ -295,7 +295,7 @@ else if($ImageID)
 					$Image->getFilenameOnDisk(),
 					$Width,
 					$Height,
-					true,
+					TRUE,
 					$CacheImage->getFilenameOnDisk()
 				);
 			}

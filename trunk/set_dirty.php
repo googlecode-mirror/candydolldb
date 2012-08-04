@@ -8,13 +8,13 @@ HTMLstuff::RefererRegister($_SERVER['REQUEST_URI']);
 $ModelID = Utils::SafeIntFromQS('model_id');
 
 
-$Model = null;
-$PreviousModel = null;
+$Model = NULL;
+$PreviousModel = NULL;
 $SearchModel = '';
 $SearchDate = '';
-$FilterSPECIAL = false;
-$FilterPIC = false;
-$FilterVID = false;
+$FilterSPECIAL = FALSE;
+$FilterPIC = FALSE;
+$FilterVID = FALSE;
 $SetRows = '';
 $SetCount = 0;
 $SetCountModel = 0;
@@ -33,9 +33,9 @@ else
 {
 	$SearchModel = array_key_exists('txtSearchModel', $_SESSION) ? $_SESSION['txtSearchModel'] : '';
 	$SearchDate = array_key_exists('txtSearchDate', $_SESSION) ? $_SESSION['txtSearchDate'] : '';
-	$FilterSPECIAL = array_key_exists('chkFilterSPECIAL', $_SESSION) ? (bool)$_SESSION['chkFilterSPECIAL'] : true;
-	$FilterPIC = array_key_exists('chkFilterPIC', $_SESSION) ? (bool)$_SESSION['chkFilterPIC'] : false;
-	$FilterVID = array_key_exists('chkFilterVID', $_SESSION) ? (bool)$_SESSION['chkFilterVID'] : false;
+	$FilterSPECIAL = array_key_exists('chkFilterSPECIAL', $_SESSION) ? (bool)$_SESSION['chkFilterSPECIAL'] : TRUE;
+	$FilterPIC = array_key_exists('chkFilterPIC', $_SESSION) ? (bool)$_SESSION['chkFilterPIC'] : FALSE;
+	$FilterVID = array_key_exists('chkFilterVID', $_SESSION) ? (bool)$_SESSION['chkFilterVID'] : FALSE;
 }
 
 $Sets = Set::GetSets(new SetSearchParameters(
@@ -71,11 +71,11 @@ if($Sets)
 		if($FilterVID && $Set->getSetIsDirtyVid() && !$Set->getSetIsDirtyPic())
 		{ continue; }
 
-		$DatesThisSet = Date::FilterDates($Dates, null, $ModelID, $Set->getID());
+		$DatesThisSet = Date::FilterDates($Dates, NULL, $ModelID, $Set->getID());
 
-		if($SearchDate && strtotime($SearchDate) !== false)
+		if($SearchDate && strtotime($SearchDate) !== FALSE)
 		{
-			$DatesThisSet = Date::FilterDates($DatesThisSet, null, $ModelID, $Set->getID(), null, strtotime($SearchDate));
+			$DatesThisSet = Date::FilterDates($DatesThisSet, NULL, $ModelID, $Set->getID(), NULL, strtotime($SearchDate));
 
 			if(!$DatesThisSet)
 			{ continue; }
@@ -115,15 +115,15 @@ if($Sets)
 		$Set->getID(),
 		$Set->getAmountPicsInDB(),
 		$Set->getAmountVidsInDB(),
-		$Set->getSetIsDirtyPic() ? '<em> !</em>' : null,
-		$Set->getSetIsDirtyVid() ? '<em> !</em>' : null,
+		$Set->getSetIsDirtyPic() ? '<em> !</em>' : NULL,
+		$Set->getSetIsDirtyVid() ? '<em> !</em>' : NULL,
 		htmlentities($Set->getPrefix()),
 		htmlentities($Set->getName()),
 		htmlentities($Model->GetFullName()),
 		htmlentities($Model->GetShortName()),
 		$Model->getID(),
 		$SetCount % 2 == 0 ? 2 : 1,
-		Date::FormatDates($DatesThisSet, 'Y-m-d', true),
+		Date::FormatDates($DatesThisSet, 'Y-m-d', TRUE),
 		$lang->g('ButtonImportImages'),
 		$lang->g('ButtonImportVideos')
 		);

@@ -1,15 +1,15 @@
 <?php
 
 include('cd.php');
-$UserName = null;
-$Password = null;
-$ReturnURL = null;
+$UserName = NULL;
+$Password = NULL;
+$ReturnURL = NULL;
 
 if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] && $_POST['hidAction'] == 'LoginLogin')
 {
 	$UserName = $_POST['txtUserName'];
 	$Password = $_POST['txtPassword'];
-	$ReturnURL = array_key_exists('url', $_GET) && isset($_GET['url']) ? $_GET['url'] : null;
+	$ReturnURL = array_key_exists('url', $_GET) && isset($_GET['url']) ? $_GET['url'] : NULL;
 	
 	$Users = User::GetUsers(new UserSearchParameters(FALSE, FALSE, $UserName));
 	if($Users)
@@ -31,7 +31,7 @@ if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] && $_POST['hidAc
 				User::Update($User, $User);
 
 				$_SESSION['CurrentUser'] = serialize($User);
-				session_regenerate_id(true);
+				session_regenerate_id(TRUE);
 
 				if(isset($ReturnURL))
 				{ header('location:'.urldecode($ReturnURL)); }

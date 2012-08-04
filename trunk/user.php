@@ -31,7 +31,7 @@ if($Users)
 		htmlentities($User->GetFullName()),
 		($User->getGender() == GENDER_FEMALE ? 'f' : ($User->getGender() == GENDER_MALE ? 'm' : '?')),
 		$User->getBirthdate() > 0 ? date('j-m-Y', $User->getBirthdate()) : '&nbsp;',
-		$User->getBirthdate() > 0 ? ' title="'.date('l', $User->getBirthdate()).'"' : null,
+		$User->getBirthdate() > 0 ? ' title="'.date('l', $User->getBirthdate()).'"' : NULL,
 		$User->getLastActive() > 0 ? date('j-n-Y G:i', $User->getLastActive()) : '&nbsp;',
 		$User->getLastLogin() > 0 ? date('j-n-Y G:i', $User->getLastLogin()) : '&nbsp;',
 		COMMAND_DELETE,

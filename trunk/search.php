@@ -7,9 +7,9 @@ HTMLstuff::RefererRegister($_SERVER['REQUEST_URI']);
 $Tags = Tag::GetTags();
 
 $TotalPages = 0;
-$Total = null;
-$searchMode = null;
-$q = null;
+$Total = NULL;
+$searchMode = NULL;
+$q = NULL;
 $page = 1;
 $max_results = 30;
 $ToShow = array();
@@ -129,28 +129,28 @@ switch ($searchMode)
 {
 	case 'MODEL':
 		if(!$ModelIDsToShow){ break; }
-		$ToShow = Model::GetModels(new ModelSearchParameters(FALSE, $ModelIDsToShow), null, sprintf("%1\$d, %2\$d", $from, $max_results));
+		$ToShow = Model::GetModels(new ModelSearchParameters(FALSE, $ModelIDsToShow), NULL, sprintf("%1\$d, %2\$d", $from, $max_results));
 		$Total = count(Model::GetModels(new ModelSearchParameters(FALSE, $ModelIDsToShow)));
 		break;
 
 	case 'SET':
 		if(!$SetIDsToShow || !$ModelIDsToShow){ break; }
 		$ssp = new SetSearchParameters(FALSE, $SetIDsToShow);
-		$ToShow = Set::GetSets($ssp, null, sprintf("%1\$d, %2\$d", $from, $max_results));
+		$ToShow = Set::GetSets($ssp, NULL, sprintf("%1\$d, %2\$d", $from, $max_results));
 		$Total = count(Set::GetSets($ssp));
 		break;
 
 	case 'IMAGE':
 		if(!$SetIDsToShow || !$ModelIDsToShow){ break; }
 		$isp = new ImageSearchParameters(FALSE, $ImageIDsToShow, FALSE, $SetIDsToShow, FALSE, FALSE, TRUE);
-		$ToShow = Image::GetImages($isp, null, sprintf("%1\$d, %2\$d", $from, $max_results));
+		$ToShow = Image::GetImages($isp, NULL, sprintf("%1\$d, %2\$d", $from, $max_results));
 		$Total = count(Image::GetImages($isp));
 		break;
 
 	case 'VIDEO':
 		if(!$SetIDsToShow || !$ModelIDsToShow){ break; }
 		$vsp = new VideoSearchParameters(FALSE, $VideoIDsToShow, FALSE, $SetIDsToShow, FALSE, FALSE, TRUE);
-		$ToShow = Video::GetVideos($vsp, null, sprintf("%1\$d, %2\$d", $from, $max_results));
+		$ToShow = Video::GetVideos($vsp, NULL, sprintf("%1\$d, %2\$d", $from, $max_results));
 		$Total = count(Video::GetVideos($vsp));
 		break;
 }
@@ -182,7 +182,7 @@ if($ToShow)
 					%3\$s",
 					htmlentities($Model->GetFullName()),
 					$Model->getID(),
-					($ItemCount % 4 == 0 ? "<div class=\"Clear\"></div>" : null),
+					($ItemCount % 4 == 0 ? "<div class=\"Clear\"></div>" : NULL),
 					$lang->g('LabelName')
 				);
 			}
@@ -214,7 +214,7 @@ if($ToShow)
 					htmlentities($Set->getName()),
 					$Set->getModel()->getID(),
 					$Set->getID(),
-					($ItemCount % 3 == 0 ? "<div class=\"Clear\"></div>" : null),
+					($ItemCount % 3 == 0 ? "<div class=\"Clear\"></div>" : NULL),
 					$lang->g('NavigationModel'),
 					$lang->g('NavigationSet')
 				);
@@ -249,7 +249,7 @@ if($ToShow)
 					$Image->getSet()->getModel()->getID(),
 					$Image->getSet()->getID(),
 					$Image->getID(),
-					($ItemCount % 3 == 0 ? "<div class=\"Clear\"></div>" : null)
+					($ItemCount % 3 == 0 ? "<div class=\"Clear\"></div>" : NULL)
 				);
 			}
 			break;
@@ -282,7 +282,7 @@ if($ToShow)
 					$Video->getSet()->getModel()->getID(),
 					$Video->getSet()->getID(),
 					$Video->getID(),
-					($ItemCount % 3 == 0 ? "<div class=\"Clear\"></div>" : null)
+					($ItemCount % 3 == 0 ? "<div class=\"Clear\"></div>" : NULL)
 				);
 			}
 			break;
@@ -300,10 +300,10 @@ echo HTMLstuff::HtmlHeader($lang->g('NavigationTagSearch'), $CurrentUser);
 
 <label for="t"><?php echo $lang->g('LabelSearchFor')?></label>
 <select id="t" name="t">
-	<option value="MODEL" <?php echo $searchMode == "MODEL" ? ' selected="selected"' : null ?>><?php echo $lang->g('NavigationModels')?></option>
-	<option value="SET" <?php echo $searchMode == "SET" ? ' selected="selected"' : null ?>><?php echo $lang->g('NavigationSets')?></option>
-	<option value="IMAGE" <?php echo $searchMode == "IMAGE" ? ' selected="selected"' : null ?>><?php echo $lang->g('NavigationImages')?></option>
-	<option value="VIDEO" <?php echo $searchMode == "VIDEO" ? ' selected="selected"' : null ?>><?php echo $lang->g('NavigationVideos')?></option>
+	<option value="MODEL" <?php echo $searchMode == "MODEL" ? ' selected="selected"' : NULL ?>><?php echo $lang->g('NavigationModels')?></option>
+	<option value="SET"   <?php echo $searchMode == "SET"   ? ' selected="selected"' : NULL ?>><?php echo $lang->g('NavigationSets')?></option>
+	<option value="IMAGE" <?php echo $searchMode == "IMAGE" ? ' selected="selected"' : NULL ?>><?php echo $lang->g('NavigationImages')?></option>
+	<option value="VIDEO" <?php echo $searchMode == "VIDEO" ? ' selected="selected"' : NULL ?>><?php echo $lang->g('NavigationVideos')?></option>
 </select>
 
 <label for="q"><?php echo $lang->g('LabelTaggedWith')?></label>

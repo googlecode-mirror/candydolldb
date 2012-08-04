@@ -7,11 +7,11 @@ HTMLstuff::RefererRegister($_SERVER['REQUEST_URI']);
 $UserID = Utils::SafeIntFromQS('user_id');
 $DeleteUser = (array_key_exists('cmd', $_GET) && $_GET['cmd'] && ($_GET['cmd'] == COMMAND_DELETE));
 
-$_SESSION['UserSalt'] = null;
-$PasswordError = false;
-$LanguageOptions = null;
-$DateFormatOptions = null;
-$RightsCheckboxes = null;
+$_SESSION['UserSalt'] = NULL;
+$PasswordError = FALSE;
+$LanguageOptions = NULL;
+$DateFormatOptions = NULL;
+$RightsCheckboxes = NULL;
 
 
 /* @var $User User */
@@ -31,7 +31,7 @@ if($UserID)
 }
 else
 {
-	$User = new User(null, $lang->g('LabelNewUser'));
+	$User = new User(NULL, $lang->g('LabelNewUser'));
 }
 
 if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'UserView')
@@ -91,10 +91,10 @@ if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'UserView')
 			$User->setPassword(Utils::HashString($_POST['txtPassword'], $NewSalt));
 		}
 		else
-		{ $PasswordError = true; }
+		{ $PasswordError = TRUE; }
 	}
 
-	if($_POST['txtBirthDate'] && $_POST['txtBirthDate'] != 'YYYY-MM-DD' && strtotime($_POST['txtBirthDate']) !== false)
+	if($_POST['txtBirthDate'] && $_POST['txtBirthDate'] != 'YYYY-MM-DD' && strtotime($_POST['txtBirthDate']) !== FALSE)
 	{ $User->setBirthDate(strtotime($_POST['txtBirthDate'])); }
 	else
 	{ $User->setBirthDate(-1); }
@@ -109,7 +109,7 @@ if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'UserView')
 				{
 				    if(User::Delete($User, $CurrentUser))
 				    {
-				    	session_regenerate_id(true);
+				    	session_regenerate_id(TRUE);
 				    	header('location:user.php');
 				    	exit;
 				    }
@@ -121,7 +121,7 @@ if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'UserView')
 				    	if($User->getID() == $CurrentUser->getID())
 				    	{ $_SESSION['CurrentUser'] = serialize($User); }
 				    	
-				    	session_regenerate_id(true);
+				    	session_regenerate_id(TRUE);
 				    	header('location:user.php');
 				    	exit;
 				    }
@@ -131,7 +131,7 @@ if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'UserView')
 			{
 				if(User::Insert($User, $CurrentUser))
 				{
-					session_regenerate_id(true);
+					session_regenerate_id(TRUE);
 					header('location:user.php');
 					exit;
 				}
@@ -156,7 +156,7 @@ foreach (i18n::$SupportedLanguages as $l){
 		$l,
 		HTMLstuff::SelectedStr($User->getLanguage() == $l),
 		$lang->g('LabelLanguage_'.$l),
-		$l == 'en' ? $lang->g('LabelSuffixDefault') : null
+		$l == 'en' ? $lang->g('LabelSuffixDefault') : NULL
 	);
 }
 
@@ -167,7 +167,7 @@ foreach($DateStyleArray as $index => $format)
 		$index,
 		HTMLstuff::SelectedStr($User->getDateDisplayOptions() == $index),
 		date($format),
-		$index == 0 ? $lang->g('LabelSuffixDefault') : null
+		$index == 0 ? $lang->g('LabelSuffixDefault') : NULL
 	);
 }
 
@@ -247,17 +247,17 @@ setInterval(function () {
 <div class="FormRow">
 <label for="selectImageview"><?php echo $lang->g('LabelSelectImageFormat')?>:</label>
 <select id="selectImageview" name="selectImageview"<?php echo HTMLstuff::DisabledStr($DeleteUser)?>>
-<option value="detail" <?php echo $User->getImageview() == 'detail' ? ' selected="selected"' : null ?>><?php echo $lang->g('LabelViewModeDetail').$lang->g('LabelSuffixDefault')?></option>
-<option value="thumb" <?php echo $User->getImageview() == 'thumb' ? ' selected="selected"' : null ?>><?php echo $lang->g('LabelViewModeThumbnail')?></option>
+<option value="detail" <?php echo $User->getImageview() == 'detail' ? ' selected="selected"' : NULL ?>><?php echo $lang->g('LabelViewModeDetail').$lang->g('LabelSuffixDefault')?></option>
+<option value="thumb" <?php echo $User->getImageview() == 'thumb' ? ' selected="selected"' : NULL ?>><?php echo $lang->g('LabelViewModeThumbnail')?></option>
 
 </select>
 </div>
 
 <div class="FormRow">
 <label><?php echo $lang->g('LabelGender')?>: </label>
-<input type="radio" id="radFemale" name="radGender" value="<?php echo GENDER_FEMALE?>"<?php echo $User->getGender() == GENDER_FEMALE ? ' checked="checked"' : null?><?php echo HTMLstuff::DisabledStr($DeleteUser)?> /> 
+<input type="radio" id="radFemale" name="radGender" value="<?php echo GENDER_FEMALE?>"<?php echo $User->getGender() == GENDER_FEMALE ? ' checked="checked"' : NULL?><?php echo HTMLstuff::DisabledStr($DeleteUser)?> /> 
 <label for="radFemale" class="Radio"><?php echo $lang->g('LabelFemale')?></label>
-<input type="radio" id="radMale" name="radGender" value="<?php echo GENDER_MALE?>"<?php echo $User->getGender() == GENDER_MALE ? ' checked="checked"' : null?><?php echo HTMLstuff::DisabledStr($DeleteUser)?> /> 
+<input type="radio" id="radMale" name="radGender" value="<?php echo GENDER_MALE?>"<?php echo $User->getGender() == GENDER_MALE ? ' checked="checked"' : NULL?><?php echo HTMLstuff::DisabledStr($DeleteUser)?> /> 
 <label for="radMale" class="Radio"><?php echo $lang->g('LabelMale')?></label>
 </div>
 
@@ -283,7 +283,7 @@ setInterval(function () {
 
 <div class="FormRow">
 <label for="txtBirthDate"><?php echo $lang->g('LabelBirthdate')?>:</label>
-<input type="text" id="txtBirthDate" name="txtBirthDate" class="DatePicker"	maxlength="10" value="<?php echo $User->getBirthDate() > 0 ? date('Y-m-d', $User->getBirthDate()) : null?>"<?php echo HTMLstuff::DisabledStr($DeleteUser)?> />
+<input type="text" id="txtBirthDate" name="txtBirthDate" class="DatePicker"	maxlength="10" value="<?php echo $User->getBirthDate() > 0 ? date('Y-m-d', $User->getBirthDate()) : NULL?>"<?php echo HTMLstuff::DisabledStr($DeleteUser)?> />
 </div>
 
 <div class="FormRow">
@@ -295,7 +295,7 @@ setInterval(function () {
 
 <div class="FormRow Clear">
 <label>&nbsp;</label>
-<input type="submit" id="submitform" class="FormButton" value="<?php echo $DeleteUser ? $lang->g('ButtonDelete') : $lang->g('ButtonSave')?>" <?php echo ($User->getID() == $CurrentUser->getID() || $User->getUserName() == $lang->g('LabelNewUser')) ?  'disabled="disabled"' : null ?> />
+<input type="submit" id="submitform" class="FormButton" value="<?php echo $DeleteUser ? $lang->g('ButtonDelete') : $lang->g('ButtonSave')?>" <?php echo ($User->getID() == $CurrentUser->getID() || $User->getUserName() == $lang->g('LabelNewUser')) ?  'disabled="disabled"' : NULL ?> />
 <input type="button" class="FormButton" value="<?php echo $lang->g('ButtonCancel')?>" onclick="window.location='user.php';" />
 </div>
 

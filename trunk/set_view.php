@@ -22,7 +22,7 @@ if(!isset($ModelID))
 	exit;
 }
 
-$NoErrorDuringPostback = true;
+$NoErrorDuringPostback = TRUE;
 $DeleteSet = (array_key_exists('cmd', $_GET) && $_GET['cmd'] && ($_GET['cmd'] == COMMAND_DELETE));
 $ReturnURL = sprintf('set.php?model_id=%1$d', $ModelID);
 $DatesThisSet = array();
@@ -30,7 +30,7 @@ $DatesThisSet = array();
 
 /* @var $Set Set */
 /* @var $Model Model */
-if($SetID != null)
+if($SetID != NULL)
 {
 	$Sets = Set::GetSets(new SetSearchParameters($SetID, FALSE, $ModelID));
 
@@ -47,7 +47,7 @@ if($SetID != null)
 }
 else
 {
-	$Set = new Set(null, $lang->g('New'));
+	$Set = new Set(NULL, $lang->g('New'));
 	$Model = Model::GetModels(new ModelSearchParameters($ModelID));
 	
 	if($Model) { $Model = $Model[0]; }
@@ -60,7 +60,7 @@ else
 	$Set->setModel($Model);
 }
 
-$DatesThisSet[] = new Date(null, DATE_KIND_UNKNOWN, -1,
+$DatesThisSet[] = new Date(NULL, DATE_KIND_UNKNOWN, -1,
 	$Set->getID(), $Set->getPrefix(), $Set->getName(), $Set->getContainsWhat(),
 	$Model->getID(), $Model->getFirstName(), $Model->getLastName());
 
@@ -92,7 +92,7 @@ if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'SetView')
 			$NoErrorDuringPostback = Set::Update($Set, $CurrentUser);
 			
 			if($NoErrorDuringPostback){
-				Tag2All::HandleTags($tags, $TagsThisSet, $TagsInDB, $CurrentUser, $ModelID, $Set->getID(), null, null);
+				Tag2All::HandleTags($tags, $TagsThisSet, $TagsInDB, $CurrentUser, $ModelID, $Set->getID(), NULL, NULL);
 			}
 		}
 	}
@@ -103,7 +103,7 @@ if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'SetView')
 			$CacheImages = CacheImage::GetCacheImages(new CacheImageSearchParameters(FALSE, FALSE, $Model->getID()));
 			CacheImage::DeleteMulti($CacheImages, $CurrentUser);
 			
-			Tag2All::HandleTags($tags, $TagsThisSet, $TagsInDB, $CurrentUser, $ModelID, $Set->getID(), null, null);
+			Tag2All::HandleTags($tags, $TagsThisSet, $TagsInDB, $CurrentUser, $ModelID, $Set->getID(), NULL, NULL);
 		}
 	}
 	
@@ -155,7 +155,7 @@ if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'SetView')
 }
 
 echo HTMLstuff::HtmlHeader(sprintf('%1$s - %2$s - %3$s',
-		$Model->GetShortName(true),
+		$Model->GetShortName(TRUE),
 		$lang->g('NavigationSets'),
 		$Set->getName()
 	),
@@ -181,7 +181,7 @@ if($SetID)
 	'<a href="index.php">%5$s</a> - <a href="model_view.php?model_id=%1$d">%3$s</a> - <a href="set.php?model_id=%1$d">%6$s</a> - %7$s %4$s',
 	$ModelID,
 	$SetID,
-	htmlentities($Model->GetShortName(true)),
+	htmlentities($Model->GetShortName(TRUE)),
 	htmlentities($Set->getName()),
 	$lang->g('NavigationHome'),
 	$lang->g('NavigationSets'),
@@ -205,11 +205,11 @@ if($SetID)
 
 <div class="FormRow">
 <label><?php echo $lang->g('LabelContains')?>: </label>
-<input type="radio" id="radImages" name="radContains" value="<?php echo SET_CONTENT_IMAGE?>"<?php echo ($Set->getContainsWhat() & SET_CONTENT_IMAGE) > 0 ? ' checked="checked"' : null?><?php echo HTMLstuff::DisabledStr($DeleteSet)?> /> 
+<input type="radio" id="radImages" name="radContains" value="<?php echo SET_CONTENT_IMAGE?>"<?php echo ($Set->getContainsWhat() & SET_CONTENT_IMAGE) > 0 ? ' checked="checked"' : NULL?><?php echo HTMLstuff::DisabledStr($DeleteSet)?> /> 
 <label for="radImages" class="Radio"><?php echo $lang->g('NavigationImages')?></label>
-<input type="radio" id="radVideos" name="radContains" value="<?php echo SET_CONTENT_VIDEO?>"<?php echo ($Set->getContainsWhat() & SET_CONTENT_VIDEO) > 0 ? ' checked="checked"' : null?><?php echo HTMLstuff::DisabledStr($DeleteSet)?> /> 
+<input type="radio" id="radVideos" name="radContains" value="<?php echo SET_CONTENT_VIDEO?>"<?php echo ($Set->getContainsWhat() & SET_CONTENT_VIDEO) > 0 ? ' checked="checked"' : NULL?><?php echo HTMLstuff::DisabledStr($DeleteSet)?> /> 
 <label for="radVideos" class="Radio"><?php echo $lang->g('NavigationVideos')?></label>
-<input type="radio" id="radBoth" name="radContains" value="<?php echo (SET_CONTENT_IMAGE + SET_CONTENT_VIDEO)?>"<?php echo (($Set->getContainsWhat() & SET_CONTENT_IMAGE) > 0 && ($Set->getContainsWhat() & SET_CONTENT_VIDEO) > 0) ? ' checked="checked"' : null?><?php echo HTMLstuff::DisabledStr($DeleteSet)?> /> 
+<input type="radio" id="radBoth" name="radContains" value="<?php echo (SET_CONTENT_IMAGE + SET_CONTENT_VIDEO)?>"<?php echo (($Set->getContainsWhat() & SET_CONTENT_IMAGE) > 0 && ($Set->getContainsWhat() & SET_CONTENT_VIDEO) > 0) ? ' checked="checked"' : NULL?><?php echo HTMLstuff::DisabledStr($DeleteSet)?> /> 
 <label for="radBoth" class="Radio"><?php echo $lang->g('LabelBoth')?></label>
 </div>
 

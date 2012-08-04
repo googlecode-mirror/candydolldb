@@ -28,7 +28,7 @@ if($CurrentUser->hasPermission(RIGHT_EXPORT_INDEX))
 	$promptDownload = Utils::SafeBoolFromQS('download');
 	
 	$pathPrefix = (isset($argv) && $argc > 0) ? dirname($_SERVER['PHP_SELF']).'/' : '';
-	$indexImage = null;  
+	$indexImage = NULL;  
 	
 	$Images = Image::GetImages(new ImageSearchParameters(FALSE, FALSE, FALSE, FALSE, $ModelID));
 	$Sets = Set::GetSets(new SetSearchParameters(FALSE, FALSE, $ModelID));
@@ -84,7 +84,7 @@ if($CurrentUser->hasPermission(RIGHT_EXPORT_INDEX))
 			}
 		}
 	
-		$th = null;
+		$th = NULL;
 		switch (count($pics))
 		{
 			case 1:

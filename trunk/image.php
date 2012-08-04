@@ -22,8 +22,8 @@ if(!isset($SetID))
 
 /* @var $Model Model */
 /* @var $Set Set */
-$Model = null;
-$Set = null;
+$Model = NULL;
+$Set = NULL;
 $ImageRows = '';
 $ImageCount = 0;
 
@@ -71,7 +71,7 @@ if($Images)
 				$Image->getSet()->getModel()->getID(),
 				$Image->getSet()->getID(),
 				$Image->getID(),
-				($ImageCount % 3 == 0 ? "<div class=\"Clear\"></div>" : null),
+				($ImageCount % 3 == 0 ? "<div class=\"Clear\"></div>" : NULL),
 				$Image->getImageWidthToppedOff(800, 600),
 				$Image->getImageHeightToppedOff(800, 600),
 				COMMAND_DELETE,
@@ -108,7 +108,7 @@ if($Images)
 				htmlentities($Image->getFileExtension()),
 				Utils::ReadableFilesize($Image->getFileSize()),
 				htmlentities($Image->getFileCheckSum()),
-				null,
+				NULL,
 				$Image->getImageWidth(),
 				$Image->getImageHeight(),
 				COMMAND_DELETE,
@@ -140,7 +140,7 @@ if(!$Set)
 }
 
 echo HTMLstuff::HtmlHeader(sprintf('%1$s - %2$s %3$s - %4$s',
-		$Model->GetShortName(true),
+		$Model->GetShortName(TRUE),
 		$lang->g('NavigationSet'),
 		$Set->getName(),
 		$lang->g('NavigationImages')
@@ -154,7 +154,7 @@ echo HTMLstuff::HtmlHeader(sprintf('%1$s - %2$s %3$s - %4$s',
 	'<a href="index.php">%5$s</a> - <a href="model_view.php?model_id=%1$d">%3$s</a> - <a href="set.php?model_id=%1$d">%6$s</a> - <a href="set_view.php?model_id=%1$d&amp;set_id=%2$d">%7$s %4$s</a> - %8$s',
 	$ModelID,
 	$SetID,
-	htmlentities($Model->GetShortName(true)),
+	htmlentities($Model->GetShortName(TRUE)),
 	htmlentities($Set->getName()),
 	$lang->g('NavigationHome'),
 	$lang->g('NavigationSets'),

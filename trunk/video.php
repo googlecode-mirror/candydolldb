@@ -19,11 +19,10 @@ if(!isset($SetID))
 	exit;
 }
 
-
 /* @var $Model Model */
 /* @var $Set Set */
-$Model = null;
-$Set = null;
+$Model = NULL;
+$Set = NULL;
 $VideoRows = '';
 $VideoCount = 0;
 
@@ -55,7 +54,7 @@ if($Videos)
 		htmlentities($Video->getFileExtension()),
 		Utils::ReadableFilesize($Video->getFileSize()),
 		htmlentities($Video->getFileCheckSum()),
-		null,
+		NULL,
 		COMMAND_DELETE,
 		$VideoCount % 2 == 0 ? 2 : 1,
 		$lang->g('LabelDownloadVideo'),
@@ -81,7 +80,7 @@ if(!$Set)
 }
 
 echo HTMLstuff::HtmlHeader(sprintf('%1$s - %3$s %2$s - %4$s',
-	$Model->GetShortName(true),
+	$Model->GetShortName(TRUE),
 	$Set->getName(),
 	$lang->g('NavigationSet'),
 	$lang->g('NavigationVideos')
@@ -92,7 +91,7 @@ echo HTMLstuff::HtmlHeader(sprintf('%1$s - %3$s %2$s - %4$s',
 	'<a href="index.php">%5$s</a> - <a href="model_view.php?model_id=%1$d">%3$s</a> - <a href="set.php?model_id=%1$d">%6$s</a> - <a href="set_view.php?model_id=%1$d&amp;set_id=%2$d">%7$s %4$s</a> - %8$s',
 	$ModelID,
 	$SetID,
-	htmlentities($Model->GetShortName(true)),
+	htmlentities($Model->GetShortName(TRUE)),
 	htmlentities($Set->getName()),
 	$lang->g('NavigationHome'),
 	$lang->g('NavigationSets'),

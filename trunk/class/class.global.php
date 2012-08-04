@@ -95,7 +95,7 @@ class Authentication
 				} 
 				else
 				{
-					return null;
+					return NULL;
 				}
 			}
 			else
@@ -238,7 +238,7 @@ class Utils
 		if(array_key_exists($name, $_GET) && isset($_GET[$name]) && is_numeric($_GET[$name]))
 		{ return abs((int)$_GET[$name]); }
 		
-		return null;
+		return NULL;
 	}
 
 	/**
@@ -280,7 +280,7 @@ class Utils
 	 */
 	public static function ValidateEmail($InAddress)
 	{
-		if(strlen($InAddress) > 253) { return false; }
+		if(strlen($InAddress) > 253) { return FALSE; }
 		$EmailPattern = "/^[a-z0-9]   ( [-a-z0-9_] | \.(?!\.) )*    [a-z0-9]   @   [a-z0-9]{2,}  ( [-a-z0-9_] | \.(?!\.)  )*   \.[a-z]{2,}  $ /ix";
 		return preg_match($EmailPattern, $InAddress) > 0;
 	}
@@ -320,7 +320,7 @@ class Utils
 	 */
 	public static function UUID()
 	{
-		if (function_exists('com_create_guid') === true)
+		if (function_exists('com_create_guid') === TRUE)
 		{ return strtolower(trim(com_create_guid(), '{}')); }
 
 		return sprintf('%04x%04x-%04x-%04x-%04x-%04x%04x%04x',
@@ -345,8 +345,8 @@ class Utils
 		$OutHash = $PlainTextString;
 		for ($i = 0; $i < 20000; $i++)
 		{
-			if($i % 2 == 0) { $OutHash = hash('sha512', $OutHash.$Salt, false); }
-			else {            $OutHash = hash('sha512', $Salt.$OutHash, false); }
+			if($i % 2 == 0) { $OutHash = hash('sha512', $OutHash.$Salt, FALSE); }
+			else {            $OutHash = hash('sha512', $Salt.$OutHash, FALSE); }
 		}
 		return $OutHash;
 	}

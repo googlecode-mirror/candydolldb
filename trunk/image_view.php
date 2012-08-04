@@ -35,7 +35,7 @@ $ReturnURL = sprintf('image.php?model_id=%1$d&set_id=%2$d', $ModelID, $SetID);
 /* @var $Image Image */
 /* @var $Set Set */
 /* @var $Model Model */
-if($ImageID != null)
+if($ImageID != NULL)
 {
 	$Images = Image::GetImages(new ImageSearchParameters(
 		$ImageID,
@@ -57,7 +57,7 @@ if($ImageID != null)
 }
 else
 {
-	$Image = new Image(null, $lang->g('LabelNew'));
+	$Image = new Image(NULL, $lang->g('LabelNew'));
 	$Set = Set::GetSets(new SetSearchParameters($SetID));
 
 	if($Set)
@@ -101,7 +101,7 @@ if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'ImageView')
 		{
 			if(Image::Update($Image, $CurrentUser))
 			{
-				Tag2All::HandleTags($tags, $TagsThisImage, $TagsInDB, $CurrentUser, $ModelID, $SetID, $Image->getID(), null, true);
+				Tag2All::HandleTags($tags, $TagsThisImage, $TagsInDB, $CurrentUser, $ModelID, $SetID, $Image->getID(), NULL, TRUE);
 				header('location:'.$ReturnURL);
 				exit;
 			}
@@ -111,7 +111,7 @@ if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'ImageView')
 	{
 		if(Image::Insert($Image, $CurrentUser))
 		{
-			Tag2All::HandleTags($tags, $TagsThisImage, $TagsInDB, $CurrentUser, $ModelID, $SetID, $Image->getID(), null, true);
+			Tag2All::HandleTags($tags, $TagsThisImage, $TagsInDB, $CurrentUser, $ModelID, $SetID, $Image->getID(), NULL, TRUE);
 			header('location:'.$ReturnURL);
 			exit;
 		}
@@ -119,7 +119,7 @@ if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'ImageView')
 }
 
 echo HTMLstuff::HtmlHeader(sprintf('%1$s - %2$s - %3$s',
-		$Model->GetShortName(true),
+		$Model->GetShortName(TRUE),
 		$lang->g('NavigationImages'),
 		$Image->getFileName()
 	),
@@ -149,7 +149,7 @@ if($ImageID)
 	$ModelID,
 	$SetID,
 	$ImageID,
-	htmlentities($Model->GetShortName(true)),
+	htmlentities($Model->GetShortName(TRUE)),
 	htmlentities($Set->getName()),
 	htmlentities($Image->getFileName()),
 	$lang->g('NavigationHome'),

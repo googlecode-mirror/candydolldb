@@ -41,7 +41,7 @@ if($XmlFromFile)
 		
 		$ModelInDb = Model::Filter(
 			$ModelsInDb,
-			null,
+			NULL,
 			(string)$Model->attributes()->firstname,
 			(string)$Model->attributes()->lastname
 		);
@@ -60,7 +60,7 @@ if($XmlFromFile)
 		$Model2Process->setLastName((string)$Model->attributes()->lastname);
 
 		$birthDate = strtotime((string)$Model->attributes()->birthdate); 
-		if($birthDate !== false) { $Model2Process->setBirthdate($birthDate); }
+		if($birthDate !== FALSE) { $Model2Process->setBirthdate($birthDate); }
 		else { $Model2Process->setBirthdate(-1); }
 		
 		if($Model->Remarks){
@@ -77,21 +77,21 @@ if($XmlFromFile)
 		}
 		
 		$modeltags = Tag::GetTagArray((string)$Model->attributes()->tags);
-		$Tag2AllThisModel = Tag2All::Filter($Tag2AllsInDB, null, $Model2Process->getID(), false, false, false);
-		$Tag2AllThisModelOnly = Tag2All::Filter($Tag2AllThisModel, null, $Model2Process->getID(), null, null, null);
-		Tag2All::HandleTags($modeltags, $Tag2AllThisModelOnly, $TagsInDB, $CurrentUser, $Model2Process->getID(), null, null, null, false);
+		$Tag2AllThisModel = Tag2All::Filter($Tag2AllsInDB, NULL, $Model2Process->getID(), FALSE, FALSE, FALSE);
+		$Tag2AllThisModelOnly = Tag2All::Filter($Tag2AllThisModel, NULL, $Model2Process->getID(), NULL, NULL, NULL);
+		Tag2All::HandleTags($modeltags, $Tag2AllThisModelOnly, $TagsInDB, $CurrentUser, $Model2Process->getID(), NULL, NULL, NULL, FALSE);
 		
 		if(!$Model->Sets)
 		{ continue; }
 		
-		$DatesThisModel = Date::FilterDates($DatesInDb, null, $Model2Process->getID(), null, null, null);
+		$DatesThisModel = Date::FilterDates($DatesInDb, NULL, $Model2Process->getID(), NULL, NULL, NULL);
 
 		foreach($Model->Sets->Set as $Set)
 		{
 			$SetInDb = Set::Filter(
 				$SetsInDb,
 				$Model2Process->getID(),
-				null,
+				NULL,
 				preg_replace('/^SP_/i', '', (string)$Set->attributes()->name)
 			);
 			
@@ -113,7 +113,7 @@ if($XmlFromFile)
 			}
 			else if($Set2Process->getModel()->getFirstName() == 'Promotions')
 			{
-				$Set2Process->setPrefix(null);
+				$Set2Process->setPrefix(NULL);
 				$Set2Process->setName((string)$Set->attributes()->name);
 			}
 			else
@@ -135,8 +135,8 @@ if($XmlFromFile)
 			}
 			
 			$settags = Tag::GetTagArray((string)$Set->attributes()->tags);
-			$Tag2AllThisSet = Tag2All::Filter($Tag2AllThisModel, null, $Model2Process->getID(), $Set2Process->getID(), null, null);
-			Tag2All::HandleTags($settags, $Tag2AllThisSet, $TagsInDB, $CurrentUser, $Model2Process->getID(), $Set2Process->getID(), null, null, false);
+			$Tag2AllThisSet = Tag2All::Filter($Tag2AllThisModel, NULL, $Model2Process->getID(), $Set2Process->getID(), NULL, NULL);
+			Tag2All::HandleTags($settags, $Tag2AllThisSet, $TagsInDB, $CurrentUser, $Model2Process->getID(), $Set2Process->getID(), NULL, NULL, FALSE);
 			
 			$datesPic = array();
 			$datesVid = array();
@@ -185,7 +185,7 @@ if($XmlFromFile)
 			/* @var $dateInDb Date */
 			foreach ($Set2Process->getDatesPic() as $Date)
 			{
-				$dateInDb = Date::FilterDates($DatesThisModel, null, null, $Set2Process->getID(), DATE_KIND_IMAGE, $Date->getTimeStamp());
+				$dateInDb = Date::FilterDates($DatesThisModel, NULL, NULL, $Set2Process->getID(), DATE_KIND_IMAGE, $Date->getTimeStamp());
 				
 				if($dateInDb)
 				{
@@ -199,7 +199,7 @@ if($XmlFromFile)
 			
 			foreach ($Set2Process->getDatesVid() as $Date)
 			{
-				$dateInDb = Date::FilterDates($DatesThisModel, null, null, $Set2Process->getID(), DATE_KIND_VIDEO, $Date->getTimeStamp());
+				$dateInDb = Date::FilterDates($DatesThisModel, NULL, NULL, $Set2Process->getID(), DATE_KIND_VIDEO, $Date->getTimeStamp());
 				
 				if($dateInDb)
 				{

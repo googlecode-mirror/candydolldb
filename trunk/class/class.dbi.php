@@ -9,19 +9,19 @@ class DBi extends mysqli
 	 */
 	public function ExecuteMulti($q)
 	{
-		$this->autocommit(false);
+		$this->autocommit(FALSE);
 		if($this->multi_query($q))
 		{
 			do
 			{ ; }
 			while($this->next_result());
 			
-			return true;
+			return TRUE;
 		}
 		
 		$e = new Error($this->errno, $this->error);
 		Error::AddError($e);
-		return false;
+		return FALSE;
 	}
 	
 	/**
@@ -39,10 +39,10 @@ class DBi extends mysqli
 		/* @var $r mysqli_result */
 		if($r = $this->query($q))
 		{
-			return $r->fetch_assoc() ? true : false;
+			return $r->fetch_assoc() ? TRUE : FALSE;
 		}
 		
-		return false;
+		return FALSE;
 	}
 	
 	/**

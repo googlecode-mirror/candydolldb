@@ -24,8 +24,8 @@ class Set
 	 * @param int $set_amount_vids_in_db
 	 */
 	public function __construct(
-		$set_id = null, $set_prefix = null, $set_name = null, $set_containswhat = SET_CONTENT_NONE,
-		$model_id = null, $model_firstname = null, $model_lastname = null,
+		$set_id = NULL, $set_prefix = NULL, $set_name = NULL, $set_containswhat = SET_CONTENT_NONE,
+		$model_id = NULL, $model_firstname = NULL, $model_lastname = NULL,
 		$set_amount_pics_in_db = 0, $set_amount_vids_in_db = 0)
 	{
 		$this->ID = $set_id;
@@ -62,7 +62,7 @@ class Set
 	 * @return int 
 	 */
 	public function getModelID()
-	{ return $this->Model ? $this->Model->getID() : null; }
+	{ return $this->Model ? $this->Model->getID() : NULL; }
 	
 	/**
 	 * @param int $Model
@@ -162,7 +162,7 @@ class Set
 		if(($this->ContainsWhat & SET_CONTENT_IMAGE) > 0)
 		{ return (($this->getAmountPicsInDB() % 25 != 0) || $this->getAmountPicsInDB() == 0); }
 		else
-		{ return false; }
+		{ return FALSE; }
 	}
 	
 	/**
@@ -173,7 +173,7 @@ class Set
 		if(($this->ContainsWhat & SET_CONTENT_VIDEO) > 0)
 		{ return ($this->getAmountVidsInDB() < 1); }
 		else
-		{ return false; }
+		{ return FALSE; }
 	}
 	
 	/**
@@ -191,7 +191,7 @@ class Set
 	 * @param string $LimitClause 
 	 * @return Array(Set) | NULL
 	 */
-	public static function GetSets($SearchParameters = null, $OrderClause = 'model_firstname ASC, model_lastname ASC, set_prefix ASC, set_name ASC', $LimitClause = null)
+	public static function GetSets($SearchParameters = NULL, $OrderClause = 'model_firstname ASC, model_lastname ASC, set_prefix ASC, set_name ASC', $LimitClause = NULL)
 	{
 		global $dbi;
 		$SearchParameters = $SearchParameters ? $SearchParameters : new SetSearchParameters();
@@ -210,14 +210,14 @@ class Set
 			%3\$s",
 			$SearchParameters->getWhere(),
 			$OrderClause,
-			$LimitClause ? ' LIMIT '.$LimitClause : null
+			$LimitClause ? ' LIMIT '.$LimitClause : NULL
 		);
 		
 		if(!($stmt = $dbi->prepare($q)))
 		{
 			$e = new SQLerror($dbi->errno, $dbi->error);
 			Error::AddError($e);
-			return null;
+			return NULL;
 		}
 		
 		DBi::BindParamsToSelect($SearchParameters, $stmt);
@@ -240,7 +240,7 @@ class Set
 		{
 			$e = new SQLerror($dbi->errno, $dbi->error);
 			Error::AddError($e);
-			return null;
+			return NULL;
 		}
 	}
 	
@@ -265,14 +265,14 @@ class Set
 	{
 		global $dbi;
 	
-		$outBool = true;
-		$model_id = $set_prefix = $set_name = null;
+		$outBool = TRUE;
+		$model_id = $set_prefix = $set_name = NULL;
 		$set_containswhat = SET_CONTENT_NONE;
 		$mut_id = $CurrentUser->getID();
 		$mut_date = time();
 	
 		if(!is_array($Sets))
-		{ return false; }
+		{ return FALSE; }
 	
 		$q = sprintf("
 			INSERT INTO	`Set` (
@@ -291,7 +291,7 @@ class Set
 		{
 			$e = new SQLerror($dbi->errno, $dbi->error);
 			Error::AddError($e);
-			return false;
+			return FALSE;
 		}
 	
 		$stmt->bind_param('issiii',
@@ -347,14 +347,14 @@ class Set
 	{
 		global $dbi;
 		
-		$outBool = true;
-		$id = $model_id = $set_prefix = $set_name = null;
+		$outBool = TRUE;
+		$id = $model_id = $set_prefix = $set_name = NULL;
 		$set_containswhat = SET_CONTENT_NONE;
 		$mut_id = $CurrentUser->getID();
 		$mut_date = time();
 		
 		if(!is_array($Sets))
-		{ return false; }
+		{ return FALSE; }
 		
 		$q = sprintf("
 			UPDATE `Set` SET
@@ -372,7 +372,7 @@ class Set
 		{
 			$e = new SQLerror($dbi->errno, $dbi->error);
 			Error::AddError($e);
-			return false;
+			return FALSE;
 		}
 		
 		$stmt->bind_param('issiiii',
@@ -426,13 +426,13 @@ class Set
 	{
 		global $dbi;
 	
-		$outBool = true;
-		$id = null;
+		$outBool = TRUE;
+		$id = NULL;
 		$mut_id = $CurrentUser->getID();
 		$mut_deleted = time();
 	
 		if(!is_array($Sets))
-		{ return false; }
+		{ return FALSE; }
 	
 		$q = sprintf("
 			UPDATE `Set` SET
@@ -446,7 +446,7 @@ class Set
 		{
 			$e = new SQLerror($dbi->errno, $dbi->error);
 			Error::AddError($e);
-			return false;
+			return FALSE;
 		}
 	
 		$stmt->bind_param('iii',
@@ -480,7 +480,7 @@ class Set
 	 * @param string $Prefix
 	 * @return array(Set)
 	 */
-	public static function Filter($SetArray, $ModelID = null, $SetID = null, $Name = null, $Prefix = null)
+	public static function Filter($SetArray, $ModelID = NULL, $SetID = NULL, $Name = NULL, $Prefix = NULL)
 	{
 		$OutArray = array();
 
@@ -512,7 +512,7 @@ class Set
 	public static function RangeString($inArray)
 	{	
 		if(!is_array($inArray) || count($inArray) == 0){
-			return null;
+			return NULL;
 		}
 	
 		$s = count($inArray) == 1 ? 'Set ' : 'Sets '; 
@@ -522,19 +522,19 @@ class Set
 			/* @var $previousSet Set */
 			/* @var $currentSet Set */
 			/* @var $nextSet Set */
-			$previousSet = $i == 0 ? null : $inArray[$i -1];
+			$previousSet = $i == 0 ? NULL : $inArray[$i -1];
 			$currenSet = $inArray[$i];
-			$nextSet = $i == count($inArray)-1 ? null : $inArray[$i +1];
+			$nextSet = $i == count($inArray)-1 ? NULL : $inArray[$i +1];
 			
 			
-			if($previousSet == null){
+			if($previousSet == NULL){
 				$s .= (int)$currenSet->getName();	
 			}
 	
 			else if(
 				(int)$currenSet->getName() == ((int)$previousSet->getName()) + 1
 				&&
-				$nextSet != null
+				$nextSet != NULL
 				&&
 				(int)$currenSet->getName() == ((int)$nextSet->getName()) - 1)
 				{

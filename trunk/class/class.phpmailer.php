@@ -101,7 +101,7 @@ class PHPMailer {
 
   /**
    * Sets the Body of the message.  This can be either an HTML or text body.
-   * If HTML then run IsHTML(true).
+   * If HTML then run IsHTML(TRUE).
    * @var string
    */
   public $Body              = '';
@@ -370,7 +370,7 @@ class PHPMailer {
    * @param boolean $exceptions Should we throw external exceptions?
    */
   public function __construct($exceptions = false) {
-    $this->exceptions = ($exceptions == true);
+    $this->exceptions = ($exceptions == TRUE);
   }
 
   /**
@@ -378,7 +378,7 @@ class PHPMailer {
    * @param bool $ishtml
    * @return void
    */
-  public function IsHTML($ishtml = true) {
+  public function IsHTML($ishtml = TRUE) {
     if ($ishtml) {
       $this->ContentType = 'text/html';
     } else {
@@ -505,7 +505,7 @@ class PHPMailer {
     if ($kind != 'Reply-To') {
       if (!isset($this->all_recipients[strtolower($address)])) {
         array_push($this->$kind, array($address, $name));
-        $this->all_recipients[strtolower($address)] = true;
+        $this->all_recipients[strtolower($address)] = TRUE;
         return true;
       }
     } else {
@@ -689,7 +689,7 @@ class PHPMailer {
     } else {
       $sendmail = sprintf("%s -oi -t", escapeshellcmd($this->Sendmail));
     }
-    if ($this->SingleTo === true) {
+    if ($this->SingleTo === TRUE) {
       foreach ($this->SingleToArray as $key => $val) {
         if(!@$mail = popen($sendmail, 'w')) {
           throw new phpmailerException($this->Lang('execute') . $this->Sendmail, self::STOP_CRITICAL);
@@ -744,7 +744,7 @@ class PHPMailer {
     if ($this->Sender != '' and !ini_get('safe_mode')) {
       $old_from = ini_get('sendmail_from');
       ini_set('sendmail_from', $this->Sender);
-      if ($this->SingleTo === true && count($toArr) > 1) {
+      if ($this->SingleTo === TRUE && count($toArr) > 1) {
         foreach ($toArr as $key => $val) {
           $rt = @mail($val, $this->EncodeHeader($this->SecureHeader($this->Subject)), $body, $header, $params);
           // implement call back function if it exists
@@ -758,7 +758,7 @@ class PHPMailer {
         $this->doCallback($isSent, $to, $this->cc, $this->bcc, $this->Subject, $body);
       }
     } else {
-      if ($this->SingleTo === true && count($toArr) > 1) {
+      if ($this->SingleTo === TRUE && count($toArr) > 1) {
         foreach ($toArr as $key => $val) {
           $rt = @mail($val, $this->EncodeHeader($this->SecureHeader($this->Subject)), $body, $header, $params);
           // implement call back function if it exists
@@ -848,7 +848,7 @@ class PHPMailer {
     if(!$this->smtp->Data($header . $body)) {
       throw new phpmailerException($this->Lang('data_not_accepted'), self::STOP_CRITICAL);
     }
-    if($this->SMTPKeepAlive == true) {
+    if($this->SMTPKeepAlive == TRUE) {
       $this->smtp->Reset();
     }
     return true;
@@ -900,7 +900,7 @@ class PHPMailer {
             $this->smtp->Hello($hello);
           }
 
-          $connection = true;
+          $connection = TRUE;
           if ($this->SMTPAuth) {
             if (!$this->smtp->Authenticate($this->Username, $this->Password)) {
               throw new phpmailerException($this->Lang('authenticate'));
@@ -963,12 +963,12 @@ class PHPMailer {
       'variable_set' => 'Cannot set or reset variable: '
     );
     //Overwrite language-specific strings. This way we'll never have missing translations - no more "language string failed to load"!
-    $l = true;
+    $l = TRUE;
     if ($langcode != 'en') { //There is no English translation file
       $l = @include $lang_path.'phpmailer.lang-'.$langcode.'.php';
     }
     $this->language = $PHPMAILER_LANG;
-    return ($l == true); //Returns false if language not found
+    return ($l == TRUE); //Returns false if language not found
   }
 
   /**
@@ -1121,17 +1121,17 @@ class PHPMailer {
           // otherwise reduce maxLength to start of the encoded char
           $maxLength = ($encodedCharPos == 0) ? $maxLength :
           $maxLength - ($lookBack - $encodedCharPos);
-          $foundSplitPos = true;
+          $foundSplitPos = TRUE;
         } elseif ($dec >= 192) { // First byte of a multi byte character
           // Reduce maxLength to split at start of character
           $maxLength = $maxLength - ($lookBack - $encodedCharPos);
-          $foundSplitPos = true;
+          $foundSplitPos = TRUE;
         } elseif ($dec < 192) { // Middle byte of a multi byte character, look further back
           $lookBack += 3;
         }
       } else {
         // No encoded character found
-        $foundSplitPos = true;
+        $foundSplitPos = TRUE;
       }
     }
     return $maxLength;
@@ -1184,7 +1184,7 @@ class PHPMailer {
 
     // To be created automatically by mail()
     if($this->Mailer != 'mail') {
-      if ($this->SingleTo === true) {
+      if ($this->SingleTo === TRUE) {
         foreach($this->to as $t) {
           $this->SingleToArray[] = $this->AddrFormat($t);
         }
@@ -1585,7 +1585,7 @@ class PHPMailer {
         $disposition = $attachment[6];
         $cid         = $attachment[7];
         if ( $disposition == 'inline' && isset($cidUniq[$cid]) ) { continue; }
-        $cidUniq[$cid] = true;
+        $cidUniq[$cid] = TRUE;
 
         $mime[] = sprintf("--%s%s", $boundary, $this->LE);
         $mime[] = sprintf("Content-Type: %s; name=\"%s\"%s", $type, $this->EncodeHeader($this->SecureHeader($name)), $this->LE);
@@ -2229,7 +2229,7 @@ class PHPMailer {
         }
       }
     }
-    $this->IsHTML(true);
+    $this->IsHTML(TRUE);
     $this->Body = $message;
 	if (empty($this->AltBody)) {
 		$textMsg = trim(strip_tags(preg_replace('/<(head|title|style|script)[^>]*>.*?<\/\\1>/s', '', $message)));

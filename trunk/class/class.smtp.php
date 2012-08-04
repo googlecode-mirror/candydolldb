@@ -89,8 +89,8 @@ class SMTP {
    */
   public function __construct() {
     $this->smtp_conn = 0;
-    $this->error = null;
-    $this->helo_rply = null;
+    $this->error = NULL;
+    $this->helo_rply = NULL;
 
     $this->do_debug = 0;
   }
@@ -114,7 +114,7 @@ class SMTP {
    */
   public function Connect($host, $port = 0, $tval = 30) {
     // set the error val to null so there is no confusion
-    $this->error = null;
+    $this->error = NULL;
 
     // make sure we are __not__ connected
     if($this->connected()) {
@@ -169,7 +169,7 @@ class SMTP {
    * @return bool success
    */
   public function StartTLS() {
-    $this->error = null; # to avoid confusion
+    $this->error = NULL; # to avoid confusion
 
     if(!$this->connected()) {
       $this->error = array("error" => "Called StartTLS() without being connected");
@@ -294,8 +294,8 @@ class SMTP {
    * @return void
    */
   public function Close() {
-    $this->error = null; // so there is no confusion
-    $this->helo_rply = null;
+    $this->error = NULL; // so there is no confusion
+    $this->helo_rply = NULL;
     if(!empty($this->smtp_conn)) {
       // close the connection and cleanup
       fclose($this->smtp_conn);
@@ -327,7 +327,7 @@ class SMTP {
    * @return bool
    */
   public function Data($msg_data) {
-    $this->error = null; // so no confusion is caused
+    $this->error = NULL; // so no confusion is caused
 
     if(!$this->connected()) {
       $this->error = array(
@@ -383,13 +383,13 @@ class SMTP {
     $field = substr($lines[0],0,strpos($lines[0],":"));
     $in_headers = false;
     if(!empty($field) && !strstr($field," ")) {
-      $in_headers = true;
+      $in_headers = TRUE;
     }
 
     $max_line_length = 998; // used below; set here for ease in change
 
     while(list(,$line) = @each($lines)) {
-      $lines_out = null;
+      $lines_out = NULL;
       if($line == "" && $in_headers) {
         $in_headers = false;
       }
@@ -464,7 +464,7 @@ class SMTP {
    * @return bool
    */
   public function Hello($host = '') {
-    $this->error = null; // so no confusion is caused
+    $this->error = NULL; // so no confusion is caused
 
     if(!$this->connected()) {
       $this->error = array(
@@ -534,7 +534,7 @@ class SMTP {
    * @return bool
    */
   public function Mail($from) {
-    $this->error = null; // so no confusion is caused
+    $this->error = NULL; // so no confusion is caused
 
     if(!$this->connected()) {
       $this->error = array(
@@ -576,8 +576,8 @@ class SMTP {
    * @access public
    * @return bool
    */
-  public function Quit($close_on_error = true) {
-    $this->error = null; // so there is no confusion
+  public function Quit($close_on_error = TRUE) {
+    $this->error = NULL; // so there is no confusion
 
     if(!$this->connected()) {
       $this->error = array(
@@ -595,8 +595,8 @@ class SMTP {
       echo "SMTP -> FROM SERVER:" . $byemsg . $this->CRLF . '<br />';
     }
 
-    $rval = true;
-    $e = null;
+    $rval = TRUE;
+    $e = NULL;
 
     $code = substr($byemsg,0,3);
     if($code != 221) {
@@ -630,7 +630,7 @@ class SMTP {
    * @return bool
    */
   public function Recipient($to) {
-    $this->error = null; // so no confusion is caused
+    $this->error = NULL; // so no confusion is caused
 
     if(!$this->connected()) {
       $this->error = array(
@@ -673,7 +673,7 @@ class SMTP {
    * @return bool
    */
   public function Reset() {
-    $this->error = null; // so no confusion is caused
+    $this->error = NULL; // so no confusion is caused
 
     if(!$this->connected()) {
       $this->error = array(
@@ -721,7 +721,7 @@ class SMTP {
    * @return bool
    */
   public function SendAndMail($from) {
-    $this->error = null; // so no confusion is caused
+    $this->error = NULL; // so no confusion is caused
 
     if(!$this->connected()) {
       $this->error = array(

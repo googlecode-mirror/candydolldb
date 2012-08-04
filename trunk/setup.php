@@ -13,29 +13,29 @@ if(file_exists('config.php'))
 	)));
 }
 
-$DBHostName = null;
-$DBUserName = null;
-$DBPassword = null;
+$DBHostName = NULL;
+$DBUserName = NULL;
+$DBPassword = NULL;
 $DBName = DBNAME;
 
-$UserName = null;
-$Password = null;
-$UserFirstName = null;
-$UserLastName = null;
-$UserEmail = null;
+$UserName = NULL;
+$Password = NULL;
+$UserFirstName = NULL;
+$UserLastName = NULL;
+$UserEmail = NULL;
 
-$CandyImagePath = null;
-$CandyVideoPath = null;
-$CandyVideoThumbPath = null;
+$CandyImagePath = NULL;
+$CandyVideoPath = NULL;
+$CandyVideoThumbPath = NULL;
 
-$UseMailServer = false;
-$SmtpFromAddress = null;
-$SmtpFromName = null;
-$SmtpHostname = null;
-$SmtpUsername = null;
-$SmtpPassword = null;
+$UseMailServer = FALSE;
+$SmtpFromAddress = NULL;
+$SmtpFromName = NULL;
+$SmtpHostname = NULL;
+$SmtpUsername = NULL;
+$SmtpPassword = NULL;
 $SmtpPort = 0;
-$SmtpAuth = false;
+$SmtpAuth = FALSE;
 
 $InsertUserSQL = <<<FjbMNnvUJheiwewUJfheJheuehFJDUHdywgwwgHGfgywug
 INSERT INTO `User` (
@@ -339,27 +339,27 @@ FjbMNnvUJheiwewUJfheJheuehFJDUHdywgwwgHGfgywug;
 
 if(array_key_exists('hidAction', $_POST) && isset($_POST['hidAction']) && $_POST['hidAction'] == 'SetupCDDB')
 {
-	$DBHostName = isset($_POST['txtDBHostName']) && strlen($_POST['txtDBHostName']) > 0 ? (string)$_POST['txtDBHostName']  : null;
-	$DBUserName = isset($_POST['txtDBUserName']) && strlen($_POST['txtDBUserName']) > 0 ? (string)$_POST['txtDBUserName']  : null;
-	$DBPassword = isset($_POST['txtDBPassword']) && strlen($_POST['txtDBPassword']) >= 0 ? (string)$_POST['txtDBPassword'] : null;
-	$DBName 	= isset($_POST['txtDBName']) 	 && strlen($_POST['txtDBName']) > 0 ? 	  (string)$_POST['txtDBName'] 	   : null;
+	$DBHostName = isset($_POST['txtDBHostName']) && strlen($_POST['txtDBHostName']) > 0 ? (string)$_POST['txtDBHostName']  : NULL;
+	$DBUserName = isset($_POST['txtDBUserName']) && strlen($_POST['txtDBUserName']) > 0 ? (string)$_POST['txtDBUserName']  : NULL;
+	$DBPassword = isset($_POST['txtDBPassword']) && strlen($_POST['txtDBPassword']) >= 0 ? (string)$_POST['txtDBPassword'] : NULL;
+	$DBName 	= isset($_POST['txtDBName']) 	 && strlen($_POST['txtDBName']) > 0 ? 	  (string)$_POST['txtDBName'] 	   : NULL;
 
-	$UserName 		= isset($_POST['txtUserName']) && strlen($_POST['txtUserName']) > 0 ? (string)$_POST['txtUserName'] : null;
-	$Password 		= isset($_POST['txtPassword']) && strlen($_POST['txtPassword']) > 0 ? (string)$_POST['txtPassword'] : null;
-	$UserFirstName	= isset($_POST['txtFirstName']) && strlen($_POST['txtFirstName']) > 0 ? (string)$_POST['txtFirstName'] : null;
-	$UserLastName 	= isset($_POST['txtLastName']) && strlen($_POST['txtLastName']) > 0 ? (string)$_POST['txtLastName'] : null;
-	$UserEmail 		= isset($_POST['txtEmail']) && strlen($_POST['txtEmail']) > 0 ? (string)$_POST['txtEmail'] : null;
+	$UserName 		= isset($_POST['txtUserName']) && strlen($_POST['txtUserName']) > 0 ? (string)$_POST['txtUserName'] : NULL;
+	$Password 		= isset($_POST['txtPassword']) && strlen($_POST['txtPassword']) > 0 ? (string)$_POST['txtPassword'] : NULL;
+	$UserFirstName	= isset($_POST['txtFirstName']) && strlen($_POST['txtFirstName']) > 0 ? (string)$_POST['txtFirstName'] : NULL;
+	$UserLastName 	= isset($_POST['txtLastName']) && strlen($_POST['txtLastName']) > 0 ? (string)$_POST['txtLastName'] : NULL;
+	$UserEmail 		= isset($_POST['txtEmail']) && strlen($_POST['txtEmail']) > 0 ? (string)$_POST['txtEmail'] : NULL;
 
-	$CandyImagePath 	= isset($_POST['txtCandyImagePath']) && strlen($_POST['txtCandyImagePath']) > 0 ? (string)$_POST['txtCandyImagePath'] : null;
-	$CandyVideoPath 	= isset($_POST['txtCandyVideoPath']) && strlen($_POST['txtCandyVideoPath']) > 0 ? (string)$_POST['txtCandyVideoPath'] : null;
-	$CandyVideoThumbPath = isset($_POST['txtCandyVideoThumbPath']) && strlen($_POST['txtCandyVideoThumbPath']) > 0 ? (string)$_POST['txtCandyVideoThumbPath'] : null;
+	$CandyImagePath 	= isset($_POST['txtCandyImagePath']) && strlen($_POST['txtCandyImagePath']) > 0 ? (string)$_POST['txtCandyImagePath'] : NULL;
+	$CandyVideoPath 	= isset($_POST['txtCandyVideoPath']) && strlen($_POST['txtCandyVideoPath']) > 0 ? (string)$_POST['txtCandyVideoPath'] : NULL;
+	$CandyVideoThumbPath = isset($_POST['txtCandyVideoThumbPath']) && strlen($_POST['txtCandyVideoThumbPath']) > 0 ? (string)$_POST['txtCandyVideoThumbPath'] : NULL;
 
 	$UseMailServer 	= array_key_exists('chkUseMailServer', $_POST);
-	$SmtpFromAddress = isset($_POST['txtSmtpFromAddress']) && strlen($_POST['txtSmtpFromAddress']) > 0 ? (string)$_POST['txtSmtpFromAddress'] : null;
-	$SmtpFromName 	= isset($_POST['txtSmtpFromName']) && strlen($_POST['txtSmtpFromName']) > 0 ? (string)$_POST['txtSmtpFromName'] : null;
-	$SmtpHostname	= isset($_POST['txtSmtpHostname']) && strlen($_POST['txtSmtpHostname']) > 0 ? (string)$_POST['txtSmtpHostname'] : null;
-	$SmtpUsername	= isset($_POST['txtSmtpUsername']) && strlen($_POST['txtSmtpUsername']) > 0 ? (string)$_POST['txtSmtpUsername'] : null;
-	$SmtpPassword	= isset($_POST['txtSmtpPassword']) && strlen($_POST['txtSmtpPassword']) > 0 ? (string)$_POST['txtSmtpPassword'] : null;
+	$SmtpFromAddress = isset($_POST['txtSmtpFromAddress']) && strlen($_POST['txtSmtpFromAddress']) > 0 ? (string)$_POST['txtSmtpFromAddress'] : NULL;
+	$SmtpFromName 	= isset($_POST['txtSmtpFromName']) && strlen($_POST['txtSmtpFromName']) > 0 ? (string)$_POST['txtSmtpFromName'] : NULL;
+	$SmtpHostname	= isset($_POST['txtSmtpHostname']) && strlen($_POST['txtSmtpHostname']) > 0 ? (string)$_POST['txtSmtpHostname'] : NULL;
+	$SmtpUsername	= isset($_POST['txtSmtpUsername']) && strlen($_POST['txtSmtpUsername']) > 0 ? (string)$_POST['txtSmtpUsername'] : NULL;
+	$SmtpPassword	= isset($_POST['txtSmtpPassword']) && strlen($_POST['txtSmtpPassword']) > 0 ? (string)$_POST['txtSmtpPassword'] : NULL;
 	$SmtpPort 		= isset($_POST['txtSmtpPort']) && intval($_POST['txtSmtpPort']) > 0 ? intval($_POST['txtSmtpPort']) : 0;
 	$SmtpAuth 		= array_key_exists('chkSmtpAuth', $_POST);
 
@@ -388,7 +388,7 @@ if(array_key_exists('hidAction', $_POST) && isset($_POST['hidAction']) && $_POST
 					$NewConfig = sprintf($ConfigTemplate,
 						str_ireplace('\\', '\\\\', $CandyImagePath),
 						str_ireplace('\\', '\\\\', $CandyVideoPath),
-						null,
+						NULL,
 						str_ireplace('\\', '\\\\', $CandyVideoThumbPath),
 						$DBHostName,
 						$DBUserName,
@@ -399,15 +399,15 @@ if(array_key_exists('hidAction', $_POST) && isset($_POST['hidAction']) && $_POST
 						$SmtpUsername,
 						$SmtpPassword,
 						$SmtpPort,
-						$SmtpAuth ? 'true' : 'false',
+						$SmtpAuth ? 'TRUE' : 'FALSE',
 						$UserFirstName,
 						$UserLastName,
 						$NewUserID,
 						$DBName);
 
-					if(@file_put_contents('config.php', $NewConfig, LOCK_EX) !== false)
+					if(@file_put_contents('config.php', $NewConfig, LOCK_EX) !== FALSE)
 					{
-						if(is_dir('cache') || mkdir('cache', 0700, true))
+						if(is_dir('cache') || mkdir('cache', 0700, TRUE))
 						{ 
 							die($lang->g('MessageAllDoneConfigWritten'));
 						}
@@ -441,7 +441,7 @@ else
 	$UserLastName = $lang->g('LabelLastname');
 	$UserEmail = $lang->g('LabelEmailAddress');
 
-	if(stripos(php_uname('s'), 'WIN') === false)
+	if(stripos(php_uname('s'), 'WIN') === FALSE)
 	{
 		$CandyImagePath = $lang->g('LabelPathToCandyDollLinux');
 		$CandyVideoPath = $lang->g('LabelPathToCandyDollVideosLinux');
@@ -460,7 +460,7 @@ else
 	$SmtpUsername = 'smtp_username';
 	$SmtpPassword = 'P@s$w0Rd';
 	$SmtpPort = 25;
-	$SmtpAuth = true;
+	$SmtpAuth = TRUE;
 }
 
 echo HTMLstuff::HtmlHeader($lang->g('LabelSetup'))?>
@@ -544,7 +544,7 @@ echo HTMLstuff::HtmlHeader($lang->g('LabelSetup'))?>
 
 <div class="FormRow">
 <label for="chkUseMailServer"><?php echo $lang->g('LabelUseMailServer')?>:</label>
-<input type="checkbox" id="chkUseMailServer" name="chkUseMailServer"<?php echo $UseMailServer ? ' checked="checked"' : null?> onclick="$('#MailSettings').toggleClass('Hidden');" />
+<input type="checkbox" id="chkUseMailServer" name="chkUseMailServer"<?php echo $UseMailServer ? ' checked="checked"' : NULL?> onclick="$('#MailSettings').toggleClass('Hidden');" />
 </div>
 
 <div id="MailSettings" class="Hidden">
@@ -583,7 +583,7 @@ echo HTMLstuff::HtmlHeader($lang->g('LabelSetup'))?>
 
 <div class="FormRow">
 <label for="chkSmtpAuth"><?php echo $lang->g('LabelSMTPAuth')?>: <em>*</em></label>
-<input type="checkbox" id="chkSmtpAuth" name="chkSmtpAuth"<?php echo $SmtpAuth ? ' checked="checked"' : null?> />
+<input type="checkbox" id="chkSmtpAuth" name="chkSmtpAuth"<?php echo HTMLstuff::CheckedStr($SmtpAuth)?> />
 </div>
 
 </div>

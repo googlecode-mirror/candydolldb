@@ -12,9 +12,9 @@ if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'UploadXML')
 	{
 		$d = new DOMDocument();
 
-		if(@$d->load(realpath($f['tmp_name'])) === true)
+		if(@$d->load(realpath($f['tmp_name'])) === TRUE)
 		{
-			if(@$d->schemaValidate(realpath('./candydolldb.xsd')) === true)
+			if(@$d->schemaValidate(realpath('./candydolldb.xsd')) === TRUE)
 			{
 				$tempFilename = sprintf('cache/%1$s.xml', Utils::UUID());
 				$d->saveHTMLFile($tempFilename);
