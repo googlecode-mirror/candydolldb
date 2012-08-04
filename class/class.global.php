@@ -193,6 +193,21 @@ class BusyIndicator
 class Utils
 {
 	/**
+	 * Calculates the crc32 polynomial of a filename on disk
+	 * @param string $filename
+	 * @return string
+	 */
+	public static function CalculateCRC32($filename)
+	{
+		if(file_exists($filename))
+		{
+			$crc = crc32(file_get_contents($filename));
+			return sprintf('%04X', $crc);
+		}
+		return NULL;
+	}
+	
+	/**
 	 * Returns a human readable string of a filesize, e.g. 2,43 MiB.
 	 * @param int $SizeInBytes
 	 * @return string

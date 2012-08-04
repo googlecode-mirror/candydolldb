@@ -120,6 +120,43 @@ class Video
 	{ $this->FileCheckSum = $FileCheckSum; }
 	
 	/**
+	 * @return string
+	 */
+	public function getFileCRC()
+	{ return $this->FileCRC; }
+	
+	/**
+	 * @param string $FileCRC
+	 */
+	public function setFileCRC($FileCRC)
+	{ $this->FileCRC = $FileCRC; }
+	
+	/**
+	 * Calculates the crc32 polynomial of the given Video's file on disk
+	 * @param Video $Video
+	 * @return string
+	 */
+	public static function CalculateCRC32($Video)
+	{
+		return Utils::CalculateCRC32(
+			$Video->getFilenameOnDisk()
+		);
+	}
+	
+	/**
+	 * @return string
+	 */
+	public function getFilenameOnDisk()
+	{
+		return sprintf('%1$s/%2$s/%3$s.%4$s',
+			CANDYVIDEOPATH,
+			$this->getSet()->getModel()->GetFullName(),
+			$this->getFileName(),
+			$this->getFileExtension()
+		);
+	}
+	
+	/**
 	 * Gets an array of Videos from the database, or NULL on failure.
 	 * @param VideoSearchParameters $SearchParameters
 	 * @param string $OrderClause

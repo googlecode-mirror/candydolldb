@@ -8,6 +8,7 @@ class Image
 	private $FileExtension;
 	private $FileSize = 0;
 	private $FileCheckSum;
+	private $FileCRC;
 	private $ImageWidth = 0;
 	private $ImageHeight = 0;
 	
@@ -137,6 +138,18 @@ class Image
 	/**
 	 * @return string
 	 */
+	public function getFileCRC()
+	{ return $this->FileCRC; }
+	
+	/**
+	 * @param string $FileCRC
+	 */
+	public function setFileCRC($FileCRC)
+	{ $this->FileCRC = $FileCRC; }
+	
+	/**
+	 * @return string
+	 */
 	public function getFilenameOnDisk()
 	{
 		return sprintf('%1$s/%2$s/%3$s%4$s/%5$s.%6$s',
@@ -203,6 +216,17 @@ class Image
 		}
 	}
 	
+	/**
+	 * Calculates the crc32 polynomial of the given Image's file on disk
+	 * @param Image $Image
+	 * @return string
+	 */
+	public static function CalculateCRC32($Image)
+	{
+		return Utils::CalculateCRC32(
+			$Image->getFilenameOnDisk()
+		);
+	}
 	
 	/**
 	 * Gets an array of Images from the database, or NULL on failure.
