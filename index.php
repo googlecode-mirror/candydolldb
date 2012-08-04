@@ -6,8 +6,8 @@ HTMLstuff::RefererRegister($_SERVER['REQUEST_URI']);
 
 
 $SearchModel = '';
-$SearchDirty = true;
-$SearchClean = true;
+$SearchDirty = TRUE;
+$SearchClean = TRUE;
 $ModelRows = '';
 $ModelCount = 0;
 $SetCount = 0;
@@ -22,8 +22,8 @@ if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'ModelFilter'
 else
 {
 	$SearchModel = array_key_exists('txtSearchModel', $_SESSION) ? $_SESSION['txtSearchModel'] : '';
-	$SearchDirty = array_key_exists('chkDirty', $_SESSION) ? (bool)$_SESSION['chkDirty'] : true;
-	$SearchClean = array_key_exists('chkClean', $_SESSION) ? (bool)$_SESSION['chkClean'] : true; 
+	$SearchDirty = array_key_exists('chkDirty', $_SESSION) ? (bool)$_SESSION['chkDirty'] : TRUE;
+	$SearchClean = array_key_exists('chkClean', $_SESSION) ? (bool)$_SESSION['chkClean'] : TRUE; 
 }
 
 $Models = Model::GetModels(new ModelSearchParameters(FALSE, FALSE, FALSE, FALSE, $SearchModel));
@@ -50,8 +50,8 @@ if($Models)
 		}
 		else
 		{
-			$datestartshow = null;
-			$dateendshow = null;
+			$datestartshow = NULL;
+			$dateendshow = NULL;
 		}
 		
 		/* @var $Set Set */
@@ -124,28 +124,28 @@ if($Models)
 			htmlentities($Model->GetFullName()),
 			$Model->getID(),
 			COMMAND_DELETE,
-			($ModelCount % 4 == 0 ? "<div class=\"Clear\"></div>" : null),
+			($ModelCount % 4 == 0 ? "<div class=\"Clear\"></div>" : NULL),
 			$Model->getBirthdate() > 0 ? date($CurrentUser->getDateFormat(), $Model->getBirthdate()) : '&nbsp;',
 			$Model->getBirthdate() > 0 ? sprintf(' (%1$.1f)', Utils::CalculateAge($Model->getBirthdate())) : '&nbsp;',
-			$DirtySetPicCount > 0 ? sprintf(', <em>%1$d %2$s</em>', $DirtySetPicCount, strtolower($lang->g('LabelDirty'))) : null,
+			$DirtySetPicCount > 0 ? sprintf(', <em>%1$d %2$s</em>', $DirtySetPicCount, strtolower($lang->g('LabelDirty'))) : NULL,
 			$SetPicCount,
-			$DirtySetVidCount > 0 ? sprintf(', <em>%1$d %2$s</em>', $DirtySetVidCount, strtolower($lang->g('LabelDirty'))) : null,
+			$DirtySetVidCount > 0 ? sprintf(', <em>%1$d %2$s</em>', $DirtySetVidCount, strtolower($lang->g('LabelDirty'))) : NULL,
 			$SetVidCount,
 			$lang->g('LabelName'),
 			$lang->g('LabelBirthdateShort'),
 			$lang->g('LabelPicSets'),
 			$lang->g('LabelVidSets'),
-        		null,
-        		null,
-        		null,
+        		NULL,
+        		NULL,
+        		NULL,
 			$lang->g('LabelDownloadImages'),
 			$lang->g('LabelIndexOf'),
-        		null,
+        		NULL,
 			$datestartshow,
 			$dateendshow,
 			$lang->g('LabelStartDate'),
         	$lang->g('LabelLastUpdated'),
-        		null,
+        		NULL,
         	$CurrentUser->hasPermission(RIGHT_MODEL_DELETE) ? sprintf("<a href=\"model_view.php?model_id=%1\$d&amp;cmd=%2\$s\" title=\"%3\$s\"><img src=\"images/button_delete.png\" width=\"16\" height=\"16\" alt=\"%3\$s\" /></a>",$Model->getID(),COMMAND_DELETE,$lang->g('LabelDeleteModel')) : sprintf("<a href=\"#\" title=\"%1\$s\"><img src=\"images/button_delete_invalid.png\" width=\"16\" height=\"16\" alt=\"%1\$s\" /></a>",$lang->g('LabelNotAllowed')),
         	$CurrentUser->hasPermission(RIGHT_IMAGE_ADD) ? sprintf("<a href=\"import_image.php?model_id=%1\$d\"><img src=\"images/button_upload.png\" width=\"16\" height=\"16\" alt=\"%2\$s\" title=\"%2\$s\" /></a>",$Model->getID(),$lang->g('ButtonImportImages')) : sprintf("<a href=\"#\"><img src=\"images/button_upload_invalid.png\" width=\"16\" height=\"16\" alt=\"%1\$s\" title=\"%1\$s\" /></a>",$lang->g('LabelNotAllowed')),
         	$CurrentUser->hasPermission(RIGHT_VIDEO_ADD) ? sprintf("<a href=\"import_video.php?model_id=%1\$d\"><img src=\"images/button_upload.png\" width=\"16\" height=\"16\" alt=\"%2\$s\" title=\"%2\$s\" /></a>",$Model->getID(),$lang->g('ButtonImportVideos')) : sprintf("<a href=\"#\"><img src=\"images/button_upload_invalid.png\" width=\"16\" height=\"16\" alt=\"%1\$s\" title=\"%1\$s\" /></a>",$lang->g('LabelNotAllowed')),

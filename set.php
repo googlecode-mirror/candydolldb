@@ -12,7 +12,7 @@ if(!isset($ModelID))
 	exit;
 }
 
-$Model = null;
+$Model = NULL;
 $SetRows = '';
 $SetCount = 0;
 
@@ -30,7 +30,7 @@ if($Sets)
 		$SetCount++;
 		if(!$Model) { $Model = $Set->getModel(); }
 
-		$DatesThisSet = Date::FilterDates($Dates, null, $ModelID, $Set->getID());
+		$DatesThisSet = Date::FilterDates($Dates, NULL, $ModelID, $Set->getID());
 	
 		$DatesOutput = '';
 		if($DatesThisSet)
@@ -93,9 +93,9 @@ if($Sets)
 			COMMAND_DELETE,
 			$Model->getID(),
 			$DatesOutput,
-			($SetCount % 3 == 0 ? "<div class=\"Clear\"></div>" : null),
-			($Set->getSetIsDirtyPic() ? " class=\"Dirty\"" : null),
-			($Set->getSetIsDirtyVid() ? " class=\"Dirty\"" : null),
+			($SetCount % 3 == 0 ? "<div class=\"Clear\"></div>" : NULL),
+			($Set->getSetIsDirtyPic() ? " class=\"Dirty\"" : NULL),
+			($Set->getSetIsDirtyVid() ? " class=\"Dirty\"" : NULL),
 			strtolower($lang->g('NavigationSet')),
 			$lang->g('LabelPrefix'),
 			$lang->g('LabelName'),
@@ -125,7 +125,7 @@ if(!$Model){
 }
 
 echo HTMLstuff::HtmlHeader(sprintf('%1$s - %2$s',
-		$Model->GetShortName(true),
+		$Model->GetShortName(TRUE),
 		$lang->g('NavigationSets')
 	),
 	$CurrentUser
@@ -136,7 +136,7 @@ echo HTMLstuff::HtmlHeader(sprintf('%1$s - %2$s',
 <h2><?php echo sprintf(
 	'<a href="index.php">%3$s</a> - <a href="model_view.php?model_id=%1$d">%2$s</a> - %4$s',
 	$ModelID,
-	htmlentities($Model->GetShortName(true)),
+	htmlentities($Model->GetShortName(TRUE)),
 	$lang->g('NavigationHome'),
 	$lang->g('NavigationSets')
 )?></h2>

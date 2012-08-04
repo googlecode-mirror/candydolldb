@@ -24,9 +24,9 @@ class Video
 	 * @param string $model_lastname
 	 */
 	public function __construct(
-		$video_id = null, $video_filename = null, $video_fileextension = null, $video_filesize = 0, $video_filechecksum = null,
-		$set_id = null, $set_prefix = null, $set_name = null, $set_containswhat = SET_CONTENT_NONE,
-		$model_id = null, $model_firstname = null, $model_lastname = null)
+		$video_id = NULL, $video_filename = NULL, $video_fileextension = NULL, $video_filesize = 0, $video_filechecksum = NULL,
+		$set_id = NULL, $set_prefix = NULL, $set_name = NULL, $set_containswhat = SET_CONTENT_NONE,
+		$model_id = NULL, $model_firstname = NULL, $model_lastname = NULL)
 	{
 		$this->ID = $video_id;
 		$this->FileName = $video_filename;
@@ -63,7 +63,7 @@ class Video
 	 * @return int
 	 */
 	public function getSetID()
-	{ return $this->Set ? $this->Set->getID() : null; }
+	{ return $this->Set ? $this->Set->getID() : NULL; }
 	
 	/**
 	 * @param Set $Set
@@ -126,7 +126,7 @@ class Video
 	 * @param string $LimitClause
 	 * @return Array(Video) | NULL
 	 */
-	public static function GetVideos($SearchParameters = null, $OrderClause = 'model_firstname ASC, model_lastname ASC, set_prefix ASC, set_name ASC, video_filename ASC', $LimitClause = null)
+	public static function GetVideos($SearchParameters = NULL, $OrderClause = 'model_firstname ASC, model_lastname ASC, set_prefix ASC, set_name ASC, video_filename ASC', $LimitClause = NULL)
 	{
 		global $dbi;
 		$SearchParameters = $SearchParameters ? $SearchParameters : new VideoSearchParameters();
@@ -147,14 +147,14 @@ class Video
 			%3\$s",
 			$SearchParameters->getWhere(),
 			$OrderClause,
-			$LimitClause ? ' LIMIT '.$LimitClause : null
+			$LimitClause ? ' LIMIT '.$LimitClause : NULL
 		);
 		
 		if(!($stmt = $dbi->prepare($q)))
 		{
 			$e = new SQLerror($dbi->errno, $dbi->error);
 			Error::AddError($e);
-			return null;
+			return NULL;
 		}
 		
 		DBi::BindParamsToSelect($SearchParameters, $stmt);
@@ -184,7 +184,7 @@ class Video
 		{
 			$e = new SQLerror($dbi->errno, $dbi->error);
 			Error::AddError($e);
-			return null;
+			return NULL;
 		}
 	}
 	
@@ -209,14 +209,14 @@ class Video
 	{
 		global $dbi;
 	
-		$outBool = true;
-		$set_id = $video_filename = $video_fileextension = $video_filechecksum = null;
+		$outBool = TRUE;
+		$set_id = $video_filename = $video_fileextension = $video_filechecksum = NULL;
 		$video_filesize = 0;
 		$mut_id = $CurrentUser->getID();
 		$mut_date = time();
 	
 		if(!is_array($Videos))
-		{ return false; }
+		{ return FALSE; }
 	
 		$q = sprintf("
 			INSERT INTO	`Video` (
@@ -236,7 +236,7 @@ class Video
 		{
 			$e = new SQLerror($dbi->errno, $dbi->error);
 			Error::AddError($e);
-			return false;
+			return FALSE;
 		}
 	
 		$stmt->bind_param('issisii',
@@ -293,15 +293,15 @@ class Video
 	public static function UpdateMulti($Videos, $CurrentUser)
 	{
 		global $dbi;
-		$outBool = true;
+		$outBool = TRUE;
 
-		$id = $set_id = $video_filename = $video_fileextension = $video_filechecksum = null;
+		$id = $set_id = $video_filename = $video_fileextension = $video_filechecksum = NULL;
 		$video_filesize = 0;
 		$mut_id = $CurrentUser->getID();
 		$mut_date = time();
 	
 		if(!is_array($Videos))
-		{ return false; }
+		{ return FALSE; }
 	
 		$q = sprintf("
 			UPDATE `Video` SET
@@ -320,7 +320,7 @@ class Video
 		{
 			$e = new SQLerror($dbi->errno, $dbi->error);
 			Error::AddError($e);
-			return false;
+			return FALSE;
 		}
 	
 		$stmt->bind_param('issisiii',
@@ -376,13 +376,13 @@ class Video
 	{
 		global $dbi;
 	
-		$outBool = true;
-		$id = null;
+		$outBool = TRUE;
+		$id = NULL;
 		$mut_id = $CurrentUser->getID();
 		$mut_deleted = time();
 	
 		if(!is_array($Videos))
-		{ return false; }
+		{ return FALSE; }
 	
 		$q = sprintf("
 			UPDATE `Video` SET
@@ -396,7 +396,7 @@ class Video
 		{
 			$e = new SQLerror($dbi->errno, $dbi->error);
 			Error::AddError($e);
-			return false;
+			return FALSE;
 		}
 	
 		$stmt->bind_param('iii',
@@ -429,7 +429,7 @@ class Video
 	 * @param string $Filename
 	 * @return array(Video)
 	 */
-	public static function Filter($VideoArray, $ModelID = null, $SetID = null, $Filename = null)
+	public static function Filter($VideoArray, $ModelID = NULL, $SetID = NULL, $Filename = NULL)
 	{
 		$OutArray = array();
 			

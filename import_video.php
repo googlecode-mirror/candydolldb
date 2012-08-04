@@ -65,7 +65,7 @@ for($i = 0; $i < count($Models); $i++)
 			
 			if(isset($matches) && count($matches) > 0)
 			{
-				$Set = Set::Filter($Sets, $Model->getID(), null, ($matches['Name'].$matches['Number']), $matches['Prefix']);
+				$Set = Set::Filter($Sets, $Model->getID(), NULL, ($matches['Name'].$matches['Number']), $matches['Prefix']);
 
 				if(!$Set)
 				{ continue; }
@@ -79,7 +79,7 @@ for($i = 0; $i < count($Models); $i++)
 				{
 					$VideoInDB = $VideosInDB[0];
 					
-					$cis = CacheImage::Filter($CacheImages, null, null, null, null, null, $VideoInDB->getID());
+					$cis = CacheImage::Filter($CacheImages, NULL, NULL, NULL, NULL, NULL, $VideoInDB->getID());
 					CacheImage::DeleteMulti($cis, $CurrentUser);
 				}
 				else

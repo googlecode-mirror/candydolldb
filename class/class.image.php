@@ -12,9 +12,9 @@ class Image
 	private $ImageHeight = 0;
 	
 	public function __construct(
-		$image_id = null, $image_filename = null, $image_fileextension = null, $image_filesize = 0, $image_filechecksum = null, $image_width = 0, $image_height = 0,
-		$set_id = null, $set_prefix = null, $set_name = null, $set_containswhat = SET_CONTENT_NONE,
-		$model_id = null, $model_firstname = null, $model_lastname = null)
+		$image_id = NULL, $image_filename = NULL, $image_fileextension = NULL, $image_filesize = 0, $image_filechecksum = NULL, $image_width = 0, $image_height = 0,
+		$set_id = NULL, $set_prefix = NULL, $set_name = NULL, $set_containswhat = SET_CONTENT_NONE,
+		$model_id = NULL, $model_firstname = NULL, $model_lastname = NULL)
 	{
 		$this->ID = $image_id;
 		$this->FileName = $image_filename;
@@ -54,7 +54,7 @@ class Image
 	 * @return int
 	 */
 	public function getSetID()
-	{ return $this->Set ? $this->Set->getID() : null; }
+	{ return $this->Set ? $this->Set->getID() : NULL; }
 	
 	/**
 	 * @param Set $Set
@@ -211,7 +211,7 @@ class Image
 	 * @param string $LimitClause
 	 * @return Array(Image) | NULL
 	 */
-	public static function GetImages($SearchParameters = null, $OrderClause = 'model_firstname ASC, model_lastname ASC, set_prefix ASC, set_name ASC, image_filename ASC', $LimitClause = null)
+	public static function GetImages($SearchParameters = NULL, $OrderClause = 'model_firstname ASC, model_lastname ASC, set_prefix ASC, set_name ASC, image_filename ASC', $LimitClause = NULL)
 	{
 		global $dbi;
 		$SearchParameters = $SearchParameters ? $SearchParameters : new ImageSearchParameters();		
@@ -232,14 +232,14 @@ class Image
 			%3\$s",
 			$SearchParameters->getWhere(),
 			$OrderClause,
-			$LimitClause ? ' LIMIT '.$LimitClause : null
+			$LimitClause ? ' LIMIT '.$LimitClause : NULL
 		);
 		
 		if(!($stmt = $dbi->prepare($q)))
 		{
 			$e = new SQLerror($dbi->errno, $dbi->error);
 			Error::AddError($e);
-			return null;
+			return NULL;
 		}
 		
 		DBi::BindParamsToSelect($SearchParameters, $stmt);
@@ -269,7 +269,7 @@ class Image
 		{
 			$e = new SQLerror($dbi->errno, $dbi->error);
 			Error::AddError($e);
-			return null;
+			return NULL;
 		}
 	}
 	
@@ -294,13 +294,13 @@ class Image
 	{
 		global $dbi;
 	
-		$outBool = true;
-		$set_id = $image_filename = $image_fileextension = $image_filesize = $image_filechecksum = $image_width = $image_height = null;
+		$outBool = TRUE;
+		$set_id = $image_filename = $image_fileextension = $image_filesize = $image_filechecksum = $image_width = $image_height = NULL;
 		$mut_id = $CurrentUser->getID();
 		$mut_date = time();
 	
 		if(!is_array($Images))
-		{ return false; }
+		{ return FALSE; }
 	
 		$q = sprintf("
 			INSERT INTO	`Image` (
@@ -322,7 +322,7 @@ class Image
 		{
 			$e = new SQLerror($dbi->errno, $dbi->error);
 			Error::AddError($e);
-			return false;
+			return FALSE;
 		}
 	
 		$stmt->bind_param('issisiiii',
@@ -384,13 +384,13 @@ class Image
 	{
 		global $dbi;
 		
-		$outBool = true;
-		$id = $set_id = $image_filename = $image_fileextension = $image_filesize = $image_filechecksum = $image_width = $image_height = null;
+		$outBool = TRUE;
+		$id = $set_id = $image_filename = $image_fileextension = $image_filesize = $image_filechecksum = $image_width = $image_height = NULL;
 		$mut_id = $CurrentUser->getID();
 		$mut_date = time();
 		
 		if(!is_array($Images))
-		{ return false; }
+		{ return FALSE; }
 		
 		$q = sprintf("
 			UPDATE `Image` SET
@@ -411,7 +411,7 @@ class Image
 		{
 			$e = new SQLerror($dbi->errno, $dbi->error);
 			Error::AddError($e);
-			return false;
+			return FALSE;
 		}
 		
 		$stmt->bind_param('issisiiiii',
@@ -471,13 +471,13 @@ class Image
 	{
 		global $dbi;
 	
-		$outBool = true;
-		$id = null;
+		$outBool = TRUE;
+		$id = NULL;
 		$mut_id = $CurrentUser->getID();
 		$mut_deleted = time();
 	
 		if(!is_array($Images))
-		{ return false; }
+		{ return FALSE; }
 	
 		$q = sprintf("
 			UPDATE `Image` SET
@@ -491,7 +491,7 @@ class Image
 		{
 			$e = new SQLerror($dbi->errno, $dbi->error);
 			Error::AddError($e);
-			return false;
+			return FALSE;
 		}
 	
 		$stmt->bind_param('iii',
@@ -523,7 +523,7 @@ class Image
 	 * @param int $SetID
 	 * @return array(Image)
 	 */
-	public static function FilterImages($ImageArray, $ModelID = null, $SetID = null, $Name = null)
+	public static function FilterImages($ImageArray, $ModelID = NULL, $SetID = NULL, $Name = NULL)
 	{
 		$OutArray = array();
 			
@@ -547,12 +547,12 @@ class Image
 	 * @param int $width
 	 * @param int $height
 	 */
-	public static function OutputImage($filename = 'images/missing.jpg', $width = 800, $height = 600, $cachable = true, $cacheFilenameToBe = null, $downloadFilenameToBe = null)
+	public static function OutputImage($filename = 'images/missing.jpg', $width = 800, $height = 600, $cachable = TRUE, $cacheFilenameToBe = NULL, $downloadFilenameToBe = NULL)
 	{
 		$filename = $filename ? $filename : 'images/missing.jpg';
 		$info = getimagesize($filename);
 		
-		if($info === false)
+		if($info === FALSE)
 		{
 			$filename = 'images/missing.jpg';
 			$info = getimagesize($filename);
@@ -598,7 +598,7 @@ class Image
 		
 		@ob_clean();
 		flush();
-		imagejpeg($DestinationImage, null);
+		imagejpeg($DestinationImage, NULL);
 		imagedestroy($DestinationImage);
 		
 		exit;

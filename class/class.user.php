@@ -44,8 +44,8 @@ class User
 	 * @param int $user_prelastlogin
 	 */
 	public function __construct(
-		$user_id = null, $user_username = null, $user_password = null, $user_salt = null,
-		$user_firstname = null, $user_insertion = null, $user_lastname = null, $user_email = null,
+		$user_id = NULL, $user_username = NULL, $user_password = NULL, $user_salt = NULL,
+		$user_firstname = NULL, $user_insertion = NULL, $user_lastname = NULL, $user_email = NULL,
 		$user_gender = GENDER_UNKNOWN, $user_birthdate = -1,
 		$user_datedisplayopts = 0, $user_imageview = 'detail', $user_language = 'en', $user_rights = 0,
 		$user_lastactive = -1, $user_lastlogin = -1, $user_prelastlogin = -1)
@@ -81,7 +81,7 @@ class User
 	{
 		return sprintf('%1$s%2$s %3$s',
 			$this->getFirstName(),
-			$this->getInsertion() ? ' '.$this->getInsertion() : null,
+			$this->getInsertion() ? ' '.$this->getInsertion() : NULL,
 			$this->getLastName()
 		);
 	}
@@ -360,7 +360,7 @@ class User
 	 * @param string $LimitClause
 	 * @return array(User) | NULL
 	 */
-	public static function GetUsers($SearchParameters = null, $OrderClause = 'user_lastname ASC, user_firstname ASC', $LimitClause = null)
+	public static function GetUsers($SearchParameters = NULL, $OrderClause = 'user_lastname ASC, user_firstname ASC', $LimitClause = NULL)
 	{
 		global $dbi;
 		$SearchParameters = $SearchParameters ? $SearchParameters : new UserSearchParameters();
@@ -383,14 +383,14 @@ class User
 			%3\$s",
 			$SearchParameters->getWhere(),
 			$OrderClause,
-			$LimitClause ? ' LIMIT '.$LimitClause : null
+			$LimitClause ? ' LIMIT '.$LimitClause : NULL
 		);
 		
 		if(!($stmt = $dbi->prepare($q)))
 		{
 			$e = new SQLerror($dbi->errno, $dbi->error);
 			Error::AddError($e);
-			return null;
+			return NULL;
 		}
 		
 		DBi::BindParamsToSelect($SearchParameters, $stmt);
@@ -424,7 +424,7 @@ class User
 		{
 			$e = new SQLerror($dbi->errno, $dbi->error);
 			Error::AddError($e);
-			return null;
+			return NULL;
 		}
 	}
 	
@@ -448,9 +448,9 @@ class User
 	public static function InsertMulti($Users, $CurrentUser)
 	{
 		global $dbi;
-		$outBool = true;
+		$outBool = TRUE;
 
-		$user_username = $user_password = $user_salt = $user_firstname = $user_insertion = $user_lastname = $user_email = null;
+		$user_username = $user_password = $user_salt = $user_firstname = $user_insertion = $user_lastname = $user_email = NULL;
 		$user_datedisplayopts = $user_rights = 0;
 		$user_imageview = 'detail';
 		$user_language = 'en';
@@ -460,7 +460,7 @@ class User
 		$mut_date = time();
 	
 		if(!is_array($Users))
-		{ return false; }
+		{ return FALSE; }
 	
 		$q = sprintf("
 			INSERT INTO	`User` (
@@ -488,7 +488,7 @@ class User
 		{
 			$e = new SQLerror($dbi->errno, $dbi->error);
 			Error::AddError($e);
-			return false;
+			return FALSE;
 		}
 	
 		$stmt->bind_param('sssssssiissiiii',
@@ -561,9 +561,9 @@ class User
 	public static function UpdateMulti($Users, $CurrentUser)
 	{
 		global $dbi;
-		$outBool = true;
+		$outBool = TRUE;
 
-		$id = $user_username = $user_password = $user_salt = $user_firstname = $user_insertion = $user_lastname = $user_email = null;
+		$id = $user_username = $user_password = $user_salt = $user_firstname = $user_insertion = $user_lastname = $user_email = NULL;
 		$user_datedisplayopts = $user_rights = 0;
 		$user_imageview = 'detail';
 		$user_language = 'en';
@@ -573,7 +573,7 @@ class User
 		$mut_date = time();
 	
 		if(!is_array($Users))
-		{ return false; }
+		{ return FALSE; }
 	
 		$q = sprintf("
 			UPDATE `User` SET
@@ -600,7 +600,7 @@ class User
 		{
 			$e = new SQLerror($dbi->errno, $dbi->error);
 			Error::AddError($e);
-			return false;
+			return FALSE;
 		}
 	
 		$stmt->bind_param('sssssssiissiiiii',
@@ -671,14 +671,14 @@ class User
 	public static function DeleteMulti($Users, $CurrentUser)
 	{
 		global $dbi;
-		$outBool = true;
+		$outBool = TRUE;
 
-		$id = null;
+		$id = NULL;
 		$mut_id = $CurrentUser->getID();
 		$mut_deleted = time();
 	
 		if(!is_array($Users))
-		{ return false; }
+		{ return FALSE; }
 	
 		$q = sprintf("
 			UPDATE `User` SET
@@ -692,7 +692,7 @@ class User
 		{
 			$e = new SQLerror($dbi->errno, $dbi->error);
 			Error::AddError($e);
-			return false;
+			return FALSE;
 		}
 	
 		$stmt->bind_param('iii',

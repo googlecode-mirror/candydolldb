@@ -18,7 +18,7 @@ else
 
 
 $fc = file_get_contents($f);
-$lines = preg_split('/\n/i', $fc, null, PREG_SPLIT_NO_EMPTY);
+$lines = preg_split('/\n/i', $fc, NULL, PREG_SPLIT_NO_EMPTY);
 $lines = array_filter($lines, 'NotComment');
 
 Tag2All::HandleTags($lines, array(), $TagsInDb, $CurrentUser);

@@ -4,7 +4,7 @@ include('cd.php');
 
 $Tags = Tag::GetTags();
 $a = array();
-$q = null;
+$q = NULL;
 $o = '';
 
 if(array_key_exists('q', $_POST) && strlen($_POST['q']) > 0)
@@ -13,7 +13,7 @@ if(array_key_exists('q', $_POST) && strlen($_POST['q']) > 0)
 		preg_split(
 			$CSVRegex,
 			$_POST['q'].',',
-			null,
+			NULL,
 			PREG_SPLIT_NO_EMPTY
 		)
 	);
@@ -23,7 +23,7 @@ if(!is_null($q))
 {
 	foreach ($Tags as $t)
 	{
-		if(stripos($t->getName(), $q) !== false)
+		if(stripos($t->getName(), $q) !== FALSE)
 		{
 			$a[] = $t;
 		}

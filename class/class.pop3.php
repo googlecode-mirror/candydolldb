@@ -133,7 +133,7 @@ class POP3 {
   public function __construct() {
     $this->pop_conn  = 0;
     $this->connected = false;
-    $this->error     = null;
+    $this->error     = NULL;
   }
 
   /**
@@ -167,7 +167,7 @@ class POP3 {
     $this->password = $password;
 
     //  Refresh the error log
-    $this->error = null;
+    $this->error = NULL;
 
     //  Connect
     $result = $this->Connect($this->host, $this->port, $this->tval);
@@ -259,7 +259,7 @@ class POP3 {
     //  Check for the +OK
     if ($this->checkResponse($pop3_response)) {
     //  The connection is established and the POP3 server is talking
-    $this->connected = true;
+    $this->connected = TRUE;
       return true;
     }
 

@@ -8,7 +8,7 @@ class Tag2All
 	private $ImageID;
 	private $VideoID;
 	
-	public function __construct($tag_id = null, $tag_name = null, $model_id = null, $set_id = null, $image_id = null, $video_id = null)
+	public function __construct($tag_id = NULL, $tag_name = NULL, $model_id = NULL, $set_id = NULL, $image_id = NULL, $video_id = NULL)
 	{
 		$t = new Tag($tag_id, $tag_name);
 		$this->Tag = $t;
@@ -30,7 +30,7 @@ class Tag2All
 	 * @return int
 	 */
 	public function getTagID()
-	{ return $this->Tag ? $this->Tag->getID() : null; }
+	{ return $this->Tag ? $this->Tag->getID() : NULL; }
 	
 	/**
 	 * @param Tag $Tag
@@ -98,10 +98,10 @@ class Tag2All
 	public function getDeleteBindPattern()
 	{
 		return sprintf('i%1$s%2$s%3$s%4$s',
-			$this->getModelID() ? 'i' : null,
-			$this->getSetID() ? 'i' : null,
-			$this->getImageID() ? 'i' : null,
-			$this->getVideoID() ?  'i' : null
+			$this->getModelID() ? 'i' : NULL,
+			$this->getSetID() ? 'i' : NULL,
+			$this->getImageID() ? 'i' : NULL,
+			$this->getVideoID() ?  'i' : NULL
 		);
 	}
 	
@@ -142,11 +142,11 @@ class Tag2All
 	{
 		global $dbi;
 		
-		$outBool = true;
-		$tag_id = $model_id = $set_id = $image_id = $video_id = null;
+		$outBool = TRUE;
+		$tag_id = $model_id = $set_id = $image_id = $video_id = NULL;
 		
 		if(!is_array($Tag2Alls))
-		{ return false; }
+		{ return FALSE; }
 		
 		$q = sprintf("
 			INSERT INTO	`Tag2All` (
@@ -164,7 +164,7 @@ class Tag2All
 		{
 			$e = new SQLerror($dbi->errno, $dbi->error);
 			Error::AddError($e);
-			return false;
+			return FALSE;
 		}
 		
 		$stmt->bind_param('iiiii',
@@ -213,10 +213,10 @@ class Tag2All
 	public static function DeleteMulti($Tag2Alls, $CurrentUser)
 	{
 		global $dbi;
-		$outBool = true;
+		$outBool = TRUE;
 		
 		if(!is_array($Tag2Alls))
-		{ return false; }
+		{ return FALSE; }
 		
 		foreach($Tag2Alls as $t2a)
 		{
@@ -240,7 +240,7 @@ class Tag2All
 			{
 				$e = new SQLerror($dbi->errno, $dbi->error);
 				Error::AddError($e);
-				return false;
+				return FALSE;
 			}
 			
 			DBi::BindParamsToDeleteT2A($t2a, $stmt);			
@@ -263,7 +263,7 @@ class Tag2All
 	 * @param string $OrderClause
 	 * @return array(Tag2All) | NULL
 	 */
-	public static function GetTag2Alls($SearchParameters = null, $OrderClause = 'tag_name ASC')
+	public static function GetTag2Alls($SearchParameters = NULL, $OrderClause = 'tag_name ASC')
 	{
 		global $dbi;
 		$SearchParameters = $SearchParameters ? $SearchParameters : new Tag2AllSearchParameters();
@@ -287,7 +287,7 @@ class Tag2All
 		{
 			$e = new SQLerror($dbi->errno, $dbi->error);
 			Error::AddError($e);
-			return null;
+			return NULL;
 		}
 		
 		DBi::BindParamsToSelect($SearchParameters, $stmt);
@@ -310,7 +310,7 @@ class Tag2All
 		{
 			$e = new SQLerror($dbi->errno, $dbi->error);
 			Error::AddError($e);
-			return null;
+			return NULL;
 		}
 	}
 
@@ -324,7 +324,7 @@ class Tag2All
 	 * @param int $VideoID
 	 * @return array
 	 */
-	public static function Filter($Tag2AllArray, $TagID = null, $ModelID = null, $SetID = null, $ImageID = null, $VideoID = null)
+	public static function Filter($Tag2AllArray, $TagID = NULL, $ModelID = NULL, $SetID = NULL, $ImageID = NULL, $VideoID = NULL)
 	{
 		$OutArray = array();
 
@@ -351,7 +351,7 @@ class Tag2All
 	*/
 	public static function Tags2AllCSV($Tag2Alls)
 	{
-		$s = null;
+		$s = NULL;
 		if(is_array($Tag2Alls))
 		{
 			foreach ($Tag2Alls as $t2a)
@@ -378,13 +378,13 @@ class Tag2All
 	 * @param int $VideoID
 	 * @param bool $DeleteOldTag2Alls determines whether to delete or merge existing Tag2Alls
 	 */
-	public static function HandleTags($newTags, $Tag2AllsThisItem, &$TagsInDB, $CurrentUser, $ModelID = null, $SetID = null, $ImageID = null, $VideoID = null, $DeleteOldTag2Alls = true)
+	public static function HandleTags($newTags, $Tag2AllsThisItem, &$TagsInDB, $CurrentUser, $ModelID = NULL, $SetID = NULL, $ImageID = NULL, $VideoID = NULL, $DeleteOldTag2Alls = TRUE)
 	{
 		global $db;
 	
 		foreach(array_unique($newTags) as $string)
 		{
-			$tInDB = Tag::Filter($TagsInDB, null, $string);
+			$tInDB = Tag::Filter($TagsInDB, NULL, $string);
 	
 			if(!$tInDB)
 			{
@@ -403,7 +403,7 @@ class Tag2All
 	
 		foreach(array_unique($newTags) as $string)
 		{
-			$tInDB = Tag::Filter($TagsInDB, null, $string);
+			$tInDB = Tag::Filter($TagsInDB, NULL, $string);
 			
 			if(!$DeleteOldTag2Alls)
 			{

@@ -36,7 +36,7 @@ $ReturnURL = sprintf('video.php?model_id=%1$d&set_id=%2$d', $ModelID, $SetID);
 /* @var $Video Video */
 /* @var $Set Set */
 /* @var $Model Model */
-if($VideoID != null)
+if($VideoID != NULL)
 {
 	$Videos = Video::GetVideos(new VideoSearchParameters($VideoID, FALSE, $SetID, FALSE, $ModelID));
 
@@ -53,7 +53,7 @@ if($VideoID != null)
 }
 else
 {
-	$Video = new Video(null, $lang->g('LabelNew'));
+	$Video = new Video(NULL, $lang->g('LabelNew'));
 	$Set = Set::GetSets(new SetSearchParameters($SetID));
 
 	if($Set)
@@ -92,7 +92,7 @@ if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'VideoView')
 		{
 			if(Video::Update($Video, $CurrentUser))
 			{
-				Tag2All::HandleTags($tags, $TagsThisVideo, $TagsInDB, $CurrentUser, $ModelID, $SetID, null, $Video->getID(), null);
+				Tag2All::HandleTags($tags, $TagsThisVideo, $TagsInDB, $CurrentUser, $ModelID, $SetID, NULL, $Video->getID(), NULL);
 				header('location:'.$ReturnURL);
 				exit;
 			}
@@ -102,7 +102,7 @@ if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'VideoView')
 	{
 		if(Video::Insert($Video, $CurrentUser))
 		{
-			Tag2All::HandleTags($tags, $TagsThisVideo, $TagsInDB, $CurrentUser, $ModelID, $SetID, null, $Video->getID());
+			Tag2All::HandleTags($tags, $TagsThisVideo, $TagsInDB, $CurrentUser, $ModelID, $SetID, NULL, $Video->getID());
 			header('location:'.$ReturnURL);
 			exit;
 		}
@@ -110,7 +110,7 @@ if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'VideoView')
 }
 
 echo HTMLstuff::HtmlHeader(sprintf('%1$s - %2$s %3$s - %4$s',
-	$Model->GetShortName(true),
+	$Model->GetShortName(TRUE),
 	$lang->g('NavigationSet'),
 	$Set->getName(),
 	$lang->g('NavigationVideos')
@@ -123,7 +123,7 @@ echo HTMLstuff::HtmlHeader(sprintf('%1$s - %2$s %3$s - %4$s',
 	$ModelID,
 	$SetID,
 	$VideoID,
-	htmlentities($Model->GetShortName(true)),
+	htmlentities($Model->GetShortName(TRUE)),
 	htmlentities($Set->getName()),
 	htmlentities($Video->getFileName()),
 	$lang->g('NavigationHome'),

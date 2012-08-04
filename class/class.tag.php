@@ -5,7 +5,7 @@ class Tag
 	private $ID;
 	private $Name;
 	
-	public function __construct($tag_id = null, $tag_name = null)
+	public function __construct($tag_id = NULL, $tag_name = NULL)
 	{
 		$this->ID = $tag_id;
 		$this->Name = $tag_name;	
@@ -45,7 +45,7 @@ class Tag
 	public static function GetTagArray($tagString)
 	{
 		global $CSVRegex;
-		$s = preg_split($CSVRegex, $tagString.',', null, PREG_SPLIT_NO_EMPTY);
+		$s = preg_split($CSVRegex, $tagString.',', NULL, PREG_SPLIT_NO_EMPTY);
 		array_unique($s);
 		sort($s);
 		return $s;
@@ -58,7 +58,7 @@ class Tag
 	* @param string $LimitClause
 	* @return array(Tag) | NULL
 	*/
-	public static function GetTags($SearchParameters = null, $OrderClause = 'tag_name ASC', $LimitClause = null)
+	public static function GetTags($SearchParameters = NULL, $OrderClause = 'tag_name ASC', $LimitClause = NULL)
 	{
 		global $dbi;
 		$SearchParameters = $SearchParameters ? $SearchParameters : new TagSearchParameters();
@@ -77,14 +77,14 @@ class Tag
 			%3\$s",
 			$SearchParameters->getWhere(),
 			$OrderClause,
-			$LimitClause ? ' LIMIT '.$LimitClause : null
+			$LimitClause ? ' LIMIT '.$LimitClause : NULL
 		);
 		
 		if(!($stmt = $dbi->prepare($q)))
 		{
 			$e = new SQLerror($dbi->errno, $dbi->error);
 			Error::AddError($e);
-			return null;
+			return NULL;
 		}
 		
 		DBi::BindParamsToSelect($SearchParameters, $stmt);
@@ -107,7 +107,7 @@ class Tag
 		{
 			$e = new SQLerror($dbi->errno, $dbi->error);
 			Error::AddError($e);
-			return null;
+			return NULL;
 		}
 	}
 	
@@ -117,7 +117,7 @@ class Tag
 	 * @param int $TagID
 	 * @param string $TagName
 	 */
-	public static function Filter($Tags, $TagID = null, $TagName = null)
+	public static function Filter($Tags, $TagID = NULL, $TagName = NULL)
 	{
 		$OutArray = array();
 		
@@ -145,7 +145,7 @@ class Tag
 		global $CSVRegex;
 		$OutArray = array();
 
-		$a = preg_split($CSVRegex, $input.',', null, PREG_SPLIT_NO_EMPTY);
+		$a = preg_split($CSVRegex, $input.',', NULL, PREG_SPLIT_NO_EMPTY);
 		
 		if(!is_null($a))
 		{
@@ -185,13 +185,13 @@ class Tag
 	{
 		global $dbi;
 	
-		$outBool = true;
-		$tag_name = null;
+		$outBool = TRUE;
+		$tag_name = NULL;
 		$mut_id = $CurrentUser->getID();
 		$mut_date = time();
 	
 		if(!is_array($Tags))
-		{ return false; }
+		{ return FALSE; }
 	
 		$q = sprintf("
 			INSERT INTO	`Tag` (
@@ -207,7 +207,7 @@ class Tag
 		{
 			$e = new SQLerror($dbi->errno, $dbi->error);
 			Error::AddError($e);
-			return false;
+			return FALSE;
 		}
 	
 		$stmt->bind_param('sii',
@@ -257,13 +257,13 @@ class Tag
 	{
 		global $dbi;
 	
-		$outBool = true;
-		$tag_name = $id = null;
+		$outBool = TRUE;
+		$tag_name = $id = NULL;
 		$mut_id = $CurrentUser->getID();
 		$mut_date = time();
 	
 		if(!is_array($Tags))
-		{ return false; }
+		{ return FALSE; }
 	
 		$q = sprintf("
 			UPDATE `Tag` SET
@@ -278,7 +278,7 @@ class Tag
 		{
 			$e = new SQLerror($dbi->errno, $dbi->error);
 			Error::AddError($e);
-			return false;
+			return FALSE;
 		}
 	
 		$stmt->bind_param('siii',
@@ -326,13 +326,13 @@ class Tag
 	{
 		global $dbi;
 	
-		$outBool = true;
-		$id = null;
+		$outBool = TRUE;
+		$id = NULL;
 		$mut_id = $CurrentUser->getID();
 		$mut_deleted = time();
 	
 		if(!is_array($Tags))
-		{ return false; }
+		{ return FALSE; }
 	
 		$q = sprintf("
 			UPDATE `Tag` SET
@@ -346,7 +346,7 @@ class Tag
 		{
 			$e = new SQLerror($dbi->errno, $dbi->error);
 			Error::AddError($e);
-			return false;
+			return FALSE;
 		}
 	
 		$stmt->bind_param('iii',

@@ -17,7 +17,7 @@ class Model
 	 * @param string $model_remarks
 	 * @param int $model_setcount
 	 */
-	public function __construct($model_id = null, $model_firstname = null, $model_lastname = null, $model_birthdate = -1, $model_remarks = null, $model_setcount = 0)
+	public function __construct($model_id = NULL, $model_firstname = NULL, $model_lastname = NULL, $model_birthdate = -1, $model_remarks = NULL, $model_setcount = 0)
 	{
 		$this->ID = $model_id;
 		$this->FirstName = $model_firstname;
@@ -31,12 +31,12 @@ class Model
 	 * Returns a concatenation of the Model's firstname and the first character of the Model's lastname.
 	 * @return string
 	 */
-	public function GetShortName($WithSpace = false)
+	public function GetShortName($WithSpace = FALSE)
 	{
 		return sprintf('%1$s%3$s%2$s',
 			$this->getFirstName(),
 			substr($this->getLastName(), 0, 1),
-			$WithSpace ? ' ' : null);
+			$WithSpace ? ' ' : NULL);
 	}
 
 	/**
@@ -47,7 +47,7 @@ class Model
 	{
 		return sprintf('%1$s%2$s',
 			$this->getFirstName(),
-			$this->getLastName() ? ' '.$this->getLastName() : null);
+			$this->getLastName() ? ' '.$this->getLastName() : NULL);
 	}
 	
 	/**
@@ -115,7 +115,7 @@ class Model
 	public function setRemarks($Remarks)
 	{
 		$this->Remarks =
-			(empty($Remarks) ? null : preg_replace("/(?<=^|\n)[\t\v ]+/i", '', $Remarks));
+			(empty($Remarks) ? NULL : preg_replace("/(?<=^|\n)[\t\v ]+/i", '', $Remarks));
 	}
 	
 	/**
@@ -138,7 +138,7 @@ class Model
 	public function GetFileFromDisk($PortraitOnly = FALSE, $LandscapeOnly = FALSE, $SetID = FALSE)
 	{
 		$folderPath = sprintf('%1$s/%2$s', CANDYIMAGEPATH, $this->GetFullName()); 
-		if(!file_exists($folderPath)){ return null; }
+		if(!file_exists($folderPath)){ return NULL; }
 		
 		$orderClause = sprintf('RAND()');
 		$limitClause = sprintf('1');
@@ -178,7 +178,7 @@ class Model
 		}
 		else
 		{
-			return null;
+			return NULL;
 		}
 	}
 	
@@ -189,7 +189,7 @@ class Model
 	 * @param string $LimitClause
 	 * @return array(Model)
 	 */
-	public static function GetModels($SearchParameters = null, $OrderClause = 'model_firstname ASC, model_lastname ASC', $LimitClause = null)
+	public static function GetModels($SearchParameters = NULL, $OrderClause = 'model_firstname ASC, model_lastname ASC', $LimitClause = NULL)
 	{
 		global $dbi;
 		$SearchParameters = $SearchParameters ? $SearchParameters : new ModelSearchParameters();
@@ -208,14 +208,14 @@ class Model
 				%3\$s",
 			$SearchParameters->getWhere(),
 			$OrderClause,
-			$LimitClause ? ' LIMIT '.$LimitClause : null
+			$LimitClause ? ' LIMIT '.$LimitClause : NULL
 		);
 		
 		if(!($stmt = $dbi->prepare($q)))
 		{
 			$e = new SQLerror($dbi->errno, $dbi->error);
 			Error::AddError($e);
-			return null;
+			return NULL;
 		}
 		
 		DBi::BindParamsToSelect($SearchParameters, $stmt);				
@@ -238,7 +238,7 @@ class Model
 		{
 			$e = new SQLerror($dbi->errno, $dbi->error);
 			Error::AddError($e);
-			return null;
+			return NULL;
 		}
 	}
 	
@@ -263,14 +263,14 @@ class Model
 	{
 		global $dbi;
 	
-		$outBool = true;
-		$model_firstname = $model_lastname =  $model_remarks = null;
+		$outBool = TRUE;
+		$model_firstname = $model_lastname =  $model_remarks = NULL;
 		$model_birthdate = -1;
 		$mut_id = $CurrentUser->getID();
 		$mut_date = time();
 	
 		if(!is_array($Models))
-		{ return false; }
+		{ return FALSE; }
 	
 		$q = sprintf("
 			INSERT INTO	`Model` (
@@ -289,7 +289,7 @@ class Model
 		{
 			$e = new SQLerror($dbi->errno, $dbi->error);
 			Error::AddError($e);
-			return false;
+			return FALSE;
 		}
 	
 		$stmt->bind_param('ssisii',
@@ -345,14 +345,14 @@ class Model
 	{
 		global $dbi;
 	
-		$outBool = true;
-		$id = $model_firstname = $model_lastname =  $model_remarks = null;
+		$outBool = TRUE;
+		$id = $model_firstname = $model_lastname =  $model_remarks = NULL;
 		$model_birthdate = -1;
 		$mut_id = $CurrentUser->getID();
 		$mut_date = time();
 	
 		if(!is_array($Models))
-		{ return false; }
+		{ return FALSE; }
 	
 		$q = sprintf("
 			UPDATE `Model` SET
@@ -370,7 +370,7 @@ class Model
 		{
 			$e = new SQLerror($dbi->errno, $dbi->error);
 			Error::AddError($e);
-			return false;
+			return FALSE;
 		}
 	
 		$stmt->bind_param('ssisiii',
@@ -424,13 +424,13 @@ class Model
 	{
 		global $dbi;
 	
-		$outBool = true;
-		$id = null;
+		$outBool = TRUE;
+		$id = NULL;
 		$mut_id = $CurrentUser->getID();
 		$mut_deleted = time();
 	
 		if(!is_array($Models))
-		{ return false; }
+		{ return FALSE; }
 	
 		$q = sprintf("
 			UPDATE `Model` SET
@@ -444,7 +444,7 @@ class Model
 		{
 			$e = new SQLerror($dbi->errno, $dbi->error);
 			Error::AddError($e);
-			return false;
+			return FALSE;
 		}
 	
 		$stmt->bind_param('iii',
@@ -477,7 +477,7 @@ class Model
 	 * @param string $LastName
 	 * @return array(Model)
 	 */
-	public static function Filter($ModelArray, $ModelID = null, $FirstName = null, $LastName = null)
+	public static function Filter($ModelArray, $ModelID = NULL, $FirstName = NULL, $LastName = NULL)
 	{
 		$OutArray = array();
 		$ModelID = empty($ModelID) ? FALSE : $ModelID;

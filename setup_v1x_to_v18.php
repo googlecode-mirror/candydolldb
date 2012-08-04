@@ -17,8 +17,8 @@ along with CandyDollDB.  If not, see <http://www.gnu.org/licenses/>.
 
 require('cd.php');
 
-$Exists = false;
-$NoError = true;
+$Exists = FALSE;
+$NoError = TRUE;
 
 if(array_key_exists('hidAction', $_POST) && isset($_POST['hidAction']) && $_POST['hidAction'] == 'UpdateCandyDollDB')
 {
@@ -120,8 +120,8 @@ FjbMNnvUJheiwewUJfheJheuehFJDUHdywgwwgHGfgywug;
 		/* @var $ci CacheImage */
 		foreach ($CacheImagesInDB as $ci)
 		{
-			if(file_exists($ci->getFilenameOnDisk(true)))
-			{ rename($ci->getFilenameOnDisk(true), $ci->getFilenameOnDisk(false)); }
+			if(file_exists($ci->getFilenameOnDisk(TRUE)))
+			{ rename($ci->getFilenameOnDisk(TRUE), $ci->getFilenameOnDisk(FALSE)); }
 		}
 		
 		/* Give the admin-user full rights */
@@ -135,7 +135,7 @@ FjbMNnvUJheiwewUJfheJheuehFJDUHdywgwwgHGfgywug;
 			User::Update($admUser, $admUser);
 		}
 		
-		if(is_dir('cache') || mkdir('cache', 0700, true))
+		if(is_dir('cache') || mkdir('cache', 0700, TRUE))
 		{
 			die($lang->g('MessageDataseUpdated'));
 		}

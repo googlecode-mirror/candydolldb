@@ -1,11 +1,11 @@
 <?php
 
 include('cd.php');
-$UserName = null;
-$EmailAddress = null;
-$Hash = null;
-$HashError = false;
-$MailSent = null;
+$UserName = NULL;
+$EmailAddress = NULL;
+$Hash = NULL;
+$HashError = FALSE;
+$MailSent = NULL;
 
 
 if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] && $_POST['hidAction'] == 'PasswordPassword')
@@ -40,7 +40,7 @@ if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] && $_POST['hidAc
 
 		if(!$MailSent)
 		{
-			$e = new Error(null, $ml->ErrorInfo);
+			$e = new Error(NULL, $ml->ErrorInfo);
 			Error::AddError($e);
 		}
 	}
@@ -119,7 +119,7 @@ else if (!array_key_exists('hidAction', $_POST) && array_key_exists('Hash', $_GE
 	{
 		$e = new LoginError(LOGIN_ERR_RESETCODENOTFOUND);
 		Error::AddError($e);
-		$HashError = true;
+		$HashError = TRUE;
 	}
 }
 
@@ -193,7 +193,7 @@ echo HTMLstuff::HtmlHeader($lang->g('NavigationResetYourPassword'))?>
 
 <?php } ?>
 
-<?php if(!is_null($MailSent) && $MailSent === true){ ?>
+<?php if(!is_null($MailSent) && $MailSent === TRUE){ ?>
 
 <?php echo $lang->g('MessagePasswordResetSuccess')?>
 
@@ -204,7 +204,7 @@ echo HTMLstuff::HtmlHeader($lang->g('NavigationResetYourPassword'))?>
 
 <?php } ?>
 
-<?php if(!is_null($MailSent) && $MailSent === false){ ?>
+<?php if(!is_null($MailSent) && $MailSent === FALSE){ ?>
 
 <?php echo $lang->g('MessagePasswordResetSendError')?>
 

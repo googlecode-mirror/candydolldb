@@ -18,7 +18,7 @@ class Info
 	{ $this->InfoMessage = $InInfoMessage; }
 	
 
-	public function Info($InfoMessage = null)
+	public function Info($InfoMessage = NULL)
 	{
 		$this->InfoMessage = $InfoMessage;
 	}
@@ -54,13 +54,13 @@ class Info
 		$infoCount = 0;
 		$inInfos = unserialize($_SESSION['Infos']);
 	
-		if($inInfos !== null && is_array($inInfos) && count($inInfos) > 0)
+		if(is_array($inInfos) && count($inInfos) > 0)
 		{
 			$inInfos = array_reverse($inInfos);
 			$infoList .= "\n<div class=\"InfoList\" title=\"Click to close this message.\"><div><ul>";
 			
 			/* @var $Info Info */
-		 	while(($Info = array_pop($inInfos)) !== null)
+		 	while(($Info = array_pop($inInfos)) !== NULL)
 			{
 				$infoList .= sprintf("\n<li>%1\$s<br /><br /></li>",
 					$Info->getInfoMessage()
@@ -75,7 +75,7 @@ class Info
 		if($infoCount > 0)
 		{ return "<div id=\"InfoContainer\"></div>".$infoList; }
 		else
-		{ return null; }
+		{ return NULL; }
 	}
 }
 

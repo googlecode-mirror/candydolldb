@@ -13,7 +13,7 @@ class CacheImage
 	private $Kind = CACHEIMAGE_KIND_UNKNOWN;
 	
 	public function __construct(
-		$cache_id = null, $index_id = null, $model_id = null, $set_id = null, $image_id = null, $video_id = null, $cache_imagewidth = 0, $cache_imageheight = 0)
+		$cache_id = NULL, $index_id = NULL, $model_id = NULL, $set_id = NULL, $image_id = NULL, $video_id = NULL, $cache_imagewidth = 0, $cache_imageheight = 0)
 	{
 		$this->ID = $cache_id ? $cache_id : Utils::UUID();
 
@@ -148,7 +148,7 @@ class CacheImage
 	 * @param bool $omitPrefix
 	 * @return string
 	 */
-	public function getFilenameOnDisk($omitPrefix = false)
+	public function getFilenameOnDisk($omitPrefix = FALSE)
 	{
 		global $argv, $argc;
 		$pathPrefix = (isset($argv) && $argc > 0) ? dirname($_SERVER['PHP_SELF']).'/' : '';
@@ -166,7 +166,7 @@ class CacheImage
 	 */
 	private function getFilenamePrefix()
 	{
-		$s = null;
+		$s = NULL;
 		switch ($this->Kind)
 		{
 			case CACHEIMAGE_KIND_MODEL: 	$s = 'M-'; break;
@@ -187,7 +187,7 @@ class CacheImage
 	 * @param string $OrderClause
 	 * @param string $LimitClause
 	 */
-	public static function GetCacheImages($SearchParameters = null, $OrderClause = null, $LimitClause = null)
+	public static function GetCacheImages($SearchParameters = NULL, $OrderClause = NULL, $LimitClause = NULL)
 	{
 		global $dbi;
 		$SearchParameters = $SearchParameters ? $SearchParameters : new CacheImageSearchParameters();
@@ -206,14 +206,14 @@ class CacheImage
 			%3\$s",
 			$SearchParameters->getWhere(),
 			$OrderClause,
-			$LimitClause ? ' LIMIT '.$LimitClause : null
+			$LimitClause ? ' LIMIT '.$LimitClause : NULL
 		);
 		
 		if(!($stmt = $dbi->prepare($q)))
 		{
 			$e = new SQLerror($dbi->errno, $dbi->error);
 			Error::AddError($e);
-			return null;
+			return NULL;
 		}
 		
 		DBi::BindParamsToSelect($SearchParameters, $stmt);
@@ -238,7 +238,7 @@ class CacheImage
 		{
 			$e = new SQLerror($dbi->errno, $dbi->error);
 			Error::AddError($e);
-			return null;
+			return NULL;
 		}
 	}
 	
@@ -262,11 +262,11 @@ class CacheImage
 	public static function InsertMulti($CacheImages, $CurrentUser)
 	{
 		global $dbi;
-		$outBool = true;
-		$cache_id = $model_id = $index_id = $set_id = $image_id = $video_id = $cache_imagewidth = $cache_imageheight = null;
+		$outBool = TRUE;
+		$cache_id = $model_id = $index_id = $set_id = $image_id = $video_id = $cache_imagewidth = $cache_imageheight = NULL;
 		
 		if(!is_array($CacheImages))
-		{ return false; }
+		{ return FALSE; }
 		
 		$q = sprintf("
 			INSERT INTO	`CacheImage` (
@@ -287,7 +287,7 @@ class CacheImage
 		{
 			$e = new SQLerror($dbi->errno, $dbi->error);
 			Error::AddError($e);
-			return false;
+			return FALSE;
 		}
 		
 		$stmt->bind_param('siiiiiii',
@@ -344,11 +344,11 @@ class CacheImage
 	public static function DeleteMulti($CacheImages, $CurrentUser)
 	{
 		global $dbi;
-		$outBool = true;
-		$id = null;
+		$outBool = TRUE;
+		$id = NULL;
 		
 		if(!is_array($CacheImages))
-		{ return false; }
+		{ return FALSE; }
 		
 		$q = sprintf("
 			DELETE FROM
@@ -361,7 +361,7 @@ class CacheImage
 		{
 			$e = new SQLerror($dbi->errno, $dbi->error);
 			Error::AddError($e);
-			return false;
+			return FALSE;
 		}
 		
 		$stmt->bind_param('s', $id);
@@ -382,7 +382,7 @@ class CacheImage
 		return $outBool;
 	}
 	
-	public static function Filter($CacheImageArray, $CacheImageKind = null, $ModelID = null, $ModelIndexID = null, $SetID = null, $ImageID = null, $VideoID = null, $CacheImageID = null)
+	public static function Filter($CacheImageArray, $CacheImageKind = NULL, $ModelID = NULL, $ModelIndexID = NULL, $SetID = NULL, $ImageID = NULL, $VideoID = NULL, $CacheImageID = NULL)
 	{
 		$OutArray = array();
 			

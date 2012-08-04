@@ -5,10 +5,10 @@ ini_set('max_execution_time', '3600');
 $CurrentUser = Authentication::Authenticate();
 HTMLstuff::RefererRegister($_SERVER['REQUEST_URI']);
 
-$Models = null;
-$ModelsOptions = null;
-$SetsOptions = null;
-$ImagesOptions = null;
+$Models = NULL;
+$ModelsOptions = NULL;
+$SetsOptions = NULL;
+$ImagesOptions = NULL;
 
 $ButtonText = $lang->g('ButtonNext');
 $Models = Model::GetModels();
@@ -16,8 +16,8 @@ $UseSubfoldersInDownload = array_key_exists('chkSubfolders', $_POST) && isset($_
 
 if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'DownloadMulti')
 {
-	$ModelsOptions = null;
-	$SetsOptions = null;
+	$ModelsOptions = NULL;
+	$SetsOptions = NULL;
 	
 	$SelectedModelIDs = array_key_exists('selModels', $_POST) ? Utils::SafeInts($_POST['selModels']) : array();
 
@@ -27,7 +27,7 @@ if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'DownloadMult
 		$ModelsOptions .= sprintf("<option value=\"%1\$d\"%3\$s>%2\$s</option>",
 			$Model->getID(),
 			htmlentities($Model->GetFullName()),
-			in_array($Model->getID(), $SelectedModelIDs) ? ' selected="selected"' : null
+			in_array($Model->getID(), $SelectedModelIDs) ? ' selected="selected"' : NULL
 		);
 	}
 	
@@ -44,7 +44,7 @@ if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'DownloadMult
 				htmlentities($Set->getModel()->GetFullName()),
 				htmlentities($Set->getPrefix()),
 				htmlentities($Set->getName()),
-				in_array($Set->getID(), $SelectedSetIDs) ? ' selected="selected"' : null
+				in_array($Set->getID(), $SelectedSetIDs) ? ' selected="selected"' : NULL
 			);
 		}
 		
@@ -68,7 +68,7 @@ if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'DownloadMult
 					htmlentities($Image->getSet()->getName()),
 					htmlentities($Image->getFileName()),
 					htmlentities($Image->getFileExtension()),
-					in_array($Image->getID(), $SelectedImageIDs) ? ' selected="selected"' : null
+					in_array($Image->getID(), $SelectedImageIDs) ? ' selected="selected"' : NULL
 				);
 			}
 			

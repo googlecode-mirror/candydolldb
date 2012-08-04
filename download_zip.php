@@ -29,7 +29,7 @@ else
 /* @var $MainImage Image */
 /* @var $Set Set */
 /* @var $Model Model */
-if($resource === true)
+if($resource === TRUE)
 {
 	ini_set('max_execution_time', '3600');
 	$zip->setArchiveComment('Downloaded from CandyDoll DB'."\nhttps://code.google.com/p/candydolldb/");
@@ -108,7 +108,7 @@ if($resource === true)
 			{
 				$zip->addEmptyDir(sprintf('%1$s/%2$s%3$s', $Model->GetFullName(), $Set->getPrefix(), $Set->getName()));
 				
-				foreach(Image::FilterImages($Images, null, $Set->getID()) as $Image)
+				foreach(Image::FilterImages($Images, NULL, $Set->getID()) as $Image)
 				{
 					if(!file_exists($Image->getFilenameOnDisk()))
 					{ continue; }
@@ -167,7 +167,7 @@ if(file_exists($tmpFile))
 	@ob_clean();
 	
 	$f = fopen($tmpFile, "r");
-	if($f !== false)
+	if($f !== FALSE)
 	{
 		while($chunk = fread($f, 16777216))
 		{ echo $chunk; }

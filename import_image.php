@@ -9,7 +9,7 @@ $ModelID = Utils::SafeIntFromQS('model_id');
 $SetID = Utils::SafeIntFromQS('set_id');
 
 $CacheImages = array();
-$CacheImage = null;
+$CacheImage = NULL;
 
 
 $Models = Model::GetModels(new ModelSearchParameters(
@@ -36,10 +36,10 @@ for($i = 0; $i < count($Models); $i++)
 {
 	$Model = $Models[$i];
 	
-	$CacheImage = CacheImage::Filter($CacheImages, null, $Model->getID());
+	$CacheImage = CacheImage::Filter($CacheImages, NULL, $Model->getID());
 	CacheImage::DeleteMulti($CacheImage, $CurrentUser);
 	
-	$CacheImage = CacheImage::Filter($CacheImages, null, null, $Model->getID());
+	$CacheImage = CacheImage::Filter($CacheImages, NULL, NULL, $Model->getID());
 	CacheImage::DeleteMulti($CacheImage, $CurrentUser);
 
 	$ImageFolder = sprintf('%1$s/%2$s',
@@ -75,14 +75,14 @@ for($i = 0; $i < count($Models); $i++)
 			
 			if($imagenamematch)
 			{
-				$Set = Set::Filter($Sets, $Model->getID(), null, ($matches['ModelName'].$matches['SetNumber']), $matches['Prefix']);
+				$Set = Set::Filter($Sets, $Model->getID(), NULL, ($matches['ModelName'].$matches['SetNumber']), $matches['Prefix']);
 
 				if($Set)
 				{ $Set = $Set[0]; }
 				else
 				{ continue; }
 				
-				$CacheImage = CacheImage::Filter($CacheImages, null, null, null, $Set->getID());
+				$CacheImage = CacheImage::Filter($CacheImages, NULL, NULL, NULL, $Set->getID());
 				CacheImage::DeleteMulti($CacheImage, $CurrentUser);
 
 				/* @var $ImageInDB Image */
@@ -97,7 +97,7 @@ for($i = 0; $i < count($Models); $i++)
 				{
 					$ImageInDB = $ImagesInDB[0];
 					
-					$CacheImage = CacheImage::Filter($CacheImages, null, null, null, null, $ImageInDB->getID());
+					$CacheImage = CacheImage::Filter($CacheImages, NULL, NULL, NULL, NULL, $ImageInDB->getID());
 					CacheImage::DeleteMulti($CacheImage, $CurrentUser);
 				}
 				else

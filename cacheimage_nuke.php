@@ -7,7 +7,7 @@ $CurrentUser = Authentication::Authenticate();
 if($CurrentUser->hasPermission(RIGHT_CACHE_CLEANUP))
 {
 	$FileToFind = '';
-	$CacheFolder = null;
+	$CacheFolder = NULL;
 	$CacheImages = CacheImage::GetCacheImages();
 	
 	if(isset($argv) && $argc > 0)

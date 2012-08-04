@@ -8,7 +8,7 @@ class HTMLstuff
 	 * @param User $CurrentUser
 	 * @return string
 	 */
-	public static function HtmlHeader($Title = null, $CurrentUser = null)
+	public static function HtmlHeader($Title = NULL, $CurrentUser = NULL)
 	{
 		global $lang;
 		
@@ -55,10 +55,10 @@ class HTMLstuff
 		<div id=\"Content\">",
 
 			CANDYDOLLDB_VERSION,
-			$Title ? ' :: '.htmlentities($Title) : null,
+			$Title ? ' :: '.htmlentities($Title) : NULL,
 			Error::GenerateErrorList(),
 			(isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off' ? 'https' : 'http'),
-			($CurrentUser != null ? $CurrentUser->getLanguage() : 'en'),
+			($CurrentUser != NULL ? $CurrentUser->getLanguage() : 'en'),
 			$lang->g('LabelColorBoxCurrent'),
 			$lang->g('LabelColorBoxPrevious'),
 			$lang->g('LabelColorBoxNext'),
@@ -66,7 +66,7 @@ class HTMLstuff
 			Info::GenerateInfoList()
 		);
 
-		if($CurrentUser != null) {
+		if($CurrentUser != NULL) {
 		
 			$Output .= sprintf("
 			<ul id=\"TopNavigation\">
@@ -124,7 +124,7 @@ class HTMLstuff
 	 * Generate a HTML footer, corresponding to this class' HTML-header function.
 	 * @return string
 	 */
-	public static function HtmlFooter($CurrentUser = null)
+	public static function HtmlFooter($CurrentUser = NULL)
 	{
 		global $lang;
 		
@@ -150,7 +150,7 @@ class HTMLstuff
 			</body>
 			</html>",
 		
-		$CurrentUser != null ? sprintf("<div class=\"userstats\">
+		$CurrentUser != NULL ? sprintf("<div class=\"userstats\">
 			%4\$s <a href=\"user_view.php?user_id=%3\$d\"><strong>%1\$s</strong></a>.<br />%5\$s: %2\$s</div>",
 			htmlentities($CurrentUser->getUserName()),
 			$CurrentUser->getPreLastLogin() > 0 ? date('Y-m-d H:i', $CurrentUser->getPreLastLogin()) : $lang->g('FooterNever'),
@@ -171,7 +171,7 @@ class HTMLstuff
 	 * @param string $CustomAttributes
 	 * @return string
 	 */
-	public static function Button($URL = null, $ButtonText = null, $CustomAttributes = null)
+	public static function Button($URL = NULL, $ButtonText = NULL, $CustomAttributes = NULL)
 	{
 		global $lang;
 		
@@ -179,7 +179,7 @@ class HTMLstuff
 			"<a href=\"%1\$s\" class=\"Button\"%3\$s>%2\$s</a>",
 		 	$URL ? $URL : (array_key_exists('HTTP_REFERER', $_SERVER) ? $_SERVER['HTTP_REFERER'] : 'index.php'),
 			$ButtonText ? htmlentities($ButtonText) : $lang->g('NavigationHome'),
-			$CustomAttributes ? $CustomAttributes : null 
+			$CustomAttributes ? $CustomAttributes : NULL 
 		);
 	}
 	/**
@@ -231,7 +231,7 @@ HfuheuhUHfuh3e83uhfuhdfu3;
 	 * @param bool $Disabled 
 	 * @return string
 	 */
-	public static function DateFormField($UniqueId, $Value = null, $DateKind = DATE_KIND_UNKNOWN, $Disabled = false)
+	public static function DateFormField($UniqueId, $Value = NULL, $DateKind = DATE_KIND_UNKNOWN, $Disabled = FALSE)
 	{
 		global $lang;
 		
@@ -257,7 +257,7 @@ GYtguefggefegfgefgegfgfuguf;
 				$UniqueId,
 				$lang->g('MessageSureDeleteDate'),
 				$lang->g('LabelDeleteDate')
-			) : null),
+			) : NULL),
 			
 			$lang->g('LabelDate')
 		);
@@ -296,7 +296,7 @@ GYtguefggefegfgefgegfgfuguf;
 					if(!$v || $v == 'YYYY-MM-DD')
 					{ $Date->setTimeStamp(-1); }
 					
-					if(($timestamp = strtotime($v)) !== false)
+					if(($timestamp = strtotime($v)) !== FALSE)
 					{ $Date->setTimeStamp($timestamp); }
 					
 					$OutArray[] = $Date;
@@ -321,7 +321,7 @@ GYtguefggefegfgefgegfgfuguf;
 		return $InBool ? ' selected="selected"' : '';
 	}
 	
-	public static function RefererRegister($RedirURL = null)
+	public static function RefererRegister($RedirURL = NULL)
 	{
 		$_SESSION['CallerURL'] = $RedirURL;
 	}

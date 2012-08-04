@@ -35,7 +35,7 @@ class Error
 	public function setErrorMessage($InErrorMessage)
 	{ $this->ErrorMessage = $InErrorMessage; }
 	
-	public function Error($ErrorNumber = null, $ErrorMessage = null)
+	public function Error($ErrorNumber = NULL, $ErrorMessage = NULL)
 	{
 		$this->ErrorNumber = $ErrorNumber;
 		$this->ErrorMessage = ($ErrorMessage ? $ErrorMessage : static::TranslateError($ErrorNumber));
@@ -71,13 +71,13 @@ class Error
 		$errorCount = 0;
 		$inErrors = unserialize($_SESSION['Errors']);
 	
-		if($inErrors !== null && is_array($inErrors) && count($inErrors) > 0)
+		if(is_array($inErrors) && count($inErrors) > 0)
 		{
 			$inErrors = array_reverse($inErrors);
 			$errorList .= "\n<div class=\"ErrorList\" title=\"Click to close this message.\"><div><ul>";
 			
 			/* @var $Error Error */
-		 	while(($Error = array_pop($inErrors)) !== null)
+		 	while(($Error = array_pop($inErrors)) !== NULL)
 			{
 				$errorList .= sprintf("\n<li>%1\$s<br /><br /></li>",
 					$Error->getErrorMessage()
@@ -92,7 +92,7 @@ class Error
 		if($errorCount > 0)
 		{ return "<div id=\"ErrorContainer\"></div>".$errorList; }
 		else
-		{ return null; }
+		{ return NULL; }
 	}
 	
 	/**
@@ -103,7 +103,7 @@ class Error
 	public static function TranslateError($InError)
 	{
 		global $lang;
-		$OutMessage = null;
+		$OutMessage = NULL;
 		
 		switch($InError)
 		{
@@ -120,7 +120,7 @@ class Error
 
 class LoginError extends Error
 {
-	public function LoginError($number = null, $message = null)
+	public function LoginError($number = NULL, $message = NULL)
 	{ parent::Error($number, $message); }
 	
 	/**
@@ -131,7 +131,7 @@ class LoginError extends Error
 	public static function TranslateError($InError)
 	{
 		global $lang;
-		$OutMessage = null;
+		$OutMessage = NULL;
 		
 		switch($InError)
 		{
@@ -154,7 +154,7 @@ class LoginError extends Error
 
 class SQLerror extends Error
 {
-	public function SQLerror($number = null, $message = null)
+	public function SQLerror($number = NULL, $message = NULL)
 	{ parent::Error($number, $message); }
 	
 	/**
@@ -164,7 +164,7 @@ class SQLerror extends Error
 	 */
 	public static function TranslateError($InError)
 	{
-		$OutMessage = null;
+		$OutMessage = NULL;
 		global $lang;
 		
 		switch($InError)
@@ -180,7 +180,7 @@ class SQLerror extends Error
 
 class SyntaxError extends Error
 {
-	public function SyntaxError($number = null, $message = null)
+	public function SyntaxError($number = NULL, $message = NULL)
 	{ parent::Error($number, $message); }
 	
 	/**
@@ -190,7 +190,7 @@ class SyntaxError extends Error
 	 */
 	public static function TranslateError($InError)
 	{
-		$OutMessage = null;
+		$OutMessage = NULL;
 		global $lang;
 		
 		switch($InError)
@@ -206,7 +206,7 @@ class SyntaxError extends Error
 
 class UploadError extends Error
 {
-	public function UploadError($number = null, $message = null)
+	public function UploadError($number = NULL, $message = NULL)
 	{ parent::Error($number, $message); }
 	
 	/**
@@ -216,7 +216,7 @@ class UploadError extends Error
 	 */
 	public static function TranslateError($InError)
 	{
-		$OutMessage = null;
+		$OutMessage = NULL;
 		global $lang;
 		
 		switch($InError)
@@ -246,7 +246,7 @@ class UploadError extends Error
 
 class XMLerror extends Error
 {
-	public function XMLerror($number = null, $message = null)
+	public function XMLerror($number = NULL, $message = NULL)
 	{ parent::Error($number, $message); }
 
 	/**
@@ -256,7 +256,7 @@ class XMLerror extends Error
 	 */
 	public static function TranslateError($InError)
 	{
-		$OutMessage = null;
+		$OutMessage = NULL;
 		global $lang;
 
 		switch($InError)
