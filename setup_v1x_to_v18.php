@@ -17,7 +17,7 @@ along with CandyDollDB.  If not, see <http://www.gnu.org/licenses/>.
 
 require('cd.php');
 
-$Exists = FALSE;
+$Exists = false;
 $NoError = TRUE;
 
 if(array_key_exists('hidAction', $_POST) && isset($_POST['hidAction']) && $_POST['hidAction'] == 'UpdateCandyDollDB')
@@ -39,6 +39,18 @@ if(array_key_exists('hidAction', $_POST) && isset($_POST['hidAction']) && $_POST
 
 	if($NoError && !$Exists)
 	{ $NoError = $dbi->ExecuteMulti("ALTER TABLE `User` ADD `user_language` varchar(20) NOT NULL DEFAULT 'en' AFTER `user_imageview`;"); }
+	
+	/* image_filecrc32 column */
+	$Exists = $dbi->ColumnExists('Image', 'image_filecrc32');
+	
+	if($NoError && !$Exists)
+	{ $NoError = $dbi->ExecuteMulti("ALTER TABLE `Image` ADD `image_filecrc32` varchar(8) NULL AFTER `image_filechecksum`;"); }
+	
+	/* video_filecrc32 column */
+	$Exists = $dbi->ColumnExists('Video', 'video_filecrc32');
+	
+	if($NoError && !$Exists)
+	{ $NoError = $dbi->ExecuteMulti("ALTER TABLE `Video` ADD `video_filecrc32` varchar(8) NULL AFTER `video_filechecksum`;"); }
 
 	$UpdateDBSQL = <<<FjbMNnvUJheiwewUJfheJheuehFJDUHdywgwwgHGfgywug
 SET AUTOCOMMIT=0;
@@ -104,6 +116,12 @@ ALTER TABLE `CacheImage`
   ADD CONSTRAINT `CacheImage_ibfk_4` FOREIGN KEY (`image_id`) REFERENCES `Image` (`image_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `CacheImage_ibfk_5` FOREIGN KEY (`video_id`) REFERENCES `Video` (`video_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
+DROP VIEW IF EXISTS `vw_Image`;
+CREATE ALGORITHM=UNDEFINED VIEW `vw_Image` AS select `Image`.`image_id` AS `image_id`, `Image`.`image_filename` AS `image_filename`, `Image`.`image_fileextension` AS `image_fileextension`, `Image`.`image_filesize` AS `image_filesize`, `Image`.`image_filechecksum` AS `image_filechecksum`, `Image`.`image_filecrc32` AS `image_filecrc32`, `Image`.`image_width` AS `image_width`, `Image`.`image_height` AS `image_height`, `Image`.`mut_deleted` AS `mut_deleted`, `Set`.`set_id` AS `set_id`, `Set`.`set_prefix` AS `set_prefix`, `Set`.`set_name` AS `set_name`, `Set`.`set_containswhat` AS `set_containswhat`, `Model`.`model_id` AS `model_id`, `Model`.`model_firstname` AS `model_firstname`, `Model`.`model_lastname` AS `model_lastname` from ((`Image` left join `Set` on((`Image`.`set_id` = `Set`.`set_id`))) left join `Model` on((`Model`.`model_id` = `Set`.`model_id`))) where ((`Set`.`mut_deleted` = -(1)) and (`Model`.`mut_deleted` = -(1)));
+
+DROP VIEW IF EXISTS `vw_Video`;
+CREATE ALGORITHM=UNDEFINED VIEW `vw_Video` AS select `Video`.`video_id` AS `video_id`,`Video`.`video_filename` AS `video_filename`,`Video`.`video_fileextension` AS `video_fileextension`,`Video`.`video_filesize` AS `video_filesize`,`Video`.`video_filechecksum` AS `video_filechecksum`, `Video`.`video_filecrc32` AS `video_filecrc32`,`Video`.`mut_deleted` AS `mut_deleted`,`Set`.`set_id` AS `set_id`,`Set`.`set_prefix` AS `set_prefix`,`Set`.`set_name` AS `set_name`,`Set`.`set_containswhat` AS `set_containswhat`,`Model`.`model_id` AS `model_id`,`Model`.`model_firstname` AS `model_firstname`,`Model`.`model_lastname` AS `model_lastname` from ((`Video` left join `Set` on((`Video`.`set_id` = `Set`.`set_id`))) left join `Model` on((`Model`.`model_id` = `Set`.`model_id`))) where ((`Set`.`mut_deleted` = -(1)) and (`Model`.`mut_deleted` = -(1)));
+  
 DROP VIEW IF EXISTS `vw_Tag2All`;
 CREATE ALGORITHM=UNDEFINED VIEW `vw_Tag2All` AS	select `Tag2All`.`tag_id` AS `tag_id`, `Tag`.`tag_name` AS `tag_name`, `Tag2All`.`model_id` AS `model_id`, `Tag2All`.`set_id` AS `set_id`, `Tag2All`.`image_id` AS `image_id`, `Tag2All`.`video_id` AS `video_id` from `Tag2All` join `Tag` on `Tag`.`tag_id` = `Tag2All`.`tag_id`;
   
@@ -135,7 +153,7 @@ FjbMNnvUJheiwewUJfheJheuehFJDUHdywgwwgHGfgywug;
 			User::Update($admUser, $admUser);
 		}
 		
-		if(is_dir('cache') || mkdir('cache', 0700, TRUE))
+		if(is_dir('cache') || mkdir('cache', 0700, true))
 		{
 			die($lang->g('MessageDataseUpdated'));
 		}
