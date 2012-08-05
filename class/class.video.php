@@ -151,11 +151,12 @@ class Video
 	 */
 	public function getFilenameOnDisk()
 	{
-		return sprintf('%1$s/%2$s/%3$s.%4$s',
+		return sprintf('%1$s%5$s%2$s%5$s%3$s.%4$s',
 			CANDYVIDEOPATH,
 			$this->getSet()->getModel()->GetFullName(),
 			$this->getFileName(),
-			$this->getFileExtension()
+			$this->getFileExtension(),
+			DIRECTORY_SEPARATOR
 		);
 	}
 	

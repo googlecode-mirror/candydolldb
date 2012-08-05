@@ -55,6 +55,18 @@ echo HTMLstuff::HtmlHeader($lang->g('NavigationAdminPanel'), $CurrentUser);
 
 <script type="text/javascript">
 //<![CDATA[
+           
+	function RedirToSFV(){
+		var modelIdSfv = parseInt( $('#selModelSfv').val() );
+		var includePath = $('input[name=radSfvPath]:checked').val();
+		var url = 'download_sfv.php';
+
+		url += '?model_id=' + (isNaN(modelIdSfv) || modelIdSfv <= 0 ? '' : modelIdSfv); 
+		url += '&includepath=' + includePath;
+
+		window.location = url;
+		return true;
+	}
 	
 	function RedirToXML(){
 		var modelIdXml = parseInt( $('#selModelXml').val() );
@@ -126,6 +138,27 @@ echo HTMLstuff::HtmlHeader($lang->g('NavigationAdminPanel'), $CurrentUser);
 <label for="chkXMLIncludePic" style="float:none;width:auto;"><input type="checkbox" id="chkXMLIncludePic" name="chkXMLIncludePic"<?php echo $CurrentUser->hasPermission(RIGHT_EXPORT_XML) ? NULL : HTMLstuff::DisabledStr(TRUE)?> />&nbsp;<?php echo $lang->g('LabelIncludeImages')?></label>
 <label for="chkXMLIncludeVid" style="float:none;width:auto;"><input type="checkbox" id="chkXMLIncludeVid" name="chkXMLIncludeVid"<?php echo $CurrentUser->hasPermission(RIGHT_EXPORT_XML) ? NULL : HTMLstuff::DisabledStr(TRUE)?> />&nbsp;<?php echo $lang->g('LabelIncludeVideos')?></label>
 <label for="chkXMLIncludeTag" style="float:none;width:auto;"><input type="checkbox" id="chkXMLIncludeTag" name="chkXMLIncludeTag"<?php echo $CurrentUser->hasPermission(RIGHT_EXPORT_XML) ? NULL : HTMLstuff::DisabledStr(TRUE)?> />&nbsp;<?php echo $lang->g('LabelIncludeTags')?></label>
+</div>
+
+<hr />
+
+<div class="FormRow WideForm">
+<label><?php echo $lang->g('LabelDownloadSFV')?></label>
+<input type="button" id="btnDownloadSFV" name="btnDownloadSFV" value="<?php echo $lang->g('ButtonDownload')?>"
+	<?php echo $CurrentUser->hasPermission(RIGHT_EXPORT_XML) ? "onclick=\"RedirToSFV();\"" : HTMLstuff::DisabledStr(TRUE) ?>
+/>
+<br />
+<label for="selModelSfv" style="float:none;width:auto;"><?php echo $lang->g('LabelModel')?>: </label>
+<select id="selModelSfv" name="selModelSfv"<?php echo HTMLstuff::DisabledStr(!$CurrentUser->hasPermission(RIGHT_EXPORT_XML))?>>
+	<option value=""><?php echo $lang->g('LabelAllModels')?></option>
+	<?php echo $ModelsOptions?>
+</select>
+<input type="radio" id="radSfvPathNone" name="radSfvPath" value="<?php echo SFV_PATH_OPTION_NONE?>"<?php echo HTMLstuff::DisabledStr(!$CurrentUser->hasPermission(RIGHT_EXPORT_XML))?> checked="checked" /> 
+<label for="radSfvPathNone" class="Radio"><?php echo $lang->g('LabelSFVPathNone')?></label>
+<input type="radio" id="radSfvPathRelative" name="radSfvPath" value="<?php echo SFV_PATH_OPTION_RELATIVE?>"<?php echo HTMLstuff::DisabledStr(!$CurrentUser->hasPermission(RIGHT_EXPORT_XML))?> /> 
+<label for="radSfvPathRelative" class="Radio"><?php echo $lang->g('LabelSFVPathRelative')?></label>
+<input type="radio" id="radSfvPathFull" name="radSfvPath" value="<?php echo SFV_PATH_OPTION_FULL?>"<?php echo HTMLstuff::DisabledStr(!$CurrentUser->hasPermission(RIGHT_EXPORT_XML))?> /> 
+<label for="radSfvPathFull" class="Radio"><?php echo $lang->g('LabelSFVPathFull')?></label>
 </div>
 
 <hr />

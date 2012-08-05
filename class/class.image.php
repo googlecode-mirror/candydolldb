@@ -153,13 +153,14 @@ class Image
 	 */
 	public function getFilenameOnDisk()
 	{
-		return sprintf('%1$s/%2$s/%3$s%4$s/%5$s.%6$s',
+		return sprintf('%1$s%7$s%2$s%7$s%3$s%4$s%7$s%5$s.%6$s',
 			CANDYIMAGEPATH,
 			$this->getSet()->getModel()->GetFullName(),
 			$this->getSet()->getPrefix(),
 			$this->getSet()->getName(),
 			$this->getFileName(),
-			$this->getFileExtension()
+			$this->getFileExtension(),
+			DIRECTORY_SEPARATOR
 		);
 	}
 	
