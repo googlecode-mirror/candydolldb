@@ -79,7 +79,7 @@ class LabelsDE extends Labels
 		'LabelBirthdate' => 'Geburtsdatum',
 		'LabelBirthdateShort' => 'Geboren',
 		'LabelBoth' => 'Beide',
-		'LabelChecksum' => 'Pr&uuml;fsumme',
+		'LabelMD5Checksum' => 'MD5-Pr&uuml;fsumme',
 		'LabelClean' => '',
 		'LabelCleanCacheFolder' => '',
 		'LabelCollection' => 'Sammlung',

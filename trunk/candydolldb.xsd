@@ -55,6 +55,16 @@
 	</xs:restriction>
 </xs:simpleType>
 
+<xs:simpleType name="EmptyHex8">
+	<xs:union memberTypes="Empty Hex8"  />
+</xs:simpleType>
+
+<xs:simpleType name="Hex8">
+	<xs:restriction base="xs:string">
+		<xs:pattern value="([A-F0-9]){8}" />
+	</xs:restriction>
+</xs:simpleType>
+
 <xs:simpleType name="EmptyCSV">
 	<xs:union memberTypes="Empty CSV"  />
 </xs:simpleType>
@@ -143,6 +153,7 @@
 	<xs:attribute name="extension" type="ExtensionsImage" use="required" />
 	<xs:attribute name="filesize" type="xs:nonNegativeInteger" use="required" />
 	<xs:attribute name="checksum" type="EmptyHex32" use="required" />
+	<xs:attribute name="crc32" type="EmptyHex8" use="optional" default="" />
 	<xs:attribute name="width" type="xs:nonNegativeInteger" use="required" />
 	<xs:attribute name="height" type="xs:nonNegativeInteger" use="required" />
 	<xs:attribute name="tags" type="EmptyCSV" use="optional" default=""/>
@@ -159,6 +170,7 @@
 	<xs:attribute name="extension" type="ExtensionsVideo" use="required" />
 	<xs:attribute name="filesize" type="xs:nonNegativeInteger" use="required" />
 	<xs:attribute name="checksum" type="EmptyHex32" use="required" />
+	<xs:attribute name="crc32" type="EmptyHex8" use="optional" default="" />
 	<xs:attribute name="tags" type="EmptyCSV" use="optional" default=""/>
 </xs:complexType>
    

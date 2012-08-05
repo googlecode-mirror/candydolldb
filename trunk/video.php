@@ -42,7 +42,8 @@ if($Videos)
     		"<td><a href=\"video_view.php?model_id=%3\$d&amp;set_id=%2\$d&amp;video_id=%1\$d\">%4\$s</a></td>".
         	"<td class=\"Center\">%5\$s</td>".
 	    	"<td class=\"Center\">%6\$s</td>".
-        	"<td>%7\$s</td>".
+        	"<td><code>%7\$s</code></td>".
+			"<td><code>%14\$s</code></td>".
 			"<td class=\"Center\"><a href=\"download_vid.php?video_id=%1\$d\"><img src=\"images/button_download.png\" width=\"16\" height=\"16\" alt=\"%11\$s\" title=\"%11\$s\" /></a></td>".
 			"<td class=\"Center\"><a href=\"download_image.php?video_id=%1\$d&amp;width=800&amp;height=600\" rel=\"lightbox-thumb\" title=\"Thumbnails of %4\$s\"><img src=\"images/button_view.png\" width=\"16\" height=\"16\" alt=\"Thumbnails of %4\$s\" /></a></td>".
 			"<td class=\"Center\"><a href=\"video_view.php?model_id=%3\$d&amp;set_id=%2\$d&amp;video_id=%1\$d&amp;cmd=%9\$s\" title=\"%13\$s\"><img src=\"images/button_delete.png\" width=\"16\" height=\"16\" alt=\"%12\$s\" /></a></td>".
@@ -59,7 +60,8 @@ if($Videos)
 		$VideoCount % 2 == 0 ? 2 : 1,
 		$lang->g('LabelDownloadVideo'),
 		$lang->g('ButtonDelete'),
-		$lang->g('LabelDeleteVideo')
+		$lang->g('LabelDeleteVideo'),
+		$Video->getFileCRC32()
 		);
 	}
 }
@@ -105,9 +107,10 @@ echo HTMLstuff::HtmlHeader(sprintf('%1$s - %3$s %2$s - %4$s',
 	<thead>
 		<tr>
 			<th><?php echo $lang->g('LabelFilename')?></th>
-			<th style="width: 60px;"><?php echo $lang->g('LabelExtension')?></th>
-			<th style="width: 80px;"><?php echo $lang->g('LabelFilesize')?></th>
-			<th style="width: 290px;"><?php echo $lang->g('LabelChecksum')?></th>
+			<th class="Center" style="width: 60px;"><?php echo $lang->g('LabelExtension')?></th>
+			<th class="Center" style="width: 80px;"><?php echo $lang->g('LabelFilesize')?></th>
+			<th style="width: 270px;"><?php echo $lang->g('LabelMD5Checksum')?></th>
+			<th style="width: 80px;">CRC32</th>
 			<th style="width: 22px;">&nbsp;</th>
 			<th style="width: 22px;">&nbsp;</th>
 			<th style="width: 22px;">&nbsp;</th>
@@ -115,11 +118,11 @@ echo HTMLstuff::HtmlHeader(sprintf('%1$s - %3$s %2$s - %4$s',
 	</thead>
 	<tfoot>
 		<tr>
-			<th colspan="7"><?php printf('%1$s: %2$d', $lang->g('LabelTotalVideoCount'), $VideoCount)?></th>
+			<th colspan="8"><?php printf('%1$s: %2$d', $lang->g('LabelTotalVideoCount'), $VideoCount)?></th>
 		</tr>
 	</tfoot>
 	<tbody>
-	<?php echo $VideoRows ? $VideoRows : '<tr class="Row1"><td colspan="7">&nbsp;</td></tr>'?>
+	<?php echo $VideoRows ? $VideoRows : '<tr class="Row1"><td colspan="8">&nbsp;</td></tr>'?>
 	</tbody>
 </table>
 

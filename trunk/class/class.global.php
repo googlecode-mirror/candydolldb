@@ -201,8 +201,8 @@ class Utils
 	{
 		if(file_exists($filename))
 		{
-			$crc = crc32(file_get_contents($filename));
-			return sprintf('%04X', $crc);
+			$crc = hash_file('crc32b', $filename); 
+			return str_pad(strtoupper($crc), 8, '0');
 		}
 		return NULL;
 	}

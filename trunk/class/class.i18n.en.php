@@ -79,7 +79,7 @@ class LabelsEN extends Labels
 		'LabelBirthdate' => 'Birthdate',
 		'LabelBirthdateShort' => 'Birthdate',
 		'LabelBoth' => 'Both',
-		'LabelChecksum' => 'Checksum',
+		'LabelMD5Checksum' => 'MD5-checksum',
 		'LabelClean' => 'Clean',
 		'LabelCleanCacheFolder' => 'To clean the application\'s cache-folder and cache-table.',
 		'LabelCollection' => 'collection',

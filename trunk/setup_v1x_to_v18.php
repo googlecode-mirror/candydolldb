@@ -17,7 +17,7 @@ along with CandyDollDB.  If not, see <http://www.gnu.org/licenses/>.
 
 require('cd.php');
 
-$Exists = false;
+$Exists = FALSE;
 $NoError = TRUE;
 
 if(array_key_exists('hidAction', $_POST) && isset($_POST['hidAction']) && $_POST['hidAction'] == 'UpdateCandyDollDB')
@@ -153,7 +153,7 @@ FjbMNnvUJheiwewUJfheJheuehFJDUHdywgwwgHGfgywug;
 			User::Update($admUser, $admUser);
 		}
 		
-		if(is_dir('cache') || mkdir('cache', 0700, true))
+		if(is_dir('cache') || mkdir('cache', 0700, TRUE))
 		{
 			die($lang->g('MessageDataseUpdated'));
 		}

@@ -79,6 +79,7 @@ if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'ImageView')
 	$Image->setFileExtension($_POST['txtFileExtension']);
 	$Image->setFileSize(intval($_POST['txtFilesize']));
 	$Image->setFileCheckSum($_POST['txtFileChecksum']);
+	$Image->setFileCRC32($_POST['txtFileCRC32']);
 	$Image->setImageWidth(abs(intval($_POST['txtImageWidth'])));
 	$Image->setImageHeight(abs(intval($_POST['txtImageHeight'])));
 	
@@ -179,8 +180,13 @@ if($ImageID)
 </div>
 
 <div class="FormRow">
-<label for="txtFileChecksum"><?php echo $lang->g('LabelChecksum')?>: <em>*</em></label>
+<label for="txtFileChecksum"><?php echo $lang->g('LabelMD5Checksum')?>:</label>
 <input type="text" id="txtFileChecksum" name="txtFileChecksum" maxlength="32" value="<?php echo $Image->getFileCheckSum()?>"<?php echo HTMLstuff::DisabledStr($DeleteImage)?> />
+</div>
+
+<div class="FormRow">
+<label for="txtFileCRC32">CRC32:</label>
+<input type="text" id="txtFileCRC32" name="txtFileCRC32" maxlength="8" value="<?php echo $Image->getFileCRC32()?>"<?php echo HTMLstuff::DisabledStr($DeleteImage)?> />
 </div>
 
 <div class="FormRow">
