@@ -112,6 +112,7 @@ for($i = 0; $i < count($Models); $i++)
 				$ImageInDB->setFileExtension($matches['Extension']);
 				$ImageInDB->setFileSize($file->getSize());
 				$ImageInDB->setFileCheckSum(md5_file($file->getRealPath()));
+				$ImageInDB->setFileCRC32(Utils::CalculateCRC32($file->getRealPath()));
 				$ImageInDB->setImageWidth($info[0]);
 				$ImageInDB->setImageHeight($info[1]);
 					

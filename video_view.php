@@ -75,6 +75,7 @@ if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'VideoView')
 	$Video->setFileExtension($_POST['txtFileExtension']);
 	$Video->setFileSize(intval($_POST['txtFilesize']));
 	$Video->setFileCheckSum($_POST['txtFileChecksum']);
+	$Video->setFileCRC32($_POST['txtFileCRC32']);
 	
 	$tags = Tag::GetTagArray($_POST['txtTags']);
 	
@@ -153,8 +154,13 @@ echo HTMLstuff::HtmlHeader(sprintf('%1$s - %2$s %3$s - %4$s',
 </div>
 
 <div class="FormRow">
-<label for="txtFileChecksum"><?php echo $lang->g('LabelChecksum')?>: <em>*</em></label>
+<label for="txtFileChecksum"><?php echo $lang->g('LabelMD5Checksum')?>:</label>
 <input type="text" id="txtFileChecksum" name="txtFileChecksum" maxlength="32" value="<?php echo $Video->getFileCheckSum()?>"<?php echo HTMLstuff::DisabledStr($DeleteVideo)?> />
+</div>
+
+<div class="FormRow">
+<label for="txtFileCRC32">CRC32:</label>
+<input type="text" id="txtFileCRC32" name="txtFileCRC32" maxlength="8" value="<?php echo $Video->getFileCRC32()?>"<?php echo HTMLstuff::DisabledStr($DeleteImage)?> />
 </div>
 
 <div class="FormRow">

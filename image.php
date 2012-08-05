@@ -96,7 +96,8 @@ if($Images)
 					"<td class=\"Center\">%6\$s</td>".
 					"<td class=\"Center\">%9\$d</td>".
 					"<td class=\"Center\">%10\$d</td>".
-					"<td>%7\$s</td>".
+					"<td><code>%7\$s</code></td>".
+					"<td><code>%18\$s</code></td>".
 					"<td class=\"Center\"><a href=\"download_zip.php?image_id=%1\$d\"><img src=\"images/button_download.png\" width=\"16\" height=\"16\" alt=\"%15\$s\" title=\"%15\$s\" /></a></td>".
 					"<td class=\"Center\"><a href=\"download_image.php?image_id=%1\$d&amp;width=%13\$d&amp;height=%14\$d\" title=\"%4\$s\" rel=\"lightbox-gal\"><img src=\"images/button_view.png\" width=\"16\" height=\"16\" alt=\"%16\$s\" title=\"%16\$s\" /></a></td>".
 					"<td class=\"Center\"><a href=\"image_view.php?model_id=%3\$d&amp;set_id=%2\$d&amp;image_id=%1\$d&amp;cmd=%11\$s\" title=\"%17\$s\"><img src=\"images/button_delete.png\" width=\"16\" height=\"16\" alt=\"%17\$s\" /></a></td>".
@@ -117,7 +118,8 @@ if($Images)
 				$Image->getImageHeightToppedOff(800, 600),
 				$lang->g('LabelDownloadImage'),
 				$lang->g('LabelViewImage'),
-				$lang->g('LabelDeleteImage')
+				$lang->g('LabelDeleteImage'),
+				$Image->getFileCRC32()
 			);
 			break;
 		}
@@ -184,7 +186,8 @@ case 'detail':
 			<th class="Center" style="width: 80px;"><?php echo $lang->g('LabelFilesize')?></th>
 			<th class="Center" style="width: 65px;"><?php echo $lang->g('LabelWidth')?></th>
 			<th class="Center" style="width: 65px;"><?php echo $lang->g('LabelHeight')?></th>
-			<th class="Center" style="width: 160px;"><?php echo $lang->g('LabelChecksum')?></th>
+			<th style="width: 270px;"><?php echo $lang->g('LabelMD5Checksum')?></th>
+			<th style="width: 80px;">CRC32</th>
 			<th style="width: 22px;">&nbsp;</th>
 			<th style="width: 22px;"><a href="#" title="<?php echo $lang->g('LabelViewSlideshow')?>" onclick="OpenSlideColorBox();"><img src="images/button_view.png" alt="View slideshow" width="16" height="16" /></a></th>
 			<th style="width: 22px;">&nbsp;</th>
@@ -192,11 +195,11 @@ case 'detail':
 	</thead>
 	<tfoot>
 		<tr>
-			<th colspan="9"><?php echo $lang->g('LabelTotalImageCount')?>: <?php printf('%1$d', $ImageCount)?></th>
+			<th colspan="10"><?php echo $lang->g('LabelTotalImageCount')?>: <?php printf('%1$d', $ImageCount)?></th>
 		</tr>
 	</tfoot>
 	<tbody>
-	<?php echo $ImageRows ? $ImageRows : '<tr class="Row1"><td colspan="9">&nbsp;</td></tr>'?>
+	<?php echo $ImageRows ? $ImageRows : '<tr class="Row1"><td colspan="10">&nbsp;</td></tr>'?>
 	</tbody>
 </table>
 <?php

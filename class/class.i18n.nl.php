@@ -79,7 +79,7 @@ class LabelsNL extends Labels
 		'LabelBirthdate' => 'Geboortedatum',
 		'LabelBirthdateShort' => 'Geboren',
 		'LabelBoth' => 'Allebei',
-		'LabelChecksum' => 'Controlecijfer',
+		'LabelMD5Checksum' => 'MD5-controlecijfer',
 		'LabelClean' => 'Compleet',
 		'LabelCleanCacheFolder' => 'De map met cache-bestanden en de cache-tabel opruimen.',
 		'LabelCollection' => 'collectie',

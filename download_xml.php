@@ -106,6 +106,7 @@ function XmlOutputModel($Model,$TaggedOnly)
 								$xmlw->writeAttribute('height', $Image->getImageHeight());
 								$xmlw->writeAttribute('width', $Image->getImageWidth());
 								$xmlw->writeAttribute('checksum', $Image->getFileCheckSum());
+								$xmlw->writeAttribute('crc32', $Image->getFileCRC32());
 								$xmlw->writeAttribute('tags', Tag2All::Tags2AllCSV($TagsThisImage));
 							$xmlw->endElement();
 						}
@@ -137,6 +138,7 @@ function XmlOutputModel($Model,$TaggedOnly)
 								$xmlw->writeAttribute('extension', $Video->getFileExtension());
 								$xmlw->writeAttribute('filesize', $Video->getFileSize());
 								$xmlw->writeAttribute('checksum', $Video->getFileCheckSum());
+								$xmlw->writeAttribute('crc32', $Video->getFileCRC32());
 								$xmlw->writeAttribute('tags', Tag2All::Tags2AllCSV($TagsThisVideo));
 							$xmlw->endElement();
 						}
