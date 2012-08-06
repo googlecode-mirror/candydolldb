@@ -368,7 +368,7 @@ if(array_key_exists('hidAction', $_POST) && isset($_POST['hidAction']) && $_POST
 	if(isset($DBHostName) && isset($DBUserName) && isset($DBPassword))
 	{
 		/* @var $dbi DBi */
-		if(($dbi = new DBi($DBHostName, $DBUserName, $DBPassword, $DBName)))
+		if(($dbi = new DBi($DBHostName, $DBUserName, $DBPassword, 'mysql')))
 		{
 			if($dbi->ExecuteMulti(sprintf($CreateDBSQL, $dbi->real_escape_string($DBName))))
 			{
