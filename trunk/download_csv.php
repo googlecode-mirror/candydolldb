@@ -49,6 +49,8 @@ function XmlOutputModel($Model)
 				/* @var $Image Image */
 				foreach($ImagesThisSet as $Image)
 				{
+					if(Utils::_empty($Image->getFileCRC32()))
+					{ continue; }
 					if($commentbool === FALSE)
 					{
 						if($x < ($commentcount))
