@@ -59,7 +59,7 @@ foreach ($Models as $Model)
 					switch ($includepath)
 					{
 						default:
-						case SFV_PATH_OPTION_NONE:
+						case EXPORT_PATH_OPTION_NONE:
 							printf('%1$s.%2$s %3$s%4$s',
 								$Image->getFileName(),
 								$Image->getFileExtension(),
@@ -67,7 +67,7 @@ foreach ($Models as $Model)
 								PHP_EOL);
 							break;
 						
-						case SFV_PATH_OPTION_RELATIVE:
+						case EXPORT_PATH_OPTION_RELATIVE:
 							printf('%1$s%8$s%2$s%3$s%8$s%4$s.%5$s %6$s%7$s',
 								$Model->GetFullName(),
 								$Set->getPrefix(),
@@ -79,7 +79,7 @@ foreach ($Models as $Model)
 								DIRECTORY_SEPARATOR);
 							break;
 							
-						case SFV_PATH_OPTION_FULL:
+						case EXPORT_PATH_OPTION_FULL:
 							printf('%1$s %2$s%3$s',
 								$Image->getFilenameOnDisk(),
 								$Image->getFileCRC32(),
@@ -102,7 +102,7 @@ foreach ($Models as $Model)
 					switch ($includepath)
 					{
 						default:
-						case SFV_PATH_OPTION_NONE:
+						case EXPORT_PATH_OPTION_NONE:
 							printf('%1$s.%2$s %3$s%4$s',
 								$Video->getFileName(),
 								$Video->getFileExtension(),
@@ -110,7 +110,7 @@ foreach ($Models as $Model)
 								PHP_EOL);
 							break;
 						
-						case SFV_PATH_OPTION_RELATIVE:
+						case EXPORT_PATH_OPTION_RELATIVE:
 							printf('%1$s%6$s%2$s.%3$s %4$s%5$s',
 								$Model->GetFullName(),
 								$Video->getFileName(),
@@ -120,7 +120,7 @@ foreach ($Models as $Model)
 								DIRECTORY_SEPARATOR);
 							break;
 							
-						case SFV_PATH_OPTION_FULL:
+						case EXPORT_PATH_OPTION_FULL:
 							printf('%1$s %2$s%3$s',
 								$Video->getFilenameOnDisk(),
 								$Video->getFileCRC32(),
