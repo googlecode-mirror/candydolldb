@@ -300,7 +300,6 @@ class Utils
 		return preg_match($EmailPattern, $InAddress) > 0;
 	}
 	
-	
 	/**
 	 * @param int $TimeStamp
 	 * @return float
@@ -331,6 +330,7 @@ class Utils
 	}
 	
 	/**
+	 * Returns a Universally Unique IDentifier, as described in RFC 4122.
 	 * @return string
 	 */
 	public static function UUID()
@@ -367,8 +367,9 @@ class Utils
 	}
 
 	/**
-	 * @param something $val
-	 * @return im not sure
+	 * Determine whether a variable, or function call is empty
+	 * @param mixed $val
+	 * @return bool
 	 */
 	public static function _empty($val)
 	{ return empty($val); }
