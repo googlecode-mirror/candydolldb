@@ -53,8 +53,8 @@ foreach ($Models as $Model)
 				/* @var $Image Image */
 				foreach($ImagesThisSet as $Image)
 				{
-					$crc = $Image->getFileCRC32();
-					if(empty($crc)) { continue; }
+					if(Utils::_empty($Image->getFileCRC32()))
+					{ continue; }
 					
 					switch ($includepath)
 					{

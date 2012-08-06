@@ -365,6 +365,13 @@ class Utils
 		}
 		return $OutHash;
 	}
+
+	/**
+	 * @param something $val
+	 * @return im not sure
+	 */
+	public static function _empty($val)
+	{ return empty($val); }
 }
 
 ?>
