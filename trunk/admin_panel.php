@@ -83,7 +83,20 @@ echo HTMLstuff::HtmlHeader($lang->g('NavigationAdminPanel'), $CurrentUser);
 		window.location = url;
 		return true;
 	}
-           
+
+	function RedirToCSV(){
+		var modelIdCsv = parseInt( $('#selModelCsv').val() );
+		var includePic = $('#chkCSVIncludePic').is(':checked');
+		var includeVid = $('#chkCSVIncludeVid').is(':checked');
+		var taggedonly = $('#chkCSVIncludeTag').is(':checked');
+		var url = 'download_csv.php';
+
+		url += '?model_id=' + (isNaN(modelIdCsv) || modelIdCsv <= 0 ? '' : modelIdCsv);
+
+		window.location = url;
+		return TRUE;
+	}
+
 	function RedirToIndex(){
 		var modelId = parseInt( $('#selModel').val() );
 		var indexWidth = parseInt( $('#txtIndexWidth').val() );
@@ -159,6 +172,19 @@ echo HTMLstuff::HtmlHeader($lang->g('NavigationAdminPanel'), $CurrentUser);
 <label for="radSfvPathRelative" class="Radio"><?php echo $lang->g('LabelSFVPathRelative')?></label>
 <input type="radio" id="radSfvPathFull" name="radSfvPath" value="<?php echo SFV_PATH_OPTION_FULL?>"<?php echo HTMLstuff::DisabledStr(!$CurrentUser->hasPermission(RIGHT_EXPORT_XML))?> /> 
 <label for="radSfvPathFull" class="Radio"><?php echo $lang->g('LabelSFVPathFull')?></label>
+</div>
+
+<hr />
+
+<div class="FormRow WideForm">
+<label>Download CSV</label>
+<input type="button" id="btnDownloadCSV" name="btnDownloadCSV" value="<?php echo $lang->g('ButtonDownload')?>" onclick="RedirToCSV();" />
+<br />
+<label for="selModelCsv" style="float:none;width:auto;"><?php echo $lang->g('LabelModel')?>: </label>
+<select id="selModelCsv" name="selModelCsv">
+	<option value=""><?php echo $lang->g('LabelAllModels')?></option>
+	<?php echo $ModelsOptions?>
+</select>
 </div>
 
 <hr />

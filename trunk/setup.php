@@ -410,7 +410,7 @@ if(array_key_exists('hidAction', $_POST) && isset($_POST['hidAction']) && $_POST
 					if(@file_put_contents('config.php', $NewConfig, LOCK_EX) !== FALSE)
 					{
 						if(is_dir('cache') || mkdir('cache', 0700, TRUE))
-						{ 
+						{
 							die($lang->g('MessageAllDoneConfigWritten'));
 						}
 						else
