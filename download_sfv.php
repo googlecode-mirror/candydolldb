@@ -7,7 +7,7 @@ $CurrentUser = Authentication::Authenticate();
 
 $ModelID = Utils::SafeIntFromQS('model_id');
 $includepath = Utils::SafeIntFromQS('includepath');
-$includepath = in_array($includepath, array(SFV_PATH_OPTION_NONE, SFV_PATH_OPTION_RELATIVE, SFV_PATH_OPTION_FULL)) ? $includepath : SFV_PATH_OPTION_NONE; 
+$includepath = in_array($includepath, array(EXPORT_PATH_OPTION_NONE, EXPORT_PATH_OPTION_RELATIVE, EXPORT_PATH_OPTION_FULL)) ? $includepath : EXPORT_PATH_OPTION_NONE; 
 
 $Models = Model::GetModels(new ModelSearchParameters(
 	is_null($ModelID) ? FALSE : $ModelID));
@@ -96,8 +96,8 @@ foreach ($Models as $Model)
 				/* @var $Video Video */
 				foreach($VideosThisSet as $Video)
 				{
-					$crc = $Video->getFileCRC32();
-					if(empty($crc)) { continue; }
+					if(Utils::_empty($Video->getFileCRC32()))
+					{ continue; }
 					
 					switch ($includepath)
 					{
@@ -130,9 +130,12 @@ foreach ($Models as $Model)
 				}
 			}
 		}
+		ob_flush();
+		flush();
 	}
+	ob_flush();
+	flush();
 }
-
 ob_end_flush();
 flush();
 
