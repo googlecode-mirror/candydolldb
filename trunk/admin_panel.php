@@ -166,11 +166,11 @@ echo HTMLstuff::HtmlHeader($lang->g('NavigationAdminPanel'), $CurrentUser);
 	<option value=""><?php echo $lang->g('LabelAllModels')?></option>
 	<?php echo $ModelsOptions?>
 </select>
-<input type="radio" id="radSfvPathNone" name="radSfvPath" value="<?php echo SFV_PATH_OPTION_NONE?>"<?php echo HTMLstuff::DisabledStr(!$CurrentUser->hasPermission(RIGHT_EXPORT_XML))?> checked="checked" /> 
+<input type="radio" id="radSfvPathNone" name="radSfvPath" value="<?php echo EXPORT_PATH_OPTION_NONE?>"<?php echo HTMLstuff::DisabledStr(!$CurrentUser->hasPermission(RIGHT_EXPORT_XML))?> checked="checked" /> 
 <label for="radSfvPathNone" class="Radio"><?php echo $lang->g('LabelSFVPathNone')?></label>
-<input type="radio" id="radSfvPathRelative" name="radSfvPath" value="<?php echo SFV_PATH_OPTION_RELATIVE?>"<?php echo HTMLstuff::DisabledStr(!$CurrentUser->hasPermission(RIGHT_EXPORT_XML))?> /> 
+<input type="radio" id="radSfvPathRelative" name="radSfvPath" value="<?php echo EXPORT_PATH_OPTION_RELATIVE?>"<?php echo HTMLstuff::DisabledStr(!$CurrentUser->hasPermission(RIGHT_EXPORT_XML))?> /> 
 <label for="radSfvPathRelative" class="Radio"><?php echo $lang->g('LabelSFVPathRelative')?></label>
-<input type="radio" id="radSfvPathFull" name="radSfvPath" value="<?php echo SFV_PATH_OPTION_FULL?>"<?php echo HTMLstuff::DisabledStr(!$CurrentUser->hasPermission(RIGHT_EXPORT_XML))?> /> 
+<input type="radio" id="radSfvPathFull" name="radSfvPath" value="<?php echo EXPORT_PATH_OPTION_FULL?>"<?php echo HTMLstuff::DisabledStr(!$CurrentUser->hasPermission(RIGHT_EXPORT_XML))?> /> 
 <label for="radSfvPathFull" class="Radio"><?php echo $lang->g('LabelSFVPathFull')?></label>
 </div>
 
