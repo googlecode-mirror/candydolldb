@@ -7,15 +7,17 @@
 
 ==v1.8==
 
- * switch from MySQL to MySQLi
+ * switch from MySQL to MySQLi *(DONE)*
  * set-prefixes removed
  * naming-conventions documented
- * user-rights, permissions implemented
+ * user-rights, permissions implemented *(PARTIALLY DONE)*
+ * Allow import / export of CSV formatted files *(DONE)*
+ * CSV-support (export, comparing of collections) *(PARTIALLY DONE)*
+ * CRC32-support for images and videos (instead of md5?) *(DONE)*
 
 ==later==
 
  * Utilize the info about image-video set discrepancies
- * Allow import / export of CSV formatted files
  * Optimize cacheperformance by adding cache-expiration
  * Custom error logging (on-disk, email?)
  * all models tagged
@@ -26,8 +28,6 @@
  * other translations
  * Automatic XML-updates
  * Automatic application-updates
- * CSV-support (export, comparing of collections)
- * CRC32-support for images and videos (instead of md5?)
  * HTML5 interface instead of XHTML 1.0 Strict
  * Hard-coded pic counts for each set for later port-ability
  * Addition of extra XML sub-types for later port-ability
