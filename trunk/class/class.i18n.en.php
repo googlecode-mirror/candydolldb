@@ -277,6 +277,7 @@ class LabelsEN extends Labels
 		'ButtonSearch' => 'Search',
 		'ButtonSend' => 'Send',
 		'ButtonSetup' => 'Setup',
+		'ButtonToggle' => 'Toggle selection',
 		'ButtonYesPleaseUpdate' => 'Yes, please update',
 		
 		'MessageAllDoneConfigWritten' => 'All done! Configuration written to \'config.php\'. Please remove this page from the installation and <a href="login.php">log in</a>.',
