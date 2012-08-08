@@ -32,7 +32,7 @@ if($ModelID && count($Models) > 0){
 header('Content-Type: text/x-sfv');
 header(sprintf('Content-Disposition: attachment; filename="%1$s"', $outfile));
 
-printf($SFVHeader, CANDYDOLLDB_VERSION, date('Y-m-d'), date('H:i;s'));
+printf($SFVHeader, CANDYDOLLDB_VERSION, date('Y-m-d'), date('H:i:s'));
 
 /* @var $Model Model */
 foreach ($Models as $Model)
@@ -56,36 +56,7 @@ foreach ($Models as $Model)
 					if(Utils::_empty($Image->getFileCRC32()))
 					{ continue; }
 					
-					switch ($includepath)
-					{
-						default:
-						case EXPORT_PATH_OPTION_NONE:
-							printf('%1$s.%2$s %3$s%4$s',
-								$Image->getFileName(),
-								$Image->getFileExtension(),
-								$Image->getFileCRC32(),
-								PHP_EOL);
-							break;
-						
-						case EXPORT_PATH_OPTION_RELATIVE:
-							printf('%1$s%8$s%2$s%3$s%8$s%4$s.%5$s %6$s%7$s',
-								$Model->GetFullName(),
-								$Set->getPrefix(),
-								$Set->getName(),
-								$Image->getFileName(),
-								$Image->getFileExtension(),
-								$Image->getFileCRC32(),
-								PHP_EOL,
-								DIRECTORY_SEPARATOR);
-							break;
-							
-						case EXPORT_PATH_OPTION_FULL:
-							printf('%1$s %2$s%3$s',
-								$Image->getFilenameOnDisk(),
-								$Image->getFileCRC32(),
-								PHP_EOL);
-							break;
-					}
+					printf('%1$s %2$s%3$s', $Image->getExportFilename($includepath), $Image->getFileCRC32(), PHP_EOL);
 				}
 			}
 			
@@ -99,34 +70,7 @@ foreach ($Models as $Model)
 					if(Utils::_empty($Video->getFileCRC32()))
 					{ continue; }
 					
-					switch ($includepath)
-					{
-						default:
-						case EXPORT_PATH_OPTION_NONE:
-							printf('%1$s.%2$s %3$s%4$s',
-								$Video->getFileName(),
-								$Video->getFileExtension(),
-								$Video->getFileCRC32(),
-								PHP_EOL);
-							break;
-						
-						case EXPORT_PATH_OPTION_RELATIVE:
-							printf('%1$s%6$s%2$s.%3$s %4$s%5$s',
-								$Model->GetFullName(),
-								$Video->getFileName(),
-								$Video->getFileExtension(),
-								$Video->getFileCRC32(),
-								PHP_EOL,
-								DIRECTORY_SEPARATOR);
-							break;
-							
-						case EXPORT_PATH_OPTION_FULL:
-							printf('%1$s %2$s%3$s',
-								$Video->getFilenameOnDisk(),
-								$Video->getFileCRC32(),
-								PHP_EOL);
-							break;
-					}
+					printf('%1$s %2$s%3$s', $Video->getExportFilename($includepath), $Video->getFileCRC32(), PHP_EOL);
 				}
 			}
 		}

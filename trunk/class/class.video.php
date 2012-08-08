@@ -161,6 +161,32 @@ class Video
 	}
 	
 	/**
+	 * @param int $includepath
+	 * @return string
+	 */
+	public function getExportFilename($includepath = EXPORT_PATH_OPTION_NONE)
+	{
+		switch ($includepath)
+		{
+			default:
+			case EXPORT_PATH_OPTION_NONE:
+				return sprintf('%1$s.%2$s',
+					$this->getFileName(),
+					$this->getFileExtension());
+	
+			case EXPORT_PATH_OPTION_RELATIVE:
+				return sprintf('%1$s%4$s%2$s.%3$s',
+					$this->getSet()->getModel()->GetFullName(),
+					$this->getFileName(),
+					$this->getFileExtension(),
+					DIRECTORY_SEPARATOR);
+	
+			case EXPORT_PATH_OPTION_FULL:
+				return $this->getFilenameOnDisk();
+		}
+	}
+	
+	/**
 	 * Gets an array of Videos from the database, or NULL on failure.
 	 * @param VideoSearchParameters $SearchParameters
 	 * @param string $OrderClause
