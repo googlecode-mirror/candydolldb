@@ -40,6 +40,10 @@ if(array_key_exists('hidAction', $_POST) && isset($_POST['hidAction']) && $_POST
 	if($NoError && !$Exists)
 	{ $NoError = $dbi->ExecuteMulti("ALTER TABLE `User` ADD `user_language` varchar(20) NOT NULL DEFAULT 'en' AFTER `user_imageview`;"); }
 	
+	/* user_rights column */
+	if($NoError)
+	{ $NoError = $dbi->ExecuteMulti("ALTER TABLE `User` CHANGE `user_rights` `user_rights` text NOT NULL;"); }
+	
 	/* image_filecrc32 column */
 	$Exists = $dbi->ColumnExists('Image', 'image_filecrc32');
 	

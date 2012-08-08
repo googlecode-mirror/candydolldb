@@ -4,7 +4,7 @@ class Rights
 {
 	/**
 	 * Returns an array containing all defined right related constants. 
-	 * @return array
+	 * @return array(int)
 	 */
 	public static function getDefinedRights()
 	{
@@ -25,14 +25,12 @@ class Rights
 	}
 	
 	/**
-	 * Calculates the sum of all defined right-constants.
-	 * @return int
+	 * Returns an array of all defined right-constants.
+	 * @return array(int)
 	 */
 	public static function getTotalRights()
 	{
-		return array_reduce(self::getDefinedRights(), function($a, $b){
-			$a += $b; return $a;
-		});
+		return self::getDefinedRights();
 	}
 }
 

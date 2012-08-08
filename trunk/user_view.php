@@ -53,11 +53,11 @@ if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'UserView')
 
 	if($CurrentUser->hasPermission(RIGHT_USER_RIGHTS))
 	{
-		$getrights = 0;
+		$getrights = array();
 		foreach(Rights::getDefinedRights() as $k => $v)
 		{
 			if(array_key_exists('chk'.$k, $_POST))
-			{ $getrights += $v; }
+			{ $getrights[] = $v; }
 		}
 		$User->setRights($getrights);
 	}

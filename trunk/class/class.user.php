@@ -18,7 +18,7 @@ class User
 	private $DateDisplayoptions = 0;
 	private $Imageview = 'detail';
 	private $Language = 'en';
-	private $Rights = 0;
+	private $Rights = array();
 	
 	private $LastActive = -1;
 	private $LastLogin = -1;
@@ -38,7 +38,7 @@ class User
 	 * @param int $user_datedisplayopts
 	 * @param string $user_imageview
 	 * @param string $user_language
-	 * @param int $user_rights
+	 * @param array(int) $user_rights
 	 * @param int $user_lastactive
 	 * @param int $user_lastlogin
 	 * @param int $user_prelastlogin
@@ -47,7 +47,7 @@ class User
 		$user_id = NULL, $user_username = NULL, $user_password = NULL, $user_salt = NULL,
 		$user_firstname = NULL, $user_insertion = NULL, $user_lastname = NULL, $user_email = NULL,
 		$user_gender = GENDER_UNKNOWN, $user_birthdate = -1,
-		$user_datedisplayopts = 0, $user_imageview = 'detail', $user_language = 'en', $user_rights = 0,
+		$user_datedisplayopts = 0, $user_imageview = 'detail', $user_language = 'en', $user_rights = array(),
 		$user_lastactive = -1, $user_lastlogin = -1, $user_prelastlogin = -1)
 	{
 		$this->ID = $user_id;
@@ -321,13 +321,13 @@ class User
 	
 	/**
 	 * Gets the User's rights
-	 * @return int
+	 * @return array(int)
 	 */
 	public function getRights()
 	{ return $this->Rights; }
 	
 	/**
-	 * @param int $Rights
+	 * @param array(int) $Rights
 	 */
 	public function setRights($Rights)
 	{ $this->Rights = $Rights; }
@@ -407,6 +407,9 @@ class User
 			
 			while($stmt->fetch())
 			{
+				// Unserialize the non-NULL value in the db, catch dev-time INT
+				$user_rights = $user_rights && !is_numeric($user_rights) ? unserialize($user_rights) : array();
+				
 				$o = new self(
 					$user_id, $user_username, $user_password, $user_salt,
 					$user_firstname, $user_insertion, $user_lastname, $user_email,
@@ -450,12 +453,6 @@ class User
 		global $dbi;
 		$outBool = TRUE;
 
-		$user_username = $user_password = $user_salt = $user_firstname = $user_insertion = $user_lastname = $user_email = NULL;
-		$user_datedisplayopts = $user_rights = 0;
-		$user_imageview = 'detail';
-		$user_language = 'en';
-		$user_gender = GENDER_UNKNOWN;
-		$user_birthdate = -1;
 		$mut_id = $CurrentUser->getID();
 		$mut_date = time();
 	
@@ -491,7 +488,7 @@ class User
 			return FALSE;
 		}
 	
-		$stmt->bind_param('sssssssiissiiii',
+		$stmt->bind_param('sssssssisssiiii',
 			$user_username,
 			$user_password,
 			$user_salt,
@@ -519,7 +516,7 @@ class User
 			$user_lastname = $User->getLastName();
 			$user_email = $User->getEmailAddress();
 			$user_datedisplayopts = $User->getDateDisplayOptions();
-			$user_rights = $User->getRights();
+			$user_rights = serialize($User->getRights());
 			$user_imageview = $User->getImageview();
 			$user_language = $User->getLanguage();
 			$user_gender = $User->getGender();
@@ -563,12 +560,6 @@ class User
 		global $dbi;
 		$outBool = TRUE;
 
-		$id = $user_username = $user_password = $user_salt = $user_firstname = $user_insertion = $user_lastname = $user_email = NULL;
-		$user_datedisplayopts = $user_rights = 0;
-		$user_imageview = 'detail';
-		$user_language = 'en';
-		$user_gender = GENDER_UNKNOWN;
-		$user_birthdate = -1;
 		$mut_id = $CurrentUser->getID();
 		$mut_date = time();
 	
@@ -603,7 +594,7 @@ class User
 			return FALSE;
 		}
 	
-		$stmt->bind_param('sssssssiissiiiii',
+		$stmt->bind_param('sssssssisssiiiii',
 			$user_username,
 			$user_password,
 			$user_salt,
@@ -622,6 +613,7 @@ class User
 			$id
 		);
 	
+		/* @var $User User */
 		foreach($Users as $User)
 		{
 			$user_username = $User->getUserName();
@@ -632,7 +624,7 @@ class User
 			$user_lastname = $User->getLastName();
 			$user_email = $User->getEmailAddress();
 			$user_datedisplayopts = $User->getDateDisplayOptions();
-			$user_rights = $User->getRights();
+			$user_rights = serialize($User->getRights());
 			$user_imageview = $User->getImageview();
 			$user_language = $User->getLanguage();
 			$user_gender = $User->getGender();
@@ -725,7 +717,7 @@ class User
 	 */
  	public static function CheckPermission($Rights, $Permission)
  	{
- 		return (($Rights & $Permission) > 0);
+ 		return in_array($Permission, $Rights);
  	}
 }
 
