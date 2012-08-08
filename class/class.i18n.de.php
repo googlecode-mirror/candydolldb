@@ -277,6 +277,7 @@ class LabelsDE extends Labels
 		'ButtonSearch' => 'Suchen',
 		'ButtonSend' => '',
 		'ButtonSetup' => 'Einrichten',
+		'ButtonToggle' => '',
 		'ButtonYesPleaseUpdate' => 'Ja, bitte!',
 
 		'MessageAllDoneConfigWritten' => '',

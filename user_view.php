@@ -200,6 +200,13 @@ setInterval(function () {
   }
 }, 500);
 
+function ToggleBoxes(){
+	$('input[id^=chkRIGHT_]').each(function(i, a){
+		$(a).attr('checked', !$(a).attr('checked')); 
+	});
+	return true;
+}
+
 //]]>
 </script>
 
@@ -287,7 +294,8 @@ setInterval(function () {
 </div>
 
 <div class="FormRow">
-<label><?php echo $lang->g('LabelUserRights')?>:</label>
+<label><?php echo $lang->g('LabelUserRights')?>:</label><br />
+<label for="chkToggleRights"><input type="checkbox" id="chkToggleRights" name="chkToggleRights" onclick="ToggleBoxes();"/>&nbsp;<?php echo $lang->g('ButtonToggle')?></label>
 	<div class="CheckBoxMadness">
 	<ul><?php echo $RightsCheckboxes?></ul>
 	</div>

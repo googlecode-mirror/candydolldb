@@ -277,6 +277,7 @@ class LabelsNL extends Labels
 		'ButtonSearch' => 'Zoeken',
 		'ButtonSend' => 'Versturen',
 		'ButtonSetup' => 'Setup',
+		'ButtonToggle' => 'Selectie omkeren',
 		'ButtonYesPleaseUpdate' => 'Ja, graag',
 
 		'MessageAllDoneConfigWritten' => 'Gelukt! Alle instellingen zijn weggeschreven in \'config.php\'. Verwijder de setup-pagina en <a href="login.php">meld u aan</a>.',
