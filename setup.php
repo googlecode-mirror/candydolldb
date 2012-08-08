@@ -62,7 +62,7 @@ INSERT INTO `User` (
 	0,
 	'detail',
 	'en',
-	%7\$d,
+	'%7\$s',
 	1,
 	UNIX_TIMESTAMP(),
 	-1
@@ -382,7 +382,7 @@ if(array_key_exists('hidAction', $_POST) && isset($_POST['hidAction']) && $_POST
 					$dbi->real_escape_string($UserFirstName),
 					$dbi->real_escape_string($UserLastName),
 					$dbi->real_escape_string($UserEmail),
-					$dbi->real_escape_string(serialize(Rights::getTotalRights())
+					$dbi->real_escape_string(serialize(Rights::getTotalRights()))
 				)))
 				{
 					$NewUserID = $dbi->insert_id;

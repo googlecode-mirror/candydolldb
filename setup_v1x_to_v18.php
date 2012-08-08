@@ -42,7 +42,12 @@ if(array_key_exists('hidAction', $_POST) && isset($_POST['hidAction']) && $_POST
 	
 	/* user_rights column */
 	if($NoError)
-	{ $NoError = $dbi->ExecuteMulti("ALTER TABLE `User` CHANGE `user_rights` `user_rights` text NOT NULL;"); }
+	{
+		if($dbi->ColumnExists('User', 'user_rights'))
+		{ $NoError = $dbi->ExecuteMulti("ALTER TABLE `User` CHANGE `user_rights` `user_rights` text NOT NULL;"); }
+		else 
+		{ $NoError = $dbi->ExecuteMulti("ALTER TABLE `User` ADD `user_rights` text NOT NULL AFTER `user_prelastlogin`;"); }
+	}
 	
 	/* image_filecrc32 column */
 	$Exists = $dbi->ColumnExists('Image', 'image_filecrc32');
