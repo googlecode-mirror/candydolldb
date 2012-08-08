@@ -168,7 +168,7 @@ CREATE TABLE IF NOT EXISTS `User` (
   `user_lastactive` bigint(20) NOT NULL DEFAULT '-1',
   `user_lastlogin` bigint(20) NOT NULL DEFAULT '-1',
   `user_prelastlogin` bigint(20) NOT NULL DEFAULT '-1',
-  `user_rights` bigint(20) NOT NULL DEFAULT '0',
+  `user_rights` text NOT NULL,
   `mut_id` bigint(20) NOT NULL,
   `mut_date` bigint(20) NOT NULL DEFAULT '-1',
   `mut_deleted` bigint(20) NOT NULL DEFAULT '-1',
@@ -382,7 +382,7 @@ if(array_key_exists('hidAction', $_POST) && isset($_POST['hidAction']) && $_POST
 					$dbi->real_escape_string($UserFirstName),
 					$dbi->real_escape_string($UserLastName),
 					$dbi->real_escape_string($UserEmail),
-					Rights::getTotalRights()
+					$dbi->real_escape_string(serialize(Rights::getTotalRights())
 				)))
 				{
 					$NewUserID = $dbi->insert_id;
