@@ -20,6 +20,7 @@ $DBName = DBNAME;
 
 $UserName = NULL;
 $Password = NULL;
+$PasswordRepeat = NULL;
 $UserFirstName = NULL;
 $UserLastName = NULL;
 $UserEmail = NULL;
@@ -348,6 +349,7 @@ if(array_key_exists('hidAction', $_POST) && isset($_POST['hidAction']) && $_POST
 
 	$UserName 		= isset($_POST['txtUserName']) && strlen($_POST['txtUserName']) > 0 ? (string)$_POST['txtUserName'] : NULL;
 	$Password 		= isset($_POST['txtPassword']) && strlen($_POST['txtPassword']) > 0 ? (string)$_POST['txtPassword'] : NULL;
+	$PasswordRepeat	= isset($_POST['txtRepeatPassword']) && strlen($_POST['txtRepeatPassword']) > 0 ? (string)$_POST['txtRepeatPassword'] : NULL;
 	$UserFirstName	= isset($_POST['txtFirstName']) && strlen($_POST['txtFirstName']) > 0 ? (string)$_POST['txtFirstName'] : NULL;
 	$UserLastName 	= isset($_POST['txtLastName']) && strlen($_POST['txtLastName']) > 0 ? (string)$_POST['txtLastName'] : NULL;
 	$UserEmail 		= isset($_POST['txtEmail']) && strlen($_POST['txtEmail']) > 0 ? (string)$_POST['txtEmail'] : NULL;
@@ -365,71 +367,114 @@ if(array_key_exists('hidAction', $_POST) && isset($_POST['hidAction']) && $_POST
 	$SmtpPort 		= isset($_POST['txtSmtpPort']) && intval($_POST['txtSmtpPort']) > 0 ? intval($_POST['txtSmtpPort']) : 0;
 	$SmtpAuth 		= array_key_exists('chkSmtpAuth', $_POST);
 
-	if(isset($DBHostName) && isset($DBUserName) && isset($DBPassword))
+	$PasswordOK = ($_POST['txtRepeatPassword'] == $_POST['txtPassword']);
+	$DBsettingsSet = isset($DBHostName) && isset($DBUserName) && isset($DBPassword); 
+	
+	if($PasswordOK && $DBsettingsSet)
 	{
 		/* @var $dbi DBi */
-		if(($dbi = new DBi($DBHostName, $DBUserName, $DBPassword, 'mysql')))
+		if(@($dbi = new DBi($DBHostName, $DBUserName, $DBPassword, 'mysql')))
 		{
-			if($dbi->ExecuteMulti(sprintf($CreateDBSQL, $dbi->real_escape_string($DBName))))
+			$DBConnectOK = ($dbi->connect_errno == 0);
+			if($DBConnectOK)
 			{
-				$UserSalt = Utils::GenerateGarbage(20);
-
-				if($dbi->query(sprintf(
-					$InsertUserSQL,
-					$dbi->real_escape_string($UserName),
-					$dbi->real_escape_string(Utils::HashString($Password, $UserSalt)),
-					$dbi->real_escape_string($UserSalt),
-					$dbi->real_escape_string($UserFirstName),
-					$dbi->real_escape_string($UserLastName),
-					$dbi->real_escape_string($UserEmail),
-					$dbi->real_escape_string(serialize(Rights::getTotalRights()))
-				)))
+				if($dbi->ExecuteMulti(sprintf($CreateDBSQL, $dbi->real_escape_string($DBName))))
 				{
-					$NewUserID = $dbi->insert_id;
-
-					$NewConfig = sprintf($ConfigTemplate,
-						str_ireplace('\\', '\\\\', $CandyImagePath),
-						str_ireplace('\\', '\\\\', $CandyVideoPath),
-						NULL,
-						str_ireplace('\\', '\\\\', $CandyVideoThumbPath),
-						$DBHostName,
-						$DBUserName,
-						$DBPassword,
-						$SmtpFromAddress,
-						$SmtpFromName,
-						$SmtpHostname,
-						$SmtpUsername,
-						$SmtpPassword,
-						$SmtpPort,
-						$SmtpAuth ? 'TRUE' : 'FALSE',
-						$UserFirstName,
-						$UserLastName,
-						$NewUserID,
-						$DBName);
-
-					if(@file_put_contents('config.php', $NewConfig, LOCK_EX) !== FALSE)
+					$UserSalt = Utils::GenerateGarbage(20);
+	
+					if($dbi->query(sprintf(
+						$InsertUserSQL,
+						$dbi->real_escape_string($UserName),
+						$dbi->real_escape_string(Utils::HashString($Password, $UserSalt)),
+						$dbi->real_escape_string($UserSalt),
+						$dbi->real_escape_string($UserFirstName),
+						$dbi->real_escape_string($UserLastName),
+						$dbi->real_escape_string($UserEmail),
+						$dbi->real_escape_string(serialize(Rights::getTotalRights()))
+					)))
 					{
-						if(is_dir('cache') || mkdir('cache', 0700, TRUE))
+						$NewUserID = $dbi->insert_id;
+	
+						$NewConfig = sprintf($ConfigTemplate,
+							str_ireplace('\\', '\\\\', $CandyImagePath),
+							str_ireplace('\\', '\\\\', $CandyVideoPath),
+							NULL,
+							str_ireplace('\\', '\\\\', $CandyVideoThumbPath),
+							$DBHostName,
+							$DBUserName,
+							$DBPassword,
+							$SmtpFromAddress,
+							$SmtpFromName,
+							$SmtpHostname,
+							$SmtpUsername,
+							$SmtpPassword,
+							$SmtpPort,
+							$SmtpAuth ? 'TRUE' : 'FALSE',
+							$UserFirstName,
+							$UserLastName,
+							$NewUserID,
+							$DBName);
+	
+						if(@file_put_contents('config.php', $NewConfig, LOCK_EX) !== FALSE)
 						{
-							die($lang->g('MessageAllDoneConfigWritten'));
+							if(is_dir('cache') || mkdir('cache', 0700, TRUE))
+							{
+								$i = new Info($lang->g('MessageAllDoneConfigWritten'));
+								Info::AddInfo($i);
+								
+								header('location:login.php');
+								exit;
+							}
+							else
+							{
+								$e = new Error(NULL, $lang->g('ErrorSetupCreatingCacheDir'));
+								Error::AddError($e);
+							}
 						}
 						else
-						{ die(sprintf($lang->g('ErrorSetupCreatingCacheDir'), BackToThisPage($lang->g('LabelTryAgain')))); }
+						{
+							$e = new Error(NULL, $lang->g('ErrorSetupWritingConfig'));
+							Error::AddError($e);
+						}
 					}
 					else
-					{ die(sprintf($lang->g('ErrorSetupWritingConfig'), BackToThisPage($lang->g('LabelTryAgain')))); }
+					{
+						$e = new Error($dbi->error, $lang->g('ErrorSetupCreatingUser'));
+						Error::AddError($e);
+					}
 				}
 				else
-				{ die(sprintf($lang->g('ErrorSetupCreatingUser'), BackToThisPage($lang->g('LabelTryAgain')), $dbi->error)); }
+				{
+					$e = new Error($dbi->error, $lang->g('ErrorSetupCreatingDatabase'));
+					Error::AddError($e);
+				}
 			}
 			else
-			{ die(sprintf($lang->g('ErrorSetupCreatingUser'), BackToThisPage($lang->g('LabelTryAgain')), $dbi->error)); }
+			{
+				$e = new Error($dbi->connect_errno, $dbi->connect_error);
+				Error::AddError($e);
+			}
 		}
 		else
-		{ die(sprintf($lang->g('ErrorSetupConnectDatabase'), BackToThisPage($lang->g('LabelReEnter')))); }
+		{
+			$e = new Error(NULL, $lang->g('ErrorSetupConnectDatabase'));
+			Error::AddError($e);
+		}
 	}
-	else
-	{ die(sprintf($lang->g('ErrorSetupConnectDatabase'), BackToThisPage($lang->g('LabelReEnter')))); }
+	else 
+	{
+		if(!$DBsettingsSet)
+		{
+			$e = new Error(NULL, $lang->g('ErrorSetupConnectDatabase'));
+			Error::AddError($e);
+		}
+		
+		if(!$PasswordOK)
+		{
+			$e = new LoginError(LOGIN_ERR_PASSWORDSNOTIDENTICAL);
+			Error::AddError($e);
+		}
+	}
 }
 else
 {
@@ -439,6 +484,7 @@ else
 
 	$UserName = $lang->g('LabelUsername');
 	$Password = $lang->g('LabelPassword');
+	$PasswordRepeat = $lang->g('LabelPassword');
 	$UserFirstName = $lang->g('LabelFirstname');
 	$UserLastName = $lang->g('LabelLastname');
 	$UserEmail = $lang->g('LabelEmailAddress');
@@ -524,7 +570,12 @@ echo HTMLstuff::HtmlHeader($lang->g('LabelSetup'))?>
 
 <div class="FormRow">
 <label for="txtPassword"><?php echo $lang->g('LabelPassword')?>: <em>*</em></label>
-<input type="text" id="txtPassword" name="txtPassword" maxlength="100" value="<?php echo $Password?>" />
+<input type="password" id="txtPassword" name="txtPassword" maxlength="100" value="<?php echo $Password?>" />
+</div>
+
+<div class="FormRow">
+<label for="txtRepeatPassword"><?php echo $lang->g('LabelRepeatPassword')?>: <em>*</em></label>
+<input type="password" id="txtRepeatPassword" name="txtRepeatPassword" maxlength="100" value="<?php echo $PasswordRepeat?>" />
 </div>
 
 <div class="FormRow">

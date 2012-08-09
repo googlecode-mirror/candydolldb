@@ -22,6 +22,7 @@ class LabelsDE extends Labels
 		'ErrorUpdateTryAgain' => '',
 		'ErrorSetupConnectDatabase' => '',
 		'ErrorSetupCreatingCacheDir' => '',
+		'ErrorSetupCreatingDatabase' => '',
 		'ErrorSetupCreatingUser' => '(\'%2$s\'), %1$s',
 		'ErrorSetupWritingConfig' => '%1$s',
 		'ErrorSetupAlreadyComplete' => '%1$s',
