@@ -1,5 +1,5 @@
 <?php
-/*	This file is part of CandyDollDB.
+/* This file is part of CandyDollDB.
 
 CandyDollDB is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -12,7 +12,7 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
-along with CandyDollDB.  If not, see <http://www.gnu.org/licenses/>.
+along with CandyDollDB. If not, see <http://www.gnu.org/licenses/>.
 */
 
 require('cd.php');
@@ -164,24 +164,26 @@ FjbMNnvUJheiwewUJfheJheuehFJDUHdywgwwgHGfgywug;
 		
 		if(is_dir('cache') || mkdir('cache', 0700, TRUE))
 		{
-			die($lang->g('MessageDataseUpdated'));
+			$i = new Info($lang->g('MessageDataseUpdated'));
+			Info::AddInfo($i);
+			
+			header('location:login.php');
+			exit;
 		}
 		else
 		{
-			die(sprintf($lang->g('ErrorSetupCreatingCacheDir'), BackToThisPage($lang->g('LabelTryAgain'))));
+			$e = new Error(NULL, $lang->g('ErrorSetupCreatingCacheDir'));
+			Error::AddError($e);
 		}
 	}
 	else
 	{
-		die(sprintf(
-			$lang->g('ErrorUpdateTryAgain'),
-			$_SERVER['REQUEST_URI']
-		));
+		$e = new Error(NULL, $lang->g('ErrorUpdateTryAgain'));
+		Error::AddError($e);
 	}
 }
-else
-{
-	echo HTMLstuff::HtmlHeader($lang->g('LabelSetup'))?>
+
+echo HTMLstuff::HtmlHeader($lang->g('LabelSetup'))?>
 
 <h2 class="Hidden"><?php echo $lang->g('LabelSetup')?></h2>
 
@@ -209,6 +211,5 @@ else
 </div>
 
 <?php
-}
 echo HTMLstuff::HtmlFooter();
 ?>
