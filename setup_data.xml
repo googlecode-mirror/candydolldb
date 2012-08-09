@@ -78,6 +78,7 @@
 			<Set name="13" date_pic="2012-07-13" date_vid="2012-07-20" tags="backpack, black shoes, chair, diadem, earrings, plaid, red drapes, skirt, white, white socks"/>
 			<Set name="14" date_pic="2012-07-20" date_vid="2012-07-27" tags="chair, earrings, pigtails, red drapes, satin, white stockings"/>
 			<Set name="15" date_pic="" date_vid="2012-08-03" tags=""/>
+			<Set name="16" date_pic="" date_vid="2012-08-10" tags=""/>
 		</Sets>
 		<Remarks>
 			Previous birthdate: 1999-04-03
@@ -236,7 +237,7 @@
 			<Set name="02" date_pic="2012-06-08" date_vid="2012-06-15" tags="bare feet, bikini, chair, red drapes, white"/>
 			<Set name="03" date_pic="2012-06-29" date_vid="2012-06-22" tags="balls, bare feet, blue carpet, chair, hair ties, pigtails, red drapes, skipping rope, swimsuit"/>
 			<Set name="04" date_pic="2012-08-03" date_vid="2012-07-13" tags=""/>
-			<Set name="05" date_pic="" date_vid="2012-07-20" tags=""/>
+			<Set name="05" date_pic="2012-08-10" date_vid="2012-07-20" tags=""/>
 		</Sets>
 	</Model>
 	<Model firstname="Biyanka" lastname="S" birthdate="1997-07-05" tags="">
@@ -434,6 +435,7 @@
 			<Set name="11" date_pic="2012-06-29" date_vid="2012-07-06" tags="backpack, chair, hair ties, jean shorts, jean top, pigtails, red drapes, red shoes, white socks"/>
 			<Set name="12" date_pic="2012-07-27" date_vid="2012-07-13" tags=""/>
 			<Set name="13" date_pic="" date_vid="2012-07-20" tags=""/>
+			<Set name="14" date_pic="" date_vid="2012-08-10" tags=""/>
 		</Sets>
 	</Model>
 	<Model firstname="Inna" lastname="Lyublinskaya" birthdate="1997-01-06" tags="">
@@ -490,7 +492,7 @@
 	<Model firstname="Isabella" lastname="B" birthdate="" tags="">
 		<Sets>
 			<Set name="01" date_pic="2012-06-22" date_vid="2012-07-27" tags="blue carpet, blue drapes, chair, swimsuit"/>
-			<Set name="02" date_pic="2012-07-06" date_vid="" tags="black bodysuit, blue carpet, chair, hair barrette, hair buns, red drapes, slippers"/>
+			<Set name="02" date_pic="2012-07-06" date_vid="2012-08-10" tags="black bodysuit, blue carpet, chair, hair barrette, hair buns, red drapes, slippers"/>
 			<Set name="03" date_pic="2012-07-27" date_vid="" tags=""/>
 		</Sets>
 	</Model>
@@ -584,7 +586,7 @@
 			<Set name="01" date_pic="2012-03-30" date_vid="2012-04-13" tags="black shoes, chair, gold, red drapes, yellow socks"/>
 			<Set name="02" date_pic="2012-04-20" date_vid="2012-04-27" tags="basketball, blue shorts, chair, red drapes, skipping rope, t-shirt, white"/>
 			<Set name="03" date_pic="2012-06-01" date_vid="2012-07-27" tags="black, black shoes, black socks, chair, maid, red drapes, white"/>
-			<Set name="04" date_pic="2012-06-08" date_vid="" tags="bare feet, bikini, chair, polkadot, red drapes, striped"/>
+			<Set name="04" date_pic="2012-06-08" date_vid="2012-08-10" tags="bare feet, bikini, chair, polkadot, red drapes, striped"/>
 			<Set name="05" date_pic="2012-07-20" date_vid="" tags="bodysuit, braid, red drapes"/>
 		</Sets>
 	</Model>
@@ -743,6 +745,7 @@
 			<Set name="02" date_pic="2012-04-27" date_vid="2012-04-20" tags="beachball, blue drapes, diadem, green shorts, t-shirt, white, white shoes, white socks"/>
 			<Set name="03" date_pic="2012-05-25" date_vid="2012-05-11" tags="chair, crown, earrings, gold drapes, red, white socks"/>
 			<Set name="04" date_pic="2012-08-03" date_vid="2012-07-06" tags=""/>
+			<Set name="05" date_pic="2012-08-10" date_vid="" tags=""/>
 		</Sets>
 	</Model>
 	<Model firstname="Margarita" lastname="D" birthdate="1997-08-18" tags="">
@@ -873,6 +876,7 @@
 	<Model firstname="Mila" lastname="L" birthdate="1997-11-27" tags="">
 		<Sets>
 			<Set name="01" date_pic="2012-06-15" date_vid="" tags="black, black shoes, blue drapes, chair, maid, white, white stockings"/>
+			<Set name="02" date_pic="2012-08-10" date_vid="" tags=""/>
 		</Sets>
 	</Model>
 	<Model firstname="Mila" lastname="V" birthdate="1997-11-04" tags="">
@@ -1078,7 +1082,7 @@
 			<Set name="05" date_pic="2012-05-11" date_vid="2012-05-04" tags="brown shoes, chair, earrings, hair buns, pantyhose, schoolgirl, yellow drapes"/>
 			<Set name="06" date_pic="2012-05-25" date_vid="2012-05-11" tags="balls, earrings, hair ties, red drapes, ribbon stick, skipping rope, swimsuit"/>
 			<Set name="07" date_pic="2012-06-08" date_vid="2012-06-01" tags="balls, bloomers, chair, earrings, hair buns, hair covers, red drapes, short socks, skipping rope, white shoes"/>
-			<Set name="08" date_pic="" date_vid="2012-06-29" tags=""/>
+			<Set name="08" date_pic="2012-08-10" date_vid="2012-06-29" tags=""/>
 			<Set name="09" date_pic="" date_vid="2012-07-06" tags=""/>
 			<Set name="10" date_pic="" date_vid="2012-07-27" tags=""/>
 		</Sets>
@@ -1669,7 +1673,7 @@
 			<Set name="94" date_pic="2012-07-20" date_vid="2012-04-13" tags=""/>
 			<Set name="95" date_pic="2012-07-27" date_vid="2012-04-20" tags=""/>
 			<Set name="96" date_pic="2012-08-03" date_vid="2012-04-27" tags=""/>
-			<Set name="97" date_pic="" date_vid="2012-05-04" tags=""/>
+			<Set name="97" date_pic="2012-08-10" date_vid="2012-05-04" tags=""/>
 			<Set name="98" date_pic="" date_vid="2012-05-11" tags=""/>
 			<Set name="99" date_pic="" date_vid="2012-05-18" tags=""/>
 			<Set name="100" date_pic="" date_vid="2012-05-25" tags=""/>
@@ -1683,6 +1687,7 @@
 			<Set name="108" date_pic="" date_vid="2012-07-20" tags=""/>
 			<Set name="109" date_pic="" date_vid="2012-07-27" tags=""/>
 			<Set name="110" date_pic="" date_vid="2012-08-03" tags=""/>
+			<Set name="111" date_pic="" date_vid="2012-08-10" tags=""/>
 		</Sets>
 	</Model>
 	<Model firstname="Promotions">
