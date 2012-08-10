@@ -61,7 +61,7 @@
 
 <xs:simpleType name="Hex8">
 	<xs:restriction base="xs:string">
-		<xs:pattern value="([A-F0-9]){8}" />
+		<xs:pattern value="([a-fA-F0-9]){8}" />
 	</xs:restriction>
 </xs:simpleType>
 

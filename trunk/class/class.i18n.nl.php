@@ -25,7 +25,7 @@ class LabelsNL extends Labels
 		'ErrorSetupCreatingDatabase' => 'Kon de database niet aanmaken.',
 		'ErrorSetupCreatingUser' => 'Er is een fout opgetreden tijdens het aanmaken van de gebruiker.',
 		'ErrorSetupWritingConfig' => 'Kon de instellingen niet wegschrijven. Controleer de bestandspermissies.',
-		'ErrorSetupAlreadyComplete' => 'De applicatie is al ingericht. Verwijder \'config.php\' en %1$s.',
+		'ErrorSetupAlreadyComplete' => 'De applicatie is al ingericht. Verwijder \'config.php\' en probeer het opnieuw.',
 		'ErrorSQLErrorTableNotExist' => 'De opgegeven tabel bestaat niet.',
 		'ErrorSQLErrorUnknown' => 'Er is een onbekende SQL fout opgetreden.',
 		'ErrorSyntaxEmailAddress' => 'Het opgegeven emailadres is niet geldig.',
