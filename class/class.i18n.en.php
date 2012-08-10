@@ -25,7 +25,7 @@ class LabelsEN extends Labels
 		'ErrorSetupCreatingDatabase' => 'Could not create the database.',
 		'ErrorSetupCreatingUser' => 'Something went wrong while creating the user.',
 		'ErrorSetupWritingConfig' => 'Something went wrong while writing the new config. Please check file permissions.',
-		'ErrorSetupAlreadyComplete' => 'Setup already complete, please remove \'config.php\' from your installation directory and %1$s.',
+		'ErrorSetupAlreadyComplete' => 'Setup already complete, please remove \'config.php\' from your installation directory and try again.',
 		'ErrorSQLErrorTableNotExist' => 'The specified table does not exist.',
 		'ErrorSQLErrorUnknown' => 'An unknown SQL error occurred.',
 		'ErrorSyntaxEmailAddress' => 'The specified emailaddress is not valid.',
