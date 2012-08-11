@@ -9,6 +9,9 @@ $ModelID = Utils::SafeIntFromQS('model_id');
 $includepath = Utils::SafeIntFromQS('includepath');
 $includepath = in_array($includepath, array(EXPORT_PATH_OPTION_NONE, EXPORT_PATH_OPTION_RELATIVE, EXPORT_PATH_OPTION_FULL)) ? $includepath : EXPORT_PATH_OPTION_NONE; 
 
+$filedate = date('H:i.s Y-m-d');
+$sfvOutput = NULL;
+
 $Models = Model::GetModels(new ModelSearchParameters(
 	is_null($ModelID) ? FALSE : $ModelID));
 $Sets = Set::GetSets(new SetSearchParameters(
@@ -56,7 +59,8 @@ foreach ($Models as $Model)
 					if(Utils::_empty($Image->getFileCRC32()))
 					{ continue; }
 					
-					printf('%1$s %2$s%3$s', $Image->getExportFilename($includepath), $Image->getFileCRC32(), PHP_EOL);
+					printf('; %1$12d  %2$s %3$s%4$s', $Image->getFileSize(), $filedate, $Image->getExportFilename(), PHP_EOL);
+					$sfvOutput .= sprintf('%1$s %2$s%3$s', $Image->getExportFilename($includepath), $Image->getFileCRC32(), PHP_EOL);
 				}
 			}
 			
@@ -70,7 +74,8 @@ foreach ($Models as $Model)
 					if(Utils::_empty($Video->getFileCRC32()))
 					{ continue; }
 					
-					printf('%1$s %2$s%3$s', $Video->getExportFilename($includepath), $Video->getFileCRC32(), PHP_EOL);
+					printf('; %1$12d  %2$s %3$s%4$s', $Video->getFileSize(), $filedate, $Video->getExportFilename(), PHP_EOL);
+					$sfvOutput .= sprintf('%1$s %2$s%3$s', $Video->getExportFilename($includepath), $Video->getFileCRC32(), PHP_EOL);
 				}
 			}
 		}
@@ -80,6 +85,9 @@ foreach ($Models as $Model)
 	ob_flush();
 	flush();
 }
+
+print $sfvOutput;
+
 ob_end_flush();
 flush();
 
