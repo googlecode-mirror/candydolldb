@@ -2,15 +2,13 @@
 
 require_once('cd.php');
 
-function BackToThisPage($Text)
-{ return sprintf('<a href="%2$s">%1$s</a>', $Text, $_SERVER['REQUEST_URI']); }
-
 if(file_exists('config.php'))
 {
-	die(sprintf(
-		$lang->g('ErrorSetupAlreadyComplete'),
-		BackToThisPage($lang->g('LabelRevisitThisPage')
-	)));
+	$e = new Error(NULL, $lang->g('ErrorSetupAlreadyComplete'));
+	Error::AddError($e);
+	
+	header('location:login.php');
+	exit;
 }
 
 $DBHostName = NULL;
