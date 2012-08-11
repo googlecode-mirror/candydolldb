@@ -477,12 +477,13 @@ class Model
 	 * @param string $LastName
 	 * @return array(Model)
 	 */
-	public static function Filter($ModelArray, $ModelID = NULL, $FirstName = NULL, $LastName = NULL)
+	public static function Filter($ModelArray, $ModelID = NULL, $FirstName = NULL, $LastName = NULL, $ShortName = NULL)
 	{
 		$OutArray = array();
 		$ModelID = empty($ModelID) ? FALSE : $ModelID;
 		$FirstName = empty($FirstName) ? FALSE : $FirstName;
 		$LastName = empty($LastName) ? FALSE : $LastName;
+		$ShortName = empty($ShortName) ? FALSE : $ShortName;
 		
 		/* @var $Model Model */
 		foreach($ModelArray as $Model)
@@ -490,7 +491,8 @@ class Model
 			if(
 				($ModelID === FALSE || $Model->getID() === $ModelID)			&&
 				($FirstName === FALSE || $Model->getFirstName() === $FirstName)	&&
-				($LastName === FALSE || $Model->getLastName() === $LastName)
+				($LastName === FALSE || $Model->getLastName() === $LastName)	&&
+				($ShortName === FALSE || $Model->getShortName() === $ShortName)
 			){
 				$OutArray[] = $Model;
 			}

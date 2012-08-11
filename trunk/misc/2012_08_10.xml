@@ -40,4 +40,10 @@
 			<Set name="08" date_pic="2012-08-10" date_vid="2012-06-29" tags=""/>
 		</Sets>
 	</Model>
+	<Model firstname="VIP" lastname="" birthdate="" tags="">
+		<Sets>
+			<Set name="97" date_pic="2012-08-10" date_vid="2012-05-04" tags=""/>
+			<Set name="111" date_pic="" date_vid="2012-08-10" tags=""/>
+		</Sets>
+	</Model>
 </Models>
