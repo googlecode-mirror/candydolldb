@@ -25,7 +25,7 @@ if($VideoID)
 		$Model = $Set->getModel();
 		
 		$filename = sprintf('%1$s/%2$s/%3$s.%4$s',
-			CANDYVIDEOPATH,
+			CANDYPATH,
 			$Model->GetFullName(),
 			$Video->getFileName(),
 			$Video->getFileExtension()
