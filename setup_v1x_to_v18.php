@@ -162,18 +162,43 @@ FjbMNnvUJheiwewUJfheJheuehFJDUHdywgwwgHGfgywug;
 			User::Update($admUser, $admUser);
 		}
 		
-		if(is_dir('cache') || mkdir('cache', 0700, TRUE))
+		/* Introduce CANDYPATH constant and write to config */
+		if(defined('CANDYIMAGEPATH') && !defined('CANDYPATH'))
 		{
-			$i = new Info($lang->g('MessageDataseUpdated'));
-			Info::AddInfo($i);
-			
-			header('location:login.php');
-			exit;
+			if(($configfile = file_get_contents('config.php')) !== FALSE)
+			{
+				$configfile = str_replace('CANDYIMAGEPATH', 'CANDYPATH', $configfile);
+				
+				if(file_put_contents('config.php', $configfile) === FALSE)
+				{
+					$e = new Error(NULL, $lang->g('ErrorSetupWritingConfig'));
+					Error::AddError($e);
+					$NoError = FALSE;
+				}
+			}
+			else
+			{
+				$e = new Error(NULL, $lang->g('ErrorSetupWritingConfig'));
+				Error::AddError($e);
+				$NoError = FALSE;
+			}
 		}
-		else
+		
+		if($NoError)
 		{
-			$e = new Error(NULL, $lang->g('ErrorSetupCreatingCacheDir'));
-			Error::AddError($e);
+			if(is_dir('cache') || mkdir('cache', 0700, TRUE))
+			{
+				$i = new Info($lang->g('MessageDataseUpdated'));
+				Info::AddInfo($i);
+				
+				header('location:login.php');
+				exit;
+			}
+			else
+			{
+				$e = new Error(NULL, $lang->g('ErrorSetupCreatingCacheDir'));
+				Error::AddError($e);
+			}
 		}
 	}
 	else

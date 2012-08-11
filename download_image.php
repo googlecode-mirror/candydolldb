@@ -213,7 +213,7 @@ else if($VideoID)
 			$Video = $Video[0];
 			
 			$filename = sprintf('%1$s/%2$s/%3$s.jpg',
-				CANDYIMAGEPATH,
+				CANDYPATH,
 				CANDYVIDEOTHUMBPATH,
 				$Video->getFileName()
 			);

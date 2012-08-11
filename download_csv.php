@@ -55,7 +55,7 @@ foreach ($Models as $Model)
 						$Image->getExportFilename(),
 						$Image->getFileSize(),
 						$Image->getFileCRC32(),
-						str_replace(CANDYIMAGEPATH.DIRECTORY_SEPARATOR, '', dirname($Image->getFilenameOnDisk())),
+						str_replace(CANDYPATH.DIRECTORY_SEPARATOR, '', dirname($Image->getFilenameOnDisk())),
 						PHP_EOL);
 				}
 			}
@@ -71,7 +71,7 @@ foreach ($Models as $Model)
 						$Video->getExportFilename(),
 						$Video->getFileSize(),
 						$Video->getFileCRC32(),
-						str_replace(CANDYVIDEOPATH.DIRECTORY_SEPARATOR, '', dirname($Video->getFilenameOnDisk())),
+						str_replace(CANDYPATH.DIRECTORY_SEPARATOR, '', dirname($Video->getFilenameOnDisk())),
 						PHP_EOL);
 				}
 			}

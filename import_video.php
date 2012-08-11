@@ -34,7 +34,7 @@ for($i = 0; $i < count($Models); $i++)
 	$Model = $Models[$i];
 
 	$VideoFolder = sprintf('%1$s/%2$s',
-		CANDYVIDEOPATH,
+		CANDYPATH,
 		$Model->GetFullName()
 	);
 

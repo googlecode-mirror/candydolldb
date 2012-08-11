@@ -2,13 +2,15 @@
 
 require_once('cd.php');
 
+function BackToThisPage($Text)
+{ return sprintf('<a href="%2$s">%1$s</a>', $Text, $_SERVER['REQUEST_URI']); }
+
 if(file_exists('config.php'))
 {
-	$e = new Error(NULL, $lang->g('ErrorSetupAlreadyComplete'));
-	Error::AddError($e);
-	
-	header('location:login.php');
-	exit;	
+	die(sprintf(
+		$lang->g('ErrorSetupAlreadyComplete'),
+		BackToThisPage($lang->g('LabelRevisitThisPage')
+	)));
 }
 
 $DBHostName = NULL;
@@ -23,8 +25,7 @@ $UserFirstName = NULL;
 $UserLastName = NULL;
 $UserEmail = NULL;
 
-$CandyImagePath = NULL;
-$CandyVideoPath = NULL;
+$CandyPath = NULL;
 $CandyVideoThumbPath = NULL;
 
 $UseMailServer = FALSE;
@@ -304,15 +305,14 @@ FjbMNnvUJheiwewUJfheJheuehFJDUHdywgwwgHGfgywug;
 $ConfigTemplate = <<<FjbMNnvUJheiwewUJfheJheuehFJDUHdywgwwgHGfgywug
 <?php
 
-define('CANDYIMAGEPATH', 			'%1\$s');
-define('CANDYVIDEOPATH', 			'%2\$s');
-define('CANDYVIDEOTHUMBPATH', 		'%4\$s');
+define('CANDYPATH', 				'%1\$s');
+define('CANDYVIDEOTHUMBPATH', 		'%2\$s');
 
-define('DBHOSTNAME',				'%5\$s');
-define('DBUSERNAME',				'%6\$s');
-define('DBPASSWORD',				'%7\$s');
-define('DBNAME',					'%18\$s');
-define('CMDLINE_USERID',			%17\$d);
+define('DBHOSTNAME',				'%3\$s');
+define('DBUSERNAME',				'%4\$s');
+define('DBPASSWORD',				'%5\$s');
+define('DBNAME',					'%6\$s');
+define('CMDLINE_USERID',			%7\$d);
 
 define('SMTP_FROM_ADDRESS', 		'%8\$s');
 define('SMTP_FROM_NAME', 			'%9\$s');
@@ -352,8 +352,7 @@ if(array_key_exists('hidAction', $_POST) && isset($_POST['hidAction']) && $_POST
 	$UserLastName 	= isset($_POST['txtLastName']) && strlen($_POST['txtLastName']) > 0 ? (string)$_POST['txtLastName'] : NULL;
 	$UserEmail 		= isset($_POST['txtEmail']) && strlen($_POST['txtEmail']) > 0 ? (string)$_POST['txtEmail'] : NULL;
 
-	$CandyImagePath 	= isset($_POST['txtCandyImagePath']) && strlen($_POST['txtCandyImagePath']) > 0 ? (string)$_POST['txtCandyImagePath'] : NULL;
-	$CandyVideoPath 	= isset($_POST['txtCandyVideoPath']) && strlen($_POST['txtCandyVideoPath']) > 0 ? (string)$_POST['txtCandyVideoPath'] : NULL;
+	$CandyPath 	= isset($_POST['txtCandyPath']) && strlen($_POST['txtCandyPath']) > 0 ? (string)$_POST['txtCandyPath'] : NULL;
 	$CandyVideoThumbPath = isset($_POST['txtCandyVideoThumbPath']) && strlen($_POST['txtCandyVideoThumbPath']) > 0 ? (string)$_POST['txtCandyVideoThumbPath'] : NULL;
 
 	$UseMailServer 	= array_key_exists('chkUseMailServer', $_POST);
@@ -394,13 +393,13 @@ if(array_key_exists('hidAction', $_POST) && isset($_POST['hidAction']) && $_POST
 						$NewUserID = $dbi->insert_id;
 	
 						$NewConfig = sprintf($ConfigTemplate,
-							str_ireplace('\\', '\\\\', $CandyImagePath),
-							str_ireplace('\\', '\\\\', $CandyVideoPath),
-							NULL,
+							str_ireplace('\\', '\\\\', $CandyPath),
 							str_ireplace('\\', '\\\\', $CandyVideoThumbPath),
 							$DBHostName,
 							$DBUserName,
 							$DBPassword,
+							$DBName,
+							$NewUserID,
 							$SmtpFromAddress,
 							$SmtpFromName,
 							$SmtpHostname,
@@ -409,9 +408,7 @@ if(array_key_exists('hidAction', $_POST) && isset($_POST['hidAction']) && $_POST
 							$SmtpPort,
 							$SmtpAuth ? 'TRUE' : 'FALSE',
 							$UserFirstName,
-							$UserLastName,
-							$NewUserID,
-							$DBName);
+							$UserLastName);
 	
 						if(@file_put_contents('config.php', $NewConfig, LOCK_EX) !== FALSE)
 						{
@@ -489,13 +486,11 @@ else
 
 	if(stripos(php_uname('s'), 'WIN') === FALSE)
 	{
-		$CandyImagePath = $lang->g('LabelPathToCandyDollLinux');
-		$CandyVideoPath = $lang->g('LabelPathToCandyDollVideosLinux');
+		$CandyPath = $lang->g('LabelPathToCandyDollLinux');
 	}
 	else
 	{
-		$CandyImagePath = $lang->g('LabelPathToCandyDollWin');
-		$CandyVideoPath = $lang->g('LabelPathToCandyDollVideosWin');
+		$CandyPath = $lang->g('LabelPathToCandyDollWin');
 	}
 
 	$CandyVideoThumbPath = 'thumbnails';
@@ -545,13 +540,8 @@ echo HTMLstuff::HtmlHeader($lang->g('LabelSetup'))?>
 <h3>Candydoll <?php echo $lang->g('LabelCollection')?></h3>
 
 <div class="FormRow">
-<label for="txtCandyImagePath"><?php echo $lang->g('LabelPathImages')?>:</label>
-<input type="text" id="txtCandyImagePath" name="txtCandyImagePath" maxlength="255" value="<?php echo $CandyImagePath?>" />
-</div>
-
-<div class="FormRow">
-<label for="txtCandyVideoPath"><?php echo $lang->g('LabelPathVideos')?>:</label>
-<input type="text" id="txtCandyVideoPath" name="txtCandyVideoPath" maxlength="255" value="<?php echo $CandyVideoPath?>" />
+<label for="txtCandyPath"><?php echo $lang->g('LabelPathOnDisk')?>:</label>
+<input type="text" id="txtCandyPath" name="txtCandyPath" maxlength="255" value="<?php echo $CandyPath?>" />
 </div>
 
 <div class="FormRow">

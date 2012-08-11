@@ -154,7 +154,7 @@ class Image
 	public function getFilenameOnDisk()
 	{
 		return sprintf('%1$s%7$s%2$s%7$s%3$s%4$s%7$s%5$s.%6$s',
-			CANDYIMAGEPATH,
+			CANDYPATH,
 			$this->getSet()->getModel()->GetFullName(),
 			$this->getSet()->getPrefix(),
 			$this->getSet()->getName(),

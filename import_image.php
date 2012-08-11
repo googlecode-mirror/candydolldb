@@ -43,7 +43,7 @@ for($i = 0; $i < count($Models); $i++)
 	CacheImage::DeleteMulti($CacheImage, $CurrentUser);
 
 	$ImageFolder = sprintf('%1$s/%2$s',
-		CANDYIMAGEPATH,
+		CANDYPATH,
 		$Model->GetFullName()
 	);
 	
