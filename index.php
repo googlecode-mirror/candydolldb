@@ -15,13 +15,13 @@ $SetCount = 0;
 
 if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'ModelFilter')
 {
-	$SearchModel = $_SESSION['txtSearchModel'] 	= $_POST['txtSearchModel'];
+	$SearchModel = $_SESSION['txtIndexSearchModel'] 	= $_POST['txtIndexSearchModel'];
 	$SearchDirty = $_SESSION['chkDirty'] 		= array_key_exists('chkDirty', $_POST);
 	$SearchClean = $_SESSION['chkClean'] 		= array_key_exists('chkClean', $_POST);
 }
 else
 {
-	$SearchModel = array_key_exists('txtSearchModel', $_SESSION) ? $_SESSION['txtSearchModel'] : '';
+	$SearchModel = array_key_exists('txtIndexSearchModel', $_SESSION) ? $_SESSION['txtIndexSearchModel'] : '';
 	$SearchDirty = array_key_exists('chkDirty', $_SESSION) ? (bool)$_SESSION['chkDirty'] : TRUE;
 	$SearchClean = array_key_exists('chkClean', $_SESSION) ? (bool)$_SESSION['chkClean'] : TRUE; 
 }
@@ -165,8 +165,8 @@ echo HTMLstuff::HtmlHeader($lang->g('NavigationHome'), $CurrentUser);
 
 <input type="hidden" id="hidAction" name="hidAction" value="ModelFilter" />
 
-<label for="txtSearchModel"><?php echo $lang->g('LabelModel')?></label>
-<input type="text" id="txtSearchModel" name="txtSearchModel" maxlength="50" value="<?php echo $SearchModel?>" />
+<label for="txtIndexSearchModel"><?php echo $lang->g('LabelModel')?></label>
+<input type="text" id="txtIndexSearchModel" name="txtIndexSearchModel" maxlength="50" value="<?php echo $SearchModel?>" />
 
 <label for="chkDirty"><?php echo $lang->g('LabelDirty')?></label>
 <input type="checkbox" id="chkDirty" name="chkDirty"<?php echo HTMLstuff::CheckedStr($SearchDirty)?> />
