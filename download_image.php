@@ -91,6 +91,16 @@ else if($ModelID)
 		{
 			$Model = $Model[0];
 			
+			if($Model->getFirstName() == ('Interviews' || 'Promotions') )
+			{
+				Image::OutputImage(
+					'images/'.strtolower($Model->getFirstName()).'.jpg',
+					$Width,
+					$Height,
+					FALSE
+				);
+			}
+			
 			$imagefileondisk = $Model->GetFileFromDisk(
 				$PortraitOnly,
 				$LandscapeOnly
