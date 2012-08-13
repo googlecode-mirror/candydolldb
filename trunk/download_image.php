@@ -91,7 +91,7 @@ else if($ModelID)
 		{
 			$Model = $Model[0];
 			
-			if($Model->getFirstName() == ('Interviews' || 'Promotions') )
+			if(in_array($Model->getFirstName(), array('Interviews', 'Promotions')))
 			{
 				Image::OutputImage(
 					'images/'.strtolower($Model->getFirstName()).'.jpg',

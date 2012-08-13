@@ -23,7 +23,7 @@ if($CurrentUser->hasPermission(RIGHT_CACHE_DELETE))
 		is_null($SetID) ? FALSE : $SetID, FALSE,
 		is_null($ImageID) ? FALSE : $ImageID, FALSE,
 		is_null($VideoID) ? FALSE : $VideoID, FALSE,
-		$Width, $Height
+		is_null($Width) ? FALSE : $Width, is_null($Height) ? FALSE : $Height
 	);
 	
 	if($cisp->getValues())
