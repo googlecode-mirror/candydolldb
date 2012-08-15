@@ -258,7 +258,7 @@ foreach ($DatesThisSet as $Date)
 <label>&nbsp;</label>
 <input type="submit" class="FormButton" value="<?php echo $DeleteSet ? $lang->g('ButtonDelete') : $lang->g('ButtonSave')?>" />
 <input type="button" class="FormButton" value="<?php echo $lang->g('ButtonCancel')?>" onclick="window.location='<?php echo $ReturnURL?>';" />
-<input type="button" class="FormButton" value="<?php echo $lang->g('ButtonClearCacheImage')?>" onclick="window.location='cacheimage_delete.php?set_id=<?php echo $SetID ?>';"<?php echo HTMLstuff::DisabledStr($DeleteSet)?> />
+<input type="button" class="FormButton" value="<?php echo $lang->g('ButtonClearCacheImages')?>" onclick="window.location='cacheimage_delete.php?set_id=<?php echo $SetID ?>&amp;deleteimages=true&amp;deletevideos=true';"<?php echo HTMLstuff::DisabledStr($DeleteSet)?> />
 </div>
 
 <div class="Separator"></div>
