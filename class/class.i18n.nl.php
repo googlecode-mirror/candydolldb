@@ -246,6 +246,10 @@ class LabelsNL extends Labels
 		'LabelRIGHT_CACHE_CLEANUP' => 'Cache opruimen',
 		'LabelRIGHT_TAG_CLEANUP' => 'Tags opruimen',
 		'LabelRIGHT_CACHE_DELETE' => 'Cache-bestand verwijderen',
+		'LabelRIGHT_EXPORT_SFV' => 'SFV exporteren',
+		'LabelRIGHT_EXPORT_CSV' => 'CSV exporteren',
+		'LabelRIGHT_SEARCH_DIRTY' => 'Incomplete sets zoeken',
+		'LabelRIGHT_SEARCH_TAGS' => 'Tags zoeken',
 		
 		'ButtonCancel' => 'Annuleren',
 		'ButtonClean' => 'Opruimen',

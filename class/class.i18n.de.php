@@ -249,6 +249,10 @@ class LabelsDE extends Labels
 		'LabelRIGHT_CACHE_CLEANUP' => '',
 		'LabelRIGHT_TAG_CLEANUP' => '',
 		'LabelRIGHT_CACHE_DELETE' => '',
+		'LabelRIGHT_EXPORT_SFV' => '',
+		'LabelRIGHT_EXPORT_CSV' => '',
+		'LabelRIGHT_SEARCH_DIRTY' => '',
+		'LabelRIGHT_SEARCH_TAGS' => '',
 		
 		'ButtonCancel' => 'Abbrechen',
 		'ButtonClean' => '',

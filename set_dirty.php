@@ -4,9 +4,16 @@ include('cd.php');
 $CurrentUser = Authentication::Authenticate();
 HTMLstuff::RefererRegister($_SERVER['REQUEST_URI']);
 
+if(!$CurrentUser->hasPermission(RIGHT_SEARCH_DIRTY))
+{
+	$e = new Error(RIGHTS_ERR_USERNOTALLOWED);
+	Error::AddError($e);
+	
+	header('location:index.php');
+	exit;
+}
 
 $ModelID = Utils::SafeIntFromQS('model_id');
-
 
 $Model = NULL;
 $PreviousModel = NULL;

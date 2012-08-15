@@ -246,6 +246,10 @@ class LabelsEN extends Labels
 		'LabelRIGHT_CACHE_CLEANUP' => 'Clean-up cache',
 		'LabelRIGHT_TAG_CLEANUP' => 'Clean-up tags',
 		'LabelRIGHT_CACHE_DELETE' => 'Delete cached image',
+		'LabelRIGHT_EXPORT_SFV' => 'Export SFV',
+		'LabelRIGHT_EXPORT_CSV' => 'Export CSV',
+		'LabelRIGHT_SEARCH_DIRTY' => 'Search dirty sets',
+		'LabelRIGHT_SEARCH_TAGS' => 'Search tags',
 
 		'ButtonCancel' => 'Cancel',
 		'ButtonClean' => 'Clean',

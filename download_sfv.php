@@ -2,8 +2,15 @@
 
 include('cd.php');
 ini_set('max_execution_time', '3600');
-ob_start();
 $CurrentUser = Authentication::Authenticate();
+ob_start();
+
+if(!$CurrentUser->hasPermission(RIGHT_EXPORT_SFV))
+{
+	$e = new Error(RIGHTS_ERR_USERNOTALLOWED);
+	Error::AddError($e);
+	HTMLstuff::RefererRedirect();
+}
 
 $ModelID = Utils::SafeIntFromQS('model_id');
 $includepath = Utils::SafeIntFromQS('includepath');

@@ -45,38 +45,54 @@ if(!defined('DBHOSTNAME') || strlen(DBHOSTNAME) == 0 ||
 
 define('CANDYDOLLDB_VERSION', '1.8');
 
-define('RIGHT_ACCOUNT_LOGIN',	1);
-define('RIGHT_ACCOUNT_EDIT',	2);
-define('RIGHT_ACCOUNT_PASSWORD',3);
-define('RIGHT_IMPORT_XML',		4);
-define('RIGHT_EXPORT_XML',		5);
-define('RIGHT_MODEL_ADD',		6);
-define('RIGHT_MODEL_EDIT',		7);
-define('RIGHT_MODEL_DELETE',	8);
-define('RIGHT_SET_ADD',			9);
-define('RIGHT_SET_EDIT',		10);
-define('RIGHT_SET_DELETE',		11);
-define('RIGHT_IMAGE_ADD',		12);
-define('RIGHT_IMAGE_EDIT',		13);
-define('RIGHT_IMAGE_DELETE',	14);
-define('RIGHT_VIDEO_ADD',		15);
-define('RIGHT_VIDEO_EDIT',		16);
-define('RIGHT_VIDEO_DELETE',	17);
-define('RIGHT_TAG_ADD',			18);
-define('RIGHT_TAG_EDIT',		19);
-define('RIGHT_TAG_DELETE',		20);
-define('RIGHT_USER_ADD',		21);
-define('RIGHT_USER_EDIT',		22);
-define('RIGHT_USER_DELETE',		23);
-define('RIGHT_USER_RIGHTS',		24);
-define('RIGHT_EXPORT_ZIP',		25);
-define('RIGHT_EXPORT_ZIP_MULTI',26);
-define('RIGHT_EXPORT_INDEX',	27);
-define('RIGHT_SEARCH',			28);
-define('RIGHT_CACHE_CLEANUP',	29);
-define('RIGHT_TAG_CLEANUP',		30);
-define('RIGHT_CACHE_DELETE',	31);
-
+/* Rights */
+	define('RIGHT_ACCOUNT_LOGIN',	1);
+	define('RIGHT_ACCOUNT_EDIT',	2);
+	define('RIGHT_ACCOUNT_PASSWORD',3);
+	
+	define('RIGHT_MODEL_ADD',		4);
+	define('RIGHT_MODEL_EDIT',		5);
+	define('RIGHT_MODEL_DELETE',	6);
+	
+	define('RIGHT_SET_ADD',			7);
+	define('RIGHT_SET_EDIT',		8);
+	define('RIGHT_SET_DELETE',		9);
+	
+	define('RIGHT_IMAGE_ADD',		10);
+	define('RIGHT_IMAGE_EDIT',		11);
+	define('RIGHT_IMAGE_DELETE',	12);
+	
+	define('RIGHT_VIDEO_ADD',		13);
+	define('RIGHT_VIDEO_EDIT',		14);
+	define('RIGHT_VIDEO_DELETE',	15);
+	
+	define('RIGHT_TAG_ADD',			16);
+	define('RIGHT_TAG_EDIT',		17);
+	define('RIGHT_TAG_DELETE',		18);
+	
+	define('RIGHT_USER_ADD',		19);
+	define('RIGHT_USER_EDIT',		20);
+	define('RIGHT_USER_DELETE',		21);
+	define('RIGHT_USER_RIGHTS',		22);
+	
+	define('RIGHT_IMPORT_XML',		23);
+	define('RIGHT_EXPORT_XML',		24);
+	
+	define('RIGHT_EXPORT_ZIP',		25);
+	define('RIGHT_EXPORT_ZIP_MULTI',26);
+	
+	define('RIGHT_EXPORT_SFV',		27);
+	define('RIGHT_EXPORT_CSV',		28);
+	define('RIGHT_EXPORT_INDEX',	29);
+	
+	define('RIGHT_SEARCH_DIRTY',	30);
+	define('RIGHT_SEARCH_TAGS',		31);
+	
+	define('RIGHT_CACHE_CLEANUP',	32);
+	define('RIGHT_TAG_CLEANUP',		33);
+	define('RIGHT_CACHE_DELETE',	34);
+/* /Rights */
+	
 define('GENDER_UNKNOWN', 0);
 define('GENDER_FEMALE', 1);
 define('GENDER_MALE', 2);
