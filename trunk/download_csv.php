@@ -5,6 +5,13 @@ ini_set('max_execution_time', '3600');
 ob_start();
 $CurrentUser = Authentication::Authenticate();
 
+if(!$CurrentUser->hasPermission(RIGHT_EXPORT_CSV))
+{
+	$e = new Error(RIGHTS_ERR_USERNOTALLOWED);
+	Error::AddError($e);
+	HTMLstuff::RefererRedirect();
+}
+
 $ModelID = Utils::SafeIntFromQS('model_id');
 $includepath = Utils::SafeIntFromQS('includepath');
 $includepath = in_array($includepath, array(EXPORT_PATH_OPTION_NONE, EXPORT_PATH_OPTION_RELATIVE, EXPORT_PATH_OPTION_FULL)) ? $includepath : EXPORT_PATH_OPTION_NONE;
