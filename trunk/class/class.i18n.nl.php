@@ -254,6 +254,7 @@ class LabelsNL extends Labels
 		'ButtonCancel' => 'Annuleren',
 		'ButtonClean' => 'Opruimen',
 		'ButtonClearCacheImage' => 'Cachefoto verwijderen',
+		'ButtonClearCacheImages' => 'Cachefoto\'s verwijderen',
 		'ButtonClearIndexCacheImage' => 'Index-cachefoto verwijderen',
 		'ButtonCreateNewTag' => 'Nieuwe tag',
 		'ButtonDelete' => 'Verwijderen',

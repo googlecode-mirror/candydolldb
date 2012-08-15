@@ -1,5 +1,4 @@
 <?php
-
 include('cd.php');
 $CurrentUser = Authentication::Authenticate();
 
@@ -18,7 +17,57 @@ $ModelID = Utils::SafeIntFromQS('model_id');
 $Width = Utils::SafeIntFromQS('width');
 $Height = Utils::SafeIntFromQS('height');;
 
-$CacheImages = NULL;
+$DeleteSetsImages = Utils::SafeBoolFromQS('deleteimages');
+$DeleteSetsVideos = Utils::SafeBoolFromQS('deletevideos');
+
+$CacheImages = array();
+$MultipleImageIDs = NULL;
+$MultipleVideoIDs = NULL;
+
+if(!is_null($SetID) && $DeleteSetsImages)
+{
+	$imagesThisSet = Image::GetImages(
+		new ImageSearchParameters(FALSE, FALSE, $SetID)
+	);
+	
+	/* @var $im Image */
+	foreach ($imagesThisSet as $im)
+	{ $MultipleImageIDs[] = $im->getID(); }
+	
+	$cisp = new CacheImageSearchParameters(
+		FALSE, FALSE,
+		FALSE, FALSE,
+		FALSE, FALSE,
+		FALSE, FALSE,
+		FALSE, is_null($MultipleImageIDs) ? FALSE : $MultipleImageIDs
+	);
+	
+	if($cisp->getValues())
+	{ $CacheImages = array_merge($CacheImages, CacheImage::GetCacheImages($cisp)); }
+}
+
+if(!is_null($SetID) && $DeleteSetsVideos)
+{
+	$videosThisSet = Video::GetVideos(
+		new VideoSearchParameters(FALSE, FALSE, $SetID)
+	);
+
+	/* @var $vd Video */
+	foreach ($videosThisSet as $vd)
+	{ $MultipleVideoIDs[] = $vd->getID(); }
+
+	$cisp = new CacheImageSearchParameters(
+		FALSE, FALSE,
+		FALSE, FALSE,
+		FALSE, FALSE,
+		FALSE, FALSE,
+		FALSE, FALSE,
+		FALSE, is_null($MultipleVideoIDs) ? FALSE : $MultipleVideoIDs
+	);
+
+	if($cisp->getValues())
+	{ $CacheImages = array_merge($CacheImages, CacheImage::GetCacheImages($cisp)); }
+}
 
 $cisp = new CacheImageSearchParameters(
 	FALSE, FALSE,
@@ -32,14 +81,10 @@ $cisp = new CacheImageSearchParameters(
 );
 
 if($cisp->getValues())
-{
-	$CacheImages = CacheImage::GetCacheImages($cisp);
-}	
+{ $CacheImages = array_merge($CacheImages, CacheImage::GetCacheImages($cisp)); }
 
 if($CacheImages)
-{
-	CacheImage::DeleteMulti($CacheImages, $CurrentUser);
-}
+{ CacheImage::DeleteMulti($CacheImages, $CurrentUser); } 
 
 HTMLstuff::RefererRedirect();
 

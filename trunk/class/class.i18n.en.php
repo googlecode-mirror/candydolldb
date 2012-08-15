@@ -254,6 +254,7 @@ class LabelsEN extends Labels
 		'ButtonCancel' => 'Cancel',
 		'ButtonClean' => 'Clean',
 		'ButtonClearCacheImage' => 'Clear cacheimage',
+		'ButtonClearCacheImages' => 'Clear cacheimages',
 		'ButtonClearIndexCacheImage' => 'Clear index cacheimage',
 		'ButtonCreateNewTag' => 'Create new tag',
 		'ButtonDelete' => 'Delete',

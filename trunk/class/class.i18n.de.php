@@ -257,6 +257,7 @@ class LabelsDE extends Labels
 		'ButtonCancel' => 'Abbrechen',
 		'ButtonClean' => '',
 		'ButtonClearCacheImage' => '',
+		'ButtonClearCacheImages' => '',
 		'ButtonClearIndexCacheImage' => '',
 		'ButtonCreateNewTag' => '',
 		'ButtonDelete' => 'L&ouml;schen',
