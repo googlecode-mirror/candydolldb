@@ -15,7 +15,9 @@ if(!isset($ModelID))
 $Model = NULL;
 $SetRows = '';
 $SetCount = 0;
+$Video = NULL;
 
+$Videos = Video::GetVideos(new VideoSearchParameters(FALSE, FALSE, FALSE, FALSE, $ModelID));
 $Sets = Set::GetSets(new SetSearchParameters(FALSE, FALSE,  $ModelID));
 $Dates = Date::GetDates(new DateSearchParameters(FALSE, FALSE, FALSE, FALSE, $ModelID));
 
@@ -31,7 +33,13 @@ if($Sets)
 		if(!$Model) { $Model = $Set->getModel(); }
 
 		$DatesThisSet = Date::FilterDates($Dates, NULL, $ModelID, $Set->getID());
-	
+		$Video = Video::Filter($Videos, $ModelID, $Set->getID());
+
+		if($Video)
+		{
+			$Videoshow = $Video[0];
+		}
+
 		$DatesOutput = '';
 		if($DatesThisSet)
 		{
@@ -48,15 +56,13 @@ if($Sets)
 
 			$DatesOutput .= '</ul>';
 		}
-		
+
 		$SetRows .= sprintf(
 			"<div class=\"SetThumbGalItem\">
 			<h3 class=\"Hidden\">%1\$s %13\$s %2\$s</h3>
 			
 			<div class=\"SetThumbImageWrapper\">
-			<a href=\"image.php?model_id=%8\$d&amp;set_id=%6\$d\">
-			<img src=\"download_image.php?set_id=%6\$d&amp;landscape_only=true&amp;width=225&amp;height=150\" height=\"150\" alt=\"%1\$s %13\$s %2\$s\" title=\"%1\$s %13\$s %2\$s\" />
-			</a>
+			%27\$s
 			</div>
 			
 			<div class=\"SetThumbDataWrapper\">
@@ -109,8 +115,22 @@ if($Sets)
 			$lang->g('LabelDownloadImages'),
 			$lang->g('LabelDownloadVideos'),
 			$lang->g('LabelViewImages'),
-			$lang->g('LabelViewVideos')
-		);
+			$lang->g('LabelViewVideos'),
+			$Video && $Set->getContainsWhat() == 2 ? sprintf("<a href=\"video.php?model_id=%1\$d&amp;set_id=%2\$d\"><img src=\"download_image.php?video_id=%6\$d&amp;landscape_only=true&amp;width=225&amp;height=150\" height=\"150\" alt=\"%3\$s %4\$s %5\$s\" title=\"%3\$s %4\$s %5\$s\" /></a>",
+				$Model->getID(),
+				$Set->getID(),
+				htmlentities($Model->GetFullName()),
+				strtolower($lang->g('NavigationSet')),
+				htmlentities($Set->getName()),
+				$Videoshow->getID()
+				) : sprintf("<a href=\"image.php?model_id=%1\$d&amp;set_id=%2\$d\"><img src=\"download_image.php?set_id=%2\$d&amp;landscape_only=true&amp;width=225&amp;height=150\" height=\"150\" alt=\"%3\$s %4\$s %5\$s\" title=\"%3\$s %4\$s %5\$s\" /></a>",
+					$Model->getID(),
+					$Set->getID(),
+					htmlentities($Model->GetFullName()),
+					strtolower($lang->g('NavigationSet')),
+					htmlentities($Set->getName())
+					)
+			);
 	}
 }
 else
