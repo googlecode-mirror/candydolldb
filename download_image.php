@@ -241,8 +241,8 @@ else if($VideoID)
 				
 				Image::OutputImage(
 					$filename,
-					800,
-					600,
+					$Width,
+					$Height,
 					TRUE,
 					$CacheImage->getFilenameOnDisk()
 				);
