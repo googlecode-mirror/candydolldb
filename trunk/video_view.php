@@ -160,7 +160,7 @@ echo HTMLstuff::HtmlHeader(sprintf('%1$s - %2$s %3$s - %4$s',
 
 <div class="FormRow">
 <label for="txtFileCRC32">CRC32:</label>
-<input type="text" id="txtFileCRC32" name="txtFileCRC32" maxlength="8" value="<?php echo $Video->getFileCRC32()?>"<?php echo HTMLstuff::DisabledStr($DeleteImage)?> />
+<input type="text" id="txtFileCRC32" name="txtFileCRC32" maxlength="8" value="<?php echo $Video->getFileCRC32()?>"<?php echo HTMLstuff::DisabledStr($DeleteVideo)?> />
 </div>
 
 <div class="FormRow">
