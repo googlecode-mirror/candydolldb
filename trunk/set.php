@@ -125,7 +125,7 @@ if($Sets)
 					htmlentities($Model->GetFullName()),
 					strtolower($lang->g('NavigationSet')),
 					htmlentities($Set->getName()),
-					$Videoshow->getID())
+					$Video->getID())
 				
 				: sprintf("<a href=\"image.php?model_id=%1\$d&amp;set_id=%2\$d\">".
 					"<img src=\"download_image.php?set_id=%2\$d&amp;landscape_only=true&amp;width=225&amp;height=150\" height=\"150\" alt=\"%3\$s %4\$s %5\$s\" title=\"%3\$s %4\$s %5\$s\" />".
@@ -134,7 +134,8 @@ if($Sets)
 					$Set->getID(),
 					htmlentities($Model->GetFullName()),
 					strtolower($lang->g('NavigationSet')),
-			)
+					htmlentities($Set->getName())
+				)
 		);
 	}
 }
