@@ -24,6 +24,17 @@ if(!isset($ModelID))
 
 $NoErrorDuringPostback = TRUE;
 $DeleteSet = (array_key_exists('cmd', $_GET) && $_GET['cmd'] && ($_GET['cmd'] == COMMAND_DELETE));
+
+$DisableControls =
+	$DeleteSet ||
+	(!$CurrentUser->hasPermission(RIGHT_SET_EDIT) && !is_null($SetID)) ||
+	(!$CurrentUser->hasPermission(RIGHT_SET_ADD) && is_null($SetID));
+
+$DisableDefaultButton =
+	(!$CurrentUser->hasPermission(RIGHT_SET_DELETE) && !is_null($SetID) && $DeleteSet) ||
+	(!$CurrentUser->hasPermission(RIGHT_SET_EDIT) && !is_null($SetID)) ||
+	(!$CurrentUser->hasPermission(RIGHT_SET_ADD) && is_null($SetID));
+
 $ReturnURL = sprintf('set.php?model_id=%1$d', $ModelID);
 $DatesThisSet = array();
 
@@ -78,7 +89,7 @@ if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'SetView')
 	{
 		if($DeleteSet)
 		{
-			if(Set::Delete($Set, $CurrentUser))
+			if($CurrentUser->hasPermission(RIGHT_SET_DELETE) && Set::Delete($Set, $CurrentUser))
 			{
 				$CacheImages = CacheImage::GetCacheImages(new CacheImageSearchParameters(FALSE, FALSE, $Model->getID()));
 				CacheImage::DeleteMulti($CacheImages, $CurrentUser);
@@ -87,7 +98,7 @@ if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'SetView')
 				exit;
 			}
 		}
-		else
+		else if($CurrentUser->hasPermission(RIGHT_SET_EDIT))
 		{
 			$NoErrorDuringPostback = Set::Update($Set, $CurrentUser);
 			
@@ -96,7 +107,7 @@ if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'SetView')
 			}
 		}
 	}
-	else
+	else if($CurrentUser->hasPermission(RIGHT_SET_ADD))
 	{
 		if(($NoErrorDuringPostback = Set::Insert($Set, $CurrentUser)))
 		{
@@ -195,21 +206,21 @@ if($SetID)
 
 <div class="FormRow">
 <label for="txtPrefix"><?php echo $lang->g('LabelPrefix')?>:</label>
-<input type="text" id="txtPrefix" name="txtPrefix" maxlength="100" value="<?php echo $Set->getPrefix()?>"<?php echo HTMLstuff::DisabledStr($DeleteSet)?> />
+<input type="text" id="txtPrefix" name="txtPrefix" maxlength="100" value="<?php echo $Set->getPrefix()?>"<?php echo HTMLstuff::DisabledStr($DisableControls)?> />
 </div>
 
 <div class="FormRow">
 <label for="txtName"><?php echo $lang->g('LabelName')?>: <em>*</em></label>
-<input type="text" id="txtName" name="txtName" maxlength="100" value="<?php echo $Set->getName()?>"<?php echo HTMLstuff::DisabledStr($DeleteSet)?> />
+<input type="text" id="txtName" name="txtName" maxlength="100" value="<?php echo $Set->getName()?>"<?php echo HTMLstuff::DisabledStr($DisableControls)?> />
 </div>
 
 <div class="FormRow">
 <label><?php echo $lang->g('LabelContains')?>: </label>
-<input type="radio" id="radImages" name="radContains" value="<?php echo SET_CONTENT_IMAGE?>"<?php echo ($Set->getContainsWhat() & SET_CONTENT_IMAGE) > 0 ? ' checked="checked"' : NULL?><?php echo HTMLstuff::DisabledStr($DeleteSet)?> /> 
+<input type="radio" id="radImages" name="radContains" value="<?php echo SET_CONTENT_IMAGE?>"<?php echo ($Set->getContainsWhat() & SET_CONTENT_IMAGE) > 0 ? ' checked="checked"' : NULL?><?php echo HTMLstuff::DisabledStr($DisableControls)?> /> 
 <label for="radImages" class="Radio"><?php echo $lang->g('NavigationImages')?></label>
-<input type="radio" id="radVideos" name="radContains" value="<?php echo SET_CONTENT_VIDEO?>"<?php echo ($Set->getContainsWhat() & SET_CONTENT_VIDEO) > 0 ? ' checked="checked"' : NULL?><?php echo HTMLstuff::DisabledStr($DeleteSet)?> /> 
+<input type="radio" id="radVideos" name="radContains" value="<?php echo SET_CONTENT_VIDEO?>"<?php echo ($Set->getContainsWhat() & SET_CONTENT_VIDEO) > 0 ? ' checked="checked"' : NULL?><?php echo HTMLstuff::DisabledStr($DisableControls)?> /> 
 <label for="radVideos" class="Radio"><?php echo $lang->g('NavigationVideos')?></label>
-<input type="radio" id="radBoth" name="radContains" value="<?php echo (SET_CONTENT_IMAGE + SET_CONTENT_VIDEO)?>"<?php echo (($Set->getContainsWhat() & SET_CONTENT_IMAGE) > 0 && ($Set->getContainsWhat() & SET_CONTENT_VIDEO) > 0) ? ' checked="checked"' : NULL?><?php echo HTMLstuff::DisabledStr($DeleteSet)?> /> 
+<input type="radio" id="radBoth" name="radContains" value="<?php echo (SET_CONTENT_IMAGE + SET_CONTENT_VIDEO)?>"<?php echo (($Set->getContainsWhat() & SET_CONTENT_IMAGE) > 0 && ($Set->getContainsWhat() & SET_CONTENT_VIDEO) > 0) ? ' checked="checked"' : NULL?><?php echo HTMLstuff::DisabledStr($DisableControls)?> /> 
 <label for="radBoth" class="Radio"><?php echo $lang->g('LabelBoth')?></label>
 </div>
 
@@ -226,7 +237,7 @@ foreach ($DatesThisSet as $Date)
 				$Date->getID(),
 				Date::FormatDates(array($Date), 'Y-m-d'),
 				DATE_KIND_IMAGE,
-				$DeleteSet
+				$DisableControls
 			);
 		}
 	}
@@ -242,7 +253,7 @@ foreach ($DatesThisSet as $Date)
 				$Date->getID(),
 				Date::FormatDates(array($Date), 'Y-m-d'),
 				DATE_KIND_VIDEO,
-				$DeleteSet
+				$DisableControls
 			);
 		}
 	}
@@ -251,14 +262,14 @@ foreach ($DatesThisSet as $Date)
 
 <div class="FormRow">
 <label for="txtTags"><?php echo $lang->g('LabelTags')?> (CSV):</label>
-<input type="text" id="txtTags" name="txtTags" maxlength="400" class="TagsBox" value="<?php echo Tag2All::Tags2AllCSV($TagsThisSet)?>"<?php echo HTMLstuff::DisabledStr($DeleteSet)?> />
+<input type="text" id="txtTags" name="txtTags" maxlength="400" class="TagsBox" value="<?php echo Tag2All::Tags2AllCSV($TagsThisSet)?>"<?php echo HTMLstuff::DisabledStr($DisableControls)?> />
 </div>
 
 <div class="FormRow">
 <label>&nbsp;</label>
-<input type="submit" class="FormButton" value="<?php echo $DeleteSet ? $lang->g('ButtonDelete') : $lang->g('ButtonSave')?>" />
+<input type="submit" class="FormButton" value="<?php echo $DeleteSet ? $lang->g('ButtonDelete') : $lang->g('ButtonSave')?>"<?php echo HTMLstuff::DisabledStr($DisableDefaultButton)?> />
 <input type="button" class="FormButton" value="<?php echo $lang->g('ButtonCancel')?>" onclick="window.location='<?php echo $ReturnURL?>';" />
-<input type="button" class="FormButton" value="<?php echo $lang->g('ButtonClearCacheImages')?>" onclick="window.location='cacheimage_delete.php?set_id=<?php echo $SetID ?>&amp;deleteimages=true&amp;deletevideos=true';"<?php echo HTMLstuff::DisabledStr($DeleteSet)?> />
+<input type="button" class="FormButton" value="<?php echo $lang->g('ButtonClearCacheImage')?>" onclick="window.location='cacheimage_delete.php?set_id=<?php echo $SetID ?>';"<?php echo HTMLstuff::DisabledStr($DisableControls)?> />
 </div>
 
 <div class="Separator"></div>

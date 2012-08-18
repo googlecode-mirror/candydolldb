@@ -5,8 +5,17 @@ $CurrentUser = Authentication::Authenticate();
 HTMLstuff::RefererRegister($_SERVER['REQUEST_URI']);
 
 $ModelID = Utils::SafeIntFromQS('model_id');
-$DeleteModel = $CurrentUser->hasPermission(RIGHT_MODEL_DELETE) ? (array_key_exists('cmd', $_GET) && $_GET['cmd'] && ($_GET['cmd'] == COMMAND_DELETE)) : NULL;
-$EditModel = $CurrentUser->hasPermission(RIGHT_USER_EDIT);
+$DeleteModel = (array_key_exists('cmd', $_GET) && ($_GET['cmd'] == COMMAND_DELETE));
+
+$DisableControls =
+	$DeleteModel ||
+	(!$CurrentUser->hasPermission(RIGHT_MODEL_EDIT) && !is_null($ModelID)) ||
+	(!$CurrentUser->hasPermission(RIGHT_MODEL_ADD) && is_null($ModelID));
+
+$DisableDefaultButton =
+	(!$CurrentUser->hasPermission(RIGHT_MODEL_DELETE) && !is_null($ModelID) && $DeleteModel) || 
+	(!$CurrentUser->hasPermission(RIGHT_MODEL_EDIT) && !is_null($ModelID)) ||
+	(!$CurrentUser->hasPermission(RIGHT_MODEL_ADD) && is_null($ModelID));
 
 $TagsInDB = Tag::GetTags();
 $TagsThisModel = Tag2All::GetTag2Alls(new Tag2AllSearchParameters(
@@ -49,7 +58,7 @@ if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'ModelView')
 	{
 		if($DeleteModel)
 		{
-		    if(Model::Delete($Model, $CurrentUser))
+		    if($CurrentUser->hasPermission(RIGHT_MODEL_DELETE) && Model::Delete($Model, $CurrentUser))
 		    {
 		    	header('location:index.php');
 		    	exit;
@@ -57,7 +66,7 @@ if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'ModelView')
 		}
 		else
 		{
-		    if(Model::Update($Model, $CurrentUser))
+		    if($CurrentUser->hasPermission(RIGHT_MODEL_EDIT) && Model::Update($Model, $CurrentUser))
 		    {
 		    	Tag2All::HandleTags($tags, $TagsThisModel, $TagsInDB, $CurrentUser, $Model->getID(), NULL, NULL, NULL);
 		    	header('location:index.php');
@@ -67,7 +76,7 @@ if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'ModelView')
 	}
 	else
 	{
-		if(Model::Insert($Model, $CurrentUser))
+		if($CurrentUser->hasPermission(RIGHT_MODEL_ADD) && Model::Insert($Model, $CurrentUser))
 		{
 			Tag2All::HandleTags($tags, $TagsThisModel, $TagsInDB, $CurrentUser, $Model->getID(), NULL, NULL, NULL);
 			header('location:index.php');
@@ -105,39 +114,39 @@ if($ModelID)
 
 <div class="FormRow">
 <label for="txtFirstName"><?php echo $lang->g('LabelFirstname')?>: <em>*</em></label>
-<input type="text" id="txtFirstName" name="txtFirstName" maxlength="100" value="<?php echo $Model->getFirstName()?>"<?php echo HTMLstuff::DisabledStr($DeleteModel || !$EditModel)?> />
+<input type="text" id="txtFirstName" name="txtFirstName" maxlength="100" value="<?php echo $Model->getFirstName()?>"<?php echo HTMLstuff::DisabledStr($DisableControls)?> />
 </div>
 
 <div class="FormRow">
 <label for="txtLastName"><?php echo $lang->g('LabelLastname')?>:</label>
-<input type="text" id="txtLastName" name="txtLastName" maxlength="100" value="<?php echo $Model->getLastName()?>"<?php echo HTMLstuff::DisabledStr($DeleteModel || !$EditModel)?> />
+<input type="text" id="txtLastName" name="txtLastName" maxlength="100" value="<?php echo $Model->getLastName()?>"<?php echo HTMLstuff::DisabledStr($DisableControls)?> />
 </div>
 
 <div class="FormRow">
 <label for="txtBirthDate"><?php echo $lang->g('LabelBirthdate')?>:</label>
-<input type="text" id="txtBirthDate" name="txtBirthDate" class="DatePicker"	maxlength="10" value="<?php echo $Model->getBirthDate() > 0 ? date('Y-m-d', $Model->getBirthDate()) : NULL?>"<?php echo HTMLstuff::DisabledStr($DeleteModel || !$EditModel)?> />
+<input type="text" id="txtBirthDate" name="txtBirthDate" class="DatePicker"	maxlength="10" value="<?php echo $Model->getBirthDate() > 0 ? date('Y-m-d', $Model->getBirthDate()) : NULL?>"<?php echo HTMLstuff::DisabledStr($DisableControls)?> />
 </div>
 
 <div class="FormRow">
 <label for="txtTags"><?php echo $lang->g('LabelTags')?> (CSV):</label>
-<input type="text" id="txtTags" name="txtTags" maxlength="400" class="TagsBox" value="<?php echo Tag2All::Tags2AllCSV($TagsThisModel)?>"<?php echo HTMLstuff::DisabledStr($DeleteModel || !$EditModel)?> />
+<input type="text" id="txtTags" name="txtTags" maxlength="400" class="TagsBox" value="<?php echo Tag2All::Tags2AllCSV($TagsThisModel)?>"<?php echo HTMLstuff::DisabledStr($DisableControls)?> />
 </div>
 
 <div class="FormRow">
 <label for="txtRemarks"><?php echo $lang->g('LabelRemarks')?>:</label>
-<textarea id="txtRemarks" name="txtRemarks" cols="42" rows="16" <?php echo HTMLstuff::DisabledStr($DeleteModel || !$EditModel)?>><?php echo $Model->getRemarks()?></textarea>
+<textarea id="txtRemarks" name="txtRemarks" cols="42" rows="16" <?php echo HTMLstuff::DisabledStr($DisableControls)?>><?php echo $Model->getRemarks()?></textarea>
 </div>
 
 <div class="FormRow">
 <label>&nbsp;</label>
-<input type="submit"<?php echo HTMLstuff::DisabledStr(!$EditModel)?> class="FormButton" value="<?php echo $DeleteModel ? $lang->g('ButtonDelete') : $lang->g('ButtonSave')?>" />
+<input type="submit" class="FormButton" value="<?php echo $DeleteModel ? $lang->g('ButtonDelete') : $lang->g('ButtonSave')?>"<?php echo HTMLstuff::DisabledStr($DisableDefaultButton)?> />
 <input type="button" class="FormButton" value="<?php echo $lang->g('ButtonCancel')?>" onclick="window.location='index.php';" />
 </div>
 
 <div class="FormRow">
 <label>&nbsp;</label>
-<input type="button" class="FormButton" value="<?php echo $lang->g('ButtonClearCacheImage')?>" onclick="window.location='cacheimage_delete.php?model_id=<?php echo $ModelID ?>';"<?php echo HTMLstuff::DisabledStr($DeleteModel)?> />
-<input type="button" class="FormButton" value="<?php echo $lang->g('ButtonClearIndexCacheImage')?>" onclick="window.location='cacheimage_delete.php?index_id=<?php echo $ModelID ?>';"<?php echo HTMLstuff::DisabledStr($DeleteModel)?> />
+<input type="button" class="FormButton" value="<?php echo $lang->g('ButtonClearCacheImage')?>" onclick="window.location='cacheimage_delete.php?model_id=<?php echo $ModelID ?>';"<?php echo HTMLstuff::DisabledStr($DisableControls)?> />
+<input type="button" class="FormButton" value="<?php echo $lang->g('ButtonClearIndexCacheImage')?>" onclick="window.location='cacheimage_delete.php?index_id=<?php echo $ModelID ?>';"<?php echo HTMLstuff::DisabledStr($DisableControls)?> />
 </div>
 
 <div class="Separator"></div>
