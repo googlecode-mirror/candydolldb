@@ -14,7 +14,7 @@ $DisableControls =
 
 $DisableDefaultButton =
 	(!$CurrentUser->hasPermission(RIGHT_MODEL_DELETE) && !is_null($ModelID) && $DeleteModel) || 
-	(!$CurrentUser->hasPermission(RIGHT_MODEL_EDIT) && !is_null($ModelID)) ||
+	(!$CurrentUser->hasPermission(RIGHT_MODEL_EDIT) && !is_null($ModelID) && !$DeleteModel) ||
 	(!$CurrentUser->hasPermission(RIGHT_MODEL_ADD) && is_null($ModelID));
 
 $TagsInDB = Tag::GetTags();

@@ -4,10 +4,15 @@ include('cd.php');
 ini_set('max_execution_time', '3600');
 $CurrentUser = Authentication::Authenticate();
 
+if(!$CurrentUser->hasPermission(RIGHT_VIDEO_ADD) && !$CurrentUser->hasPermission(RIGHT_VIDEO_EDIT))
+{
+	$e = new Error(RIGHTS_ERR_USERNOTALLOWED);
+	Error::AddError($e);
+	HTMLstuff::RefererRedirect();
+}
 
 $ModelID = Utils::SafeIntFromQS('model_id');
 $SetID = Utils::SafeIntFromQS('set_id');
-
 
 $Models = Model::GetModels(new ModelSearchParameters(
 	is_null($ModelID) ? FALSE : $ModelID));
@@ -21,12 +26,10 @@ $Videos = Video::GetVideos(new VideoSearchParameters(
 		is_null($ModelID) ? FALSE : $ModelID));
 $CacheImages = CacheImage::GetCacheImages();
 
-
 if($SetID){
 	$Set = $Sets[0];
 	$Models = array($Set->getModel());
 }
-
 
 /* @var $Model Model */
 for($i = 0; $i < count($Models); $i++)
@@ -94,10 +97,14 @@ for($i = 0; $i < count($Models); $i++)
 				$VideoInDB->setFileCheckSum(md5_file($FileInfo->getRealPath()));
 				$VideoInDB->setFileCRC32(Utils::CalculateCRC32($FileInfo->getRealPath()));
 					
-				if(!$VideoInDB->getID())
-				{ Video::Insert($VideoInDB, $CurrentUser); }
-				else
-				{ Video::Update($VideoInDB, $CurrentUser); }
+				if(!$VideoInDB->getID() && $CurrentUser->hasPermission(RIGHT_VIDEO_ADD))
+				{
+					Video::Insert($VideoInDB, $CurrentUser);
+				}
+				else if($CurrentUser->hasPermission(RIGHT_VIDEO_EDIT))
+				{
+					Video::Update($VideoInDB, $CurrentUser);
+				}
 			}
 		}
 	}
@@ -109,7 +116,6 @@ for($i = 0; $i < count($Models); $i++)
 	{ $bi->Finish(); }
 }
 
-if(!isset($argv) || !$argc)
-{ HTMLstuff::RefererRedirect(); }
+HTMLstuff::RefererRedirect();
 
 ?>

@@ -4,13 +4,18 @@ include('cd.php');
 ini_set('max_execution_time', '3600');
 $CurrentUser = Authentication::Authenticate();
 
+if(!$CurrentUser->hasPermission(RIGHT_IMAGE_ADD) && !$CurrentUser->hasPermission(RIGHT_IMAGE_EDIT))
+{
+	$e = new Error(RIGHTS_ERR_USERNOTALLOWED);
+	Error::AddError($e);
+	HTMLstuff::RefererRedirect();
+}
 
 $ModelID = Utils::SafeIntFromQS('model_id');
 $SetID = Utils::SafeIntFromQS('set_id');
 
 $CacheImages = array();
 $CacheImage = NULL;
-
 
 $Models = Model::GetModels(new ModelSearchParameters(
 	is_null($ModelID) ? FALSE : $ModelID));
@@ -24,12 +29,10 @@ $Images = Image::GetImages(new ImageSearchParameters(
 	is_null($ModelID) ? FALSE : $ModelID));
 $CacheImages = CacheImage::GetCacheImages();
 
-
 if($SetID && $Sets){
 	$Set = $Sets[0];
 	$Models = array($Set->getModel());
 }
-
 
 /* @var $Model Model */
 for($i = 0; $i < count($Models); $i++)
@@ -116,10 +119,14 @@ for($i = 0; $i < count($Models); $i++)
 				$ImageInDB->setImageWidth($info[0]);
 				$ImageInDB->setImageHeight($info[1]);
 					
-				if(!$ImageInDB->getID())
-				{ Image::Insert($ImageInDB, $CurrentUser); }
-				else
-				{ Image::Update($ImageInDB, $CurrentUser); }
+				if(!$ImageInDB->getID() && $CurrentUser->hasPermission(RIGHT_IMAGE_ADD))
+				{
+					Image::Insert($ImageInDB, $CurrentUser);
+				}
+				else if($CurrentUser->hasPermission(RIGHT_IMAGE_EDIT))
+				{
+					Image::Update($ImageInDB, $CurrentUser);
+				}
 			}
 		}
 	}
@@ -131,7 +138,6 @@ for($i = 0; $i < count($Models); $i++)
 	{ $bi->Finish(); }
 }
 
-if(!isset($argv) || !$argc)
-{ HTMLstuff::RefererRedirect(); }
+HTMLstuff::RefererRedirect();
 
 ?>

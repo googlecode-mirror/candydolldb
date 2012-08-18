@@ -32,7 +32,7 @@ $DisableControls =
 
 $DisableDefaultButton =
 	(!$CurrentUser->hasPermission(RIGHT_SET_DELETE) && !is_null($SetID) && $DeleteSet) ||
-	(!$CurrentUser->hasPermission(RIGHT_SET_EDIT) && !is_null($SetID)) ||
+	(!$CurrentUser->hasPermission(RIGHT_SET_EDIT) && !is_null($SetID) && !$DeleteSet) ||
 	(!$CurrentUser->hasPermission(RIGHT_SET_ADD) && is_null($SetID));
 
 $ReturnURL = sprintf('set.php?model_id=%1$d', $ModelID);
