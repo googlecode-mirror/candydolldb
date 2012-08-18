@@ -32,6 +32,16 @@ if(!isset($SetID))
 $DeleteImage = (array_key_exists('cmd', $_GET) && $_GET['cmd'] && ($_GET['cmd'] == COMMAND_DELETE));
 $ReturnURL = sprintf('image.php?model_id=%1$d&set_id=%2$d', $ModelID, $SetID);
 
+$DisableControls =
+	$DeleteImage ||
+	(!$CurrentUser->hasPermission(RIGHT_IMAGE_EDIT) && !is_null($ImageID)) ||
+	(!$CurrentUser->hasPermission(RIGHT_IMAGE_ADD) && is_null($ImageID));
+
+$DisableDefaultButton =
+	(!$CurrentUser->hasPermission(RIGHT_IMAGE_DELETE) && !is_null($ImageID) && $DeleteImage) ||
+	(!$CurrentUser->hasPermission(RIGHT_IMAGE_EDIT) && !is_null($ImageID) && !$DeleteImage) ||
+	(!$CurrentUser->hasPermission(RIGHT_IMAGE_ADD) && is_null($ImageID));
+
 /* @var $Image Image */
 /* @var $Set Set */
 /* @var $Model Model */
@@ -166,48 +176,48 @@ if($ImageID)
 
 <div class="FormRow">
 <label for="txtFilename"><?php echo $lang->g('LabelFilename')?>: <em>*</em></label>
-<input type="text" id="txtFilename" name="txtFilename" maxlength="100" value="<?php echo $Image->getFileName()?>"<?php echo HTMLstuff::DisabledStr($DeleteImage)?> />
+<input type="text" id="txtFilename" name="txtFilename" maxlength="100" value="<?php echo $Image->getFileName()?>"<?php echo HTMLstuff::DisabledStr($DisableControls)?> />
 </div>
 
 <div class="FormRow">
 <label for="txtFileExtension"><?php echo $lang->g('LabelExtension')?>: <em>*</em></label>
-<input type="text" id="txtFileExtension" name="txtFileExtension" maxlength="10" value="<?php echo $Image->getFileExtension()?>"<?php echo HTMLstuff::DisabledStr($DeleteImage)?> />
+<input type="text" id="txtFileExtension" name="txtFileExtension" maxlength="10" value="<?php echo $Image->getFileExtension()?>"<?php echo HTMLstuff::DisabledStr($DisableControls)?> />
 </div>
 
 <div class="FormRow">
 <label for="txtFilesize"><?php echo $lang->g('LabelFilesize')?> (bytes): <em>*</em></label>
-<input type="text" id="txtFilesize" name="txtFilesize" maxlength="10" value="<?php echo $Image->getFileSize()?>"<?php echo HTMLstuff::DisabledStr($DeleteImage)?> />
+<input type="text" id="txtFilesize" name="txtFilesize" maxlength="10" value="<?php echo $Image->getFileSize()?>"<?php echo HTMLstuff::DisabledStr($DisableControls)?> />
 </div>
 
 <div class="FormRow">
 <label for="txtFileChecksum"><?php echo $lang->g('LabelMD5Checksum')?>:</label>
-<input type="text" id="txtFileChecksum" name="txtFileChecksum" maxlength="32" value="<?php echo $Image->getFileCheckSum()?>"<?php echo HTMLstuff::DisabledStr($DeleteImage)?> />
+<input type="text" id="txtFileChecksum" name="txtFileChecksum" maxlength="32" value="<?php echo $Image->getFileCheckSum()?>"<?php echo HTMLstuff::DisabledStr($DisableControls)?> />
 </div>
 
 <div class="FormRow">
 <label for="txtFileCRC32">CRC32:</label>
-<input type="text" id="txtFileCRC32" name="txtFileCRC32" maxlength="8" value="<?php echo $Image->getFileCRC32()?>"<?php echo HTMLstuff::DisabledStr($DeleteImage)?> />
+<input type="text" id="txtFileCRC32" name="txtFileCRC32" maxlength="8" value="<?php echo $Image->getFileCRC32()?>"<?php echo HTMLstuff::DisabledStr($DisableControls)?> />
 </div>
 
 <div class="FormRow">
 <label for="txtImageWidth"><?php echo $lang->g('LabelWidth')?> (pixels):</label>
-<input type="text" id="txtImageWidth" name="txtImageWidth" maxlength="10" value="<?php echo $Image->getImageWidth()?>"<?php echo HTMLstuff::DisabledStr($DeleteImage)?> />
+<input type="text" id="txtImageWidth" name="txtImageWidth" maxlength="10" value="<?php echo $Image->getImageWidth()?>"<?php echo HTMLstuff::DisabledStr($DisableControls)?> />
 </div>
 
 <div class="FormRow">
 <label for="txtImageHeight"><?php echo $lang->g('LabelHeight')?> (pixels):</label>
-<input type="text" id="txtImageHeight" name="txtImageHeight" maxlength="10" value="<?php echo $Image->getImageHeight()?>"<?php echo HTMLstuff::DisabledStr($DeleteImage)?> />
+<input type="text" id="txtImageHeight" name="txtImageHeight" maxlength="10" value="<?php echo $Image->getImageHeight()?>"<?php echo HTMLstuff::DisabledStr($DisableControls)?> />
 </div>
 
 <div class="FormRow">
 <label for="txtTags"><?php echo $lang->g('LabelTags')?> (CSV):</label>
-<input type="text" id="txtTags" name="txtTags" maxlength="400" class="TagsBox" value="<?php echo Tag2All::Tags2AllCSV($TagsThisImage)?>"<?php echo HTMLstuff::DisabledStr($DeleteImage)?> />
+<input type="text" id="txtTags" name="txtTags" maxlength="400" class="TagsBox" value="<?php echo Tag2All::Tags2AllCSV($TagsThisImage)?>"<?php echo HTMLstuff::DisabledStr($DisableControls)?> />
 </div>
 
 <div class="FormRow"><label>&nbsp;</label>
-<input type="submit" class="FormButton" value="<?php echo $DeleteImage ? $lang->g('ButtonDelete') : $lang->g('ButtonSave')?>" />
+<input type="submit" class="FormButton" value="<?php echo $DeleteImage ? $lang->g('ButtonDelete') : $lang->g('ButtonSave')?>"<?php echo HTMLstuff::DisabledStr($DisableDefaultButton)?> />
 <input type="button" class="FormButton" value="<?php echo $lang->g('ButtonCancel')?>" onclick="window.location='<?php echo htmlentities($ReturnURL)?>';" />
-<input type="button" class="FormButton" value="<?php echo $lang->g('ButtonClearCacheImage')?>" onclick="window.location='cacheimage_delete.php?image_id=<?php echo $ImageID ?>';"<?php echo HTMLstuff::DisabledStr($DeleteImage)?> />
+<input type="button" class="FormButton" value="<?php echo $lang->g('ButtonClearCacheImage')?>" onclick="window.location='cacheimage_delete.php?image_id=<?php echo $ImageID ?>';"<?php echo HTMLstuff::DisabledStr($DisableControls)?> />
 </div>
 
 <div class="Separator"></div>
