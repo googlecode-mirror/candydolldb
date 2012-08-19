@@ -63,7 +63,18 @@ class Authentication
 				
 				$lang->setLanguages(array($User->getLanguage()));
 				
-				return $User;
+				if($User->hasPermission(RIGHT_ACCOUNT_LOGIN))
+				{
+					return $User;
+				}
+				else
+				{
+					$e = new Error(RIGHTS_ERR_USERNOTALLOWED);
+					Error::AddError($e);
+					
+					header('location:login.php#2');
+					exit;
+				}
 			}
 			else
 			{
