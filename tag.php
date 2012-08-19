@@ -14,15 +14,25 @@ $Tag = $TagID && $Tag ? $Tag[0] : new Tag();
 $Tagcount = 0;
 $TagList = NULL;
 
+$DisableControls =
+	$DeleteTag ||
+	(!$CurrentUser->hasPermission(RIGHT_TAG_EDIT) && !is_null($TagID)) ||
+	(!$CurrentUser->hasPermission(RIGHT_TAG_ADD) && is_null($TagID));
+
+$DisableDefaultButton =
+	(!$CurrentUser->hasPermission(RIGHT_TAG_DELETE) && !is_null($TagID) && $DeleteTag) ||
+	(!$CurrentUser->hasPermission(RIGHT_TAG_EDIT) && !is_null($TagID) && !$DeleteTag) ||
+	(!$CurrentUser->hasPermission(RIGHT_TAG_ADD) && is_null($TagID));
+
 if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'TagView')
 {
-	$Tag->setName($_POST['txtName']);	
+	$Tag->setName(empty($_POST['txtName']) ? NULL : $_POST['txtName']);	
 	
 	if($Tag->getID())
 	{
 		if($DeleteTag)
 		{
-			if(Tag::Delete($Tag, $CurrentUser))
+			if($CurrentUser->hasPermission(RIGHT_TAG_DELETE) && Tag::Delete($Tag, $CurrentUser))
 			{
 				$t2as = Tag2All::GetTag2Alls(new Tag2AllSearchParameters($Tag->getID()));
 				Tag2All::DeleteMulti($t2as, $CurrentUser);
@@ -33,7 +43,7 @@ if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'TagView')
 		}
 		else
 		{
-			if(Tag::Update($Tag, $CurrentUser))
+			if($CurrentUser->hasPermission(RIGHT_TAG_EDIT) && Tag::Update($Tag, $CurrentUser))
 			{
 				header('location:'.$_SERVER['PHP_SELF']);
 				exit;
@@ -42,7 +52,7 @@ if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'TagView')
 	}
 	else
 	{
-		if(Tag::Insert($Tag, $CurrentUser))
+		if($CurrentUser->hasPermission(RIGHT_TAG_ADD) && Tag::Insert($Tag, $CurrentUser))
 		{
 			header('location:'.$_SERVER['PHP_SELF']);
 			exit;
@@ -79,19 +89,19 @@ echo HTMLstuff::HtmlHeader($lang->g('NavigationManageTags'), $CurrentUser);
 
 <div class="FormRow">
 <label for="txtName" style="width:60px;"><?php echo $lang->g('LabelName')?>: <em>*</em></label>
-<input type="text" id="txtName" name="txtName" maxlength="50" value="<?php echo $Tag->getName()?>"<?php echo HTMLstuff::DisabledStr($DeleteTag)?> />
+<input type="text" id="txtName" name="txtName" maxlength="50" value="<?php echo $Tag->getName()?>"<?php echo HTMLstuff::DisabledStr($DisableControls)?> />
 </div>
 
 <div class="FormRow">
 <label style="width:60px;">&nbsp;</label>
-<input type="submit" class="FormButton" value="<?php echo $DeleteTag ? $lang->g('ButtonDelete') : $lang->g('ButtonSave')?>" />
+<input type="submit" class="FormButton" value="<?php echo $DeleteTag ? $lang->g('ButtonDelete') : $lang->g('ButtonSave')?>"<?php echo HTMLstuff::DisabledStr($DisableDefaultButton)?> />
 <input type="button" class="FormButton" value="<?php echo $lang->g('ButtonCancel')?>" onclick="window.location='tag.php';" />
 
 <?php if($Tag->getID()) { ?>
-	<input type="checkbox" id="chkDel" title="<?php echo $lang->g('LabelDeleteSelectedTag')?>" onclick="
+	<input type="checkbox" id="chkDel" title="<?php echo $lang->g('LabelDeleteSelectedTag')?>"<?php echo HTMLstuff::DisabledStr(!$CurrentUser->hasPermission(RIGHT_TAG_DELETE))?> onclick="
 		$('#hidTagToDelete').val(<?php echo $Tag->getID()?>); 
 		$('#txtName, #chkDel').attr('disabled', 'disabled');
-		$('input[type=submit]').val('<?php echo $lang->g('ButtonDelete')?>');" />
+		$('input[type=submit]').val('<?php echo $lang->g('ButtonDelete')?>').attr('disabled', false);" />
 <?php } ?>
 
 <input type="button" class="FormButton" value="<?php echo $lang->g('ButtonClean')?>"

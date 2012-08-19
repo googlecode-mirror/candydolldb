@@ -13,6 +13,19 @@ $LanguageOptions = NULL;
 $DateFormatOptions = NULL;
 $RightsCheckboxes = NULL;
 
+$DisableControls =
+	$DeleteUser ||
+	(!$CurrentUser->hasPermission(RIGHT_USER_EDIT) && !is_null($UserID)) ||
+	(!$CurrentUser->hasPermission(RIGHT_USER_ADD) && is_null($UserID));
+
+$DisableDefaultButton =
+	(!$CurrentUser->hasPermission(RIGHT_USER_DELETE) && !is_null($UserID) && $DeleteUser) ||
+	(!$CurrentUser->hasPermission(RIGHT_USER_EDIT) && !is_null($UserID) && !$DeleteUser) ||
+	(!$CurrentUser->hasPermission(RIGHT_USER_ADD) && is_null($UserID));
+
+$DisableRights = 
+	$DeleteUser ||
+	(!$CurrentUser->hasPermission(RIGHT_USER_RIGHTS) && !is_null($UserID));
 
 /* @var $User User */
 if($UserID)
@@ -181,7 +194,7 @@ foreach(Rights::getDefinedRights() as $k => $v)
 		$k,
 		$lang->g('Label'.$k),
 		HTMLstuff::CheckedStr($User->hasPermission($v)),
-		HTMLstuff::DisabledStr($DeleteUser)
+		HTMLstuff::DisabledStr($DisableRights)
 	);
 }
 
@@ -225,35 +238,35 @@ function ToggleBoxes(){
 <?php if($User->getID() == $CurrentUser->getID() || $User->getUserName() == $lang->g('LabelNewUser')){ ?>
 <div class="FormRow">
 <label for="txtUserName"><?php echo $lang->g('LabelUsername')?>: <em>*</em></label>
-<input type="text" id="txtUserName" name="txtUserName" maxlength="50" value="<?php echo $User->getUserName()?>"<?php echo HTMLstuff::DisabledStr($DeleteUser)?> />
+<input type="text" id="txtUserName" name="txtUserName" maxlength="50" value="<?php echo $User->getUserName()?>"<?php echo HTMLstuff::DisabledStr($DisableControls)?> />
 </div>
 
 <div class="FormRow">
 <label for="txtPassword"><?php echo $lang->g('LabelPassword')?>:<?php echo $UserID ? '' : ' <em>*</em>'?></label>
-<input type="password" id="txtPassword" name="txtPassword" maxlength="100" value=""<?php echo HTMLstuff::DisabledStr($DeleteUser)?> />
-<input type="button" id="btnGenerate" name="btnGenerate" value="<?php echo $lang->g('ButtonGenerate')?>"<?php echo HTMLstuff::DisabledStr($DeleteUser)?> onclick="$.get('ajax_genpass.php', function(data){$('#txtGenerated, #txtPassword, #txtRepeatPassword').val(data);});" />
-<input type="text" id="txtGenerated" name="txtGenerated" class="Small" readonly="readonly" maxlength="10" value=""<?php echo HTMLstuff::DisabledStr($DeleteUser)?> />
+<input type="password" id="txtPassword" name="txtPassword" maxlength="100" value=""<?php echo HTMLstuff::DisabledStr($DisableControls)?> />
+<input type="button" id="btnGenerate" name="btnGenerate" value="<?php echo $lang->g('ButtonGenerate')?>"<?php echo HTMLstuff::DisabledStr($DisableControls)?> onclick="$.get('ajax_genpass.php', function(data){$('#txtGenerated, #txtPassword, #txtRepeatPassword').val(data);});" />
+<input type="text" id="txtGenerated" name="txtGenerated" class="Small" readonly="readonly" maxlength="10" value=""<?php echo HTMLstuff::DisabledStr($DisableControls)?> />
 </div>
 
 <div class="FormRow">
 <label for="txtRepeatPassword"><?php echo $lang->g('LabelRepeatPassword')?>:<?php echo $UserID ? '' : ' <em>*</em>'?></label>
-<input type="password" id="txtRepeatPassword" name="txtRepeatPassword" maxlength="100" value=""<?php echo HTMLstuff::DisabledStr($DeleteUser)?> />
+<input type="password" id="txtRepeatPassword" name="txtRepeatPassword" maxlength="100" value=""<?php echo HTMLstuff::DisabledStr($DisableControls)?> />
 </div>
 <? } ?>
 
 <div class="FormRow">
 <label for="selectLanguage"><?php echo $lang->g('LabelLanguage')?>:</label>
-<select id="selectLanguage" name="selectLanguage"<?php echo HTMLstuff::DisabledStr($DeleteUser)?>><?php echo $LanguageOptions ?></select>
+<select id="selectLanguage" name="selectLanguage"<?php echo HTMLstuff::DisabledStr($DisableControls)?>><?php echo $LanguageOptions ?></select>
 </div>
 
 <div class="FormRow">
 <label for="selectDateformat"><?php echo $lang->g('LabelSelectDateFormat')?>:</label>
-<select id="selectDateformat" name="selectDateformat"<?php echo HTMLstuff::DisabledStr($DeleteUser)?>><?php echo $DateFormatOptions ?></select>
+<select id="selectDateformat" name="selectDateformat"<?php echo HTMLstuff::DisabledStr($DisableControls)?>><?php echo $DateFormatOptions ?></select>
 </div>
 
 <div class="FormRow">
 <label for="selectImageview"><?php echo $lang->g('LabelSelectImageFormat')?>:</label>
-<select id="selectImageview" name="selectImageview"<?php echo HTMLstuff::DisabledStr($DeleteUser)?>>
+<select id="selectImageview" name="selectImageview"<?php echo HTMLstuff::DisabledStr($DisableControls)?>>
 <option value="detail" <?php echo $User->getImageview() == 'detail' ? ' selected="selected"' : NULL ?>><?php echo $lang->g('LabelViewModeDetail').$lang->g('LabelSuffixDefault')?></option>
 <option value="thumb" <?php echo $User->getImageview() == 'thumb' ? ' selected="selected"' : NULL ?>><?php echo $lang->g('LabelViewModeThumbnail')?></option>
 
@@ -262,40 +275,40 @@ function ToggleBoxes(){
 
 <div class="FormRow">
 <label><?php echo $lang->g('LabelGender')?>: </label>
-<input type="radio" id="radFemale" name="radGender" value="<?php echo GENDER_FEMALE?>"<?php echo $User->getGender() == GENDER_FEMALE ? ' checked="checked"' : NULL?><?php echo HTMLstuff::DisabledStr($DeleteUser)?> /> 
+<input type="radio" id="radFemale" name="radGender" value="<?php echo GENDER_FEMALE?>"<?php echo $User->getGender() == GENDER_FEMALE ? ' checked="checked"' : NULL?><?php echo HTMLstuff::DisabledStr($DisableControls)?> /> 
 <label for="radFemale" class="Radio"><?php echo $lang->g('LabelFemale')?></label>
-<input type="radio" id="radMale" name="radGender" value="<?php echo GENDER_MALE?>"<?php echo $User->getGender() == GENDER_MALE ? ' checked="checked"' : NULL?><?php echo HTMLstuff::DisabledStr($DeleteUser)?> /> 
+<input type="radio" id="radMale" name="radGender" value="<?php echo GENDER_MALE?>"<?php echo $User->getGender() == GENDER_MALE ? ' checked="checked"' : NULL?><?php echo HTMLstuff::DisabledStr($DisableControls)?> /> 
 <label for="radMale" class="Radio"><?php echo $lang->g('LabelMale')?></label>
 </div>
 
 <div class="FormRow">
 <label for="txtFirstName"><?php echo $lang->g('LabelFirstname')?>: <em>*</em></label>
-<input type="text" id="txtFirstName" name="txtFirstName" maxlength="100" value="<?php echo $User->getFirstName()?>"<?php echo HTMLstuff::DisabledStr($DeleteUser)?> />
+<input type="text" id="txtFirstName" name="txtFirstName" maxlength="100" value="<?php echo $User->getFirstName()?>"<?php echo HTMLstuff::DisabledStr($DisableControls)?> />
 </div>
 
 <div class="FormRow">
 <label for="txtInsertion"><?php echo $lang->g('LabelInsertion')?>:</label>
-<input type="text" id="txtInsertion" name="txtInsertion" maxlength="20" value="<?php echo $User->getInsertion()?>"<?php echo HTMLstuff::DisabledStr($DeleteUser)?> />
+<input type="text" id="txtInsertion" name="txtInsertion" maxlength="20" value="<?php echo $User->getInsertion()?>"<?php echo HTMLstuff::DisabledStr($DisableControls)?> />
 </div>
 
 <div class="FormRow">
 <label for="txtLastName"><?php echo $lang->g('LabelLastname')?>: <em>*</em></label>
-<input type="text" id="txtLastName" name="txtLastName" maxlength="100" value="<?php echo $User->getLastName()?>"<?php echo HTMLstuff::DisabledStr($DeleteUser)?> />
+<input type="text" id="txtLastName" name="txtLastName" maxlength="100" value="<?php echo $User->getLastName()?>"<?php echo HTMLstuff::DisabledStr($DisableControls)?> />
 </div>
 
 <div class="FormRow">
 <label for="txtEmailAddress"><?php echo $lang->g('LabelEmailAddress')?>: <em>*</em></label>
-<input type="text" id="txtEmailAddress" name="txtEmailAddress" maxlength="255" value="<?php echo $User->getEmailAddress()?>"<?php echo HTMLstuff::DisabledStr($DeleteUser)?> />
+<input type="text" id="txtEmailAddress" name="txtEmailAddress" maxlength="255" value="<?php echo $User->getEmailAddress()?>"<?php echo HTMLstuff::DisabledStr($DisableControls)?> />
 </div>
 
 <div class="FormRow">
 <label for="txtBirthDate"><?php echo $lang->g('LabelBirthdate')?>:</label>
-<input type="text" id="txtBirthDate" name="txtBirthDate" class="DatePicker"	maxlength="10" value="<?php echo $User->getBirthDate() > 0 ? date('Y-m-d', $User->getBirthDate()) : NULL?>"<?php echo HTMLstuff::DisabledStr($DeleteUser)?> />
+<input type="text" id="txtBirthDate" name="txtBirthDate" class="DatePicker"	maxlength="10" value="<?php echo $User->getBirthDate() > 0 ? date('Y-m-d', $User->getBirthDate()) : NULL?>"<?php echo HTMLstuff::DisabledStr($DisableControls)?> />
 </div>
 
 <div class="FormRow">
 <label><?php echo $lang->g('LabelUserRights')?>:</label><br />
-<label for="chkToggleRights"><input type="checkbox" id="chkToggleRights" name="chkToggleRights" onclick="ToggleBoxes();"/>&nbsp;<?php echo $lang->g('ButtonToggle')?></label>
+<label for="chkToggleRights"><input type="checkbox" id="chkToggleRights" name="chkToggleRights"<?php echo HTMLstuff::DisabledStr($DisableControls)?> onclick="ToggleBoxes();"/>&nbsp;<?php echo $lang->g('ButtonToggle')?></label>
 	<div class="CheckBoxMadness">
 	<ul><?php echo $RightsCheckboxes?></ul>
 	</div>
@@ -303,7 +316,7 @@ function ToggleBoxes(){
 
 <div class="FormRow Clear">
 <label>&nbsp;</label>
-<input type="submit" id="submitform" class="FormButton" value="<?php echo $DeleteUser ? $lang->g('ButtonDelete') : $lang->g('ButtonSave')?>" <?php echo ($User->getID() == $CurrentUser->getID() || $User->getUserName() == $lang->g('LabelNewUser')) ?  'disabled="disabled"' : NULL ?> />
+<input type="submit" id="submitform" class="FormButton" value="<?php echo $DeleteUser ? $lang->g('ButtonDelete') : $lang->g('ButtonSave')?>" <?php echo HTMLstuff::DisabledStr($DisableDefaultButton) ?> />
 <input type="button" class="FormButton" value="<?php echo $lang->g('ButtonCancel')?>" onclick="window.location='user.php';" />
 </div>
 
