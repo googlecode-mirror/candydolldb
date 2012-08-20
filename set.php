@@ -74,11 +74,11 @@ if($Sets)
 			</div>
 			
 			<div class=\"SetThumbButtonWrapper\">
-			<a href=\"set_view.php?model_id=%8\$d&amp;set_id=%6\$d\"><img src=\"images/button_edit.png\" width=\"16\" height=\"16\" title=\"%19\$s\" alt=\"%19\$s\"/></a>
-			<a href=\"set_view.php?model_id=%8\$d&amp;set_id=%6\$d&amp;cmd=%7\$s\"><img src=\"images/button_delete.png\" width=\"16\" height=\"16\" title=\"%20\$s\" alt=\"%20\$s\"/></a>
-			<a href=\"import_image.php?set_id=%6\$d\"><img src=\"images/button_upload.png\" width=\"16\" height=\"16\" title=\"%21\$s\" alt=\"%21\$s\"/></a>
-			<a href=\"import_video.php?set_id=%6\$d\"><img src=\"images/button_upload.png\" width=\"16\" height=\"16\" title=\"%22\$s\" alt=\"%22\$s\"/></a>
-			<a href=\"download_zip.php?set_id=%6\$d\"><img src=\"images/button_download.png\" width=\"16\" height=\"16\" title=\"%23\$s\" alt=\"%23\$s\"/></a>
+			%28\$s
+			%29\$s
+			%30\$s
+			%31\$s
+			%32\$s
 			<a href=\"download_vid.php?set_id=%6\$d\"><img src=\"images/button_download.png\" width=\"16\" height=\"16\" title=\"%24\$s\" alt=\"%24\$s\"/></a>
 			<a href=\"image.php?model_id=%8\$d&amp;set_id=%6\$d\"><img src=\"images/button_view.png\" width=\"16\" height=\"16\" title=\"%25\$s\" alt=\"%25\$s\"/></a>
 			<a href=\"video.php?model_id=%8\$d&amp;set_id=%6\$d\"><img src=\"images/button_view.png\" width=\"16\" height=\"16\" title=\"%26\$s\" alt=\"%26\$s\"/></a>
@@ -135,7 +135,27 @@ if($Sets)
 					htmlentities($Model->GetFullName()),
 					strtolower($lang->g('NavigationSet')),
 					htmlentities($Set->getName())
-				)
+				),
+			
+			$CurrentUser->hasPermission(RIGHT_SET_EDIT) ?
+				sprintf("<a href=\"set_view.php?model_id=%1\$d&amp;set_id=%2\$d\"><img src=\"images/button_edit.png\" width=\"16\" height=\"16\" title=\"%3\$s\" alt=\"%3\$s\"/></a>", $ModelID, $Set->getID(), $lang->g('LabelEditSet')) :
+				sprintf("<a href=\"#\"><img src=\"images/button_edit_invalid.png\" width=\"16\" height=\"16\" title=\"%1\$s\" alt=\"%1\$s\"/></a>", $lang->g('LabelNotAllowed')),
+			
+			$CurrentUser->hasPermission(RIGHT_SET_DELETE) ?
+				sprintf("<a href=\"set_view.php?model_id=%1\$d&amp;set_id=%2\$d&amp;cmd=%4\$s\"><img src=\"images/button_delete.png\" width=\"16\" height=\"16\" title=\"%3\$s\" alt=\"%3\$s\"/></a>", $ModelID, $Set->getID(), $lang->g('LabelDeleteSet'), COMMAND_DELETE) :
+				sprintf("<a href=\"#\"><img src=\"images/button_delete_invalid.png\" width=\"16\" height=\"16\" title=\"%1\$s\" alt=\"%1\$s\"/></a>", $lang->g('LabelNotAllowed')),
+		
+			$CurrentUser->hasPermission(RIGHT_IMAGE_ADD) ?
+				sprintf("<a href=\"import_image.php?model_id=%1\$d&amp;set_id=%2\$d\"><img src=\"images/button_upload.png\" width=\"16\" height=\"16\" alt=\"%3\$s\" title=\"%3\$s\" /></a>", $ModelID, $Set->getID(),$lang->g('ButtonImportImages')) :
+				sprintf("<a href=\"#\"><img src=\"images/button_upload_invalid.png\" width=\"16\" height=\"16\" alt=\"%1\$s\" title=\"%1\$s\" /></a>",$lang->g('LabelNotAllowed')),
+        	
+			$CurrentUser->hasPermission(RIGHT_VIDEO_ADD) ?
+				sprintf("<a href=\"import_video.php?model_id=%1\$d&amp;set_id=%2\$d\"><img src=\"images/button_upload.png\" width=\"16\" height=\"16\" alt=\"%3\$s\" title=\"%3\$s\" /></a>",$ModelID, $Set->getID(), $lang->g('ButtonImportVideos')) :
+				sprintf("<a href=\"#\"><img src=\"images/button_upload_invalid.png\" width=\"16\" height=\"16\" alt=\"%1\$s\" title=\"%1\$s\" /></a>",$lang->g('LabelNotAllowed')),
+				
+			$CurrentUser->hasPermission(RIGHT_EXPORT_ZIP) ?
+				sprintf("<a href=\"download_zip.php?model_id=%1\$d&amp;set_id=%2\$d\"><img src=\"images/button_download.png\" width=\"16\" height=\"16\" alt=\"%3\$s\" title=\"%3\$s\" /></a>",$ModelID, $Set->getID(),$lang->g('LabelDownloadZip')) :
+				sprintf("<a href=\"#\"><img src=\"images/button_download_invalid.png\" width=\"16\" height=\"16\" title=\"%1\$s\" alt=\"%1\$s\"/></a>",$lang->g('LabelNotAllowed'))
 		);
 	}
 }
