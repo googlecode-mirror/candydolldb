@@ -35,6 +35,11 @@ $DisableDefaultButton =
 	(!$CurrentUser->hasPermission(RIGHT_SET_EDIT) && !is_null($SetID) && !$DeleteSet) ||
 	(!$CurrentUser->hasPermission(RIGHT_SET_ADD) && is_null($SetID));
 
+$DisableCacheDeleteButton =
+	$DeleteSet ||
+	is_null($SetID) ||
+	!$CurrentUser->hasPermission(RIGHT_CACHE_DELETE);
+
 $ReturnURL = sprintf('set.php?model_id=%1$d', $ModelID);
 $DatesThisSet = array();
 
@@ -269,7 +274,7 @@ foreach ($DatesThisSet as $Date)
 <label>&nbsp;</label>
 <input type="submit" class="FormButton" value="<?php echo $DeleteSet ? $lang->g('ButtonDelete') : $lang->g('ButtonSave')?>"<?php echo HTMLstuff::DisabledStr($DisableDefaultButton)?> />
 <input type="button" class="FormButton" value="<?php echo $lang->g('ButtonCancel')?>" onclick="window.location='<?php echo $ReturnURL?>';" />
-<input type="button" class="FormButton" value="<?php echo $lang->g('ButtonClearCacheImage')?>" onclick="window.location='cacheimage_delete.php?set_id=<?php echo $SetID ?>';"<?php echo HTMLstuff::DisabledStr($DisableControls)?> />
+<input type="button" class="FormButton" value="<?php echo $lang->g('ButtonClearCacheImage')?>" onclick="window.location='cacheimage_delete.php?set_id=<?php echo $SetID ?>';"<?php echo HTMLstuff::DisabledStr($DisableCacheDeleteButton)?> />
 </div>
 
 <div class="Separator"></div>

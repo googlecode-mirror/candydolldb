@@ -42,6 +42,11 @@ $DisableDefaultButton =
 	(!$CurrentUser->hasPermission(RIGHT_IMAGE_EDIT) && !is_null($ImageID) && !$DeleteImage) ||
 	(!$CurrentUser->hasPermission(RIGHT_IMAGE_ADD) && is_null($ImageID));
 
+$DisableCacheDeleteButton =
+	$DeleteImage ||
+	is_null($ImageID) ||
+	!$CurrentUser->hasPermission(RIGHT_CACHE_DELETE);
+
 /* @var $Image Image */
 /* @var $Set Set */
 /* @var $Model Model */
@@ -217,7 +222,7 @@ if($ImageID)
 <div class="FormRow"><label>&nbsp;</label>
 <input type="submit" class="FormButton" value="<?php echo $DeleteImage ? $lang->g('ButtonDelete') : $lang->g('ButtonSave')?>"<?php echo HTMLstuff::DisabledStr($DisableDefaultButton)?> />
 <input type="button" class="FormButton" value="<?php echo $lang->g('ButtonCancel')?>" onclick="window.location='<?php echo htmlentities($ReturnURL)?>';" />
-<input type="button" class="FormButton" value="<?php echo $lang->g('ButtonClearCacheImage')?>" onclick="window.location='cacheimage_delete.php?image_id=<?php echo $ImageID ?>';"<?php echo HTMLstuff::DisabledStr($DisableControls)?> />
+<input type="button" class="FormButton" value="<?php echo $lang->g('ButtonClearCacheImage')?>" onclick="window.location='cacheimage_delete.php?image_id=<?php echo $ImageID ?>';"<?php echo HTMLstuff::DisabledStr($DisableCacheDeleteButton)?> />
 </div>
 
 <div class="Separator"></div>

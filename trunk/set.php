@@ -154,7 +154,7 @@ if($Sets)
 				sprintf("<a href=\"#\"><img src=\"images/button_upload_invalid.png\" width=\"16\" height=\"16\" alt=\"%1\$s\" title=\"%1\$s\" /></a>",$lang->g('LabelNotAllowed')),
 				
 			$CurrentUser->hasPermission(RIGHT_EXPORT_ZIP) ?
-				sprintf("<a href=\"download_zip.php?model_id=%1\$d&amp;set_id=%2\$d\"><img src=\"images/button_download.png\" width=\"16\" height=\"16\" alt=\"%3\$s\" title=\"%3\$s\" /></a>",$ModelID, $Set->getID(),$lang->g('LabelDownloadZip')) :
+				sprintf("<a href=\"download_zip.php?model_id=%1\$d&amp;set_id=%2\$d\"><img src=\"images/button_download.png\" width=\"16\" height=\"16\" alt=\"%3\$s\" title=\"%3\$s\" /></a>",$ModelID, $Set->getID(),$lang->g('LabelDownloadImages')) :
 				sprintf("<a href=\"#\"><img src=\"images/button_download_invalid.png\" width=\"16\" height=\"16\" title=\"%1\$s\" alt=\"%1\$s\"/></a>",$lang->g('LabelNotAllowed')),
 
 			$CurrentUser->hasPermission(RIGHT_EXPORT_VIDEO) ?
@@ -197,11 +197,11 @@ echo HTMLstuff::HtmlHeader(sprintf('%1$s - %2$s',
 
 echo $SetRows . "<div class=\"Clear\"></div>";
 
-echo HTMLstuff::Button(sprintf('set_view.php?model_id=%1$d', $ModelID), $lang->g('ButtonNewSet'));
+echo $CurrentUser->hasPermission(RIGHT_SET_ADD) ? HTMLstuff::Button(sprintf('set_view.php?model_id=%1$d', $ModelID), $lang->g('ButtonNewSet')) : '';
 
-echo HTMLstuff::Button(sprintf('import_image.php?model_id=%1$d', $ModelID), $lang->g('ButtonImportImages'));
+echo $CurrentUser->hasPermission(RIGHT_IMAGE_ADD) ? HTMLstuff::Button(sprintf('import_image.php?model_id=%1$d', $ModelID), $lang->g('ButtonImportImages')) : '';
 
-echo HTMLstuff::Button(sprintf('import_video.php?model_id=%1$d', $ModelID), $lang->g('ButtonImportVideos'));
+echo $CurrentUser->hasPermission(RIGHT_VIDEO_ADD) ? HTMLstuff::Button(sprintf('import_video.php?model_id=%1$d', $ModelID), $lang->g('ButtonImportVideos')) : '';
 
 echo HTMLstuff::Button('index.php');
 
