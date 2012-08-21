@@ -388,9 +388,69 @@ class Utils
 	 * @var array
 	 */
 	private static $MimeArray = array(
+		'doc' => 'application/msword',
+		'docx' => 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+		'pdf' => 'application/pdf',
+		'pps' => 'application/vnd.ms-powerpoint',
+		'ppsx' => 'application/vnd.openxmlformats-officedocument.presentationml.slideshow',
+		'ppt' => 'application/vnd.ms-powerpoint',
+		'pptx' => 'application/vnd.openxmlformats-officedocument.presentationml.presentation',
+		'pub' => 'application/x-mspublisher',
+		'rtf' => 'application/rtf',
+		'txt' => 'text/plain',
+		'odt' => 'application/vnd.oasis.opendocument.text',
+		'ods' => 'application/vnd.oasis.opendocument.spreadsheet',
+		'odp' => 'application/vnd.oasis.opendocument.presentation',
+		'odf' => 'application/vnd.oasis.opendocument.formula',
+		'xls' => 'application/vnd.ms-excel',
+		'xlsx' => 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+		
+		'bmp' => 'image/bmp',
+		'gif' => 'image/gif',
+		'png' => 'image/png',
 		'jpg' => 'image/jpeg',
+		'jpeg' => 'image/jpeg',
+		'jpe' => 'image/jpeg',
+		'tif' => 'image/tiff',
+		'tiff' => 'image/tiff',
+		
+		'flac' => 'audio/flac',
+		'mp3' => 'audio/mpeg',
+		'm3u' => 'audio/x-mpegurl',
+		'wav' => 'audio/x-wav',
+		'wma' => 'audio/x-ms-wma',
+		'oga' => 'audio/ogg',
+		'ogg' => 'audio/ogg',
+		
+		'asf' => 'video/x-ms-asf',
+		'asx' => 'video/x-ms-asf',
+		'avi' => 'video/x-msvideo',
+		'ogv' => 'video/ogg',
+		'qt' => 'video/quicktime',
+		'mov' => 'video/quicktime',
 		'mp4' => 'video/mp4',
-		'wmv' => 'video/x-ms-wmv'
+		'mpg' => 'video/mpeg',
+		'mpe' => 'video/mpeg',
+		'mpeg' => 'video/mpeg',
+		'wmv' => 'video/x-ms-wmv',
+		
+		'7z' => 'application/x-7z-compressed',
+		'bz2' => 'application/x-bzip2',
+		'cpio' => 'application/x-cpio',
+		'gz' => 'application/x-gzip',
+		'par' => 'application/x-par2',
+		'par2' => 'application/x-par2',
+		'rar' => 'application/x-rar-compressed',
+		'sit' => 'application/x-stuffit',
+		'sitx' => 'application/x-stuffitx',
+		'tar' => 'application/x-tar',
+		'tgz' => 'application/x-compressed',
+		'zip' => 'application/zip',
+		'zipx' => 'application/zip',
+		
+		'xml' => 'text/xml',
+		'html' => 'text/html',
+		'htm' => 'text/html'
 	);
 	
 	/**
