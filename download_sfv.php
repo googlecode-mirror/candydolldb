@@ -40,7 +40,7 @@ if($ModelID && count($Models) > 0){
 	$outfile = sprintf('CandyDollDB %1$s.sfv', $Model->GetFullName());
 }
 
-header('Content-Type: text/x-sfv');
+header(sprintf('Content-Type: %1$s', Utils::GetMime('sfv')));
 header(sprintf('Content-Disposition: attachment; filename="%1$s"', $outfile));
 
 printf($SFVHeader, CANDYDOLLDB_VERSION, date('Y-m-d'), date('H:i:s'), $CurrentUser->getUserName());

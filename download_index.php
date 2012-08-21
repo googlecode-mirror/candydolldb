@@ -511,7 +511,7 @@ CacheImage::Insert($CacheImage, $CurrentUser);
 
 imagejpeg($indexImage, $CacheImage->getFilenameOnDisk());
 
-header('Content-Type: image/jpeg');
+header(sprintf('Content-Type: %1$s', Utils::GetMime('jpg')));
 
 if($promptDownload){
 	header(

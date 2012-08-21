@@ -404,6 +404,9 @@ class Utils
 		'odf' => 'application/vnd.oasis.opendocument.formula',
 		'xls' => 'application/vnd.ms-excel',
 		'xlsx' => 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+	
+		'csv' => 'text/csv',
+		'sfv' => 'text/x-sfv',
 		
 		'bmp' => 'image/bmp',
 		'gif' => 'image/gif',
@@ -438,8 +441,8 @@ class Utils
 		'bz2' => 'application/x-bzip2',
 		'cpio' => 'application/x-cpio',
 		'gz' => 'application/x-gzip',
-		'par' => 'application/x-par2',
 		'par2' => 'application/x-par2',
+		'par' => 'application/x-par2',
 		'rar' => 'application/x-rar-compressed',
 		'sit' => 'application/x-stuffit',
 		'sitx' => 'application/x-stuffitx',

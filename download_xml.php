@@ -37,7 +37,7 @@ if($ModelID && count($Models) > 0){
 	);
 }
 
-header('Content-Type: text/xml');
+header(sprintf('Content-Type: %1$s', Utils::GetMime('xml')));
 header(sprintf('Content-Disposition: attachment; filename="%1$s"', $outfile));
 
 $xmlw = new XMLWriter();
