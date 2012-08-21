@@ -44,9 +44,9 @@ if($Videos)
 	    	"<td class=\"Center\">%6\$s</td>".
         	"<td><code>%7\$s</code></td>".
 			"<td><code>%14\$s</code></td>".
-			"<td class=\"Center\"><a href=\"download_vid.php?video_id=%1\$d\"><img src=\"images/button_download.png\" width=\"16\" height=\"16\" alt=\"%11\$s\" title=\"%11\$s\" /></a></td>".
+			"<td class=\"Center\">%15\$s</td>".
 			"<td class=\"Center\"><a href=\"download_image.php?video_id=%1\$d&amp;width=800&amp;height=600\" rel=\"lightbox-thumb\" title=\"Thumbnails of %4\$s\"><img src=\"images/button_view.png\" width=\"16\" height=\"16\" alt=\"Thumbnails of %4\$s\" /></a></td>".
-			"<td class=\"Center\"><a href=\"video_view.php?model_id=%3\$d&amp;set_id=%2\$d&amp;video_id=%1\$d&amp;cmd=%9\$s\" title=\"%13\$s\"><img src=\"images/button_delete.png\" width=\"16\" height=\"16\" alt=\"%12\$s\" /></a></td>".
+			"<td class=\"Center\">%16\$s</td>".
         "</tr>",
 		$Video->getID(),
 		$Set->getID(),
@@ -61,7 +61,15 @@ if($Videos)
 		$lang->g('LabelDownloadVideo'),
 		$lang->g('ButtonDelete'),
 		$lang->g('LabelDeleteVideo'),
-		$Video->getFileCRC32()
+		$Video->getFileCRC32(),
+				
+		$CurrentUser->hasPermission(RIGHT_EXPORT_VIDEO) ? 
+			sprintf("<a href=\"download_vid.php?video_id=%1\$d\"><img src=\"images/button_download.png\" width=\"16\" height=\"16\" alt=\"%2\$s\" title=\"%2\$s\" /></a>", $Video->getID(), $Video->getFileName()) :
+			sprintf("<a href=\"#\"><img src=\"images/button_download_invalid.png\" width=\"16\" height=\"16\" alt=\"%1\$s\" title=\"%1\$s\" /></a>", $lang->g('LabelNotAllowed')),
+		
+		$CurrentUser->hasPermission(RIGHT_VIDEO_DELETE) ?
+			sprintf("<a href=\"video_view.php?model_id=%1\$d&amp;set_id=%2\$d&amp;video_id=%3\$d&amp;cmd=%4\$s\" title=\"%5\$s\"><img src=\"images/button_delete.png\" width=\"16\" height=\"16\" alt=\"%5\$s\" /></a>", $ModelID, $SetID, $Video->getID(), COMMAND_DELETE, $lang->g('ButtonDelete')) :
+			sprintf("<a href=\"#\"><img src=\"images/button_delete_invalid.png\" width=\"16\" height=\"16\" alt=\"%1\$s\" title=\"%1\$s\" /></a>", $lang->g('LabelNotAllowed'))
 		);
 	}
 }
@@ -128,9 +136,9 @@ echo HTMLstuff::HtmlHeader(sprintf('%1$s - %3$s %2$s - %4$s',
 
 <?php
 
-echo HTMLstuff::Button(sprintf('video_view.php?model_id=%1$d&amp;set_id=%2$d', $ModelID, $SetID), $lang->g('LabelNewVideo'));
+echo $CurrentUser->hasPermission(RIGHT_VIDEO_ADD) ? HTMLstuff::Button(sprintf('video_view.php?model_id=%1$d&amp;set_id=%2$d', $ModelID, $SetID), $lang->g('LabelNewVideo')) : '';
 
-echo HTMLstuff::Button(sprintf('import_video.php?model_id=%1$d&amp;set_id=%2$d', $ModelID, $SetID), $lang->g('ButtonImportVideos'));
+echo $CurrentUser->hasPermission(RIGHT_VIDEO_ADD) ? HTMLstuff::Button(sprintf('import_video.php?model_id=%1$d&amp;set_id=%2$d', $ModelID, $SetID), $lang->g('ButtonImportVideos')) : '';
 
 echo HTMLstuff::Button(sprintf('set.php?model_id=%1$d', $ModelID), $lang->g('NavigationSets'));
 
