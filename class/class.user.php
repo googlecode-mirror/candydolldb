@@ -581,6 +581,9 @@ class User
 				`user_language` = ?,
 				`user_gender` = ?,
 				`user_birthdate` = ?,
+				`user_lastactive` = ?,
+				`user_lastlogin` = ?,
+				`user_prelastlogin` = ?,
 				`mut_id` = ?,
 				`mut_date` = ?
 			WHERE
@@ -594,7 +597,7 @@ class User
 			return FALSE;
 		}
 	
-		$stmt->bind_param('sssssssisssiiiii',
+		$stmt->bind_param('sssssssisssiiiiiiii',
 			$user_username,
 			$user_password,
 			$user_salt,
@@ -608,6 +611,9 @@ class User
 			$user_language,
 			$user_gender,
 			$user_birthdate,
+			$user_lastactive,
+			$user_lastlogin,
+			$user_prelastlogin,
 			$mut_id,
 			$mut_date,
 			$id
@@ -629,6 +635,9 @@ class User
 			$user_language = $User->getLanguage();
 			$user_gender = $User->getGender();
 			$user_birthdate = $User->getBirthDate();
+			$user_lastactive = $User->getLastActive();
+			$user_lastlogin = $User->getLastLogin();
+			$user_prelastlogin = $User->getPreLastLogin();
 			$id = $User->getID();
 			
 			$outBool = $stmt->execute();
