@@ -162,7 +162,7 @@ if($resource === TRUE)
 if(file_exists($tmpFile))
 {
 	header('Content-Description: File Transfer');
-	header('Content-Type: application/octet-stream');
+	header(sprintf('Content-Type: %1$s', Utils::GetMime('zip')));
 	header('Content-Disposition: attachment; filename="'.$finalFile.'"');
 	header('Content-Transfer-Encoding: binary');
 	header('Expires: 0');

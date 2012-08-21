@@ -146,11 +146,26 @@ if($Models)
 			$lang->g('LabelStartDate'),
         	$lang->g('LabelLastUpdated'),
         		NULL,
-        	$CurrentUser->hasPermission(RIGHT_MODEL_DELETE) ? sprintf("<a href=\"model_view.php?model_id=%1\$d&amp;cmd=%2\$s\" title=\"%3\$s\"><img src=\"images/button_delete.png\" width=\"16\" height=\"16\" alt=\"%3\$s\" /></a>",$Model->getID(),COMMAND_DELETE,$lang->g('LabelDeleteModel')) : sprintf("<a href=\"#\" title=\"%1\$s\"><img src=\"images/button_delete_invalid.png\" width=\"16\" height=\"16\" alt=\"%1\$s\" /></a>",$lang->g('LabelNotAllowed')),
-        	$CurrentUser->hasPermission(RIGHT_IMAGE_ADD) ? sprintf("<a href=\"import_image.php?model_id=%1\$d\"><img src=\"images/button_upload.png\" width=\"16\" height=\"16\" alt=\"%2\$s\" title=\"%2\$s\" /></a>",$Model->getID(),$lang->g('ButtonImportImages')) : sprintf("<a href=\"#\"><img src=\"images/button_upload_invalid.png\" width=\"16\" height=\"16\" alt=\"%1\$s\" title=\"%1\$s\" /></a>",$lang->g('LabelNotAllowed')),
-        	$CurrentUser->hasPermission(RIGHT_VIDEO_ADD) ? sprintf("<a href=\"import_video.php?model_id=%1\$d\"><img src=\"images/button_upload.png\" width=\"16\" height=\"16\" alt=\"%2\$s\" title=\"%2\$s\" /></a>",$Model->getID(),$lang->g('ButtonImportVideos')) : sprintf("<a href=\"#\"><img src=\"images/button_upload_invalid.png\" width=\"16\" height=\"16\" alt=\"%1\$s\" title=\"%1\$s\" /></a>",$lang->g('LabelNotAllowed')),
-        	$CurrentUser->hasPermission(RIGHT_MODEL_EDIT) ? sprintf("<a href=\"model_view.php?model_id=%1\$d\"><img src=\"images/button_edit.png\" width=\"16\" height=\"16\" title=\"%2\$s\" alt=\"%2\$s\"/></a>",$Model->getID(),$lang->g('LabelEditModel')) : sprintf("<a href=\"#\"><img src=\"images/button_edit_invalid.png\" width=\"16\" height=\"16\" title=\"%1\$s\" alt=\"%1\$s\"/></a>",$lang->g('LabelNotAllowed')),
-        	$CurrentUser->hasPermission(RIGHT_EXPORT_ZIP) ? sprintf("<a href=\"download_zip.php?model_id=%1\$d\"><img src=\"images/button_download.png\" width=\"16\" height=\"16\" alt=\"%2\$s\" title=\"%2\$s\" /></a>",$Model->getID(),$lang->g('LabelDownloadZip')) : sprintf("<a href=\"#\"><img src=\"images/button_download_invalid.png\" width=\"16\" height=\"16\" title=\"%1\$s\" alt=\"%1\$s\"/></a>",$lang->g('LabelNotAllowed'))
+        	
+        	$CurrentUser->hasPermission(RIGHT_MODEL_DELETE) ?
+        		sprintf("<a href=\"model_view.php?model_id=%1\$d&amp;cmd=%2\$s\" title=\"%3\$s\"><img src=\"images/button_delete.png\" width=\"16\" height=\"16\" alt=\"%3\$s\" /></a>",$Model->getID(),COMMAND_DELETE,$lang->g('LabelDeleteModel')) :
+        		sprintf("<a href=\"#\" title=\"%1\$s\"><img src=\"images/button_delete_invalid.png\" width=\"16\" height=\"16\" alt=\"%1\$s\" /></a>",$lang->g('LabelNotAllowed')),
+        	
+        	$CurrentUser->hasPermission(RIGHT_IMAGE_ADD) ?
+        		sprintf("<a href=\"import_image.php?model_id=%1\$d\"><img src=\"images/button_upload.png\" width=\"16\" height=\"16\" alt=\"%2\$s\" title=\"%2\$s\" /></a>",$Model->getID(),$lang->g('ButtonImportImages')) :
+        		sprintf("<a href=\"#\"><img src=\"images/button_upload_invalid.png\" width=\"16\" height=\"16\" alt=\"%1\$s\" title=\"%1\$s\" /></a>",$lang->g('LabelNotAllowed')),
+        	
+        	$CurrentUser->hasPermission(RIGHT_VIDEO_ADD) ?
+        		sprintf("<a href=\"import_video.php?model_id=%1\$d\"><img src=\"images/button_upload.png\" width=\"16\" height=\"16\" alt=\"%2\$s\" title=\"%2\$s\" /></a>",$Model->getID(),$lang->g('ButtonImportVideos')) :
+        		sprintf("<a href=\"#\"><img src=\"images/button_upload_invalid.png\" width=\"16\" height=\"16\" alt=\"%1\$s\" title=\"%1\$s\" /></a>",$lang->g('LabelNotAllowed')),
+        	
+        	$CurrentUser->hasPermission(RIGHT_MODEL_EDIT) ?
+        		sprintf("<a href=\"model_view.php?model_id=%1\$d\"><img src=\"images/button_edit.png\" width=\"16\" height=\"16\" title=\"%2\$s\" alt=\"%2\$s\"/></a>",$Model->getID(),$lang->g('LabelEditModel')) :
+        		sprintf("<a href=\"#\"><img src=\"images/button_edit_invalid.png\" width=\"16\" height=\"16\" title=\"%1\$s\" alt=\"%1\$s\"/></a>",$lang->g('LabelNotAllowed')),
+        	
+        	$CurrentUser->hasPermission(RIGHT_EXPORT_ZIP) ?
+        		sprintf("<a href=\"download_zip.php?model_id=%1\$d\"><img src=\"images/button_download.png\" width=\"16\" height=\"16\" alt=\"%2\$s\" title=\"%2\$s\" /></a>",$Model->getID(),$lang->g('LabelDownloadImages')) :
+        		sprintf("<a href=\"#\"><img src=\"images/button_download_invalid.png\" width=\"16\" height=\"16\" title=\"%1\$s\" alt=\"%1\$s\"/></a>",$lang->g('LabelNotAllowed'))
 		);
 	}
 	unset($Model);

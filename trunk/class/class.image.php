@@ -653,7 +653,7 @@ class Image
 			);
 		}
 		
-		header('Content-Type: image/jpeg');
+		header(sprintf('Content-Type: %1$s', Utils::GetMime('jpg')));
 		
 		@ob_clean();
 		flush();
