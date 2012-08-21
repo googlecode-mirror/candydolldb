@@ -39,7 +39,7 @@ if($Videos)
 
 		$VideoRows .= sprintf(
 		"\n<tr class=\"Row%10\$d\">".
-    		"<td><a href=\"video_view.php?model_id=%3\$d&amp;set_id=%2\$d&amp;video_id=%1\$d\">%4\$s</a></td>".
+    		"<td>%17\$s</td>".
         	"<td class=\"Center\">%5\$s</td>".
 	    	"<td class=\"Center\">%6\$s</td>".
         	"<td><code>%7\$s</code></td>".
@@ -69,7 +69,11 @@ if($Videos)
 		
 		$CurrentUser->hasPermission(RIGHT_VIDEO_DELETE) ?
 			sprintf("<a href=\"video_view.php?model_id=%1\$d&amp;set_id=%2\$d&amp;video_id=%3\$d&amp;cmd=%4\$s\" title=\"%5\$s\"><img src=\"images/button_delete.png\" width=\"16\" height=\"16\" alt=\"%5\$s\" /></a>", $ModelID, $SetID, $Video->getID(), COMMAND_DELETE, $lang->g('ButtonDelete')) :
-			sprintf("<a href=\"#\"><img src=\"images/button_delete_invalid.png\" width=\"16\" height=\"16\" alt=\"%1\$s\" title=\"%1\$s\" /></a>", $lang->g('LabelNotAllowed'))
+			sprintf("<a href=\"#\"><img src=\"images/button_delete_invalid.png\" width=\"16\" height=\"16\" alt=\"%1\$s\" title=\"%1\$s\" /></a>", $lang->g('LabelNotAllowed')),
+				
+		$CurrentUser->hasPermission(RIGHT_VIDEO_EDIT) ? 
+			sprintf("<a href=\"video_view.php?model_id=%1\$d&amp;set_id=%2\$d&amp;video_id=%3\$d\">%4\$s</a>", $ModelID, $SetID, $Video->getID(), $Video->getFileName()) : 
+			sprintf("<a href=\"#\">%1\$s</a>", $Video->getFileName())
 		);
 	}
 }
