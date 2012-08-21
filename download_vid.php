@@ -4,11 +4,16 @@ include('cd.php');
 ini_set('max_execution_time', '3600');
 $CurrentUser = Authentication::Authenticate();
 
+if(!$CurrentUser->hasPermission(RIGHT_EXPORT_VIDEO))
+{
+	$e = new Error(RIGHTS_ERR_USERNOTALLOWED);
+	Error::AddError($e);
+	HTMLstuff::RefererRedirect();
+}
 
 $ModelID = Utils::SafeIntFromQS('model_id');
 $SetID = Utils::SafeIntFromQS('set_id');
 $VideoID = Utils::SafeIntFromQS('video_id');
-
 
 /* @var $Video Video */
 /* @var $MainVideo Video */
@@ -34,7 +39,7 @@ if($VideoID)
 		if(file_exists($filename))
 		{
 			header('Content-Description: File Transfer');
-			header('Content-Type: application/octet-stream');
+			header(sprintf('Content-Type: %1s', Utils::GetMime($Video->getFileExtension())));
 			header(sprintf('Content-Disposition: attachment; filename="%1$s"', basename($filename)));
 			header('Content-Transfer-Encoding: binary');
 			header('Expires: 0');

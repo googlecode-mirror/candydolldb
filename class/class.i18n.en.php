@@ -242,6 +242,7 @@ class LabelsEN extends Labels
 		'LabelRIGHT_EXPORT_ZIP' => 'Download (zip)',
 		'LabelRIGHT_EXPORT_ZIP_MULTI' => 'Multi-download (zip)',
 		'LabelRIGHT_EXPORT_INDEX' => 'Downwload model-index',
+		'LabelRIGHT_EXPORT_VIDEO' => 'Downwload video',
 		'LabelRIGHT_SEARCH' => 'Search',
 		'LabelRIGHT_CACHE_CLEANUP' => 'Clean-up cache',
 		'LabelRIGHT_TAG_CLEANUP' => 'Clean-up tags',

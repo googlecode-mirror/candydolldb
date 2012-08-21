@@ -382,6 +382,38 @@ class Utils
 	 */
 	public static function _empty($val)
 	{ return empty($val); }
+	
+	/**
+	 * An array containing file extensions and their corresponding MIME-types.
+	 * @var array
+	 */
+	private static $MimeArray = array(
+		'jpg' => 'image/jpeg',
+		'mp4' => 'video/mp4',
+		'wmv' => 'video/x-ms-wmv'
+	);
+	
+	/**
+	 * Gets the extension's corresponding MIME-type
+	 * @param string $extension
+	 */
+	public static function GetMime($extension)
+	{
+		return array_key_exists($extension, self::$MimeArray) ?
+			self::$MimeArray[$extension] :
+			'application/octet-stream';
+	}
+	
+	/**
+	 * Gets the MIME-type's corresponding extension
+	 * @param string $mimetype
+	 */
+	public static function GetExtension($mimetype)
+	{
+		return in_array($mimetype, self::$MimeArray) ?
+			array_search($mimetype, self::$MimeArray) :
+			'bin';
+	}
 }
 
 ?>
