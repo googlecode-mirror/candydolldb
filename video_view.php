@@ -42,6 +42,10 @@ $DisableDefaultButton =
 	(!$CurrentUser->hasPermission(RIGHT_VIDEO_EDIT) && !is_null($VideoID) && !$DeleteVideo) ||
 	(!$CurrentUser->hasPermission(RIGHT_VIDEO_ADD) && is_null($VideoID));
 
+$DisableCacheDeleteButton =
+	$DeleteVideo ||
+	is_null($VideoID) ||
+	!$CurrentUser->hasPermission(RIGHT_CACHE_DELETE);
 
 /* @var $Video Video */
 /* @var $Set Set */
@@ -181,12 +185,13 @@ echo HTMLstuff::HtmlHeader(sprintf('%1$s - %2$s %3$s - %4$s',
 <div class="FormRow"><label>&nbsp;</label>
 <input type="submit" class="FormButton" value="<?php echo $DeleteVideo ? $lang->g('ButtonDelete') : $lang->g('ButtonSave')?>"<?php echo HTMLstuff::DisabledStr($DisableDefaultButton)?> />
 <input type="button" class="FormButton" value="<?php echo $lang->g('ButtonCancel')?>" onclick="window.location='<?php echo htmlentities($ReturnURL)?>';" />
-<input type="button" class="FormButton" value="<?php echo $lang->g('ButtonClearCacheImage')?>" onclick="window.location='cacheimage_delete.php?video_id=<?php echo $VideoID ?>';"<?php echo HTMLstuff::DisabledStr($DisableControls)?> />
+<input type="button" class="FormButton" value="<?php echo $lang->g('ButtonClearCacheImage')?>" onclick="window.location='cacheimage_delete.php?video_id=<?php echo $VideoID ?>';"<?php echo HTMLstuff::DisabledStr($DisableCacheDeleteButton)?> />
 </div>
 
 <div class="Separator"></div>
 
 <?php echo $VideoID ? HTMLstuff::Button(sprintf('download_image.php?video_id=%1$d&amp;width=800&amp;height=600', $VideoID), $lang->g('LabelThumbnails'), ' rel="lightbox"') : ''?>
+
 <?php echo HTMLstuff::Button()?>
 
 </fieldset>

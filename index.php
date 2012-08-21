@@ -113,7 +113,7 @@ if($Models)
 			%27\$s
 			%28\$s
 			%30\$s
-			<a href=\"download_image.php?index_id=%2\$d&amp;width=500&amp;height=750\" rel=\"lightbox-index\" title=\"%19\$s %1\$s\"><img src=\"images/button_view.png\" width=\"16\" height=\"16\" alt=\"%19\$s %1\$s\" /></a>
+			%31\$s
 			%26\$s
 			</div>
 			
@@ -165,7 +165,11 @@ if($Models)
         	
         	$CurrentUser->hasPermission(RIGHT_EXPORT_ZIP) ?
         		sprintf("<a href=\"download_zip.php?model_id=%1\$d\"><img src=\"images/button_download.png\" width=\"16\" height=\"16\" alt=\"%2\$s\" title=\"%2\$s\" /></a>",$Model->getID(),$lang->g('LabelDownloadImages')) :
-        		sprintf("<a href=\"#\"><img src=\"images/button_download_invalid.png\" width=\"16\" height=\"16\" title=\"%1\$s\" alt=\"%1\$s\"/></a>",$lang->g('LabelNotAllowed'))
+        		sprintf("<a href=\"#\"><img src=\"images/button_download_invalid.png\" width=\"16\" height=\"16\" title=\"%1\$s\" alt=\"%1\$s\"/></a>",$lang->g('LabelNotAllowed')),
+				
+			$CurrentUser->hasPermission(RIGHT_EXPORT_INDEX) ?
+				sprintf("<a href=\"download_image.php?index_id=%1\$d&amp;width=500&amp;height=750\" rel=\"lightbox-index\" title=\"%2\$s %3\$s\"><img src=\"images/button_view.png\" width=\"16\" height=\"16\" alt=\"%2\$s %3\$s\" /></a>", $Model->getID(), $lang->g('LabelIndexOf'), $Model->GetFullName()) :
+				sprintf("<a href=\"#\"><img src=\"images/button_view_invalid.png\" width=\"16\" height=\"16\" title=\"%1\$s\" alt=\"%1\$s\"/></a>",$lang->g('LabelNotAllowed'))
 		);
 	}
 	unset($Model);

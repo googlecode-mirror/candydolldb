@@ -17,6 +17,11 @@ $DisableDefaultButton =
 	(!$CurrentUser->hasPermission(RIGHT_MODEL_EDIT) && !is_null($ModelID) && !$DeleteModel) ||
 	(!$CurrentUser->hasPermission(RIGHT_MODEL_ADD) && is_null($ModelID));
 
+$DisableCacheDeleteButton =
+	$DeleteModel ||
+	is_null($ModelID) ||
+	!$CurrentUser->hasPermission(RIGHT_CACHE_DELETE);
+
 $TagsInDB = Tag::GetTags();
 $TagsThisModel = Tag2All::GetTag2Alls(new Tag2AllSearchParameters(
 	FALSE, FALSE, FALSE,
@@ -145,15 +150,15 @@ if($ModelID)
 
 <div class="FormRow">
 <label>&nbsp;</label>
-<input type="button" class="FormButton" value="<?php echo $lang->g('ButtonClearCacheImage')?>" onclick="window.location='cacheimage_delete.php?model_id=<?php echo $ModelID ?>';"<?php echo HTMLstuff::DisabledStr($DisableControls)?> />
-<input type="button" class="FormButton" value="<?php echo $lang->g('ButtonClearIndexCacheImage')?>" onclick="window.location='cacheimage_delete.php?index_id=<?php echo $ModelID ?>';"<?php echo HTMLstuff::DisabledStr($DisableControls)?> />
+<input type="button" class="FormButton" value="<?php echo $lang->g('ButtonClearCacheImage')?>" onclick="window.location='cacheimage_delete.php?model_id=<?php echo $ModelID ?>';"<?php echo HTMLstuff::DisabledStr($DisableCacheDeleteButton)?> />
+<input type="button" class="FormButton" value="<?php echo $lang->g('ButtonClearIndexCacheImage')?>" onclick="window.location='cacheimage_delete.php?index_id=<?php echo $ModelID ?>';"<?php echo HTMLstuff::DisabledStr($DisableCacheDeleteButton)?> />
 </div>
 
 <div class="Separator"></div>
 
 <?php echo $ModelID ? HTMLstuff::Button(sprintf('set.php?model_id=%1$d', $ModelID), $lang->g('NavigationSets')) : ''?>
 
-<?php echo $ModelID ? HTMLstuff::Button(sprintf('download_image.php?index_id=%1$d&amp;width=500&amp;height=750', $ModelID), $lang->g('ButtonIndex'), ' rel="lightbox"') : ''?>
+<?php echo $ModelID && $CurrentUser->hasPermission(RIGHT_EXPORT_INDEX) ? HTMLstuff::Button(sprintf('download_image.php?index_id=%1$d&amp;width=500&amp;height=750', $ModelID), $lang->g('ButtonIndex'), ' rel="lightbox"') : ''?>
 
 <?php echo HTMLstuff::Button('index.php')?>
 
