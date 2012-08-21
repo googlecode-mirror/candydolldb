@@ -57,9 +57,9 @@ if($Images)
 						</ul>
 					</div>
 					<div class=\"ImageButtonWrapper\">
-						<a href=\"image_view.php?model_id=%6\$d&amp;set_id=%7\$d&amp;image_id=%8\$d\"><img src=\"images/button_edit.png\" width=\"16\" height=\"16\" title=\"%20\$s\" alt=\"%20\$s\"/></a>
-						<a href=\"download_zip.php?image_id=%8\$d\"><img src=\"images/button_download.png\" width=\"16\" height=\"16\" alt=\"%21\$s\" title=\"%21\$s\" /></a>
-						<a href=\"image_view.php?model_id=%6\$d&amp;set_id=%7\$d&amp;image_id=%8\$d&amp;cmd=%12\$s\" title=\"%22\$s\"><img src=\"images/button_delete.png\" width=\"16\" height=\"16\" alt=\"%22\$s\" /></a>
+						%23\$s
+						%24\$s
+						%25\$s
 					</div>
 				</div>
 				%9\$s",
@@ -84,23 +84,35 @@ if($Images)
 				$lang->g('LabelHeight'),
 				$lang->g('LabelEditModel'),
 				$lang->g('LabelDownloadImage'),
-				$lang->g('LabelDeleteImage')
+				$lang->g('LabelDeleteImage'),
+				
+				$CurrentUser->hasPermission(RIGHT_IMAGE_EDIT) ?
+					sprintf("<a href=\"image_view.php?model_id=%1\$d&amp;set_id=%2\$d&amp;image_id=%3\$d\"><img src=\"images/button_edit.png\" width=\"16\" height=\"16\" alt=\"%4\$s\" title=\"%4\$s\" /></a>", $ModelID, $SetID, $Image->getID(), $Image->getFileName()) :
+					sprintf("<a href=\"#\"><img src=\"images/button_edit_invalid.png\" width=\"16\" height=\"16\" alt=\"%1\$s\" title=\"%1\$s\" /></a>", $lang->g('LabelNotAllowed')),
+				
+				$CurrentUser->hasPermission(RIGHT_EXPORT_ZIP) ?
+					sprintf("<a href=\"download_zip.php?image_id=%1\$d\"><img src=\"images/button_download.png\" width=\"16\" height=\"16\" alt=\"%2\$s\" title=\"%2\$s\" /></a>", $Image->getID(), $lang->g('LabelDownloadImage')) :
+					sprintf("<a href=\"#\"><img src=\"images/button_download_invalid.png\" width=\"16\" height=\"16\" alt=\"%1\$s\" title=\"%1\$s\" /></a>", $lang->g('LabelNotAllowed')),
+					
+				$CurrentUser->hasPermission(RIGHT_IMAGE_DELETE) ?
+					sprintf("<a href=\"image_view.php?model_id=%1\$d&amp;set_id=%2\$d&amp;image_id=%3\$d&amp;cmd=%4\$s\"><img src=\"images/button_delete.png\" width=\"16\" height=\"16\" alt=\"%5\$s\" title=\"%5\$s\" /></a>", $ModelID, $SetID, $Image->getID(), COMMAND_DELETE, $lang->g('LabelDeleteImage')) :
+					sprintf("<a href=\"#\"><img src=\"images/button_delete_invalid.png\" width=\"16\" height=\"16\" alt=\"%1\$s\" title=\"%1\$s\" /></a>", $lang->g('LabelNotAllowed'))
 			);
 			break;
 
 			case 'detail':
 				$ImageRows .= sprintf(
 				"\n<tr class=\"Row%12\$d\">".
-					"<td><a href=\"image_view.php?model_id=%3\$d&amp;set_id=%2\$d&amp;image_id=%1\$d\">%4\$s</a></td>".
+					"<td>%21\$s</td>".
 					"<td class=\"Center\">%5\$s</td>".
 					"<td class=\"Center\">%6\$s</td>".
 					"<td class=\"Center\">%9\$d</td>".
 					"<td class=\"Center\">%10\$d</td>".
 					"<td><code>%7\$s</code></td>".
 					"<td><code>%18\$s</code></td>".
-					"<td class=\"Center\"><a href=\"download_zip.php?image_id=%1\$d\"><img src=\"images/button_download.png\" width=\"16\" height=\"16\" alt=\"%15\$s\" title=\"%15\$s\" /></a></td>".
+					"<td class=\"Center\">%19\$s</td>".
 					"<td class=\"Center\"><a href=\"download_image.php?image_id=%1\$d&amp;width=%13\$d&amp;height=%14\$d\" title=\"%4\$s\" rel=\"lightbox-gal\"><img src=\"images/button_view.png\" width=\"16\" height=\"16\" alt=\"%16\$s\" title=\"%16\$s\" /></a></td>".
-					"<td class=\"Center\"><a href=\"image_view.php?model_id=%3\$d&amp;set_id=%2\$d&amp;image_id=%1\$d&amp;cmd=%11\$s\" title=\"%17\$s\"><img src=\"images/button_delete.png\" width=\"16\" height=\"16\" alt=\"%17\$s\" /></a></td>".
+					"<td class=\"Center\">%20\$s</td>".
 				"</tr>",
 				$Image->getID(),
 				$Set->getID(),
@@ -119,7 +131,19 @@ if($Images)
 				$lang->g('LabelDownloadImage'),
 				$lang->g('LabelViewImage'),
 				$lang->g('LabelDeleteImage'),
-				$Image->getFileCRC32()
+				$Image->getFileCRC32(),
+				
+				$CurrentUser->hasPermission(RIGHT_EXPORT_ZIP) ?
+					sprintf("<a href=\"download_zip.php?image_id=%1\$d\"><img src=\"images/button_download.png\" width=\"16\" height=\"16\" alt=\"%2\$s\" title=\"%2\$s\" /></a>", $Image->getID(), $Image->getFileName()) :
+					sprintf("<a href=\"#\"><img src=\"images/button_download_invalid.png\" width=\"16\" height=\"16\" alt=\"%1\$s\" title=\"%1\$s\" /></a>", $lang->g('LabelNotAllowed')),
+				
+				$CurrentUser->hasPermission(RIGHT_IMAGE_DELETE) ?
+					sprintf("<a href=\"image_view.php?model_id=%1\$d&amp;set_id=%2\$d&amp;image_id=%3\$d&amp;cmd=%4\$s\" title=\"%5\$s\"><img src=\"images/button_delete.png\" width=\"16\" height=\"16\" alt=\"%5\$s\" /></a>", $ModelID, $SetID, $Image->getID(), COMMAND_DELETE, $lang->g('ButtonDelete')) :
+					sprintf("<a href=\"#\"><img src=\"images/button_delete_invalid.png\" width=\"16\" height=\"16\" alt=\"%1\$s\" title=\"%1\$s\" /></a>", $lang->g('LabelNotAllowed')),
+
+				$CurrentUser->hasPermission(RIGHT_IMAGE_EDIT) ?
+					sprintf("<a href=\"image_view.php?model_id=%1\$d&amp;set_id=%2\$d&amp;image_id=%3\$d\">%4\$s</a>", $ModelID, $SetID, $Image->getID(), $Image->getFileName()) :
+					sprintf("<a href=\"#\">%1\$s</a>", $Image->getFileName())
 			);
 			break;
 		}
@@ -210,8 +234,8 @@ break;
 <div class="Separator"></div>
 
 <?php
-echo HTMLstuff::Button(sprintf('image_view.php?model_id=%1$d&amp;set_id=%2$d', $ModelID, $SetID), $lang->g('ButtonNewImage'));
-echo HTMLstuff::Button(sprintf('import_image.php?model_id=%1$d&amp;set_id=%2$d', $ModelID, $SetID), $lang->g('ButtonImportImages'));
+echo $CurrentUser->hasPermission(RIGHT_IMAGE_ADD) ? HTMLstuff::Button(sprintf('image_view.php?model_id=%1$d&amp;set_id=%2$d', $ModelID, $SetID), $lang->g('ButtonNewImage')) : '';
+echo $CurrentUser->hasPermission(RIGHT_IMAGE_ADD) ? HTMLstuff::Button(sprintf('import_image.php?model_id=%1$d&amp;set_id=%2$d', $ModelID, $SetID), $lang->g('ButtonImportImages')) : '';
 echo HTMLstuff::Button(sprintf('set.php?model_id=%1$d', $ModelID), $lang->g('NavigationSets'));
 echo HTMLstuff::Button('index.php');
 
