@@ -242,6 +242,7 @@ class LabelsNL extends Labels
 		'LabelRIGHT_EXPORT_ZIP' => 'Downloaden (zip)',
 		'LabelRIGHT_EXPORT_ZIP_MULTI' => 'Multi-download (zip)',
 		'LabelRIGHT_EXPORT_INDEX' => 'Download model-index',
+		'LabelRIGHT_EXPORT_VIDEO' => 'Downwload video',
 		'LabelRIGHT_SEARCH' => 'Zoeken',
 		'LabelRIGHT_CACHE_CLEANUP' => 'Cache opruimen',
 		'LabelRIGHT_TAG_CLEANUP' => 'Tags opruimen',

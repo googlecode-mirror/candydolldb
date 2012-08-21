@@ -79,7 +79,7 @@ if($Sets)
 			%30\$s
 			%31\$s
 			%32\$s
-			<a href=\"download_vid.php?set_id=%6\$d\"><img src=\"images/button_download.png\" width=\"16\" height=\"16\" title=\"%24\$s\" alt=\"%24\$s\"/></a>
+			%33\$s
 			<a href=\"image.php?model_id=%8\$d&amp;set_id=%6\$d\"><img src=\"images/button_view.png\" width=\"16\" height=\"16\" title=\"%25\$s\" alt=\"%25\$s\"/></a>
 			<a href=\"video.php?model_id=%8\$d&amp;set_id=%6\$d\"><img src=\"images/button_view.png\" width=\"16\" height=\"16\" title=\"%26\$s\" alt=\"%26\$s\"/></a>
 			</div>
@@ -155,6 +155,10 @@ if($Sets)
 				
 			$CurrentUser->hasPermission(RIGHT_EXPORT_ZIP) ?
 				sprintf("<a href=\"download_zip.php?model_id=%1\$d&amp;set_id=%2\$d\"><img src=\"images/button_download.png\" width=\"16\" height=\"16\" alt=\"%3\$s\" title=\"%3\$s\" /></a>",$ModelID, $Set->getID(),$lang->g('LabelDownloadZip')) :
+				sprintf("<a href=\"#\"><img src=\"images/button_download_invalid.png\" width=\"16\" height=\"16\" title=\"%1\$s\" alt=\"%1\$s\"/></a>",$lang->g('LabelNotAllowed')),
+
+			$CurrentUser->hasPermission(RIGHT_EXPORT_VIDEO) ?
+				sprintf("<a href=\"download_vid.php?set_id=%1\$d\"><img src=\"images/button_download.png\" width=\"16\" height=\"16\" title=\"%2\$s\" alt=\"%2\$s\"/></a>", $Set->getID(), $lang->g('LabelDownloadVideo')) :
 				sprintf("<a href=\"#\"><img src=\"images/button_download_invalid.png\" width=\"16\" height=\"16\" title=\"%1\$s\" alt=\"%1\$s\"/></a>",$lang->g('LabelNotAllowed'))
 		);
 	}

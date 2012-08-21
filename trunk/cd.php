@@ -84,13 +84,14 @@ define('CANDYDOLLDB_VERSION', '1.8');
 	define('RIGHT_EXPORT_SFV',		27);
 	define('RIGHT_EXPORT_CSV',		28);
 	define('RIGHT_EXPORT_INDEX',	29);
+	define('RIGHT_EXPORT_VIDEO',	30);
 	
-	define('RIGHT_SEARCH_DIRTY',	30);
-	define('RIGHT_SEARCH_TAGS',		31);
+	define('RIGHT_SEARCH_DIRTY',	31);
+	define('RIGHT_SEARCH_TAGS',		32);
 	
-	define('RIGHT_CACHE_CLEANUP',	32);
-	define('RIGHT_TAG_CLEANUP',		33);
-	define('RIGHT_CACHE_DELETE',	34);
+	define('RIGHT_CACHE_CLEANUP',	33);
+	define('RIGHT_TAG_CLEANUP',		34);
+	define('RIGHT_CACHE_DELETE',	35);
 /* /Rights */
 	
 define('GENDER_UNKNOWN', 0);

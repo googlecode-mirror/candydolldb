@@ -245,6 +245,7 @@ class LabelsDE extends Labels
 		'LabelRIGHT_EXPORT_ZIP' => '',
 		'LabelRIGHT_EXPORT_ZIP_MULTI' => '',
 		'LabelRIGHT_EXPORT_INDEX' => '',
+		'LabelRIGHT_EXPORT_VIDEO' => '',
 		'LabelRIGHT_SEARCH' => 'Suchen',
 		'LabelRIGHT_CACHE_CLEANUP' => '',
 		'LabelRIGHT_TAG_CLEANUP' => '',
