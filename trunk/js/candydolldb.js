@@ -46,6 +46,10 @@ function CloseOverlay(){
 }
 
 function AddDeleteOverlay(){
+	if(!CacheDeletePermission){
+		return true;
+	}
+	
 	var rcidiv = '<div class="image-thumb">' + '</div>';
 	var dela = '<a href="#" title="Delete cached image" class="image-del"></a>';
 	
@@ -74,6 +78,8 @@ function AddDeleteOverlay(){
 		return b;
 		
 	});
+	
+	return true;
 }
 
 function AddTagAutoSuggest(){
