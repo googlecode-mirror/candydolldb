@@ -34,6 +34,7 @@ class HTMLstuff
 					next: '%8\$s',
 					close: '%9\$s'
 				};
+				var CacheDeletePermission = %11\$s;
 			//]]>
 		</script>
 		<script type=\"text/javascript\" src=\"js/candydolldb.js\"></script>
@@ -63,7 +64,8 @@ class HTMLstuff
 			$lang->g('LabelColorBoxPrevious'),
 			$lang->g('LabelColorBoxNext'),
 			$lang->g('LabelColorBoxClose'),
-			Info::GenerateInfoList()
+			Info::GenerateInfoList(),
+			(!is_null($CurrentUser) && $CurrentUser->hasPermission(RIGHT_CACHE_DELETE) ? 'true' : 'false')
 		);
 
 		if($CurrentUser != NULL) {
