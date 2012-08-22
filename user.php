@@ -18,13 +18,13 @@ if($Users)
 
 		$UserRows .= sprintf(
 		"\n<tr class=\"Row%10\$d\">".
-    		"<td><a href=\"user_view.php?user_id=%1\$d\">%2\$s</a></td>".
-	        "<td><a href=\"user_view.php?user_id=%1\$d\">%3\$s</a></td>".
-        	"<td class=\"Center\"><a href=\"user_view.php?user_id=%1\$d\">%4\$s</a></td>".
-        	"<td class=\"Center\"%6\$s><a href=\"user_view.php?user_id=%1\$d\">%5\$s</a></td>".
-			"<td class=\"Center\"><a href=\"user_view.php?user_id=%1\$d\">%7\$s</a></td>".
-			"<td class=\"Center\"><a href=\"user_view.php?user_id=%1\$d\">%8\$s</a></td>".
-			"<td class=\"Center\"><a href=\"user_view.php?user_id=%1\$d&amp;cmd=%9\$s\" title=\"%11\$s\"><img src=\"images/button_delete.png\" width=\"16\" height=\"16\" alt=\"%11\$s\" /></a></td>".
+    		"<td>%12\$s</td>".
+	        "<td>%3\$s</td>".
+        	"<td class=\"Center\">%4\$s</td>".
+        	"<td class=\"Center\"%6\$s>%5\$s</td>".
+			"<td class=\"Center\">%7\$s</td>".
+			"<td class=\"Center\">%8\$s</td>".
+			"<td class=\"Center\">%13\$s</td>".
         "</tr>",
 		$User->getID(),
 		htmlentities($User->getUserName()),
@@ -36,7 +36,15 @@ if($Users)
 		$User->getLastLogin() > 0 ? date('j-n-Y G:i', $User->getLastLogin()) : '&nbsp;',
 		COMMAND_DELETE,
 		$UserCount % 2 == 0 ? 2 : 1,
-		$lang->g('LabelDeleteUser')
+		$lang->g('LabelDeleteUser'),
+				
+		$CurrentUser->hasPermission(RIGHT_USER_EDIT) ? 
+			sprintf("<a href=\"user_view.php?user_id=%1\$d\">%2\$s</a>", $User->getID(), $User->getUserName()) :
+			sprintf("<a href=\"#\">%1\$s</a>", $User->getUserName()),
+				
+		$CurrentUser->hasPermission(RIGHT_USER_DELETE) ?
+			sprintf("<a href=\"user_view.php?user_id=%1\$d&amp;cmd=%2\$s\" title=\"%3\$s\"><img src=\"images/button_delete.png\" width=\"16\" height=\"16\" alt=\"%3\$s\" /></a>", $User->getID(), COMMAND_DELETE, $lang->g('LabelDeleteUser')) :
+			sprintf("<a href=\"#\"><img src=\"images/button_delete_invalid.png\" width=\"16\" height=\"16\" title=\"%1\$s\" alt=\"%1\$s\"/></a>", $lang->g('LabelNotAllowed'))
 		);
 	}
 	unset($User);
@@ -74,7 +82,7 @@ echo HTMLstuff::HtmlHeader($lang->g('NavigationUsers'), $CurrentUser);
 </table>
 
 <?php
-echo HTMLstuff::Button(sprintf('user_view.php'), $lang->g('LabelNewUser'));
+echo $CurrentUser->hasPermission(RIGHT_USER_ADD) ? HTMLstuff::Button(sprintf('user_view.php'), $lang->g('LabelNewUser')) : '';
 echo HTMLstuff::Button();
 echo HTMLstuff::HtmlFooter($CurrentUser);
 ?>
