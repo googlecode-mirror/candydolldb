@@ -3,6 +3,14 @@
 include('cd.php');
 ini_set('max_execution_time', '3600');
 $CurrentUser = Authentication::Authenticate();
+
+if(!$CurrentUser->hasPermission(RIGHT_IMPORT_XML))
+{
+	$e = new Error(RIGHTS_ERR_USERNOTALLOWED);
+	Error::AddError($e);
+	HTMLstuff::RefererRedirect();
+}
+
 HTMLstuff::RefererRegister($_SERVER['REQUEST_URI']);
 
 if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'UploadXML')

@@ -76,11 +76,11 @@ class HTMLstuff
 			<li><a href=\"#\">%3\$s</a>
 		
 				<ul>
-				<li><a href=\"import_xml.php\">%4\$s</a></li>
-				<li><a href=\"model_view.php\">%5\$s</a></li>
+				<li><a href=\"%15\$s\">%4\$s</a></li>
+				<li><a href=\"%16\$s\">%5\$s</a></li>
 				<li><a href=\"tag.php\">%6\$s</a></li>
 				<li><a href=\"admin_panel.php\">%7\$s</a></li>
-				<li><a href=\"download_multi.php\">%8\$s</a></li>
+				<li><a href=\"%17\$s\">%8\$s</a></li>
 				</ul>
 		
 			</li>
@@ -94,8 +94,8 @@ class HTMLstuff
 			<li><a href=\"#\">%11\$s</a>
 				
 				<ul>
-				<li><a href=\"search.php?q=\">%12\$s</a></li>
-				<li><a href=\"set_dirty.php\">%13\$s</a></li>
+				<li><a href=\"%18\$s\">%12\$s</a></li>
+				<li><a href=\"%19\$s\">%13\$s</a></li>
 				</ul>	
 			
 			</li>
@@ -115,7 +115,12 @@ class HTMLstuff
 			$lang->g('NavigationSearch'),
 			$lang->g('NavigationTagSearch'),
 			$lang->g('NavigationDirtySets'),
-			$lang->g('NavigationLogOut')
+			$lang->g('NavigationLogOut'),
+			$CurrentUser->hasPermission(RIGHT_IMPORT_XML) ? 'import_xml.php' : '#',
+			$CurrentUser->hasPermission(RIGHT_MODEL_ADD) ? 'model_view.php' : '#',
+			$CurrentUser->hasPermission(RIGHT_EXPORT_ZIP_MULTI) ? 'download_multi.php' : '#',
+			$CurrentUser->hasPermission(RIGHT_SEARCH_TAGS) ? 'search.php?q=' : '#',
+			$CurrentUser->hasPermission(RIGHT_SEARCH_DIRTY) ? 'set_dirty.php' : '#'
 			);
 		}
 
