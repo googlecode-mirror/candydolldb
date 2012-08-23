@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <Models xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="candydolldb.xsd" xmlns="">
 	<Model firstname="Abrora" lastname="H" birthdate="" tags="">
 		<Sets>
@@ -79,10 +79,11 @@
 			<Set name="14" date_pic="2012-07-20" date_vid="2012-07-27" tags="chair, earrings, pigtails, red drapes, satin, white stockings"/>
 			<Set name="15" date_pic="2012-08-17" date_vid="2012-08-03" tags=""/>
 			<Set name="16" date_pic="" date_vid="2012-08-10" tags=""/>
+			<Set name="17" date_pic="" date_vid="2012-08-24" tags=""/>
 		</Sets>
 		<Remarks>
-			Previous birthdate: 1999-04-03
-		</Remarks>
+Previous birthdate: 1999-04-03
+</Remarks>
 	</Model>
 	<Model firstname="Alyona" lastname="Gromova" birthdate="1996-03-19" tags="">
 		<Sets>
@@ -115,8 +116,8 @@
 			<Set name="18" date_pic="2010-11-26" date_vid="2010-11-26" tags="white, white socks, wood floor"/>
 		</Sets>
 		<Remarks>
-			Real birthdate: 1996-03-19
-		</Remarks>
+Real birthdate: 1996-03-19
+</Remarks>
 	</Model>
 	<Model firstname="Anastasia" lastname="Kocyuruba" birthdate="1995-08-24" tags="">
 		<Sets>
@@ -238,6 +239,7 @@
 			<Set name="03" date_pic="2012-06-29" date_vid="2012-06-22" tags="balls, bare feet, blue carpet, chair, hair ties, pigtails, red drapes, skipping rope, swimsuit"/>
 			<Set name="04" date_pic="2012-08-03" date_vid="2012-07-13" tags=""/>
 			<Set name="05" date_pic="2012-08-10" date_vid="2012-07-20" tags=""/>
+			<Set name="06" date_pic="2012-08-24" date_vid="" tags=""/>
 		</Sets>
 	</Model>
 	<Model firstname="Biyanka" lastname="S" birthdate="1997-07-05" tags="">
@@ -557,10 +559,11 @@
 			<Set name="17" date_pic="2012-07-27" date_vid="2012-08-03" tags=""/>
 			<Set name="18" date_pic="2012-08-03" date_vid="2012-08-17" tags=""/>
 			<Set name="19" date_pic="2012-08-17" date_vid="" tags=""/>
+			<Set name="20" date_pic="2012-08-24" date_vid="" tags=""/>
 		</Sets>
 		<Remarks>
-			Previous birthdate: 1999-04-03
-		</Remarks>
+Previous birthdate: 1999-04-03
+</Remarks>
 	</Model>
 	<Model firstname="Khloe" lastname="R" birthdate="" tags="">
 		<Sets>
@@ -643,7 +646,7 @@
 			<Set name="37" date_pic="" date_vid="2012-01-27" tags=""/>
 		</Sets>
 	</Model>
-	<Model firstname="Lena" lastname=""/>
+	<Model firstname="Lena" lastname="" birthdate="" tags=""/>
 	<Model firstname="Lera" lastname="Cicima" birthdate="1995-01-25" tags="">
 		<Sets>
 			<Set name="01" date_pic="2008-08-15" date_vid="2008-08-15" tags="bag, black shoes, earrings, fence, grass, outdoor, schoolgirl, skirt, tie, white socks"/>
@@ -747,6 +750,7 @@
 			<Set name="03" date_pic="2012-05-25" date_vid="2012-05-11" tags="chair, crown, earrings, gold drapes, red, white socks"/>
 			<Set name="04" date_pic="2012-08-03" date_vid="2012-07-06" tags=""/>
 			<Set name="05" date_pic="2012-08-10" date_vid="" tags=""/>
+			<Set name="06" date_pic="2012-08-24" date_vid="" tags=""/>
 		</Sets>
 	</Model>
 	<Model firstname="Margarita" lastname="D" birthdate="1997-08-18" tags="">
@@ -792,7 +796,7 @@
 	<Model firstname="Maryam" lastname="K" birthdate="" tags="">
 		<Sets>
 			<Set name="01" date_pic="2012-06-01" date_vid="2012-05-18" tags="cat ears, curls, pink, seamless background, white, white shoes"/>
-			<Set name="02" date_pic="2012-07-06" date_vid="" tags="bloomers, blue carpet, blue shoes, chair, hair barrette, hair ties, ponytail, red drapes, ringer t-shirt, skipping rope, striped socks"/>
+			<Set name="02" date_pic="2012-07-06" date_vid="2012-08-24" tags="bloomers, blue carpet, blue shoes, chair, hair barrette, hair ties, ponytail, red drapes, ringer t-shirt, skipping rope, striped socks"/>
 			<Set name="03" date_pic="2012-07-20" date_vid="" tags="bare feet, blue, chair, ponytail, red drapes"/>
 		</Sets>
 	</Model>
@@ -877,7 +881,7 @@
 	</Model>
 	<Model firstname="Mila" lastname="L" birthdate="1997-11-27" tags="">
 		<Sets>
-			<Set name="01" date_pic="2012-06-15" date_vid="" tags="black, black shoes, blue drapes, chair, maid, white, white stockings"/>
+			<Set name="01" date_pic="2012-06-15" date_vid="2012-08-24" tags="black, black shoes, blue drapes, chair, maid, white, white stockings"/>
 			<Set name="02" date_pic="2012-08-10" date_vid="" tags=""/>
 		</Sets>
 	</Model>
@@ -960,7 +964,7 @@
 	</Model>
 	<Model firstname="Nika" lastname="V" birthdate="" tags="">
 		<Sets>
-			<Set name="01" date_pic="" date_vid="2012-08-03" tags=""/> 
+			<Set name="01" date_pic="" date_vid="2012-08-03" tags=""/>
 		</Sets>
 	</Model>
 	<Model firstname="Nina" lastname="T" birthdate="1997-08-05" tags="">
@@ -1085,7 +1089,7 @@
 			<Set name="06" date_pic="2012-05-25" date_vid="2012-05-11" tags="balls, earrings, hair ties, red drapes, ribbon stick, skipping rope, swimsuit"/>
 			<Set name="07" date_pic="2012-06-08" date_vid="2012-06-01" tags="balls, bloomers, chair, earrings, hair buns, hair covers, red drapes, short socks, skipping rope, white shoes"/>
 			<Set name="08" date_pic="2012-08-10" date_vid="2012-06-29" tags=""/>
-			<Set name="09" date_pic="" date_vid="2012-07-06" tags=""/>
+			<Set name="09" date_pic="2012-08-24" date_vid="2012-07-06" tags=""/>
 			<Set name="10" date_pic="" date_vid="2012-07-27" tags=""/>
 		</Sets>
 	</Model>
@@ -1264,6 +1268,7 @@
 	<Model firstname="Suisan" lastname="A" birthdate="" tags="">
 		<Sets>
 			<Set name="01" date_pic="" date_vid="2012-08-17" tags=""/>
+			<Set name="02" date_pic="" date_vid="2012-08-24" tags=""/>
 		</Sets>
 	</Model>
 	<Model firstname="Sundi" lastname="Z" birthdate="" tags="">
@@ -1457,8 +1462,8 @@
 			<Set name="43" date_pic="" date_vid="2011-11-25" tags=""/>
 		</Sets>
 		<Remarks>
-			Real birthdate: 1996-04-24 
-		</Remarks>
+Real birthdate: 1996-04-24 
+</Remarks>
 	</Model>
 	<Model firstname="Violeta" lastname="K" birthdate="1996-08-27" tags="">
 		<Sets>
@@ -1558,15 +1563,76 @@
 			<Set name="05" date_pic="2010-01-29" date_vid="2010-01-29" tags="bed, black latex, garters, stockings, wood floor"/>
 		</Sets>
 	</Model>
-	<Model firstname="VIP">
+	<Model firstname="Interviews" lastname="" birthdate="" tags="">
+		<Sets>
+			<Set name="AlinaG01" date_pic="" date_vid="2008-04-18" tags=""/>
+			<Set name="AnnaT01" date_pic="" date_vid="2008-04-25" tags=""/>
+			<Set name="IrynaM01" date_pic="" date_vid="2008-07-04" tags=""/>
+			<Set name="KaterynaV01" date_pic="" date_vid="2008-05-16" tags=""/>
+			<Set name="LarisaH01" date_pic="" date_vid="2008-05-23" tags=""/>
+			<Set name="OlgaS01" date_pic="" date_vid="2008-05-30" tags=""/>
+			<Set name="OlhaD01" date_pic="" date_vid="2008-06-06" tags=""/>
+			<Set name="SashaD01" date_pic="" date_vid="2008-07-25" tags=""/>
+			<Set name="SashaL01" date_pic="" date_vid="2008-06-20" tags=""/>
+			<Set name="SvetlanaT01" date_pic="" date_vid="2008-06-13" tags=""/>
+			<Set name="UlyanaM01" date_pic="" date_vid="2008-06-27" tags=""/>
+			<Set name="ValeriyaL01" date_pic="" date_vid="2008-07-11" tags=""/>
+			<Set name="VictoriaD01" date_pic="" date_vid="2008-07-18" tags=""/>
+			<Set name="YuliyaS01" date_pic="" date_vid="2008-08-01" tags=""/>
+			<Set name="YuliyaZ01" date_pic="" date_vid="2008-08-22" tags=""/>
+		</Sets>
+	</Model>
+	<Model firstname="Promotions" lastname="" birthdate="" tags="">
+		<Sets>
+			<Set name="Promotion01" date_pic="" date_vid="" tags=""/>
+			<Set name="Promotion02" date_pic="" date_vid="" tags=""/>
+			<Set name="Promotion03" date_pic="" date_vid="" tags=""/>
+			<Set name="Promotion04" date_pic="" date_vid="" tags=""/>
+			<Set name="Promotion05" date_pic="" date_vid="" tags=""/>
+			<Set name="Promotion06" date_pic="" date_vid="" tags=""/>
+			<Set name="Promotion07" date_pic="" date_vid="" tags=""/>
+			<Set name="Promotion08" date_pic="" date_vid="" tags=""/>
+			<Set name="Promotion09" date_pic="" date_vid="" tags=""/>
+			<Set name="Promotion10" date_pic="" date_vid="" tags=""/>
+			<Set name="Promotion11" date_pic="" date_vid="" tags=""/>
+			<Set name="Promotion12" date_pic="" date_vid="" tags=""/>
+			<Set name="Promotion13" date_pic="" date_vid="" tags=""/>
+			<Set name="Promotion14" date_pic="" date_vid="" tags=""/>
+			<Set name="Promotion15" date_pic="" date_vid="" tags=""/>
+			<Set name="Promotion16" date_pic="" date_vid="" tags=""/>
+			<Set name="Promotion17" date_pic="" date_vid="" tags=""/>
+			<Set name="Promotion18" date_pic="" date_vid="" tags=""/>
+			<Set name="Promotion19" date_pic="" date_vid="" tags=""/>
+			<Set name="Promotion20" date_pic="" date_vid="" tags=""/>
+			<Set name="Promotion21" date_pic="" date_vid="" tags=""/>
+			<Set name="Promotion22" date_pic="" date_vid="" tags=""/>
+			<Set name="Promotion23" date_pic="" date_vid="" tags=""/>
+			<Set name="Promotion24" date_pic="" date_vid="" tags=""/>
+			<Set name="Promotion25" date_pic="" date_vid="" tags=""/>
+			<Set name="Promotion26" date_pic="" date_vid="" tags=""/>
+			<Set name="Promotion27" date_pic="" date_vid="" tags=""/>
+			<Set name="Promotion28" date_pic="" date_vid="" tags=""/>
+			<Set name="Promotion29" date_pic="" date_vid="" tags=""/>
+			<Set name="Promotion30" date_pic="" date_vid="" tags=""/>
+			<Set name="Promotion31" date_pic="" date_vid="" tags=""/>
+			
+			<Set name="Sample01" date_pic="" date_vid="" tags=""/>
+			<Set name="Sample02" date_pic="" date_vid="" tags=""/>
+			<Set name="Sample03" date_pic="" date_vid="" tags=""/>
+			<Set name="Sample04" date_pic="" date_vid="" tags=""/>
+			<Set name="Sample05" date_pic="" date_vid="" tags=""/>
+			<Set name="Sample06" date_pic="" date_vid="" tags=""/>
+		</Sets>
+	</Model>
+	<Model firstname="VIP" lastname="" birthdate="" tags="">
 		<Sets>
 			<Set name="SP_4Dress01" date_pic="" date_vid="" tags="four girls, gloves, red, sofa, stairs, white"/>
 			<Set name="SP_Alice01" date_pic="2008-02-01" date_vid="2008-02-01" tags="dress, grass, outdoor, playing cards, tree, two girls, white, zebra"/>
 			<Set name="SP_Alice02" date_pic="" date_vid="2008-03-14" tags=""/>
 			<Set name="SP_AliceO02" date_pic="2008-03-14" date_vid="" tags="door, dresser, fruit, goats, mirror, necklace, outdoor, playing cards, river, stairs, white, zebra"/>
 			<Set name="SP_AliceV02" date_pic="2008-03-14" date_vid="" tags="bed, door, flowers, garden, grass, outdoor, playing cards, stairs, tea cup, tree, white, window, zebra"/>
-			<Set name="SP_Ballet01" date_pic="2008-04-25" date_vid="2008-04-25" tags="ballet, earrings, hair ribbon, outdoor, ponytail, slippers, two girls"/>
 			<Set name="SP_BabyDoll01" date_pic="2011-03-11" date_vid="" tags="bed, bodysuit, gloves, hair bow, pillows, pink stockings, slippers"/>
+			<Set name="SP_Ballet01" date_pic="2008-04-25" date_vid="2008-04-25" tags="ballet, earrings, hair ribbon, outdoor, ponytail, slippers, two girls"/>
 			<Set name="SP_Bloomers01" date_pic="2008-02-15" date_vid="2008-02-15" tags="bloomers, earrings, hair ties, pigtails, playground, ponytail, ringer t-shirt, two girls, white shoes, white socks"/>
 			<Set name="SP_BluePink01" date_pic="2012-04-18" date_vid="" tags="blue bodysuit, devil horns, earrings, hair stars, magic wand, pink bodysuit, slippers, sofa, striped socks, two girls"/>
 			<Set name="SP_Catsute01" date_pic="2008-02-22" date_vid="2008-02-22" tags="cat ears, cat suit, chair, heels, leopard, riding cane, stairs, tile"/>
@@ -1575,15 +1641,15 @@
 			<Set name="SP_Lolita01" date_pic="2008-12-19" date_vid="" tags="bed, black dress, black stockings, cosplay, earrings, gloves, hair ties, heels, lolita style, necklace, outdoor, pigtails, pillows, white dress, white stockings"/>
 			<Set name="SP_Moon01" date_pic="2008-05-02" date_vid="2008-05-02" tags="cosplay, costume, earrings, hair ties, latex, magic wand, necklace, outdoor, pigtails, pink boots, red boots, rooftop, sailor moon, school desk, sofa, two girls, window, windowsill"/>
 			<Set name="SP_Moon02" date_pic="2008-05-09" date_vid="2008-05-09" tags="cosplay, costume, earrings, hair ties, latex, magic wand, necklace, outdoor, pigtails, pink boots, red boots, sailor moon, stairs, two girls, window, windowsill"/>
-			<Set name="SP_MoonY03" date_pic="" date_vid="2008-12-19" tags=""/>
 			<Set name="SP_MoonS03" date_pic="" date_vid="2008-12-19" tags=""/>
+			<Set name="SP_MoonY03" date_pic="" date_vid="2008-12-19" tags=""/>
 			<Set name="SP_PolkaDot01" date_pic="2011-03-17" date_vid="" tags="chair, earrings, flower drapes, hair barrette, hair ties, heels, pink stockings, polkadot, stool, swimsuit, wood floor"/>
 			<Set name="SP_Sailor01" date_pic="2008-03-07" date_vid="2008-03-07" tags="black shoes, black socks, briefcase, costume, earrings, hair ties, outdoor, ponytail, sailor, two girls, violin case"/>
 			<Set name="SP_Sailor02" date_pic="2008-12-19" date_vid="" tags="black socks, briefcase, costume, hair ties, ponytail, sailor, violin, white shoes, window, windowsill"/>
 			<Set name="SP_Twister01" date_pic="" date_vid="" tags=""/>
 			<Set name="SP_Vinyl01" date_pic="2010-04-15" date_vid="" tags="black boots, camouflage, chair, earrings, fishnet, gloves, heels, ponytail, red vinyl, tile, two girls"/>
 			<Set name="SP_Vinyl02" date_pic="2010-04-06" date_vid="" tags="black boots, black vinyl, bow, chair, earrings, fishnet, gloves, hair ties, heels, necklace, ponytail, red vinyl, sofa, tile, two girls"/>
-
+			
 			<Set name="01" date_pic="2010-06-04" date_vid="2010-06-04" tags=""/>
 			<Set name="02" date_pic="2010-06-04" date_vid="2010-06-11" tags=""/>
 			<Set name="03" date_pic="2010-06-11" date_vid="2010-06-18" tags=""/>
@@ -1682,7 +1748,7 @@
 			<Set name="96" date_pic="2012-08-03" date_vid="2012-04-27" tags=""/>
 			<Set name="97" date_pic="2012-08-10" date_vid="2012-05-04" tags=""/>
 			<Set name="98" date_pic="2012-08-17" date_vid="2012-05-11" tags=""/>
-			<Set name="99" date_pic="" date_vid="2012-05-18" tags=""/>
+			<Set name="99" date_pic="2012-08-24" date_vid="2012-05-18" tags=""/>
 			<Set name="100" date_pic="" date_vid="2012-05-25" tags=""/>
 			<Set name="101" date_pic="" date_vid="2012-06-01" tags=""/>
 			<Set name="102" date_pic="" date_vid="2012-06-08" tags=""/>
@@ -1696,66 +1762,7 @@
 			<Set name="110" date_pic="" date_vid="2012-08-03" tags=""/>
 			<Set name="111" date_pic="" date_vid="2012-08-10" tags=""/>
 			<Set name="112" date_pic="" date_vid="2012-08-17" tags=""/>
-		</Sets>
-	</Model>
-	<Model firstname="Promotions">
-		<Sets>
-			<Set name="Promotion01"/>
-			<Set name="Promotion02"/>
-			<Set name="Promotion03"/>
-			<Set name="Promotion04"/>
-			<Set name="Promotion05"/>
-			<Set name="Promotion06"/>
-			<Set name="Promotion07"/>
-			<Set name="Promotion08"/>
-			<Set name="Promotion09"/>
-			<Set name="Promotion10"/>
-			<Set name="Promotion11"/>
-			<Set name="Promotion12"/>
-			<Set name="Promotion13"/>
-			<Set name="Promotion14"/>
-			<Set name="Promotion15"/>
-			<Set name="Promotion16"/>
-			<Set name="Promotion17"/>
-			<Set name="Promotion18"/>
-			<Set name="Promotion19"/>
-			<Set name="Promotion20"/>
-			<Set name="Promotion21"/>
-			<Set name="Promotion22"/>
-			<Set name="Promotion23"/>
-			<Set name="Promotion24"/>
-			<Set name="Promotion25"/>
-			<Set name="Promotion26"/>
-			<Set name="Promotion27"/>
-			<Set name="Promotion28"/>
-			<Set name="Promotion29"/>
-			<Set name="Promotion30"/>
-			<Set name="Promotion31"/>
-			<Set name="Sample01"/>
-			<Set name="Sample02"/>
-			<Set name="Sample03"/>
-			<Set name="Sample04"/>
-			<Set name="Sample05"/>
-			<Set name="Sample06"/>
-		</Sets>
-	</Model>
-	<Model firstname="Interviews">
-		<Sets>
-			<Set name="AlinaG01" date_vid="2008-04-18" tags=""/>
-			<Set name="AnnaT01" date_vid="2008-04-25" tags=""/>
-			<Set name="IrynaM01" date_vid="2008-07-04" tags=""/>
-			<Set name="KaterynaV01" date_vid="2008-05-16" tags=""/>
-			<Set name="LarisaH01" date_vid="2008-05-23" tags=""/>
-			<Set name="OlgaS01" date_vid="2008-05-30" tags=""/>
-			<Set name="OlhaD01" date_vid="2008-06-06" tags=""/>
-			<Set name="SashaD01" date_vid="2008-07-25" tags=""/>
-			<Set name="SashaL01" date_vid="2008-06-20" tags=""/>
-			<Set name="SvetlanaT01" date_vid="2008-06-13" tags=""/>
-			<Set name="UlyanaM01" date_vid="2008-06-27" tags=""/>
-			<Set name="ValeriyaL01" date_vid="2008-07-11" tags=""/>
-			<Set name="VictoriaD01" date_vid="2008-07-18" tags=""/>
-			<Set name="YuliyaS01" date_vid="2008-08-01" tags=""/>
-			<Set name="YuliyaZ01" date_vid="2008-08-22" tags=""/>
+			<Set name="113" date_pic="" date_vid="2012-08-24" tags=""/>
 		</Sets>
 	</Model>
 </Models>
