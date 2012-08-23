@@ -225,7 +225,6 @@ if($XmlFromFile)
 	{ $bi->Finish(); }
 }
 
-if(!isset($argv) || !$argc)
-{ HTMLstuff::RefererRedirect(); }
+HTMLstuff::RefererRedirect();
 
 ?>
