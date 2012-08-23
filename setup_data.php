@@ -6,6 +6,7 @@ $CurrentUser = Authentication::Authenticate();
 $ModelID = Utils::SafeIntFromQS('model_id');
 
 
+$XmlFromFile = NULL;
 $fileToProcess = 'setup_data.xml';
 $Tag2AllsInDB = Tag2All::GetTag2Alls();
 $TagsInDB = Tag::GetTags();
