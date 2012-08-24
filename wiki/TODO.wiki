@@ -14,6 +14,7 @@
  * SFV-support (export) *(DONE)*
  * CSV-support (export, comparing of collections) *(PARTIALLY DONE)*
  * CRC32-support for images and videos *(DONE)*
+ * allow XML-importer to process images and videos *(DONE)*
 
 ==later==
 
@@ -22,7 +23,6 @@
  * Optimize cacheperformance by adding cache-expiration
  * Custom error logging (on-disk, email?)
  * all models tagged
- * allow importing of XML's to accommodate the importing of image and video tags
  * switchable themes (header, footer, screen- and font colors)
  * more elegant tagging (separate adjectives like colors and sizes)
  * URL-rewrite capabilities (Apache, IIS or both?)
