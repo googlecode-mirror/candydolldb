@@ -89,7 +89,7 @@ for($i = 0; $i < count($Models); $i++)
 				CacheImage::DeleteMulti($CacheImage, $CurrentUser);
 
 				/* @var $ImageInDB Image */
-				$ImagesInDB = Image::FilterImages(
+				$ImagesInDB = Image::Filter(
 					$Images,
 					$ModelID,
 					$Set->getID(),

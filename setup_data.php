@@ -5,7 +5,6 @@ ini_set('max_execution_time', '3600');
 $CurrentUser = Authentication::Authenticate();
 $ModelID = Utils::SafeIntFromQS('model_id');
 
-
 $XmlFromFile = NULL;
 $fileToProcess = 'setup_data.xml';
 $Tag2AllsInDB = Tag2All::GetTag2Alls();
@@ -31,6 +30,7 @@ if($XmlFromFile)
 	$ModelsInDb = Model::GetModels();
 	$SetsInDb = Set::GetSets();
 	$DatesInDb = Date::GetDates();
+	$VideosInDb = Video::GetVideos();
 	
 	if(isset($argv) && $argc > 0)
 	{ $bi = new BusyIndicator(count($XmlFromFile->Model), 0); }
@@ -152,10 +152,8 @@ if($XmlFromFile)
 				Date::ParseDates($datesVid[0], DATE_KIND_VIDEO, $Set2Process)
 			);
 			
-			
 			// Reset the Set's CONTAINS_WHAT
 			$Set2Process->setContainsWhat(SET_CONTENT_NONE);
-			
 			
 			if($Set2Process->getDatesPic())
 			{
@@ -211,12 +209,94 @@ if($XmlFromFile)
 				if(!$Date->getID())
 				{ Date::Insert($Date, $CurrentUser); }
 			}
+			
+			if($Set->Images)
+			{
+				$ImagesInDb = Image::GetImages(new ImageSearchParameters(
+					FALSE, FALSE,
+					$Set2Process->getID()
+				));
+				
+				foreach($Set->Images->Image as $Image)
+				{
+					$ImageInDb = Image::Filter(
+						$ImagesInDb,
+						$Model2Process->getID(),
+						$Set2Process->getID(),
+						(string)$Image->attributes()->name
+					);
+				
+					if($ImageInDb)
+					{ $ImageInDb = $ImageInDb[0]; }
+				
+					/* @var $Image2Process Image */
+					$Image2Process = $ImageInDb ? $ImageInDb : new Image();
+					$Image2Process->setSet($Set2Process);
+					$Image2Process->setFileName((string)$Image->attributes()->name);
+					$Image2Process->setFileExtension((string)$Image->attributes()->extension);
+					$Image2Process->setImageHeight((int)$Image->attributes()->height);
+					$Image2Process->setImageWidth((int)$Image->attributes()->width);
+					$Image2Process->setFileSize((int)$Image->attributes()->filesize);
+					$Image2Process->setFileCheckSum((string)$Image->attributes()->checksum);
+					$Image2Process->setFileCRC32((string)$Image->attributes()->crc32);
+					
+					if($Image2Process->getID())
+					{
+						Image::Update($Image2Process, $CurrentUser);
+					}
+					else
+					{
+						Image::Insert($Image2Process, $CurrentUser);
+					}
+					
+					$imagetags = Tag::GetTagArray((string)$Image->attributes()->tags);
+					$Tag2AllThisImage = Tag2All::Filter($Tag2AllThisSet, NULL, $Model2Process->getID(), $Set2Process->getID(), $Image2Process->getID(), NULL);
+					Tag2All::HandleTags($imagetags, $Tag2AllThisImage, $TagsInDB, $CurrentUser, $Model2Process->getID(), $Set2Process->getID(), $Image2Process->getID(), NULL, FALSE);
+				}
+			}
+			
+			if($Set->Videos)
+			{
+				foreach($Set->Videos->Video as $Video)
+				{
+					$VideoInDb = Video::Filter(
+						$VideosInDb,
+						$Model2Process->getID(),
+						$Set2Process->getID(),
+						(string)$Video->attributes()->name
+					);
+				
+					if($VideoInDb)
+					{ $VideoInDb = $VideoInDb[0]; }
+				
+					/* @var $Video2Process Video */
+					$Video2Process = $VideoInDb ? $VideoInDb : new Video();
+					$Video2Process->setSet($Set2Process);
+					$Video2Process->setFileName((string)$Video->attributes()->name);
+					$Video2Process->setFileExtension((string)$Video->attributes()->extension);
+					$Video2Process->setFileSize((int)$Video->attributes()->filesize);
+					$Video2Process->setFileCheckSum((string)$Video->attributes()->checksum);
+					$Video2Process->setFileCRC32((string)$Video->attributes()->crc32);
+					
+					if($Video2Process->getID())
+					{
+						Video::Update($Video2Process, $CurrentUser);
+					}
+					else
+					{
+						Video::Insert($Video2Process, $CurrentUser);
+					}
+					
+					$videotags = Tag::GetTagArray((string)$Video->attributes()->tags);
+					$Tag2AllThisVideo = Tag2All::Filter($Tag2AllThisSet, NULL, $Model2Process->getID(), $Set2Process->getID(), NULL, $Video2Process->getID());
+					Tag2All::HandleTags($videotags, $Tag2AllThisVideo, $TagsInDB, $CurrentUser, $Model2Process->getID(), $Set2Process->getID(), NULL, $Video2Process->getID(), FALSE);
+				}
+			}
 		}
 	}
 	
-	if($fileToProcess != 'setup_data.xml'){
-		unlink(realpath($fileToProcess));
-	}
+	if($fileToProcess != 'setup_data.xml')
+	{ unlink(realpath($fileToProcess)); }
 	
 	$infoSuccess = new Info($lang->g('MessageXMLImported'));
 	Info::AddInfo($infoSuccess);

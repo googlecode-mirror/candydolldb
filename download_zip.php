@@ -113,7 +113,7 @@ if($resource === TRUE)
 			{
 				$zip->addEmptyDir(sprintf('%1$s/%2$s%3$s', $Model->GetFullName(), $Set->getPrefix(), $Set->getName()));
 				
-				foreach(Image::FilterImages($Images, NULL, $Set->getID()) as $Image)
+				foreach(Image::Filter($Images, NULL, $Set->getID()) as $Image)
 				{
 					if(!file_exists($Image->getFilenameOnDisk()))
 					{ continue; }
