@@ -11,9 +11,9 @@
  * set-prefixes removed
  * naming-conventions documented
  * user-rights, permissions implemented *(PARTIALLY DONE)*
- * Allow import / export of CSV formatted files *(DONE)*
+ * SFV-support (export) *(DONE)*
  * CSV-support (export, comparing of collections) *(PARTIALLY DONE)*
- * CRC32-support for images and videos (instead of md5?) *(DONE)*
+ * CRC32-support for images and videos *(DONE)*
 
 ==later==
 
