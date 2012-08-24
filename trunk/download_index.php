@@ -67,7 +67,7 @@ if($Sets && !in_array($Sets[0]->getModel()->getFullName(), array('VIP', 'Promoti
 		$picCount = count($pics);
 		
 		/* @var $Image Image */
-		foreach(Image::FilterImages($Images, $ModelID, $Set->getID()) as $Image)
+		foreach(Image::Filter($Images, $ModelID, $Set->getID()) as $Image)
 		{
 			if($Image->getImageWidth() > $Image->getImageHeight())
 			{ continue; }

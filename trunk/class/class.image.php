@@ -582,7 +582,7 @@ class Image
 	 * @param int $SetID
 	 * @return array(Image)
 	 */
-	public static function FilterImages($ImageArray, $ModelID = NULL, $SetID = NULL, $Name = NULL)
+	public static function Filter($ImageArray, $ModelID = NULL, $SetID = NULL, $Name = NULL)
 	{
 		$OutArray = array();
 			
