@@ -17,6 +17,7 @@
 
 ==later==
 
+ * Include automatic video thumbnail generation 
  * Utilize the info about image-video set discrepancies
  * Optimize cacheperformance by adding cache-expiration
  * Custom error logging (on-disk, email?)
