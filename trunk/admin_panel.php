@@ -178,10 +178,10 @@ echo HTMLstuff::HtmlHeader($lang->g('NavigationAdminPanel'), $CurrentUser);
 
 <div class="FormRow WideForm">
 <label>Download CSV</label>
-<input type="button" id="btnDownloadCSV" name="btnDownloadCSV" value="<?php echo $lang->g('ButtonDownload')?>" onclick="RedirToCSV();" />
+<input type="button" id="btnDownloadCSV" name="btnDownloadCSV" value="<?php echo $lang->g('ButtonDownload')?>" onclick="RedirToCSV();"<?php echo HTMLstuff::DisabledStr(!$CurrentUser->hasPermission(RIGHT_EXPORT_CSV))?> />
 <br />
 <label for="selModelCsv" style="float:none;width:auto;"><?php echo $lang->g('LabelModel')?>: </label>
-<select id="selModelCsv" name="selModelCsv">
+<select id="selModelCsv" name="selModelCsv"<?php echo HTMLstuff::DisabledStr(!$CurrentUser->hasPermission(RIGHT_EXPORT_CSV))?>>
 	<option value=""><?php echo $lang->g('LabelAllModels')?></option>
 	<?php echo $ModelsOptions?>
 </select>
