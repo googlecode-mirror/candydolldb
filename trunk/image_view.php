@@ -90,11 +90,11 @@ else
 
 if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'ImageView')
 {
-	$Image->setFileName($_POST['txtFilename']);
-	$Image->setFileExtension($_POST['txtFileExtension']);
+	$Image->setFileName(Utils::NullIfEmpty($_POST['txtFilename']));
+	$Image->setFileExtension(Utils::NullIfEmpty($_POST['txtFileExtension']));
 	$Image->setFileSize(intval($_POST['txtFilesize']));
-	$Image->setFileCheckSum($_POST['txtFileChecksum']);
-	$Image->setFileCRC32($_POST['txtFileCRC32']);
+	$Image->setFileCheckSum(Utils::NullIfEmpty($_POST['txtFileChecksum']));
+	$Image->setFileCRC32(Utils::NullIfEmpty($_POST['txtFileCRC32']));
 	$Image->setImageWidth(abs(intval($_POST['txtImageWidth'])));
 	$Image->setImageHeight(abs(intval($_POST['txtImageHeight'])));
 	
