@@ -15,13 +15,15 @@ $RightsCheckboxes = NULL;
 
 $DisableControls =
 	$DeleteUser ||
-	(!$CurrentUser->hasPermission(RIGHT_USER_EDIT) && !is_null($UserID)) ||
-	(!$CurrentUser->hasPermission(RIGHT_USER_ADD) && is_null($UserID));
+	($UserID == $CurrentUser->getID() && !$CurrentUser->hasPermission(RIGHT_ACCOUNT_EDIT)) ||
+	($UserID != $CurrentUser->getID() && !$CurrentUser->hasPermission(RIGHT_USER_EDIT) && !is_null($UserID)) ||
+	($UserID != $CurrentUser->getID() && !$CurrentUser->hasPermission(RIGHT_USER_ADD) && is_null($UserID));
 
 $DisableDefaultButton =
-	(!$CurrentUser->hasPermission(RIGHT_USER_DELETE) && !is_null($UserID) && $DeleteUser) ||
-	(!$CurrentUser->hasPermission(RIGHT_USER_EDIT) && !is_null($UserID) && !$DeleteUser) ||
-	(!$CurrentUser->hasPermission(RIGHT_USER_ADD) && is_null($UserID));
+	($UserID == $CurrentUser->getID() && !$CurrentUser->hasPermission(RIGHT_ACCOUNT_EDIT)) ||	
+	($UserID != $CurrentUser->getID() && !$CurrentUser->hasPermission(RIGHT_USER_DELETE) && !is_null($UserID) && $DeleteUser) ||
+	($UserID != $CurrentUser->getID() && !$CurrentUser->hasPermission(RIGHT_USER_EDIT) && !is_null($UserID) && !$DeleteUser) ||
+	($UserID != $CurrentUser->getID() && !$CurrentUser->hasPermission(RIGHT_USER_ADD) && is_null($UserID));
 
 $DisableRights = 
 	$DeleteUser ||
@@ -51,18 +53,18 @@ if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'UserView')
 {
 	if((array_key_exists('txtUserName', $_POST)) && (array_key_exists('hidPassword', $_POST)))
 	{
-		$User->setUserName($_POST['txtUserName']);
-		$User->setPassword($_POST['hidPassword']);
-		$User->setSalt($_SESSION['UserSalt']);
+		$User->setUserName(Utils::NullIfEmpty($_POST['txtUserName']));
+		$User->setPassword(Utils::NullIfEmpty($_POST['hidPassword']));
+		$User->setSalt(Utils::NullIfEmpty($_SESSION['UserSalt']));
 	}
 
-	$User->setFirstName($_POST['txtFirstName']);
-	$User->setInsertion($_POST['txtInsertion']);
-	$User->setLastName($_POST['txtLastName']);
-	$User->setEmailAddress($_POST['txtEmailAddress']);
-	$User->setLanguage($_POST['selectLanguage']);
+	$User->setFirstName(Utils::NullIfEmpty($_POST['txtFirstName']));
+	$User->setInsertion(Utils::NullIfEmpty($_POST['txtInsertion']));
+	$User->setLastName(Utils::NullIfEmpty($_POST['txtLastName']));
+	$User->setEmailAddress(Utils::NullIfEmpty($_POST['txtEmailAddress']));
+	$User->setLanguage(Utils::NullIfEmpty($_POST['selectLanguage']));
 	$User->setDateDisplayOptions($_POST['selectDateformat']);
-	$User->setImageview($_POST['selectImageview']);
+	$User->setImageview(Utils::NullIfEmpty($_POST['selectImageview']));
 
 	if($CurrentUser->hasPermission(RIGHT_USER_RIGHTS))
 	{
@@ -205,13 +207,13 @@ echo HTMLstuff::HtmlHeader($User->GetFullName(), $CurrentUser);
 <script type="text/javascript">
 //<![CDATA[
 
-setInterval(function () {
+/*setInterval(function () {
   if($("#txtRepeatPassword").val().length > 0) {
     $("#submitform").removeAttr("disabled");
   } else {
     $("#submitform").attr("disabled", "disabled");
   }
-}, 500);
+}, 500);*/
 
 function ToggleBoxes(){
 	$('input[id^=chkRIGHT_]').each(function(i, a){
@@ -235,7 +237,11 @@ function ToggleBoxes(){
 <input type="hidden" id="hidAction" name="hidAction" value="UserView" />
 <input type="hidden" id="hidPassword" name="hidPassword" value="<?php echo $User->getPassword()?>" />
 
-<?php if($User->getID() == $CurrentUser->getID() || $User->getUserName() == $lang->g('LabelNewUser')){ ?>
+<?php if(
+	($CurrentUser->hasPermission(RIGHT_ACCOUNT_EDIT) && $User->getID() == $CurrentUser->getID())
+	|| $CurrentUser->hasPermission(RIGHT_USER_EDIT)
+	|| is_null($User->getID())){ ?>
+
 <div class="FormRow">
 <label for="txtUserName"><?php echo $lang->g('LabelUsername')?>: <em>*</em></label>
 <input type="text" id="txtUserName" name="txtUserName" maxlength="50" value="<?php echo $User->getUserName()?>"<?php echo HTMLstuff::DisabledStr($DisableControls)?> />
@@ -252,6 +258,7 @@ function ToggleBoxes(){
 <label for="txtRepeatPassword"><?php echo $lang->g('LabelRepeatPassword')?>:<?php echo $UserID ? '' : ' <em>*</em>'?></label>
 <input type="password" id="txtRepeatPassword" name="txtRepeatPassword" maxlength="100" value=""<?php echo HTMLstuff::DisabledStr($DisableControls)?> />
 </div>
+
 <? } ?>
 
 <div class="FormRow">
