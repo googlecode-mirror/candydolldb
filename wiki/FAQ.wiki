@@ -11,7 +11,7 @@
 
 The full path of an image in CandyDollDB contains a few components: 
 <pre>  {CANDYIMAGEPATH}/{FullModelName}/{SetPrefix}{SetName}/{ImageFilename}.{ImageExtension}</pre>
-An example path could be (Window)
+An example path could be (Windows)
 <pre>
 D:\CandyDoll\Alyona Gromova\set_01\AlyonaG01_001.jpg</pre> or (GNU/Linux)
 <pre>
