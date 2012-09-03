@@ -26,7 +26,7 @@ $DisableDefaultButton =
 
 if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'TagView')
 {
-	$Tag->setName(empty($_POST['txtName']) ? NULL : $_POST['txtName']);	
+	$Tag->setName(Utils::NullIfEmpty($_POST['txtName']));	
 	
 	if($Tag->getID())
 	{

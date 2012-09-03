@@ -85,11 +85,11 @@ else
 
 if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'VideoView')
 {
-	$Video->setFileName($_POST['txtFilename']);
-	$Video->setFileExtension($_POST['txtFileExtension']);
+	$Video->setFileName(Utils::NullIfEmpty($_POST['txtFilename']));
+	$Video->setFileExtension(Utils::NullIfEmpty($_POST['txtFileExtension']));
 	$Video->setFileSize(intval($_POST['txtFilesize']));
-	$Video->setFileCheckSum($_POST['txtFileChecksum']);
-	$Video->setFileCRC32($_POST['txtFileCRC32']);
+	$Video->setFileCheckSum(Utils::NullIfEmpty($_POST['txtFileChecksum']));
+	$Video->setFileCRC32(Utils::NullIfEmpty($_POST['txtFileCRC32']));
 	
 	$tags = Tag::GetTagArray($_POST['txtTags']);
 	

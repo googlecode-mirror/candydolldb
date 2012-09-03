@@ -82,8 +82,8 @@ $DatesThisSet[] = new Date(NULL, DATE_KIND_UNKNOWN, -1,
 
 if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'SetView')
 {
-	$Set->setPrefix($_POST['txtPrefix']);
-	$Set->setName($_POST['txtName']);
+	$Set->setPrefix(Utils::NullIfEmpty($_POST['txtPrefix']));
+	$Set->setName(Utils::NullIfEmpty($_POST['txtName']));
 
 	$tags = Tag::GetTagArray($_POST['txtTags']);
 

@@ -47,8 +47,8 @@ else
 
 if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'ModelView')
 {
-	$Model->setFirstName($_POST['txtFirstName']);
-	$Model->setLastName($_POST['txtLastName']);
+	$Model->setFirstName(Utils::NullIfEmpty($_POST['txtFirstName']));
+	$Model->setLastName(Utils::NullIfEmpty($_POST['txtLastName']));
 
 	if($_POST['txtBirthDate'] && $_POST['txtBirthDate'] != 'YYYY-MM-DD' && strtotime($_POST['txtBirthDate']) !== FALSE)
 	{ $Model->setBirthDate(strtotime($_POST['txtBirthDate'])); }
@@ -57,7 +57,7 @@ if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'ModelView')
 
 	$tags = Tag::GetTagArray($_POST['txtTags']);
 
-	$Model->setRemarks($_POST['txtRemarks']);
+	$Model->setRemarks(Utils::NullIfEmpty($_POST['txtRemarks']));
 	
 	if($Model->getID())
 	{
