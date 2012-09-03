@@ -383,6 +383,9 @@ class Utils
 	public static function _empty($val)
 	{ return empty($val); }
 	
+	public static function NullIfEmpty($val)
+	{ return empty($val) ? NULL : $val; }
+	
 	/**
 	 * An array containing file extensions and their corresponding MIME-types.
 	 * @var array
