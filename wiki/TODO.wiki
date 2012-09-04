@@ -8,11 +8,10 @@
 ==v1.8==
 
  * switch from MySQL to MySQLi *(DONE)*
- * set-prefixes removed
- * naming-conventions documented
+ * set-prefixes removed *(PARTIALLY DONE)*
  * user-rights, permissions implemented *(DONE)*
- * SFV-support (export) *(DONE)*
- * CSV-support (export, comparing of collections) *(PARTIALLY DONE)*
+ * SFV-export *(DONE)*
+ * CSV-export *(DONE)*
  * CRC32-support for images and videos *(DONE)*
  * allow XML-importer to process images and videos *(DONE)*
 
