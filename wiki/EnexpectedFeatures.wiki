@@ -1,3 +1,0 @@
-#summary ~~Bugs~~ Features with unexpected results
-
-= Enexpected Features =
