@@ -10,7 +10,7 @@
  * switch from MySQL to MySQLi *(DONE)*
  * set-prefixes removed
  * naming-conventions documented
- * user-rights, permissions implemented *(PARTIALLY DONE)*
+ * user-rights, permissions implemented *(DONE)*
  * SFV-support (export) *(DONE)*
  * CSV-support (export, comparing of collections) *(PARTIALLY DONE)*
  * CRC32-support for images and videos *(DONE)*
