@@ -94,7 +94,7 @@ for($i = 0; $i < count($Models); $i++)
 				$VideoInDB->setFileName($matches['Prefix'].$matches['Name'].$matches['Number'].$matches['Suffix']);
 				$VideoInDB->setFileExtension($matches['Extension']);
 				$VideoInDB->setFileSize($FileInfo->getSize());
-				$VideoInDB->setFileCheckSum(md5_file($FileInfo->getRealPath()));
+				$VideoInDB->setFileCheckSum(Utils::CalculateMD5($FileInfo->getRealPath()));
 				$VideoInDB->setFileCRC32(Utils::CalculateCRC32($FileInfo->getRealPath()));
 					
 				if(!$VideoInDB->getID() && $CurrentUser->hasPermission(RIGHT_VIDEO_ADD))
