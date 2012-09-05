@@ -15,18 +15,21 @@
  * CRC32-support for images and videos *(DONE)*
  * allow XML-importer to process images and videos *(DONE)*
 
+==v1.9==
+
+ * Automatic XML-updates
+
 ==later==
 
  * Include automatic video thumbnail generation 
  * Utilize the info about image-video set discrepancies
  * Optimize cacheperformance by adding cache-expiration
- * Custom error logging (on-disk, email?)
+ * Custom error logging (on-disk, email)
  * all models tagged
  * switchable themes (header, footer, screen- and font colors)
  * more elegant tagging (separate adjectives like colors and sizes)
- * URL-rewrite capabilities (Apache, IIS or both?)
+ * URL-rewrite capabilities (Apache, IIS)
  * other translations
- * Automatic XML-updates
  * Automatic application-updates
  * HTML5 interface instead of XHTML 1.0 Strict
  * Hard-coded pic counts for each set for later port-ability
