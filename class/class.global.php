@@ -217,6 +217,20 @@ class Utils
 	}
 	
 	/**
+	 * Calculates the MD5 checksum of a filename on disk
+	 * @param string $filename
+	 * @return string
+	 */
+	public static function CalculateMD5($filename)
+	{
+		if(file_exists($filename))
+		{
+			return hash_file('md5', $filename);
+		}
+		return NULL;
+	}
+	
+	/**
 	 * Returns a human readable string of a filesize, e.g. 2,43 MiB.
 	 * @param int $SizeInBytes
 	 * @return string
@@ -383,6 +397,11 @@ class Utils
 	public static function _empty($val)
 	{ return empty($val); }
 	
+	/**
+	 * Returns NULL or $val, depending on whether $val is empty
+	 * @param mixed $val
+	 * @return mixed
+	 */
 	public static function NullIfEmpty($val)
 	{ return empty($val) ? NULL : $val; }
 	
