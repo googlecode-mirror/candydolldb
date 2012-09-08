@@ -7,7 +7,7 @@
 			<Set name="03" date_pic="2012-05-11" date_vid="2012-05-04" tags="bare feet, bikini, cat ears, chair, earrings, pink drapes"/>
 			<Set name="04" date_pic="2012-06-29" date_vid="2012-05-18" tags="black shoes, black socks, chair, earrings, hair ties, red drapes, sailor"/>
 			<Set name="05" date_pic="2012-07-06" date_vid="2012-06-15" tags="balls, bare feet, bikini, earrings, hair bow, leg warmers, red drapes, skipping rope"/>
-			<Set name="06" date_pic="2012-08-17" date_vid="2012-07-13" tags=""/>
+			<Set name="06" date_pic="2012-08-17" date_vid="2012-07-13" tags="braids, chair, gold drapes, ringer t-shirt, skipping rope, white"/>
 		</Sets>
 	</Model>
 	<Model firstname="Adriana" lastname="E" birthdate="1999-11-17" tags="">
@@ -77,8 +77,8 @@
 			<Set name="12" date_pic="2012-06-22" date_vid="2012-07-13" tags="ballet, blue carpet, chair, earrings, red drapes, slippers"/>
 			<Set name="13" date_pic="2012-07-13" date_vid="2012-07-20" tags="backpack, black shoes, chair, diadem, earrings, plaid, red drapes, skirt, white, white socks"/>
 			<Set name="14" date_pic="2012-07-20" date_vid="2012-07-27" tags="chair, earrings, pigtails, red drapes, satin, white stockings"/>
-			<Set name="15" date_pic="2012-08-17" date_vid="2012-08-03" tags=""/>
-			<Set name="16" date_pic="2012-09-07" date_vid="2012-08-10" tags=""/>
+			<Set name="15" date_pic="2012-08-17" date_vid="2012-08-03" tags="bare feet, bikini, bracelet, chair, earrings, hair flower, polkadot, red drapes"/>
+			<Set name="16" date_pic="2012-09-07" date_vid="2012-08-10" tags="chair, earrings, red drapes, tiara, white, white shoes, white stockings"/>
 			<Set name="17" date_pic="" date_vid="2012-08-24" tags=""/>
 			<Set name="18" date_pic="" date_vid="2012-08-31" tags=""/>
 			<Set name="19" date_pic="" date_vid="2012-09-07" tags=""/>
@@ -139,7 +139,7 @@ Real birthdate: 1996-03-19
 			<Set name="05" date_pic="2012-05-18" date_vid="2012-05-25" tags="bare feet, bracelet, earrings, lace, seamless background, white"/>
 			<Set name="06" date_pic="2012-06-22" date_vid="2012-06-08" tags="balls, cushion, earrings, ribbon stick, slippers, swimsuit"/>
 			<Set name="07" date_pic="2012-07-13" date_vid="" tags="blue stockings, chair, earrings, hair band, lace, red drapes, white"/>
-			<Set name="08" date_pic="2012-09-07" date_vid="" tags=""/>
+			<Set name="08" date_pic="2012-09-07" date_vid="" tags="bare feet, bikini, chair, earrings, ponytail, red drapes"/>
 		</Sets>
 	</Model>
 	<Model firstname="Anastasia" lastname="Spasuk" birthdate="1997-01-28" tags="">
@@ -240,9 +240,9 @@ Real birthdate: 1996-03-19
 			<Set name="01" date_pic="2012-06-01" date_vid="2012-05-25" tags="black shorts, blue shoes, chair, pigtails, red drapes, ringer t-shirt, white, white socks"/>
 			<Set name="02" date_pic="2012-06-08" date_vid="2012-06-15" tags="bare feet, bikini, chair, red drapes, white"/>
 			<Set name="03" date_pic="2012-06-29" date_vid="2012-06-22" tags="balls, bare feet, blue carpet, chair, hair ties, pigtails, red drapes, skipping rope, swimsuit"/>
-			<Set name="04" date_pic="2012-08-03" date_vid="2012-07-13" tags=""/>
-			<Set name="05" date_pic="2012-08-10" date_vid="2012-07-20" tags=""/>
-			<Set name="06" date_pic="2012-08-24" date_vid="2012-08-31" tags=""/>
+			<Set name="04" date_pic="2012-08-03" date_vid="2012-07-13" tags="black shoes, braid, chair, diadem, gold drapes, schoolgirl, white socks"/>
+			<Set name="05" date_pic="2012-08-10" date_vid="2012-07-20" tags="diadem, gold drapes, green, ribbon stick, skipping rope"/>
+			<Set name="06" date_pic="2012-08-24" date_vid="2012-08-31" tags="chair, crown, gold drapes, hair buns, white, white leggings"/>
 		</Sets>
 	</Model>
 	<Model firstname="Biyanka" lastname="S" birthdate="1997-07-05" tags="">
@@ -291,7 +291,7 @@ Real birthdate: 1996-03-19
 			<Set name="02" date_pic="2012-06-15" date_vid="2012-06-22" tags="chair, diadem, earrings, gold drapes, white, white shoes"/>
 			<Set name="03" date_pic="2012-07-06" date_vid="2012-06-29" tags="blue carpet, chair, cosplay, costume, earrings, pink, slippers, yellow drapes"/>
 			<Set name="04" date_pic="2012-07-13" date_vid="" tags="bare feet, bikini, chair, earrings, red drapes, skipping rope"/>
-			<Set name="05" date_pic="2012-09-07" date_vid="" tags=""/>
+			<Set name="05" date_pic="2012-09-07" date_vid="" tags="bare feet, bunny ears, red drapes, yellow"/>
 		</Sets>
 	</Model>
 	<Model firstname="Diana" lastname="M" birthdate="" tags="">
@@ -439,9 +439,9 @@ Real birthdate: 1996-03-19
 			<Set name="09" date_pic="2012-06-01" date_vid="2012-06-15" tags="beachball, black, black socks, cat ears, collar, tail, tiger"/>
 			<Set name="10" date_pic="2012-06-08" date_vid="2012-06-22" tags="bare feet, blue drapes, earrings, orange, pigtails, polkadot, white shoes"/>
 			<Set name="11" date_pic="2012-06-29" date_vid="2012-07-06" tags="backpack, chair, hair ties, jean shorts, jean top, pigtails, red drapes, red shoes, white socks"/>
-			<Set name="12" date_pic="2012-07-27" date_vid="2012-07-13" tags=""/>
-			<Set name="13" date_pic="2012-08-17" date_vid="2012-07-20" tags=""/>
-			<Set name="14" date_pic="2012-08-31" date_vid="2012-08-10" tags=""/>
+			<Set name="12" date_pic="2012-07-27" date_vid="2012-07-13" tags="bare feet, bikini, chair, red drapes"/>
+			<Set name="13" date_pic="2012-08-17" date_vid="2012-07-20" tags="black top, chair, pigtails, red drapes, white shorts, zebra"/>
+			<Set name="14" date_pic="2012-08-31" date_vid="2012-08-10" tags="bare feet, bikini, blue drapes, green, purple"/>
 			<Set name="15" date_pic="" date_vid="2012-09-07" tags=""/>
 		</Sets>
 	</Model>
@@ -500,7 +500,7 @@ Real birthdate: 1996-03-19
 		<Sets>
 			<Set name="01" date_pic="2012-06-22" date_vid="2012-07-27" tags="blue carpet, blue drapes, chair, swimsuit"/>
 			<Set name="02" date_pic="2012-07-06" date_vid="2012-08-10" tags="black bodysuit, blue carpet, chair, hair barrette, hair buns, red drapes, slippers"/>
-			<Set name="03" date_pic="2012-07-27" date_vid="" tags=""/>
+			<Set name="03" date_pic="2012-07-27" date_vid="" tags="black shoes, chair, diadem, gloves, maid, red drapes, white stockings"/>
 		</Sets>
 	</Model>
 	<Model firstname="Jasmin" lastname="P" birthdate="1996-07-05" tags="">
@@ -561,11 +561,11 @@ Real birthdate: 1996-03-19
 			<Set name="14" date_pic="2012-06-15" date_vid="2012-06-29" tags="bare feet, black, chair, earrings, ponytail, red drapes"/>
 			<Set name="15" date_pic="2012-06-22" date_vid="2012-07-06" tags="chair, earrings, hair ribbon, necklace, ribbon stick, slippers, tutu"/>
 			<Set name="16" date_pic="2012-07-13" date_vid="2012-07-20" tags="bare feet, bikini, earrings, green, pigtails, red drapes, skipping rope"/>
-			<Set name="17" date_pic="2012-07-27" date_vid="2012-08-03" tags=""/>
-			<Set name="18" date_pic="2012-08-03" date_vid="2012-08-17" tags=""/>
-			<Set name="19" date_pic="2012-08-17" date_vid="2012-09-07" tags=""/>
-			<Set name="20" date_pic="2012-08-24" date_vid="" tags=""/>
-			<Set name="21" date_pic="2012-08-31" date_vid="" tags=""/>
+			<Set name="17" date_pic="2012-07-27" date_vid="2012-08-03" tags="black, black leggings, chair, earrings, red drapes, red shoes, tiara"/>
+			<Set name="18" date_pic="2012-08-03" date_vid="2012-08-17" tags="chair, earrings, ponytail, red drapes, white, white socks"/>
+			<Set name="19" date_pic="2012-08-17" date_vid="2012-09-07" tags="bare feet, beachball, blue, bracelet, earrings, green, necklace, ponytail, red drapes, striped shirt"/>
+			<Set name="20" date_pic="2012-08-24" date_vid="" tags="black, black shoes, chair, earrings, hair feather, pink, red drapes, white socks"/>
+			<Set name="21" date_pic="2012-08-31" date_vid="" tags="blue, braid, chair, hair flower, necklace, red drapes, white leggings"/>
 		</Sets>
 		<Remarks>
 Previous birthdate: 1999-04-03
@@ -574,7 +574,7 @@ Previous birthdate: 1999-04-03
 	<Model firstname="Khloe" lastname="R" birthdate="" tags="">
 		<Sets>
 			<Set name="01" date_pic="2012-06-29" date_vid="2012-05-18" tags="blue carpet, blue drapes, bunny ears, chair, gloves, pigtails, pink skirt, pink top, sneakers, white socks"/>
-			<Set name="02" date_pic="2012-08-31" date_vid="2012-06-08" tags=""/>
+			<Set name="02" date_pic="2012-08-31" date_vid="2012-06-08" tags="backpack, black shoes, black skirt, blue drapes, books, braids, chair, schoolgirl, white socks"/>
 			<Set name="03" date_pic="" date_vid="2012-06-22" tags=""/>
 		</Sets>
 	</Model>
@@ -664,8 +664,8 @@ Previous birthdate: 1999-04-03
 	</Model>
 	<Model firstname="Lexi" lastname="G" birthdate="" tags="">
 		<Sets>
-			<Set name="01" date_pic="2012-07-27" date_vid="2012-08-17" tags=""/>
-			<Set name="02" date_pic="2012-08-03" date_vid="2012-08-31" tags=""/>
+			<Set name="01" date_pic="2012-07-27" date_vid="2012-08-17" tags="diadem, earrings, red drapes, skipping rope, white shoes, white t-shirt"/>
+			<Set name="02" date_pic="2012-08-03" date_vid="2012-08-31" tags="bare feet, bikini, chair, diadem, earrings, necklace, pink, red drapes"/>
 		</Sets>
 	</Model>
 	<Model firstname="Lidiya" lastname="A" birthdate="1999-05-27" tags="">
@@ -754,9 +754,9 @@ Previous birthdate: 1999-04-03
 			<Set name="01" date_pic="2012-04-13" date_vid="2012-03-16" tags="chair, earrings, pigtails, red, red drapes, ribbon"/>
 			<Set name="02" date_pic="2012-04-27" date_vid="2012-04-20" tags="beachball, blue drapes, diadem, green shorts, t-shirt, white, white shoes, white socks"/>
 			<Set name="03" date_pic="2012-05-25" date_vid="2012-05-11" tags="chair, crown, earrings, gold drapes, red, white socks"/>
-			<Set name="04" date_pic="2012-08-03" date_vid="2012-07-06" tags=""/>
-			<Set name="05" date_pic="2012-08-10" date_vid="2012-09-07" tags=""/>
-			<Set name="06" date_pic="2012-08-24" date_vid="" tags=""/>
+			<Set name="04" date_pic="2012-08-03" date_vid="2012-07-06" tags="black, black shoes, black socks, blue drapes, braid, earrings, necklace"/>
+			<Set name="05" date_pic="2012-08-10" date_vid="2012-09-07" tags="black shoes, blue drapes, braid, chair, schoolgirl, white socks"/>
+			<Set name="06" date_pic="2012-08-24" date_vid="" tags="bare feet, chair, earrings, red drapes, white, white shorts"/>
 		</Sets>
 	</Model>
 	<Model firstname="Margarita" lastname="D" birthdate="1997-08-18" tags="">
@@ -788,7 +788,7 @@ Previous birthdate: 1999-04-03
 			<Set name="01" date_pic="2012-04-06" date_vid="2012-03-30" tags="chair, fishnet, garters, gloves, gold drapes, tiger"/>
 			<Set name="02" date_pic="2012-04-20" date_vid="2012-04-27" tags="bikini, black stockings, chair, gloves, purple, red drapes"/>
 			<Set name="03" date_pic="2012-07-20" date_vid="2012-08-03" tags="black fishnet, black shoes, blue drapes, braids, chair, gloves, maid, white"/>
-			<Set name="04" date_pic="2012-08-31" date_vid="2012-08-17" tags=""/>
+			<Set name="04" date_pic="2012-08-31" date_vid="2012-08-17" tags="black stockings, blue drapes, chair, gloves, hair flower, mask, plaid, red, veil"/>
 		</Sets>
 	</Model>
 	<Model firstname="Mariya" lastname="D" birthdate="2000-09-01" tags="">
@@ -888,7 +888,7 @@ Previous birthdate: 1999-04-03
 	<Model firstname="Mila" lastname="L" birthdate="1997-11-27" tags="">
 		<Sets>
 			<Set name="01" date_pic="2012-06-15" date_vid="2012-08-24" tags="black, black shoes, blue drapes, chair, maid, white, white stockings"/>
-			<Set name="02" date_pic="2012-08-10" date_vid="" tags=""/>
+			<Set name="02" date_pic="2012-08-10" date_vid="" tags="bare feet, black, blue drapes, chair, pink"/>
 		</Sets>
 	</Model>
 	<Model firstname="Mila" lastname="V" birthdate="1997-11-04" tags="">
@@ -1094,9 +1094,9 @@ Previous birthdate: 1999-04-03
 			<Set name="05" date_pic="2012-05-11" date_vid="2012-05-04" tags="brown shoes, chair, earrings, hair buns, pantyhose, schoolgirl, yellow drapes"/>
 			<Set name="06" date_pic="2012-05-25" date_vid="2012-05-11" tags="balls, earrings, hair ties, red drapes, ribbon stick, skipping rope, swimsuit"/>
 			<Set name="07" date_pic="2012-06-08" date_vid="2012-06-01" tags="balls, bloomers, chair, earrings, hair buns, hair covers, red drapes, short socks, skipping rope, white shoes"/>
-			<Set name="08" date_pic="2012-08-10" date_vid="2012-06-29" tags=""/>
-			<Set name="09" date_pic="2012-08-24" date_vid="2012-07-06" tags=""/>
-			<Set name="10" date_pic="2012-09-07" date_vid="2012-07-27" tags=""/>
+			<Set name="08" date_pic="2012-08-10" date_vid="2012-06-29" tags="bare feet, beachball, bikini, chair, hair buns, q, red drapes, yellow"/>
+			<Set name="09" date_pic="2012-08-24" date_vid="2012-07-06" tags="bare feet, bikini, blue drapes, bracelet, earrings, pink"/>
+			<Set name="10" date_pic="2012-09-07" date_vid="2012-07-27" tags="blue drapes, chair, earrings, pink, ribbon stick"/>
 		</Sets>
 	</Model>
 	<Model firstname="Sanya" lastname="V" birthdate="1999-09-17" tags="">
