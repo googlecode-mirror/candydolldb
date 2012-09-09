@@ -22,7 +22,8 @@
 ==later==
 
  * Include automatic video thumbnail generation 
- * Utilize the info about image-video set discrepancies
+ * Utilize info about image-video set discrepancies
+ * Include info regarding content of Promotion-videos (set names)
  * Optimize cacheperformance by adding cache-expiration
  * Custom error logging (on-disk, email)
  * all models tagged
