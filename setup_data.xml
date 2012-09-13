@@ -244,6 +244,7 @@ Real birthdate: 1996-03-19
 			<Set name="04" date_pic="2012-08-03" date_vid="2012-07-13" tags="black shoes, braid, chair, diadem, gold drapes, schoolgirl, white socks"/>
 			<Set name="05" date_pic="2012-08-10" date_vid="2012-07-20" tags="diadem, gold drapes, green, ribbon stick, skipping rope"/>
 			<Set name="06" date_pic="2012-08-24" date_vid="2012-08-31 2012-09-14" tags="chair, crown, gold drapes, hair buns, white, white leggings"/>
+			<Set name="07" date_pic="" date_vid="2012-09-14" tags=""/>
 		</Sets>
 	</Model>
 	<Model firstname="Biyanka" lastname="S" birthdate="1997-07-05" tags="">
