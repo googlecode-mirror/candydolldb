@@ -80,7 +80,7 @@
 			<Set name="15" date_pic="2012-08-17" date_vid="2012-08-03" tags="bare feet, bikini, bracelet, chair, earrings, hair flower, polkadot, red drapes"/>
 			<Set name="16" date_pic="2012-09-07" date_vid="2012-08-10" tags="chair, earrings, red drapes, tiara, white, white shoes, white stockings"/>
 			<Set name="17" date_pic="2012-09-14" date_vid="2012-08-24" tags=""/>
-			<Set name="18" date_pic="" date_vid="2012-08-31" tags=""/>
+			<Set name="18" date_pic="2012-09-21" date_vid="2012-08-31" tags=""/>
 			<Set name="19" date_pic="" date_vid="2012-09-07" tags=""/>
 			<Set name="20" date_pic="" date_vid="2012-09-14" tags=""/>
 		</Sets>
@@ -139,7 +139,7 @@ Real birthdate: 1996-03-19
 			<Set name="04" date_pic="2012-05-04" date_vid="2012-05-11" tags="earrings, pink, ponytail, red drapes, white, white leggings, white shoes"/>
 			<Set name="05" date_pic="2012-05-18" date_vid="2012-05-25" tags="bare feet, bracelet, earrings, lace, seamless background, white"/>
 			<Set name="06" date_pic="2012-06-22" date_vid="2012-06-08" tags="balls, cushion, earrings, ribbon stick, slippers, swimsuit"/>
-			<Set name="07" date_pic="2012-07-13" date_vid="" tags="blue stockings, chair, earrings, hair band, lace, red drapes, white"/>
+			<Set name="07" date_pic="2012-07-13" date_vid="2012-09-21" tags="blue stockings, chair, earrings, hair band, lace, red drapes, white"/>
 			<Set name="08" date_pic="2012-09-07" date_vid="" tags="bare feet, bikini, chair, earrings, ponytail, red drapes"/>
 		</Sets>
 	</Model>
@@ -244,7 +244,6 @@ Real birthdate: 1996-03-19
 			<Set name="04" date_pic="2012-08-03" date_vid="2012-07-13" tags="black shoes, braid, chair, diadem, gold drapes, schoolgirl, white socks"/>
 			<Set name="05" date_pic="2012-08-10" date_vid="2012-07-20" tags="diadem, gold drapes, green, ribbon stick, skipping rope"/>
 			<Set name="06" date_pic="2012-08-24" date_vid="2012-08-31 2012-09-14" tags="chair, crown, gold drapes, hair buns, white, white leggings"/>
-			<Set name="07" date_pic="" date_vid="2012-09-14" tags=""/>
 		</Sets>
 	</Model>
 	<Model firstname="Biyanka" lastname="S" birthdate="1997-07-05" tags="">
@@ -292,7 +291,7 @@ Real birthdate: 1996-03-19
 			<Set name="01" date_pic="2012-05-25" date_vid="2012-06-01" tags="bare feet, blue, chair, earrings, gold drapes, hair flower, swimsuit"/>
 			<Set name="02" date_pic="2012-06-15" date_vid="2012-06-22" tags="chair, diadem, earrings, gold drapes, white, white shoes"/>
 			<Set name="03" date_pic="2012-07-06" date_vid="2012-06-29" tags="blue carpet, chair, cosplay, costume, earrings, pink, slippers, yellow drapes"/>
-			<Set name="04" date_pic="2012-07-13" date_vid="" tags="bare feet, bikini, chair, earrings, red drapes, skipping rope"/>
+			<Set name="04" date_pic="2012-07-13" date_vid="2012-09-21" tags="bare feet, bikini, chair, earrings, red drapes, skipping rope"/>
 			<Set name="05" date_pic="2012-09-07" date_vid="" tags="bare feet, bunny ears, red drapes, yellow"/>
 		</Sets>
 	</Model>
@@ -504,6 +503,7 @@ Real birthdate: 1996-03-19
 			<Set name="02" date_pic="2012-07-06" date_vid="2012-08-10" tags="black bodysuit, blue carpet, chair, hair barrette, hair buns, red drapes, slippers"/>
 			<Set name="03" date_pic="2012-07-27" date_vid="" tags="black shoes, chair, diadem, gloves, maid, red drapes, white stockings"/>
 			<Set name="04" date_pic="2012-09-14" date_vid="" tags=""/>
+			<Set name="05" date_pic="2012-09-21" date_vid="" tags=""/>
 		</Sets>
 	</Model>
 	<Model firstname="Jasmin" lastname="P" birthdate="1996-07-05" tags="">
@@ -570,6 +570,7 @@ Real birthdate: 1996-03-19
 			<Set name="20" date_pic="2012-08-24" date_vid="2012-09-14" tags="black, black shoes, chair, earrings, hair feather, pink, red drapes, white socks"/>
 			<Set name="21" date_pic="2012-08-31" date_vid="" tags="blue, braid, chair, hair flower, necklace, red drapes, white leggings"/>
 			<Set name="22" date_pic="2012-09-14" date_vid="" tags=""/>
+			<Set name="23" date_pic="2012-09-21" date_vid="" tags=""/>
 		</Sets>
 		<Remarks>
 Previous birthdate: 1999-04-03
@@ -761,6 +762,7 @@ Previous birthdate: 1999-04-03
 			<Set name="04" date_pic="2012-08-03" date_vid="2012-07-06" tags="black, black shoes, black socks, blue drapes, braid, earrings, necklace"/>
 			<Set name="05" date_pic="2012-08-10" date_vid="2012-09-07" tags="black shoes, blue drapes, braid, chair, schoolgirl, white socks"/>
 			<Set name="06" date_pic="2012-08-24" date_vid="2012-09-14" tags="bare feet, chair, earrings, red drapes, white, white shorts"/>
+			<Set name="07" date_pic="" date_vid="2012-09-21" tags=""/>
 		</Sets>
 	</Model>
 	<Model firstname="Margarita" lastname="D" birthdate="1997-08-18" tags="">
@@ -1101,7 +1103,7 @@ Previous birthdate: 1999-04-03
 			<Set name="08" date_pic="2012-08-10" date_vid="2012-06-29" tags="bare feet, beachball, bikini, chair, hair buns, q, red drapes, yellow"/>
 			<Set name="09" date_pic="2012-08-24" date_vid="2012-07-06" tags="bare feet, bikini, blue drapes, bracelet, earrings, pink"/>
 			<Set name="10" date_pic="2012-09-07" date_vid="2012-07-27" tags="blue drapes, chair, earrings, pink, ribbon stick"/>
-			<Set name="11" date_pic="2012-09-14" date_vid="" tags=""/>
+			<Set name="11" date_pic="2012-09-14" date_vid="2012-09-21" tags=""/>
 		</Sets>
 	</Model>
 	<Model firstname="Sanya" lastname="V" birthdate="1999-09-17" tags="">
@@ -1278,7 +1280,7 @@ Previous birthdate: 1999-04-03
 	</Model>
 	<Model firstname="Suisan" lastname="A" birthdate="" tags="">
 		<Sets>
-			<Set name="01" date_pic="" date_vid="2012-08-17" tags=""/>
+			<Set name="01" date_pic="2012-09-21" date_vid="2012-08-17" tags=""/>
 			<Set name="02" date_pic="" date_vid="2012-08-24" tags=""/>
 		</Sets>
 	</Model>
@@ -1761,7 +1763,7 @@ Real birthdate: 1996-04-24
 			<Set name="100" date_pic="2012-08-31" date_vid="2012-05-25" tags=""/>
 			<Set name="101" date_pic="2012-09-07" date_vid="2012-06-01" tags=""/>
 			<Set name="102" date_pic="2012-09-14" date_vid="2012-06-08" tags=""/>
-			<Set name="103" date_pic="" date_vid="2012-06-15" tags=""/>
+			<Set name="103" date_pic="2012-09-21" date_vid="2012-06-15" tags=""/>
 			<Set name="104" date_pic="" date_vid="2012-06-22" tags=""/>
 			<Set name="105" date_pic="" date_vid="2012-06-29" tags=""/>
 			<Set name="106" date_pic="" date_vid="2012-07-06" tags=""/>
@@ -1775,6 +1777,7 @@ Real birthdate: 1996-04-24
 			<Set name="114" date_pic="" date_vid="2012-08-31" tags=""/>
 			<Set name="115" date_pic="" date_vid="2012-09-07" tags=""/>
 			<Set name="116" date_pic="" date_vid="2012-09-14" tags=""/>
+			<Set name="117" date_pic="" date_vid="2012-09-21" tags=""/>
 		</Sets>
 	</Model>
 </Models>
