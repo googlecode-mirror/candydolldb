@@ -39,7 +39,7 @@ $Images = Image::GetImages(new ImageSearchParameters(FALSE, FALSE, FALSE, FALSE,
 $Sets = Set::GetSets(new SetSearchParameters(FALSE, FALSE, $ModelID));
 
 
-if($Sets && !in_array($Sets[0]->getModel()->getFullName(), array('VIP', 'Promotions', 'Interviews')))
+if($Sets && !in_array($Sets[0]->getModel()->getFullName(), array('Promotions', 'Interviews')))
 {
 	ini_set('max_execution_time', '3600');
 	$indexImage = imagecreatefrompng($pathPrefix.'images/index_background.png'); 
@@ -51,19 +51,25 @@ if($Sets && !in_array($Sets[0]->getModel()->getFullName(), array('VIP', 'Promoti
 	$pics = array();
 	
 	$textTitle = $Sets[0]->getModel()->getFullName();
+	$isVIP = $textTitle == 'VIP';
 	$titleCoords = imagettfbbox($fontSizeTitle, 0, $font, $textTitle);
 	$titleWidth = $titleCoords[2] - $titleCoords[0];
 	imagettftext($indexImage, $fontSizeTitle, 0, (1160-$titleWidth), 90, $candyColor, $font, $textTitle);
 	
-	$textSubTitle = Set::RangeString($Sets);
-	$subTitleCoords = imagettfbbox($fontSizeSubTitle, 0, $font, $textSubTitle);
-	$subTitleWidth = $subTitleCoords[2] - $subTitleCoords[0];
-	imagettftext($indexImage, $fontSizeSubTitle, 0, (1160-$subTitleWidth), 150, $candyColor, $font, $textSubTitle);
-	
+	if(!$isVIP)
+	{
+		$textSubTitle = Set::RangeString($Sets);
+		$subTitleCoords = imagettfbbox($fontSizeSubTitle, 0, $font, $textSubTitle);
+		$subTitleWidth = $subTitleCoords[2] - $subTitleCoords[0];
+		imagettftext($indexImage, $fontSizeSubTitle, 0, (1160-$subTitleWidth), 150, $candyColor, $font, $textSubTitle);
+	}
 	
 	/* @var $Set Set */
 	foreach ($Sets as $Set)
 	{
+		if($isVIP && is_numeric($Set->getName()))
+		{ continue; }
+		
 		$picCount = count($pics);
 		
 		/* @var $Image Image */
@@ -458,7 +464,7 @@ if($Sets && !in_array($Sets[0]->getModel()->getFullName(), array('VIP', 'Promoti
 
 					imagedestroy($srcImage);
 					
-					$textCaption = sprintf('Set %1$s', $Image->getSet()->getName() );
+					$textCaption = sprintf('%2$s%1$s', $Image->getSet()->getName(), $isVIP ? '' : 'Set ' );
 					$captionCoords = imagettfbbox($th->fontSizeCaption, 0, $font, $textCaption);
 					$captionWidth = $captionCoords[2] - $captionCoords[0];
 				
