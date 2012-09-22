@@ -43,9 +43,9 @@ if($Models)
 		$Dates = Date::GetDates(new DateSearchParameters(FALSE, FALSE, FALSE, FALSE, $Model->getID()));
 		if($Dates)
 		{
-			$datestart = $Dates[0];
+			$datestart = Date::SmallestDate($Dates);
 			$datestartshow = date($CurrentUser->getDateFormat(), $datestart->getTimeStamp());
-			$dateend = end($Dates);
+			$dateend = Date::LargestDate($Dates);
 			$dateendshow = date($CurrentUser->getDateFormat(), $dateend->getTimeStamp());
 		}
 		else

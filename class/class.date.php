@@ -456,6 +456,34 @@ class Date
 		}
 		return $OutArray;
 	}
+	
+	/**
+	 * Filters the supplied array for the Date with the lowest timestamp 
+	 * @param array(Date) $InArray
+	 * @return Date
+	 */
+	public static function SmallestDate($InArray)
+	{
+		return array_reduce($InArray, function($d1, $d2){
+			if(is_null($d1)) { return $d2; }
+			if(is_null($d2)) { return $d1; }
+			return ($d1->getTimeStamp() < $d2->getTimeStamp() ? $d1 : $d2);
+		});
+	}
+	
+	/**
+	 * Filters the supplied array for the Date with the highest timestamp
+	 * @param array(Date) $InArray
+	 * @return Date
+	 */
+	public static function LargestDate($InArray)
+	{
+		return array_reduce($InArray, function($d1, $d2){
+			if(is_null($d1)) { return $d2; }
+			if(is_null($d2)) { return $d1; }
+			return ($d1->getTimeStamp() > $d2->getTimeStamp() ? $d1 : $d2);
+		});
+	}
 }
 
 class DateSearchParameters extends SearchParameters
