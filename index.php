@@ -9,7 +9,7 @@ $SearchModel = '';
 $SearchDirty = TRUE;
 $SearchClean = TRUE;
 $OrderBy = 1;
-$OrderMode = 'ASC';
+$OrderMode = 'DESC';
 $ModelRows = '';
 $ModelCount = 0;
 $SetCount = 0;
@@ -20,12 +20,16 @@ if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'ModelFilter'
 	$SearchModel = $_SESSION['txtIndexSearchModel'] = $_POST['txtIndexSearchModel'];
 	$SearchDirty = $_SESSION['chkDirty'] 			= array_key_exists('chkDirty', $_POST);
 	$SearchClean = $_SESSION['chkClean'] 			= array_key_exists('chkClean', $_POST);
+	$OrderBy 	 = $_SESSION['selIndexOrderBy']		= $_POST['selOrderBy'];
+	$OrderMode 	 = $_SESSION['radIndexOrderByMode']	= $_POST['radSORT'];
 }
 else
 {
 	$SearchModel = array_key_exists('txtIndexSearchModel', $_SESSION) ? $_SESSION['txtIndexSearchModel'] : '';
 	$SearchDirty = array_key_exists('chkDirty', $_SESSION) ? (bool)$_SESSION['chkDirty'] : TRUE;
-	$SearchClean = array_key_exists('chkClean', $_SESSION) ? (bool)$_SESSION['chkClean'] : TRUE; 
+	$SearchClean = array_key_exists('chkClean', $_SESSION) ? (bool)$_SESSION['chkClean'] : TRUE;
+	$OrderBy = array_key_exists('selIndexOrderBy', $_SESSION) ? intval($_SESSION['selIndexOrderBy']) : 1;
+	$OrderMode = array_key_exists('radIndexOrderByMode', $_SESSION) ? $_SESSION['radIndexOrderByMode'] : 'ASC';
 }
 
 $Models = Model::GetModels(new ModelSearchParameters(FALSE, FALSE, FALSE, FALSE, $SearchModel));
@@ -189,25 +193,25 @@ echo HTMLstuff::HtmlHeader($lang->g('NavigationHome'), $CurrentUser);
 <label for="txtIndexSearchModel"><?php echo $lang->g('LabelModel')?></label>
 <input type="text" id="txtIndexSearchModel" name="txtIndexSearchModel" maxlength="50" value="<?php echo $SearchModel?>" style="width:100px;" />
 
-<label for="chkDirty"><?php echo $lang->g('LabelDirty')?></label>
-<input type="checkbox" id="chkDirty" name="chkDirty"<?php echo HTMLstuff::CheckedStr($SearchDirty)?> />
+<label for="chkDirty"><?php echo $lang->g('LabelDirty')?>
+<input type="checkbox" id="chkDirty" name="chkDirty"<?php echo HTMLstuff::CheckedStr($SearchDirty)?> /></label>
 
-<label for="chkClean"><?php echo $lang->g('LabelClean')?></label>
-<input type="checkbox" id="chkClean" name="chkClean"<?php echo HTMLstuff::CheckedStr($SearchClean)?> />
-
-<input type="submit" id="btnSearch" name="btnSearch" value="<?php echo $lang->g('ButtonSearch')?>" />
+<label for="chkClean"><?php echo $lang->g('LabelClean')?>
+<input type="checkbox" id="chkClean" name="chkClean"<?php echo HTMLstuff::CheckedStr($SearchClean)?> /></label>
 
 <label for="selOrderBy"><?php echo $lang->g('LabelSorting')?></label>
 <select id="selOrderBy" name="selOrderBy">
-	<option value="1"><?php echo $lang->g('LabelFirstname')?></option>
-	<option value="2"><?php echo $lang->g('LabelLastname')?></option>
-	<option value="3"><?php echo $lang->g('LabelBirthdate')?></option>
-	<option value="4"><?php echo $lang->g('LabelSetCount')?></option>
-	<option value="5"><?php echo $lang->g('LabelFirstAppearance')?></option>
+	<option value="1"<?php echo HTMLstuff::SelectedStr($OrderBy==1)?>><?php echo $lang->g('LabelFirstname')?></option>
+	<option value="2"<?php echo HTMLstuff::SelectedStr($OrderBy==2)?>><?php echo $lang->g('LabelLastname')?></option>
+	<option value="3"<?php echo HTMLstuff::SelectedStr($OrderBy==3)?>><?php echo $lang->g('LabelBirthdate')?></option>
+	<option value="4"<?php echo HTMLstuff::SelectedStr($OrderBy==4)?>><?php echo $lang->g('LabelSetCount')?></option>
+	<option value="5"<?php echo HTMLstuff::SelectedStr($OrderBy==5)?>><?php echo $lang->g('LabelFirstAppearance')?></option>
 </select>
 
-<label for="radASC"><?php echo $lang->g('LabelSortingASC')?><input type="radio" id="radASC" name="radSORT" value="ASC" /></label>
-<label for="radDESC"><?php echo $lang->g('LabelSortingDESC')?><input type="radio" id="radDESC" name="radSORT" value="DESC" /></label>
+<label for="radASC"><?php echo $lang->g('LabelSortingASC')?><input type="radio" id="radASC" name="radSORT" value="ASC"<?php echo HTMLstuff::CheckedStr($OrderMode=='ASC')?> /></label>
+<label for="radDESC"><?php echo $lang->g('LabelSortingDESC')?><input type="radio" id="radDESC" name="radSORT" value="DESC"<?php echo HTMLstuff::CheckedStr($OrderMode=='DESC')?> /></label>
+
+<input type="submit" id="btnSearch" name="btnSearch" value="<?php echo $lang->g('ButtonSearch')?>" />
 
 <input type="button" id="btnSlideshow" name="btnSlideshow" value="<?php echo $lang->g('ButtonIndexSlideshow')?>" onclick="OpenSlideColorBox();" />
 
