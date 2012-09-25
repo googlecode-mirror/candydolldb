@@ -10,6 +10,7 @@ $SearchDirty = TRUE;
 $SearchClean = TRUE;
 $OrderBy = 1;
 $OrderMode = 'DESC';
+$OrderClause = NULL;
 $ModelRows = '';
 $ModelCount = 0;
 $SetCount = 0;
@@ -20,8 +21,8 @@ if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'ModelFilter'
 	$SearchModel = $_SESSION['txtIndexSearchModel'] = $_POST['txtIndexSearchModel'];
 	$SearchDirty = $_SESSION['chkDirty'] 			= array_key_exists('chkDirty', $_POST);
 	$SearchClean = $_SESSION['chkClean'] 			= array_key_exists('chkClean', $_POST);
-	$OrderBy 	 = $_SESSION['selIndexOrderBy']		= $_POST['selOrderBy'];
-	$OrderMode 	 = $_SESSION['radIndexOrderByMode']	= $_POST['radSORT'];
+	$OrderBy 	 = $_SESSION['selIndexOrderBy']		= in_array($_POST['selOrderBy'], array(1,2,3,4,5)) ? $_POST['selOrderBy'] : 1;
+	$OrderMode 	 = $_SESSION['radIndexOrderByMode']	= in_array($_POST['radSORT'], array('ASC', 'DESC')) ? $_POST['radSORT'] : 'ASC';
 }
 else
 {
@@ -32,7 +33,28 @@ else
 	$OrderMode = array_key_exists('radIndexOrderByMode', $_SESSION) ? $_SESSION['radIndexOrderByMode'] : 'ASC';
 }
 
-$Models = Model::GetModels(new ModelSearchParameters(FALSE, FALSE, FALSE, FALSE, $SearchModel));
+switch($OrderBy){
+	case 1:
+		$OrderClause = 'model_firstname '.$OrderMode.', model_lastname ASC';
+		break;
+	
+	case 2:
+		$OrderClause = 'model_lastname '.$OrderMode.', model_firstname ASC';
+		break;
+
+	case 3:
+		$OrderClause = 'model_birthdate '.$OrderMode.', model_firstname ASC, model_lastname ASC';
+		break;
+	
+	case 4:
+		$OrderClause = 'model_setcount '.$OrderMode.', model_firstname ASC, model_lastname ASC';
+		break;
+	
+	case 5:
+		break;
+}
+
+$Models = Model::GetModels(new ModelSearchParameters(FALSE, FALSE, FALSE, FALSE, $SearchModel), $OrderClause);
 $Sets = Set::GetSets();
 
 if($Models)
@@ -221,7 +243,6 @@ echo HTMLstuff::HtmlHeader($lang->g('NavigationHome'), $CurrentUser);
 <h2><?php echo $lang->g('NavigationHome')?></h2>
 
 <?php
-
 echo "<div class=\"Clear\"></div>".$ModelRows."<div class=\"Clear\"></div>";
 ?>
 
