@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Models xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../candydolldb.xsd" xmlns="">
+
+	<Model firstname="Alissa" lastname="P" birthdate="2003-08-20" tags="">
+		<Sets>
+			<Set name="19" date_pic="2012-09-28" date_vid="2012-09-07" tags=""/>
+		</Sets>
+	</Model>
+	
+	<Model firstname="Anastasia" lastname="R" birthdate="1999-04-03" tags="">
+		<Sets>
+			<Set name="08" date_pic="2012-09-07" date_vid="2012-09-28" tags="bare feet, bikini, chair, earrings, ponytail, red drapes"/>
+		</Sets>
+	</Model>
+	
+	<Model firstname="Bella" lastname="K" birthdate="1999-04-11" tags="">
+		<Sets>
+			<Set name="07" date_pic="2012-09-28" date_vid="" tags=""/>
+		</Sets>
+	</Model>
+
+	<Model firstname="Katie" lastname="M" birthdate="2001-12-18" tags="">
+		<Sets>
+			<Set name="21" date_pic="2012-08-31" date_vid="2012-09-28" tags="blue, braid, chair, hair flower, necklace, red drapes, white leggings"/>
+			<Set name="24" date_pic="2012-09-28" date_vid="" tags=""/>
+		</Sets>
+	</Model>
+
+	<Model firstname="Kleo" lastname="M" birthdate="1999-08-16" tags="">
+		<Sets>
+			<Set name="05" date_pic="2012-07-20" date_vid="2012-09-28" tags="bodysuit, braid, red drapes"/>
+		</Sets>
+	</Model>
+
+	<Model firstname="Mila" lastname="L" birthdate="1997-11-27" tags="">
+		<Sets>
+			<Set name="02" date_pic="2012-08-10" date_vid="2012-09-28" tags="bare feet, black, blue drapes, chair, pink"/>
+		</Sets>
+	</Model>
+	
+	<Model firstname="Nika" lastname="V" birthdate="" tags="">
+		<Sets>
+			<Set name="01" date_pic="2012-09-28" date_vid="2012-08-03" tags=""/>
+		</Sets>
+	</Model>
+	
+	<Model firstname="VIP" lastname="" birthdate="" tags="">
+		<Sets>
+			<Set name="104" date_pic="2012-09-28" date_vid="2012-06-22" tags=""/>
+		</Sets>
+	</Model>
+	
+</Models>
