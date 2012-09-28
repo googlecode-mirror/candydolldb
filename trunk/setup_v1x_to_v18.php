@@ -125,6 +125,47 @@ ALTER TABLE `CacheImage`
   ADD CONSTRAINT `CacheImage_ibfk_4` FOREIGN KEY (`image_id`) REFERENCES `Image` (`image_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `CacheImage_ibfk_5` FOREIGN KEY (`video_id`) REFERENCES `Video` (`video_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
+DROP VIEW IF EXISTS `vw_Model`;
+CREATE ALGORITHM=UNDEFINED VIEW `vw_Model` AS
+
+	select
+		`Model`.`model_id` AS `model_id`,
+		`Model`.`model_firstname` AS `model_firstname`,
+		`Model`.`model_lastname` AS `model_lastname`,
+		`Model`.`model_birthdate` AS `model_birthdate`,
+		`Model`.`model_remarks` AS `model_remarks`,
+		`Model`.`mut_deleted` AS `mut_deleted`,
+
+		(select
+			count(`Set`.`model_id`)
+		 from
+			`Set`
+		where
+			((`Set`.`model_id` = `Model`.`model_id`)
+			and (`Set`.`mut_deleted` = -(1)))
+		) AS `model_setcount`,
+		
+		(select
+			min(`date_timestamp`)
+		from
+			`vw_Date`
+		where
+			`vw_Date`.`model_id` = `Model`.`model_id`
+			and `vw_Date`.`mut_deleted` = (-1)
+		) AS `model_firstset`,
+		
+		(select
+			max(`date_timestamp`)
+		from
+			`vw_Date`
+		where
+			`vw_Date`.`model_id` = `Model`.`model_id`
+			and `vw_Date`.`mut_deleted` = (-1)
+		) AS `model_lastset`
+		
+	from
+		`Model`;  
+  
 DROP VIEW IF EXISTS `vw_Image`;
 CREATE ALGORITHM=UNDEFINED VIEW `vw_Image` AS select `Image`.`image_id` AS `image_id`, `Image`.`image_filename` AS `image_filename`, `Image`.`image_fileextension` AS `image_fileextension`, `Image`.`image_filesize` AS `image_filesize`, `Image`.`image_filechecksum` AS `image_filechecksum`, `Image`.`image_filecrc32` AS `image_filecrc32`, `Image`.`image_width` AS `image_width`, `Image`.`image_height` AS `image_height`, `Image`.`mut_deleted` AS `mut_deleted`, `Set`.`set_id` AS `set_id`, `Set`.`set_prefix` AS `set_prefix`, `Set`.`set_name` AS `set_name`, `Set`.`set_containswhat` AS `set_containswhat`, `Model`.`model_id` AS `model_id`, `Model`.`model_firstname` AS `model_firstname`, `Model`.`model_lastname` AS `model_lastname` from ((`Image` left join `Set` on((`Image`.`set_id` = `Set`.`set_id`))) left join `Model` on((`Model`.`model_id` = `Set`.`model_id`))) where ((`Set`.`mut_deleted` = -(1)) and (`Model`.`mut_deleted` = -(1)));
 

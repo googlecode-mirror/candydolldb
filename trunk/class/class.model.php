@@ -8,6 +8,8 @@ class Model
 	private $BirthDate = -1;
 	private $Remarks;
 	private $SetCount = 0;
+	private $FirstSetDate = -1;
+	private $LastSetDate = -1;
 
 	/**
 	 * @param int $model_id
@@ -17,7 +19,7 @@ class Model
 	 * @param string $model_remarks
 	 * @param int $model_setcount
 	 */
-	public function __construct($model_id = NULL, $model_firstname = NULL, $model_lastname = NULL, $model_birthdate = -1, $model_remarks = NULL, $model_setcount = 0)
+	public function __construct($model_id = NULL, $model_firstname = NULL, $model_lastname = NULL, $model_birthdate = -1, $model_remarks = NULL, $model_setcount = 0, $model_firstset = -1, $model_lastset = -1)
 	{
 		$this->ID = $model_id;
 		$this->FirstName = $model_firstname;
@@ -25,6 +27,8 @@ class Model
 		$this->BirthDate = $model_birthdate;
 		$this->Remarks = $model_remarks;
 		$this->SetCount = $model_setcount;
+		$this->FirstSetDate = $model_firstset;
+		$this->LastSetDate = $model_lastset;
 	}
 	
 	/**
@@ -129,7 +133,34 @@ class Model
 	 * @param int $SetCount
 	 */
 	public function setSetCount($SetCount)
-	{ $this->SetCount = $SetCount;}
+	{ $this->SetCount = $SetCount; }
+	
+	/**
+	 * Gets the Model Set's first appearence date, defaults to -1.
+	 * @return int 
+	 */
+	public function getFirstSetDate()
+	{ return $this->FirstSetDate; }
+	
+	/**
+	 * @param int $FirstSetDate
+	 */
+	public function setFirstSetDate($FirstSetDate)
+	{ $this->FirstSetDate = $FirstSetDate; }
+	
+	/**
+	 * Gets the Model Set's last appearence date, defaults to -1.
+	 * @return int 
+	 */
+	public function getLastSetDate()
+	{ return $this->LastSetDate; }
+	
+	/**
+	 * @param int $LastSetDate
+	 */
+	public function setLastSetDate($LastSetDate)
+	{ $this->LastSetDate = $LastSetDate; }
+
 	
 	/**
 	 * Returns a random image-filename of the current model.
@@ -197,7 +228,7 @@ class Model
 		
 		$q = sprintf("
 				SELECT
-					`model_id`,`model_firstname`,`model_lastname`,`model_birthdate`,`model_remarks`,`model_setcount`
+					`model_id`,`model_firstname`,`model_lastname`,`model_birthdate`,`model_remarks`,`model_setcount`, `model_firstset`, `model_lastset`
 				FROM
 					`vw_Model`
 				WHERE
@@ -223,11 +254,11 @@ class Model
 		if($stmt->execute())
 		{
 			$OutArray = array();
-			$stmt->bind_result($model_id, $model_firstname, $model_lastname, $model_birthdate, $model_remarks, $model_setcount);
+			$stmt->bind_result($model_id, $model_firstname, $model_lastname, $model_birthdate, $model_remarks, $model_setcount, $model_firstset, $model_lastset);
 			
 			while($stmt->fetch())
 			{
-				$o = new Model($model_id, $model_firstname, $model_lastname, $model_birthdate, $model_remarks, $model_setcount);
+				$o = new Model($model_id, $model_firstname, $model_lastname, $model_birthdate, $model_remarks, $model_setcount, $model_firstset, $model_lastset);
 				$OutArray[] = $o;
 			}
 			
