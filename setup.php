@@ -246,7 +246,45 @@ DROP VIEW IF EXISTS `vw_Image`;
 CREATE ALGORITHM=UNDEFINED VIEW `vw_Image` AS select `Image`.`image_id` AS `image_id`, `Image`.`image_filename` AS `image_filename`, `Image`.`image_fileextension` AS `image_fileextension`, `Image`.`image_filesize` AS `image_filesize`, `Image`.`image_filechecksum` AS `image_filechecksum`, `Image`.`image_filecrc32` AS `image_filecrc32`, `Image`.`image_width` AS `image_width`, `Image`.`image_height` AS `image_height`, `Image`.`mut_deleted` AS `mut_deleted`, `Set`.`set_id` AS `set_id`, `Set`.`set_prefix` AS `set_prefix`, `Set`.`set_name` AS `set_name`, `Set`.`set_containswhat` AS `set_containswhat`, `Model`.`model_id` AS `model_id`, `Model`.`model_firstname` AS `model_firstname`, `Model`.`model_lastname` AS `model_lastname` from ((`Image` left join `Set` on((`Image`.`set_id` = `Set`.`set_id`))) left join `Model` on((`Model`.`model_id` = `Set`.`model_id`))) where ((`Set`.`mut_deleted` = -(1)) and (`Model`.`mut_deleted` = -(1)));
 
 DROP VIEW IF EXISTS `vw_Model`;
-CREATE ALGORITHM=UNDEFINED VIEW `vw_Model` AS select `Model`.`model_id` AS `model_id`,`Model`.`model_firstname` AS `model_firstname`,`Model`.`model_lastname` AS `model_lastname`, `Model`.`model_birthdate` AS `model_birthdate`, `Model`.`model_remarks` AS `model_remarks`, `Model`.`mut_deleted` AS `mut_deleted`,(select count(`Set`.`model_id`) AS `count(``model_id``)` from `Set` where ((`Set`.`model_id` = `Model`.`model_id`) and (`Set`.`mut_deleted` = -(1)))) AS `model_setcount` from `Model`;
+CREATE ALGORITHM=UNDEFINED VIEW `vw_Model` AS
+
+	select
+		`Model`.`model_id` AS `model_id`,
+		`Model`.`model_firstname` AS `model_firstname`,
+		`Model`.`model_lastname` AS `model_lastname`,
+		`Model`.`model_birthdate` AS `model_birthdate`,
+		`Model`.`model_remarks` AS `model_remarks`,
+		`Model`.`mut_deleted` AS `mut_deleted`,
+
+		(select
+			count(`Set`.`model_id`)
+		 from
+			`Set`
+		where
+			((`Set`.`model_id` = `Model`.`model_id`)
+			and (`Set`.`mut_deleted` = -(1)))
+		) AS `model_setcount`,
+		
+		(select
+			min(`date_timestamp`)
+		from
+			`vw_Date`
+		where
+			`vw_Date`.`model_id` = `Model`.`model_id`
+			and `vw_Date`.`mut_deleted` = (-1)
+		) AS model_firstset,
+		
+		(select
+			max(`date_timestamp`)
+		from
+			`vw_Date`
+		where
+			`vw_Date`.`model_id` = `Model`.`model_id`
+			and `vw_Date`.`mut_deleted` = (-1)
+		) AS model_lastset
+		
+	from
+		`Model`;
 
 DROP VIEW IF EXISTS `vw_Set`;
 CREATE ALGORITHM=UNDEFINED VIEW `vw_Set` AS select `Set`.`set_id` AS `set_id`,`Set`.`set_prefix` AS `set_prefix`,`Set`.`set_name` AS `set_name`,`Set`.`set_containswhat` AS `set_containswhat`, `Set`.`mut_deleted` AS `mut_deleted`,`Model`.`model_id` AS `model_id`,`Model`.`model_firstname` AS `model_firstname`,`Model`.`model_lastname` AS `model_lastname`,(select count(`Image`.`image_id`) AS `COUNT(image_id)` from `Image` where ((`Image`.`set_id` = `Set`.`set_id`) and (`Image`.`mut_deleted` = -(1)))) AS `set_amount_pics_in_db`,(select count(`Video`.`video_id`) AS `COUNT(video_id)` from `Video` where ((`Video`.`set_id` = `Set`.`set_id`) and (`Video`.`mut_deleted` = -(1)))) AS `set_amount_vids_in_db` from (`Set` left join `Model` on((`Set`.`model_id` = `Model`.`model_id`))) where (`Model`.`mut_deleted` = -(1));
