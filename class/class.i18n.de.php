@@ -137,6 +137,7 @@ class LabelsDE extends Labels
 		'LabelLanguage_nl' => 'Niederl&auml;ndisch',
 		'LabelLastname' => 'Nachname',
 		'LabelLastActive' => '',
+		'LabelLastAppearance' => '',
 		'LabelLastLogin' => '',
 		'LabelLastUpdated' => '',
 		'LabelMailServer' => 'Mailserver',

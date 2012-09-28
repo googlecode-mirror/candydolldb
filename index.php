@@ -21,7 +21,7 @@ if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'ModelFilter'
 	$SearchModel = $_SESSION['txtIndexSearchModel'] = $_POST['txtIndexSearchModel'];
 	$SearchDirty = $_SESSION['chkDirty'] 			= array_key_exists('chkDirty', $_POST);
 	$SearchClean = $_SESSION['chkClean'] 			= array_key_exists('chkClean', $_POST);
-	$OrderBy 	 = $_SESSION['selIndexOrderBy']		= in_array($_POST['selOrderBy'], array(1,2,3,4,5)) ? $_POST['selOrderBy'] : 1;
+	$OrderBy 	 = $_SESSION['selIndexOrderBy']		= in_array($_POST['selOrderBy'], array(1,2,3,4,5,6)) ? $_POST['selOrderBy'] : 1;
 	$OrderMode 	 = $_SESSION['radIndexOrderByMode']	= in_array($_POST['radSORT'], array('ASC', 'DESC')) ? $_POST['radSORT'] : 'ASC';
 }
 else
@@ -51,6 +51,11 @@ switch($OrderBy){
 		break;
 	
 	case 5:
+		$OrderClause = 'model_firstset '.$OrderMode.', model_firstname ASC, model_lastname ASC';
+		break;
+		
+	case 6:
+		$OrderClause = 'model_lastset '.$OrderMode.', model_firstname ASC, model_lastname ASC';
 		break;
 }
 
@@ -228,6 +233,7 @@ echo HTMLstuff::HtmlHeader($lang->g('NavigationHome'), $CurrentUser);
 	<option value="3"<?php echo HTMLstuff::SelectedStr($OrderBy==3)?>><?php echo $lang->g('LabelBirthdate')?></option>
 	<option value="4"<?php echo HTMLstuff::SelectedStr($OrderBy==4)?>><?php echo $lang->g('LabelSetCount')?></option>
 	<option value="5"<?php echo HTMLstuff::SelectedStr($OrderBy==5)?>><?php echo $lang->g('LabelFirstAppearance')?></option>
+	<option value="6"<?php echo HTMLstuff::SelectedStr($OrderBy==6)?>><?php echo $lang->g('LabelLastAppearance')?></option>
 </select>
 
 <label for="radASC"><?php echo $lang->g('LabelSortingASC')?><input type="radio" id="radASC" name="radSORT" value="ASC"<?php echo HTMLstuff::CheckedStr($OrderMode=='ASC')?> /></label>
