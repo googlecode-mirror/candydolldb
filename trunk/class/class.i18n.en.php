@@ -293,6 +293,7 @@ class LabelsEN extends Labels
 		'ButtonToggle' => 'Toggle selection',
 		'ButtonYesPleaseUpdate' => 'Yes, please update',
 		
+		'MessageConfigWritten' => 'Configuration written to \'config.php\' successfully.',
 		'MessageAllDoneConfigWritten' => 'All done! Configuration written to \'config.php\'. Please remove the setup-page from the installation and log in.',
 		'MessageForgotYourPassword' => 'Forgot your password?',
 		'MessageSureDeleteDate' => 'Are you sure you wish to delete this date?',

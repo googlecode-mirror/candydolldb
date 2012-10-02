@@ -293,6 +293,7 @@ class LabelsNL extends Labels
 		'ButtonToggle' => 'Selectie omkeren',
 		'ButtonYesPleaseUpdate' => 'Ja, graag',
 
+		'MessageConfigWritten' => 'Configuratie succesvol weggeschreven naar \'config.php\'.',
 		'MessageAllDoneConfigWritten' => 'Gelukt! Alle instellingen zijn weggeschreven in \'config.php\'. Verwijder de setup-pagina en meld u daarna aan.',
 		'MessageForgotYourPassword' => 'Wachtwoord vergeten?',
 		'MessageSureDeleteDate' => 'Weet u zeker dat u deze datum wil verwijderen?',

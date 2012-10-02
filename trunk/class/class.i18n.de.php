@@ -296,6 +296,7 @@ class LabelsDE extends Labels
 		'ButtonToggle' => '',
 		'ButtonYesPleaseUpdate' => 'Ja, bitte!',
 
+		'MessageConfigWritten' => '',
 		'MessageAllDoneConfigWritten' => '',
 		'MessageForgotYourPassword' => '',
 		'MessageSureDeleteDate' => '',
