@@ -135,9 +135,12 @@ function AddTagAutoSuggest(){
 	});
 }
 
-$(window).load(function(){
-	AddDeleteOverlay();
-});
+function SwitchTab(tabNumber){
+	$('a[id^=tablink]').removeClass('Active');
+	$('a[id=tablink'+tabNumber+']').addClass('Active');
+	$('.TabContent[id^=tab]').hide();
+	$('.TabContent[id=tab'+tabNumber+']').show();
+}
 
 $(function(){
 
@@ -180,4 +183,8 @@ $(function(){
 
 $(window).resize(function(){
 	ResizeContent();
+});
+
+$(window).load(function(){
+	AddDeleteOverlay();
 });
