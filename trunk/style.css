@@ -214,7 +214,7 @@ form label{
 	width: 150px;
 }
 form .WideForm label{
-	width: 700px;
+	width: 680px;
 }
 
 form label em{
@@ -288,6 +288,9 @@ form .CheckBoxMadness label{
 }
 .CenterForm form label{
 	width: 145px;
+}
+.FlLeft{
+	float: left;
 }
 .Lefty{
 	text-align: left;

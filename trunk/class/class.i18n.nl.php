@@ -260,6 +260,7 @@ class LabelsNL extends Labels
 		'LabelRIGHT_EXPORT_CSV' => 'CSV exporteren',
 		'LabelRIGHT_SEARCH_DIRTY' => 'Incomplete sets zoeken',
 		'LabelRIGHT_SEARCH_TAGS' => 'Tags zoeken',
+		'LabelRIGHT_CONFIG_REWRITE' => 'Configuratie wijzigen',
 		
 		'ButtonCancel' => 'Annuleren',
 		'ButtonClean' => 'Opruimen',

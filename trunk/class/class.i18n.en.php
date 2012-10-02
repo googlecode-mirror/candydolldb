@@ -260,7 +260,8 @@ class LabelsEN extends Labels
 		'LabelRIGHT_EXPORT_CSV' => 'Export CSV',
 		'LabelRIGHT_SEARCH_DIRTY' => 'Search dirty sets',
 		'LabelRIGHT_SEARCH_TAGS' => 'Search tags',
-
+		'LabelRIGHT_CONFIG_REWRITE' => 'Edit configuration',
+		
 		'ButtonCancel' => 'Cancel',
 		'ButtonClean' => 'Clean',
 		'ButtonClearCacheImage' => 'Clear cacheimage',
