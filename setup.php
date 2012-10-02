@@ -654,7 +654,7 @@ echo HTMLstuff::HtmlHeader($lang->g('LabelSetup'))?>
 </div>
 
 <div class="FormRow">
-<label for="txtSmtpPassword"><?php echo $lang->g('LabelPort')?>: <em>*</em></label>
+<label for="txtSmtpPort"><?php echo $lang->g('LabelPort')?>: <em>*</em></label>
 <input type="text" id="txtSmtpPort" name="txtSmtpPort" maxlength="5" value="<?php echo $SmtpPort?>" />
 </div>
 

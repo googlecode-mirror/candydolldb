@@ -12,6 +12,14 @@ $DBName = DBNAME;
 $CandyPath = CANDYPATH;
 $CandyVideoThumbPath = CANDYVIDEOTHUMBPATH;
 
+$SmtpFromAddress = SMTP_FROM_ADDRESS;
+$SmtpFromName = SMTP_FROM_NAME;
+$SmtpHostname = SMTP_HOST;
+$SmtpUsername = SMTP_USERNAME;
+$SmtpPassword = SMTP_PASSWORD;
+$SmtpPort = SMTP_PORT;
+$SmtpAuth = SMTP_AUTH;
+
 if(array_key_exists('hidAction', $_POST) && isset($_POST['hidAction']) && $_POST['hidAction'] == 'EditConfiguration')
 {
 	$DBHostName = isset($_POST['txtDBHostName']) && strlen($_POST['txtDBHostName']) > 0 ? (string)$_POST['txtDBHostName']  : NULL;
@@ -22,6 +30,14 @@ if(array_key_exists('hidAction', $_POST) && isset($_POST['hidAction']) && $_POST
 	$CandyPath 	= isset($_POST['txtCandyPath']) && strlen($_POST['txtCandyPath']) > 0 ? (string)$_POST['txtCandyPath'] : NULL;
 	$CandyVideoThumbPath = isset($_POST['txtCandyVideoThumbPath']) && strlen($_POST['txtCandyVideoThumbPath']) > 0 ? (string)$_POST['txtCandyVideoThumbPath'] : NULL;
 	
+	$SmtpFromAddress = isset($_POST['txtSmtpFromAddress']) && strlen($_POST['txtSmtpFromAddress']) > 0 ? (string)$_POST['txtSmtpFromAddress'] : NULL;
+	$SmtpFromName 	= isset($_POST['txtSmtpFromName']) && strlen($_POST['txtSmtpFromName']) > 0 ? (string)$_POST['txtSmtpFromName'] : NULL;
+	$SmtpHostname	= isset($_POST['txtSmtpHostname']) && strlen($_POST['txtSmtpHostname']) > 0 ? (string)$_POST['txtSmtpHostname'] : NULL;
+	$SmtpUsername	= isset($_POST['txtSmtpUsername']) && strlen($_POST['txtSmtpUsername']) > 0 ? (string)$_POST['txtSmtpUsername'] : NULL;
+	$SmtpPassword	= isset($_POST['txtSmtpPassword']) && strlen($_POST['txtSmtpPassword']) > 0 ? (string)$_POST['txtSmtpPassword'] : NULL;
+	$SmtpPort 		= isset($_POST['txtSmtpPort']) && intval($_POST['txtSmtpPort']) > 0 ? intval($_POST['txtSmtpPort']) : 0;
+	$SmtpAuth 		= array_key_exists('chkSmtpAuth', $_POST);
+	
 	// Checks
 	
 	// Read-write config.php
@@ -29,19 +45,33 @@ if(array_key_exists('hidAction', $_POST) && isset($_POST['hidAction']) && $_POST
 	{
 		$configfile = preg_replace(
 			array(
-				"/define\('CANDYPATH'           [ \t]*,[ \t]*'[^']+?'\);/ix",
-				"/define\('CANDYVIDEOTHUMBPATH' [ \t]*,[ \t]*'[^']+?'\);/ix",
-				"/define\('DBHOSTNAME'          [ \t]*,[ \t]*'[^']+?'\);/ix",
-				"/define\('DBUSERNAME'          [ \t]*,[ \t]*'[^']+?'\);/ix",
-				"/define\('DBPASSWORD'          [ \t]*,[ \t]*'[^']+?'\);/ix",
-				"/define\('DBNAME'              [ \t]*,[ \t]*'[^']+?'\);/ix"),
+				"/define\('CANDYPATH'           [ \t]*,[ \t]*'[^']+?'[ \t]*\);/ix",
+				"/define\('CANDYVIDEOTHUMBPATH' [ \t]*,[ \t]*'[^']+?'[ \t]*\);/ix",
+				"/define\('DBHOSTNAME'          [ \t]*,[ \t]*'[^']+?'[ \t]*\);/ix",
+				"/define\('DBUSERNAME'          [ \t]*,[ \t]*'[^']+?'[ \t]*\);/ix",
+				"/define\('DBPASSWORD'          [ \t]*,[ \t]*'[^']+?'[ \t]*\);/ix",
+				"/define\('DBNAME'              [ \t]*,[ \t]*'[^']+?'[ \t]*\);/ix",
+				"/define\('SMTP_FROM_ADDRESS'   [ \t]*,[ \t]*'[^']+?'[ \t]*\);/ix",
+				"/define\('SMTP_FROM_NAME'      [ \t]*,[ \t]*'[^']+?'[ \t]*\);/ix",
+				"/define\('SMTP_HOST'           [ \t]*,[ \t]*'[^']+?'[ \t]*\);/ix",
+				"/define\('SMTP_USERNAME'       [ \t]*,[ \t]*'[^']+?'[ \t]*\);/ix",
+				"/define\('SMTP_PASSWORD'       [ \t]*,[ \t]*'[^']+?'[ \t]*\);/ix",
+				"/define\('SMTP_PORT'           [ \t]*,[ \t]*\d+[ \t]*\);/ix",
+				"/define\('SMTP_AUTH'           [ \t]*,[ \t]*(true|false)[ \t]*\);/ix"),
 			array(
 				sprintf("define('CANDYPATH', '%1\$s');", $CandyPath),
 				sprintf("define('CANDYVIDEOTHUMBPATH', '%1\$s');", $CandyVideoThumbPath),
 				sprintf("define('DBHOSTNAME', '%1\$s');", $DBHostName),
 				sprintf("define('DBUSERNAME', '%1\$s');", $DBUserName),
 				sprintf("define('DBPASSWORD', '%1\$s');", $DBPassword),
-				sprintf("define('DBNAME', '%1\$s');", $DBName)),
+				sprintf("define('DBNAME', '%1\$s');", $DBName),
+				sprintf("define('SMTP_FROM_ADDRESS', '%1\$s');", $SmtpFromAddress),
+				sprintf("define('SMTP_FROM_NAME', '%1\$s');", $SmtpFromName),
+				sprintf("define('SMTP_HOST', '%1\$s');", $SmtpHostname),
+				sprintf("define('SMTP_USERNAME', '%1\$s');", $SmtpUsername),
+				sprintf("define('SMTP_PASSWORD', '%1\$s');", $SmtpPassword),
+				sprintf("define('SMTP_PORT', %1\$d);", $SmtpPort),
+				sprintf("define('SMTP_AUTH', %1\$s);", $SmtpAuth ? 'TRUE' : 'FALSE')),
 			$configfile
 		);
 	
@@ -234,6 +264,43 @@ echo HTMLstuff::HtmlHeader($lang->g('NavigationAdminPanel'), $CurrentUser);
 	<div class="FormRow">
 	<label for="txtCandyVideoThumbPath"><?php echo $lang->g('LabelThumbnails')?>:</label>
 	<input type="text" id="txtCandyVideoThumbPath" name="txtCandyVideoThumbPath" maxlength="255" value="<?php echo $CandyVideoThumbPath?>" />
+	</div>
+	
+	<h3><?php echo $lang->g('LabelMailServer')?></h3>
+
+	<div class="FormRow">
+	<label for="txtSmtpFromAddress"><?php echo $lang->g('LabelSenderAddress')?>: <em>*</em></label>
+	<input type="text" id="txtSmtpFromAddress" name="txtSmtpFromAddress" maxlength="100" value="<?php echo $SmtpFromAddress?>" />
+	</div>
+	
+	<div class="FormRow">
+	<label for="txtSmtpFromName"><?php echo $lang->g('LabelSenderName')?>: <em>*</em></label>
+	<input type="text" id="txtSmtpFromName" name="txtSmtpFromName" maxlength="100" value="<?php echo $SmtpFromName?>" />
+	</div>
+	
+	<div class="FormRow">
+	<label for="txtSmtpHostname"><?php echo $lang->g('LabelHostname')?>: <em>*</em></label>
+	<input type="text" id="txtSmtpHostname" name="txtSmtpHostname" maxlength="100" value="<?php echo $SmtpHostname?>" />
+	</div>
+	
+	<div class="FormRow">
+	<label for="txtSmtpUsername"><?php echo $lang->g('LabelUsername')?>: <em>*</em></label>
+	<input type="text" id="txtSmtpUsername" name="txtSmtpUsername" maxlength="100" value="<?php echo $SmtpUsername?>" />
+	</div>
+	
+	<div class="FormRow">
+	<label for="txtSmtpPassword"><?php echo $lang->g('LabelPassword')?>: <em>*</em></label>
+	<input type="text" id="txtSmtpPassword" name="txtSmtpPassword" maxlength="100" value="<?php echo $SmtpPassword?>" />
+	</div>
+	
+	<div class="FormRow">
+	<label for="txtSmtpPort"><?php echo $lang->g('LabelPort')?>: <em>*</em></label>
+	<input type="text" id="txtSmtpPort" name="txtSmtpPort" maxlength="5" value="<?php echo $SmtpPort?>" />
+	</div>
+	
+	<div class="FormRow">
+	<label for="chkSmtpAuth"><?php echo $lang->g('LabelSMTPAuth')?>: <em>*</em></label>
+	<input type="checkbox" id="chkSmtpAuth" name="chkSmtpAuth"<?php echo HTMLstuff::CheckedStr($SmtpAuth)?> />
 	</div>
 	
 	<div class="Separator"></div>
