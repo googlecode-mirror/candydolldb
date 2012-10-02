@@ -214,7 +214,7 @@ form label{
 	width: 150px;
 }
 form .WideForm label{
-	width: 730px;
+	width: 700px;
 }
 
 form label em{
@@ -506,6 +506,35 @@ div.InfoList div ul{
 	background-position: 1px 1px;
 }
 
+/* Tabs */
+div.TabsContainer{
+	border: 2px solid #aaa;
+	clear: both;
+	margin: 0 0 10px 0;
+	padding: 10px 20px;
+}
+
+ul.TabHeader{
+	margin: 0;
+	padding: 0;
+}
+ul.TabHeader li{
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+ul.TabHeader li a{
+	background-image: url('images/background_menuitem.png');
+	display: block;
+	float: left;
+	height: 25px;
+	line-height: 25px;
+	margin: 0 5px 0 0;
+	padding: 0 10px;
+}
+ul.TabHeader li a.Active{
+	text-decoration: underline;
+}
 
 /*
     ColorBox Core Style:

@@ -56,6 +56,10 @@ echo HTMLstuff::HtmlHeader($lang->g('NavigationAdminPanel'), $CurrentUser);
 <script type="text/javascript">
 //<![CDATA[
            
+	$(function(){
+		SwitchTab('1');
+	});
+           
 	function RedirToSFV(){
 		var modelIdSfv = parseInt( $('#selModelSfv').val() );
 		var includePath = $('input[name=radSfvPath]:checked').val();
@@ -127,6 +131,19 @@ echo HTMLstuff::HtmlHeader($lang->g('NavigationAdminPanel'), $CurrentUser);
 <form action="<?php echo htmlentities($_SERVER['REQUEST_URI'])?>" method="post">
 <fieldset>
 
+<ul class="TabHeader">
+<li><a href="#" id="tablink1" onclick="SwitchTab('1');"><?php echo $lang->g('LabelConfiguration')?></a></li>
+<li><a href="#" id="tablink2" onclick="SwitchTab('2');"><?php echo $lang->g('LabelCleanUp')?></a></li>
+<li><a href="#" id="tablink3" onclick="SwitchTab('3');"><?php echo $lang->g('LabelExports')?></a></li>
+</ul>
+
+<div class="TabsContainer">
+
+<div class="TabContent" id="tab1">
+</div>
+
+<div class="TabContent" id="tab2">
+
 <div class="FormRow WideForm">
 <label><?php echo $lang->g('LabelCleanCacheFolder')?></label>
 	<input type="button" id="btnCleanCache" name="btnCleanCache" value="<?php echo $lang->g('ButtonClean')?>"
@@ -135,7 +152,8 @@ echo HTMLstuff::HtmlHeader($lang->g('NavigationAdminPanel'), $CurrentUser);
 <?php echo $CacheInSync?>
 </div>
 
-<hr />
+</div>
+<div class="TabContent" id="tab3">
 
 <div class="FormRow WideForm">
 <label><?php echo $lang->g('LabelDownloadXML')?></label>
@@ -213,7 +231,9 @@ echo HTMLstuff::HtmlHeader($lang->g('NavigationAdminPanel'), $CurrentUser);
 	<?php echo $CurrentUser->hasPermission(RIGHT_EXPORT_INDEX) ? "onclick=\"RedirToIndex();\"" : HTMLstuff::DisabledStr(TRUE)?> />
 </div>
 
-<hr />
+</div>
+
+</div>
 
 <?php echo HTMLstuff::Button('index.php')?>
 </fieldset>
