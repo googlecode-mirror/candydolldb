@@ -4,6 +4,8 @@ include('cd.php');
 $CurrentUser = Authentication::Authenticate();
 HTMLstuff::RefererRegister($_SERVER['REQUEST_URI']);
 
+$DisableControls = !$CurrentUser->hasPermission(RIGHT_CONFIG_REWRITE);
+
 $DBHostName = DBHOSTNAME;
 $DBUserName = DBUSERNAME;
 $DBPassword = DBPASSWORD;
@@ -75,15 +77,23 @@ if(array_key_exists('hidAction', $_POST) && isset($_POST['hidAction']) && $_POST
 			$configfile
 		);
 	
-		if(@file_put_contents('config.php', $configfile) === FALSE)
+		if($CurrentUser->hasPermission(RIGHT_CONFIG_REWRITE))
 		{
-			$e = new Error(NULL, $lang->g('ErrorSetupWritingConfig'));
-			Error::AddError($e);
+			if(@file_put_contents('config.php', $configfile) === FALSE)
+			{
+				$e = new Error(NULL, $lang->g('ErrorSetupWritingConfig'));
+				Error::AddError($e);
+			}
+			else
+			{
+				$i = new Info($lang->g('MessageConfigWritten'));
+				Info::AddInfo($i);
+			}
 		}
 		else
 		{
-			$i = new Info($lang->g('MessageConfigWritten'));
-			Info::AddInfo($i);
+			$e = new Error(RIGHTS_ERR_USERNOTALLOWED);
+			Error::AddError($e);
 		}
 	}
 	else 
@@ -232,80 +242,87 @@ echo HTMLstuff::HtmlHeader($lang->g('NavigationAdminPanel'), $CurrentUser);
 
 	<input type="hidden" id="hidAction" name="hidAction" value="EditConfiguration" />
 	
+	<div class="FlLeft" style="width:450px;">
+	
 	<h3><?php echo $lang->g('LabelDatabase')?></h3>
 	
 	<div class="FormRow">
 	<label for="txtDBHostName"><?php echo $lang->g('LabelHostname')?>: <em>*</em></label>
-	<input type="text" id="txtDBHostName" name="txtDBHostName" maxlength="100" value="<?php echo $DBHostName?>" />
+	<input type="text" id="txtDBHostName" name="txtDBHostName" maxlength="100" value="<?php echo $DBHostName?>"<?php echo HTMLstuff::DisabledStr($DisableControls)?> />
 	</div>
 	
 	<div class="FormRow">
 	<label for="txtDBUserName"><?php echo $lang->g('LabelUsername')?>: <em>*</em></label>
-	<input type="text" id="txtDBUserName" name="txtDBUserName" maxlength="100" value="<?php echo $DBUserName?>" />
+	<input type="text" id="txtDBUserName" name="txtDBUserName" maxlength="100" value="<?php echo $DBUserName?>"<?php echo HTMLstuff::DisabledStr($DisableControls)?> />
 	</div>
 	
 	<div class="FormRow">
 	<label for="txtDBPassword"><?php echo $lang->g('LabelPassword')?>: <em>*</em></label>
-	<input type="text" id="txtDBPassword" name="txtDBPassword" maxlength="100" value="<?php echo $DBPassword?>" />
+	<input type="text" id="txtDBPassword" name="txtDBPassword" maxlength="100" value="<?php echo $DBPassword?>"<?php echo HTMLstuff::DisabledStr($DisableControls)?> />
 	</div>
 	
 	<div class="FormRow">
 	<label for="txtDBName"><?php echo $lang->g('LabelDatabaseName')?>: <em>*</em></label>
-	<input type="text" id="txtDBName" name="txtDBName" maxlength="100" value="<?php echo $DBName?>" />
+	<input type="text" id="txtDBName" name="txtDBName" maxlength="100" value="<?php echo $DBName?>"<?php echo HTMLstuff::DisabledStr($DisableControls)?> />
 	</div>
 	
 	<h3>Candydoll <?php echo $lang->g('LabelCollection')?></h3>
 	
 	<div class="FormRow">
 	<label for="txtCandyPath"><?php echo $lang->g('LabelPathOnDisk')?>:</label>
-	<input type="text" id="txtCandyPath" name="txtCandyPath" maxlength="255" value="<?php echo $CandyPath?>" />
+	<input type="text" id="txtCandyPath" name="txtCandyPath" maxlength="255" value="<?php echo $CandyPath?>"<?php echo HTMLstuff::DisabledStr($DisableControls)?> />
 	</div>
 	
 	<div class="FormRow">
 	<label for="txtCandyVideoThumbPath"><?php echo $lang->g('LabelThumbnails')?>:</label>
-	<input type="text" id="txtCandyVideoThumbPath" name="txtCandyVideoThumbPath" maxlength="255" value="<?php echo $CandyVideoThumbPath?>" />
+	<input type="text" id="txtCandyVideoThumbPath" name="txtCandyVideoThumbPath" maxlength="255" value="<?php echo $CandyVideoThumbPath?>"<?php echo HTMLstuff::DisabledStr($DisableControls)?> />
 	</div>
+	
+	</div>
+	<div class="FlLeft">
 	
 	<h3><?php echo $lang->g('LabelMailServer')?></h3>
 
 	<div class="FormRow">
 	<label for="txtSmtpFromAddress"><?php echo $lang->g('LabelSenderAddress')?>: <em>*</em></label>
-	<input type="text" id="txtSmtpFromAddress" name="txtSmtpFromAddress" maxlength="100" value="<?php echo $SmtpFromAddress?>" />
+	<input type="text" id="txtSmtpFromAddress" name="txtSmtpFromAddress" maxlength="100" value="<?php echo $SmtpFromAddress?>"<?php echo HTMLstuff::DisabledStr($DisableControls)?> />
 	</div>
 	
 	<div class="FormRow">
 	<label for="txtSmtpFromName"><?php echo $lang->g('LabelSenderName')?>: <em>*</em></label>
-	<input type="text" id="txtSmtpFromName" name="txtSmtpFromName" maxlength="100" value="<?php echo $SmtpFromName?>" />
+	<input type="text" id="txtSmtpFromName" name="txtSmtpFromName" maxlength="100" value="<?php echo $SmtpFromName?>"<?php echo HTMLstuff::DisabledStr($DisableControls)?> />
 	</div>
 	
 	<div class="FormRow">
 	<label for="txtSmtpHostname"><?php echo $lang->g('LabelHostname')?>: <em>*</em></label>
-	<input type="text" id="txtSmtpHostname" name="txtSmtpHostname" maxlength="100" value="<?php echo $SmtpHostname?>" />
+	<input type="text" id="txtSmtpHostname" name="txtSmtpHostname" maxlength="100" value="<?php echo $SmtpHostname?>"<?php echo HTMLstuff::DisabledStr($DisableControls)?> />
 	</div>
 	
 	<div class="FormRow">
 	<label for="txtSmtpUsername"><?php echo $lang->g('LabelUsername')?>: <em>*</em></label>
-	<input type="text" id="txtSmtpUsername" name="txtSmtpUsername" maxlength="100" value="<?php echo $SmtpUsername?>" />
+	<input type="text" id="txtSmtpUsername" name="txtSmtpUsername" maxlength="100" value="<?php echo $SmtpUsername?>"<?php echo HTMLstuff::DisabledStr($DisableControls)?> />
 	</div>
 	
 	<div class="FormRow">
 	<label for="txtSmtpPassword"><?php echo $lang->g('LabelPassword')?>: <em>*</em></label>
-	<input type="text" id="txtSmtpPassword" name="txtSmtpPassword" maxlength="100" value="<?php echo $SmtpPassword?>" />
+	<input type="text" id="txtSmtpPassword" name="txtSmtpPassword" maxlength="100" value="<?php echo $SmtpPassword?>"<?php echo HTMLstuff::DisabledStr($DisableControls)?> />
 	</div>
 	
 	<div class="FormRow">
 	<label for="txtSmtpPort"><?php echo $lang->g('LabelPort')?>: <em>*</em></label>
-	<input type="text" id="txtSmtpPort" name="txtSmtpPort" maxlength="5" value="<?php echo $SmtpPort?>" />
+	<input type="text" id="txtSmtpPort" name="txtSmtpPort" maxlength="5" value="<?php echo $SmtpPort?>"<?php echo HTMLstuff::DisabledStr($DisableControls)?> />
 	</div>
 	
 	<div class="FormRow">
 	<label for="chkSmtpAuth"><?php echo $lang->g('LabelSMTPAuth')?>: <em>*</em></label>
-	<input type="checkbox" id="chkSmtpAuth" name="chkSmtpAuth"<?php echo HTMLstuff::CheckedStr($SmtpAuth)?> />
+	<input type="checkbox" id="chkSmtpAuth" name="chkSmtpAuth"<?php echo HTMLstuff::CheckedStr($SmtpAuth)?><?php echo HTMLstuff::DisabledStr($DisableControls)?> />
 	</div>
 	
-	<div class="Separator"></div>
+	</div>
+	
+	<div class="Clear Separator"></div>
 
-	<input type="submit" id="btnSubmitConfig" name="btnSubmitConfig" value="<?php echo $lang->g('ButtonSave')?>" />	
+	<input type="submit" id="btnSubmitConfig" name="btnSubmitConfig" value="<?php echo $lang->g('ButtonSave')?>"<?php echo HTMLstuff::DisabledStr($DisableControls)?> />	
 
 </fieldset>
 </div>

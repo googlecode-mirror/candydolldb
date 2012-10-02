@@ -92,6 +92,7 @@ define('CANDYDOLLDB_VERSION', '1.8');
 	define('RIGHT_CACHE_CLEANUP',	33);
 	define('RIGHT_TAG_CLEANUP',		34);
 	define('RIGHT_CACHE_DELETE',	35);
+	define('RIGHT_CONFIG_REWRITE',	36);
 /* /Rights */
 	
 define('GENDER_UNKNOWN', 0);

@@ -263,6 +263,7 @@ class LabelsDE extends Labels
 		'LabelRIGHT_EXPORT_CSV' => '',
 		'LabelRIGHT_SEARCH_DIRTY' => '',
 		'LabelRIGHT_SEARCH_TAGS' => '',
+		'LabelRIGHT_CONFIG_REWRITE' => '',
 		
 		'ButtonCancel' => 'Abbrechen',
 		'ButtonClean' => '',
