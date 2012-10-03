@@ -20,7 +20,7 @@ class LabelsEN extends Labels
 		'ErrorNotAllRequiredData' => 'Not all required data was entered.',
 		'ErrorPleaseUseWebInterfaceForSetup' => 'Please use the webinterface for setting up this application.',
 		'ErrorUpdateTryAgain' => 'Something went wrong while updating, please try again.',
-		'ErrorSetupConnectDatabase' => 'Could not connect to the database-server, please re-enter the database-settings.',
+		'ErrorSetupConnectDatabase' => 'Could not connect to the database-server, please check the database-settings.',
 		'ErrorSetupCreatingCacheDir' => 'Could not find or create the cache-directory.',
 		'ErrorSetupCreatingDatabase' => 'Could not create the database.',
 		'ErrorSetupCreatingUser' => 'Something went wrong while creating the user.',

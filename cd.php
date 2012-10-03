@@ -160,8 +160,16 @@ if(defined('DBHOSTNAME') &&
    defined('DBUSERNAME') &&
    defined('DBPASSWORD'))
 {
-	$dbi = new DBi(DBHOSTNAME, DBUSERNAME, DBPASSWORD, DBNAME);
-	$dbi->query("SET GLOBAL sql_mode = 'STRICT_ALL_TABLES';");
+	$dbi = @new DBi(DBHOSTNAME, DBUSERNAME, DBPASSWORD, DBNAME);
+	if(mysqli_connect_errno() == 0)
+	{
+		$dbi->query("SET GLOBAL sql_mode = 'STRICT_ALL_TABLES';");
+	}
+	else
+	{
+		echo $lang->g('ErrorSetupConnectDatabase');
+		exit;
+	}
 }
 
 include('class/class.user.php');
