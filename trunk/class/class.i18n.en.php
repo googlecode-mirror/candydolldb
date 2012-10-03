@@ -89,6 +89,7 @@ class LabelsEN extends Labels
 		'LabelColorBoxPrevious' => 'Previous',
 		'LabelColorBoxNext' => 'Next',
 		'LabelColorBoxClose' => 'Close',
+		'LabelCommandlineUser' => 'Commandline user',
 		'LabelComplete' => 'Complete',
 		'LabelConfiguration' => 'Configuration',
 		'LabelContains' => 'Contains',

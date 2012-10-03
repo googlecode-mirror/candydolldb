@@ -89,6 +89,7 @@ class LabelsNL extends Labels
 		'LabelColorBoxPrevious' => 'Vorige',
 		'LabelColorBoxNext' => 'Volgende',
 		'LabelColorBoxClose' => 'Sluiten',
+		'LabelCommandlineUser' => 'Shell gebruiker',
 		'LabelComplete' => 'Compleet',
 		'LabelConfiguration' => 'Configuratie',
 		'LabelContains' => 'Bevat',
