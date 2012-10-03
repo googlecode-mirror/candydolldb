@@ -89,6 +89,7 @@ class LabelsDE extends Labels
 		'LabelColorBoxPrevious' => 'Vorheriges Foto',
 		'LabelColorBoxNext' => 'N&auml;chstes Foto',
 		'LabelColorBoxClose' => 'Schlie&szlig;en',
+		'LabelCommandlineUser' => '',
 		'LabelComplete' => 'Komplett',
 		'LabelConfiguration' => 'Einstellungen',
 		'LabelContains' => '',

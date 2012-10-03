@@ -11,6 +11,7 @@ $DBUserName = DBUSERNAME;
 $DBPassword = DBPASSWORD;
 $DBName = DBNAME;
 
+$CommandlineUserID = CMDLINE_USERID;
 $CandyPath = CANDYPATH;
 $CandyVideoThumbPath = CANDYVIDEOTHUMBPATH;
 
@@ -29,6 +30,7 @@ if(array_key_exists('hidAction', $_POST) && isset($_POST['hidAction']) && $_POST
 	$DBPassword = isset($_POST['txtDBPassword']) && strlen($_POST['txtDBPassword']) >= 0 ? (string)$_POST['txtDBPassword'] : NULL;
 	$DBName 	= isset($_POST['txtDBName']) 	 && strlen($_POST['txtDBName']) > 0 ? 	  (string)$_POST['txtDBName'] 	   : NULL;
 
+	$CommandlineUserID = isset($_POST['selCommandlineUserID']) && intval($_POST['selCommandlineUserID']) > 0 ? intval($_POST['selCommandlineUserID']) : $CurrentUser->getID();
 	$CandyPath 	= isset($_POST['txtCandyPath']) && strlen($_POST['txtCandyPath']) > 0 ? (string)$_POST['txtCandyPath'] : NULL;
 	$CandyVideoThumbPath = isset($_POST['txtCandyVideoThumbPath']) && strlen($_POST['txtCandyVideoThumbPath']) > 0 ? (string)$_POST['txtCandyVideoThumbPath'] : NULL;
 	
@@ -59,7 +61,8 @@ if(array_key_exists('hidAction', $_POST) && isset($_POST['hidAction']) && $_POST
 				"/define\('SMTP_USERNAME'       [ \t]*,[ \t]*'[^']+?'[ \t]*\);/ix",
 				"/define\('SMTP_PASSWORD'       [ \t]*,[ \t]*'[^']+?'[ \t]*\);/ix",
 				"/define\('SMTP_PORT'           [ \t]*,[ \t]*\d+[ \t]*\);/ix",
-				"/define\('SMTP_AUTH'           [ \t]*,[ \t]*(true|false)[ \t]*\);/ix"),
+				"/define\('SMTP_AUTH'           [ \t]*,[ \t]*(true|false)[ \t]*\);/ix",
+				"/define\('CMDLINE_USERID'      [ \t]*,[ \t]*\d+[ \t]*\);/ix"),
 			array(
 				sprintf("define('CANDYPATH', '%1\$s');", $CandyPath),
 				sprintf("define('CANDYVIDEOTHUMBPATH', '%1\$s');", $CandyVideoThumbPath),
@@ -73,7 +76,8 @@ if(array_key_exists('hidAction', $_POST) && isset($_POST['hidAction']) && $_POST
 				sprintf("define('SMTP_USERNAME', '%1\$s');", $SmtpUsername),
 				sprintf("define('SMTP_PASSWORD', '%1\$s');", $SmtpPassword),
 				sprintf("define('SMTP_PORT', %1\$d);", $SmtpPort),
-				sprintf("define('SMTP_AUTH', %1\$s);", $SmtpAuth ? 'TRUE' : 'FALSE')),
+				sprintf("define('SMTP_AUTH', %1\$s);", $SmtpAuth ? 'TRUE' : 'FALSE'),
+				sprintf("define('CMDLINE_USERID', %1\$d);", $CommandlineUserID)),
 			$configfile
 		);
 	
@@ -101,6 +105,18 @@ if(array_key_exists('hidAction', $_POST) && isset($_POST['hidAction']) && $_POST
 		$e = new Error(NULL, $lang->g('ErrorSetupWritingConfig'));
 		Error::AddError($e);
 	}
+}
+
+$UsersOptions = '';
+$Users = User::GetUsers();
+
+/* @var $User User */
+foreach ($Users as $User){
+	$UsersOptions .= sprintf("<option value=\"%1\$d\"%3\$s>%2\$s</option>",
+			$User->getID(),
+			htmlentities($User->GetFullName()),
+			HTMLstuff::SelectedStr($User->getID() == $CommandlineUserID)
+	);
 }
 
 $ModelsOptions = '';
@@ -276,6 +292,15 @@ echo HTMLstuff::HtmlHeader($lang->g('NavigationAdminPanel'), $CurrentUser);
 	<div class="FormRow">
 	<label for="txtCandyVideoThumbPath"><?php echo $lang->g('LabelThumbnails')?>:</label>
 	<input type="text" id="txtCandyVideoThumbPath" name="txtCandyVideoThumbPath" maxlength="255" value="<?php echo $CandyVideoThumbPath?>"<?php echo HTMLstuff::DisabledStr($DisableControls)?> />
+	</div>
+		
+	<h3><?php echo $lang->g('LabelSystem')?></h3>
+
+	<div class="FormRow">
+	<label for="selCommandlineUserID"><?php echo $lang->g('LabelCommandlineUser')?>: <em>*</em></label>
+	<select id="selCommandlineUserID" name="selCommandlineUserID"<?php echo HTMLstuff::DisabledStr($DisableControls)?>>
+		<?php echo $UsersOptions?>
+	</select>
 	</div>
 	
 	</div>
