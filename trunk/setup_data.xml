@@ -82,7 +82,7 @@
 			<Set name="17" date_pic="2012-09-14" date_vid="2012-08-24" tags=""/>
 			<Set name="18" date_pic="2012-09-21" date_vid="2012-08-31" tags=""/>
 			<Set name="19" date_pic="2012-09-28" date_vid="2012-09-07" tags=""/>
-			<Set name="20" date_pic="" date_vid="2012-09-14" tags=""/>
+			<Set name="20" date_pic="2012-10-05" date_vid="2012-09-14" tags=""/>
 		</Sets>
 		<Remarks>
 Previous birthdate: 1999-04-03
@@ -293,7 +293,7 @@ Real birthdate: 1996-03-19
 			<Set name="02" date_pic="2012-06-15" date_vid="2012-06-22" tags="chair, diadem, earrings, gold drapes, white, white shoes"/>
 			<Set name="03" date_pic="2012-07-06" date_vid="2012-06-29" tags="blue carpet, chair, cosplay, costume, earrings, pink, slippers, yellow drapes"/>
 			<Set name="04" date_pic="2012-07-13" date_vid="2012-09-21" tags="bare feet, bikini, chair, earrings, red drapes, skipping rope"/>
-			<Set name="05" date_pic="2012-09-07" date_vid="" tags="bare feet, bunny ears, red drapes, yellow"/>
+			<Set name="05" date_pic="2012-09-07" date_vid="2012-10-05" tags="bare feet, bunny ears, red drapes, yellow"/>
 		</Sets>
 	</Model>
 	<Model firstname="Diana" lastname="M" birthdate="" tags="">
@@ -502,7 +502,7 @@ Real birthdate: 1996-03-19
 		<Sets>
 			<Set name="01" date_pic="2012-06-22" date_vid="2012-07-27" tags="blue carpet, blue drapes, chair, swimsuit"/>
 			<Set name="02" date_pic="2012-07-06" date_vid="2012-08-10" tags="black bodysuit, blue carpet, chair, hair barrette, hair buns, red drapes, slippers"/>
-			<Set name="03" date_pic="2012-07-27" date_vid="" tags="black shoes, chair, diadem, gloves, maid, red drapes, white stockings"/>
+			<Set name="03" date_pic="2012-07-27" date_vid="2010-10-05" tags="black shoes, chair, diadem, gloves, maid, red drapes, white stockings"/>
 			<Set name="04" date_pic="2012-09-14" date_vid="" tags=""/>
 			<Set name="05" date_pic="2012-09-21" date_vid="" tags=""/>
 		</Sets>
@@ -570,9 +570,10 @@ Real birthdate: 1996-03-19
 			<Set name="19" date_pic="2012-08-17" date_vid="2012-09-07" tags="bare feet, beachball, blue, bracelet, earrings, green, necklace, ponytail, red drapes, striped shirt"/>
 			<Set name="20" date_pic="2012-08-24" date_vid="2012-09-14" tags="black, black shoes, chair, earrings, hair feather, pink, red drapes, white socks"/>
 			<Set name="21" date_pic="2012-08-31" date_vid="2012-09-28" tags="blue, braid, chair, hair flower, necklace, red drapes, white leggings"/>
-			<Set name="22" date_pic="2012-09-14" date_vid="" tags=""/>
+			<Set name="22" date_pic="2012-09-14" date_vid="2010-10-05" tags=""/>
 			<Set name="23" date_pic="2012-09-21" date_vid="" tags=""/>
 			<Set name="24" date_pic="2012-09-28" date_vid="" tags=""/>
+			<Set name="25" date_pic="2012-10-05" date_vid="" tags=""/>
 		</Sets>
 		<Remarks>
 Previous birthdate: 1999-04-03
@@ -582,7 +583,7 @@ Previous birthdate: 1999-04-03
 		<Sets>
 			<Set name="01" date_pic="2012-06-29" date_vid="2012-05-18" tags="blue carpet, blue drapes, bunny ears, chair, gloves, pigtails, pink skirt, pink top, sneakers, white socks"/>
 			<Set name="02" date_pic="2012-08-31" date_vid="2012-06-08" tags="backpack, black shoes, black skirt, blue drapes, books, braids, chair, schoolgirl, white socks"/>
-			<Set name="03" date_pic="" date_vid="2012-06-22" tags=""/>
+			<Set name="03" date_pic="2012-10-05" date_vid="2012-06-22" tags=""/>
 		</Sets>
 	</Model>
 	<Model firstname="Klara" lastname="H" birthdate="2001-10-05" tags="">
@@ -812,6 +813,7 @@ Previous birthdate: 1999-04-03
 			<Set name="01" date_pic="2012-06-01" date_vid="2012-05-18" tags="cat ears, curls, pink, seamless background, white, white shoes"/>
 			<Set name="02" date_pic="2012-07-06" date_vid="2012-08-24" tags="bloomers, blue carpet, blue shoes, chair, hair barrette, hair ties, ponytail, red drapes, ringer t-shirt, skipping rope, striped socks"/>
 			<Set name="03" date_pic="2012-07-20" date_vid="2012-08-31" tags="bare feet, blue, chair, ponytail, red drapes"/>
+			<Set name="04" date_pic="" date_vid="2012-10-05" tags=""/>
 		</Sets>
 	</Model>
 	<Model firstname="Masha" lastname="M" birthdate="2001-09-27" tags="">
@@ -979,6 +981,7 @@ Previous birthdate: 1999-04-03
 	<Model firstname="Nika" lastname="V" birthdate="" tags="">
 		<Sets>
 			<Set name="01" date_pic="2012-09-28" date_vid="2012-08-03" tags=""/>
+			<Set name="02" date_pic="2012-10-05" date_vid="" tags=""/>
 		</Sets>
 	</Model>
 	<Model firstname="Nina" lastname="T" birthdate="1997-08-05" tags="">
@@ -1768,7 +1771,7 @@ Real birthdate: 1996-04-24
 			<Set name="102" date_pic="2012-09-14" date_vid="2012-06-08" tags=""/>
 			<Set name="103" date_pic="2012-09-21" date_vid="2012-06-15" tags=""/>
 			<Set name="104" date_pic="2012-09-28" date_vid="2012-06-22" tags=""/>
-			<Set name="105" date_pic="" date_vid="2012-06-29" tags=""/>
+			<Set name="105" date_pic="2012-10-05" date_vid="2012-06-29" tags=""/>
 			<Set name="106" date_pic="" date_vid="2012-07-06" tags=""/>
 			<Set name="107" date_pic="" date_vid="2012-07-13" tags=""/>
 			<Set name="108" date_pic="" date_vid="2012-07-20" tags=""/>
