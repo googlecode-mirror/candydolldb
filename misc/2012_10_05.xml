@@ -15,13 +15,13 @@
 	
 	<Model firstname="Isabella" lastname="B" birthdate="" tags="">
 		<Sets>
-			<Set name="03" date_pic="2012-07-27" date_vid="2010-10-05" tags="black shoes, chair, diadem, gloves, maid, red drapes, white stockings"/>
+			<Set name="03" date_pic="2012-07-27" date_vid="2012-10-05" tags="black shoes, chair, diadem, gloves, maid, red drapes, white stockings"/>
 		</Sets>
 	</Model>
 	
 	<Model firstname="Katie" lastname="M" birthdate="2001-12-18" tags="">
 		<Sets>
-			<Set name="22" date_pic="2012-09-14" date_vid="2010-10-05" tags=""/>
+			<Set name="22" date_pic="2012-09-14" date_vid="2012-10-05" tags=""/>
 			<Set name="25" date_pic="2012-10-05" date_vid="" tags=""/>
 		</Sets>
 	</Model>
