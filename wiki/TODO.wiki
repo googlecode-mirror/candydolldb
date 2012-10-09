@@ -18,6 +18,8 @@
 ==v1.9==
 
  * Automatic XML-updates
+ * Multi-page index generation
+ * Centralized system settings, e-mailtemplates
 
 ==later==
 
