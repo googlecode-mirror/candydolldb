@@ -343,15 +343,20 @@ echo HTMLstuff::HtmlHeader($lang->g('NavigationAdminPanel'), $CurrentUser);
 	<input type="checkbox" id="chkSmtpAuth" name="chkSmtpAuth"<?php echo HTMLstuff::CheckedStr($SmtpAuth)?><?php echo HTMLstuff::DisabledStr($DisableControls)?> />
 	</div>
 	
+	<?php /* ?>
+
 	<div class="FormRow">
 	<label for="txtEmailTemplate1" style="width:90px;">Template 1: <em>*</em></label>
 	<textarea id="txtEmailTemplate1" name="txtEmailTemplate1" rows="12" cols="36"><?php echo $MailTemplateResetPassword ?>
 	</textarea>
 	</div>
+
+	<?php */ ?>
 	
-	</div>
+</div>
+<div class="Clear"></div>
 	
-	<input type="submit" id="btnSubmitConfig" name="btnSubmitConfig" value="<?php echo $lang->g('ButtonSave')?>"<?php echo HTMLstuff::DisabledStr($DisableControls)?> />	
+<input type="submit" id="btnSubmitConfig" name="btnSubmitConfig" value="<?php echo $lang->g('ButtonSave')?>"<?php echo HTMLstuff::DisabledStr($DisableControls)?> />	
 
 </fieldset>
 </div>
