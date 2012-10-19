@@ -25,7 +25,6 @@ else
 
 if(!defined('DBHOSTNAME') || strlen(DBHOSTNAME) == 0 ||
    !defined('DBUSERNAME') || strlen(DBUSERNAME) == 0 ||
-   !defined('DBNAME') || strlen(DBNAME) == 0 ||
    !defined('DBPASSWORD'))
 {
 	if(!array_key_exists('REQUEST_URI', $_SERVER))
@@ -33,15 +32,15 @@ if(!defined('DBHOSTNAME') || strlen(DBHOSTNAME) == 0 ||
 		echo $lang->g('ErrorPleaseUseWebInterfaceForSetup')."\n";
 		exit(128);
 	}
-	else if(basename($_SERVER['REQUEST_URI']) != 'setup.php')
+	else if(stristr(basename($_SERVER['REQUEST_URI']), 'setup') === FALSE)
 	{
 		header('location:setup.php');
 		exit(128);
 	}
-	
-	if(!defined('DBNAME'))
-	{ define('DBNAME', 'candydolldb'); }
 }
+
+if(!defined('DBNAME'))
+{ define('DBNAME', 'candydolldb'); }
 
 define('CANDYDOLLDB_VERSION', '1.8');
 
