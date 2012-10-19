@@ -197,6 +197,7 @@ FjbMNnvUJheiwewUJfheJheuehFJDUHdywgwwgHGfgywug;
 		{
 			$admUser = $admUser[0];
 			$admUser->setRights(Rights::getTotalRights());
+			User::Update($admUser, $admUser);
 		}
 
 		/* Introduce CANDYPATH constant and write to config */
