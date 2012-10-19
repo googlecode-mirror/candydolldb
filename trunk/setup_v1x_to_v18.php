@@ -44,7 +44,7 @@ if(array_key_exists('hidAction', $_POST) && isset($_POST['hidAction']) && $_POST
 	if($NoError)
 	{
 		if($dbi->ColumnExists('User', 'user_rights'))
-		{ $NoError = $dbi->ExecuteMulti("ALTER TABLE `User` CHANGE `user_rights` `user_rights` text NOT NULL;"); }
+		{ $NoError = $dbi->ExecuteMulti("ALTER TABLE `User` MODIFY `user_rights` text NOT NULL;"); }
 		else 
 		{ $NoError = $dbi->ExecuteMulti("ALTER TABLE `User` ADD `user_rights` text NOT NULL AFTER `user_prelastlogin`;"); }
 	}
@@ -79,7 +79,6 @@ CREATE TABLE IF NOT EXISTS `Tag` (
   CONSTRAINT `Tag_ibfk_1` FOREIGN KEY (`mut_id`) REFERENCES `User` (`user_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
-DROP TABLE IF EXISTS `Tag2All`;
 CREATE TABLE IF NOT EXISTS `Tag2All` (
   `tag_id` bigint(20) NOT NULL,
   `model_id` bigint(20) NULL DEFAULT NULL,
@@ -100,7 +99,6 @@ CREATE TABLE IF NOT EXISTS `Tag2All` (
   CONSTRAINT `Tag2All_ibfk_5` FOREIGN KEY (`video_id`) REFERENCES `Video` (`video_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
-DROP TABLE IF EXISTS `CacheImage`;
 CREATE TABLE IF NOT EXISTS `CacheImage` (
   `cache_id` varchar(36) NOT NULL,
   `model_id` bigint(20) DEFAULT NULL,
@@ -115,15 +113,14 @@ CREATE TABLE IF NOT EXISTS `CacheImage` (
   KEY `index_id` (`index_id`),
   KEY `set_id` (`set_id`),
   KEY `image_id` (`image_id`),
-  KEY `video_id` (`video_id`)
+  KEY `video_id` (`video_id`),
+  
+  CONSTRAINT `CacheImage_ibfk_1` FOREIGN KEY (`model_id`) REFERENCES `Model` (`model_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `CacheImage_ibfk_2` FOREIGN KEY (`index_id`) REFERENCES `Model` (`model_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `CacheImage_ibfk_3` FOREIGN KEY (`set_id`)   REFERENCES `Set`   (`set_id`)   ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `CacheImage_ibfk_4` FOREIGN KEY (`image_id`) REFERENCES `Image` (`image_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `CacheImage_ibfk_5` FOREIGN KEY (`video_id`) REFERENCES `Video` (`video_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-ALTER TABLE `CacheImage`
-  ADD CONSTRAINT `CacheImage_ibfk_1` FOREIGN KEY (`model_id`) REFERENCES `Model` (`model_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `CacheImage_ibfk_2` FOREIGN KEY (`index_id`) REFERENCES `Model` (`model_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `CacheImage_ibfk_3` FOREIGN KEY (`set_id`)   REFERENCES `Set`   (`set_id`)   ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `CacheImage_ibfk_4` FOREIGN KEY (`image_id`) REFERENCES `Image` (`image_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `CacheImage_ibfk_5` FOREIGN KEY (`video_id`) REFERENCES `Video` (`video_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 DROP VIEW IF EXISTS `vw_Model`;
 CREATE ALGORITHM=UNDEFINED VIEW `vw_Model` AS
@@ -200,9 +197,8 @@ FjbMNnvUJheiwewUJfheJheuehFJDUHdywgwwgHGfgywug;
 		{
 			$admUser = $admUser[0];
 			$admUser->setRights(Rights::getTotalRights());
-			User::Update($admUser, $admUser);
 		}
-		
+
 		/* Introduce CANDYPATH constant and write to config */
 		if(defined('CANDYIMAGEPATH') && !defined('CANDYPATH'))
 		{
