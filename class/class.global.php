@@ -347,7 +347,7 @@ class Utils
 		$CharsToChooseFromLength = strlen($CharsToChooseFrom);
 
 		for($i = 0; $i < $GarbageLength; $i++){
-			$Garbage .= substr($CharsToChooseFrom, rand(0, $CharsToChooseFromLength), 1);
+			$Garbage .= substr($CharsToChooseFrom, rand(0, $CharsToChooseFromLength -1), 1);
 		}
 		return $Garbage;
 	}
