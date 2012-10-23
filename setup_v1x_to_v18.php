@@ -177,6 +177,9 @@ CREATE ALGORITHM=UNDEFINED VIEW `vw_Video` AS select `Video`.`video_id` AS `vide
   
 DROP VIEW IF EXISTS `vw_Tag2All`;
 CREATE ALGORITHM=UNDEFINED VIEW `vw_Tag2All` AS	select `Tag2All`.`tag_id` AS `tag_id`, `Tag`.`tag_name` AS `tag_name`, `Tag2All`.`model_id` AS `model_id`, `Tag2All`.`set_id` AS `set_id`, `Tag2All`.`image_id` AS `image_id`, `Tag2All`.`video_id` AS `video_id` from `Tag2All` join `Tag` on `Tag`.`tag_id` = `Tag2All`.`tag_id`;
+
+UPDATE `Model` SET `model_firstname` = 'Yuliya'
+WHERE `model_lastname` = 'Semenishyna'; 
   
 COMMIT;
 SET AUTOCOMMIT=1;
