@@ -22,6 +22,12 @@ $NoError = TRUE;
 
 if(array_key_exists('hidAction', $_POST) && isset($_POST['hidAction']) && $_POST['hidAction'] == 'UpdateCandyDollDB')
 {
+	/* model_remarks column */
+	$Exists = $dbi->ColumnExists('Model', 'model_remarks');
+	
+	if($NoError && !$Exists)
+	{ $NoError = $dbi->ExecuteMulti("ALTER TABLE `Model` ADD `model_remarks` TEXT NULL AFTER `model_birthdate`;"); }
+	
 	/* user_datedisplayoptions column */
 	$Exists = $dbi->ColumnExists('User', 'user_datedisplayopts');
 
