@@ -16,6 +16,7 @@ class DBi extends mysqli
 			{ ; }
 			while($this->next_result());
 			
+			$this->autocommit(TRUE);
 			return TRUE;
 		}
 		
