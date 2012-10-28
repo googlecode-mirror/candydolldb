@@ -5,15 +5,6 @@
 
 <wiki:toc max_depth="2" />
 
-==v1.8==
-
- * switch from MySQL to MySQLi *(DONE)*
- * user-rights, permissions implemented *(DONE)*
- * SFV-export *(DONE)*
- * CSV-export *(DONE)*
- * CRC32-support for images and videos *(DONE)*
- * allow XML-importer to process images and videos *(DONE)*
-
 ==v1.9==
 
  * set-prefixes removed *(PARTIALLY DONE)*
