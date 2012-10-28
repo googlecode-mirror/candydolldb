@@ -369,7 +369,8 @@ class Utils
 			mt_rand(32768, 49151),
 			mt_rand(0, 65535),
 			mt_rand(0, 65535),
-			mt_rand(0, 65535));
+			mt_rand(0, 65535)
+		);
 	}
 	
 	/**

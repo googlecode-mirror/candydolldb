@@ -33,6 +33,7 @@ class Set
 		$this->Name = $set_name;
 		$this->ContainsWhat = $set_containswhat;
 		
+		/* @var $m Model */
 		$m = new Model($model_id, $model_firstname, $model_lastname);
 		$this->Model = $m;
 		
@@ -229,7 +230,7 @@ class Set
 		
 			while($stmt->fetch())
 			{
-				$o = new Set($set_id, $set_prefix, $set_name, $set_containswhat, $model_id, $model_firstname, $model_lastname, $set_amount_pics_in_db, $set_amount_vids_in_db);
+				$o = new self($set_id, $set_prefix, $set_name, $set_containswhat, $model_id, $model_firstname, $model_lastname, $set_amount_pics_in_db, $set_amount_vids_in_db);
 				$OutArray[] = $o;
 			}
 			
@@ -266,8 +267,6 @@ class Set
 		global $dbi;
 	
 		$outBool = TRUE;
-		$model_id = $set_prefix = $set_name = NULL;
-		$set_containswhat = SET_CONTENT_NONE;
 		$mut_id = $CurrentUser->getID();
 		$mut_date = time();
 	
@@ -348,8 +347,6 @@ class Set
 		global $dbi;
 		
 		$outBool = TRUE;
-		$id = $model_id = $set_prefix = $set_name = NULL;
-		$set_containswhat = SET_CONTENT_NONE;
 		$mut_id = $CurrentUser->getID();
 		$mut_date = time();
 		
@@ -427,7 +424,6 @@ class Set
 		global $dbi;
 	
 		$outBool = TRUE;
-		$id = NULL;
 		$mut_id = $CurrentUser->getID();
 		$mut_deleted = time();
 	
@@ -611,7 +607,7 @@ class SetSearchParameters extends SearchParameters
 			$this->paramtypes .= str_repeat('i', count($MultipleIDs));
 			$this->values = array_merge($this->values, $MultipleIDs);
 			$this->where .= sprintf(" AND set_id IN ( %1s ) ",
-					implode(', ', array_fill(0, count($MultipleIDs), '?'))
+				implode(', ', array_fill(0, count($MultipleIDs), '?'))
 			);
 		}
 		
@@ -627,7 +623,7 @@ class SetSearchParameters extends SearchParameters
 			$this->paramtypes .= str_repeat('i', count($MultipleModelIDs));
 			$this->values = array_merge($this->values, $MultipleModelIDs);
 			$this->where .= sprintf(" AND model_id IN ( %1s ) ",
-					implode(', ', array_fill(0, count($MultipleModelIDs), '?'))
+				implode(', ', array_fill(0, count($MultipleModelIDs), '?'))
 			);
 		}
 

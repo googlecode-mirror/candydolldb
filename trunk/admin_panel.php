@@ -43,6 +43,7 @@ if(array_key_exists('hidAction', $_POST) && isset($_POST['hidAction']) && $_POST
 	$SmtpAuth 		= array_key_exists('chkSmtpAuth', $_POST);
 	
 	// Checks
+	// TODO
 	
 	// Read-write config.php
 	if(($configfile = file_get_contents('config.php')) !== FALSE)

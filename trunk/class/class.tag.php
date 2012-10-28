@@ -186,7 +186,6 @@ class Tag
 		global $dbi;
 	
 		$outBool = TRUE;
-		$tag_name = NULL;
 		$mut_id = $CurrentUser->getID();
 		$mut_date = time();
 	
@@ -258,7 +257,6 @@ class Tag
 		global $dbi;
 	
 		$outBool = TRUE;
-		$tag_name = $id = NULL;
 		$mut_id = $CurrentUser->getID();
 		$mut_date = time();
 	
@@ -327,7 +325,6 @@ class Tag
 		global $dbi;
 	
 		$outBool = TRUE;
-		$id = NULL;
 		$mut_id = $CurrentUser->getID();
 		$mut_deleted = time();
 	

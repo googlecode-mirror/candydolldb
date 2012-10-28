@@ -16,14 +16,10 @@ class Info
 	 */
 	public function setInfoMessage($InInfoMessage)
 	{ $this->InfoMessage = $InInfoMessage; }
-	
 
-	public function Info($InfoMessage = NULL)
-	{
-		$this->InfoMessage = $InfoMessage;
-	}
-	
-	
+	public function __construct($InfoMessage = NULL)
+	{ $this->InfoMessage = $InfoMessage; }
+		
 	/**
 	 * Adds an info to the 'global' Info-array, or outputs it to STDOUT.
 	 * @param Info $InInfo

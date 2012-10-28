@@ -2,16 +2,15 @@
 
 include('cd.php');
 $CurrentUser = Authentication::Authenticate();
-HTMLstuff::RefererRegister($_SERVER['REQUEST_URI']);
 
 if(!$CurrentUser->hasPermission(RIGHT_SEARCH_DIRTY))
 {
 	$e = new Error(RIGHTS_ERR_USERNOTALLOWED);
 	Error::AddError($e);
-	
-	header('location:index.php');
-	exit;
+	HTMLstuff::RefererRedirect();
 }
+
+HTMLstuff::RefererRegister($_SERVER['REQUEST_URI']);
 
 $ModelID = Utils::SafeIntFromQS('model_id');
 
@@ -87,7 +86,6 @@ if($Sets)
 			if(!$DatesThisSet)
 			{ continue; }
 		}
-
 
 		$SetCount++;
 		$Model = $Set->getModel();
@@ -193,6 +191,5 @@ echo HTMLstuff::HtmlHeader('Dirty sets', $CurrentUser);
 
 <?php
 echo HTMLstuff::Button('index.php');
-
 echo HTMLstuff::HtmlFooter($CurrentUser);
 ?>

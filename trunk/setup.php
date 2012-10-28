@@ -236,8 +236,7 @@ CREATE TABLE IF NOT EXISTS `Tag2All` (
   KEY `set_id` (`set_id`),
   KEY `image_id` (`image_id`),
   KEY `video_id` (`video_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
-
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
 
 DROP VIEW IF EXISTS `vw_Date`;
 CREATE ALGORITHM=UNDEFINED VIEW `vw_Date` AS select `Date`.`date_id` AS `date_id`,`Date`.`date_kind` AS `date_kind`,`Date`.`date_timestamp` AS `date_timestamp`,`Date`.`mut_deleted` AS `mut_deleted`,`Date`.`set_id` AS `set_id`,`Set`.`set_prefix` AS `set_prefix`,`Set`.`set_name` AS `set_name`,`Set`.`set_containswhat` AS `set_containswhat`,`Model`.`model_id` AS `model_id`,`Model`.`model_firstname` AS `model_firstname`,`Model`.`model_lastname` AS `model_lastname` from ((`Date` left join `Set` on((`Set`.`set_id` = `Date`.`set_id`))) left join `Model` on((`Model`.`model_id` = `Set`.`model_id`))) where ((`Set`.`mut_deleted` = -(1)) and (`Model`.`mut_deleted` = -(1)));
@@ -294,7 +293,6 @@ CREATE ALGORITHM=UNDEFINED VIEW `vw_Video` AS select `Video`.`video_id` AS `vide
 
 DROP VIEW IF EXISTS `vw_Tag2All`;
 CREATE ALGORITHM=UNDEFINED VIEW `vw_Tag2All` AS	select `Tag2All`.`tag_id` AS `tag_id`, `Tag`.`tag_name` AS `tag_name`, `Tag2All`.`model_id` AS `model_id`, `Tag2All`.`set_id` AS `set_id`, `Tag2All`.`image_id` AS `image_id`, `Tag2All`.`video_id` AS `video_id` from `Tag2All` join `Tag` on `Tag`.`tag_id` = `Tag2All`.`tag_id`;
-
 
 ALTER TABLE `Date`
   ADD CONSTRAINT `Date_ibfk_1` FOREIGN KEY (`set_id`) REFERENCES `Set` (`set_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
