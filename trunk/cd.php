@@ -42,7 +42,7 @@ if(!defined('DBHOSTNAME') || strlen(DBHOSTNAME) == 0 ||
 if(!defined('DBNAME'))
 { define('DBNAME', 'candydolldb'); }
 
-define('CANDYDOLLDB_VERSION', '1.8');
+define('CANDYDOLLDB_VERSION', '1.9');
 
 /* Rights */
 	define('RIGHT_ACCOUNT_LOGIN',	1);
