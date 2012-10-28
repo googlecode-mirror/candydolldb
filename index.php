@@ -4,7 +4,6 @@ include('cd.php');
 $CurrentUser = Authentication::Authenticate();
 HTMLstuff::RefererRegister($_SERVER['REQUEST_URI']);
 
-
 $SearchModel = '';
 $SearchDirty = TRUE;
 $SearchClean = TRUE;
@@ -14,7 +13,6 @@ $OrderClause = NULL;
 $ModelRows = '';
 $ModelCount = 0;
 $SetCount = 0;
-
 
 if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'ModelFilter')
 {
@@ -26,11 +24,11 @@ if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] == 'ModelFilter'
 }
 else
 {
-	$SearchModel = array_key_exists('txtIndexSearchModel', $_SESSION) ? $_SESSION['txtIndexSearchModel'] : '';
-	$SearchDirty = array_key_exists('chkDirty', $_SESSION) ? (bool)$_SESSION['chkDirty'] : TRUE;
-	$SearchClean = array_key_exists('chkClean', $_SESSION) ? (bool)$_SESSION['chkClean'] : TRUE;
-	$OrderBy = array_key_exists('selIndexOrderBy', $_SESSION) ? intval($_SESSION['selIndexOrderBy']) : 1;
-	$OrderMode = array_key_exists('radIndexOrderByMode', $_SESSION) ? $_SESSION['radIndexOrderByMode'] : 'ASC';
+	$SearchModel = array_key_exists('txtIndexSearchModel', $_SESSION) 	? $_SESSION['txtIndexSearchModel'] 		: '';
+	$SearchDirty = array_key_exists('chkDirty', $_SESSION) 				? (bool)$_SESSION['chkDirty'] 			: TRUE;
+	$SearchClean = array_key_exists('chkClean', $_SESSION) 				? (bool)$_SESSION['chkClean'] 			: TRUE;
+	$OrderBy	 = array_key_exists('selIndexOrderBy', $_SESSION) 		? intval($_SESSION['selIndexOrderBy']) 	: 1;
+	$OrderMode = array_key_exists('radIndexOrderByMode', $_SESSION) 	? $_SESSION['radIndexOrderByMode'] 		: 'ASC';
 }
 
 switch($OrderBy){

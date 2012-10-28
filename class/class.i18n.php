@@ -50,7 +50,7 @@ class i18n
 	/**
 	 * Constructs a i18n object, defaulting the CurrentLanguage to the first supported language (currently English) 
 	 */
-	public function i18n()
+	public function __construct()
 	{
 		$this->preferredLanguages = self::$SupportedLanguages; 
 	}

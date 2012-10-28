@@ -54,9 +54,9 @@ for($i = 0; $i < count($Models); $i++)
 	
 	/* @var $it RecursiveIteratorIterator */
 	$it = new RecursiveIteratorIterator(new RecursiveDirectoryIterator(
-			$ImageFolder,	
-		 	FileSystemIterator::SKIP_DOTS | FileSystemIterator::CURRENT_AS_FILEINFO));
-	
+		$ImageFolder,	
+		FileSystemIterator::SKIP_DOTS | FileSystemIterator::CURRENT_AS_FILEINFO)
+	);
 
 	$itArray = array();
 	foreach($it as $file)
@@ -65,7 +65,6 @@ for($i = 0; $i < count($Models); $i++)
 	if(isset($argv) && $argc > 0)
 	{ $bi = new BusyIndicator(count($itArray), 0, sprintf('%1$2d/%2$2d %3$s', ($i + 1), count($Models), $Model->GetShortName())); }
 
-		 	
 	/* @var $file SplFileInfo */
 	foreach($itArray as $file)
 	{

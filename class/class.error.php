@@ -35,7 +35,7 @@ class Error
 	public function setErrorMessage($InErrorMessage)
 	{ $this->ErrorMessage = $InErrorMessage; }
 	
-	public function Error($ErrorNumber = NULL, $ErrorMessage = NULL)
+	public function __construct($ErrorNumber = NULL, $ErrorMessage = NULL)
 	{
 		$this->ErrorNumber = $ErrorNumber;
 		$this->ErrorMessage = ($ErrorMessage ? $ErrorMessage : static::TranslateError($ErrorNumber));
@@ -121,7 +121,7 @@ class Error
 class LoginError extends Error
 {
 	public function LoginError($number = NULL, $message = NULL)
-	{ parent::Error($number, $message); }
+	{ parent::__construct($number, $message); }
 	
 	/**
 	 * Translates the numeric error into a human readable string
@@ -155,7 +155,7 @@ class LoginError extends Error
 class SQLerror extends Error
 {
 	public function SQLerror($number = NULL, $message = NULL)
-	{ parent::Error($number, $message); }
+	{ parent::__construct($number, $message); }
 	
 	/**
 	 * Translates the numeric error into a human readable string
@@ -181,7 +181,7 @@ class SQLerror extends Error
 class SyntaxError extends Error
 {
 	public function SyntaxError($number = NULL, $message = NULL)
-	{ parent::Error($number, $message); }
+	{ parent::__construct($number, $message); }
 	
 	/**
 	 * Translates the numeric error into a human readable string
@@ -207,7 +207,7 @@ class SyntaxError extends Error
 class UploadError extends Error
 {
 	public function UploadError($number = NULL, $message = NULL)
-	{ parent::Error($number, $message); }
+	{ parent::__construct($number, $message); }
 	
 	/**
 	 * Translates the numeric error ($_FILES['upload']['error']) into a human readable string
@@ -247,7 +247,7 @@ class UploadError extends Error
 class XMLerror extends Error
 {
 	public function XMLerror($number = NULL, $message = NULL)
-	{ parent::Error($number, $message); }
+	{ parent::__construct($number, $message); }
 
 	/**
 	 * Translates the numeric error into a human readable string

@@ -10,6 +10,7 @@ class Tag2All
 	
 	public function __construct($tag_id = NULL, $tag_name = NULL, $model_id = NULL, $set_id = NULL, $image_id = NULL, $video_id = NULL)
 	{
+		/* @var $t Tag */
 		$t = new Tag($tag_id, $tag_name);
 		$this->Tag = $t;
 		
@@ -143,7 +144,6 @@ class Tag2All
 		global $dbi;
 		
 		$outBool = TRUE;
-		$tag_id = $model_id = $set_id = $image_id = $video_id = NULL;
 		
 		if(!is_array($Tag2Alls))
 		{ return FALSE; }

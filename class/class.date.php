@@ -180,7 +180,6 @@ class Date
 		global $dbi;
 		
 		$outBool = TRUE;
-		$set_id = $date_kind = $date_timestamp = NULL;
 		$mut_id = $CurrentUser->getID();
 		$mut_date = time();
 		
@@ -258,7 +257,6 @@ class Date
 		global $dbi;
 		$outBool = TRUE;
 
-		$id = $set_id = $date_kind = $date_timestamp = NULL;
 		$mut_id = $CurrentUser->getID();
 		$mut_date = time();
 		
@@ -328,7 +326,6 @@ class Date
 		global $dbi;
 		
 		$outBool = TRUE;
-		$id = NULL;
 		$mut_id = $CurrentUser->getID();
 		$mut_deleted = time();
 		
@@ -423,7 +420,7 @@ class Date
 				}
 			}
 		}
-		return trim($OutString, ', ');
+		return trim($OutString, $Glue);
 	}
 	
 	/**

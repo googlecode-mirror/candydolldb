@@ -10,7 +10,6 @@ $fileToProcess = 'setup_data.xml';
 $Tag2AllsInDB = Tag2All::GetTag2Alls();
 $TagsInDB = Tag::GetTags();
 
-
 if(array_key_exists('file', $_GET) && isset($_GET['file']))
 { $fileToProcess = $_GET['file']; }
 
@@ -178,7 +177,6 @@ if($XmlFromFile)
 
 			// Update the Set's CONTAINS_WHAT
 			Set::Update($Set2Process, $CurrentUser);
-			
 			
 			/* @var $Date Date */
 			/* @var $dateInDb Date */

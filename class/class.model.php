@@ -161,7 +161,6 @@ class Model
 	public function setLastSetDate($LastSetDate)
 	{ $this->LastSetDate = $LastSetDate; }
 
-	
 	/**
 	 * Returns a random image-filename of the current model.
 	 * @return string|NULL
@@ -258,7 +257,7 @@ class Model
 			
 			while($stmt->fetch())
 			{
-				$o = new Model($model_id, $model_firstname, $model_lastname, $model_birthdate, $model_remarks, $model_setcount, $model_firstset, $model_lastset);
+				$o = new self($model_id, $model_firstname, $model_lastname, $model_birthdate, $model_remarks, $model_setcount, $model_firstset, $model_lastset);
 				$OutArray[] = $o;
 			}
 			
@@ -295,8 +294,6 @@ class Model
 		global $dbi;
 	
 		$outBool = TRUE;
-		$model_firstname = $model_lastname =  $model_remarks = NULL;
-		$model_birthdate = -1;
 		$mut_id = $CurrentUser->getID();
 		$mut_date = time();
 	
@@ -377,8 +374,6 @@ class Model
 		global $dbi;
 	
 		$outBool = TRUE;
-		$id = $model_firstname = $model_lastname =  $model_remarks = NULL;
-		$model_birthdate = -1;
 		$mut_id = $CurrentUser->getID();
 		$mut_date = time();
 	
@@ -456,7 +451,6 @@ class Model
 		global $dbi;
 	
 		$outBool = TRUE;
-		$id = NULL;
 		$mut_id = $CurrentUser->getID();
 		$mut_deleted = time();
 	

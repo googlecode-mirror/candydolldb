@@ -2,16 +2,15 @@
 
 include('cd.php');
 $CurrentUser = Authentication::Authenticate();
-HTMLstuff::RefererRegister($_SERVER['REQUEST_URI']);
 
 if(!$CurrentUser->hasPermission(RIGHT_SEARCH_TAGS))
 {
 	$e = new Error(RIGHTS_ERR_USERNOTALLOWED);
 	Error::AddError($e);
-	
-	header('location:index.php');
-	exit;
+	HTMLstuff::RefererRedirect();
 }
+
+HTMLstuff::RefererRegister($_SERVER['REQUEST_URI']);
 
 $Tags = Tag::GetTags();
 
@@ -25,7 +24,6 @@ $ToShow = array();
 $Tag2Alls = array();
 $ItemCount = 0;
 $Results = '';
-
 
 /* Querystring and session-processing */
 if (isset($_GET['p']))

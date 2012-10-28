@@ -43,7 +43,6 @@ $DisableCacheDeleteButton =
 $ReturnURL = sprintf('set.php?model_id=%1$d', $ModelID);
 $DatesThisSet = array();
 
-
 /* @var $Set Set */
 /* @var $Model Model */
 if($SetID != NULL)
@@ -288,7 +287,6 @@ foreach ($DatesThisSet as $Date)
 ?>
 
 <?php echo HTMLstuff::Button(sprintf('set.php?model_id=%1$d', $ModelID), $lang->g('NavigationSets'))?>
-
 <?php echo HTMLstuff::Button('index.php')?>
 
 </fieldset>

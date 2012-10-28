@@ -59,7 +59,7 @@ if($resource === TRUE)
 					)
 				);
 				
-				$finalFile =  $Image->getFileName().'.zip';
+				$finalFile = $Image->getFileName().'.zip';
 			}
 		}
 	}
@@ -89,8 +89,6 @@ if($resource === TRUE)
 						$Image->getFileExtension()
 					)
 				);
-				
-				
 			}
 
 			$finalFile = sprintf('%1$s%2$s.zip',

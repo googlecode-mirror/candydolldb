@@ -119,7 +119,9 @@ echo HTMLstuff::HtmlHeader($lang->g('NavigationManageTags'), $CurrentUser);
 <div class="Clear Separator"></div>
 
 <?php echo '<div style="text-align: center;font-weight: bold">'.$lang->g('LabelTotalTagCount').': '.$Tagcount.'</div>'?>
+
 <div class="Clear Separator"></div>
+
 <?php
 echo HTMLstuff::Button('tag.php', $lang->g('ButtonCreateNewTag'));
 echo HTMLstuff::Button('index.php');

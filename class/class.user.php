@@ -674,7 +674,6 @@ class User
 		global $dbi;
 		$outBool = TRUE;
 
-		$id = NULL;
 		$mut_id = $CurrentUser->getID();
 		$mut_deleted = time();
 	

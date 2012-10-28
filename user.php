@@ -51,7 +51,6 @@ if($Users)
 }
 
 echo HTMLstuff::HtmlHeader($lang->g('NavigationUsers'), $CurrentUser);
-
 ?>
 
 <h2><?php echo sprintf('<a href="index.php">%2$s</a> - %1$s',

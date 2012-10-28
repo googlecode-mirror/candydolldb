@@ -205,7 +205,6 @@ foreach(Rights::getDefinedRights() as $k => $v)
 }
 
 echo HTMLstuff::HtmlHeader($User->GetFullName(), $CurrentUser);
-
 ?>
 
 <script type="text/javascript">

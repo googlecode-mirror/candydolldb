@@ -472,17 +472,17 @@ class Image
 		}
 		
 		$stmt->bind_param('ississiiiii',
-				$set_id,
-				$image_filename,
-				$image_fileextension,
-				$image_filesize,
-				$image_filechecksum,
-				$image_filecrc32,
-				$image_width,
-				$image_height,
-				$mut_id,
-				$mut_date,
-				$id
+			$set_id,
+			$image_filename,
+			$image_fileextension,
+			$image_filesize,
+			$image_filechecksum,
+			$image_filecrc32,
+			$image_width,
+			$image_height,
+			$mut_id,
+			$mut_date,
+			$id
 		);
 		
 		foreach($Images as $Image)
@@ -531,7 +531,6 @@ class Image
 		global $dbi;
 	
 		$outBool = TRUE;
-		$id = NULL;
 		$mut_id = $CurrentUser->getID();
 		$mut_deleted = time();
 	

@@ -1,12 +1,12 @@
 <?php
 
 include('cd.php');
+
 $UserName = NULL;
 $EmailAddress = NULL;
 $Hash = NULL;
 $HashError = FALSE;
 $MailSent = NULL;
-
 
 if(array_key_exists('hidAction', $_POST) && $_POST['hidAction'] && $_POST['hidAction'] == 'PasswordPassword')
 {

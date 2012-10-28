@@ -263,7 +263,6 @@ class CacheImage
 	{
 		global $dbi;
 		$outBool = TRUE;
-		$cache_id = $model_id = $index_id = $set_id = $image_id = $video_id = $cache_imagewidth = $cache_imageheight = NULL;
 		
 		if(!is_array($CacheImages))
 		{ return FALSE; }
@@ -345,7 +344,6 @@ class CacheImage
 	{
 		global $dbi;
 		$outBool = TRUE;
-		$id = NULL;
 		
 		if(!is_array($CacheImages))
 		{ return FALSE; }

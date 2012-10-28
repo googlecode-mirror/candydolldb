@@ -19,7 +19,6 @@ if(!isset($SetID))
 	exit;
 }
 
-
 /* @var $Model Model */
 /* @var $Set Set */
 $Model = NULL;
@@ -37,6 +36,7 @@ if($Images)
 		$ImageCount++;
 		if(!$Set) { $Set = $Image->getSet(); }
 		if(!$Model) { $Model = $Set->getModel(); }
+		
 		switch($CurrentUser->getImageview())
 		{
 			case 'thumb':
@@ -238,6 +238,5 @@ echo $CurrentUser->hasPermission(RIGHT_IMAGE_ADD) ? HTMLstuff::Button(sprintf('i
 echo $CurrentUser->hasPermission(RIGHT_IMAGE_ADD) ? HTMLstuff::Button(sprintf('import_image.php?model_id=%1$d&amp;set_id=%2$d', $ModelID, $SetID), $lang->g('ButtonImportImages')) : '';
 echo HTMLstuff::Button(sprintf('set.php?model_id=%1$d', $ModelID), $lang->g('NavigationSets'));
 echo HTMLstuff::Button('index.php');
-
 echo HTMLstuff::HtmlFooter($CurrentUser);
 ?>
