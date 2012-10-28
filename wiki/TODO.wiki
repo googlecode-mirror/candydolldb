@@ -8,7 +8,6 @@
 ==v1.8==
 
  * switch from MySQL to MySQLi *(DONE)*
- * set-prefixes removed *(PARTIALLY DONE)*
  * user-rights, permissions implemented *(DONE)*
  * SFV-export *(DONE)*
  * CSV-export *(DONE)*
@@ -17,6 +16,7 @@
 
 ==v1.9==
 
+ * set-prefixes removed *(PARTIALLY DONE)*
  * Automatic XML-updates
  * Multi-page index generation
  * Centralized system settings, e-mailtemplates
