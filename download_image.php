@@ -11,6 +11,7 @@ $ModelIndexID = Utils::SafeIntFromQS('index_id');
 $ModelID = Utils::SafeIntFromQS('model_id');
 $Width = Utils::SafeIntFromQS('width');
 $Height = Utils::SafeIntFromQS('height');;
+$ThumbsPerPage = Utils::SafeIntFromQS('perpage');
 $PromptDownload = Utils::SafeBoolFromQS('download');
 $PortraitOnly = Utils::SafeBoolFromQS('portrait_only');
 $LandscapeOnly = Utils::SafeBoolFromQS('landscape_only');
@@ -53,10 +54,11 @@ if($ModelIndexID)
 	else
 	{
 		header(sprintf(
-			'location:download_index.php?model_id=%1$d&width=%2$d&height=%3$d&download=%4$s',
+			'location:download_index.php?model_id=%1$d&width=%2$d&height=%3$d&perpage=%4$s&download=%5$s',
 			$ModelIndexID,
 			$Width,
 			$Height,
+			$ThumbsPerPage,
 			$PromptDownload ? 'true':'false'
 		));
 	}

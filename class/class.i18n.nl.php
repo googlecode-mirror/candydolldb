@@ -77,6 +77,7 @@ class LabelsNL extends Labels
 		'NavigationVideos' => 'Video\'s',
 		
 		'LabelAllModels' => 'Alle modellen',
+		'LabelAutomatic' => 'Automatisch',
 		'LabelBirthdate' => 'Geboortedatum',
 		'LabelBirthdateShort' => 'Geboren',
 		'LabelBoth' => 'Allebei',
@@ -197,6 +198,7 @@ class LabelsNL extends Labels
 		'LabelTaggedWith' => 'tagged met',
 		'LabelTags' => 'Tags',
 		'LabelThumbnails' => 'Thumbnails',
+		'LabelThumbnailsPerPage' => 'Thumbnails per pagina',
 		'LabelTitleMr' => 'Dhr.',
 		'LabelTitleMrMrs' => 'Dhr./Mevr.',
 		'LabelTitleMrs' => 'Mevr.',

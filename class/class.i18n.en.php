@@ -77,6 +77,7 @@ class LabelsEN extends Labels
 		'NavigationVideos' => 'Videos',
 		
 		'LabelAllModels' => 'All models',
+		'LabelAutomatic' => 'Automatic',
 		'LabelBirthdate' => 'Birthdate',
 		'LabelBirthdateShort' => 'Birthdate',
 		'LabelBoth' => 'Both',
@@ -197,6 +198,7 @@ class LabelsEN extends Labels
 		'LabelTaggedWith' => 'tagged with',
 		'LabelTags' => 'Tags',
 		'LabelThumbnails' => 'Thumbnails',
+		'LabelThumbnailsPerPage' => 'Thumbnails per page',
 		'LabelTitleMr' => 'Mr.',
 		'LabelTitleMrMrs' => 'Mr./Mrs.',
 		'LabelTitleMrs' => 'Mrs.',
