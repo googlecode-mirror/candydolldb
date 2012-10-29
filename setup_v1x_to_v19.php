@@ -66,7 +66,19 @@ if(array_key_exists('hidAction', $_POST) && isset($_POST['hidAction']) && $_POST
 	
 	if($NoError && !$Exists)
 	{ $NoError = $dbi->ExecuteMulti("ALTER TABLE `Video` ADD `video_filecrc32` varchar(8) NULL AFTER `video_filechecksum`;"); }
-
+	
+	/* index_sequence_number column */
+	$Exists = $dbi->ColumnExists('CacheImage', 'index_sequence_number');
+	
+	if($NoError && !$Exists)
+	{ $NoError = $dbi->ExecuteMulti("ALTER TABLE `CacheImage` ADD `index_sequence_number` int(11) NULL AFTER `cache_imageheight`;"); }
+	
+	/* index_sequence_total column */
+	$Exists = $dbi->ColumnExists('CacheImage', 'index_sequence_total');
+	
+	if($NoError && !$Exists)
+	{ $NoError = $dbi->ExecuteMulti("ALTER TABLE `CacheImage` ADD `index_sequence_total` int(11) NULL AFTER `index_sequence_number`;"); }
+		
 	$UpdateDBSQL = <<<FjbMNnvUJheiwewUJfheJheuehFJDUHdywgwwgHGfgywug
 SET AUTOCOMMIT=0;
 START TRANSACTION;
@@ -179,7 +191,10 @@ DROP VIEW IF EXISTS `vw_Tag2All`;
 CREATE ALGORITHM=UNDEFINED VIEW `vw_Tag2All` AS	select `Tag2All`.`tag_id` AS `tag_id`, `Tag`.`tag_name` AS `tag_name`, `Tag2All`.`model_id` AS `model_id`, `Tag2All`.`set_id` AS `set_id`, `Tag2All`.`image_id` AS `image_id`, `Tag2All`.`video_id` AS `video_id` from `Tag2All` join `Tag` on `Tag`.`tag_id` = `Tag2All`.`tag_id`;
 
 UPDATE `Model` SET `model_firstname` = 'Yuliya'
-WHERE `model_lastname` = 'Semenishyna'; 
+WHERE `model_lastname` = 'Semenishyna';
+
+UPDATE `CacheImage` SET `index_sequence_number` = 1, `index_sequence_total` = 1 
+WHERE `index_id` IS NOT NULL;
   
 COMMIT;
 SET AUTOCOMMIT=1;
@@ -194,8 +209,19 @@ FjbMNnvUJheiwewUJfheJheuehFJDUHdywgwwgHGfgywug;
 		/* @var $ci CacheImage */
 		foreach ($CacheImagesInDB as $ci)
 		{
-			if(file_exists($ci->getFilenameOnDisk(TRUE)))
-			{ rename($ci->getFilenameOnDisk(TRUE), $ci->getFilenameOnDisk(FALSE)); }
+			if($ci->getKind() == CACHEIMAGE_KIND_INDEX)
+			{
+				if(file_exists($ci->getFilenameOnDisk(TRUE, TRUE)))
+				{ rename($ci->getFilenameOnDisk(TRUE, TRUE), $ci->getFilenameOnDisk(FALSE, FALSE)); }
+				
+				if(file_exists($ci->getFilenameOnDisk(FALSE, TRUE)))
+				{ rename($ci->getFilenameOnDisk(FALSE, TRUE), $ci->getFilenameOnDisk(FALSE, FALSE)); }
+			}
+			else
+			{
+				if(file_exists($ci->getFilenameOnDisk(TRUE)))
+				{ rename($ci->getFilenameOnDisk(TRUE), $ci->getFilenameOnDisk(FALSE)); }
+			}
 		}
 		
 		/* Give the admin-user full rights */
