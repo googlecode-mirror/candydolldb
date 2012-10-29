@@ -126,6 +126,8 @@ CREATE TABLE IF NOT EXISTS `CacheImage` (
   `video_id` bigint(20) DEFAULT NULL,
   `cache_imagewidth` int(11) NOT NULL DEFAULT '0',
   `cache_imageheight` int(11) NOT NULL DEFAULT '0',
+  `index_sequence_number` int(11) DEFAULT NULL,
+  `index_sequence_total` int(11) DEFAULT NULL,
   PRIMARY KEY (`cache_id`),
   KEY `model_id` (`model_id`),
   KEY `index_id` (`index_id`),
