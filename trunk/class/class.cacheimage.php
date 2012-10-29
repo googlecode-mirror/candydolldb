@@ -10,10 +10,12 @@ class CacheImage
 	private $VideoID;
 	private $ImageWidth = 0;
 	private $ImageHeight = 0;
+	private $SequenceNumber = NULL;
+	private $SequenceTotal = NULL;
 	private $Kind = CACHEIMAGE_KIND_UNKNOWN;
 	
 	public function __construct(
-		$cache_id = NULL, $index_id = NULL, $model_id = NULL, $set_id = NULL, $image_id = NULL, $video_id = NULL, $cache_imagewidth = 0, $cache_imageheight = 0)
+		$cache_id = NULL, $index_id = NULL, $model_id = NULL, $set_id = NULL, $image_id = NULL, $video_id = NULL, $cache_imagewidth = 0, $cache_imageheight = 0, $index_sequence_number = NULL, $index_sequence_total = NULL)
 	{
 		$this->ID = $cache_id ? $cache_id : Utils::UUID();
 
@@ -24,6 +26,8 @@ class CacheImage
 		$this->VideoID = $video_id;
 		$this->ImageWidth = $cache_imagewidth;
 		$this->ImageHeight = $cache_imageheight;
+		$this->SequenceNumber = $index_sequence_number;
+		$this->SequenceTotal = $index_sequence_total;
 		
 		$this->Kind =
 			($index_id ? CACHEIMAGE_KIND_INDEX :
@@ -142,21 +146,48 @@ class CacheImage
 	*/
 	public function setImageHeight($ImageHeight)
 	{ $this->ImageHeight = $ImageHeight; }
+	
+	/**
+	* @return int
+	*/
+	public function getSequenceNumber()
+	{ return $this->SequenceNumber; }
+	
+	/**
+	* @param int $SequenceNumber
+	*/
+	public function setSequenceNumber($SequenceNumber)
+	{ $this->SequenceNumber = $SequenceNumber; }
+	
+	/**
+	* @return int
+	*/
+	public function getSequenceTotal()
+	{ return $this->SequenceTotal; }
+	
+	/**
+	* @param int $SequenceTotal
+	*/
+	public function setSequenceTotal($SequenceTotal)
+	{ $this->SequenceTotal = $SequenceTotal; }
 
 	/**
 	 * The on-disk filename of this CacheImage, in- or excluding the Kind-prefix
 	 * @param bool $omitPrefix
+	 * @param bool $omitSequence
 	 * @return string
 	 */
-	public function getFilenameOnDisk($omitPrefix = FALSE)
+	public function getFilenameOnDisk($omitPrefix = FALSE, $omitSequence = FALSE)
 	{
 		global $argv, $argc;
 		$pathPrefix = (isset($argv) && $argc > 0) ? dirname($_SERVER['PHP_SELF']).'/' : '';
 		
-		return 	sprintf(
-			$pathPrefix.'cache/%1$s%2$s.jpg',
+		return sprintf(
+			$pathPrefix.'cache/%1$s%2$s%3$s.jpg',
 			$omitPrefix ? '' : self::getFilenamePrefix(),
-			$this->getID()
+			$this->getID(),
+			$omitSequence || $this->Kind != CACHEIMAGE_KIND_INDEX  ? '' :
+				sprintf('-%1$d-%2$d', $this->SequenceNumber, $this->SequenceTotal)
 		);
 	}
 	
@@ -195,7 +226,7 @@ class CacheImage
 		
 		$q = sprintf("
 			SELECT
-				`cache_id`, `index_id`, `model_id`, `set_id`, `image_id`, `video_id`, `cache_imagewidth`, `cache_imageheight`
+				`cache_id`, `index_id`, `model_id`, `set_id`, `image_id`, `video_id`, `cache_imagewidth`, `cache_imageheight`, `index_sequence_number`, `index_sequence_total`
 			FROM
 				`CacheImage`
 			WHERE
@@ -221,12 +252,15 @@ class CacheImage
 		if($stmt->execute())
 		{
 			$OutArray = array();
-			$stmt->bind_result($cache_id, $index_id, $model_id, $set_id, $image_id, $video_id, $cache_imagewidth, $cache_imageheight);
+			$stmt->bind_result(
+				$cache_id, $index_id, $model_id, $set_id, $image_id, $video_id,
+				$cache_imagewidth, $cache_imageheight, $index_sequence_number, $index_sequence_total);
 		
 			while($stmt->fetch())
 			{
 				$o = new self(
-					$cache_id, $index_id, $model_id, $set_id, $image_id, $video_id, $cache_imagewidth, $cache_imageheight);
+					$cache_id, $index_id, $model_id, $set_id, $image_id, $video_id,
+					$cache_imagewidth, $cache_imageheight, $index_sequence_number, $index_sequence_total);
 			
 				$OutArray[] = $o;
 			}
@@ -276,9 +310,11 @@ class CacheImage
 				`image_id`,
 				`video_id`,
 				`cache_imagewidth`,
-				`cache_imageheight`
+				`cache_imageheight`,
+				`index_sequence_number`,
+				`index_sequence_total`
 			) VALUES (
-				?, ?, ?, ?, ?, ?, ?, ?
+				?, ?, ?, ?, ?, ?, ?, ?, ?, ?
 			)
 		");
 		
@@ -289,7 +325,7 @@ class CacheImage
 			return FALSE;
 		}
 		
-		$stmt->bind_param('siiiiiii',
+		$stmt->bind_param('siiiiiiiii',
 			$cache_id,
 			$model_id,
 			$index_id,
@@ -297,7 +333,9 @@ class CacheImage
 			$image_id,
 			$video_id,
 			$cache_imagewidth,
-			$cache_imageheight
+			$cache_imageheight,
+			$index_sequence_number,
+			$index_sequence_total
 		);
 		
 		foreach($CacheImages as $CacheImage)
@@ -310,6 +348,8 @@ class CacheImage
 			$video_id = $CacheImage->getVideoID();
 			$cache_imagewidth = $CacheImage->getImageWidth();
 			$cache_imageheight = $CacheImage->getImageHeight();
+			$index_sequence_number = $CacheImage->getSequenceNumber();
+			$index_sequence_total = $CacheImage->getSequenceTotal();
 		
 			$outBool = $stmt->execute(); 
 			if(!$outBool)

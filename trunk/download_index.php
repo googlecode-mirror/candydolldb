@@ -513,6 +513,8 @@ $CacheImage->setModelIndexID($ModelID);
 $CacheImage->setKind(CACHEIMAGE_KIND_INDEX);
 $CacheImage->setImageWidth($finalWidth);
 $CacheImage->setImageHeight($finalHeight);
+$CacheImage->setSequenceNumber(1);
+$CacheImage->setSequenceTotal(1);
 CacheImage::Insert($CacheImage, $CurrentUser);
 
 imagejpeg($indexImage, $CacheImage->getFilenameOnDisk());
