@@ -7,16 +7,16 @@
 
 ==v1.9==
 
- * set-prefixes removed *(PARTIALLY DONE)*
+ * remove set-prefixes *(PARTIALLY DONE)*
  * Automatic XML-updates
  * Multi-page index generation
- * Centralized system settings, e-mailtemplates
+ * Centralize system settings, e-mailtemplates
+ * Utilize info about image-video set discrepancies
+ * Include info regarding content of Promotion-videos (set names)
 
 ==later==
 
  * Include automatic video thumbnail generation 
- * Utilize info about image-video set discrepancies
- * Include info regarding content of Promotion-videos (set names)
  * Optimize cacheperformance by adding cache-expiration
  * Custom error logging (on-disk, email)
  * all models tagged
