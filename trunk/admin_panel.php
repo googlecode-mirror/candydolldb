@@ -131,6 +131,13 @@ foreach ($Models as $Model){
 	);
 }
 
+$ThumbsPerPageOptions = '';
+$ThumbsPerPageInts = array(1, 2, 4, 6, 9, 12, 16, 20, 25, 30, 36, 42, 49, 56, 64, 72, 81, 90);
+
+foreach ($ThumbsPerPageInts as $Int){
+	$ThumbsPerPageOptions .= sprintf("<option value=\"%1\$d\">%1\$d</option>", $Int);
+}
+
 $CacheFolder = 'cache';
 $CacheImages = CacheImage::GetCacheImages();
 
@@ -219,6 +226,7 @@ echo HTMLstuff::HtmlHeader($lang->g('NavigationAdminPanel'), $CurrentUser);
 
 	function RedirToIndex(){
 		var modelId = parseInt( $('#selModel').val() );
+		var thumbsPerPage = parseInt( $('#selThumbsPerPage').val() );
 		var indexWidth = parseInt( $('#txtIndexWidth').val() );
 		var indexHeight = parseInt( $('#txtIndexHeight').val() );
 
@@ -231,6 +239,7 @@ echo HTMLstuff::HtmlHeader($lang->g('NavigationAdminPanel'), $CurrentUser);
 			'?index_id=' + modelId +
 			'&width=' + indexWidth +
 			'&height=' + indexHeight +
+			'&perpage=' + thumbsPerPage +
 			'&download=true';
 
 			window.location = url;
@@ -436,6 +445,14 @@ echo HTMLstuff::HtmlHeader($lang->g('NavigationAdminPanel'), $CurrentUser);
 	<select id="selModel" name="selModel"<?php echo $CurrentUser->hasPermission(RIGHT_EXPORT_INDEX) ? NULL : HTMLstuff::DisabledStr(TRUE)?>>
 		<option value=""></option>
 		<?php echo $ModelsOptions?>
+	</select>
+	</div>
+	
+	<div class="FormRow">
+	<label for="selThumbsPerPage"><?php echo $lang->g('LabelThumbnailsPerPage')?>: </label>
+	<select id="selThumbsPerPage" name="selThumbsPerPage"<?php echo $CurrentUser->hasPermission(RIGHT_EXPORT_INDEX) ? NULL : HTMLstuff::DisabledStr(TRUE)?>>
+		<option value=""><?php echo $lang->g('LabelAutomatic')?></option>
+		<?php echo $ThumbsPerPageOptions?>
 	</select>
 	</div>
 	

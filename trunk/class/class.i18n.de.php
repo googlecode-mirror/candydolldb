@@ -77,6 +77,7 @@ class LabelsDE extends Labels
 		'NavigationVideos' => '',
 		
 		'LabelAllModels' => '',
+		'LabelAutomatic' => 'Automatisch',
 		'LabelBirthdate' => 'Geburtsdatum',
 		'LabelBirthdateShort' => 'Geboren',
 		'LabelBoth' => 'Beide',
@@ -201,6 +202,7 @@ class LabelsDE extends Labels
 		'LabelTaggedWith' => '',
 		'LabelTags' => '',
 		'LabelThumbnails' => '',
+		'LabelThumbnailsPerPage' => '',
 		'LabelTitleMr' => '',
 		'LabelTitleMrMrs' => '',
 		'LabelTitleMrs' => '',
