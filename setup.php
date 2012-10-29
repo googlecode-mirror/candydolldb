@@ -401,9 +401,10 @@ if(array_key_exists('hidAction', $_POST) && isset($_POST['hidAction']) && $_POST
 	$SmtpAuth 		= array_key_exists('chkSmtpAuth', $_POST);
 
 	$PasswordOK = ($_POST['txtRepeatPassword'] == $_POST['txtPassword']);
+	$EmailOK = Utils::ValidateEmail($UserEmail);
 	$DBsettingsSet = isset($DBHostName) && isset($DBUserName) && isset($DBPassword); 
 	
-	if($PasswordOK && $DBsettingsSet)
+	if($PasswordOK && $EmailOK && $DBsettingsSet)
 	{
 		/* @var $dbi DBi */
 		if(@($dbi = new DBi($DBHostName, $DBUserName, $DBPassword, 'mysql')))
@@ -497,6 +498,12 @@ if(array_key_exists('hidAction', $_POST) && isset($_POST['hidAction']) && $_POST
 		if(!$DBsettingsSet)
 		{
 			$e = new Error(NULL, $lang->g('ErrorSetupConnectDatabase'));
+			Error::AddError($e);
+		}
+		
+		if(!$EmailOK)
+		{
+			$e = new SyntaxError(SYNTAX_ERR_EMAILADDRESS);
 			Error::AddError($e);
 		}
 		
