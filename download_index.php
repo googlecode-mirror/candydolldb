@@ -11,25 +11,13 @@ if(!$CurrentUser->hasPermission(RIGHT_EXPORT_INDEX))
 	HTMLstuff::RefererRedirect();
 }
 
-class ThumbnailSettings
-{
-	public $fontSizeCaption;
-	public $startX;
-	public $startY;
-	public $width;
-	public $height;
-	public $marginX;
-	public $marginY;
-	public $numberOfColumns;
-	public $numberOfRows;
-}
-
 $ModelID = Utils::SafeIntFromQS('model_id');
 $IndexID = Utils::SafeIntFromQS('index_id');
 $ModelID = isset($IndexID) ? $IndexID : $ModelID;
 
 $finalWidth = Utils::SafeIntFromQS('width');
 $finalHeight = Utils::SafeIntFromQS('height');
+$perPage = Utils::SafeIntFromQS('perpage');
 $promptDownload = Utils::SafeBoolFromQS('download');
 
 $pathPrefix = (isset($argv) && $argc > 0) ? dirname($_SERVER['PHP_SELF']).'/' : '';
@@ -37,6 +25,17 @@ $indexImage = NULL;
 
 $Images = Image::GetImages(new ImageSearchParameters(FALSE, FALSE, FALSE, FALSE, $ModelID));
 $Sets = Set::GetSets(new SetSearchParameters(FALSE, FALSE, $ModelID));
+
+$pageIterator = 1;
+$perPage = $perPage && $perPage > 0 ? $perPage : count($Sets);
+
+while( ($pageIterator - 1) * $perPage < count($Sets) )
+{
+	printf('page: %1$d', $pageIterator);
+	$pageIterator++;
+}
+
+die();
 
 
 if($Sets && !in_array($Sets[0]->getModel()->getFullName(), array('Promotions', 'Interviews')))
