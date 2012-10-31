@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Models xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="candydolldb.xsd" xmlns="">
+<Models xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../candydolldb.xsd" xmlns="">
 <Model firstname="Promotions" lastname="" birthdate="" tags="">
 	<Sets>
 		<Set name="Promotion01" date_pic="" date_vid="" tags="Oksana02, LarisaH07, Catsute01, ValeriaL12, SvetlanaT04, VictoriaD01, SP_Bloomers01, UlyanaM03, VictoriaS01, SashaL01, SP_Alice01, KaterynaV01, SP_Sailor01, SP_Alice02, UlyanaA02, SvetlanaT05, LarisaH01, SP_Housemaid01, VictoriaD02, ValeriaL01, YuliyaS01, KaterynaV02, SvetlanaT01"/>
