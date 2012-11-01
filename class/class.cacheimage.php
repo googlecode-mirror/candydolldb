@@ -10,12 +10,12 @@ class CacheImage
 	private $VideoID;
 	private $ImageWidth = 0;
 	private $ImageHeight = 0;
-	private $SequenceNumber = NULL;
-	private $SequenceTotal = NULL;
+	private $SequenceNumber = 1;
+	private $SequenceTotal = 1;
 	private $Kind = CACHEIMAGE_KIND_UNKNOWN;
 	
 	public function __construct(
-		$cache_id = NULL, $index_id = NULL, $model_id = NULL, $set_id = NULL, $image_id = NULL, $video_id = NULL, $cache_imagewidth = 0, $cache_imageheight = 0, $index_sequence_number = NULL, $index_sequence_total = NULL)
+		$cache_id = NULL, $index_id = NULL, $model_id = NULL, $set_id = NULL, $image_id = NULL, $video_id = NULL, $cache_imagewidth = 0, $cache_imageheight = 0, $index_sequence_number = 1, $index_sequence_total = 1)
 	{
 		$this->ID = $cache_id ? $cache_id : Utils::UUID();
 
