@@ -126,8 +126,8 @@ CREATE TABLE IF NOT EXISTS `CacheImage` (
   `video_id` bigint(20) DEFAULT NULL,
   `cache_imagewidth` int(11) NOT NULL DEFAULT '0',
   `cache_imageheight` int(11) NOT NULL DEFAULT '0',
-  `index_sequence_number` int(11) DEFAULT NULL,
-  `index_sequence_total` int(11) DEFAULT NULL,
+  `index_sequence_number` int(11) NOT NULL DEFAULT '1',
+  `index_sequence_total` int(11) NOT NULL DEFAULT '1',
   PRIMARY KEY (`cache_id`),
   KEY `model_id` (`model_id`),
   KEY `index_id` (`index_id`),
@@ -141,6 +141,15 @@ CREATE TABLE IF NOT EXISTS `CacheImage` (
   CONSTRAINT `CacheImage_ibfk_4` FOREIGN KEY (`image_id`) REFERENCES `Image` (`image_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `CacheImage_ibfk_5` FOREIGN KEY (`video_id`) REFERENCES `Video` (`video_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+UPDATE `CacheImage` SET 
+	`index_sequence_number` = 1,
+	`index_sequence_total` = 1
+WHERE
+	`index_sequence_total` IS NULL;
+
+ALTER TABLE  `CacheImage` DROP PRIMARY KEY,
+ADD PRIMARY KEY ( `cache_id` , `index_sequence_number`, `index_sequence_total` );
 
 DROP VIEW IF EXISTS `vw_Model`;
 CREATE ALGORITHM=UNDEFINED VIEW `vw_Model` AS
