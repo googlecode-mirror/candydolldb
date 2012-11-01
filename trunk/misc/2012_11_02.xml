@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Models xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../candydolldb.xsd" xmlns="">
+
+	<Model firstname="Adelina" lastname="N" birthdate="" tags="">
+		<Sets>
+			<Set name="01" date_pic="" date_vid="2012-11-02" tags=""/>
+		</Sets>
+	</Model>
+
+	<Model firstname="Alissa" lastname="P" birthdate="2003-08-20" tags="">
+		<Sets>
+			<Set name="21" date_pic="2012-11-02" date_vid="2012-10-19" tags=""/>
+		</Sets>
+	</Model>
+
+	<Model firstname="Bianca" lastname="M" birthdate="" tags="">
+		<Sets>
+			<Set name="01" date_pic="2012-11-02" date_vid="2012-10-26" tags=""/>
+		</Sets>
+	</Model>
+	
+	<Model firstname="Elona" lastname="V" birthdate="" tags="">
+		<Sets>
+			<Set name="01" date_pic="" date_vid="2012-11-02" tags=""/>
+		</Sets>
+	</Model>
+
+	<Model firstname="Hanna" lastname="F" birthdate="2002-04-22" tags="">
+		<Sets>
+			<Set name="17" date_pic="" date_vid="2012-11-02" tags=""/>
+		</Sets>
+	</Model>
+	
+	<Model firstname="Isabella" lastname="B" birthdate="" tags="">
+		<Sets>
+			<Set name="06" date_pic="2012-11-02" date_vid="" tags=""/>
+		</Sets>
+	</Model>
+	
+	<Model firstname="Lauren" lastname="F" birthdate="" tags="">
+		<Sets>
+			<Set name="02" date_pic="" date_vid="2012-11-02" tags=""/>
+		</Sets>
+	</Model>
+
+	<Model firstname="Sabina" lastname="C" birthdate="2001-06-25" tags="">
+		<Sets>
+			<Set name="12" date_pic="2012-11-02" date_vid="" tags=""/>
+		</Sets>
+	</Model>
+
+	<Model firstname="VIP" lastname="" birthdate="" tags="">
+		<Sets>
+			<Set name="109" date_pic="2012-11-02" date_vid="2012-07-27" tags=""/>
+			<Set name="121" date_pic="" date_vid="2012-11-02" tags=""/>
+		</Sets>
+	</Model>
+	
+</Models>
