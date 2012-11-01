@@ -15,8 +15,8 @@ $ModelID = Utils::SafeIntFromQS('model_id');
 $IndexID = Utils::SafeIntFromQS('index_id');
 $ModelID = isset($IndexID) ? $IndexID : $ModelID;
 
-$finalWidth = Utils::SafeIntFromQS('width');
-$finalHeight = Utils::SafeIntFromQS('height');
+$finalWidth = Utils::SafeIntFromQS('width'); $finalWidth = $finalWidth ? $finalWidth : 1200;
+$finalHeight = Utils::SafeIntFromQS('height'); $finalHeight = $finalHeight ? $finalHeight : 1800;
 $perPage = Utils::SafeIntFromQS('perpage');
 $promptDownload = Utils::SafeBoolFromQS('download');
 
@@ -28,24 +28,32 @@ $Sets = Set::GetSets(new SetSearchParameters(FALSE, FALSE, $ModelID));
 
 $pageIterator = 1;
 $perPage = $perPage && $perPage > 0 ? $perPage : count($Sets);
+$uuid = Utils::UUID();
 $indexImages = array();
 
 while( ($pageIterator - 1) * $perPage < count($Sets) )
 {
 	$Sets2Process = array_slice($Sets, ($pageIterator - 1) * $perPage, $perPage);
 	
-	$indexImages[] = GenerateModelIndex($Sets2Process, $Images, $pathPrefix, $finalWidth, $finalHeight); 
+	$img = GenerateModelIndex($Sets2Process, $Images, $pathPrefix, $finalWidth, $finalHeight);
+	
+	if(is_null($img))
+	{ $img = imagecreatefromjpeg($pathPrefix.'images/missing.jpg'); }
+	
+	$CacheImage = new CacheImage($uuid);
+	$CacheImage->setModelIndexID($ModelID);
+	$CacheImage->setKind(CACHEIMAGE_KIND_INDEX);
+	$CacheImage->setImageWidth($finalWidth);
+	$CacheImage->setImageHeight($finalHeight);
+	$CacheImage->setSequenceNumber($pageIterator);
+	$CacheImage->setSequenceTotal(ceil(count($Sets) / $perPage));
+	CacheImage::Insert($CacheImage, $CurrentUser);
+	
+	imagejpeg($img, $CacheImage->getFilenameOnDisk() );
+	imagedestroy($img);
 
 	$pageIterator++;
 }
-
-header(sprintf('Content-Type: %1$s', Utils::GetMime('jpg')));
-foreach ($indexImages as $img)
-{
-	imagejpeg($img);
-}
-
-die();
 
 /**
  * Creates a dynamic index-image from the supplied sets
@@ -199,17 +207,6 @@ if($Sets && !in_array($Sets[0]->getModel()->getFullName(), array('Promotions', '
 	
 }
 
-if(is_null($indexImage))
-{ $indexImage = imagecreatefromjpeg($pathPrefix.'images/missing.jpg'); }
-
-$CacheImage = new CacheImage();
-$CacheImage->setModelIndexID($ModelID);
-$CacheImage->setKind(CACHEIMAGE_KIND_INDEX);
-$CacheImage->setImageWidth($finalWidth);
-$CacheImage->setImageHeight($finalHeight);
-$CacheImage->setSequenceNumber(1);
-$CacheImage->setSequenceTotal(1);
-CacheImage::Insert($CacheImage, $CurrentUser);
 
 imagejpeg($indexImage, $CacheImage->getFilenameOnDisk());
 
