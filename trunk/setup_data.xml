@@ -10,7 +10,7 @@
 			<Set name="06" date_pic="2012-08-17" date_vid="2012-07-13" tags="braids, chair, gold drapes, ringer t-shirt, skipping rope, white"/>
 		</Sets>
 	</Model>
-	<Model firstname="Adelina" lastname="N" birthdate="" tags="">
+	<Model firstname="Adelina" lastname="N" birthdate="2002-05-05" tags="">
 		<Sets>
 			<Set name="01" date_pic="" date_vid="2012-11-02" tags=""/>
 		</Sets>
@@ -254,7 +254,7 @@ Real birthdate: 1996-03-19
 			<Set name="07" date_pic="2012-09-28" date_vid="2012-09-14" tags="bare feet, chair, gold drapes, pigtails, pink"/>
 		</Sets>
 	</Model>
-	<Model firstname="Bianca" lastname="M" birthdate="" tags="">
+	<Model firstname="Bianca" lastname="M" birthdate="1998-09-26" tags="">
 		<Sets>
 			<Set name="01" date_pic="2012-11-02" date_vid="2012-10-26" tags=""/>
 		</Sets>
@@ -386,7 +386,7 @@ Real birthdate: 1996-03-19
 			<Set name="15" date_pic="2009-12-11" date_vid="2009-12-11" tags="black boots, garters, leopard, riding cane, sofa, wood floor"/>
 		</Sets>
 	</Model>
-	<Model firstname="Elona" lastname="V" birthdate="" tags="">
+	<Model firstname="Elona" lastname="V" birthdate="2003-11-09" tags="">
 		<Sets>
 			<Set name="01" date_pic="" date_vid="2012-11-02" tags=""/>
 		</Sets>
@@ -438,7 +438,7 @@ Real birthdate: 1996-03-19
 			<Set name="05" date_pic="2010-05-07" date_vid="2010-05-07" tags="bed, curtain, earrings, pigtails, pink, polkadot, white socks, windowsill"/>
 		</Sets>
 	</Model>
-	<Model firstname="Eva" lastname="R" birthdate="" tags="">
+	<Model firstname="Eva" lastname="R" birthdate="2001-07-27" tags="">
 		<Sets>
 			<Set name="01" date_pic="" date_vid="2012-10-26" tags=""/>
 		</Sets>
@@ -690,7 +690,7 @@ Previous birthdate: 1999-04-03
 			<Set name="37" date_pic="" date_vid="2012-01-27" tags=""/>
 		</Sets>
 	</Model>
-	<Model firstname="Lauren" lastname="F" birthdate="" tags="">
+	<Model firstname="Lauren" lastname="F" birthdate="2001-04-25" tags="">
 		<Sets>
 			<Set name="01" date_pic="2012-10-26" date_vid="2012-10-12" tags="blue, chair, gold drapes, pigtails, silk, silver"/>
 			<Set name="02" date_pic="" date_vid="2012-11-02" tags=""/>
