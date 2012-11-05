@@ -20,22 +20,23 @@ $finalHeight = Utils::SafeIntFromQS('height'); $finalHeight = $finalHeight ? $fi
 $perPage = Utils::SafeIntFromQS('perpage');
 $promptDownload = Utils::SafeBoolFromQS('download');
 
-$pathPrefix = (isset($argv) && $argc > 0) ? dirname($_SERVER['PHP_SELF']).'/' : '';
-$indexImage = NULL;  
-
 $Images = Image::GetImages(new ImageSearchParameters(FALSE, FALSE, FALSE, FALSE, $ModelID));
 $Sets = Set::GetSets(new SetSearchParameters(FALSE, FALSE, $ModelID));
+
+// TODO Add fallback for Promo and Interview
+if(!$Sets || in_array($Sets[0]->getModel()->getFullName(), array('Promotions', 'Interviews')))
+{ exit; }
 
 $pageIterator = 1;
 $perPage = $perPage && $perPage > 0 ? $perPage : count($Sets);
 $uuid = Utils::UUID();
-$indexImages = array();
+$cacheImages = array();
 
 while( ($pageIterator - 1) * $perPage < count($Sets) )
 {
 	$Sets2Process = array_slice($Sets, ($pageIterator - 1) * $perPage, $perPage);
 	
-	$img = GenerateModelIndex($Sets2Process, $Images, $pathPrefix, $finalWidth, $finalHeight);
+	$img = GenerateModelIndex($Sets2Process, $Images, $finalWidth, $finalHeight);
 	
 	if(is_null($img))
 	{ $img = imagecreatefromjpeg($pathPrefix.'images/missing.jpg'); }
@@ -52,16 +53,39 @@ while( ($pageIterator - 1) * $perPage < count($Sets) )
 	imagejpeg($img, $CacheImage->getFilenameOnDisk() );
 	imagedestroy($img);
 
+	$cacheImages[] = $CacheImage;
 	$pageIterator++;
 }
+
+if(count($cacheImages) == 1)
+{
+	$CacheImage = $cacheImages[0];
+	
+	Image::OutputImage(
+		$CacheImage->getFilenameOnDisk(),
+		$CacheImage->getImageWidth(),
+		$CacheImage->getImageHeight(),
+		TRUE,
+		NULL,
+		$PromptDownload ? sprintf('%1$s.jpg', $Sets[0]->getModel()->GetFullName()) : NULL
+	);
+}
+
+// TODO Figure out a way of returning multiple CacheImages
+// Perhaps a JSON array with serialized images?
+// Or a string-array of on-disk filenames?
+// Or build a ZIP-downloader right here?  
+var_dump($cacheImages);
+exit;
 
 /**
  * Creates a dynamic index-image from the supplied sets
  * @param array(Set) $Sets
  * @return resource
  */
-function GenerateModelIndex($Sets, $Images, $pathPrefix = '', $finalWidth = NULL, $finalHeight = NULL)
+function GenerateModelIndex($Sets, $Images, $finalWidth = NULL, $finalHeight = NULL)
 {
+	$pathPrefix = (isset($argv) && $argc > 0) ? dirname($_SERVER['PHP_SELF']).'/' : '';
 	$indexImage = imagecreatefrompng($pathPrefix.'images/index_background.png');
 	$candyColor = imagecolorallocate($indexImage, 255, 246, 195);
 	$font = $pathPrefix.'images/FreeSerifBoldItalic.ttf';
@@ -200,31 +224,5 @@ function GenerateModelIndex($Sets, $Images, $pathPrefix = '', $finalWidth = NULL
 
 	return $indexImage;
 }
-
-if($Sets && !in_array($Sets[0]->getModel()->getFullName(), array('Promotions', 'Interviews')))
-{
-	
-	
-}
-
-
-imagejpeg($indexImage, $CacheImage->getFilenameOnDisk());
-
-header(sprintf('Content-Type: %1$s', Utils::GetMime('jpg')));
-
-if($promptDownload){
-	header(
-		sprintf('Content-Disposition: attachment; filename="%1$s.jpg"',
-			$Sets[0]->getModel()->getFullName()
-		)
-	);
-}
-
-@ob_clean();
-flush();
-imagejpeg($indexImage);
-imagedestroy($indexImage);
-
-exit;
 
 ?>
