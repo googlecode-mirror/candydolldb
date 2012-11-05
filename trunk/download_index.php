@@ -20,12 +20,16 @@ $finalHeight = Utils::SafeIntFromQS('height'); $finalHeight = $finalHeight ? $fi
 $perPage = Utils::SafeIntFromQS('perpage');
 $promptDownload = Utils::SafeBoolFromQS('download');
 
+$outputMode = EXPORT_OPTION_IMAGE;
+if(array_key_exists('output', $_GET) && in_array($_GET['output'], array(EXPORT_OPTION_SERIALIZE, EXPORT_OPTION_IMAGE, EXPORT_OPTION_ZIP)))
+{ $outputMode = intval($_GET['output']); }
+
 $Images = Image::GetImages(new ImageSearchParameters(FALSE, FALSE, FALSE, FALSE, $ModelID));
 $Sets = Set::GetSets(new SetSearchParameters(FALSE, FALSE, $ModelID));
+$Model = $Sets ? $Sets[0]->getModel() : NULL;
 
-// TODO Add fallback for Promo and Interview
 if(!$Sets || in_array($Sets[0]->getModel()->getFullName(), array('Promotions', 'Interviews')))
-{ exit; }
+{ Image::OutputImage(); }
 
 $pageIterator = 1;
 $perPage = $perPage && $perPage > 0 ? $perPage : count($Sets);
@@ -57,7 +61,7 @@ while( ($pageIterator - 1) * $perPage < count($Sets) )
 	$pageIterator++;
 }
 
-if(count($cacheImages) == 1)
+if($outputMode == EXPORT_OPTION_IMAGE && count($cacheImages) == 1)
 {
 	$CacheImage = $cacheImages[0];
 	
@@ -67,15 +71,55 @@ if(count($cacheImages) == 1)
 		$CacheImage->getImageHeight(),
 		TRUE,
 		NULL,
-		$PromptDownload ? sprintf('%1$s.jpg', $Sets[0]->getModel()->GetFullName()) : NULL
+		$PromptDownload ? sprintf('%1$s.jpg', $Model->GetFullName()) : NULL
 	);
 }
 
-// TODO Figure out a way of returning multiple CacheImages
-// Perhaps a JSON array with serialized images?
-// Or a string-array of on-disk filenames?
-// Or build a ZIP-downloader right here?  
-var_dump($cacheImages);
+if($outputMode == EXPORT_OPTION_ZIP && count($cacheImages) > 0)
+{
+	$tmpFile = sprintf('%1$s/%2$s.zip', sys_get_temp_dir(), Utils::UUID());
+	$finalFile = sprintf('Index %1$s.zip', $Model->GetFullName());
+	$zip = new ZipArchive();
+	
+	if(file_exists($tmpFile))
+	{ $resource = $zip->open($tmpFile, ZipArchive::OVERWRITE); }
+	else
+	{ $resource = $zip->open($tmpFile, ZipArchive::CREATE); }
+	
+	if($resource === TRUE)
+	{
+		ini_set('max_execution_time', '3600');
+		$zip->setArchiveComment('Downloaded from CandyDoll DB'."\nhttps://code.google.com/p/candydolldb/");
+	
+		foreach($cacheImages as $CacheImage)
+		{
+			if(!file_exists($CacheImage->getFilenameOnDisk()))
+			{ continue; }
+		
+			$zip->addFile(
+				$CacheImage->getFilenameOnDisk(),
+				str_replace(
+					$CacheImage->getID(),
+					$Model->GetFullName(),
+					basename($CacheImage->getFilenameOnDisk())
+				)
+			);
+		}
+		$zip->close();
+	}
+	Utils::DownloadZip($tmpFile, $finalFile, TRUE);
+}
+
+if($outputMode == EXPORT_OPTION_SERIALIZE)
+{
+	// TODO Figure out a way of returning multiple CacheImages
+	// Perhaps a JSON array with serialized images?
+	// Or a string-array of on-disk filenames?
+	var_dump($cacheImages);	
+}
+
+
+
 exit;
 
 /**

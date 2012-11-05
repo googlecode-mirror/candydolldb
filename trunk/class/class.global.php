@@ -389,6 +389,40 @@ class Utils
 		}
 		return $OutHash;
 	}
+	
+	/**
+	 * Generates a download-prompt for the given ZIP-file on-disk.
+	 * @param string $filenameOnDisk
+	 * @param string $filenameToBe
+	 * @param bool $DeleteOriginal
+	 */
+	public static function DownloadZip($filenameOnDisk, $filenameToBe, $DeleteOriginal = FALSE)
+	{
+		if(file_exists($filenameOnDisk))
+		{
+			header('Content-Description: File Transfer');
+			header(sprintf('Content-Type: %1$s', Utils::GetMime('zip')));
+			header(sprintf('Content-Disposition: attachment; filename="%1$s"', $filenameToBe));
+			header('Content-Transfer-Encoding: binary');
+			header('Expires: 0');
+			header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
+			header('Pragma: public');
+			header('Content-Length: '.filesize($filenameOnDisk));
+			@ob_clean();
+			
+			$f = fopen($filenameOnDisk, "r");
+			if($f !== FALSE)
+			{
+				while($chunk = fread($f, 16777216))
+				{ echo $chunk; }
+				fclose($f);
+			}
+			
+			if($DeleteOriginal)
+			{ unlink($filenameOnDisk); }
+		}
+		exit;
+	}
 
 	/**
 	 * Determine whether a variable, or function call is empty
