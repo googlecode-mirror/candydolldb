@@ -33,10 +33,11 @@ if($ModelIndexID)
 		FALSE, FALSE,
 		FALSE, FALSE,
 		FALSE, FALSE,
-		$Width, $Height
+		$Width, $Height,
+		FALSE, is_null($ThumbsPerPage) ? FALSE : $ThumbsPerPage
 	));
 	
-	if($CacheImage)
+	if($CacheImage && count($CacheImage) == 1)
 	{
 		$CacheImage = $CacheImage[0];
 		$Model = Model::GetModels(new ModelSearchParameters($ModelIndexID));

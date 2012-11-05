@@ -464,6 +464,8 @@ class CacheImageSearchParameters extends SearchParameters
 	 * @param array(int) $MultipleVideoIDs
 	 * @param int $CacheImageWidth
 	 * @param int $CacheImageHeight
+	 * @param int $IndexSequenceNumber
+	 * @param int $IndexSequenceTotal
 	 */
 	public function __construct(
 		$SingleID = FALSE, $MultipleIDs = FALSE,
@@ -472,7 +474,8 @@ class CacheImageSearchParameters extends SearchParameters
 		$SingleSetID = FALSE, $MultipleSetIDs = FALSE,
 		$SingleImageID = FALSE, $MultipleImageIDs = FALSE,
 		$SingleVideoID = FALSE, $MultipleVideoIDs = FALSE,
-		$CacheImageWidth = FALSE, $CacheImageHeight = FALSE)
+		$CacheImageWidth = FALSE, $CacheImageHeight = FALSE,
+		$IndexSequenceNumber = FALSE, $IndexSequenceTotal = FALSE)
 	{
 		parent::__construct();
 
@@ -584,6 +587,20 @@ class CacheImageSearchParameters extends SearchParameters
 			$this->paramtypes .= "i";
 			$this->values[] = $CacheImageHeight;
 			$this->where .= " AND cache_imageheight = ?";
+		}
+		
+		if($IndexSequenceNumber !== FALSE)
+		{
+			$this->paramtypes .= "i";
+			$this->values[] = $IndexSequenceNumber;
+			$this->where .= " AND index_sequence_number = ?";
+		}
+		
+		if($IndexSequenceTotal !== FALSE)
+		{
+			$this->paramtypes .= "i";
+			$this->values[] = $IndexSequenceTotal;
+			$this->where .= " AND index_sequence_total = ?";
 		}
 	}
 
