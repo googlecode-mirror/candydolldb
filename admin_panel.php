@@ -240,7 +240,8 @@ echo HTMLstuff::HtmlHeader($lang->g('NavigationAdminPanel'), $CurrentUser);
 			'&width=' + indexWidth +
 			'&height=' + indexHeight +
 			'&perpage=' + thumbsPerPage +
-			'&download=true';
+			'&download=true' +
+			'&output=<?php echo EXPORT_OPTION_ZIP?>';
 
 			window.location = url;
 			return true;

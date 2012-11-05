@@ -16,6 +16,10 @@ $PromptDownload = Utils::SafeBoolFromQS('download');
 $PortraitOnly = Utils::SafeBoolFromQS('portrait_only');
 $LandscapeOnly = Utils::SafeBoolFromQS('landscape_only');
 
+$IndexOutputMode = EXPORT_OPTION_IMAGE;
+if(array_key_exists('output', $_GET) && in_array($_GET['output'], array(EXPORT_OPTION_SERIALIZE, EXPORT_OPTION_IMAGE, EXPORT_OPTION_ZIP)))
+{ $IndexOutputMode = intval($_GET['output']); }
+
 $CacheImage = NULL;
 
 /* @var $CacheImage CacheImage */
@@ -52,15 +56,22 @@ if($ModelIndexID)
 			$PromptDownload ? sprintf('%1$s.jpg', $Model->GetFullName()) : NULL
 		);
 	}
+
+	// TODO
+	//else if($CacheImage && count($CacheImage) > 1)
+	//{
+	//}
+	
 	else
 	{
 		header(sprintf(
-			'location:download_index.php?model_id=%1$d&width=%2$d&height=%3$d&perpage=%4$s&download=%5$s',
+			'location:download_index.php?model_id=%1$d&width=%2$d&height=%3$d&perpage=%4$s&download=%5$s&output=%6$d',
 			$ModelIndexID,
 			$Width,
 			$Height,
 			$ThumbsPerPage,
-			$PromptDownload ? 'true':'false'
+			$PromptDownload ? 'true':'false',
+			$IndexOutputMode
 		));
 	}
 }
