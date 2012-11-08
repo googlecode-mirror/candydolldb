@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Models xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../candydolldb.xsd" xmlns="">
+
+	<Model firstname="Alissa" lastname="P" birthdate="2003-08-20" tags="">
+		<Sets>
+			<Set name="22" date_pic="" date_vid="2012-11-09" tags=""/>
+		</Sets>
+	</Model>
+	
+	<Model firstname="Anastasia" lastname="R" birthdate="1999-04-03" tags="">
+		<Sets>
+			<Set name="10" date_pic="" date_vid="2012-11-09" tags=""/>
+		</Sets>
+	</Model>
+	
+	<Model firstname="Bella" lastname="K" birthdate="1999-04-11" tags="">
+		<Sets>
+			<Set name="08" date_pic="2012-11-09" date_vid="" tags=""/>
+		</Sets>
+	</Model>
+	
+	<Model firstname="Diana" lastname="H" birthdate="" tags="">
+		<Sets>
+			<Set name="08" date_pic="2012-11-09" date_vid="" tags=""/>
+		</Sets>
+	</Model>
+	
+	<Model firstname="Eva" lastname="R" birthdate="2001-07-27" tags="">
+		<Sets>
+			<Set name="01" date_pic="2012-11-09" date_vid="2012-10-26" tags=""/>
+		</Sets>
+	</Model>
+	
+	<Model firstname="Khloe" lastname="R" birthdate="" tags="">
+		<Sets>
+			<Set name="04" date_pic="2012-10-26" date_vid="2012-11-09" tags="chair, cupboard, curls, diadem, mirror, pink, wood floor"/>
+		</Sets>
+	</Model>
+	
+	<Model firstname="Lesya" lastname="B" birthdate="" tags="">
+		<Sets>
+			<Set name="01" date_pic="" date_vid="2012-11-09" tags=""/>
+		</Sets>
+	</Model>
+	
+	<Model firstname="Suisan" lastname="A" birthdate="" tags="">
+		<Sets>
+			<Set name="03" date_pic="2012-11-09" date_vid="" tags=""/>
+		</Sets>
+	</Model>
+
+	<Model firstname="VIP" lastname="" birthdate="" tags="">
+		<Sets>
+			<Set name="110" date_pic="2012-11-09" date_vid="2012-08-03" tags=""/>
+			<Set name="122" date_pic="" date_vid="2012-11-09" tags=""/>
+		</Sets>
+	</Model>
+	
+</Models>
