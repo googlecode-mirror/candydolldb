@@ -1687,6 +1687,8 @@ Real birthdate: 1996-04-24
 			<Set name="Sample04" date_pic="" date_vid="" tags=""/>
 			<Set name="Sample05" date_pic="" date_vid="" tags=""/>
 			<Set name="Sample06" date_pic="" date_vid="" tags=""/>
+			<Set name="Sample07" date_pic="" date_vid="" tags=""/>
+			<Set name="Sample08" date_pic="" date_vid="" tags=""/>
 		</Sets>
 	</Model>
 	<Model firstname="VIP" lastname="" birthdate="" tags="">
