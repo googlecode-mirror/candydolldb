@@ -20,7 +20,7 @@ class LabelsEN extends Labels
 		'ErrorNotAllRequiredData' => 'Not all required data was entered.',
 		'ErrorPleaseUseWebInterfaceForSetup' => 'Please use the webinterface for setting up this application.',
 		'ErrorSetupAlreadyComplete' => 'Setup already complete, please remove \'config.php\' from your installation directory and try again.',
-		'ErrorSetupConnectDatabase' => 'Could not connect to the database-server, please check the database-settings.',
+		'ErrorSetupConnectDatabase' => 'Could not connect to the database-server, please check the database-settings. The error returned was: "%1$s"',
 		'ErrorSetupCreatingCacheDir' => 'Could not find or create the cache-directory.',
 		'ErrorSetupCreatingDatabase' => 'Could not create the database.',
 		'ErrorSetupCreatingUser' => 'Something went wrong while creating the user.',

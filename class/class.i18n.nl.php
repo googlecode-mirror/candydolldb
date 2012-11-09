@@ -20,7 +20,7 @@ class LabelsNL extends Labels
 		'ErrorNotAllRequiredData' => 'Niet alle verplichte velden zijn ingevuld.',
 		'ErrorPleaseUseWebInterfaceForSetup' => 'Maak alstublieft gebruik van de web-interface om deze applicatie in te richten.',
 		'ErrorSetupAlreadyComplete' => 'De applicatie is al ingericht. Verwijder \'config.php\' en probeer het opnieuw.',
-		'ErrorSetupConnectDatabase' => 'Kon geen verbinding maken met de database-server.',
+		'ErrorSetupConnectDatabase' => 'Kon geen verbinding maken met de database-server. De opgetreden fout: "%1$s"',
 		'ErrorSetupCreatingCacheDir' => 'Kon de cache-map niet vinden of aanmaken.',
 		'ErrorSetupCreatingDatabase' => 'Kon de database niet aanmaken.',
 		'ErrorSetupCreatingUser' => 'Er is een fout opgetreden tijdens het aanmaken van de gebruiker.',
