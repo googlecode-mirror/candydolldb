@@ -4,16 +4,16 @@ error_reporting(E_ALL);
 ini_set('display_errors', '1');
 date_default_timezone_set(@date_default_timezone_get());
 
-include('class/class.i18n.php');
-include('class/class.i18n.en.php');
-include('class/class.i18n.nl.php');
-include('class/class.i18n.de.php');
+include('class'.DIRECTORY_SEPARATOR.'class.i18n.php');
+include('class'.DIRECTORY_SEPARATOR.'class.i18n.en.php');
+include('class'.DIRECTORY_SEPARATOR.'class.i18n.nl.php');
+include('class'.DIRECTORY_SEPARATOR.'class.i18n.de.php');
 
 $lang = new i18n();
 
 if(isset($argv) && $argc > 0)
 {
-	$configPath = sprintf('%1$s/config.php', dirname($_SERVER['PHP_SELF']));
+	$configPath = sprintf('%1$s%2$sconfig.php', dirname($_SERVER['PHP_SELF']), DIRECTORY_SEPARATOR);
 	if(file_exists($configPath))
 	{ require_once($configPath); }
 }
@@ -145,11 +145,11 @@ $DateStyleArray = array(
 	"F j, Y"	// April 14, 2012 
 );
 
-include('class/class.global.php');
-include('class/class.error.php');
-include('class/class.info.php');
-include('class/class.html.php');
-include('class/class.dbi.php');
+include('class'.DIRECTORY_SEPARATOR.'class.global.php');
+include('class'.DIRECTORY_SEPARATOR.'class.error.php');
+include('class'.DIRECTORY_SEPARATOR.'class.info.php');
+include('class'.DIRECTORY_SEPARATOR.'class.html.php');
+include('class'.DIRECTORY_SEPARATOR.'class.dbi.php');
 
 @session_start();
 
@@ -170,26 +170,26 @@ if(defined('DBHOSTNAME') &&
 	}
 	else
 	{
-		echo $lang->g('ErrorSetupConnectDatabase');
+		printf($lang->g('ErrorSetupConnectDatabase'), mysqli_connect_error());
 		exit;
 	}
 }
 
-include('class/class.user.php');
-include('class/class.date.php');
-include('class/class.image.php');
-include('class/class.cacheimage.php');
-include('class/class.model.php');
-include('class/class.set.php');
-include('class/class.video.php');
-include('class/class.tag.php');
-include('class/class.tag2all.php');
-include('class/class.indexgenerator.php');
+include('class'.DIRECTORY_SEPARATOR.'class.user.php');
+include('class'.DIRECTORY_SEPARATOR.'class.date.php');
+include('class'.DIRECTORY_SEPARATOR.'class.image.php');
+include('class'.DIRECTORY_SEPARATOR.'class.cacheimage.php');
+include('class'.DIRECTORY_SEPARATOR.'class.model.php');
+include('class'.DIRECTORY_SEPARATOR.'class.set.php');
+include('class'.DIRECTORY_SEPARATOR.'class.video.php');
+include('class'.DIRECTORY_SEPARATOR.'class.tag.php');
+include('class'.DIRECTORY_SEPARATOR.'class.tag2all.php');
+include('class'.DIRECTORY_SEPARATOR.'class.indexgenerator.php');
 
 $EmailPages = array('password.php');
 if(in_array(basename($_SERVER['PHP_SELF']), $EmailPages))
 {
-	require 'class/class.phpmailer.php';
+	require 'class'.DIRECTORY_SEPARATOR.'class.phpmailer.php';
 	$ml = new PHPMailer();
 	$ml->IsSMTP();
 	$ml->From = SMTP_FROM_ADDRESS;

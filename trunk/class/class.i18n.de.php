@@ -20,7 +20,7 @@ class LabelsDE extends Labels
 		'ErrorNotAllRequiredData' => '',
 		'ErrorPleaseUseWebInterfaceForSetup' => 'Benutzen Sie bitte das Webformular zur Einrichtung dieses Programms.',
 		'ErrorSetupAlreadyComplete' => '%1$s',
-		'ErrorSetupConnectDatabase' => '',
+		'ErrorSetupConnectDatabase' => '"%1$s"',
 		'ErrorSetupCreatingCacheDir' => '',
 		'ErrorSetupCreatingDatabase' => '',
 		'ErrorSetupCreatingUser' => '(\'%2$s\'), %1$s',
