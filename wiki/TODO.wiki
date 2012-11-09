@@ -9,7 +9,7 @@
 
  * remove set-prefixes *(PARTIALLY DONE)*
  * Automatic XML-updates
- * Multi-page index generation
+ * Multi-page index generation *(PARTIALLY DONE)*
  * Centralize system settings, e-mailtemplates
  * Utilize info about image-video set discrepancies
  * Include info regarding content of Promotion-videos (set names)
