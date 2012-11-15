@@ -206,7 +206,7 @@ CREATE TABLE IF NOT EXISTS `CacheImage` (
   `cache_imageheight` int(11) NOT NULL DEFAULT '0',
   `index_sequence_number` int(11) NOT NULL DEFAULT '1',
   `index_sequence_total` int(11) NOT NULL DEFAULT '1',
-  PRIMARY KEY (`cache_id`, `index_sequence_number`, `index_sequence_total`),PRIMARY KEY (`cache_id`),
+  PRIMARY KEY (`cache_id`, `index_sequence_number`, `index_sequence_total`),
   KEY `model_id` (`model_id`),
   KEY `index_id` (`index_id`),
   KEY `set_id` (`set_id`),
