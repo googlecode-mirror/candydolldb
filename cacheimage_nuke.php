@@ -32,11 +32,12 @@ foreach($it as $file)
 	$idToFind = $file->getBasename('.jpg');
 	$matches = array();
 
-	if(preg_match_all('/^(?<Prefix>[MXSIV]-)?[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i', $idToFind, $matches) > 0)
+	if(preg_match_all('/^(?<Prefix>[MXSIV]-)?[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}(?<Suffix>-[1-9][0-9]*-[1-9][0-9]*)?$/i', $idToFind, $matches) > 0)
 	{ 
 		$CacheImageInDB = CacheImage::GetCacheImages(
 			new CacheImageSearchParameters(
-				str_ireplace($matches['Prefix'], '', $idToFind)
+				str_ireplace($matches['Prefix'], '',
+					str_ireplace($matches['Suffix'], '', $idToFind))
 			)
 		);
 	
