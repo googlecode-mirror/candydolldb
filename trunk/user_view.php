@@ -259,9 +259,9 @@ function ToggleBoxes(){
 <input type="password" id="txtRepeatPassword" name="txtRepeatPassword" maxlength="100" value=""<?php echo HTMLstuff::DisabledStr($DisableControls)?> />
 </div>
 
-<? } ?>
+<?php } ?>
 
-<? } ?>
+<?php } ?>
 
 <div class="FormRow">
 <label for="selectLanguage"><?php echo $lang->g('LabelLanguage')?>:</label>

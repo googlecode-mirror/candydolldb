@@ -197,7 +197,7 @@ case 'thumb':
 	<?php echo $ImageRows ?>
 	<div class="Clear"></div>
 	<div style="font-weight:bold;text-align:center"><?php echo $lang->g('LabelTotalImageCount')?>: <?php printf('%1$d', $ImageCount)?></div>
-<?
+<?php
 break;
 
 case 'detail':
